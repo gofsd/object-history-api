@@ -3,6 +3,17 @@ version: '3'
 vars:
   PROTO_DIR: proto
   GO_OUT_DIR: .
+  MODULE: "github.com/gofsd/object-transfer-api"
+  CURRENT_VERSION:
+    sh: git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"
+  NEXT_VERSION:
+    sh: |
+      current="{{.CURRENT_VERSION}}"
+      major=$(echo $current | cut -d'.' -f1)
+      minor=$(echo $current | cut -d'.' -f2)
+      patch=$(echo $current | cut -d'.' -f3)
+      next_patch=$((patch + 1))
+      echo "$major.$minor.$next_patch"
 
 tasks:
   generate:auth:
@@ -29,3 +40,12 @@ tasks:
     cmds:
       - task: generate:auth
       - task: generate:object
+
+  patch:
+    desc: "Patch Go module version and push to GitHub"
+    cmds:
+      - "echo \"Current version: {{.CURRENT_VERSION}}\""
+      - "echo \"Next version: v{{.NEXT_VERSION}}\""
+      - git tag {{.NEXT_VERSION}}
+      - git push origin {{.NEXT_VERSION}}
+
