@@ -1,0 +1,31 @@
+version: '3'
+
+vars:
+  PROTO_DIR: proto
+  GO_OUT_DIR: .
+
+tasks:
+  generate:auth:
+    desc: Generate auth Go gRPC code
+    cmds:
+      - |
+        protoc \
+          --go_out={{.GO_OUT_DIR}} \
+          --go-grpc_out={{.GO_OUT_DIR}} \
+          {{.PROTO_DIR}}/auth/auth.proto
+
+  generate:object:
+    desc: Generate object Go gRPC code
+    cmds:
+      - |
+        protoc \
+          --go_out={{.GO_OUT_DIR}} \
+          --go-grpc_out={{.GO_OUT_DIR}} \
+          {{.PROTO_DIR}}/object/object.proto
+
+
+  generate:all:
+    desc: Generate code for auth and object services 
+    cmds:
+      - task: generate:auth
+      - task: generate:object

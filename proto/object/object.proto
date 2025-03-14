@@ -1,0 +1,126 @@
+
+syntax = "proto3";
+
+package object;
+
+option go_package = "object/proto";
+
+// Service definition
+service ObjectService {
+  // Object management
+  rpc CreateObject(CreateObjectRequest) returns (ObjectVersionResponse);
+  rpc GetObject(GetObjectRequest) returns (GetObjectResponse);
+  rpc UpdateObject(UpdateObjectRequest) returns (ObjectVersionResponse);
+  rpc DeleteObject(DeleteObjectRequest) returns (ObjectVersionResponse);
+
+  // Field-level operations
+  rpc AddField(AddFieldRequest) returns (ObjectVersionResponse);
+  rpc RenameField(RenameFieldRequest) returns (ObjectVersionResponse);
+  rpc DeleteField(DeleteFieldRequest) returns (ObjectVersionResponse);
+
+  // Value-level operations
+  rpc SetValue(SetValueRequest) returns (ObjectVersionResponse);
+  rpc UpdateValue(UpdateValueRequest) returns (ObjectVersionResponse);
+  rpc DeleteValue(DeleteValueRequest) returns (ObjectVersionResponse);
+
+  // Transactional update (atomic changes with version bump)
+  rpc TransactionalUpdate(TransactionalUpdateRequest) returns (ObjectVersionResponse);
+}
+
+// Base types for field
+enum FieldType {
+  STRING = 0;
+  INTEGER = 1;
+  FLOAT = 2;
+  BOOLEAN = 3;
+  OBJECT = 4; // Support for nested objects
+}
+
+// Field definition
+message Field {
+  string name = 1;
+  FieldType type = 2;
+}
+
+// Object structure
+message Object {
+  uint64 id = 1;
+  uint64 version = 2;
+  repeated Field fields = 3;
+  map<string, string> values = 4; // Field name -> value (stored as string)
+}
+
+// Object management
+message CreateObjectRequest {
+  repeated Field fields = 1;
+}
+
+message GetObjectRequest {
+  uint64 object_id = 1;
+}
+
+message GetObjectResponse {
+  Object object = 1;
+}
+
+message UpdateObjectRequest {
+  uint64 object_id = 1;
+  repeated Field fields = 2;
+}
+
+message DeleteObjectRequest {
+  uint64 object_id = 1;
+}
+
+// Field-level requests
+message AddFieldRequest {
+  uint64 object_id = 1;
+  Field field = 2;
+}
+
+message RenameFieldRequest {
+  uint64 object_id = 1;
+  string old_name = 2;
+  string new_name = 3;
+}
+
+message DeleteFieldRequest {
+  uint64 object_id = 1;
+  string field_name = 2;
+}
+
+// Value-level requests
+message SetValueRequest {
+  uint64 object_id = 1;
+  string field_name = 2;
+  string value = 3;
+}
+
+message UpdateValueRequest {
+  uint64 object_id = 1;
+  string field_name = 2;
+  string value = 3;
+}
+
+message DeleteValueRequest {
+  uint64 object_id = 1;
+  string field_name = 2;
+}
+
+// Transactional update
+message TransactionalUpdateRequest {
+  uint64 object_id = 1;
+  repeated AddFieldRequest add_fields = 2;
+  repeated RenameFieldRequest rename_fields = 3;
+  repeated DeleteFieldRequest delete_fields = 4;
+  repeated SetValueRequest set_values = 5;
+  repeated UpdateValueRequest update_values = 6;
+  repeated DeleteValueRequest delete_values = 7;
+}
+
+// Response with new object version after each modification
+message ObjectVersionResponse {
+  uint64 object_id = 1;
+  uint64 new_version = 2;
+}
+
