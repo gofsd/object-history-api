@@ -37,6 +37,16 @@ tasks:
           {{.PROTO_DIR}}/object/object.proto
 
 
+  generate:kotlin:
+    desc: Generate object kotlin gRPC code
+    cmds:
+      - |
+        protoc --plugin=/home/madi/tools/protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh    \
+          --kt_out={{.GO_OUT_DIR}} \
+          --grpckt_out={{.GO_OUT_DIR}} \
+          {{.PROTO_DIR}}/object/object.proto
+
+
   generate:all:
     desc: Generate code for auth and object services 
     cmds:
@@ -51,3 +61,21 @@ tasks:
       - git tag {{.NEXT_VERSION}}
       - git push origin {{.NEXT_VERSION}}
 
+  kt:
+    desc: "kt gen"
+    cmds:
+      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh   --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-transfer-api/proto/auth/ auth.proto
+
+  ktt:
+    desc: "kt gen"
+    cmds:
+      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh  --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-transfer-api/proto/auth/ auth.proto
+  jar:
+    desc: "java"
+    cmds:
+      - protoc --proto_path=$HOME/projects/object-transfer-api/proto/auth/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java auth.proto
+
+  jaro:
+    desc: "java"
+    cmds:
+      - protoc --proto_path=$HOME/projects/object-transfer-api/proto/object/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java object.proto

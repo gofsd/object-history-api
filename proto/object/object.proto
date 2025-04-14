@@ -4,6 +4,12 @@ package object;
 
 option go_package = "object/proto";
 
+
+option java_multiple_files = true;
+option java_package = "obj";
+option java_outer_classname = "Obj";
+option objc_class_prefix = "OBJ";
+
 // Object service definition
 service ObjectService {
   rpc CreateObject(CreateObjectRequest) returns (ObjectResponse);
@@ -33,6 +39,7 @@ message GetObjectRequest {
 
 message UpdateObjectRequest {
   uint64 object_id = 1;
+  uint64 owner_id = 1;
   map<string, string> fields = 2;
 }
 
