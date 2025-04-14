@@ -21,6 +21,8 @@ tasks:
     cmds:
       - |
         protoc \
+          --proto_path={{.PROTO_DIR}} \
+          --proto_path=third_party \
           --go_out={{.GO_OUT_DIR}} \
           --go-grpc_out={{.GO_OUT_DIR}} \
           {{.PROTO_DIR}}/auth/auth.proto

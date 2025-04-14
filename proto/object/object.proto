@@ -18,7 +18,7 @@ message Object {
   uint64 id = 1;
   uint64 owner_id = 2;
   uint64 version = 3;
-  map<string, string> fields = 4; // Dynamic fields stored as key-value pairs
+  map<string, string> fields = 4;
 }
 
 // CRUD Requests
@@ -50,6 +50,7 @@ message ListObjectsRequest {
   uint64 owner_id = 1;
   uint32 page = 2;
   uint32 limit = 3;
+  map<string, string> fields = 4;
 }
 
 message ListObjectsResponse {

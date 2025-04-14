@@ -2,11 +2,15 @@ syntax = "proto3";
 
 package auth;
 
+import "google/protobuf/empty.proto";
+
 option go_package = "auth/proto";
 
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
+  rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
+  rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
 }
 
 message RegisterRequest {
@@ -27,3 +31,11 @@ message LoginResponse {
   string token = 1;
 }
 
+
+message AppInfoResponse {
+  string version = 1;
+}
+
+message UserInfoResponse {
+  string email = 1;
+}
