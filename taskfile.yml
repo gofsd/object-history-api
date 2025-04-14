@@ -5,7 +5,7 @@ vars:
   GO_OUT_DIR: .
   MODULE: "github.com/gofsd/object-history-api"
   CURRENT_VERSION:
-    sh: git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"
+    sh: git tag -l --sort -version:refname | head -n 1 || echo "v0.0.0"
   NEXT_VERSION:
     sh: |
       current="{{.CURRENT_VERSION}}"
