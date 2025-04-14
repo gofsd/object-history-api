@@ -1,4 +1,4 @@
-module github.com/gofsd/object-transfer-api
+module github.com/gofsd/object-history-api
 
 go 1.24.1
 
