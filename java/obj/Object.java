@@ -119,10 +119,6 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap().size();
   }
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
@@ -140,10 +136,6 @@ private static final long serialVersionUID = 0L;
     return getFieldsMap();
   }
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
@@ -151,10 +143,6 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap();
   }
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
@@ -169,10 +157,6 @@ java.lang.String defaultValue) {
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
@@ -747,10 +731,6 @@ java.lang.String defaultValue) {
       return internalGetFields().getMap().size();
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -768,10 +748,6 @@ java.lang.String defaultValue) {
       return getFieldsMap();
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -779,10 +755,6 @@ java.lang.String defaultValue) {
       return internalGetFields().getMap();
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -797,10 +769,6 @@ java.lang.String defaultValue) {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
@@ -821,10 +789,6 @@ java.lang.String defaultValue) {
       return this;
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     public Builder removeFields(
@@ -844,10 +808,6 @@ java.lang.String defaultValue) {
       return internalGetMutableFields().getMutableMap();
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     public Builder putFields(
@@ -861,10 +821,6 @@ java.lang.String defaultValue) {
       return this;
     }
     /**
-     * <pre>
-     * Dynamic fields stored as key-value pairs
-     * </pre>
-     *
      * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     public Builder putAllFields(

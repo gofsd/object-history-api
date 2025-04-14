@@ -26,18 +26,10 @@ public interface ObjectOrBuilder extends
   long getVersion();
 
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   int getFieldsCount();
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   boolean containsFields(
@@ -49,19 +41,11 @@ public interface ObjectOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   /* nullable */
@@ -70,10 +54,6 @@ java.lang.String getFieldsOrDefault(
       /* nullable */
 java.lang.String defaultValue);
   /**
-   * <pre>
-   * Dynamic fields stored as key-value pairs
-   * </pre>
-   *
    * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   java.lang.String getFieldsOrThrow(

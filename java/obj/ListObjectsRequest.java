@@ -39,6 +39,18 @@ private static final long serialVersionUID = 0L;
     return obj.Obj.internal_static_object_ListObjectsRequest_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 4:
+        return internalGetFields();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -80,6 +92,85 @@ private static final long serialVersionUID = 0L;
     return limit_;
   }
 
+  public static final int FIELDS_FIELD_NUMBER = 4;
+  private static final class FieldsDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.String, java.lang.String> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.String, java.lang.String>newDefaultInstance(
+                obj.Obj.internal_static_object_ListObjectsRequest_FieldsEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.STRING,
+                "",
+                com.google.protobuf.WireFormat.FieldType.STRING,
+                "");
+  }
+  @SuppressWarnings("serial")
+  private com.google.protobuf.MapField<
+      java.lang.String, java.lang.String> fields_;
+  private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+  internalGetFields() {
+    if (fields_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          FieldsDefaultEntryHolder.defaultEntry);
+    }
+    return fields_;
+  }
+  public int getFieldsCount() {
+    return internalGetFields().getMap().size();
+  }
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  @java.lang.Override
+  public boolean containsFields(
+      java.lang.String key) {
+    if (key == null) { throw new NullPointerException("map key"); }
+    return internalGetFields().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getFieldsMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.String, java.lang.String> getFields() {
+    return getFieldsMap();
+  }
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  @java.lang.Override
+  public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
+    return internalGetFields().getMap();
+  }
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  @java.lang.Override
+  public /* nullable */
+java.lang.String getFieldsOrDefault(
+      java.lang.String key,
+      /* nullable */
+java.lang.String defaultValue) {
+    if (key == null) { throw new NullPointerException("map key"); }
+    java.util.Map<java.lang.String, java.lang.String> map =
+        internalGetFields().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  @java.lang.Override
+  public java.lang.String getFieldsOrThrow(
+      java.lang.String key) {
+    if (key == null) { throw new NullPointerException("map key"); }
+    java.util.Map<java.lang.String, java.lang.String> map =
+        internalGetFields().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -103,6 +194,12 @@ private static final long serialVersionUID = 0L;
     if (limit_ != 0) {
       output.writeUInt32(3, limit_);
     }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeStringMapTo(
+        output,
+        internalGetFields(),
+        FieldsDefaultEntryHolder.defaultEntry,
+        4);
     getUnknownFields().writeTo(output);
   }
 
@@ -123,6 +220,16 @@ private static final long serialVersionUID = 0L;
     if (limit_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeUInt32Size(3, limit_);
+    }
+    for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
+         : internalGetFields().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+      fields__ = FieldsDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, fields__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -145,6 +252,8 @@ private static final long serialVersionUID = 0L;
         != other.getPage()) return false;
     if (getLimit()
         != other.getLimit()) return false;
+    if (!internalGetFields().equals(
+        other.internalGetFields())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -163,6 +272,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPage();
     hash = (37 * hash) + LIMIT_FIELD_NUMBER;
     hash = (53 * hash) + getLimit();
+    if (!internalGetFields().getMap().isEmpty()) {
+      hash = (37 * hash) + FIELDS_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetFields().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -274,6 +387,28 @@ private static final long serialVersionUID = 0L;
       return obj.Obj.internal_static_object_ListObjectsRequest_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 4:
+          return internalGetFields();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 4:
+          return internalGetMutableFields();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -299,6 +434,7 @@ private static final long serialVersionUID = 0L;
       ownerId_ = 0L;
       page_ = 0;
       limit_ = 0;
+      internalGetMutableFields().clear();
       return this;
     }
 
@@ -340,6 +476,10 @@ private static final long serialVersionUID = 0L;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.limit_ = limit_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.fields_ = internalGetFields();
+        result.fields_.makeImmutable();
       }
     }
 
@@ -396,6 +536,9 @@ private static final long serialVersionUID = 0L;
       if (other.getLimit() != 0) {
         setLimit(other.getLimit());
       }
+      internalGetMutableFields().mergeFrom(
+          other.internalGetFields());
+      bitField0_ |= 0x00000008;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -437,6 +580,15 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000004;
               break;
             } // case 24
+            case 34: {
+              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
+              fields__ = input.readMessage(
+                  FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              internalGetMutableFields().getMutableMap().put(
+                  fields__.getKey(), fields__.getValue());
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -547,6 +699,133 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000004);
       limit_ = 0;
       onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.String> fields_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        internalGetFields() {
+      if (fields_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            FieldsDefaultEntryHolder.defaultEntry);
+      }
+      return fields_;
+    }
+    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
+        internalGetMutableFields() {
+      if (fields_ == null) {
+        fields_ = com.google.protobuf.MapField.newMapField(
+            FieldsDefaultEntryHolder.defaultEntry);
+      }
+      if (!fields_.isMutable()) {
+        fields_ = fields_.copy();
+      }
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return fields_;
+    }
+    public int getFieldsCount() {
+      return internalGetFields().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    @java.lang.Override
+    public boolean containsFields(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetFields().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getFieldsMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String> getFields() {
+      return getFieldsMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
+      return internalGetFields().getMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+java.lang.String getFieldsOrDefault(
+        java.lang.String key,
+        /* nullable */
+java.lang.String defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetFields().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getFieldsOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.String> map =
+          internalGetFields().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+    public Builder clearFields() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      internalGetMutableFields().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    public Builder removeFields(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      internalGetMutableFields().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.String>
+        getMutableFields() {
+      bitField0_ |= 0x00000008;
+      return internalGetMutableFields().getMutableMap();
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    public Builder putFields(
+        java.lang.String key,
+        java.lang.String value) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      if (value == null) { throw new NullPointerException("map value"); }
+      internalGetMutableFields().getMutableMap()
+          .put(key, value);
+      bitField0_ |= 0x00000008;
+      return this;
+    }
+    /**
+     * <code>map&lt;string, string&gt; fields = 4;</code>
+     */
+    public Builder putAllFields(
+        java.util.Map<java.lang.String, java.lang.String> values) {
+      internalGetMutableFields().getMutableMap()
+          .putAll(values);
+      bitField0_ |= 0x00000008;
       return this;
     }
     @java.lang.Override

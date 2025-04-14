@@ -34,6 +34,16 @@ public final class Auth {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_auth_LoginResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_AppInfoResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_auth_AppInfoResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_UserInfoResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_auth_UserInfoResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -43,19 +53,26 @@ public final class Auth {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nauth.proto\022\004auth\"2\n\017RegisterRequest\022\r\n" +
-      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"#\n\020Regist" +
-      "erResponse\022\017\n\007user_id\030\001 \001(\004\"/\n\014LoginRequ" +
-      "est\022\r\n\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\036\n\r" +
-      "LoginResponse\022\r\n\005token\030\001 \001(\t2z\n\013AuthServ" +
-      "ice\0229\n\010Register\022\025.auth.RegisterRequest\032\026" +
-      ".auth.RegisterResponse\0220\n\005Login\022\022.auth.L" +
-      "oginRequest\032\023.auth.LoginResponseB!\n\004auth" +
-      "B\004AuthP\001Z\nauth/proto\242\002\004AUTHb\006proto3"
+      "\n\nauth.proto\022\004auth\032\033google/protobuf/empt" +
+      "y.proto\"2\n\017RegisterRequest\022\r\n\005email\030\001 \001(" +
+      "\t\022\020\n\010password\030\002 \001(\t\"#\n\020RegisterResponse\022" +
+      "\017\n\007user_id\030\001 \001(\004\"/\n\014LoginRequest\022\r\n\005emai" +
+      "l\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\036\n\rLoginRespon" +
+      "se\022\r\n\005token\030\001 \001(\t\"\"\n\017AppInfoResponse\022\017\n\007" +
+      "version\030\001 \001(\t\"!\n\020UserInfoResponse\022\r\n\005ema" +
+      "il\030\001 \001(\t2\366\001\n\013AuthService\0229\n\010Register\022\025.a" +
+      "uth.RegisterRequest\032\026.auth.RegisterRespo" +
+      "nse\0220\n\005Login\022\022.auth.LoginRequest\032\023.auth." +
+      "LoginResponse\022;\n\nGetAppInfo\022\026.google.pro" +
+      "tobuf.Empty\032\025.auth.AppInfoResponse\022=\n\013Ge" +
+      "tUserInfo\022\026.google.protobuf.Empty\032\026.auth" +
+      ".UserInfoResponseB!\n\004authB\004AuthP\001Z\nauth/" +
+      "proto\242\002\004AUTHb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.EmptyProto.getDescriptor(),
         });
     internal_static_auth_RegisterRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -81,6 +98,19 @@ public final class Auth {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_auth_LoginResponse_descriptor,
         new java.lang.String[] { "Token", });
+    internal_static_auth_AppInfoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_auth_AppInfoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_auth_AppInfoResponse_descriptor,
+        new java.lang.String[] { "Version", });
+    internal_static_auth_UserInfoResponse_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_auth_UserInfoResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_auth_UserInfoResponse_descriptor,
+        new java.lang.String[] { "Email", });
+    com.google.protobuf.EmptyProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

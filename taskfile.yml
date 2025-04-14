@@ -3,7 +3,7 @@ version: '3'
 vars:
   PROTO_DIR: proto
   GO_OUT_DIR: .
-  MODULE: "github.com/gofsd/object-transfer-api"
+  MODULE: "github.com/gofsd/object-history-api"
   CURRENT_VERSION:
     sh: git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"
   NEXT_VERSION:
@@ -64,18 +64,18 @@ tasks:
   kt:
     desc: "kt gen"
     cmds:
-      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh   --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-transfer-api/proto/auth/ auth.proto
+      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh   --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-history-api/proto/auth/ auth.proto
 
   ktt:
     desc: "kt gen"
     cmds:
-      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh  --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-transfer-api/proto/auth/ auth.proto
+      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh  --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-history-api/proto/auth/ auth.proto
   jar:
     desc: "java"
     cmds:
-      - protoc --proto_path=$HOME/projects/object-transfer-api/proto/auth/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java auth.proto
+      - protoc --proto_path=$HOME/projects/object-history-api/proto/auth/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java auth.proto
 
   jaro:
     desc: "java"
     cmds:
-      - protoc --proto_path=$HOME/projects/object-transfer-api/proto/object/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java object.proto
+      - protoc --proto_path=$HOME/projects/object-history-api/proto/object/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java object.proto

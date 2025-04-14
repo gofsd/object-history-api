@@ -24,4 +24,38 @@ public interface ListObjectsRequestOrBuilder extends
    * @return The limit.
    */
   int getLimit();
+
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  int getFieldsCount();
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  boolean containsFields(
+      java.lang.String key);
+  /**
+   * Use {@link #getFieldsMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.String, java.lang.String>
+  getFields();
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  java.util.Map<java.lang.String, java.lang.String>
+  getFieldsMap();
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  /* nullable */
+java.lang.String getFieldsOrDefault(
+      java.lang.String key,
+      /* nullable */
+java.lang.String defaultValue);
+  /**
+   * <code>map&lt;string, string&gt; fields = 4;</code>
+   */
+  java.lang.String getFieldsOrThrow(
+      java.lang.String key);
 }
