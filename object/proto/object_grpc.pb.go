@@ -22,7 +22,6 @@ const (
 	ObjectService_CreateObject_FullMethodName = "/object.ObjectService/CreateObject"
 	ObjectService_GetObject_FullMethodName    = "/object.ObjectService/GetObject"
 	ObjectService_UpdateObject_FullMethodName = "/object.ObjectService/UpdateObject"
-	ObjectService_DeleteObject_FullMethodName = "/object.ObjectService/DeleteObject"
 	ObjectService_ListObjects_FullMethodName  = "/object.ObjectService/ListObjects"
 )
 
@@ -35,7 +34,6 @@ type ObjectServiceClient interface {
 	CreateObject(ctx context.Context, in *CreateObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	GetObject(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	UpdateObject(ctx context.Context, in *UpdateObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
-	DeleteObject(ctx context.Context, in *DeleteObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
 }
 
@@ -77,16 +75,6 @@ func (c *objectServiceClient) UpdateObject(ctx context.Context, in *UpdateObject
 	return out, nil
 }
 
-func (c *objectServiceClient) DeleteObject(ctx context.Context, in *DeleteObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ObjectResponse)
-	err := c.cc.Invoke(ctx, ObjectService_DeleteObject_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *objectServiceClient) ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListObjectsResponse)
@@ -106,7 +94,6 @@ type ObjectServiceServer interface {
 	CreateObject(context.Context, *CreateObjectRequest) (*ObjectResponse, error)
 	GetObject(context.Context, *GetObjectRequest) (*ObjectResponse, error)
 	UpdateObject(context.Context, *UpdateObjectRequest) (*ObjectResponse, error)
-	DeleteObject(context.Context, *DeleteObjectRequest) (*ObjectResponse, error)
 	ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
 }
@@ -126,9 +113,6 @@ func (UnimplementedObjectServiceServer) GetObject(context.Context, *GetObjectReq
 }
 func (UnimplementedObjectServiceServer) UpdateObject(context.Context, *UpdateObjectRequest) (*ObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateObject not implemented")
-}
-func (UnimplementedObjectServiceServer) DeleteObject(context.Context, *DeleteObjectRequest) (*ObjectResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteObject not implemented")
 }
 func (UnimplementedObjectServiceServer) ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListObjects not implemented")
@@ -208,24 +192,6 @@ func _ObjectService_UpdateObject_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
-func _ObjectService_DeleteObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteObjectRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ObjectServiceServer).DeleteObject(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: ObjectService_DeleteObject_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ObjectServiceServer).DeleteObject(ctx, req.(*DeleteObjectRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _ObjectService_ListObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListObjectsRequest)
 	if err := dec(in); err != nil {
@@ -262,10 +228,6 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateObject",
 			Handler:    _ObjectService_UpdateObject_Handler,
-		},
-		{
-			MethodName: "DeleteObject",
-			Handler:    _ObjectService_DeleteObject_Handler,
 		},
 		{
 			MethodName: "ListObjects",

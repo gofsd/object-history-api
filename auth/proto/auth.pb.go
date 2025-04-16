@@ -326,8 +326,9 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12;\n" +
 	"\n" +
 	"GetAppInfo\x12\x16.google.protobuf.Empty\x1a\x15.auth.AppInfoResponse\x12=\n" +
-	"\vGetUserInfo\x12\x16.google.protobuf.Empty\x1a\x16.auth.UserInfoResponseB\fZ\n" +
-	"auth/protob\x06proto3"
+	"\vGetUserInfo\x12\x16.google.protobuf.Empty\x1a\x16.auth.UserInfoResponseB!\n" +
+	"\x04authB\x04AuthP\x01Z\n" +
+	"auth/proto\xa2\x02\x04AUTHb\x06proto3"
 
 var (
 	file_auth_auth_proto_rawDescOnce sync.Once
