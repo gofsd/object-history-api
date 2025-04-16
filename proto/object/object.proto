@@ -16,6 +16,7 @@ service ObjectService {
   rpc GetObject(GetObjectRequest) returns (ObjectResponse);
   rpc UpdateObject(UpdateObjectRequest) returns (ObjectResponse);
   rpc ListObjects(ListObjectsRequest) returns (ListObjectsResponse);
+  rpc ExecuteAction(ExecuteActionRequest) returns (ExecuteActionResponse);
 }
 
 // Object structure
@@ -56,6 +57,16 @@ message ListObjectsRequest {
 
 message ListObjectsResponse {
   repeated Object objects = 1;
+  uint32 total_count = 2;
+}
+
+message ExecuteActionRequest {
+  uint64 action_id = 1;
+  map<string, string> fields = 2;
+}
+
+message ExecuteActionResponse {
+  repeated uint64 object_id = 1;
   uint32 total_count = 2;
 }
 

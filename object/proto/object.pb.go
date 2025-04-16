@@ -405,6 +405,110 @@ func (x *ListObjectsResponse) GetTotalCount() uint32 {
 	return 0
 }
 
+type ExecuteActionRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ActionId      uint64                 `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
+	Fields        map[string]string      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExecuteActionRequest) Reset() {
+	*x = ExecuteActionRequest{}
+	mi := &file_proto_object_object_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExecuteActionRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExecuteActionRequest) ProtoMessage() {}
+
+func (x *ExecuteActionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExecuteActionRequest.ProtoReflect.Descriptor instead.
+func (*ExecuteActionRequest) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ExecuteActionRequest) GetActionId() uint64 {
+	if x != nil {
+		return x.ActionId
+	}
+	return 0
+}
+
+func (x *ExecuteActionRequest) GetFields() map[string]string {
+	if x != nil {
+		return x.Fields
+	}
+	return nil
+}
+
+type ExecuteActionResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ObjectId      []uint64               `protobuf:"varint,1,rep,packed,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	TotalCount    uint32                 `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ExecuteActionResponse) Reset() {
+	*x = ExecuteActionResponse{}
+	mi := &file_proto_object_object_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ExecuteActionResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ExecuteActionResponse) ProtoMessage() {}
+
+func (x *ExecuteActionResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ExecuteActionResponse.ProtoReflect.Descriptor instead.
+func (*ExecuteActionResponse) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *ExecuteActionResponse) GetObjectId() []uint64 {
+	if x != nil {
+		return x.ObjectId
+	}
+	return nil
+}
+
+func (x *ExecuteActionResponse) GetTotalCount() uint32 {
+	if x != nil {
+		return x.TotalCount
+	}
+	return 0
+}
+
 var File_proto_object_object_proto protoreflect.FileDescriptor
 
 const file_proto_object_object_proto_rawDesc = "" +
@@ -447,12 +551,23 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x13ListObjectsResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\rR\n" +
-	"totalCount2\xa0\x02\n" +
+	"totalCount\"\xb0\x01\n" +
+	"\x14ExecuteActionRequest\x12\x1b\n" +
+	"\taction_id\x18\x01 \x01(\x04R\bactionId\x12@\n" +
+	"\x06fields\x18\x02 \x03(\v2(.object.ExecuteActionRequest.FieldsEntryR\x06fields\x1a9\n" +
+	"\vFieldsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"U\n" +
+	"\x15ExecuteActionResponse\x12\x1b\n" +
+	"\tobject_id\x18\x01 \x03(\x04R\bobjectId\x12\x1f\n" +
+	"\vtotal_count\x18\x02 \x01(\rR\n" +
+	"totalCount2\xee\x02\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
 	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12C\n" +
 	"\fUpdateObject\x12\x1b.object.UpdateObjectRequest\x1a\x16.object.ObjectResponse\x12F\n" +
-	"\vListObjects\x12\x1a.object.ListObjectsRequest\x1a\x1b.object.ListObjectsResponseB \n" +
+	"\vListObjects\x12\x1a.object.ListObjectsRequest\x1a\x1b.object.ListObjectsResponse\x12L\n" +
+	"\rExecuteAction\x12\x1c.object.ExecuteActionRequest\x1a\x1d.object.ExecuteActionResponseB \n" +
 	"\x03objB\x03ObjP\x01Z\fobject/proto\xa2\x02\x03OBJb\x06proto3"
 
 var (
@@ -467,40 +582,46 @@ func file_proto_object_object_proto_rawDescGZIP() []byte {
 	return file_proto_object_object_proto_rawDescData
 }
 
-var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
+var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_proto_object_object_proto_goTypes = []any{
-	(*Object)(nil),              // 0: object.Object
-	(*CreateObjectRequest)(nil), // 1: object.CreateObjectRequest
-	(*GetObjectRequest)(nil),    // 2: object.GetObjectRequest
-	(*UpdateObjectRequest)(nil), // 3: object.UpdateObjectRequest
-	(*ObjectResponse)(nil),      // 4: object.ObjectResponse
-	(*ListObjectsRequest)(nil),  // 5: object.ListObjectsRequest
-	(*ListObjectsResponse)(nil), // 6: object.ListObjectsResponse
-	nil,                         // 7: object.Object.FieldsEntry
-	nil,                         // 8: object.CreateObjectRequest.FieldsEntry
-	nil,                         // 9: object.UpdateObjectRequest.FieldsEntry
-	nil,                         // 10: object.ListObjectsRequest.FieldsEntry
+	(*Object)(nil),                // 0: object.Object
+	(*CreateObjectRequest)(nil),   // 1: object.CreateObjectRequest
+	(*GetObjectRequest)(nil),      // 2: object.GetObjectRequest
+	(*UpdateObjectRequest)(nil),   // 3: object.UpdateObjectRequest
+	(*ObjectResponse)(nil),        // 4: object.ObjectResponse
+	(*ListObjectsRequest)(nil),    // 5: object.ListObjectsRequest
+	(*ListObjectsResponse)(nil),   // 6: object.ListObjectsResponse
+	(*ExecuteActionRequest)(nil),  // 7: object.ExecuteActionRequest
+	(*ExecuteActionResponse)(nil), // 8: object.ExecuteActionResponse
+	nil,                           // 9: object.Object.FieldsEntry
+	nil,                           // 10: object.CreateObjectRequest.FieldsEntry
+	nil,                           // 11: object.UpdateObjectRequest.FieldsEntry
+	nil,                           // 12: object.ListObjectsRequest.FieldsEntry
+	nil,                           // 13: object.ExecuteActionRequest.FieldsEntry
 }
 var file_proto_object_object_proto_depIdxs = []int32{
-	7,  // 0: object.Object.fields:type_name -> object.Object.FieldsEntry
-	8,  // 1: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
-	9,  // 2: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
+	9,  // 0: object.Object.fields:type_name -> object.Object.FieldsEntry
+	10, // 1: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
+	11, // 2: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
 	0,  // 3: object.ObjectResponse.object:type_name -> object.Object
-	10, // 4: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
+	12, // 4: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
 	0,  // 5: object.ListObjectsResponse.objects:type_name -> object.Object
-	1,  // 6: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
-	2,  // 7: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
-	3,  // 8: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
-	5,  // 9: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
-	4,  // 10: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
-	4,  // 11: object.ObjectService.GetObject:output_type -> object.ObjectResponse
-	4,  // 12: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
-	6,  // 13: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
-	10, // [10:14] is the sub-list for method output_type
-	6,  // [6:10] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	13, // 6: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
+	1,  // 7: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
+	2,  // 8: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
+	3,  // 9: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
+	5,  // 10: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
+	7,  // 11: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
+	4,  // 12: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
+	4,  // 13: object.ObjectService.GetObject:output_type -> object.ObjectResponse
+	4,  // 14: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
+	6,  // 15: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
+	8,  // 16: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
+	12, // [12:17] is the sub-list for method output_type
+	7,  // [7:12] is the sub-list for method input_type
+	7,  // [7:7] is the sub-list for extension type_name
+	7,  // [7:7] is the sub-list for extension extendee
+	0,  // [0:7] is the sub-list for field type_name
 }
 
 func init() { file_proto_object_object_proto_init() }
@@ -514,7 +635,7 @@ func file_proto_object_object_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_object_object_proto_rawDesc), len(file_proto_object_object_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   11,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

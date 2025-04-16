@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ObjectService_CreateObject_FullMethodName = "/object.ObjectService/CreateObject"
-	ObjectService_GetObject_FullMethodName    = "/object.ObjectService/GetObject"
-	ObjectService_UpdateObject_FullMethodName = "/object.ObjectService/UpdateObject"
-	ObjectService_ListObjects_FullMethodName  = "/object.ObjectService/ListObjects"
+	ObjectService_CreateObject_FullMethodName  = "/object.ObjectService/CreateObject"
+	ObjectService_GetObject_FullMethodName     = "/object.ObjectService/GetObject"
+	ObjectService_UpdateObject_FullMethodName  = "/object.ObjectService/UpdateObject"
+	ObjectService_ListObjects_FullMethodName   = "/object.ObjectService/ListObjects"
+	ObjectService_ExecuteAction_FullMethodName = "/object.ObjectService/ExecuteAction"
 )
 
 // ObjectServiceClient is the client API for ObjectService service.
@@ -35,6 +36,7 @@ type ObjectServiceClient interface {
 	GetObject(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	UpdateObject(ctx context.Context, in *UpdateObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
+	ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error)
 }
 
 type objectServiceClient struct {
@@ -85,6 +87,16 @@ func (c *objectServiceClient) ListObjects(ctx context.Context, in *ListObjectsRe
 	return out, nil
 }
 
+func (c *objectServiceClient) ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExecuteActionResponse)
+	err := c.cc.Invoke(ctx, ObjectService_ExecuteAction_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ObjectServiceServer is the server API for ObjectService service.
 // All implementations must embed UnimplementedObjectServiceServer
 // for forward compatibility.
@@ -95,6 +107,7 @@ type ObjectServiceServer interface {
 	GetObject(context.Context, *GetObjectRequest) (*ObjectResponse, error)
 	UpdateObject(context.Context, *UpdateObjectRequest) (*ObjectResponse, error)
 	ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error)
+	ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
 }
 
@@ -116,6 +129,9 @@ func (UnimplementedObjectServiceServer) UpdateObject(context.Context, *UpdateObj
 }
 func (UnimplementedObjectServiceServer) ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListObjects not implemented")
+}
+func (UnimplementedObjectServiceServer) ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExecuteAction not implemented")
 }
 func (UnimplementedObjectServiceServer) mustEmbedUnimplementedObjectServiceServer() {}
 func (UnimplementedObjectServiceServer) testEmbeddedByValue()                       {}
@@ -210,6 +226,24 @@ func _ObjectService_ListObjects_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ObjectService_ExecuteAction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExecuteActionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).ExecuteAction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_ExecuteAction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).ExecuteAction(ctx, req.(*ExecuteActionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ObjectService_ServiceDesc is the grpc.ServiceDesc for ObjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -232,6 +266,10 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListObjects",
 			Handler:    _ObjectService_ListObjects_Handler,
+		},
+		{
+			MethodName: "ExecuteAction",
+			Handler:    _ObjectService_ExecuteAction_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
