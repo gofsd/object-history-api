@@ -20,17 +20,29 @@ public interface ObjectOrBuilder extends
   long getOwnerId();
 
   /**
-   * <code>uint64 version = 3;</code>
+   * <code>uint64 creator_id = 3;</code>
+   * @return The creatorId.
+   */
+  long getCreatorId();
+
+  /**
+   * <code>uint64 object_type = 4;</code>
+   * @return The objectType.
+   */
+  long getObjectType();
+
+  /**
+   * <code>uint64 version = 5;</code>
    * @return The version.
    */
   long getVersion();
 
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -41,12 +53,12 @@ public interface ObjectOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   /* nullable */
 java.lang.String getFieldsOrDefault(
@@ -54,7 +66,7 @@ java.lang.String getFieldsOrDefault(
       /* nullable */
 java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   java.lang.String getFieldsOrThrow(
       java.lang.String key);

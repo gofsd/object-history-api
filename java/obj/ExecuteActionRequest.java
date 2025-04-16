@@ -4,25 +4,25 @@
 package obj;
 
 /**
- * Protobuf type {@code object.UpdateObjectRequest}
+ * Protobuf type {@code object.ExecuteActionRequest}
  */
-public final class UpdateObjectRequest extends
+public final class ExecuteActionRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:object.UpdateObjectRequest)
-    UpdateObjectRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:object.ExecuteActionRequest)
+    ExecuteActionRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use UpdateObjectRequest.newBuilder() to construct.
-  private UpdateObjectRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ExecuteActionRequest.newBuilder() to construct.
+  private ExecuteActionRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private UpdateObjectRequest() {
+  private ExecuteActionRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new UpdateObjectRequest();
+    return new ExecuteActionRequest();
   }
 
   @java.lang.Override
@@ -32,7 +32,7 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return obj.Obj.internal_static_object_UpdateObjectRequest_descriptor;
+    return obj.Obj.internal_static_object_ExecuteActionRequest_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
@@ -50,20 +50,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return obj.Obj.internal_static_object_UpdateObjectRequest_fieldAccessorTable
+    return obj.Obj.internal_static_object_ExecuteActionRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            obj.UpdateObjectRequest.class, obj.UpdateObjectRequest.Builder.class);
+            obj.ExecuteActionRequest.class, obj.ExecuteActionRequest.Builder.class);
   }
 
-  public static final int OBJECT_ID_FIELD_NUMBER = 1;
-  private long objectId_ = 0L;
+  public static final int ACTION_ID_FIELD_NUMBER = 1;
+  private long actionId_ = 0L;
   /**
-   * <code>uint64 object_id = 1;</code>
-   * @return The objectId.
+   * <code>uint64 action_id = 1;</code>
+   * @return The actionId.
    */
   @java.lang.Override
-  public long getObjectId() {
-    return objectId_;
+  public long getActionId() {
+    return actionId_;
   }
 
   public static final int FIELDS_FIELD_NUMBER = 2;
@@ -72,7 +72,7 @@ private static final long serialVersionUID = 0L;
         java.lang.String, java.lang.String> defaultEntry =
             com.google.protobuf.MapEntry
             .<java.lang.String, java.lang.String>newDefaultInstance(
-                obj.Obj.internal_static_object_UpdateObjectRequest_FieldsEntry_descriptor, 
+                obj.Obj.internal_static_object_ExecuteActionRequest_FieldsEntry_descriptor, 
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "",
                 com.google.protobuf.WireFormat.FieldType.STRING,
@@ -159,8 +159,8 @@ java.lang.String defaultValue) {
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (objectId_ != 0L) {
-      output.writeUInt64(1, objectId_);
+    if (actionId_ != 0L) {
+      output.writeUInt64(1, actionId_);
     }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
@@ -177,9 +177,9 @@ java.lang.String defaultValue) {
     if (size != -1) return size;
 
     size = 0;
-    if (objectId_ != 0L) {
+    if (actionId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, objectId_);
+        .computeUInt64Size(1, actionId_);
     }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetFields().getMap().entrySet()) {
@@ -201,13 +201,13 @@ java.lang.String defaultValue) {
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof obj.UpdateObjectRequest)) {
+    if (!(obj instanceof obj.ExecuteActionRequest)) {
       return super.equals(obj);
     }
-    obj.UpdateObjectRequest other = (obj.UpdateObjectRequest) obj;
+    obj.ExecuteActionRequest other = (obj.ExecuteActionRequest) obj;
 
-    if (getObjectId()
-        != other.getObjectId()) return false;
+    if (getActionId()
+        != other.getActionId()) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -221,9 +221,9 @@ java.lang.String defaultValue) {
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + OBJECT_ID_FIELD_NUMBER;
+    hash = (37 * hash) + ACTION_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getObjectId());
+        getActionId());
     if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
@@ -233,69 +233,69 @@ java.lang.String defaultValue) {
     return hash;
   }
 
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.UpdateObjectRequest parseFrom(byte[] data)
+  public static obj.ExecuteActionRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.UpdateObjectRequest parseFrom(java.io.InputStream input)
+  public static obj.ExecuteActionRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static obj.UpdateObjectRequest parseDelimitedFrom(java.io.InputStream input)
+  public static obj.ExecuteActionRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static obj.UpdateObjectRequest parseDelimitedFrom(
+  public static obj.ExecuteActionRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static obj.UpdateObjectRequest parseFrom(
+  public static obj.ExecuteActionRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -308,7 +308,7 @@ java.lang.String defaultValue) {
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(obj.UpdateObjectRequest prototype) {
+  public static Builder newBuilder(obj.ExecuteActionRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -324,15 +324,15 @@ java.lang.String defaultValue) {
     return builder;
   }
   /**
-   * Protobuf type {@code object.UpdateObjectRequest}
+   * Protobuf type {@code object.ExecuteActionRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:object.UpdateObjectRequest)
-      obj.UpdateObjectRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:object.ExecuteActionRequest)
+      obj.ExecuteActionRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return obj.Obj.internal_static_object_UpdateObjectRequest_descriptor;
+      return obj.Obj.internal_static_object_ExecuteActionRequest_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -360,12 +360,12 @@ java.lang.String defaultValue) {
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return obj.Obj.internal_static_object_UpdateObjectRequest_fieldAccessorTable
+      return obj.Obj.internal_static_object_ExecuteActionRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              obj.UpdateObjectRequest.class, obj.UpdateObjectRequest.Builder.class);
+              obj.ExecuteActionRequest.class, obj.ExecuteActionRequest.Builder.class);
     }
 
-    // Construct using obj.UpdateObjectRequest.newBuilder()
+    // Construct using obj.ExecuteActionRequest.newBuilder()
     private Builder() {
 
     }
@@ -379,7 +379,7 @@ java.lang.String defaultValue) {
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      objectId_ = 0L;
+      actionId_ = 0L;
       internalGetMutableFields().clear();
       return this;
     }
@@ -387,17 +387,17 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return obj.Obj.internal_static_object_UpdateObjectRequest_descriptor;
+      return obj.Obj.internal_static_object_ExecuteActionRequest_descriptor;
     }
 
     @java.lang.Override
-    public obj.UpdateObjectRequest getDefaultInstanceForType() {
-      return obj.UpdateObjectRequest.getDefaultInstance();
+    public obj.ExecuteActionRequest getDefaultInstanceForType() {
+      return obj.ExecuteActionRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public obj.UpdateObjectRequest build() {
-      obj.UpdateObjectRequest result = buildPartial();
+    public obj.ExecuteActionRequest build() {
+      obj.ExecuteActionRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -405,17 +405,17 @@ java.lang.String defaultValue) {
     }
 
     @java.lang.Override
-    public obj.UpdateObjectRequest buildPartial() {
-      obj.UpdateObjectRequest result = new obj.UpdateObjectRequest(this);
+    public obj.ExecuteActionRequest buildPartial() {
+      obj.ExecuteActionRequest result = new obj.ExecuteActionRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(obj.UpdateObjectRequest result) {
+    private void buildPartial0(obj.ExecuteActionRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.objectId_ = objectId_;
+        result.actionId_ = actionId_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.fields_ = internalGetFields();
@@ -457,18 +457,18 @@ java.lang.String defaultValue) {
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof obj.UpdateObjectRequest) {
-        return mergeFrom((obj.UpdateObjectRequest)other);
+      if (other instanceof obj.ExecuteActionRequest) {
+        return mergeFrom((obj.ExecuteActionRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(obj.UpdateObjectRequest other) {
-      if (other == obj.UpdateObjectRequest.getDefaultInstance()) return this;
-      if (other.getObjectId() != 0L) {
-        setObjectId(other.getObjectId());
+    public Builder mergeFrom(obj.ExecuteActionRequest other) {
+      if (other == obj.ExecuteActionRequest.getDefaultInstance()) return this;
+      if (other.getActionId() != 0L) {
+        setActionId(other.getActionId());
       }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
@@ -500,7 +500,7 @@ java.lang.String defaultValue) {
               done = true;
               break;
             case 8: {
-              objectId_ = input.readUInt64();
+              actionId_ = input.readUInt64();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
@@ -530,34 +530,34 @@ java.lang.String defaultValue) {
     }
     private int bitField0_;
 
-    private long objectId_ ;
+    private long actionId_ ;
     /**
-     * <code>uint64 object_id = 1;</code>
-     * @return The objectId.
+     * <code>uint64 action_id = 1;</code>
+     * @return The actionId.
      */
     @java.lang.Override
-    public long getObjectId() {
-      return objectId_;
+    public long getActionId() {
+      return actionId_;
     }
     /**
-     * <code>uint64 object_id = 1;</code>
-     * @param value The objectId to set.
+     * <code>uint64 action_id = 1;</code>
+     * @param value The actionId to set.
      * @return This builder for chaining.
      */
-    public Builder setObjectId(long value) {
+    public Builder setActionId(long value) {
       
-      objectId_ = value;
+      actionId_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 object_id = 1;</code>
+     * <code>uint64 action_id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearObjectId() {
+    public Builder clearActionId() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      objectId_ = 0L;
+      actionId_ = 0L;
       onChanged();
       return this;
     }
@@ -701,23 +701,23 @@ java.lang.String defaultValue) {
     }
 
 
-    // @@protoc_insertion_point(builder_scope:object.UpdateObjectRequest)
+    // @@protoc_insertion_point(builder_scope:object.ExecuteActionRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:object.UpdateObjectRequest)
-  private static final obj.UpdateObjectRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:object.ExecuteActionRequest)
+  private static final obj.ExecuteActionRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new obj.UpdateObjectRequest();
+    DEFAULT_INSTANCE = new obj.ExecuteActionRequest();
   }
 
-  public static obj.UpdateObjectRequest getDefaultInstance() {
+  public static obj.ExecuteActionRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<UpdateObjectRequest>
-      PARSER = new com.google.protobuf.AbstractParser<UpdateObjectRequest>() {
+  private static final com.google.protobuf.Parser<ExecuteActionRequest>
+      PARSER = new com.google.protobuf.AbstractParser<ExecuteActionRequest>() {
     @java.lang.Override
-    public UpdateObjectRequest parsePartialFrom(
+    public ExecuteActionRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -736,17 +736,17 @@ java.lang.String defaultValue) {
     }
   };
 
-  public static com.google.protobuf.Parser<UpdateObjectRequest> parser() {
+  public static com.google.protobuf.Parser<ExecuteActionRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<UpdateObjectRequest> getParserForType() {
+  public com.google.protobuf.Parser<ExecuteActionRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public obj.UpdateObjectRequest getDefaultInstanceForType() {
+  public obj.ExecuteActionRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

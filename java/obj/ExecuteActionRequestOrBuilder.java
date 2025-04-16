@@ -3,28 +3,22 @@
 
 package obj;
 
-public interface ListObjectsRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:object.ListObjectsRequest)
+public interface ExecuteActionRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:object.ExecuteActionRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint32 page = 1;</code>
-   * @return The page.
+   * <code>uint64 action_id = 1;</code>
+   * @return The actionId.
    */
-  int getPage();
+  long getActionId();
 
   /**
-   * <code>uint32 limit = 2;</code>
-   * @return The limit.
-   */
-  int getLimit();
-
-  /**
-   * <code>map&lt;string, string&gt; fields = 3;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 3;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -35,12 +29,12 @@ public interface ListObjectsRequestOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 3;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 3;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   /* nullable */
 java.lang.String getFieldsOrDefault(
@@ -48,7 +42,7 @@ java.lang.String getFieldsOrDefault(
       /* nullable */
 java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 3;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   java.lang.String getFieldsOrThrow(
       java.lang.String key);

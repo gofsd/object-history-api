@@ -44,7 +44,7 @@ private static final long serialVersionUID = 0L;
   protected com.google.protobuf.MapField internalGetMapField(
       int number) {
     switch (number) {
-      case 2:
+      case 1:
         return internalGetFields();
       default:
         throw new RuntimeException(
@@ -59,18 +59,7 @@ private static final long serialVersionUID = 0L;
             obj.CreateObjectRequest.class, obj.CreateObjectRequest.Builder.class);
   }
 
-  public static final int OWNER_ID_FIELD_NUMBER = 1;
-  private long ownerId_ = 0L;
-  /**
-   * <code>uint64 owner_id = 1;</code>
-   * @return The ownerId.
-   */
-  @java.lang.Override
-  public long getOwnerId() {
-    return ownerId_;
-  }
-
-  public static final int FIELDS_FIELD_NUMBER = 2;
+  public static final int FIELDS_FIELD_NUMBER = 1;
   private static final class FieldsDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
         java.lang.String, java.lang.String> defaultEntry =
@@ -97,7 +86,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap().size();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   @java.lang.Override
   public boolean containsFields(
@@ -114,14 +103,14 @@ private static final long serialVersionUID = 0L;
     return getFieldsMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   @java.lang.Override
   public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
     return internalGetFields().getMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   @java.lang.Override
   public /* nullable */
@@ -135,7 +124,7 @@ java.lang.String defaultValue) {
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   @java.lang.Override
   public java.lang.String getFieldsOrThrow(
@@ -163,15 +152,12 @@ java.lang.String defaultValue) {
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (ownerId_ != 0L) {
-      output.writeUInt64(1, ownerId_);
-    }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
         output,
         internalGetFields(),
         FieldsDefaultEntryHolder.defaultEntry,
-        2);
+        1);
     getUnknownFields().writeTo(output);
   }
 
@@ -181,10 +167,6 @@ java.lang.String defaultValue) {
     if (size != -1) return size;
 
     size = 0;
-    if (ownerId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, ownerId_);
-    }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetFields().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
@@ -193,7 +175,7 @@ java.lang.String defaultValue) {
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, fields__);
+          .computeMessageSize(1, fields__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -210,8 +192,6 @@ java.lang.String defaultValue) {
     }
     obj.CreateObjectRequest other = (obj.CreateObjectRequest) obj;
 
-    if (getOwnerId()
-        != other.getOwnerId()) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -225,9 +205,6 @@ java.lang.String defaultValue) {
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getOwnerId());
     if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
@@ -347,7 +324,7 @@ java.lang.String defaultValue) {
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 2:
+        case 1:
           return internalGetFields();
         default:
           throw new RuntimeException(
@@ -358,7 +335,7 @@ java.lang.String defaultValue) {
     protected com.google.protobuf.MapField internalGetMutableMapField(
         int number) {
       switch (number) {
-        case 2:
+        case 1:
           return internalGetMutableFields();
         default:
           throw new RuntimeException(
@@ -387,7 +364,6 @@ java.lang.String defaultValue) {
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      ownerId_ = 0L;
       internalGetMutableFields().clear();
       return this;
     }
@@ -423,9 +399,6 @@ java.lang.String defaultValue) {
     private void buildPartial0(obj.CreateObjectRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.ownerId_ = ownerId_;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
         result.fields_ = internalGetFields();
         result.fields_.makeImmutable();
       }
@@ -475,12 +448,9 @@ java.lang.String defaultValue) {
 
     public Builder mergeFrom(obj.CreateObjectRequest other) {
       if (other == obj.CreateObjectRequest.getDefaultInstance()) return this;
-      if (other.getOwnerId() != 0L) {
-        setOwnerId(other.getOwnerId());
-      }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -507,20 +477,15 @@ java.lang.String defaultValue) {
             case 0:
               done = true;
               break;
-            case 8: {
-              ownerId_ = input.readUInt64();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
-            case 18: {
+            case 10: {
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               fields__ = input.readMessage(
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
-              bitField0_ |= 0x00000002;
+              bitField0_ |= 0x00000001;
               break;
-            } // case 18
+            } // case 10
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -537,38 +502,6 @@ java.lang.String defaultValue) {
       return this;
     }
     private int bitField0_;
-
-    private long ownerId_ ;
-    /**
-     * <code>uint64 owner_id = 1;</code>
-     * @return The ownerId.
-     */
-    @java.lang.Override
-    public long getOwnerId() {
-      return ownerId_;
-    }
-    /**
-     * <code>uint64 owner_id = 1;</code>
-     * @param value The ownerId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setOwnerId(long value) {
-      
-      ownerId_ = value;
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 owner_id = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearOwnerId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      ownerId_ = 0L;
-      onChanged();
-      return this;
-    }
 
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> fields_;
@@ -589,7 +522,7 @@ java.lang.String defaultValue) {
       if (!fields_.isMutable()) {
         fields_ = fields_.copy();
       }
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       onChanged();
       return fields_;
     }
@@ -597,7 +530,7 @@ java.lang.String defaultValue) {
       return internalGetFields().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     @java.lang.Override
     public boolean containsFields(
@@ -614,14 +547,14 @@ java.lang.String defaultValue) {
       return getFieldsMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
       return internalGetFields().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     @java.lang.Override
     public /* nullable */
@@ -635,7 +568,7 @@ java.lang.String defaultValue) {
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     @java.lang.Override
     public java.lang.String getFieldsOrThrow(
@@ -649,13 +582,13 @@ java.lang.String defaultValue) {
       return map.get(key);
     }
     public Builder clearFields() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       internalGetMutableFields().getMutableMap()
           .clear();
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     public Builder removeFields(
         java.lang.String key) {
@@ -670,11 +603,11 @@ java.lang.String defaultValue) {
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String>
         getMutableFields() {
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       return internalGetMutableFields().getMutableMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     public Builder putFields(
         java.lang.String key,
@@ -683,17 +616,17 @@ java.lang.String defaultValue) {
       if (value == null) { throw new NullPointerException("map value"); }
       internalGetMutableFields().getMutableMap()
           .put(key, value);
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 2;</code>
+     * <code>map&lt;string, string&gt; fields = 1;</code>
      */
     public Builder putAllFields(
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableFields().getMutableMap()
           .putAll(values);
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       return this;
     }
     @java.lang.Override

@@ -8,17 +8,11 @@ public interface CreateObjectRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 owner_id = 1;</code>
-   * @return The ownerId.
-   */
-  long getOwnerId();
-
-  /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -29,12 +23,12 @@ public interface CreateObjectRequestOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   /* nullable */
 java.lang.String getFieldsOrDefault(
@@ -42,7 +36,7 @@ java.lang.String getFieldsOrDefault(
       /* nullable */
 java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
