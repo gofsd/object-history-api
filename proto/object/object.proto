@@ -22,8 +22,8 @@ service ObjectService {
 // Object structure
 message Object {
   uint64 id = 1;
-  uint64 owner_id = 2;
-  uint64 creator_id = 3;
+  uint64 creator_id = 2
+  uint64 owner_id = 3;
   uint64 object_type = 4;
   uint64 version = 5;
   map<string, string> fields = 6;
@@ -50,14 +50,17 @@ message ObjectResponse {
 
 // Pagination support for listing objects
 message ListObjectsRequest {
-  uint32 page = 1;
-  uint32 limit = 2;
+  int32 page = 1;
+  int32 page_size = 2;
   map<string, string> fields = 3;
 }
 
 message ListObjectsResponse {
   repeated Object objects = 1;
-  uint32 total_count = 2;
+  int64 total_count = 2;
+  int32 page = 3;
+  int32 page_size = 4;
+  int32 total_pages = 5;
 }
 
 message ExecuteActionRequest {
@@ -66,7 +69,6 @@ message ExecuteActionRequest {
 }
 
 message ExecuteActionResponse {
-  repeated uint64 object_id = 1;
-  uint32 total_count = 2;
+  repeated Object objects = 1;
 }
 
