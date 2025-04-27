@@ -14,16 +14,16 @@ public interface ObjectOrBuilder extends
   long getId();
 
   /**
-   * <code>uint64 owner_id = 2;</code>
-   * @return The ownerId.
-   */
-  long getOwnerId();
-
-  /**
-   * <code>uint64 creator_id = 3;</code>
+   * <code>uint64 creator_id = 2;</code>
    * @return The creatorId.
    */
   long getCreatorId();
+
+  /**
+   * <code>uint64 owner_id = 3;</code>
+   * @return The ownerId.
+   */
+  long getOwnerId();
 
   /**
    * <code>uint64 object_type = 4;</code>
@@ -60,14 +60,14 @@ public interface ObjectOrBuilder extends
   /**
    * <code>map&lt;string, string&gt; fields = 6;</code>
    */
-  /* nullable */
-java.lang.String getFieldsOrDefault(
+
+  java.lang.String getFieldsOrDefault(
       java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue);
+      java.lang.String defaultValue);
   /**
    * <code>map&lt;string, string&gt; fields = 6;</code>
    */
+
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
 }

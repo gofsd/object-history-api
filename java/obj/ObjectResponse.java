@@ -70,7 +70,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public obj.ObjectOrBuilder getObjectOrBuilder() {
-    return object_ == null ? obj.Object.getDefaultInstance() : object_;
+    return getObject();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -270,10 +270,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
-      object_ = null;
-      if (objectBuilder_ != null) {
-        objectBuilder_.dispose();
+      if (objectBuilder_ == null) {
+        object_ = null;
+      } else {
+        object_ = null;
         objectBuilder_ = null;
       }
       return this;
@@ -302,18 +302,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public obj.ObjectResponse buildPartial() {
       obj.ObjectResponse result = new obj.ObjectResponse(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      if (objectBuilder_ == null) {
+        result.object_ = object_;
+      } else {
+        result.object_ = objectBuilder_.build();
+      }
       onBuilt();
       return result;
-    }
-
-    private void buildPartial0(obj.ObjectResponse result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.object_ = objectBuilder_ == null
-            ? object_
-            : objectBuilder_.build();
-      }
     }
 
     @java.lang.Override
@@ -393,7 +388,7 @@ private static final long serialVersionUID = 0L;
               input.readMessage(
                   getObjectFieldBuilder().getBuilder(),
                   extensionRegistry);
-              bitField0_ |= 0x00000001;
+
               break;
             } // case 10
             default: {
@@ -411,7 +406,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
     private obj.Object object_;
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -421,7 +415,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the object field is set.
      */
     public boolean hasObject() {
-      return ((bitField0_ & 0x00000001) != 0);
+      return objectBuilder_ != null || object_ != null;
     }
     /**
      * <code>.object.Object object = 1;</code>
@@ -443,11 +437,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         object_ = value;
+        onChanged();
       } else {
         objectBuilder_.setMessage(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+
       return this;
     }
     /**
@@ -457,11 +451,11 @@ private static final long serialVersionUID = 0L;
         obj.Object.Builder builderForValue) {
       if (objectBuilder_ == null) {
         object_ = builderForValue.build();
+        onChanged();
       } else {
         objectBuilder_.setMessage(builderForValue.build());
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+
       return this;
     }
     /**
@@ -469,38 +463,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeObject(obj.Object value) {
       if (objectBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0) &&
-          object_ != null &&
-          object_ != obj.Object.getDefaultInstance()) {
-          getObjectBuilder().mergeFrom(value);
+        if (object_ != null) {
+          object_ =
+            obj.Object.newBuilder(object_).mergeFrom(value).buildPartial();
         } else {
           object_ = value;
         }
+        onChanged();
       } else {
         objectBuilder_.mergeFrom(value);
       }
-      bitField0_ |= 0x00000001;
-      onChanged();
+
       return this;
     }
     /**
      * <code>.object.Object object = 1;</code>
      */
     public Builder clearObject() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      object_ = null;
-      if (objectBuilder_ != null) {
-        objectBuilder_.dispose();
+      if (objectBuilder_ == null) {
+        object_ = null;
+        onChanged();
+      } else {
+        object_ = null;
         objectBuilder_ = null;
       }
-      onChanged();
+
       return this;
     }
     /**
      * <code>.object.Object object = 1;</code>
      */
     public obj.Object.Builder getObjectBuilder() {
-      bitField0_ |= 0x00000001;
+      
       onChanged();
       return getObjectFieldBuilder().getBuilder();
     }

@@ -94,7 +94,7 @@ public final class Obj {
   static {
     java.lang.String[] descriptorData = {
       "\n\014object.proto\022\006object\"\273\001\n\006Object\022\n\n\002id\030" +
-      "\001 \001(\004\022\020\n\010owner_id\030\002 \001(\004\022\022\n\ncreator_id\030\003 " +
+      "\001 \001(\004\022\022\n\ncreator_id\030\002 \001(\004\022\020\n\010owner_id\030\003 " +
       "\001(\004\022\023\n\013object_type\030\004 \001(\004\022\017\n\007version\030\005 \001(" +
       "\004\022*\n\006fields\030\006 \003(\0132\032.object.Object.Fields" +
       "Entry\032-\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005val" +
@@ -107,28 +107,30 @@ public final class Obj {
       "object.UpdateObjectRequest.FieldsEntry\032-" +
       "\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
       "\t:\0028\001\"0\n\016ObjectResponse\022\036\n\006object\030\001 \001(\0132" +
-      "\016.object.Object\"\230\001\n\022ListObjectsRequest\022\014" +
-      "\n\004page\030\001 \001(\r\022\r\n\005limit\030\002 \001(\r\0226\n\006fields\030\003 " +
-      "\003(\0132&.object.ListObjectsRequest.FieldsEn" +
-      "try\032-\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\t:\0028\001\"K\n\023ListObjectsResponse\022\037\n\007obj" +
-      "ects\030\001 \003(\0132\016.object.Object\022\023\n\013total_coun" +
-      "t\030\002 \001(\r\"\222\001\n\024ExecuteActionRequest\022\021\n\tacti" +
-      "on_id\030\001 \001(\004\0228\n\006fields\030\002 \003(\0132(.object.Exe" +
-      "cuteActionRequest.FieldsEntry\032-\n\013FieldsE" +
-      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"?\n\025" +
-      "ExecuteActionResponse\022\021\n\tobject_id\030\001 \003(\004" +
-      "\022\023\n\013total_count\030\002 \001(\r2\356\002\n\rObjectService\022" +
-      "C\n\014CreateObject\022\033.object.CreateObjectReq" +
-      "uest\032\026.object.ObjectResponse\022=\n\tGetObjec" +
-      "t\022\030.object.GetObjectRequest\032\026.object.Obj" +
-      "ectResponse\022C\n\014UpdateObject\022\033.object.Upd" +
+      "\016.object.Object\"\234\001\n\022ListObjectsRequest\022\014" +
+      "\n\004page\030\001 \001(\005\022\021\n\tpage_size\030\002 \001(\005\0226\n\006field" +
+      "s\030\003 \003(\0132&.object.ListObjectsRequest.Fiel" +
+      "dsEntry\032-\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
+      "alue\030\002 \001(\t:\0028\001\"\201\001\n\023ListObjectsResponse\022\037" +
+      "\n\007objects\030\001 \003(\0132\016.object.Object\022\023\n\013total" +
+      "_count\030\002 \001(\003\022\014\n\004page\030\003 \001(\005\022\021\n\tpage_size\030" +
+      "\004 \001(\005\022\023\n\013total_pages\030\005 \001(\005\"\222\001\n\024ExecuteAc" +
+      "tionRequest\022\021\n\taction_id\030\001 \001(\004\0228\n\006fields" +
+      "\030\002 \003(\0132(.object.ExecuteActionRequest.Fie" +
+      "ldsEntry\032-\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005" +
+      "value\030\002 \001(\t:\0028\001\"8\n\025ExecuteActionResponse" +
+      "\022\037\n\007objects\030\001 \003(\0132\016.object.Object2\356\002\n\rOb" +
+      "jectService\022C\n\014CreateObject\022\033.object.Cre" +
       "ateObjectRequest\032\026.object.ObjectResponse" +
-      "\022F\n\013ListObjects\022\032.object.ListObjectsRequ" +
-      "est\032\033.object.ListObjectsResponse\022L\n\rExec" +
-      "uteAction\022\034.object.ExecuteActionRequest\032" +
-      "\035.object.ExecuteActionResponseB \n\003objB\003O" +
-      "bjP\001Z\014object/proto\242\002\003OBJb\006proto3"
+      "\022=\n\tGetObject\022\030.object.GetObjectRequest\032" +
+      "\026.object.ObjectResponse\022C\n\014UpdateObject\022" +
+      "\033.object.UpdateObjectRequest\032\026.object.Ob" +
+      "jectResponse\022F\n\013ListObjects\022\032.object.Lis" +
+      "tObjectsRequest\032\033.object.ListObjectsResp" +
+      "onse\022L\n\rExecuteAction\022\034.object.ExecuteAc" +
+      "tionRequest\032\035.object.ExecuteActionRespon" +
+      "seB \n\003objB\003ObjP\001Z\014object/proto\242\002\003OBJb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -139,7 +141,7 @@ public final class Obj {
     internal_static_object_Object_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_Object_descriptor,
-        new java.lang.String[] { "Id", "OwnerId", "CreatorId", "ObjectType", "Version", "Fields", });
+        new java.lang.String[] { "Id", "CreatorId", "OwnerId", "ObjectType", "Version", "Fields", });
     internal_static_object_Object_FieldsEntry_descriptor =
       internal_static_object_Object_descriptor.getNestedTypes().get(0);
     internal_static_object_Object_FieldsEntry_fieldAccessorTable = new
@@ -187,7 +189,7 @@ public final class Obj {
     internal_static_object_ListObjectsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ListObjectsRequest_descriptor,
-        new java.lang.String[] { "Page", "Limit", "Fields", });
+        new java.lang.String[] { "Page", "PageSize", "Fields", });
     internal_static_object_ListObjectsRequest_FieldsEntry_descriptor =
       internal_static_object_ListObjectsRequest_descriptor.getNestedTypes().get(0);
     internal_static_object_ListObjectsRequest_FieldsEntry_fieldAccessorTable = new
@@ -199,7 +201,7 @@ public final class Obj {
     internal_static_object_ListObjectsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ListObjectsResponse_descriptor,
-        new java.lang.String[] { "Objects", "TotalCount", });
+        new java.lang.String[] { "Objects", "TotalCount", "Page", "PageSize", "TotalPages", });
     internal_static_object_ExecuteActionRequest_descriptor =
       getDescriptor().getMessageTypes().get(7);
     internal_static_object_ExecuteActionRequest_fieldAccessorTable = new
@@ -217,7 +219,7 @@ public final class Obj {
     internal_static_object_ExecuteActionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ExecuteActionResponse_descriptor,
-        new java.lang.String[] { "ObjectId", "TotalCount", });
+        new java.lang.String[] { "Objects", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

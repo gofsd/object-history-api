@@ -8,25 +8,26 @@ public interface ExecuteActionResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated uint64 object_id = 1;</code>
-   * @return A list containing the objectId.
+   * <code>repeated .object.Object objects = 1;</code>
    */
-  java.util.List<java.lang.Long> getObjectIdList();
+  java.util.List<obj.Object> 
+      getObjectsList();
   /**
-   * <code>repeated uint64 object_id = 1;</code>
-   * @return The count of objectId.
+   * <code>repeated .object.Object objects = 1;</code>
    */
-  int getObjectIdCount();
+  obj.Object getObjects(int index);
   /**
-   * <code>repeated uint64 object_id = 1;</code>
-   * @param index The index of the element to return.
-   * @return The objectId at the given index.
+   * <code>repeated .object.Object objects = 1;</code>
    */
-  long getObjectId(int index);
-
+  int getObjectsCount();
   /**
-   * <code>uint32 total_count = 2;</code>
-   * @return The totalCount.
+   * <code>repeated .object.Object objects = 1;</code>
    */
-  int getTotalCount();
+  java.util.List<? extends obj.ObjectOrBuilder> 
+      getObjectsOrBuilderList();
+  /**
+   * <code>repeated .object.Object objects = 1;</code>
+   */
+  obj.ObjectOrBuilder getObjectsOrBuilder(
+      int index);
 }

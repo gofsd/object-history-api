@@ -60,7 +60,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ID_FIELD_NUMBER = 1;
-  private long id_ = 0L;
+  private long id_;
   /**
    * <code>uint64 id = 1;</code>
    * @return The id.
@@ -70,21 +70,10 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int OWNER_ID_FIELD_NUMBER = 2;
-  private long ownerId_ = 0L;
+  public static final int CREATOR_ID_FIELD_NUMBER = 2;
+  private long creatorId_;
   /**
-   * <code>uint64 owner_id = 2;</code>
-   * @return The ownerId.
-   */
-  @java.lang.Override
-  public long getOwnerId() {
-    return ownerId_;
-  }
-
-  public static final int CREATOR_ID_FIELD_NUMBER = 3;
-  private long creatorId_ = 0L;
-  /**
-   * <code>uint64 creator_id = 3;</code>
+   * <code>uint64 creator_id = 2;</code>
    * @return The creatorId.
    */
   @java.lang.Override
@@ -92,8 +81,19 @@ private static final long serialVersionUID = 0L;
     return creatorId_;
   }
 
+  public static final int OWNER_ID_FIELD_NUMBER = 3;
+  private long ownerId_;
+  /**
+   * <code>uint64 owner_id = 3;</code>
+   * @return The ownerId.
+   */
+  @java.lang.Override
+  public long getOwnerId() {
+    return ownerId_;
+  }
+
   public static final int OBJECT_TYPE_FIELD_NUMBER = 4;
-  private long objectType_ = 0L;
+  private long objectType_;
   /**
    * <code>uint64 object_type = 4;</code>
    * @return The objectType.
@@ -104,7 +104,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int VERSION_FIELD_NUMBER = 5;
-  private long version_ = 0L;
+  private long version_;
   /**
    * <code>uint64 version = 5;</code>
    * @return The version.
@@ -126,7 +126,6 @@ private static final long serialVersionUID = 0L;
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "");
   }
-  @SuppressWarnings("serial")
   private com.google.protobuf.MapField<
       java.lang.String, java.lang.String> fields_;
   private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -137,12 +136,14 @@ private static final long serialVersionUID = 0L;
     }
     return fields_;
   }
+
   public int getFieldsCount() {
     return internalGetFields().getMap().size();
   }
   /**
    * <code>map&lt;string, string&gt; fields = 6;</code>
    */
+
   @java.lang.Override
   public boolean containsFields(
       java.lang.String key) {
@@ -161,6 +162,7 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   @java.lang.Override
+
   public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
     return internalGetFields().getMap();
   }
@@ -168,11 +170,10 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   @java.lang.Override
-  public /* nullable */
-java.lang.String getFieldsOrDefault(
+
+  public java.lang.String getFieldsOrDefault(
       java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue) {
+      java.lang.String defaultValue) {
     if (key == null) { throw new NullPointerException("map key"); }
     java.util.Map<java.lang.String, java.lang.String> map =
         internalGetFields().getMap();
@@ -182,6 +183,7 @@ java.lang.String defaultValue) {
    * <code>map&lt;string, string&gt; fields = 6;</code>
    */
   @java.lang.Override
+
   public java.lang.String getFieldsOrThrow(
       java.lang.String key) {
     if (key == null) { throw new NullPointerException("map key"); }
@@ -210,11 +212,11 @@ java.lang.String defaultValue) {
     if (id_ != 0L) {
       output.writeUInt64(1, id_);
     }
-    if (ownerId_ != 0L) {
-      output.writeUInt64(2, ownerId_);
-    }
     if (creatorId_ != 0L) {
-      output.writeUInt64(3, creatorId_);
+      output.writeUInt64(2, creatorId_);
+    }
+    if (ownerId_ != 0L) {
+      output.writeUInt64(3, ownerId_);
     }
     if (objectType_ != 0L) {
       output.writeUInt64(4, objectType_);
@@ -241,13 +243,13 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, id_);
     }
-    if (ownerId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, ownerId_);
-    }
     if (creatorId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(3, creatorId_);
+        .computeUInt64Size(2, creatorId_);
+    }
+    if (ownerId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(3, ownerId_);
     }
     if (objectType_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -284,10 +286,10 @@ java.lang.String defaultValue) {
 
     if (getId()
         != other.getId()) return false;
-    if (getOwnerId()
-        != other.getOwnerId()) return false;
     if (getCreatorId()
         != other.getCreatorId()) return false;
+    if (getOwnerId()
+        != other.getOwnerId()) return false;
     if (getObjectType()
         != other.getObjectType()) return false;
     if (getVersion()
@@ -308,12 +310,12 @@ java.lang.String defaultValue) {
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getId());
-    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getOwnerId());
     hash = (37 * hash) + CREATOR_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getCreatorId());
+    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getOwnerId());
     hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getObjectType());
@@ -478,12 +480,16 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
       id_ = 0L;
-      ownerId_ = 0L;
+
       creatorId_ = 0L;
+
+      ownerId_ = 0L;
+
       objectType_ = 0L;
+
       version_ = 0L;
+
       internalGetMutableFields().clear();
       return this;
     }
@@ -511,32 +517,16 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public obj.Object buildPartial() {
       obj.Object result = new obj.Object(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      int from_bitField0_ = bitField0_;
+      result.id_ = id_;
+      result.creatorId_ = creatorId_;
+      result.ownerId_ = ownerId_;
+      result.objectType_ = objectType_;
+      result.version_ = version_;
+      result.fields_ = internalGetFields();
+      result.fields_.makeImmutable();
       onBuilt();
       return result;
-    }
-
-    private void buildPartial0(obj.Object result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.id_ = id_;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.ownerId_ = ownerId_;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.creatorId_ = creatorId_;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.objectType_ = objectType_;
-      }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.version_ = version_;
-      }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
-        result.fields_ = internalGetFields();
-        result.fields_.makeImmutable();
-      }
     }
 
     @java.lang.Override
@@ -586,11 +576,11 @@ java.lang.String defaultValue) {
       if (other.getId() != 0L) {
         setId(other.getId());
       }
-      if (other.getOwnerId() != 0L) {
-        setOwnerId(other.getOwnerId());
-      }
       if (other.getCreatorId() != 0L) {
         setCreatorId(other.getCreatorId());
+      }
+      if (other.getOwnerId() != 0L) {
+        setOwnerId(other.getOwnerId());
       }
       if (other.getObjectType() != 0L) {
         setObjectType(other.getObjectType());
@@ -600,7 +590,6 @@ java.lang.String defaultValue) {
       }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
-      bitField0_ |= 0x00000020;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -629,27 +618,27 @@ java.lang.String defaultValue) {
               break;
             case 8: {
               id_ = input.readUInt64();
-              bitField0_ |= 0x00000001;
+
               break;
             } // case 8
             case 16: {
-              ownerId_ = input.readUInt64();
-              bitField0_ |= 0x00000002;
+              creatorId_ = input.readUInt64();
+
               break;
             } // case 16
             case 24: {
-              creatorId_ = input.readUInt64();
-              bitField0_ |= 0x00000004;
+              ownerId_ = input.readUInt64();
+
               break;
             } // case 24
             case 32: {
               objectType_ = input.readUInt64();
-              bitField0_ |= 0x00000008;
+
               break;
             } // case 32
             case 40: {
               version_ = input.readUInt64();
-              bitField0_ |= 0x00000010;
+
               break;
             } // case 40
             case 50: {
@@ -658,7 +647,6 @@ java.lang.String defaultValue) {
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
-              bitField0_ |= 0x00000020;
               break;
             } // case 50
             default: {
@@ -695,7 +683,6 @@ java.lang.String defaultValue) {
     public Builder setId(long value) {
       
       id_ = value;
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -704,47 +691,15 @@ java.lang.String defaultValue) {
      * @return This builder for chaining.
      */
     public Builder clearId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      id_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long ownerId_ ;
-    /**
-     * <code>uint64 owner_id = 2;</code>
-     * @return The ownerId.
-     */
-    @java.lang.Override
-    public long getOwnerId() {
-      return ownerId_;
-    }
-    /**
-     * <code>uint64 owner_id = 2;</code>
-     * @param value The ownerId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setOwnerId(long value) {
       
-      ownerId_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 owner_id = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearOwnerId() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      ownerId_ = 0L;
+      id_ = 0L;
       onChanged();
       return this;
     }
 
     private long creatorId_ ;
     /**
-     * <code>uint64 creator_id = 3;</code>
+     * <code>uint64 creator_id = 2;</code>
      * @return The creatorId.
      */
     @java.lang.Override
@@ -752,24 +707,54 @@ java.lang.String defaultValue) {
       return creatorId_;
     }
     /**
-     * <code>uint64 creator_id = 3;</code>
+     * <code>uint64 creator_id = 2;</code>
      * @param value The creatorId to set.
      * @return This builder for chaining.
      */
     public Builder setCreatorId(long value) {
       
       creatorId_ = value;
-      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 creator_id = 3;</code>
+     * <code>uint64 creator_id = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearCreatorId() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      
       creatorId_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long ownerId_ ;
+    /**
+     * <code>uint64 owner_id = 3;</code>
+     * @return The ownerId.
+     */
+    @java.lang.Override
+    public long getOwnerId() {
+      return ownerId_;
+    }
+    /**
+     * <code>uint64 owner_id = 3;</code>
+     * @param value The ownerId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOwnerId(long value) {
+      
+      ownerId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 owner_id = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOwnerId() {
+      
+      ownerId_ = 0L;
       onChanged();
       return this;
     }
@@ -791,7 +776,6 @@ java.lang.String defaultValue) {
     public Builder setObjectType(long value) {
       
       objectType_ = value;
-      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -800,7 +784,7 @@ java.lang.String defaultValue) {
      * @return This builder for chaining.
      */
     public Builder clearObjectType() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      
       objectType_ = 0L;
       onChanged();
       return this;
@@ -823,7 +807,6 @@ java.lang.String defaultValue) {
     public Builder setVersion(long value) {
       
       version_ = value;
-      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
@@ -832,7 +815,7 @@ java.lang.String defaultValue) {
      * @return This builder for chaining.
      */
     public Builder clearVersion() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      
       version_ = 0L;
       onChanged();
       return this;
@@ -841,7 +824,7 @@ java.lang.String defaultValue) {
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> fields_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetFields() {
+    internalGetFields() {
       if (fields_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             FieldsDefaultEntryHolder.defaultEntry);
@@ -849,7 +832,8 @@ java.lang.String defaultValue) {
       return fields_;
     }
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetMutableFields() {
+    internalGetMutableFields() {
+      onChanged();;
       if (fields_ == null) {
         fields_ = com.google.protobuf.MapField.newMapField(
             FieldsDefaultEntryHolder.defaultEntry);
@@ -857,16 +841,16 @@ java.lang.String defaultValue) {
       if (!fields_.isMutable()) {
         fields_ = fields_.copy();
       }
-      bitField0_ |= 0x00000020;
-      onChanged();
       return fields_;
     }
+
     public int getFieldsCount() {
       return internalGetFields().getMap().size();
     }
     /**
      * <code>map&lt;string, string&gt; fields = 6;</code>
      */
+
     @java.lang.Override
     public boolean containsFields(
         java.lang.String key) {
@@ -885,6 +869,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 6;</code>
      */
     @java.lang.Override
+
     public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
       return internalGetFields().getMap();
     }
@@ -892,11 +877,10 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 6;</code>
      */
     @java.lang.Override
-    public /* nullable */
-java.lang.String getFieldsOrDefault(
+
+    public java.lang.String getFieldsOrDefault(
         java.lang.String key,
-        /* nullable */
-java.lang.String defaultValue) {
+        java.lang.String defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.String> map =
           internalGetFields().getMap();
@@ -906,6 +890,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 6;</code>
      */
     @java.lang.Override
+
     public java.lang.String getFieldsOrThrow(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -916,8 +901,8 @@ java.lang.String defaultValue) {
       }
       return map.get(key);
     }
+
     public Builder clearFields() {
-      bitField0_ = (bitField0_ & ~0x00000020);
       internalGetMutableFields().getMutableMap()
           .clear();
       return this;
@@ -925,6 +910,7 @@ java.lang.String defaultValue) {
     /**
      * <code>map&lt;string, string&gt; fields = 6;</code>
      */
+
     public Builder removeFields(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -937,8 +923,7 @@ java.lang.String defaultValue) {
      */
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String>
-        getMutableFields() {
-      bitField0_ |= 0x00000020;
+    getMutableFields() {
       return internalGetMutableFields().getMutableMap();
     }
     /**
@@ -948,20 +933,22 @@ java.lang.String defaultValue) {
         java.lang.String key,
         java.lang.String value) {
       if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) { throw new NullPointerException("map value"); }
+      if (value == null) {
+  throw new NullPointerException("map value");
+}
+
       internalGetMutableFields().getMutableMap()
           .put(key, value);
-      bitField0_ |= 0x00000020;
       return this;
     }
     /**
      * <code>map&lt;string, string&gt; fields = 6;</code>
      */
+
     public Builder putAllFields(
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableFields().getMutableMap()
           .putAll(values);
-      bitField0_ |= 0x00000020;
       return this;
     }
     @java.lang.Override

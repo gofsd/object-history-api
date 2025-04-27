@@ -8,16 +8,16 @@ public interface ListObjectsRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint32 page = 1;</code>
+   * <code>int32 page = 1;</code>
    * @return The page.
    */
   int getPage();
 
   /**
-   * <code>uint32 limit = 2;</code>
-   * @return The limit.
+   * <code>int32 page_size = 2;</code>
+   * @return The pageSize.
    */
-  int getLimit();
+  int getPageSize();
 
   /**
    * <code>map&lt;string, string&gt; fields = 3;</code>
@@ -42,14 +42,14 @@ public interface ListObjectsRequestOrBuilder extends
   /**
    * <code>map&lt;string, string&gt; fields = 3;</code>
    */
-  /* nullable */
-java.lang.String getFieldsOrDefault(
+
+  java.lang.String getFieldsOrDefault(
       java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue);
+      java.lang.String defaultValue);
   /**
    * <code>map&lt;string, string&gt; fields = 3;</code>
    */
+
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
 }

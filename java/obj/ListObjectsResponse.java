@@ -45,7 +45,6 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int OBJECTS_FIELD_NUMBER = 1;
-  @SuppressWarnings("serial")
   private java.util.List<obj.Object> objects_;
   /**
    * <code>repeated .object.Object objects = 1;</code>
@@ -86,14 +85,47 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TOTAL_COUNT_FIELD_NUMBER = 2;
-  private int totalCount_ = 0;
+  private long totalCount_;
   /**
-   * <code>uint32 total_count = 2;</code>
+   * <code>int64 total_count = 2;</code>
    * @return The totalCount.
    */
   @java.lang.Override
-  public int getTotalCount() {
+  public long getTotalCount() {
     return totalCount_;
+  }
+
+  public static final int PAGE_FIELD_NUMBER = 3;
+  private int page_;
+  /**
+   * <code>int32 page = 3;</code>
+   * @return The page.
+   */
+  @java.lang.Override
+  public int getPage() {
+    return page_;
+  }
+
+  public static final int PAGE_SIZE_FIELD_NUMBER = 4;
+  private int pageSize_;
+  /**
+   * <code>int32 page_size = 4;</code>
+   * @return The pageSize.
+   */
+  @java.lang.Override
+  public int getPageSize() {
+    return pageSize_;
+  }
+
+  public static final int TOTAL_PAGES_FIELD_NUMBER = 5;
+  private int totalPages_;
+  /**
+   * <code>int32 total_pages = 5;</code>
+   * @return The totalPages.
+   */
+  @java.lang.Override
+  public int getTotalPages() {
+    return totalPages_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -113,8 +145,17 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < objects_.size(); i++) {
       output.writeMessage(1, objects_.get(i));
     }
-    if (totalCount_ != 0) {
-      output.writeUInt32(2, totalCount_);
+    if (totalCount_ != 0L) {
+      output.writeInt64(2, totalCount_);
+    }
+    if (page_ != 0) {
+      output.writeInt32(3, page_);
+    }
+    if (pageSize_ != 0) {
+      output.writeInt32(4, pageSize_);
+    }
+    if (totalPages_ != 0) {
+      output.writeInt32(5, totalPages_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -129,9 +170,21 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, objects_.get(i));
     }
-    if (totalCount_ != 0) {
+    if (totalCount_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(2, totalCount_);
+        .computeInt64Size(2, totalCount_);
+    }
+    if (page_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, page_);
+    }
+    if (pageSize_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, pageSize_);
+    }
+    if (totalPages_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, totalPages_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -152,6 +205,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getObjectsList())) return false;
     if (getTotalCount()
         != other.getTotalCount()) return false;
+    if (getPage()
+        != other.getPage()) return false;
+    if (getPageSize()
+        != other.getPageSize()) return false;
+    if (getTotalPages()
+        != other.getTotalPages()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -168,7 +227,14 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + getObjectsList().hashCode();
     }
     hash = (37 * hash) + TOTAL_COUNT_FIELD_NUMBER;
-    hash = (53 * hash) + getTotalCount();
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getTotalCount());
+    hash = (37 * hash) + PAGE_FIELD_NUMBER;
+    hash = (53 * hash) + getPage();
+    hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
+    hash = (53 * hash) + getPageSize();
+    hash = (37 * hash) + TOTAL_PAGES_FIELD_NUMBER;
+    hash = (53 * hash) + getTotalPages();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -297,7 +363,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
       if (objectsBuilder_ == null) {
         objects_ = java.util.Collections.emptyList();
       } else {
@@ -305,7 +370,14 @@ private static final long serialVersionUID = 0L;
         objectsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000001);
-      totalCount_ = 0;
+      totalCount_ = 0L;
+
+      page_ = 0;
+
+      pageSize_ = 0;
+
+      totalPages_ = 0;
+
       return this;
     }
 
@@ -332,13 +404,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public obj.ListObjectsResponse buildPartial() {
       obj.ListObjectsResponse result = new obj.ListObjectsResponse(this);
-      buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
-      onBuilt();
-      return result;
-    }
-
-    private void buildPartialRepeatedFields(obj.ListObjectsResponse result) {
+      int from_bitField0_ = bitField0_;
       if (objectsBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           objects_ = java.util.Collections.unmodifiableList(objects_);
@@ -348,13 +414,12 @@ private static final long serialVersionUID = 0L;
       } else {
         result.objects_ = objectsBuilder_.build();
       }
-    }
-
-    private void buildPartial0(obj.ListObjectsResponse result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.totalCount_ = totalCount_;
-      }
+      result.totalCount_ = totalCount_;
+      result.page_ = page_;
+      result.pageSize_ = pageSize_;
+      result.totalPages_ = totalPages_;
+      onBuilt();
+      return result;
     }
 
     @java.lang.Override
@@ -427,8 +492,17 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (other.getTotalCount() != 0) {
+      if (other.getTotalCount() != 0L) {
         setTotalCount(other.getTotalCount());
+      }
+      if (other.getPage() != 0) {
+        setPage(other.getPage());
+      }
+      if (other.getPageSize() != 0) {
+        setPageSize(other.getPageSize());
+      }
+      if (other.getTotalPages() != 0) {
+        setTotalPages(other.getTotalPages());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -470,10 +544,25 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 10
             case 16: {
-              totalCount_ = input.readUInt32();
-              bitField0_ |= 0x00000002;
+              totalCount_ = input.readInt64();
+
               break;
             } // case 16
+            case 24: {
+              page_ = input.readInt32();
+
+              break;
+            } // case 24
+            case 32: {
+              pageSize_ = input.readInt32();
+
+              break;
+            } // case 32
+            case 40: {
+              totalPages_ = input.readInt32();
+
+              break;
+            } // case 40
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -731,34 +820,126 @@ private static final long serialVersionUID = 0L;
       return objectsBuilder_;
     }
 
-    private int totalCount_ ;
+    private long totalCount_ ;
     /**
-     * <code>uint32 total_count = 2;</code>
+     * <code>int64 total_count = 2;</code>
      * @return The totalCount.
      */
     @java.lang.Override
-    public int getTotalCount() {
+    public long getTotalCount() {
       return totalCount_;
     }
     /**
-     * <code>uint32 total_count = 2;</code>
+     * <code>int64 total_count = 2;</code>
      * @param value The totalCount to set.
      * @return This builder for chaining.
      */
-    public Builder setTotalCount(int value) {
+    public Builder setTotalCount(long value) {
       
       totalCount_ = value;
-      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>uint32 total_count = 2;</code>
+     * <code>int64 total_count = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTotalCount() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      totalCount_ = 0;
+      
+      totalCount_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int page_ ;
+    /**
+     * <code>int32 page = 3;</code>
+     * @return The page.
+     */
+    @java.lang.Override
+    public int getPage() {
+      return page_;
+    }
+    /**
+     * <code>int32 page = 3;</code>
+     * @param value The page to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPage(int value) {
+      
+      page_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 page = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPage() {
+      
+      page_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int pageSize_ ;
+    /**
+     * <code>int32 page_size = 4;</code>
+     * @return The pageSize.
+     */
+    @java.lang.Override
+    public int getPageSize() {
+      return pageSize_;
+    }
+    /**
+     * <code>int32 page_size = 4;</code>
+     * @param value The pageSize to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPageSize(int value) {
+      
+      pageSize_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 page_size = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPageSize() {
+      
+      pageSize_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int totalPages_ ;
+    /**
+     * <code>int32 total_pages = 5;</code>
+     * @return The totalPages.
+     */
+    @java.lang.Override
+    public int getTotalPages() {
+      return totalPages_;
+    }
+    /**
+     * <code>int32 total_pages = 5;</code>
+     * @param value The totalPages to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTotalPages(int value) {
+      
+      totalPages_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 total_pages = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTotalPages() {
+      
+      totalPages_ = 0;
       onChanged();
       return this;
     }

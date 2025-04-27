@@ -16,7 +16,7 @@ vars:
       echo "$major.$minor.$next_patch"
 
 tasks:
-  generate:auth:
+  go:auth:
     desc: Generate auth Go gRPC code
     cmds:
       - |
@@ -27,7 +27,7 @@ tasks:
           --go-grpc_out={{.GO_OUT_DIR}} \
           {{.PROTO_DIR}}/auth/auth.proto
 
-  generate:object:
+  go:object:
     desc: Generate object Go gRPC code
     cmds:
       - |
@@ -36,22 +36,40 @@ tasks:
           --go-grpc_out={{.GO_OUT_DIR}} \
           {{.PROTO_DIR}}/object/object.proto
 
+  go:all:
+    desc: Generate go code for auth and object services 
+    cmds:
+      - task: go:auth
+      - task: go:object
 
-  generate:kotlin:
-    desc: Generate object kotlin gRPC code
+
+  java:auth:
+    desc: "java"
     cmds:
       - |
-        protoc --plugin=/home/madi/tools/protoc-gen-grpckt=protoc-gen-grpc-kotlin.sh    \
-          --kt_out={{.GO_OUT_DIR}} \
-          --grpckt_out={{.GO_OUT_DIR}} \
+        protoc \
+          --proto_path={{.PROTO_DIR}} \
+          --proto_path=third_party \
+          --proto_path=./proto/auth/ \
+          --java_out=java \
+          --grpc-java_out=java \
+          {{.PROTO_DIR}}/auth/auth.proto
+
+  java:object:
+    desc: "java"
+    cmds:
+      - |
+        protoc \
+          --proto_path=./proto/object/ \
+          --java_out=java  \
+          --grpc-java_out=java \
           {{.PROTO_DIR}}/object/object.proto
 
-
-  generate:all:
-    desc: Generate code for auth and object services 
+  java:all:
+    desc: Generate java code for auth and object services 
     cmds:
-      - task: generate:auth
-      - task: generate:object
+      - task: java:auth
+      - task: java:object
 
   patch:
     desc: "Patch Go module version and push to GitHub"
@@ -60,22 +78,3 @@ tasks:
       - "echo \"Next version: v{{.NEXT_VERSION}}\""
       - git tag {{.NEXT_VERSION}}
       - git push origin {{.NEXT_VERSION}}
-
-  kt:
-    desc: "kt gen"
-    cmds:
-      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh   --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-history-api/proto/auth/ auth.proto
-
-  ktt:
-    desc: "kt gen"
-    cmds:
-      - protoc --plugin=protoc-gen-grpckt=$HOME/tools/protoc-gen-grpc-kotlin.sh  --java_out=kotlin --kotlin_out=kotlin --grpckt_out=kotlin --proto_path=$HOME/projects/object-history-api/proto/auth/ auth.proto
-  jar:
-    desc: "java"
-    cmds:
-      - protoc --proto_path=$HOME/projects/object-history-api/proto/auth/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java auth.proto
-
-  jaro:
-    desc: "java"
-    cmds:
-      - protoc --proto_path=$HOME/projects/object-history-api/proto/object/ --java_out=java --plugin=protoc-gen-grpc-java=$HOME/tools/protoc-gen-grpc-java  --grpc-java_out=java object.proto

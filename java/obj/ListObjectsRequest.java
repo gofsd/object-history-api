@@ -60,9 +60,9 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int PAGE_FIELD_NUMBER = 1;
-  private int page_ = 0;
+  private int page_;
   /**
-   * <code>uint32 page = 1;</code>
+   * <code>int32 page = 1;</code>
    * @return The page.
    */
   @java.lang.Override
@@ -70,15 +70,15 @@ private static final long serialVersionUID = 0L;
     return page_;
   }
 
-  public static final int LIMIT_FIELD_NUMBER = 2;
-  private int limit_ = 0;
+  public static final int PAGE_SIZE_FIELD_NUMBER = 2;
+  private int pageSize_;
   /**
-   * <code>uint32 limit = 2;</code>
-   * @return The limit.
+   * <code>int32 page_size = 2;</code>
+   * @return The pageSize.
    */
   @java.lang.Override
-  public int getLimit() {
-    return limit_;
+  public int getPageSize() {
+    return pageSize_;
   }
 
   public static final int FIELDS_FIELD_NUMBER = 3;
@@ -93,7 +93,6 @@ private static final long serialVersionUID = 0L;
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "");
   }
-  @SuppressWarnings("serial")
   private com.google.protobuf.MapField<
       java.lang.String, java.lang.String> fields_;
   private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -104,12 +103,14 @@ private static final long serialVersionUID = 0L;
     }
     return fields_;
   }
+
   public int getFieldsCount() {
     return internalGetFields().getMap().size();
   }
   /**
    * <code>map&lt;string, string&gt; fields = 3;</code>
    */
+
   @java.lang.Override
   public boolean containsFields(
       java.lang.String key) {
@@ -128,6 +129,7 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   @java.lang.Override
+
   public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
     return internalGetFields().getMap();
   }
@@ -135,11 +137,10 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   @java.lang.Override
-  public /* nullable */
-java.lang.String getFieldsOrDefault(
+
+  public java.lang.String getFieldsOrDefault(
       java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue) {
+      java.lang.String defaultValue) {
     if (key == null) { throw new NullPointerException("map key"); }
     java.util.Map<java.lang.String, java.lang.String> map =
         internalGetFields().getMap();
@@ -149,6 +150,7 @@ java.lang.String defaultValue) {
    * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   @java.lang.Override
+
   public java.lang.String getFieldsOrThrow(
       java.lang.String key) {
     if (key == null) { throw new NullPointerException("map key"); }
@@ -175,10 +177,10 @@ java.lang.String defaultValue) {
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (page_ != 0) {
-      output.writeUInt32(1, page_);
+      output.writeInt32(1, page_);
     }
-    if (limit_ != 0) {
-      output.writeUInt32(2, limit_);
+    if (pageSize_ != 0) {
+      output.writeInt32(2, pageSize_);
     }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
@@ -197,11 +199,11 @@ java.lang.String defaultValue) {
     size = 0;
     if (page_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(1, page_);
+        .computeInt32Size(1, page_);
     }
-    if (limit_ != 0) {
+    if (pageSize_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(2, limit_);
+        .computeInt32Size(2, pageSize_);
     }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetFields().getMap().entrySet()) {
@@ -230,8 +232,8 @@ java.lang.String defaultValue) {
 
     if (getPage()
         != other.getPage()) return false;
-    if (getLimit()
-        != other.getLimit()) return false;
+    if (getPageSize()
+        != other.getPageSize()) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -247,8 +249,8 @@ java.lang.String defaultValue) {
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + PAGE_FIELD_NUMBER;
     hash = (53 * hash) + getPage();
-    hash = (37 * hash) + LIMIT_FIELD_NUMBER;
-    hash = (53 * hash) + getLimit();
+    hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
+    hash = (53 * hash) + getPageSize();
     if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
@@ -407,9 +409,10 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
       page_ = 0;
-      limit_ = 0;
+
+      pageSize_ = 0;
+
       internalGetMutableFields().clear();
       return this;
     }
@@ -437,23 +440,13 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public obj.ListObjectsRequest buildPartial() {
       obj.ListObjectsRequest result = new obj.ListObjectsRequest(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      int from_bitField0_ = bitField0_;
+      result.page_ = page_;
+      result.pageSize_ = pageSize_;
+      result.fields_ = internalGetFields();
+      result.fields_.makeImmutable();
       onBuilt();
       return result;
-    }
-
-    private void buildPartial0(obj.ListObjectsRequest result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.page_ = page_;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.limit_ = limit_;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.fields_ = internalGetFields();
-        result.fields_.makeImmutable();
-      }
     }
 
     @java.lang.Override
@@ -503,12 +496,11 @@ java.lang.String defaultValue) {
       if (other.getPage() != 0) {
         setPage(other.getPage());
       }
-      if (other.getLimit() != 0) {
-        setLimit(other.getLimit());
+      if (other.getPageSize() != 0) {
+        setPageSize(other.getPageSize());
       }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
-      bitField0_ |= 0x00000004;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -536,13 +528,13 @@ java.lang.String defaultValue) {
               done = true;
               break;
             case 8: {
-              page_ = input.readUInt32();
-              bitField0_ |= 0x00000001;
+              page_ = input.readInt32();
+
               break;
             } // case 8
             case 16: {
-              limit_ = input.readUInt32();
-              bitField0_ |= 0x00000002;
+              pageSize_ = input.readInt32();
+
               break;
             } // case 16
             case 26: {
@@ -551,7 +543,6 @@ java.lang.String defaultValue) {
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
-              bitField0_ |= 0x00000004;
               break;
             } // case 26
             default: {
@@ -573,7 +564,7 @@ java.lang.String defaultValue) {
 
     private int page_ ;
     /**
-     * <code>uint32 page = 1;</code>
+     * <code>int32 page = 1;</code>
      * @return The page.
      */
     @java.lang.Override
@@ -581,56 +572,54 @@ java.lang.String defaultValue) {
       return page_;
     }
     /**
-     * <code>uint32 page = 1;</code>
+     * <code>int32 page = 1;</code>
      * @param value The page to set.
      * @return This builder for chaining.
      */
     public Builder setPage(int value) {
       
       page_ = value;
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>uint32 page = 1;</code>
+     * <code>int32 page = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearPage() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+      
       page_ = 0;
       onChanged();
       return this;
     }
 
-    private int limit_ ;
+    private int pageSize_ ;
     /**
-     * <code>uint32 limit = 2;</code>
-     * @return The limit.
+     * <code>int32 page_size = 2;</code>
+     * @return The pageSize.
      */
     @java.lang.Override
-    public int getLimit() {
-      return limit_;
+    public int getPageSize() {
+      return pageSize_;
     }
     /**
-     * <code>uint32 limit = 2;</code>
-     * @param value The limit to set.
+     * <code>int32 page_size = 2;</code>
+     * @param value The pageSize to set.
      * @return This builder for chaining.
      */
-    public Builder setLimit(int value) {
+    public Builder setPageSize(int value) {
       
-      limit_ = value;
-      bitField0_ |= 0x00000002;
+      pageSize_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint32 limit = 2;</code>
+     * <code>int32 page_size = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearLimit() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      limit_ = 0;
+    public Builder clearPageSize() {
+      
+      pageSize_ = 0;
       onChanged();
       return this;
     }
@@ -638,7 +627,7 @@ java.lang.String defaultValue) {
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> fields_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetFields() {
+    internalGetFields() {
       if (fields_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             FieldsDefaultEntryHolder.defaultEntry);
@@ -646,7 +635,8 @@ java.lang.String defaultValue) {
       return fields_;
     }
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetMutableFields() {
+    internalGetMutableFields() {
+      onChanged();;
       if (fields_ == null) {
         fields_ = com.google.protobuf.MapField.newMapField(
             FieldsDefaultEntryHolder.defaultEntry);
@@ -654,16 +644,16 @@ java.lang.String defaultValue) {
       if (!fields_.isMutable()) {
         fields_ = fields_.copy();
       }
-      bitField0_ |= 0x00000004;
-      onChanged();
       return fields_;
     }
+
     public int getFieldsCount() {
       return internalGetFields().getMap().size();
     }
     /**
      * <code>map&lt;string, string&gt; fields = 3;</code>
      */
+
     @java.lang.Override
     public boolean containsFields(
         java.lang.String key) {
@@ -682,6 +672,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     @java.lang.Override
+
     public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
       return internalGetFields().getMap();
     }
@@ -689,11 +680,10 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     @java.lang.Override
-    public /* nullable */
-java.lang.String getFieldsOrDefault(
+
+    public java.lang.String getFieldsOrDefault(
         java.lang.String key,
-        /* nullable */
-java.lang.String defaultValue) {
+        java.lang.String defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.String> map =
           internalGetFields().getMap();
@@ -703,6 +693,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     @java.lang.Override
+
     public java.lang.String getFieldsOrThrow(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -713,8 +704,8 @@ java.lang.String defaultValue) {
       }
       return map.get(key);
     }
+
     public Builder clearFields() {
-      bitField0_ = (bitField0_ & ~0x00000004);
       internalGetMutableFields().getMutableMap()
           .clear();
       return this;
@@ -722,6 +713,7 @@ java.lang.String defaultValue) {
     /**
      * <code>map&lt;string, string&gt; fields = 3;</code>
      */
+
     public Builder removeFields(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -734,8 +726,7 @@ java.lang.String defaultValue) {
      */
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String>
-        getMutableFields() {
-      bitField0_ |= 0x00000004;
+    getMutableFields() {
       return internalGetMutableFields().getMutableMap();
     }
     /**
@@ -745,20 +736,22 @@ java.lang.String defaultValue) {
         java.lang.String key,
         java.lang.String value) {
       if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) { throw new NullPointerException("map value"); }
+      if (value == null) {
+  throw new NullPointerException("map value");
+}
+
       internalGetMutableFields().getMutableMap()
           .put(key, value);
-      bitField0_ |= 0x00000004;
       return this;
     }
     /**
      * <code>map&lt;string, string&gt; fields = 3;</code>
      */
+
     public Builder putAllFields(
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableFields().getMutableMap()
           .putAll(values);
-      bitField0_ |= 0x00000004;
       return this;
     }
     @java.lang.Override

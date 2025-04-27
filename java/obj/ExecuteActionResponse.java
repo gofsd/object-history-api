@@ -16,7 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ExecuteActionResponse() {
-    objectId_ = emptyLongList();
+    objects_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -44,44 +44,44 @@ private static final long serialVersionUID = 0L;
             obj.ExecuteActionResponse.class, obj.ExecuteActionResponse.Builder.class);
   }
 
-  public static final int OBJECT_ID_FIELD_NUMBER = 1;
-  @SuppressWarnings("serial")
-  private com.google.protobuf.Internal.LongList objectId_;
+  public static final int OBJECTS_FIELD_NUMBER = 1;
+  private java.util.List<obj.Object> objects_;
   /**
-   * <code>repeated uint64 object_id = 1;</code>
-   * @return A list containing the objectId.
+   * <code>repeated .object.Object objects = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<java.lang.Long>
-      getObjectIdList() {
-    return objectId_;
+  public java.util.List<obj.Object> getObjectsList() {
+    return objects_;
   }
   /**
-   * <code>repeated uint64 object_id = 1;</code>
-   * @return The count of objectId.
-   */
-  public int getObjectIdCount() {
-    return objectId_.size();
-  }
-  /**
-   * <code>repeated uint64 object_id = 1;</code>
-   * @param index The index of the element to return.
-   * @return The objectId at the given index.
-   */
-  public long getObjectId(int index) {
-    return objectId_.getLong(index);
-  }
-  private int objectIdMemoizedSerializedSize = -1;
-
-  public static final int TOTAL_COUNT_FIELD_NUMBER = 2;
-  private int totalCount_ = 0;
-  /**
-   * <code>uint32 total_count = 2;</code>
-   * @return The totalCount.
+   * <code>repeated .object.Object objects = 1;</code>
    */
   @java.lang.Override
-  public int getTotalCount() {
-    return totalCount_;
+  public java.util.List<? extends obj.ObjectOrBuilder> 
+      getObjectsOrBuilderList() {
+    return objects_;
+  }
+  /**
+   * <code>repeated .object.Object objects = 1;</code>
+   */
+  @java.lang.Override
+  public int getObjectsCount() {
+    return objects_.size();
+  }
+  /**
+   * <code>repeated .object.Object objects = 1;</code>
+   */
+  @java.lang.Override
+  public obj.Object getObjects(int index) {
+    return objects_.get(index);
+  }
+  /**
+   * <code>repeated .object.Object objects = 1;</code>
+   */
+  @java.lang.Override
+  public obj.ObjectOrBuilder getObjectsOrBuilder(
+      int index) {
+    return objects_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -98,16 +98,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    getSerializedSize();
-    if (getObjectIdList().size() > 0) {
-      output.writeUInt32NoTag(10);
-      output.writeUInt32NoTag(objectIdMemoizedSerializedSize);
-    }
-    for (int i = 0; i < objectId_.size(); i++) {
-      output.writeUInt64NoTag(objectId_.getLong(i));
-    }
-    if (totalCount_ != 0) {
-      output.writeUInt32(2, totalCount_);
+    for (int i = 0; i < objects_.size(); i++) {
+      output.writeMessage(1, objects_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -118,23 +110,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    {
-      int dataSize = 0;
-      for (int i = 0; i < objectId_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeUInt64SizeNoTag(objectId_.getLong(i));
-      }
-      size += dataSize;
-      if (!getObjectIdList().isEmpty()) {
-        size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
-      }
-      objectIdMemoizedSerializedSize = dataSize;
-    }
-    if (totalCount_ != 0) {
+    for (int i = 0; i < objects_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(2, totalCount_);
+        .computeMessageSize(1, objects_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -151,10 +129,8 @@ private static final long serialVersionUID = 0L;
     }
     obj.ExecuteActionResponse other = (obj.ExecuteActionResponse) obj;
 
-    if (!getObjectIdList()
-        .equals(other.getObjectIdList())) return false;
-    if (getTotalCount()
-        != other.getTotalCount()) return false;
+    if (!getObjectsList()
+        .equals(other.getObjectsList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -166,12 +142,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getObjectIdCount() > 0) {
-      hash = (37 * hash) + OBJECT_ID_FIELD_NUMBER;
-      hash = (53 * hash) + getObjectIdList().hashCode();
+    if (getObjectsCount() > 0) {
+      hash = (37 * hash) + OBJECTS_FIELD_NUMBER;
+      hash = (53 * hash) + getObjectsList().hashCode();
     }
-    hash = (37 * hash) + TOTAL_COUNT_FIELD_NUMBER;
-    hash = (53 * hash) + getTotalCount();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -300,9 +274,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
-      objectId_ = emptyLongList();
-      totalCount_ = 0;
+      if (objectsBuilder_ == null) {
+        objects_ = java.util.Collections.emptyList();
+      } else {
+        objects_ = null;
+        objectsBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -329,25 +307,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public obj.ExecuteActionResponse buildPartial() {
       obj.ExecuteActionResponse result = new obj.ExecuteActionResponse(this);
-      buildPartialRepeatedFields(result);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      int from_bitField0_ = bitField0_;
+      if (objectsBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          objects_ = java.util.Collections.unmodifiableList(objects_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.objects_ = objects_;
+      } else {
+        result.objects_ = objectsBuilder_.build();
+      }
       onBuilt();
       return result;
-    }
-
-    private void buildPartialRepeatedFields(obj.ExecuteActionResponse result) {
-      if (((bitField0_ & 0x00000001) != 0)) {
-        objectId_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.objectId_ = objectId_;
-    }
-
-    private void buildPartial0(obj.ExecuteActionResponse result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.totalCount_ = totalCount_;
-      }
     }
 
     @java.lang.Override
@@ -394,18 +365,31 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(obj.ExecuteActionResponse other) {
       if (other == obj.ExecuteActionResponse.getDefaultInstance()) return this;
-      if (!other.objectId_.isEmpty()) {
-        if (objectId_.isEmpty()) {
-          objectId_ = other.objectId_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureObjectIdIsMutable();
-          objectId_.addAll(other.objectId_);
+      if (objectsBuilder_ == null) {
+        if (!other.objects_.isEmpty()) {
+          if (objects_.isEmpty()) {
+            objects_ = other.objects_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureObjectsIsMutable();
+            objects_.addAll(other.objects_);
+          }
+          onChanged();
         }
-        onChanged();
-      }
-      if (other.getTotalCount() != 0) {
-        setTotalCount(other.getTotalCount());
+      } else {
+        if (!other.objects_.isEmpty()) {
+          if (objectsBuilder_.isEmpty()) {
+            objectsBuilder_.dispose();
+            objectsBuilder_ = null;
+            objects_ = other.objects_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            objectsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getObjectsFieldBuilder() : null;
+          } else {
+            objectsBuilder_.addAllMessages(other.objects_);
+          }
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -433,27 +417,19 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              long v = input.readUInt64();
-              ensureObjectIdIsMutable();
-              objectId_.addLong(v);
-              break;
-            } // case 8
             case 10: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureObjectIdIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                objectId_.addLong(input.readUInt64());
+              obj.Object m =
+                  input.readMessage(
+                      obj.Object.parser(),
+                      extensionRegistry);
+              if (objectsBuilder_ == null) {
+                ensureObjectsIsMutable();
+                objects_.add(m);
+              } else {
+                objectsBuilder_.addMessage(m);
               }
-              input.popLimit(limit);
               break;
             } // case 10
-            case 16: {
-              totalCount_ = input.readUInt32();
-              bitField0_ |= 0x00000002;
-              break;
-            } // case 16
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -471,117 +447,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.Internal.LongList objectId_ = emptyLongList();
-    private void ensureObjectIdIsMutable() {
+    private java.util.List<obj.Object> objects_ =
+      java.util.Collections.emptyList();
+    private void ensureObjectsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        objectId_ = mutableCopy(objectId_);
+        objects_ = new java.util.ArrayList<obj.Object>(objects_);
         bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> objectsBuilder_;
+
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public java.util.List<obj.Object> getObjectsList() {
+      if (objectsBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(objects_);
+      } else {
+        return objectsBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @return A list containing the objectId.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public java.util.List<java.lang.Long>
-        getObjectIdList() {
-      return ((bitField0_ & 0x00000001) != 0) ?
-               java.util.Collections.unmodifiableList(objectId_) : objectId_;
+    public int getObjectsCount() {
+      if (objectsBuilder_ == null) {
+        return objects_.size();
+      } else {
+        return objectsBuilder_.getCount();
+      }
     }
     /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @return The count of objectId.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public int getObjectIdCount() {
-      return objectId_.size();
+    public obj.Object getObjects(int index) {
+      if (objectsBuilder_ == null) {
+        return objects_.get(index);
+      } else {
+        return objectsBuilder_.getMessage(index);
+      }
     }
     /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @param index The index of the element to return.
-     * @return The objectId at the given index.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public long getObjectId(int index) {
-      return objectId_.getLong(index);
-    }
-    /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @param index The index to set the value at.
-     * @param value The objectId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setObjectId(
-        int index, long value) {
-      
-      ensureObjectIdIsMutable();
-      objectId_.setLong(index, value);
-      onChanged();
+    public Builder setObjects(
+        int index, obj.Object value) {
+      if (objectsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureObjectsIsMutable();
+        objects_.set(index, value);
+        onChanged();
+      } else {
+        objectsBuilder_.setMessage(index, value);
+      }
       return this;
     }
     /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @param value The objectId to add.
-     * @return This builder for chaining.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public Builder addObjectId(long value) {
-      
-      ensureObjectIdIsMutable();
-      objectId_.addLong(value);
-      onChanged();
+    public Builder setObjects(
+        int index, obj.Object.Builder builderForValue) {
+      if (objectsBuilder_ == null) {
+        ensureObjectsIsMutable();
+        objects_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        objectsBuilder_.setMessage(index, builderForValue.build());
+      }
       return this;
     }
     /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @param values The objectId to add.
-     * @return This builder for chaining.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public Builder addAllObjectId(
-        java.lang.Iterable<? extends java.lang.Long> values) {
-      ensureObjectIdIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, objectId_);
-      onChanged();
+    public Builder addObjects(obj.Object value) {
+      if (objectsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureObjectsIsMutable();
+        objects_.add(value);
+        onChanged();
+      } else {
+        objectsBuilder_.addMessage(value);
+      }
       return this;
     }
     /**
-     * <code>repeated uint64 object_id = 1;</code>
-     * @return This builder for chaining.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public Builder clearObjectId() {
-      objectId_ = emptyLongList();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-
-    private int totalCount_ ;
-    /**
-     * <code>uint32 total_count = 2;</code>
-     * @return The totalCount.
-     */
-    @java.lang.Override
-    public int getTotalCount() {
-      return totalCount_;
-    }
-    /**
-     * <code>uint32 total_count = 2;</code>
-     * @param value The totalCount to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTotalCount(int value) {
-      
-      totalCount_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
+    public Builder addObjects(
+        int index, obj.Object value) {
+      if (objectsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureObjectsIsMutable();
+        objects_.add(index, value);
+        onChanged();
+      } else {
+        objectsBuilder_.addMessage(index, value);
+      }
       return this;
     }
     /**
-     * <code>uint32 total_count = 2;</code>
-     * @return This builder for chaining.
+     * <code>repeated .object.Object objects = 1;</code>
      */
-    public Builder clearTotalCount() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      totalCount_ = 0;
-      onChanged();
+    public Builder addObjects(
+        obj.Object.Builder builderForValue) {
+      if (objectsBuilder_ == null) {
+        ensureObjectsIsMutable();
+        objects_.add(builderForValue.build());
+        onChanged();
+      } else {
+        objectsBuilder_.addMessage(builderForValue.build());
+      }
       return this;
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public Builder addObjects(
+        int index, obj.Object.Builder builderForValue) {
+      if (objectsBuilder_ == null) {
+        ensureObjectsIsMutable();
+        objects_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        objectsBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public Builder addAllObjects(
+        java.lang.Iterable<? extends obj.Object> values) {
+      if (objectsBuilder_ == null) {
+        ensureObjectsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, objects_);
+        onChanged();
+      } else {
+        objectsBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public Builder clearObjects() {
+      if (objectsBuilder_ == null) {
+        objects_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        objectsBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public Builder removeObjects(int index) {
+      if (objectsBuilder_ == null) {
+        ensureObjectsIsMutable();
+        objects_.remove(index);
+        onChanged();
+      } else {
+        objectsBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public obj.Object.Builder getObjectsBuilder(
+        int index) {
+      return getObjectsFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public obj.ObjectOrBuilder getObjectsOrBuilder(
+        int index) {
+      if (objectsBuilder_ == null) {
+        return objects_.get(index);  } else {
+        return objectsBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public java.util.List<? extends obj.ObjectOrBuilder> 
+         getObjectsOrBuilderList() {
+      if (objectsBuilder_ != null) {
+        return objectsBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(objects_);
+      }
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public obj.Object.Builder addObjectsBuilder() {
+      return getObjectsFieldBuilder().addBuilder(
+          obj.Object.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public obj.Object.Builder addObjectsBuilder(
+        int index) {
+      return getObjectsFieldBuilder().addBuilder(
+          index, obj.Object.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .object.Object objects = 1;</code>
+     */
+    public java.util.List<obj.Object.Builder> 
+         getObjectsBuilderList() {
+      return getObjectsFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> 
+        getObjectsFieldBuilder() {
+      if (objectsBuilder_ == null) {
+        objectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            obj.Object, obj.Object.Builder, obj.ObjectOrBuilder>(
+                objects_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        objects_ = null;
+      }
+      return objectsBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

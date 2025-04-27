@@ -32,8 +32,26 @@ public interface ListObjectsResponseOrBuilder extends
       int index);
 
   /**
-   * <code>uint32 total_count = 2;</code>
+   * <code>int64 total_count = 2;</code>
    * @return The totalCount.
    */
-  int getTotalCount();
+  long getTotalCount();
+
+  /**
+   * <code>int32 page = 3;</code>
+   * @return The page.
+   */
+  int getPage();
+
+  /**
+   * <code>int32 page_size = 4;</code>
+   * @return The pageSize.
+   */
+  int getPageSize();
+
+  /**
+   * <code>int32 total_pages = 5;</code>
+   * @return The totalPages.
+   */
+  int getTotalPages();
 }

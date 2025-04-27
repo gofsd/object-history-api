@@ -44,7 +44,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int OBJECT_ID_FIELD_NUMBER = 1;
-  private long objectId_ = 0L;
+  private long objectId_;
   /**
    * <code>uint64 object_id = 1;</code>
    * @return The objectId.
@@ -243,8 +243,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
       objectId_ = 0L;
+
       return this;
     }
 
@@ -271,16 +271,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public obj.GetObjectRequest buildPartial() {
       obj.GetObjectRequest result = new obj.GetObjectRequest(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      result.objectId_ = objectId_;
       onBuilt();
       return result;
-    }
-
-    private void buildPartial0(obj.GetObjectRequest result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.objectId_ = objectId_;
-      }
     }
 
     @java.lang.Override
@@ -358,7 +351,7 @@ private static final long serialVersionUID = 0L;
               break;
             case 8: {
               objectId_ = input.readUInt64();
-              bitField0_ |= 0x00000001;
+
               break;
             } // case 8
             default: {
@@ -376,7 +369,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
     private long objectId_ ;
     /**
@@ -395,7 +387,6 @@ private static final long serialVersionUID = 0L;
     public Builder setObjectId(long value) {
       
       objectId_ = value;
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -404,7 +395,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearObjectId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+      
       objectId_ = 0L;
       onChanged();
       return this;

@@ -22,7 +22,7 @@ service ObjectService {
 // Object structure
 message Object {
   uint64 id = 1;
-  uint64 creator_id = 2
+  uint64 creator_id = 2;
   uint64 owner_id = 3;
   uint64 object_type = 4;
   uint64 version = 5;

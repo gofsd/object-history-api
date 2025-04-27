@@ -25,8 +25,8 @@ const (
 type Object struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	OwnerId       uint64                 `protobuf:"varint,2,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	CreatorId     uint64                 `protobuf:"varint,3,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
+	CreatorId     uint64                 `protobuf:"varint,2,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
+	OwnerId       uint64                 `protobuf:"varint,3,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
 	ObjectType    uint64                 `protobuf:"varint,4,opt,name=object_type,json=objectType,proto3" json:"object_type,omitempty"`
 	Version       uint64                 `protobuf:"varint,5,opt,name=version,proto3" json:"version,omitempty"`
 	Fields        map[string]string      `protobuf:"bytes,6,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
@@ -71,16 +71,16 @@ func (x *Object) GetId() uint64 {
 	return 0
 }
 
-func (x *Object) GetOwnerId() uint64 {
+func (x *Object) GetCreatorId() uint64 {
 	if x != nil {
-		return x.OwnerId
+		return x.CreatorId
 	}
 	return 0
 }
 
-func (x *Object) GetCreatorId() uint64 {
+func (x *Object) GetOwnerId() uint64 {
 	if x != nil {
-		return x.CreatorId
+		return x.OwnerId
 	}
 	return 0
 }
@@ -295,8 +295,8 @@ func (x *ObjectResponse) GetObject() *Object {
 // Pagination support for listing objects
 type ListObjectsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Page          uint32                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
-	Limit         uint32                 `protobuf:"varint,2,opt,name=limit,proto3" json:"limit,omitempty"`
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	Fields        map[string]string      `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -332,16 +332,16 @@ func (*ListObjectsRequest) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *ListObjectsRequest) GetPage() uint32 {
+func (x *ListObjectsRequest) GetPage() int32 {
 	if x != nil {
 		return x.Page
 	}
 	return 0
 }
 
-func (x *ListObjectsRequest) GetLimit() uint32 {
+func (x *ListObjectsRequest) GetPageSize() int32 {
 	if x != nil {
-		return x.Limit
+		return x.PageSize
 	}
 	return 0
 }
@@ -356,7 +356,10 @@ func (x *ListObjectsRequest) GetFields() map[string]string {
 type ListObjectsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
-	TotalCount    uint32                 `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	TotalCount    int64                  `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize      int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	TotalPages    int32                  `protobuf:"varint,5,opt,name=total_pages,json=totalPages,proto3" json:"total_pages,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -398,9 +401,30 @@ func (x *ListObjectsResponse) GetObjects() []*Object {
 	return nil
 }
 
-func (x *ListObjectsResponse) GetTotalCount() uint32 {
+func (x *ListObjectsResponse) GetTotalCount() int64 {
 	if x != nil {
 		return x.TotalCount
+	}
+	return 0
+}
+
+func (x *ListObjectsResponse) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *ListObjectsResponse) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListObjectsResponse) GetTotalPages() int32 {
+	if x != nil {
+		return x.TotalPages
 	}
 	return 0
 }
@@ -459,8 +483,7 @@ func (x *ExecuteActionRequest) GetFields() map[string]string {
 
 type ExecuteActionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ObjectId      []uint64               `protobuf:"varint,1,rep,packed,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	TotalCount    uint32                 `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
+	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -495,18 +518,11 @@ func (*ExecuteActionResponse) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *ExecuteActionResponse) GetObjectId() []uint64 {
+func (x *ExecuteActionResponse) GetObjects() []*Object {
 	if x != nil {
-		return x.ObjectId
+		return x.Objects
 	}
 	return nil
-}
-
-func (x *ExecuteActionResponse) GetTotalCount() uint32 {
-	if x != nil {
-		return x.TotalCount
-	}
-	return 0
 }
 
 var File_proto_object_object_proto protoreflect.FileDescriptor
@@ -515,10 +531,10 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\n" +
 	"\x19proto/object/object.proto\x12\x06object\"\xfc\x01\n" +
 	"\x06Object\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x19\n" +
-	"\bowner_id\x18\x02 \x01(\x04R\aownerId\x12\x1d\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
 	"\n" +
-	"creator_id\x18\x03 \x01(\x04R\tcreatorId\x12\x1f\n" +
+	"creator_id\x18\x02 \x01(\x04R\tcreatorId\x12\x19\n" +
+	"\bowner_id\x18\x03 \x01(\x04R\aownerId\x12\x1f\n" +
 	"\vobject_type\x18\x04 \x01(\x04R\n" +
 	"objectType\x12\x18\n" +
 	"\aversion\x18\x05 \x01(\x04R\aversion\x122\n" +
@@ -540,28 +556,30 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"8\n" +
 	"\x0eObjectResponse\x12&\n" +
-	"\x06object\x18\x01 \x01(\v2\x0e.object.ObjectR\x06object\"\xb9\x01\n" +
+	"\x06object\x18\x01 \x01(\v2\x0e.object.ObjectR\x06object\"\xc0\x01\n" +
 	"\x12ListObjectsRequest\x12\x12\n" +
-	"\x04page\x18\x01 \x01(\rR\x04page\x12\x14\n" +
-	"\x05limit\x18\x02 \x01(\rR\x05limit\x12>\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12>\n" +
 	"\x06fields\x18\x03 \x03(\v2&.object.ListObjectsRequest.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"`\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb2\x01\n" +
 	"\x13ListObjectsResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\rR\n" +
-	"totalCount\"\xb0\x01\n" +
+	"\vtotal_count\x18\x02 \x01(\x03R\n" +
+	"totalCount\x12\x12\n" +
+	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x04 \x01(\x05R\bpageSize\x12\x1f\n" +
+	"\vtotal_pages\x18\x05 \x01(\x05R\n" +
+	"totalPages\"\xb0\x01\n" +
 	"\x14ExecuteActionRequest\x12\x1b\n" +
 	"\taction_id\x18\x01 \x01(\x04R\bactionId\x12@\n" +
 	"\x06fields\x18\x02 \x03(\v2(.object.ExecuteActionRequest.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"U\n" +
-	"\x15ExecuteActionResponse\x12\x1b\n" +
-	"\tobject_id\x18\x01 \x03(\x04R\bobjectId\x12\x1f\n" +
-	"\vtotal_count\x18\x02 \x01(\rR\n" +
-	"totalCount2\xee\x02\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"A\n" +
+	"\x15ExecuteActionResponse\x12(\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects2\xee\x02\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
 	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12C\n" +
@@ -607,21 +625,22 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	12, // 4: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
 	0,  // 5: object.ListObjectsResponse.objects:type_name -> object.Object
 	13, // 6: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
-	1,  // 7: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
-	2,  // 8: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
-	3,  // 9: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
-	5,  // 10: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
-	7,  // 11: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
-	4,  // 12: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
-	4,  // 13: object.ObjectService.GetObject:output_type -> object.ObjectResponse
-	4,  // 14: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
-	6,  // 15: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
-	8,  // 16: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
-	12, // [12:17] is the sub-list for method output_type
-	7,  // [7:12] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	0,  // 7: object.ExecuteActionResponse.objects:type_name -> object.Object
+	1,  // 8: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
+	2,  // 9: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
+	3,  // 10: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
+	5,  // 11: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
+	7,  // 12: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
+	4,  // 13: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
+	4,  // 14: object.ObjectService.GetObject:output_type -> object.ObjectResponse
+	4,  // 15: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
+	6,  // 16: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
+	8,  // 17: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
+	13, // [13:18] is the sub-list for method output_type
+	8,  // [8:13] is the sub-list for method input_type
+	8,  // [8:8] is the sub-list for extension type_name
+	8,  // [8:8] is the sub-list for extension extendee
+	0,  // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_proto_object_object_proto_init() }

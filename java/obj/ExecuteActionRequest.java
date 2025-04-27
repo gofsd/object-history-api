@@ -56,7 +56,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ACTION_ID_FIELD_NUMBER = 1;
-  private long actionId_ = 0L;
+  private long actionId_;
   /**
    * <code>uint64 action_id = 1;</code>
    * @return The actionId.
@@ -78,7 +78,6 @@ private static final long serialVersionUID = 0L;
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "");
   }
-  @SuppressWarnings("serial")
   private com.google.protobuf.MapField<
       java.lang.String, java.lang.String> fields_;
   private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -89,12 +88,14 @@ private static final long serialVersionUID = 0L;
     }
     return fields_;
   }
+
   public int getFieldsCount() {
     return internalGetFields().getMap().size();
   }
   /**
    * <code>map&lt;string, string&gt; fields = 2;</code>
    */
+
   @java.lang.Override
   public boolean containsFields(
       java.lang.String key) {
@@ -113,6 +114,7 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   @java.lang.Override
+
   public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
     return internalGetFields().getMap();
   }
@@ -120,11 +122,10 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   @java.lang.Override
-  public /* nullable */
-java.lang.String getFieldsOrDefault(
+
+  public java.lang.String getFieldsOrDefault(
       java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue) {
+      java.lang.String defaultValue) {
     if (key == null) { throw new NullPointerException("map key"); }
     java.util.Map<java.lang.String, java.lang.String> map =
         internalGetFields().getMap();
@@ -134,6 +135,7 @@ java.lang.String defaultValue) {
    * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   @java.lang.Override
+
   public java.lang.String getFieldsOrThrow(
       java.lang.String key) {
     if (key == null) { throw new NullPointerException("map key"); }
@@ -378,8 +380,8 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      bitField0_ = 0;
       actionId_ = 0L;
+
       internalGetMutableFields().clear();
       return this;
     }
@@ -407,20 +409,12 @@ java.lang.String defaultValue) {
     @java.lang.Override
     public obj.ExecuteActionRequest buildPartial() {
       obj.ExecuteActionRequest result = new obj.ExecuteActionRequest(this);
-      if (bitField0_ != 0) { buildPartial0(result); }
+      int from_bitField0_ = bitField0_;
+      result.actionId_ = actionId_;
+      result.fields_ = internalGetFields();
+      result.fields_.makeImmutable();
       onBuilt();
       return result;
-    }
-
-    private void buildPartial0(obj.ExecuteActionRequest result) {
-      int from_bitField0_ = bitField0_;
-      if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.actionId_ = actionId_;
-      }
-      if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.fields_ = internalGetFields();
-        result.fields_.makeImmutable();
-      }
     }
 
     @java.lang.Override
@@ -472,7 +466,6 @@ java.lang.String defaultValue) {
       }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
-      bitField0_ |= 0x00000002;
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -501,7 +494,7 @@ java.lang.String defaultValue) {
               break;
             case 8: {
               actionId_ = input.readUInt64();
-              bitField0_ |= 0x00000001;
+
               break;
             } // case 8
             case 18: {
@@ -510,7 +503,6 @@ java.lang.String defaultValue) {
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
-              bitField0_ |= 0x00000002;
               break;
             } // case 18
             default: {
@@ -547,7 +539,6 @@ java.lang.String defaultValue) {
     public Builder setActionId(long value) {
       
       actionId_ = value;
-      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -556,7 +547,7 @@ java.lang.String defaultValue) {
      * @return This builder for chaining.
      */
     public Builder clearActionId() {
-      bitField0_ = (bitField0_ & ~0x00000001);
+      
       actionId_ = 0L;
       onChanged();
       return this;
@@ -565,7 +556,7 @@ java.lang.String defaultValue) {
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> fields_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetFields() {
+    internalGetFields() {
       if (fields_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             FieldsDefaultEntryHolder.defaultEntry);
@@ -573,7 +564,8 @@ java.lang.String defaultValue) {
       return fields_;
     }
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetMutableFields() {
+    internalGetMutableFields() {
+      onChanged();;
       if (fields_ == null) {
         fields_ = com.google.protobuf.MapField.newMapField(
             FieldsDefaultEntryHolder.defaultEntry);
@@ -581,16 +573,16 @@ java.lang.String defaultValue) {
       if (!fields_.isMutable()) {
         fields_ = fields_.copy();
       }
-      bitField0_ |= 0x00000002;
-      onChanged();
       return fields_;
     }
+
     public int getFieldsCount() {
       return internalGetFields().getMap().size();
     }
     /**
      * <code>map&lt;string, string&gt; fields = 2;</code>
      */
+
     @java.lang.Override
     public boolean containsFields(
         java.lang.String key) {
@@ -609,6 +601,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     @java.lang.Override
+
     public java.util.Map<java.lang.String, java.lang.String> getFieldsMap() {
       return internalGetFields().getMap();
     }
@@ -616,11 +609,10 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     @java.lang.Override
-    public /* nullable */
-java.lang.String getFieldsOrDefault(
+
+    public java.lang.String getFieldsOrDefault(
         java.lang.String key,
-        /* nullable */
-java.lang.String defaultValue) {
+        java.lang.String defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, java.lang.String> map =
           internalGetFields().getMap();
@@ -630,6 +622,7 @@ java.lang.String defaultValue) {
      * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     @java.lang.Override
+
     public java.lang.String getFieldsOrThrow(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -640,8 +633,8 @@ java.lang.String defaultValue) {
       }
       return map.get(key);
     }
+
     public Builder clearFields() {
-      bitField0_ = (bitField0_ & ~0x00000002);
       internalGetMutableFields().getMutableMap()
           .clear();
       return this;
@@ -649,6 +642,7 @@ java.lang.String defaultValue) {
     /**
      * <code>map&lt;string, string&gt; fields = 2;</code>
      */
+
     public Builder removeFields(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -661,8 +655,7 @@ java.lang.String defaultValue) {
      */
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, java.lang.String>
-        getMutableFields() {
-      bitField0_ |= 0x00000002;
+    getMutableFields() {
       return internalGetMutableFields().getMutableMap();
     }
     /**
@@ -672,20 +665,22 @@ java.lang.String defaultValue) {
         java.lang.String key,
         java.lang.String value) {
       if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) { throw new NullPointerException("map value"); }
+      if (value == null) {
+  throw new NullPointerException("map value");
+}
+
       internalGetMutableFields().getMutableMap()
           .put(key, value);
-      bitField0_ |= 0x00000002;
       return this;
     }
     /**
      * <code>map&lt;string, string&gt; fields = 2;</code>
      */
+
     public Builder putAllFields(
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableFields().getMutableMap()
           .putAll(values);
-      bitField0_ |= 0x00000002;
       return this;
     }
     @java.lang.Override

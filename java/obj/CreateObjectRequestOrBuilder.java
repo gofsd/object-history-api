@@ -30,14 +30,14 @@ public interface CreateObjectRequestOrBuilder extends
   /**
    * <code>map&lt;string, string&gt; fields = 1;</code>
    */
-  /* nullable */
-java.lang.String getFieldsOrDefault(
+
+  java.lang.String getFieldsOrDefault(
       java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue);
+      java.lang.String defaultValue);
   /**
    * <code>map&lt;string, string&gt; fields = 1;</code>
    */
+
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
 }
