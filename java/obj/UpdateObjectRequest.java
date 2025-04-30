@@ -147,6 +147,17 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int IS_NEW_FIELD_NUMBER = 3;
+  private boolean isNew_;
+  /**
+   * <code>bool is_new = 3;</code>
+   * @return The isNew.
+   */
+  @java.lang.Override
+  public boolean getIsNew() {
+    return isNew_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -170,6 +181,9 @@ private static final long serialVersionUID = 0L;
         internalGetFields(),
         FieldsDefaultEntryHolder.defaultEntry,
         2);
+    if (isNew_ != false) {
+      output.writeBool(3, isNew_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -193,6 +207,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, fields__);
     }
+    if (isNew_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(3, isNew_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -212,6 +230,8 @@ private static final long serialVersionUID = 0L;
         != other.getObjectId()) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
+    if (getIsNew()
+        != other.getIsNew()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -230,6 +250,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
     }
+    hash = (37 * hash) + IS_NEW_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsNew());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -383,6 +406,8 @@ private static final long serialVersionUID = 0L;
       objectId_ = 0L;
 
       internalGetMutableFields().clear();
+      isNew_ = false;
+
       return this;
     }
 
@@ -413,6 +438,7 @@ private static final long serialVersionUID = 0L;
       result.objectId_ = objectId_;
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
+      result.isNew_ = isNew_;
       onBuilt();
       return result;
     }
@@ -466,6 +492,9 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
+      if (other.getIsNew() != false) {
+        setIsNew(other.getIsNew());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -505,6 +534,11 @@ private static final long serialVersionUID = 0L;
                   fields__.getKey(), fields__.getValue());
               break;
             } // case 18
+            case 24: {
+              isNew_ = input.readBool();
+
+              break;
+            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -681,6 +715,37 @@ private static final long serialVersionUID = 0L;
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableFields().getMutableMap()
           .putAll(values);
+      return this;
+    }
+
+    private boolean isNew_ ;
+    /**
+     * <code>bool is_new = 3;</code>
+     * @return The isNew.
+     */
+    @java.lang.Override
+    public boolean getIsNew() {
+      return isNew_;
+    }
+    /**
+     * <code>bool is_new = 3;</code>
+     * @param value The isNew to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsNew(boolean value) {
+      
+      isNew_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool is_new = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsNew() {
+      
+      isNew_ = false;
+      onChanged();
       return this;
     }
     @java.lang.Override

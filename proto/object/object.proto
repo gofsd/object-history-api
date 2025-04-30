@@ -13,10 +13,18 @@ option objc_class_prefix = "OBJ";
 // Object service definition
 service ObjectService {
   rpc CreateObject(CreateObjectRequest) returns (ObjectResponse);
+  rpc CreateObjects(CreateObjectsRequest) returns (ObjectsResponse);
   rpc GetObject(GetObjectRequest) returns (ObjectResponse);
+
+  rpc GetObjects(GetObjectsRequest) returns (ObjectsResponse);
   rpc UpdateObject(UpdateObjectRequest) returns (ObjectResponse);
+
+  rpc UpdateObjects(UpdateObjectsRequest) returns (ObjectsResponse);
   rpc ListObjects(ListObjectsRequest) returns (ListObjectsResponse);
+  rpc DeleteObjectField(DeleteObjectsFieldsRequest) returns (ObjectResponse);
   rpc ExecuteAction(ExecuteActionRequest) returns (ExecuteActionResponse);
+  rpc TransferObjects(TransferObjectsRequest) returns (TransferObjectsResponse);
+  rpc ReceiveObjects(TransferObjectsRequest) returns (ReceiveObjectsResponse);
 }
 
 // Object structure
@@ -29,23 +37,47 @@ message Object {
   map<string, string> fields = 6;
 }
 
-// CRUD Requests
 message CreateObjectRequest {
   map<string, string> fields = 1;
 }
+
 
 message GetObjectRequest {
   uint64 object_id = 1;
 }
 
+message GetObjectsRequest {
+  repeated uint64 object_id = 1;
+}
+
 message UpdateObjectRequest {
   uint64 object_id = 1;
   map<string, string> fields = 2;
+  bool is_new = 3;
+}
+
+
+message UpdateObjectsRequest {
+  repeated uint64 object_id = 1;
+  map<string, string> fields = 2;
+  bool is_new = 3;
+}
+
+message DeleteObjectsFieldsRequest {
+  repeated uint64 object_id = 1;
+  map<string, string> fields = 2;
+  bool is_new = 3;
+  bool is_strict = 4;
 }
 
 // Response with object details
 message ObjectResponse {
   Object object = 1;
+}
+
+// Response with object details
+message ObjectsResponse {
+  repeated Object object = 1;
 }
 
 // Pagination support for listing objects
@@ -71,4 +103,19 @@ message ExecuteActionRequest {
 message ExecuteActionResponse {
   repeated Object objects = 1;
 }
+message TransferObjectsRequest {
+  Object object = 1;
+}
 
+message TransferObjectsResponse {
+  uint64 secret_transfer_id = 1;
+}
+
+message CreateObjectsRequest {
+  map<string, string> fields = 1;
+  uint32 count = 2;
+}
+
+message ReceiveObjectsResponse {
+  repeated Object objects = 1;
+}

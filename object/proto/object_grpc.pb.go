@@ -19,11 +19,17 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ObjectService_CreateObject_FullMethodName  = "/object.ObjectService/CreateObject"
-	ObjectService_GetObject_FullMethodName     = "/object.ObjectService/GetObject"
-	ObjectService_UpdateObject_FullMethodName  = "/object.ObjectService/UpdateObject"
-	ObjectService_ListObjects_FullMethodName   = "/object.ObjectService/ListObjects"
-	ObjectService_ExecuteAction_FullMethodName = "/object.ObjectService/ExecuteAction"
+	ObjectService_CreateObject_FullMethodName      = "/object.ObjectService/CreateObject"
+	ObjectService_CreateObjects_FullMethodName     = "/object.ObjectService/CreateObjects"
+	ObjectService_GetObject_FullMethodName         = "/object.ObjectService/GetObject"
+	ObjectService_GetObjects_FullMethodName        = "/object.ObjectService/GetObjects"
+	ObjectService_UpdateObject_FullMethodName      = "/object.ObjectService/UpdateObject"
+	ObjectService_UpdateObjects_FullMethodName     = "/object.ObjectService/UpdateObjects"
+	ObjectService_ListObjects_FullMethodName       = "/object.ObjectService/ListObjects"
+	ObjectService_DeleteObjectField_FullMethodName = "/object.ObjectService/DeleteObjectField"
+	ObjectService_ExecuteAction_FullMethodName     = "/object.ObjectService/ExecuteAction"
+	ObjectService_TransferObjects_FullMethodName   = "/object.ObjectService/TransferObjects"
+	ObjectService_ReceiveObjects_FullMethodName    = "/object.ObjectService/ReceiveObjects"
 )
 
 // ObjectServiceClient is the client API for ObjectService service.
@@ -33,10 +39,16 @@ const (
 // Object service definition
 type ObjectServiceClient interface {
 	CreateObject(ctx context.Context, in *CreateObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
+	CreateObjects(ctx context.Context, in *CreateObjectsRequest, opts ...grpc.CallOption) (*ObjectsResponse, error)
 	GetObject(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
+	GetObjects(ctx context.Context, in *GetObjectsRequest, opts ...grpc.CallOption) (*ObjectsResponse, error)
 	UpdateObject(ctx context.Context, in *UpdateObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
+	UpdateObjects(ctx context.Context, in *UpdateObjectsRequest, opts ...grpc.CallOption) (*ObjectsResponse, error)
 	ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
+	DeleteObjectField(ctx context.Context, in *DeleteObjectsFieldsRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error)
+	TransferObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*TransferObjectsResponse, error)
+	ReceiveObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error)
 }
 
 type objectServiceClient struct {
@@ -57,10 +69,30 @@ func (c *objectServiceClient) CreateObject(ctx context.Context, in *CreateObject
 	return out, nil
 }
 
+func (c *objectServiceClient) CreateObjects(ctx context.Context, in *CreateObjectsRequest, opts ...grpc.CallOption) (*ObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_CreateObjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *objectServiceClient) GetObject(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ObjectResponse)
 	err := c.cc.Invoke(ctx, ObjectService_GetObject_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *objectServiceClient) GetObjects(ctx context.Context, in *GetObjectsRequest, opts ...grpc.CallOption) (*ObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_GetObjects_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -77,10 +109,30 @@ func (c *objectServiceClient) UpdateObject(ctx context.Context, in *UpdateObject
 	return out, nil
 }
 
+func (c *objectServiceClient) UpdateObjects(ctx context.Context, in *UpdateObjectsRequest, opts ...grpc.CallOption) (*ObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_UpdateObjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *objectServiceClient) ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ListObjectsResponse)
 	err := c.cc.Invoke(ctx, ObjectService_ListObjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *objectServiceClient) DeleteObjectField(ctx context.Context, in *DeleteObjectsFieldsRequest, opts ...grpc.CallOption) (*ObjectResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ObjectResponse)
+	err := c.cc.Invoke(ctx, ObjectService_DeleteObjectField_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -97,6 +149,26 @@ func (c *objectServiceClient) ExecuteAction(ctx context.Context, in *ExecuteActi
 	return out, nil
 }
 
+func (c *objectServiceClient) TransferObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*TransferObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TransferObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_TransferObjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *objectServiceClient) ReceiveObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ReceiveObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_ReceiveObjects_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ObjectServiceServer is the server API for ObjectService service.
 // All implementations must embed UnimplementedObjectServiceServer
 // for forward compatibility.
@@ -104,10 +176,16 @@ func (c *objectServiceClient) ExecuteAction(ctx context.Context, in *ExecuteActi
 // Object service definition
 type ObjectServiceServer interface {
 	CreateObject(context.Context, *CreateObjectRequest) (*ObjectResponse, error)
+	CreateObjects(context.Context, *CreateObjectsRequest) (*ObjectsResponse, error)
 	GetObject(context.Context, *GetObjectRequest) (*ObjectResponse, error)
+	GetObjects(context.Context, *GetObjectsRequest) (*ObjectsResponse, error)
 	UpdateObject(context.Context, *UpdateObjectRequest) (*ObjectResponse, error)
+	UpdateObjects(context.Context, *UpdateObjectsRequest) (*ObjectsResponse, error)
 	ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error)
+	DeleteObjectField(context.Context, *DeleteObjectsFieldsRequest) (*ObjectResponse, error)
 	ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error)
+	TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error)
+	ReceiveObjects(context.Context, *TransferObjectsRequest) (*ReceiveObjectsResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
 }
 
@@ -121,17 +199,35 @@ type UnimplementedObjectServiceServer struct{}
 func (UnimplementedObjectServiceServer) CreateObject(context.Context, *CreateObjectRequest) (*ObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateObject not implemented")
 }
+func (UnimplementedObjectServiceServer) CreateObjects(context.Context, *CreateObjectsRequest) (*ObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateObjects not implemented")
+}
 func (UnimplementedObjectServiceServer) GetObject(context.Context, *GetObjectRequest) (*ObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetObject not implemented")
+}
+func (UnimplementedObjectServiceServer) GetObjects(context.Context, *GetObjectsRequest) (*ObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetObjects not implemented")
 }
 func (UnimplementedObjectServiceServer) UpdateObject(context.Context, *UpdateObjectRequest) (*ObjectResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateObject not implemented")
 }
+func (UnimplementedObjectServiceServer) UpdateObjects(context.Context, *UpdateObjectsRequest) (*ObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateObjects not implemented")
+}
 func (UnimplementedObjectServiceServer) ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListObjects not implemented")
 }
+func (UnimplementedObjectServiceServer) DeleteObjectField(context.Context, *DeleteObjectsFieldsRequest) (*ObjectResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteObjectField not implemented")
+}
 func (UnimplementedObjectServiceServer) ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteAction not implemented")
+}
+func (UnimplementedObjectServiceServer) TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TransferObjects not implemented")
+}
+func (UnimplementedObjectServiceServer) ReceiveObjects(context.Context, *TransferObjectsRequest) (*ReceiveObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ReceiveObjects not implemented")
 }
 func (UnimplementedObjectServiceServer) mustEmbedUnimplementedObjectServiceServer() {}
 func (UnimplementedObjectServiceServer) testEmbeddedByValue()                       {}
@@ -172,6 +268,24 @@ func _ObjectService_CreateObject_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ObjectService_CreateObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateObjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).CreateObjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_CreateObjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).CreateObjects(ctx, req.(*CreateObjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ObjectService_GetObject_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetObjectRequest)
 	if err := dec(in); err != nil {
@@ -186,6 +300,24 @@ func _ObjectService_GetObject_Handler(srv interface{}, ctx context.Context, dec 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ObjectServiceServer).GetObject(ctx, req.(*GetObjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ObjectService_GetObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetObjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).GetObjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_GetObjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).GetObjects(ctx, req.(*GetObjectsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -208,6 +340,24 @@ func _ObjectService_UpdateObject_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ObjectService_UpdateObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateObjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).UpdateObjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_UpdateObjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).UpdateObjects(ctx, req.(*UpdateObjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ObjectService_ListObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListObjectsRequest)
 	if err := dec(in); err != nil {
@@ -222,6 +372,24 @@ func _ObjectService_ListObjects_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ObjectServiceServer).ListObjects(ctx, req.(*ListObjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ObjectService_DeleteObjectField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteObjectsFieldsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).DeleteObjectField(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_DeleteObjectField_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).DeleteObjectField(ctx, req.(*DeleteObjectsFieldsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -244,6 +412,42 @@ func _ObjectService_ExecuteAction_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ObjectService_TransferObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransferObjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).TransferObjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_TransferObjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).TransferObjects(ctx, req.(*TransferObjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ObjectService_ReceiveObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TransferObjectsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).ReceiveObjects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_ReceiveObjects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).ReceiveObjects(ctx, req.(*TransferObjectsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ObjectService_ServiceDesc is the grpc.ServiceDesc for ObjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -256,20 +460,44 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ObjectService_CreateObject_Handler,
 		},
 		{
+			MethodName: "CreateObjects",
+			Handler:    _ObjectService_CreateObjects_Handler,
+		},
+		{
 			MethodName: "GetObject",
 			Handler:    _ObjectService_GetObject_Handler,
+		},
+		{
+			MethodName: "GetObjects",
+			Handler:    _ObjectService_GetObjects_Handler,
 		},
 		{
 			MethodName: "UpdateObject",
 			Handler:    _ObjectService_UpdateObject_Handler,
 		},
 		{
+			MethodName: "UpdateObjects",
+			Handler:    _ObjectService_UpdateObjects_Handler,
+		},
+		{
 			MethodName: "ListObjects",
 			Handler:    _ObjectService_ListObjects_Handler,
 		},
 		{
+			MethodName: "DeleteObjectField",
+			Handler:    _ObjectService_DeleteObjectField_Handler,
+		},
+		{
 			MethodName: "ExecuteAction",
 			Handler:    _ObjectService_ExecuteAction_Handler,
+		},
+		{
+			MethodName: "TransferObjects",
+			Handler:    _ObjectService_TransferObjects_Handler,
+		},
+		{
+			MethodName: "ReceiveObjects",
+			Handler:    _ObjectService_ReceiveObjects_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -46,4 +46,10 @@ public interface UpdateObjectRequestOrBuilder extends
 
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
+
+  /**
+   * <code>bool is_new = 3;</code>
+   * @return The isNew.
+   */
+  boolean getIsNew();
 }
