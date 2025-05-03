@@ -69,17 +69,14 @@ message DeleteObjectsFieldsRequest {
   bool is_strict = 4;
 }
 
-// Response with object details
 message ObjectResponse {
   Object object = 1;
 }
 
-// Response with object details
 message ObjectsResponse {
   repeated Object object = 1;
 }
 
-// Pagination support for listing objects
 message ListObjectsRequest {
   int32 page = 1;
   int32 page_size = 2;
@@ -119,7 +116,6 @@ message ReceiveObjectsResponse {
   repeated Object objects = 1;
 }
 
-// Subscription for user objects
 message SubscriptionRequest {
   uint64 user_id = 1;
 }
