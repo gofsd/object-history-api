@@ -15,16 +15,15 @@ service ObjectService {
   rpc CreateObject(CreateObjectRequest) returns (ObjectResponse);
   rpc CreateObjects(CreateObjectsRequest) returns (ObjectsResponse);
   rpc GetObject(GetObjectRequest) returns (ObjectResponse);
-
   rpc GetObjects(GetObjectsRequest) returns (ObjectsResponse);
   rpc UpdateObject(UpdateObjectRequest) returns (ObjectResponse);
-
   rpc UpdateObjects(UpdateObjectsRequest) returns (ObjectsResponse);
   rpc ListObjects(ListObjectsRequest) returns (ListObjectsResponse);
   rpc DeleteObjectField(DeleteObjectsFieldsRequest) returns (ObjectResponse);
   rpc ExecuteAction(ExecuteActionRequest) returns (ExecuteActionResponse);
   rpc TransferObjects(TransferObjectsRequest) returns (TransferObjectsResponse);
-  rpc ReceiveObjects(TransferObjectsRequest) returns (ReceiveObjectsResponse);
+  rpc ReceiveObjects(TransferObjectsResponse) returns (ReceiveObjectsResponse);
+  rpc SubscribeToUserObjects(SubscriptionRequest) returns (stream SubscriptionResponse);
 }
 
 // Object structure
@@ -117,5 +116,14 @@ message CreateObjectsRequest {
 }
 
 message ReceiveObjectsResponse {
+  repeated Object objects = 1;
+}
+
+// Subscription for user objects
+message SubscriptionRequest {
+  uint64 user_id = 1;
+}
+
+message SubscriptionResponse {
   repeated Object objects = 1;
 }

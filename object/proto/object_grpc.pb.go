@@ -19,17 +19,18 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	ObjectService_CreateObject_FullMethodName      = "/object.ObjectService/CreateObject"
-	ObjectService_CreateObjects_FullMethodName     = "/object.ObjectService/CreateObjects"
-	ObjectService_GetObject_FullMethodName         = "/object.ObjectService/GetObject"
-	ObjectService_GetObjects_FullMethodName        = "/object.ObjectService/GetObjects"
-	ObjectService_UpdateObject_FullMethodName      = "/object.ObjectService/UpdateObject"
-	ObjectService_UpdateObjects_FullMethodName     = "/object.ObjectService/UpdateObjects"
-	ObjectService_ListObjects_FullMethodName       = "/object.ObjectService/ListObjects"
-	ObjectService_DeleteObjectField_FullMethodName = "/object.ObjectService/DeleteObjectField"
-	ObjectService_ExecuteAction_FullMethodName     = "/object.ObjectService/ExecuteAction"
-	ObjectService_TransferObjects_FullMethodName   = "/object.ObjectService/TransferObjects"
-	ObjectService_ReceiveObjects_FullMethodName    = "/object.ObjectService/ReceiveObjects"
+	ObjectService_CreateObject_FullMethodName           = "/object.ObjectService/CreateObject"
+	ObjectService_CreateObjects_FullMethodName          = "/object.ObjectService/CreateObjects"
+	ObjectService_GetObject_FullMethodName              = "/object.ObjectService/GetObject"
+	ObjectService_GetObjects_FullMethodName             = "/object.ObjectService/GetObjects"
+	ObjectService_UpdateObject_FullMethodName           = "/object.ObjectService/UpdateObject"
+	ObjectService_UpdateObjects_FullMethodName          = "/object.ObjectService/UpdateObjects"
+	ObjectService_ListObjects_FullMethodName            = "/object.ObjectService/ListObjects"
+	ObjectService_DeleteObjectField_FullMethodName      = "/object.ObjectService/DeleteObjectField"
+	ObjectService_ExecuteAction_FullMethodName          = "/object.ObjectService/ExecuteAction"
+	ObjectService_TransferObjects_FullMethodName        = "/object.ObjectService/TransferObjects"
+	ObjectService_ReceiveObjects_FullMethodName         = "/object.ObjectService/ReceiveObjects"
+	ObjectService_SubscribeToUserObjects_FullMethodName = "/object.ObjectService/SubscribeToUserObjects"
 )
 
 // ObjectServiceClient is the client API for ObjectService service.
@@ -48,7 +49,8 @@ type ObjectServiceClient interface {
 	DeleteObjectField(ctx context.Context, in *DeleteObjectsFieldsRequest, opts ...grpc.CallOption) (*ObjectResponse, error)
 	ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error)
 	TransferObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*TransferObjectsResponse, error)
-	ReceiveObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error)
+	ReceiveObjects(ctx context.Context, in *TransferObjectsResponse, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error)
+	SubscribeToUserObjects(ctx context.Context, in *SubscriptionRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscriptionResponse], error)
 }
 
 type objectServiceClient struct {
@@ -159,7 +161,7 @@ func (c *objectServiceClient) TransferObjects(ctx context.Context, in *TransferO
 	return out, nil
 }
 
-func (c *objectServiceClient) ReceiveObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error) {
+func (c *objectServiceClient) ReceiveObjects(ctx context.Context, in *TransferObjectsResponse, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ReceiveObjectsResponse)
 	err := c.cc.Invoke(ctx, ObjectService_ReceiveObjects_FullMethodName, in, out, cOpts...)
@@ -168,6 +170,25 @@ func (c *objectServiceClient) ReceiveObjects(ctx context.Context, in *TransferOb
 	}
 	return out, nil
 }
+
+func (c *objectServiceClient) SubscribeToUserObjects(ctx context.Context, in *SubscriptionRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscriptionResponse], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &ObjectService_ServiceDesc.Streams[0], ObjectService_SubscribeToUserObjects_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[SubscriptionRequest, SubscriptionResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ObjectService_SubscribeToUserObjectsClient = grpc.ServerStreamingClient[SubscriptionResponse]
 
 // ObjectServiceServer is the server API for ObjectService service.
 // All implementations must embed UnimplementedObjectServiceServer
@@ -185,7 +206,8 @@ type ObjectServiceServer interface {
 	DeleteObjectField(context.Context, *DeleteObjectsFieldsRequest) (*ObjectResponse, error)
 	ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error)
 	TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error)
-	ReceiveObjects(context.Context, *TransferObjectsRequest) (*ReceiveObjectsResponse, error)
+	ReceiveObjects(context.Context, *TransferObjectsResponse) (*ReceiveObjectsResponse, error)
+	SubscribeToUserObjects(*SubscriptionRequest, grpc.ServerStreamingServer[SubscriptionResponse]) error
 	mustEmbedUnimplementedObjectServiceServer()
 }
 
@@ -226,8 +248,11 @@ func (UnimplementedObjectServiceServer) ExecuteAction(context.Context, *ExecuteA
 func (UnimplementedObjectServiceServer) TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferObjects not implemented")
 }
-func (UnimplementedObjectServiceServer) ReceiveObjects(context.Context, *TransferObjectsRequest) (*ReceiveObjectsResponse, error) {
+func (UnimplementedObjectServiceServer) ReceiveObjects(context.Context, *TransferObjectsResponse) (*ReceiveObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReceiveObjects not implemented")
+}
+func (UnimplementedObjectServiceServer) SubscribeToUserObjects(*SubscriptionRequest, grpc.ServerStreamingServer[SubscriptionResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeToUserObjects not implemented")
 }
 func (UnimplementedObjectServiceServer) mustEmbedUnimplementedObjectServiceServer() {}
 func (UnimplementedObjectServiceServer) testEmbeddedByValue()                       {}
@@ -431,7 +456,7 @@ func _ObjectService_TransferObjects_Handler(srv interface{}, ctx context.Context
 }
 
 func _ObjectService_ReceiveObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TransferObjectsRequest)
+	in := new(TransferObjectsResponse)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -443,10 +468,21 @@ func _ObjectService_ReceiveObjects_Handler(srv interface{}, ctx context.Context,
 		FullMethod: ObjectService_ReceiveObjects_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ObjectServiceServer).ReceiveObjects(ctx, req.(*TransferObjectsRequest))
+		return srv.(ObjectServiceServer).ReceiveObjects(ctx, req.(*TransferObjectsResponse))
 	}
 	return interceptor(ctx, in, info, handler)
 }
+
+func _ObjectService_SubscribeToUserObjects_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscriptionRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ObjectServiceServer).SubscribeToUserObjects(m, &grpc.GenericServerStream[SubscriptionRequest, SubscriptionResponse]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ObjectService_SubscribeToUserObjectsServer = grpc.ServerStreamingServer[SubscriptionResponse]
 
 // ObjectService_ServiceDesc is the grpc.ServiceDesc for ObjectService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -500,6 +536,12 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ObjectService_ReceiveObjects_Handler,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "SubscribeToUserObjects",
+			Handler:       _ObjectService_SubscribeToUserObjects_Handler,
+			ServerStreams: true,
+		},
+	},
 	Metadata: "proto/object/object.proto",
 }

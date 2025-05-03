@@ -328,27 +328,27 @@ public final class ObjectServiceGrpc {
     return getTransferObjectsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.TransferObjectsRequest,
+  private static volatile io.grpc.MethodDescriptor<obj.TransferObjectsResponse,
       obj.ReceiveObjectsResponse> getReceiveObjectsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ReceiveObjects",
-      requestType = obj.TransferObjectsRequest.class,
+      requestType = obj.TransferObjectsResponse.class,
       responseType = obj.ReceiveObjectsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.TransferObjectsRequest,
+  public static io.grpc.MethodDescriptor<obj.TransferObjectsResponse,
       obj.ReceiveObjectsResponse> getReceiveObjectsMethod() {
-    io.grpc.MethodDescriptor<obj.TransferObjectsRequest, obj.ReceiveObjectsResponse> getReceiveObjectsMethod;
+    io.grpc.MethodDescriptor<obj.TransferObjectsResponse, obj.ReceiveObjectsResponse> getReceiveObjectsMethod;
     if ((getReceiveObjectsMethod = ObjectServiceGrpc.getReceiveObjectsMethod) == null) {
       synchronized (ObjectServiceGrpc.class) {
         if ((getReceiveObjectsMethod = ObjectServiceGrpc.getReceiveObjectsMethod) == null) {
           ObjectServiceGrpc.getReceiveObjectsMethod = getReceiveObjectsMethod =
-              io.grpc.MethodDescriptor.<obj.TransferObjectsRequest, obj.ReceiveObjectsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<obj.TransferObjectsResponse, obj.ReceiveObjectsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ReceiveObjects"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.TransferObjectsRequest.getDefaultInstance()))
+                  obj.TransferObjectsResponse.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   obj.ReceiveObjectsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("ReceiveObjects"))
@@ -357,6 +357,37 @@ public final class ObjectServiceGrpc {
       }
     }
     return getReceiveObjectsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<obj.SubscriptionRequest,
+      obj.SubscriptionResponse> getSubscribeToUserObjectsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SubscribeToUserObjects",
+      requestType = obj.SubscriptionRequest.class,
+      responseType = obj.SubscriptionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<obj.SubscriptionRequest,
+      obj.SubscriptionResponse> getSubscribeToUserObjectsMethod() {
+    io.grpc.MethodDescriptor<obj.SubscriptionRequest, obj.SubscriptionResponse> getSubscribeToUserObjectsMethod;
+    if ((getSubscribeToUserObjectsMethod = ObjectServiceGrpc.getSubscribeToUserObjectsMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getSubscribeToUserObjectsMethod = ObjectServiceGrpc.getSubscribeToUserObjectsMethod) == null) {
+          ObjectServiceGrpc.getSubscribeToUserObjectsMethod = getSubscribeToUserObjectsMethod =
+              io.grpc.MethodDescriptor.<obj.SubscriptionRequest, obj.SubscriptionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeToUserObjects"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.SubscriptionRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.SubscriptionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("SubscribeToUserObjects"))
+              .build();
+        }
+      }
+    }
+    return getSubscribeToUserObjectsMethod;
   }
 
   /**
@@ -497,9 +528,16 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    default void receiveObjects(obj.TransferObjectsRequest request,
+    default void receiveObjects(obj.TransferObjectsResponse request,
         io.grpc.stub.StreamObserver<obj.ReceiveObjectsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getReceiveObjectsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void subscribeToUserObjects(obj.SubscriptionRequest request,
+        io.grpc.stub.StreamObserver<obj.SubscriptionResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeToUserObjectsMethod(), responseObserver);
     }
   }
 
@@ -618,10 +656,18 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public void receiveObjects(obj.TransferObjectsRequest request,
+    public void receiveObjects(obj.TransferObjectsResponse request,
         io.grpc.stub.StreamObserver<obj.ReceiveObjectsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getReceiveObjectsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void subscribeToUserObjects(obj.SubscriptionRequest request,
+        io.grpc.stub.StreamObserver<obj.SubscriptionResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeToUserObjectsMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -716,9 +762,18 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public obj.ReceiveObjectsResponse receiveObjects(obj.TransferObjectsRequest request) {
+    public obj.ReceiveObjectsResponse receiveObjects(obj.TransferObjectsResponse request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getReceiveObjectsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, obj.SubscriptionResponse>
+        subscribeToUserObjects(obj.SubscriptionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getSubscribeToUserObjectsMethod(), getCallOptions(), request);
     }
   }
 
@@ -813,9 +868,17 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public obj.ReceiveObjectsResponse receiveObjects(obj.TransferObjectsRequest request) {
+    public obj.ReceiveObjectsResponse receiveObjects(obj.TransferObjectsResponse request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getReceiveObjectsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<obj.SubscriptionResponse> subscribeToUserObjects(
+        obj.SubscriptionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSubscribeToUserObjectsMethod(), getCallOptions(), request);
     }
   }
 
@@ -921,7 +984,7 @@ public final class ObjectServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<obj.ReceiveObjectsResponse> receiveObjects(
-        obj.TransferObjectsRequest request) {
+        obj.TransferObjectsResponse request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getReceiveObjectsMethod(), getCallOptions()), request);
     }
@@ -938,6 +1001,7 @@ public final class ObjectServiceGrpc {
   private static final int METHODID_EXECUTE_ACTION = 8;
   private static final int METHODID_TRANSFER_OBJECTS = 9;
   private static final int METHODID_RECEIVE_OBJECTS = 10;
+  private static final int METHODID_SUBSCRIBE_TO_USER_OBJECTS = 11;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -997,8 +1061,12 @@ public final class ObjectServiceGrpc {
               (io.grpc.stub.StreamObserver<obj.TransferObjectsResponse>) responseObserver);
           break;
         case METHODID_RECEIVE_OBJECTS:
-          serviceImpl.receiveObjects((obj.TransferObjectsRequest) request,
+          serviceImpl.receiveObjects((obj.TransferObjectsResponse) request,
               (io.grpc.stub.StreamObserver<obj.ReceiveObjectsResponse>) responseObserver);
+          break;
+        case METHODID_SUBSCRIBE_TO_USER_OBJECTS:
+          serviceImpl.subscribeToUserObjects((obj.SubscriptionRequest) request,
+              (io.grpc.stub.StreamObserver<obj.SubscriptionResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1092,9 +1160,16 @@ public final class ObjectServiceGrpc {
           getReceiveObjectsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              obj.TransferObjectsRequest,
+              obj.TransferObjectsResponse,
               obj.ReceiveObjectsResponse>(
                 service, METHODID_RECEIVE_OBJECTS)))
+        .addMethod(
+          getSubscribeToUserObjectsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              obj.SubscriptionRequest,
+              obj.SubscriptionResponse>(
+                service, METHODID_SUBSCRIBE_TO_USER_OBJECTS)))
         .build();
   }
 
@@ -1154,6 +1229,7 @@ public final class ObjectServiceGrpc {
               .addMethod(getExecuteActionMethod())
               .addMethod(getTransferObjectsMethod())
               .addMethod(getReceiveObjectsMethod())
+              .addMethod(getSubscribeToUserObjectsMethod())
               .build();
         }
       }
