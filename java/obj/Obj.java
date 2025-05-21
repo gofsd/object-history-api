@@ -80,11 +80,6 @@ public final class Obj {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_object_ObjectResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_object_ObjectsResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_object_ObjectsResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_object_ListObjectsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -135,6 +130,16 @@ public final class Obj {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_object_CreateObjectsRequest_FieldsEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_CreateObjectsUniqueRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_object_CreateObjectsUniqueRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_UpdateObjectsUniqueRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_object_UpdateObjectsUniqueRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_object_ReceiveObjectsResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -149,6 +154,16 @@ public final class Obj {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_object_SubscriptionResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_ObjectsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_object_ObjectsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_Objects_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_object_Objects_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -182,55 +197,65 @@ public final class Obj {
       "sRequest.FieldsEntry\022\016\n\006is_new\030\003 \001(\010\022\021\n\t" +
       "is_strict\030\004 \001(\010\032-\n\013FieldsEntry\022\013\n\003key\030\001 " +
       "\001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"0\n\016ObjectResponse" +
-      "\022\036\n\006object\030\001 \001(\0132\016.object.Object\"1\n\017Obje" +
-      "ctsResponse\022\036\n\006object\030\001 \003(\0132\016.object.Obj" +
-      "ect\"\234\001\n\022ListObjectsRequest\022\014\n\004page\030\001 \001(\005" +
-      "\022\021\n\tpage_size\030\002 \001(\005\0226\n\006fields\030\003 \003(\0132&.ob" +
-      "ject.ListObjectsRequest.FieldsEntry\032-\n\013F" +
-      "ieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\002" +
-      "8\001\"\201\001\n\023ListObjectsResponse\022\037\n\007objects\030\001 " +
-      "\003(\0132\016.object.Object\022\023\n\013total_count\030\002 \001(\003" +
-      "\022\014\n\004page\030\003 \001(\005\022\021\n\tpage_size\030\004 \001(\005\022\023\n\013tot" +
-      "al_pages\030\005 \001(\005\"\222\001\n\024ExecuteActionRequest\022" +
-      "\021\n\taction_id\030\001 \001(\004\0228\n\006fields\030\002 \003(\0132(.obj" +
-      "ect.ExecuteActionRequest.FieldsEntry\032-\n\013" +
-      "FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:" +
-      "\0028\001\"8\n\025ExecuteActionResponse\022\037\n\007objects\030" +
-      "\001 \003(\0132\016.object.Object\"8\n\026TransferObjects" +
-      "Request\022\036\n\006object\030\001 \001(\0132\016.object.Object\"" +
-      "5\n\027TransferObjectsResponse\022\032\n\022secret_tra" +
-      "nsfer_id\030\001 \001(\004\"\216\001\n\024CreateObjectsRequest\022" +
-      "8\n\006fields\030\001 \003(\0132(.object.CreateObjectsRe" +
-      "quest.FieldsEntry\022\r\n\005count\030\002 \001(\r\032-\n\013Fiel" +
-      "dsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"" +
-      "9\n\026ReceiveObjectsResponse\022\037\n\007objects\030\001 \003" +
-      "(\0132\016.object.Object\"&\n\023SubscriptionReques" +
-      "t\022\017\n\007user_id\030\001 \001(\004\"7\n\024SubscriptionRespon" +
-      "se\022\037\n\007objects\030\001 \003(\0132\016.object.Object2\217\007\n\r" +
-      "ObjectService\022C\n\014CreateObject\022\033.object.C" +
-      "reateObjectRequest\032\026.object.ObjectRespon" +
-      "se\022F\n\rCreateObjects\022\034.object.CreateObjec" +
-      "tsRequest\032\027.object.ObjectsResponse\022=\n\tGe" +
-      "tObject\022\030.object.GetObjectRequest\032\026.obje" +
-      "ct.ObjectResponse\022@\n\nGetObjects\022\031.object" +
-      ".GetObjectsRequest\032\027.object.ObjectsRespo" +
-      "nse\022C\n\014UpdateObject\022\033.object.UpdateObjec" +
-      "tRequest\032\026.object.ObjectResponse\022F\n\rUpda" +
-      "teObjects\022\034.object.UpdateObjectsRequest\032" +
-      "\027.object.ObjectsResponse\022F\n\013ListObjects\022" +
-      "\032.object.ListObjectsRequest\032\033.object.Lis" +
-      "tObjectsResponse\022O\n\021DeleteObjectField\022\"." +
-      "object.DeleteObjectsFieldsRequest\032\026.obje" +
-      "ct.ObjectResponse\022L\n\rExecuteAction\022\034.obj" +
-      "ect.ExecuteActionRequest\032\035.object.Execut" +
-      "eActionResponse\022R\n\017TransferObjects\022\036.obj" +
-      "ect.TransferObjectsRequest\032\037.object.Tran" +
-      "sferObjectsResponse\022Q\n\016ReceiveObjects\022\037." +
-      "object.TransferObjectsResponse\032\036.object." +
-      "ReceiveObjectsResponse\022U\n\026SubscribeToUse" +
-      "rObjects\022\033.object.SubscriptionRequest\032\034." +
-      "object.SubscriptionResponse0\001B \n\003objB\003Ob" +
-      "jP\001Z\014object/proto\242\002\003OBJb\006proto3"
+      "\022\036\n\006object\030\001 \001(\0132\016.object.Object\"\234\001\n\022Lis" +
+      "tObjectsRequest\022\014\n\004page\030\001 \001(\005\022\021\n\tpage_si" +
+      "ze\030\002 \001(\005\0226\n\006fields\030\003 \003(\0132&.object.ListOb" +
+      "jectsRequest.FieldsEntry\032-\n\013FieldsEntry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\202\001\n\023List" +
+      "ObjectsResponse\022 \n\007objects\030\001 \001(\0132\017.objec" +
+      "t.Objects\022\023\n\013total_count\030\002 \001(\003\022\014\n\004page\030\003" +
+      " \001(\005\022\021\n\tpage_size\030\004 \001(\005\022\023\n\013total_pages\030\005" +
+      " \001(\005\"\222\001\n\024ExecuteActionRequest\022\021\n\taction_" +
+      "id\030\001 \001(\004\0228\n\006fields\030\002 \003(\0132(.object.Execut" +
+      "eActionRequest.FieldsEntry\032-\n\013FieldsEntr" +
+      "y\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"8\n\025Exe" +
+      "cuteActionResponse\022\037\n\007objects\030\001 \003(\0132\016.ob" +
+      "ject.Object\"8\n\026TransferObjectsRequest\022\036\n" +
+      "\006object\030\001 \001(\0132\016.object.Object\"5\n\027Transfe" +
+      "rObjectsResponse\022\032\n\022secret_transfer_id\030\001" +
+      " \001(\004\"\216\001\n\024CreateObjectsRequest\0228\n\006fields\030" +
+      "\001 \003(\0132(.object.CreateObjectsRequest.Fiel" +
+      "dsEntry\022\r\n\005count\030\002 \001(\r\032-\n\013FieldsEntry\022\013\n" +
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"=\n\032CreateO" +
+      "bjectsUniqueRequest\022\037\n\007objects\030\001 \003(\0132\016.o" +
+      "bject.Object\"=\n\032UpdateObjectsUniqueReque" +
+      "st\022\037\n\007objects\030\001 \003(\0132\016.object.Object\"9\n\026R" +
+      "eceiveObjectsResponse\022\037\n\007objects\030\001 \003(\0132\016" +
+      ".object.Object\"&\n\023SubscriptionRequest\022\017\n" +
+      "\007user_id\030\001 \001(\004\"7\n\024SubscriptionResponse\022\037" +
+      "\n\007objects\030\001 \003(\0132\016.object.Object\"2\n\017Objec" +
+      "tsResponse\022\037\n\007objects\030\001 \003(\0132\016.object.Obj" +
+      "ect\")\n\007Objects\022\036\n\006object\030\001 \003(\0132\016.object." +
+      "Object2\360\010\n\rObjectService\022C\n\014CreateObject" +
+      "\022\033.object.CreateObjectRequest\032\026.object.O" +
+      "bjectResponse\022F\n\rCreateObjects\022\034.object." +
+      "CreateObjectsRequest\032\027.object.ObjectsRes" +
+      "ponse\022=\n\tGetObject\022\030.object.GetObjectReq" +
+      "uest\032\026.object.ObjectResponse\022@\n\nGetObjec" +
+      "ts\022\031.object.GetObjectsRequest\032\027.object.O" +
+      "bjectsResponse\022C\n\014UpdateObject\022\033.object." +
+      "UpdateObjectRequest\032\026.object.ObjectRespo" +
+      "nse\022F\n\rUpdateObjects\022\034.object.UpdateObje" +
+      "ctsRequest\032\027.object.ObjectsResponse\022F\n\013L" +
+      "istObjects\022\032.object.ListObjectsRequest\032\033" +
+      ".object.ListObjectsResponse\022O\n\021DeleteObj" +
+      "ectField\022\".object.DeleteObjectsFieldsReq" +
+      "uest\032\026.object.ObjectResponse\022L\n\rExecuteA" +
+      "ction\022\034.object.ExecuteActionRequest\032\035.ob" +
+      "ject.ExecuteActionResponse\022R\n\017TransferOb" +
+      "jects\022\036.object.TransferObjectsRequest\032\037." +
+      "object.TransferObjectsResponse\022Q\n\016Receiv" +
+      "eObjects\022\037.object.TransferObjectsRespons" +
+      "e\032\036.object.ReceiveObjectsResponse\022U\n\026Sub" +
+      "scribeToUserObjects\022\033.object.Subscriptio" +
+      "nRequest\032\034.object.SubscriptionResponse0\001" +
+      "\0227\n\021SubscribeToMyself\022\016.object.Object\032\016." +
+      "object.Object(\0010\001\022R\n\023CreateObjectsUnique" +
+      "\022\".object.CreateObjectsUniqueRequest\032\027.o" +
+      "bject.ObjectsResponse\022R\n\023UpdateObjectsUn" +
+      "ique\022\".object.UpdateObjectsUniqueRequest" +
+      "\032\027.object.ObjectsResponseB \n\003objB\003ObjP\001Z" +
+      "\014object/proto\242\002\003OBJb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -314,14 +339,8 @@ public final class Obj {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ObjectResponse_descriptor,
         new java.lang.String[] { "Object", });
-    internal_static_object_ObjectsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_object_ObjectsResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_object_ObjectsResponse_descriptor,
-        new java.lang.String[] { "Object", });
     internal_static_object_ListObjectsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_object_ListObjectsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ListObjectsRequest_descriptor,
@@ -333,13 +352,13 @@ public final class Obj {
         internal_static_object_ListObjectsRequest_FieldsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_object_ListObjectsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_object_ListObjectsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ListObjectsResponse_descriptor,
         new java.lang.String[] { "Objects", "TotalCount", "Page", "PageSize", "TotalPages", });
     internal_static_object_ExecuteActionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_object_ExecuteActionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ExecuteActionRequest_descriptor,
@@ -351,25 +370,25 @@ public final class Obj {
         internal_static_object_ExecuteActionRequest_FieldsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_object_ExecuteActionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_object_ExecuteActionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ExecuteActionResponse_descriptor,
         new java.lang.String[] { "Objects", });
     internal_static_object_TransferObjectsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_object_TransferObjectsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_TransferObjectsRequest_descriptor,
         new java.lang.String[] { "Object", });
     internal_static_object_TransferObjectsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_object_TransferObjectsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_TransferObjectsResponse_descriptor,
         new java.lang.String[] { "SecretTransferId", });
     internal_static_object_CreateObjectsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_object_CreateObjectsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_CreateObjectsRequest_descriptor,
@@ -380,24 +399,48 @@ public final class Obj {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_CreateObjectsRequest_FieldsEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_object_ReceiveObjectsResponse_descriptor =
+    internal_static_object_CreateObjectsUniqueRequest_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_object_CreateObjectsUniqueRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_object_CreateObjectsUniqueRequest_descriptor,
+        new java.lang.String[] { "Objects", });
+    internal_static_object_UpdateObjectsUniqueRequest_descriptor =
       getDescriptor().getMessageTypes().get(16);
+    internal_static_object_UpdateObjectsUniqueRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_object_UpdateObjectsUniqueRequest_descriptor,
+        new java.lang.String[] { "Objects", });
+    internal_static_object_ReceiveObjectsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(17);
     internal_static_object_ReceiveObjectsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ReceiveObjectsResponse_descriptor,
         new java.lang.String[] { "Objects", });
     internal_static_object_SubscriptionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
+      getDescriptor().getMessageTypes().get(18);
     internal_static_object_SubscriptionRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_SubscriptionRequest_descriptor,
         new java.lang.String[] { "UserId", });
     internal_static_object_SubscriptionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(18);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_object_SubscriptionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_SubscriptionResponse_descriptor,
         new java.lang.String[] { "Objects", });
+    internal_static_object_ObjectsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_object_ObjectsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_object_ObjectsResponse_descriptor,
+        new java.lang.String[] { "Objects", });
+    internal_static_object_Objects_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_object_Objects_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_object_Objects_descriptor,
+        new java.lang.String[] { "Object", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

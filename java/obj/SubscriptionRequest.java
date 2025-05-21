@@ -4,10 +4,6 @@
 package obj;
 
 /**
- * <pre>
- * Subscription for user objects
- * </pre>
- *
  * Protobuf type {@code object.SubscriptionRequest}
  */
 public final class SubscriptionRequest extends
@@ -215,10 +211,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Subscription for user objects
-   * </pre>
-   *
    * Protobuf type {@code object.SubscriptionRequest}
    */
   public static final class Builder extends

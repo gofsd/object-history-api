@@ -3,8 +3,6 @@ syntax = "proto3";
 package object;
 
 option go_package = "object/proto";
-
-
 option java_multiple_files = true;
 option java_package = "obj";
 option java_outer_classname = "Obj";
@@ -24,9 +22,11 @@ service ObjectService {
   rpc TransferObjects(TransferObjectsRequest) returns (TransferObjectsResponse);
   rpc ReceiveObjects(TransferObjectsResponse) returns (ReceiveObjectsResponse);
   rpc SubscribeToUserObjects(SubscriptionRequest) returns (stream SubscriptionResponse);
+  rpc SubscribeToMyself(stream Object) returns (stream Object);
+  rpc CreateObjectsUnique(CreateObjectsUniqueRequest) returns (ObjectsResponse);
+  rpc UpdateObjectsUnique(UpdateObjectsUniqueRequest) returns (ObjectsResponse);
 }
 
-// Object structure
 message Object {
   uint64 id = 1;
   uint64 creator_id = 2;
@@ -39,7 +39,6 @@ message Object {
 message CreateObjectRequest {
   map<string, string> fields = 1;
 }
-
 
 message GetObjectRequest {
   uint64 object_id = 1;
@@ -54,7 +53,6 @@ message UpdateObjectRequest {
   map<string, string> fields = 2;
   bool is_new = 3;
 }
-
 
 message UpdateObjectsRequest {
   repeated uint64 object_id = 1;
@@ -73,10 +71,6 @@ message ObjectResponse {
   Object object = 1;
 }
 
-message ObjectsResponse {
-  repeated Object object = 1;
-}
-
 message ListObjectsRequest {
   int32 page = 1;
   int32 page_size = 2;
@@ -84,7 +78,7 @@ message ListObjectsRequest {
 }
 
 message ListObjectsResponse {
-  repeated Object objects = 1;
+  Objects objects = 1;
   int64 total_count = 2;
   int32 page = 3;
   int32 page_size = 4;
@@ -99,6 +93,7 @@ message ExecuteActionRequest {
 message ExecuteActionResponse {
   repeated Object objects = 1;
 }
+
 message TransferObjectsRequest {
   Object object = 1;
 }
@@ -112,6 +107,14 @@ message CreateObjectsRequest {
   uint32 count = 2;
 }
 
+message CreateObjectsUniqueRequest {
+  repeated Object objects = 1;
+}
+
+message UpdateObjectsUniqueRequest {
+  repeated Object objects = 1;
+}
+
 message ReceiveObjectsResponse {
   repeated Object objects = 1;
 }
@@ -122,4 +125,13 @@ message SubscriptionRequest {
 
 message SubscriptionResponse {
   repeated Object objects = 1;
+}
+
+// Use plural for repeated message responses
+message ObjectsResponse {
+  repeated Object objects = 1;
+}
+
+message Objects {
+  repeated Object object = 1;
 }

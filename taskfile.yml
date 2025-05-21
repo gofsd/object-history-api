@@ -36,11 +36,21 @@ tasks:
           --go-grpc_out={{.GO_OUT_DIR}} \
           {{.PROTO_DIR}}/object/object.proto
 
+  go:cmd:
+    desc: Generate command Go gRPC code
+    cmds:
+      - |
+        protoc \
+          --go_out={{.GO_OUT_DIR}} \
+          --go-grpc_out={{.GO_OUT_DIR}} \
+          {{.PROTO_DIR}}/cmd/cmd.proto
+
   go:all:
     desc: Generate go code for auth and object services 
     cmds:
       - task: go:auth
       - task: go:object
+      - task: go:cmd
 
 
   java:auth:
@@ -65,11 +75,22 @@ tasks:
           --grpc-java_out=java \
           {{.PROTO_DIR}}/object/object.proto
 
+  java:cmd:
+    desc: "java"
+    cmds:
+      - |
+        protoc \
+          --proto_path=./proto/cmd/ \
+          --java_out=java  \
+          --grpc-java_out=java \
+          {{.PROTO_DIR}}/cmd/cmd.proto
+
   java:all:
     desc: Generate java code for auth and object services 
     cmds:
       - task: java:auth
       - task: java:object
+      - task: java:cmd
 
   patch:
     desc: "Patch Go module version and push to GitHub"

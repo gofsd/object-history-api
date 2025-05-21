@@ -3,8 +3,8 @@
 
 package obj;
 
-public interface ObjectsResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:object.ObjectsResponse)
+public interface CreateObjectsUniqueRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:object.CreateObjectsUniqueRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**

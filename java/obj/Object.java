@@ -4,10 +4,6 @@
 package obj;
 
 /**
- * <pre>
- * Object structure
- * </pre>
- *
  * Protobuf type {@code object.Object}
  */
 public final class Object extends
@@ -422,10 +418,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Object structure
-   * </pre>
-   *
    * Protobuf type {@code object.Object}
    */
   public static final class Builder extends

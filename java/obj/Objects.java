@@ -4,25 +4,26 @@
 package obj;
 
 /**
- * Protobuf type {@code object.ObjectResponse}
+ * Protobuf type {@code object.Objects}
  */
-public final class ObjectResponse extends
+public final class Objects extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:object.ObjectResponse)
-    ObjectResponseOrBuilder {
+    // @@protoc_insertion_point(message_implements:object.Objects)
+    ObjectsOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ObjectResponse.newBuilder() to construct.
-  private ObjectResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use Objects.newBuilder() to construct.
+  private Objects(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ObjectResponse() {
+  private Objects() {
+    object_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ObjectResponse();
+    return new Objects();
   }
 
   @java.lang.Override
@@ -32,41 +33,55 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return obj.Obj.internal_static_object_ObjectResponse_descriptor;
+    return obj.Obj.internal_static_object_Objects_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return obj.Obj.internal_static_object_ObjectResponse_fieldAccessorTable
+    return obj.Obj.internal_static_object_Objects_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            obj.ObjectResponse.class, obj.ObjectResponse.Builder.class);
+            obj.Objects.class, obj.Objects.Builder.class);
   }
 
   public static final int OBJECT_FIELD_NUMBER = 1;
-  private obj.Object object_;
+  private java.util.List<obj.Object> object_;
   /**
-   * <code>.object.Object object = 1;</code>
-   * @return Whether the object field is set.
+   * <code>repeated .object.Object object = 1;</code>
    */
   @java.lang.Override
-  public boolean hasObject() {
-    return object_ != null;
+  public java.util.List<obj.Object> getObjectList() {
+    return object_;
   }
   /**
-   * <code>.object.Object object = 1;</code>
-   * @return The object.
+   * <code>repeated .object.Object object = 1;</code>
    */
   @java.lang.Override
-  public obj.Object getObject() {
-    return object_ == null ? obj.Object.getDefaultInstance() : object_;
+  public java.util.List<? extends obj.ObjectOrBuilder> 
+      getObjectOrBuilderList() {
+    return object_;
   }
   /**
-   * <code>.object.Object object = 1;</code>
+   * <code>repeated .object.Object object = 1;</code>
    */
   @java.lang.Override
-  public obj.ObjectOrBuilder getObjectOrBuilder() {
-    return getObject();
+  public int getObjectCount() {
+    return object_.size();
+  }
+  /**
+   * <code>repeated .object.Object object = 1;</code>
+   */
+  @java.lang.Override
+  public obj.Object getObject(int index) {
+    return object_.get(index);
+  }
+  /**
+   * <code>repeated .object.Object object = 1;</code>
+   */
+  @java.lang.Override
+  public obj.ObjectOrBuilder getObjectOrBuilder(
+      int index) {
+    return object_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -83,8 +98,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (object_ != null) {
-      output.writeMessage(1, getObject());
+    for (int i = 0; i < object_.size(); i++) {
+      output.writeMessage(1, object_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -95,9 +110,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (object_ != null) {
+    for (int i = 0; i < object_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getObject());
+        .computeMessageSize(1, object_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -109,16 +124,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof obj.ObjectResponse)) {
+    if (!(obj instanceof obj.Objects)) {
       return super.equals(obj);
     }
-    obj.ObjectResponse other = (obj.ObjectResponse) obj;
+    obj.Objects other = (obj.Objects) obj;
 
-    if (hasObject() != other.hasObject()) return false;
-    if (hasObject()) {
-      if (!getObject()
-          .equals(other.getObject())) return false;
-    }
+    if (!getObjectList()
+        .equals(other.getObjectList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -130,78 +142,78 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasObject()) {
+    if (getObjectCount() > 0) {
       hash = (37 * hash) + OBJECT_FIELD_NUMBER;
-      hash = (53 * hash) + getObject().hashCode();
+      hash = (53 * hash) + getObjectList().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.ObjectResponse parseFrom(byte[] data)
+  public static obj.Objects parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.ObjectResponse parseFrom(java.io.InputStream input)
+  public static obj.Objects parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static obj.ObjectResponse parseDelimitedFrom(java.io.InputStream input)
+  public static obj.Objects parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static obj.ObjectResponse parseDelimitedFrom(
+  public static obj.Objects parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static obj.ObjectResponse parseFrom(
+  public static obj.Objects parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -214,7 +226,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(obj.ObjectResponse prototype) {
+  public static Builder newBuilder(obj.Objects prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -230,26 +242,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code object.ObjectResponse}
+   * Protobuf type {@code object.Objects}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:object.ObjectResponse)
-      obj.ObjectResponseOrBuilder {
+      // @@protoc_insertion_point(builder_implements:object.Objects)
+      obj.ObjectsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return obj.Obj.internal_static_object_ObjectResponse_descriptor;
+      return obj.Obj.internal_static_object_Objects_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return obj.Obj.internal_static_object_ObjectResponse_fieldAccessorTable
+      return obj.Obj.internal_static_object_Objects_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              obj.ObjectResponse.class, obj.ObjectResponse.Builder.class);
+              obj.Objects.class, obj.Objects.Builder.class);
     }
 
-    // Construct using obj.ObjectResponse.newBuilder()
+    // Construct using obj.Objects.newBuilder()
     private Builder() {
 
     }
@@ -263,28 +275,29 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       if (objectBuilder_ == null) {
-        object_ = null;
+        object_ = java.util.Collections.emptyList();
       } else {
         object_ = null;
-        objectBuilder_ = null;
+        objectBuilder_.clear();
       }
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return obj.Obj.internal_static_object_ObjectResponse_descriptor;
+      return obj.Obj.internal_static_object_Objects_descriptor;
     }
 
     @java.lang.Override
-    public obj.ObjectResponse getDefaultInstanceForType() {
-      return obj.ObjectResponse.getDefaultInstance();
+    public obj.Objects getDefaultInstanceForType() {
+      return obj.Objects.getDefaultInstance();
     }
 
     @java.lang.Override
-    public obj.ObjectResponse build() {
-      obj.ObjectResponse result = buildPartial();
+    public obj.Objects build() {
+      obj.Objects result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -292,9 +305,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public obj.ObjectResponse buildPartial() {
-      obj.ObjectResponse result = new obj.ObjectResponse(this);
+    public obj.Objects buildPartial() {
+      obj.Objects result = new obj.Objects(this);
+      int from_bitField0_ = bitField0_;
       if (objectBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          object_ = java.util.Collections.unmodifiableList(object_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
         result.object_ = object_;
       } else {
         result.object_ = objectBuilder_.build();
@@ -337,18 +355,41 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof obj.ObjectResponse) {
-        return mergeFrom((obj.ObjectResponse)other);
+      if (other instanceof obj.Objects) {
+        return mergeFrom((obj.Objects)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(obj.ObjectResponse other) {
-      if (other == obj.ObjectResponse.getDefaultInstance()) return this;
-      if (other.hasObject()) {
-        mergeObject(other.getObject());
+    public Builder mergeFrom(obj.Objects other) {
+      if (other == obj.Objects.getDefaultInstance()) return this;
+      if (objectBuilder_ == null) {
+        if (!other.object_.isEmpty()) {
+          if (object_.isEmpty()) {
+            object_ = other.object_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureObjectIsMutable();
+            object_.addAll(other.object_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.object_.isEmpty()) {
+          if (objectBuilder_.isEmpty()) {
+            objectBuilder_.dispose();
+            objectBuilder_ = null;
+            object_ = other.object_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            objectBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getObjectFieldBuilder() : null;
+          } else {
+            objectBuilder_.addAllMessages(other.object_);
+          }
+        }
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -377,10 +418,16 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              input.readMessage(
-                  getObjectFieldBuilder().getBuilder(),
-                  extensionRegistry);
-
+              obj.Object m =
+                  input.readMessage(
+                      obj.Object.parser(),
+                      extensionRegistry);
+              if (objectBuilder_ == null) {
+                ensureObjectIsMutable();
+                object_.add(m);
+              } else {
+                objectBuilder_.addMessage(m);
+              }
               break;
             } // case 10
             default: {
@@ -398,119 +445,241 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
+    private int bitField0_;
 
-    private obj.Object object_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> objectBuilder_;
-    /**
-     * <code>.object.Object object = 1;</code>
-     * @return Whether the object field is set.
-     */
-    public boolean hasObject() {
-      return objectBuilder_ != null || object_ != null;
+    private java.util.List<obj.Object> object_ =
+      java.util.Collections.emptyList();
+    private void ensureObjectIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        object_ = new java.util.ArrayList<obj.Object>(object_);
+        bitField0_ |= 0x00000001;
+       }
     }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> objectBuilder_;
+
     /**
-     * <code>.object.Object object = 1;</code>
-     * @return The object.
+     * <code>repeated .object.Object object = 1;</code>
      */
-    public obj.Object getObject() {
+    public java.util.List<obj.Object> getObjectList() {
       if (objectBuilder_ == null) {
-        return object_ == null ? obj.Object.getDefaultInstance() : object_;
+        return java.util.Collections.unmodifiableList(object_);
       } else {
-        return objectBuilder_.getMessage();
+        return objectBuilder_.getMessageList();
       }
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
      */
-    public Builder setObject(obj.Object value) {
+    public int getObjectCount() {
+      if (objectBuilder_ == null) {
+        return object_.size();
+      } else {
+        return objectBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public obj.Object getObject(int index) {
+      if (objectBuilder_ == null) {
+        return object_.get(index);
+      } else {
+        return objectBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public Builder setObject(
+        int index, obj.Object value) {
       if (objectBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        object_ = value;
+        ensureObjectIsMutable();
+        object_.set(index, value);
         onChanged();
       } else {
-        objectBuilder_.setMessage(value);
+        objectBuilder_.setMessage(index, value);
       }
-
       return this;
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
      */
     public Builder setObject(
+        int index, obj.Object.Builder builderForValue) {
+      if (objectBuilder_ == null) {
+        ensureObjectIsMutable();
+        object_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        objectBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public Builder addObject(obj.Object value) {
+      if (objectBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureObjectIsMutable();
+        object_.add(value);
+        onChanged();
+      } else {
+        objectBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public Builder addObject(
+        int index, obj.Object value) {
+      if (objectBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureObjectIsMutable();
+        object_.add(index, value);
+        onChanged();
+      } else {
+        objectBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public Builder addObject(
         obj.Object.Builder builderForValue) {
       if (objectBuilder_ == null) {
-        object_ = builderForValue.build();
+        ensureObjectIsMutable();
+        object_.add(builderForValue.build());
         onChanged();
       } else {
-        objectBuilder_.setMessage(builderForValue.build());
+        objectBuilder_.addMessage(builderForValue.build());
       }
-
       return this;
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
      */
-    public Builder mergeObject(obj.Object value) {
+    public Builder addObject(
+        int index, obj.Object.Builder builderForValue) {
       if (objectBuilder_ == null) {
-        if (object_ != null) {
-          object_ =
-            obj.Object.newBuilder(object_).mergeFrom(value).buildPartial();
-        } else {
-          object_ = value;
-        }
+        ensureObjectIsMutable();
+        object_.add(index, builderForValue.build());
         onChanged();
       } else {
-        objectBuilder_.mergeFrom(value);
+        objectBuilder_.addMessage(index, builderForValue.build());
       }
-
       return this;
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public Builder addAllObject(
+        java.lang.Iterable<? extends obj.Object> values) {
+      if (objectBuilder_ == null) {
+        ensureObjectIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, object_);
+        onChanged();
+      } else {
+        objectBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
      */
     public Builder clearObject() {
       if (objectBuilder_ == null) {
-        object_ = null;
+        object_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        object_ = null;
-        objectBuilder_ = null;
+        objectBuilder_.clear();
       }
-
       return this;
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
      */
-    public obj.Object.Builder getObjectBuilder() {
-      
-      onChanged();
-      return getObjectFieldBuilder().getBuilder();
+    public Builder removeObject(int index) {
+      if (objectBuilder_ == null) {
+        ensureObjectIsMutable();
+        object_.remove(index);
+        onChanged();
+      } else {
+        objectBuilder_.remove(index);
+      }
+      return this;
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
      */
-    public obj.ObjectOrBuilder getObjectOrBuilder() {
-      if (objectBuilder_ != null) {
-        return objectBuilder_.getMessageOrBuilder();
-      } else {
-        return object_ == null ?
-            obj.Object.getDefaultInstance() : object_;
+    public obj.Object.Builder getObjectBuilder(
+        int index) {
+      return getObjectFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public obj.ObjectOrBuilder getObjectOrBuilder(
+        int index) {
+      if (objectBuilder_ == null) {
+        return object_.get(index);  } else {
+        return objectBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>.object.Object object = 1;</code>
+     * <code>repeated .object.Object object = 1;</code>
      */
-    private com.google.protobuf.SingleFieldBuilderV3<
+    public java.util.List<? extends obj.ObjectOrBuilder> 
+         getObjectOrBuilderList() {
+      if (objectBuilder_ != null) {
+        return objectBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(object_);
+      }
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public obj.Object.Builder addObjectBuilder() {
+      return getObjectFieldBuilder().addBuilder(
+          obj.Object.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public obj.Object.Builder addObjectBuilder(
+        int index) {
+      return getObjectFieldBuilder().addBuilder(
+          index, obj.Object.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .object.Object object = 1;</code>
+     */
+    public java.util.List<obj.Object.Builder> 
+         getObjectBuilderList() {
+      return getObjectFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
         obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> 
         getObjectFieldBuilder() {
       if (objectBuilder_ == null) {
-        objectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        objectBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             obj.Object, obj.Object.Builder, obj.ObjectOrBuilder>(
-                getObject(),
+                object_,
+                ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
         object_ = null;
@@ -530,23 +699,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:object.ObjectResponse)
+    // @@protoc_insertion_point(builder_scope:object.Objects)
   }
 
-  // @@protoc_insertion_point(class_scope:object.ObjectResponse)
-  private static final obj.ObjectResponse DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:object.Objects)
+  private static final obj.Objects DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new obj.ObjectResponse();
+    DEFAULT_INSTANCE = new obj.Objects();
   }
 
-  public static obj.ObjectResponse getDefaultInstance() {
+  public static obj.Objects getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ObjectResponse>
-      PARSER = new com.google.protobuf.AbstractParser<ObjectResponse>() {
+  private static final com.google.protobuf.Parser<Objects>
+      PARSER = new com.google.protobuf.AbstractParser<Objects>() {
     @java.lang.Override
-    public ObjectResponse parsePartialFrom(
+    public Objects parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -565,17 +734,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<ObjectResponse> parser() {
+  public static com.google.protobuf.Parser<Objects> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ObjectResponse> getParserForType() {
+  public com.google.protobuf.Parser<Objects> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public obj.ObjectResponse getDefaultInstanceForType() {
+  public obj.Objects getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

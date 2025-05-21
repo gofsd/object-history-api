@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ListObjectsResponse() {
-    objects_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -45,43 +44,29 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int OBJECTS_FIELD_NUMBER = 1;
-  private java.util.List<obj.Object> objects_;
+  private obj.Objects objects_;
   /**
-   * <code>repeated .object.Object objects = 1;</code>
+   * <code>.object.Objects objects = 1;</code>
+   * @return Whether the objects field is set.
    */
   @java.lang.Override
-  public java.util.List<obj.Object> getObjectsList() {
-    return objects_;
+  public boolean hasObjects() {
+    return objects_ != null;
   }
   /**
-   * <code>repeated .object.Object objects = 1;</code>
+   * <code>.object.Objects objects = 1;</code>
+   * @return The objects.
    */
   @java.lang.Override
-  public java.util.List<? extends obj.ObjectOrBuilder> 
-      getObjectsOrBuilderList() {
-    return objects_;
+  public obj.Objects getObjects() {
+    return objects_ == null ? obj.Objects.getDefaultInstance() : objects_;
   }
   /**
-   * <code>repeated .object.Object objects = 1;</code>
+   * <code>.object.Objects objects = 1;</code>
    */
   @java.lang.Override
-  public int getObjectsCount() {
-    return objects_.size();
-  }
-  /**
-   * <code>repeated .object.Object objects = 1;</code>
-   */
-  @java.lang.Override
-  public obj.Object getObjects(int index) {
-    return objects_.get(index);
-  }
-  /**
-   * <code>repeated .object.Object objects = 1;</code>
-   */
-  @java.lang.Override
-  public obj.ObjectOrBuilder getObjectsOrBuilder(
-      int index) {
-    return objects_.get(index);
+  public obj.ObjectsOrBuilder getObjectsOrBuilder() {
+    return getObjects();
   }
 
   public static final int TOTAL_COUNT_FIELD_NUMBER = 2;
@@ -142,8 +127,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < objects_.size(); i++) {
-      output.writeMessage(1, objects_.get(i));
+    if (objects_ != null) {
+      output.writeMessage(1, getObjects());
     }
     if (totalCount_ != 0L) {
       output.writeInt64(2, totalCount_);
@@ -166,9 +151,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < objects_.size(); i++) {
+    if (objects_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, objects_.get(i));
+        .computeMessageSize(1, getObjects());
     }
     if (totalCount_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -201,8 +186,11 @@ private static final long serialVersionUID = 0L;
     }
     obj.ListObjectsResponse other = (obj.ListObjectsResponse) obj;
 
-    if (!getObjectsList()
-        .equals(other.getObjectsList())) return false;
+    if (hasObjects() != other.hasObjects()) return false;
+    if (hasObjects()) {
+      if (!getObjects()
+          .equals(other.getObjects())) return false;
+    }
     if (getTotalCount()
         != other.getTotalCount()) return false;
     if (getPage()
@@ -222,9 +210,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getObjectsCount() > 0) {
+    if (hasObjects()) {
       hash = (37 * hash) + OBJECTS_FIELD_NUMBER;
-      hash = (53 * hash) + getObjectsList().hashCode();
+      hash = (53 * hash) + getObjects().hashCode();
     }
     hash = (37 * hash) + TOTAL_COUNT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
@@ -364,12 +352,11 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       if (objectsBuilder_ == null) {
-        objects_ = java.util.Collections.emptyList();
+        objects_ = null;
       } else {
         objects_ = null;
-        objectsBuilder_.clear();
+        objectsBuilder_ = null;
       }
-      bitField0_ = (bitField0_ & ~0x00000001);
       totalCount_ = 0L;
 
       page_ = 0;
@@ -404,12 +391,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public obj.ListObjectsResponse buildPartial() {
       obj.ListObjectsResponse result = new obj.ListObjectsResponse(this);
-      int from_bitField0_ = bitField0_;
       if (objectsBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          objects_ = java.util.Collections.unmodifiableList(objects_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
         result.objects_ = objects_;
       } else {
         result.objects_ = objectsBuilder_.build();
@@ -466,31 +448,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(obj.ListObjectsResponse other) {
       if (other == obj.ListObjectsResponse.getDefaultInstance()) return this;
-      if (objectsBuilder_ == null) {
-        if (!other.objects_.isEmpty()) {
-          if (objects_.isEmpty()) {
-            objects_ = other.objects_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureObjectsIsMutable();
-            objects_.addAll(other.objects_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.objects_.isEmpty()) {
-          if (objectsBuilder_.isEmpty()) {
-            objectsBuilder_.dispose();
-            objectsBuilder_ = null;
-            objects_ = other.objects_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            objectsBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getObjectsFieldBuilder() : null;
-          } else {
-            objectsBuilder_.addAllMessages(other.objects_);
-          }
-        }
+      if (other.hasObjects()) {
+        mergeObjects(other.getObjects());
       }
       if (other.getTotalCount() != 0L) {
         setTotalCount(other.getTotalCount());
@@ -531,16 +490,10 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              obj.Object m =
-                  input.readMessage(
-                      obj.Object.parser(),
-                      extensionRegistry);
-              if (objectsBuilder_ == null) {
-                ensureObjectsIsMutable();
-                objects_.add(m);
-              } else {
-                objectsBuilder_.addMessage(m);
-              }
+              input.readMessage(
+                  getObjectsFieldBuilder().getBuilder(),
+                  extensionRegistry);
+
               break;
             } // case 10
             case 16: {
@@ -578,241 +531,119 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
-    private java.util.List<obj.Object> objects_ =
-      java.util.Collections.emptyList();
-    private void ensureObjectsIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        objects_ = new java.util.ArrayList<obj.Object>(objects_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> objectsBuilder_;
-
+    private obj.Objects objects_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        obj.Objects, obj.Objects.Builder, obj.ObjectsOrBuilder> objectsBuilder_;
     /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
+     * @return Whether the objects field is set.
      */
-    public java.util.List<obj.Object> getObjectsList() {
+    public boolean hasObjects() {
+      return objectsBuilder_ != null || objects_ != null;
+    }
+    /**
+     * <code>.object.Objects objects = 1;</code>
+     * @return The objects.
+     */
+    public obj.Objects getObjects() {
       if (objectsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(objects_);
+        return objects_ == null ? obj.Objects.getDefaultInstance() : objects_;
       } else {
-        return objectsBuilder_.getMessageList();
+        return objectsBuilder_.getMessage();
       }
     }
     /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
      */
-    public int getObjectsCount() {
+    public Builder setObjects(obj.Objects value) {
       if (objectsBuilder_ == null) {
-        return objects_.size();
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        objects_ = value;
+        onChanged();
       } else {
-        return objectsBuilder_.getCount();
+        objectsBuilder_.setMessage(value);
       }
+
+      return this;
     }
     /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public obj.Object getObjects(int index) {
-      if (objectsBuilder_ == null) {
-        return objects_.get(index);
-      } else {
-        return objectsBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
      */
     public Builder setObjects(
-        int index, obj.Object value) {
+        obj.Objects.Builder builderForValue) {
       if (objectsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
+        objects_ = builderForValue.build();
+        onChanged();
+      } else {
+        objectsBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.object.Objects objects = 1;</code>
+     */
+    public Builder mergeObjects(obj.Objects value) {
+      if (objectsBuilder_ == null) {
+        if (objects_ != null) {
+          objects_ =
+            obj.Objects.newBuilder(objects_).mergeFrom(value).buildPartial();
+        } else {
+          objects_ = value;
         }
-        ensureObjectsIsMutable();
-        objects_.set(index, value);
         onChanged();
       } else {
-        objectsBuilder_.setMessage(index, value);
+        objectsBuilder_.mergeFrom(value);
       }
+
       return this;
     }
     /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public Builder setObjects(
-        int index, obj.Object.Builder builderForValue) {
-      if (objectsBuilder_ == null) {
-        ensureObjectsIsMutable();
-        objects_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        objectsBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public Builder addObjects(obj.Object value) {
-      if (objectsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureObjectsIsMutable();
-        objects_.add(value);
-        onChanged();
-      } else {
-        objectsBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public Builder addObjects(
-        int index, obj.Object value) {
-      if (objectsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureObjectsIsMutable();
-        objects_.add(index, value);
-        onChanged();
-      } else {
-        objectsBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public Builder addObjects(
-        obj.Object.Builder builderForValue) {
-      if (objectsBuilder_ == null) {
-        ensureObjectsIsMutable();
-        objects_.add(builderForValue.build());
-        onChanged();
-      } else {
-        objectsBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public Builder addObjects(
-        int index, obj.Object.Builder builderForValue) {
-      if (objectsBuilder_ == null) {
-        ensureObjectsIsMutable();
-        objects_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        objectsBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public Builder addAllObjects(
-        java.lang.Iterable<? extends obj.Object> values) {
-      if (objectsBuilder_ == null) {
-        ensureObjectsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, objects_);
-        onChanged();
-      } else {
-        objectsBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
      */
     public Builder clearObjects() {
       if (objectsBuilder_ == null) {
-        objects_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
+        objects_ = null;
         onChanged();
       } else {
-        objectsBuilder_.clear();
+        objects_ = null;
+        objectsBuilder_ = null;
       }
+
       return this;
     }
     /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
      */
-    public Builder removeObjects(int index) {
-      if (objectsBuilder_ == null) {
-        ensureObjectsIsMutable();
-        objects_.remove(index);
-        onChanged();
-      } else {
-        objectsBuilder_.remove(index);
-      }
-      return this;
+    public obj.Objects.Builder getObjectsBuilder() {
+      
+      onChanged();
+      return getObjectsFieldBuilder().getBuilder();
     }
     /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
      */
-    public obj.Object.Builder getObjectsBuilder(
-        int index) {
-      return getObjectsFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public obj.ObjectOrBuilder getObjectsOrBuilder(
-        int index) {
-      if (objectsBuilder_ == null) {
-        return objects_.get(index);  } else {
-        return objectsBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public java.util.List<? extends obj.ObjectOrBuilder> 
-         getObjectsOrBuilderList() {
+    public obj.ObjectsOrBuilder getObjectsOrBuilder() {
       if (objectsBuilder_ != null) {
-        return objectsBuilder_.getMessageOrBuilderList();
+        return objectsBuilder_.getMessageOrBuilder();
       } else {
-        return java.util.Collections.unmodifiableList(objects_);
+        return objects_ == null ?
+            obj.Objects.getDefaultInstance() : objects_;
       }
     }
     /**
-     * <code>repeated .object.Object objects = 1;</code>
+     * <code>.object.Objects objects = 1;</code>
      */
-    public obj.Object.Builder addObjectsBuilder() {
-      return getObjectsFieldBuilder().addBuilder(
-          obj.Object.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public obj.Object.Builder addObjectsBuilder(
-        int index) {
-      return getObjectsFieldBuilder().addBuilder(
-          index, obj.Object.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .object.Object objects = 1;</code>
-     */
-    public java.util.List<obj.Object.Builder> 
-         getObjectsBuilderList() {
-      return getObjectsFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        obj.Object, obj.Object.Builder, obj.ObjectOrBuilder> 
+    private com.google.protobuf.SingleFieldBuilderV3<
+        obj.Objects, obj.Objects.Builder, obj.ObjectsOrBuilder> 
         getObjectsFieldBuilder() {
       if (objectsBuilder_ == null) {
-        objectsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            obj.Object, obj.Object.Builder, obj.ObjectOrBuilder>(
-                objects_,
-                ((bitField0_ & 0x00000001) != 0),
+        objectsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            obj.Objects, obj.Objects.Builder, obj.ObjectsOrBuilder>(
+                getObjects(),
                 getParentForChildren(),
                 isClean());
         objects_ = null;

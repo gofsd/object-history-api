@@ -8,28 +8,19 @@ public interface ListObjectsResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .object.Object objects = 1;</code>
+   * <code>.object.Objects objects = 1;</code>
+   * @return Whether the objects field is set.
    */
-  java.util.List<obj.Object> 
-      getObjectsList();
+  boolean hasObjects();
   /**
-   * <code>repeated .object.Object objects = 1;</code>
+   * <code>.object.Objects objects = 1;</code>
+   * @return The objects.
    */
-  obj.Object getObjects(int index);
+  obj.Objects getObjects();
   /**
-   * <code>repeated .object.Object objects = 1;</code>
+   * <code>.object.Objects objects = 1;</code>
    */
-  int getObjectsCount();
-  /**
-   * <code>repeated .object.Object objects = 1;</code>
-   */
-  java.util.List<? extends obj.ObjectOrBuilder> 
-      getObjectsOrBuilderList();
-  /**
-   * <code>repeated .object.Object objects = 1;</code>
-   */
-  obj.ObjectOrBuilder getObjectsOrBuilder(
-      int index);
+  obj.ObjectsOrBuilder getObjectsOrBuilder();
 
   /**
    * <code>int64 total_count = 2;</code>
