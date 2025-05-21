@@ -78,7 +78,7 @@ message ListObjectsRequest {
 }
 
 message ListObjectsResponse {
-  Objects objects = 1;
+  repeated Object objects = 1;
   int64 total_count = 2;
   int32 page = 3;
   int32 page_size = 4;
