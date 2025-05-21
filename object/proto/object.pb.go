@@ -531,7 +531,7 @@ func (x *ListObjectsRequest) GetFields() map[string]string {
 
 type ListObjectsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Objects       *Objects               `protobuf:"bytes,1,opt,name=objects,proto3" json:"objects,omitempty"`
+	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
 	TotalCount    int64                  `protobuf:"varint,2,opt,name=total_count,json=totalCount,proto3" json:"total_count,omitempty"`
 	Page          int32                  `protobuf:"varint,3,opt,name=page,proto3" json:"page,omitempty"`
 	PageSize      int32                  `protobuf:"varint,4,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
@@ -570,7 +570,7 @@ func (*ListObjectsResponse) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *ListObjectsResponse) GetObjects() *Objects {
+func (x *ListObjectsResponse) GetObjects() []*Object {
 	if x != nil {
 		return x.Objects
 	}
@@ -1206,9 +1206,9 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x06fields\x18\x03 \x03(\v2&.object.ListObjectsRequest.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb3\x01\n" +
-	"\x13ListObjectsResponse\x12)\n" +
-	"\aobjects\x18\x01 \x01(\v2\x0f.object.ObjectsR\aobjects\x12\x1f\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb2\x01\n" +
+	"\x13ListObjectsResponse\x12(\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\x12\x1f\n" +
 	"\vtotal_count\x18\x02 \x01(\x03R\n" +
 	"totalCount\x12\x12\n" +
 	"\x04page\x18\x03 \x01(\x05R\x04page\x12\x1b\n" +
@@ -1319,7 +1319,7 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	26, // 4: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
 	0,  // 5: object.ObjectResponse.object:type_name -> object.Object
 	27, // 6: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
-	21, // 7: object.ListObjectsResponse.objects:type_name -> object.Objects
+	0,  // 7: object.ListObjectsResponse.objects:type_name -> object.Object
 	28, // 8: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
 	0,  // 9: object.ExecuteActionResponse.objects:type_name -> object.Object
 	0,  // 10: object.TransferObjectsRequest.object:type_name -> object.Object

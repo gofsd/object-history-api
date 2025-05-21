@@ -91,10 +91,17 @@ tasks:
       - task: java:auth
       - task: java:object
       - task: java:cmd
+  
+  all:
+    desc: Generate all languages and services
+    cmds:
+      - task: go:all
+      - task: java:all
 
   patch:
     desc: "Patch Go module version and push to GitHub"
     cmds:
+      - task all
       - "echo \"Current version: {{.CURRENT_VERSION}}\""
       - "echo \"Next version: v{{.NEXT_VERSION}}\""
       - git tag {{.NEXT_VERSION}}
