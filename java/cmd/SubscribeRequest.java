@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * ------------- LOG STREAMING -------------
+ * </pre>
+ *
  * Protobuf type {@code command.SubscribeRequest}
  */
 public final class SubscribeRequest extends
@@ -324,6 +328,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------- LOG STREAMING -------------
+   * </pre>
+   *
    * Protobuf type {@code command.SubscribeRequest}
    */
   public static final class Builder extends

@@ -32,19 +32,11 @@ public interface ParameterFieldOrBuilder extends
       getLabelBytes();
 
   /**
-   * <pre>
-   * string, int, boolean, select, multiline, etc.
-   * </pre>
-   *
    * <code>string type = 3;</code>
    * @return The type.
    */
   java.lang.String getType();
   /**
-   * <pre>
-   * string, int, boolean, select, multiline, etc.
-   * </pre>
-   *
    * <code>string type = 3;</code>
    * @return The bytes for type.
    */
@@ -76,39 +68,23 @@ public interface ParameterFieldOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @return A list containing the options.
    */
   java.util.List<java.lang.String>
       getOptionsList();
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @return The count of options.
    */
   int getOptionsCount();
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @param index The index of the element to return.
    * @return The options at the given index.
    */
   java.lang.String getOptions(int index);
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @param index The index of the value to return.
    * @return The bytes of the options at the given index.

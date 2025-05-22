@@ -8,8 +8,8 @@ option java_multiple_files = true;
 option java_package = "cmd";
 option java_outer_classname = "Command";
 option objc_class_prefix = "CMD";
-// ---------------- ENUMS ----------------
 
+// ---------------- ENUMS ----------------
 enum ExecutionStatus {
   UNKNOWN = 0;
   PENDING = 1;
@@ -18,7 +18,8 @@ enum ExecutionStatus {
   FAILED = 4;
   CANCELLED = 5;
   CANCELLED_BY_TIMEOUT = 6;
-  NOT_PERMITTED = 7; // Fixed typo
+  NOT_PERMITTED = 7;
+  EXECUTORS_NOT_FOUND = 8;
 }
 
 enum UserRole {
@@ -28,7 +29,6 @@ enum UserRole {
 }
 
 // ------------- CORE MESSAGES -------------
-
 message Group {
   int64 group_id = 1;
   string name = 2;
@@ -46,6 +46,16 @@ message UserGroupRequest {
 }
 
 // ------------- COMMAND TEMPLATES -------------
+message ParameterField {
+  string name = 1;
+  string label = 2;
+  string type = 3;
+  string default_value = 4;
+  string description = 5;
+  repeated string options = 6;
+  bool required = 7;
+  bool multiline = 8;
+}
 
 message CommandTemplate {
   int64 command_template_id = 1;
@@ -55,17 +65,6 @@ message CommandTemplate {
   repeated string sensitive_keys = 5;
   repeated string tags = 6;
   string description = 7;
-}
-
-message ParameterField {
-  string name = 1;
-  string label = 2;
-  string type = 3; // string, int, boolean, select, multiline, etc.
-  string default_value = 4;
-  string description = 5;
-  repeated string options = 6; // for select/radio
-  bool required = 7;
-  bool multiline = 8;
 }
 
 message AddCommandTemplateRequest {
@@ -82,7 +81,6 @@ message DeleteCommandTemplateRequest {
 }
 
 // ------------- COMMAND EXECUTION -------------
-
 message ExecuteRequest {
   int64 command_template_id = 1;
   map<string, string> override_parameters = 2;
@@ -114,7 +112,6 @@ message DryRunResult {
 }
 
 // ------------- LOG STREAMING -------------
-
 message SubscribeRequest {
   int64 user_id = 1;
   repeated int64 execution_ids = 2;
@@ -132,10 +129,33 @@ message CommandLog {
   string result_code = 8;
 }
 
+// ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
+message UpdateExecutionStatusRequest {
+  int64 execution_id = 1;
+  ExecutionStatus status = 2;
+  string result_code = 3;
+}
+
+message UpdateExecutionStatusResponse {
+  bool success = 1;
+}
+
+message SubscribeCommandEventsRequest {
+  int64 user_id = 1;
+  repeated int64 group_ids = 2;
+}
+
+message CommandEvent {
+  int64 execution_id = 1;
+  int64 command_template_id = 2;
+  int64 user_id = 3;
+  string command = 4;
+  map<string, string> effective_parameters = 5;
+  int64 timestamp = 6;
+}
+
 // ------------- SERVICE -------------
-
 service CommandService {
-
   // Group management
   rpc CreateGroup(Group) returns (Group);
   rpc DeleteGroup(GroupRequest) returns (Group);
@@ -152,6 +172,12 @@ service CommandService {
   rpc Retry(RetryRequest) returns (ExecuteResponse);
   rpc DryRun(ExecuteRequest) returns (DryRunResult);
 
+  // Update execution status
+  rpc UpdateExecutionStatus(UpdateExecutionStatusRequest) returns (UpdateExecutionStatusResponse);
+
   // Streaming logs
   rpc SubscribeLogs(SubscribeRequest) returns (stream CommandLog);
+
+  // Event listener for executors
+  rpc SubscribeCommandEvents(SubscribeCommandEventsRequest) returns (stream CommandEvent);
 }

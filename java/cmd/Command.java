@@ -30,15 +30,15 @@ public final class Command {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_command_UserGroupRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CommandTemplate_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CommandTemplate_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_command_ParameterField_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_command_ParameterField_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_command_CommandTemplate_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_command_CommandTemplate_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_command_AddCommandTemplateRequest_descriptor;
   static final 
@@ -99,6 +99,31 @@ public final class Command {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_command_CommandLog_EffectiveParametersEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_command_UpdateExecutionStatusRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_command_UpdateExecutionStatusRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_command_UpdateExecutionStatusResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_command_UpdateExecutionStatusResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_command_SubscribeCommandEventsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_command_SubscribeCommandEventsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_command_CommandEvent_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_command_CommandEvent_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_command_CommandEvent_EffectiveParametersEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_command_CommandEvent_EffectiveParametersEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -113,15 +138,15 @@ public final class Command {
       "(\t\" \n\014GroupRequest\022\020\n\010group_id\030\001 \001(\003\"V\n\020" +
       "UserGroupRequest\022\017\n\007user_id\030\001 \001(\003\022\020\n\010gro" +
       "up_id\030\002 \001(\003\022\037\n\004role\030\003 \001(\0162\021.command.User" +
-      "Role\"\265\001\n\017CommandTemplate\022\033\n\023command_temp" +
+      "Role\"\235\001\n\016ParameterField\022\014\n\004name\030\001 \001(\t\022\r\n" +
+      "\005label\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\025\n\rdefault_va" +
+      "lue\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\022\017\n\007option" +
+      "s\030\006 \003(\t\022\020\n\010required\030\007 \001(\010\022\021\n\tmultiline\030\010" +
+      " \001(\010\"\265\001\n\017CommandTemplate\022\033\n\023command_temp" +
       "late_id\030\001 \001(\003\022\020\n\010group_id\030\002 \001(\003\022\017\n\007comma" +
       "nd\030\003 \001(\t\022\'\n\006fields\030\004 \003(\0132\027.command.Param" +
       "eterField\022\026\n\016sensitive_keys\030\005 \003(\t\022\014\n\004tag" +
-      "s\030\006 \003(\t\022\023\n\013description\030\007 \001(\t\"\235\001\n\016Paramet" +
-      "erField\022\014\n\004name\030\001 \001(\t\022\r\n\005label\030\002 \001(\t\022\014\n\004" +
-      "type\030\003 \001(\t\022\025\n\rdefault_value\030\004 \001(\t\022\023\n\013des" +
-      "cription\030\005 \001(\t\022\017\n\007options\030\006 \003(\t\022\020\n\010requi" +
-      "red\030\007 \001(\010\022\021\n\tmultiline\030\010 \001(\010\"\242\001\n\031AddComm" +
+      "s\030\006 \003(\t\022\023\n\013description\030\007 \001(\t\"\242\001\n\031AddComm" +
       "andTemplateRequest\022\020\n\010group_id\030\001 \001(\003\022\017\n\007" +
       "command\030\002 \001(\t\022\'\n\006fields\030\003 \003(\0132\027.command." +
       "ParameterField\022\026\n\016sensitive_keys\030\004 \003(\t\022\014" +
@@ -149,12 +174,25 @@ public final class Command {
       "ve_parameters\030\007 \003(\0132,.command.CommandLog" +
       ".EffectiveParametersEntry\022\023\n\013result_code" +
       "\030\010 \001(\t\032:\n\030EffectiveParametersEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001*\215\001\n\017Execution" +
-      "Status\022\013\n\007UNKNOWN\020\000\022\013\n\007PENDING\020\001\022\013\n\007RUNN" +
-      "ING\020\002\022\013\n\007SUCCESS\020\003\022\n\n\006FAILED\020\004\022\r\n\tCANCEL" +
-      "LED\020\005\022\030\n\024CANCELLED_BY_TIMEOUT\020\006\022\021\n\rNOT_P" +
-      "ERMITTED\020\007*/\n\010UserRole\022\n\n\006VIEWER\020\000\022\014\n\010EX" +
-      "ECUTOR\020\001\022\t\n\005ADMIN\020\0022\350\005\n\016CommandService\022-" +
+      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"s\n\034UpdateExec" +
+      "utionStatusRequest\022\024\n\014execution_id\030\001 \001(\003" +
+      "\022(\n\006status\030\002 \001(\0162\030.command.ExecutionStat" +
+      "us\022\023\n\013result_code\030\003 \001(\t\"0\n\035UpdateExecuti" +
+      "onStatusResponse\022\017\n\007success\030\001 \001(\010\"C\n\035Sub" +
+      "scribeCommandEventsRequest\022\017\n\007user_id\030\001 " +
+      "\001(\003\022\021\n\tgroup_ids\030\002 \003(\003\"\200\002\n\014CommandEvent\022" +
+      "\024\n\014execution_id\030\001 \001(\003\022\033\n\023command_templat" +
+      "e_id\030\002 \001(\003\022\017\n\007user_id\030\003 \001(\003\022\017\n\007command\030\004" +
+      " \001(\t\022L\n\024effective_parameters\030\005 \003(\0132..com" +
+      "mand.CommandEvent.EffectiveParametersEnt" +
+      "ry\022\021\n\ttimestamp\030\006 \001(\003\032:\n\030EffectiveParame" +
+      "tersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028" +
+      "\001*\246\001\n\017ExecutionStatus\022\013\n\007UNKNOWN\020\000\022\013\n\007PE" +
+      "NDING\020\001\022\013\n\007RUNNING\020\002\022\013\n\007SUCCESS\020\003\022\n\n\006FAI" +
+      "LED\020\004\022\r\n\tCANCELLED\020\005\022\030\n\024CANCELLED_BY_TIM" +
+      "EOUT\020\006\022\021\n\rNOT_PERMITTED\020\007\022\027\n\023EXECUTORS_N" +
+      "OT_FOUND\020\010*/\n\010UserRole\022\n\n\006VIEWER\020\000\022\014\n\010EX" +
+      "ECUTOR\020\001\022\t\n\005ADMIN\020\0022\253\007\n\016CommandService\022-" +
       "\n\013CreateGroup\022\016.command.Group\032\016.command." +
       "Group\0224\n\013DeleteGroup\022\025.command.GroupRequ" +
       "est\032\016.command.Group\022F\n\016AddUserToGroup\022\031." +
@@ -171,10 +209,15 @@ public final class Command {
       ".command.CancelResponse\0228\n\005Retry\022\025.comma" +
       "nd.RetryRequest\032\030.command.ExecuteRespons" +
       "e\0228\n\006DryRun\022\027.command.ExecuteRequest\032\025.c" +
-      "ommand.DryRunResult\022A\n\rSubscribeLogs\022\031.c" +
-      "ommand.SubscribeRequest\032\023.command.Comman" +
-      "dLog0\001B!\n\003cmdB\007CommandP\001Z\tcmd/proto\242\002\003CM" +
-      "Db\006proto3"
+      "ommand.DryRunResult\022f\n\025UpdateExecutionSt" +
+      "atus\022%.command.UpdateExecutionStatusRequ" +
+      "est\032&.command.UpdateExecutionStatusRespo" +
+      "nse\022A\n\rSubscribeLogs\022\031.command.Subscribe" +
+      "Request\032\023.command.CommandLog0\001\022Y\n\026Subscr" +
+      "ibeCommandEvents\022&.command.SubscribeComm" +
+      "andEventsRequest\032\025.command.CommandEvent0" +
+      "\001B!\n\003cmdB\007CommandP\001Z\tcmd/proto\242\002\003CMDb\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -198,18 +241,18 @@ public final class Command {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_command_UserGroupRequest_descriptor,
         new java.lang.String[] { "UserId", "GroupId", "Role", });
-    internal_static_command_CommandTemplate_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_command_CommandTemplate_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CommandTemplate_descriptor,
-        new java.lang.String[] { "CommandTemplateId", "GroupId", "Command", "Fields", "SensitiveKeys", "Tags", "Description", });
     internal_static_command_ParameterField_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_command_ParameterField_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_command_ParameterField_descriptor,
         new java.lang.String[] { "Name", "Label", "Type", "DefaultValue", "Description", "Options", "Required", "Multiline", });
+    internal_static_command_CommandTemplate_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_command_CommandTemplate_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_command_CommandTemplate_descriptor,
+        new java.lang.String[] { "CommandTemplateId", "GroupId", "Command", "Fields", "SensitiveKeys", "Tags", "Description", });
     internal_static_command_AddCommandTemplateRequest_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_command_AddCommandTemplateRequest_fieldAccessorTable = new
@@ -281,6 +324,36 @@ public final class Command {
     internal_static_command_CommandLog_EffectiveParametersEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_command_CommandLog_EffectiveParametersEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_command_UpdateExecutionStatusRequest_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_command_UpdateExecutionStatusRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_command_UpdateExecutionStatusRequest_descriptor,
+        new java.lang.String[] { "ExecutionId", "Status", "ResultCode", });
+    internal_static_command_UpdateExecutionStatusResponse_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_command_UpdateExecutionStatusResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_command_UpdateExecutionStatusResponse_descriptor,
+        new java.lang.String[] { "Success", });
+    internal_static_command_SubscribeCommandEventsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_command_SubscribeCommandEventsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_command_SubscribeCommandEventsRequest_descriptor,
+        new java.lang.String[] { "UserId", "GroupIds", });
+    internal_static_command_CommandEvent_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_command_CommandEvent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_command_CommandEvent_descriptor,
+        new java.lang.String[] { "ExecutionId", "CommandTemplateId", "UserId", "Command", "EffectiveParameters", "Timestamp", });
+    internal_static_command_CommandEvent_EffectiveParametersEntry_descriptor =
+      internal_static_command_CommandEvent_descriptor.getNestedTypes().get(0);
+    internal_static_command_CommandEvent_EffectiveParametersEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_command_CommandEvent_EffectiveParametersEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
   }
 

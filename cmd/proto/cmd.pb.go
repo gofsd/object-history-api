@@ -21,6 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ---------------- ENUMS ----------------
 type ExecutionStatus int32
 
 const (
@@ -31,7 +32,8 @@ const (
 	ExecutionStatus_FAILED               ExecutionStatus = 4
 	ExecutionStatus_CANCELLED            ExecutionStatus = 5
 	ExecutionStatus_CANCELLED_BY_TIMEOUT ExecutionStatus = 6
-	ExecutionStatus_NOT_PERMITTED        ExecutionStatus = 7 // Fixed typo
+	ExecutionStatus_NOT_PERMITTED        ExecutionStatus = 7
+	ExecutionStatus_EXECUTORS_NOT_FOUND  ExecutionStatus = 8
 )
 
 // Enum value maps for ExecutionStatus.
@@ -45,6 +47,7 @@ var (
 		5: "CANCELLED",
 		6: "CANCELLED_BY_TIMEOUT",
 		7: "NOT_PERMITTED",
+		8: "EXECUTORS_NOT_FOUND",
 	}
 	ExecutionStatus_value = map[string]int32{
 		"UNKNOWN":              0,
@@ -55,6 +58,7 @@ var (
 		"CANCELLED":            5,
 		"CANCELLED_BY_TIMEOUT": 6,
 		"NOT_PERMITTED":        7,
+		"EXECUTORS_NOT_FOUND":  8,
 	}
 )
 
@@ -134,6 +138,7 @@ func (UserRole) EnumDescriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{1}
 }
 
+// ------------- CORE MESSAGES -------------
 type Group struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GroupId       int64                  `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
@@ -298,106 +303,15 @@ func (x *UserGroupRequest) GetRole() UserRole {
 	return UserRole_VIEWER
 }
 
-type CommandTemplate struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	CommandTemplateId int64                  `protobuf:"varint,1,opt,name=command_template_id,json=commandTemplateId,proto3" json:"command_template_id,omitempty"`
-	GroupId           int64                  `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
-	Command           string                 `protobuf:"bytes,3,opt,name=command,proto3" json:"command,omitempty"`
-	Fields            []*ParameterField      `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
-	SensitiveKeys     []string               `protobuf:"bytes,5,rep,name=sensitive_keys,json=sensitiveKeys,proto3" json:"sensitive_keys,omitempty"`
-	Tags              []string               `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
-	Description       string                 `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
-	unknownFields     protoimpl.UnknownFields
-	sizeCache         protoimpl.SizeCache
-}
-
-func (x *CommandTemplate) Reset() {
-	*x = CommandTemplate{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CommandTemplate) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CommandTemplate) ProtoMessage() {}
-
-func (x *CommandTemplate) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CommandTemplate.ProtoReflect.Descriptor instead.
-func (*CommandTemplate) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *CommandTemplate) GetCommandTemplateId() int64 {
-	if x != nil {
-		return x.CommandTemplateId
-	}
-	return 0
-}
-
-func (x *CommandTemplate) GetGroupId() int64 {
-	if x != nil {
-		return x.GroupId
-	}
-	return 0
-}
-
-func (x *CommandTemplate) GetCommand() string {
-	if x != nil {
-		return x.Command
-	}
-	return ""
-}
-
-func (x *CommandTemplate) GetFields() []*ParameterField {
-	if x != nil {
-		return x.Fields
-	}
-	return nil
-}
-
-func (x *CommandTemplate) GetSensitiveKeys() []string {
-	if x != nil {
-		return x.SensitiveKeys
-	}
-	return nil
-}
-
-func (x *CommandTemplate) GetTags() []string {
-	if x != nil {
-		return x.Tags
-	}
-	return nil
-}
-
-func (x *CommandTemplate) GetDescription() string {
-	if x != nil {
-		return x.Description
-	}
-	return ""
-}
-
+// ------------- COMMAND TEMPLATES -------------
 type ParameterField struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Label         string                 `protobuf:"bytes,2,opt,name=label,proto3" json:"label,omitempty"`
-	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"` // string, int, boolean, select, multiline, etc.
+	Type          string                 `protobuf:"bytes,3,opt,name=type,proto3" json:"type,omitempty"`
 	DefaultValue  string                 `protobuf:"bytes,4,opt,name=default_value,json=defaultValue,proto3" json:"default_value,omitempty"`
 	Description   string                 `protobuf:"bytes,5,opt,name=description,proto3" json:"description,omitempty"`
-	Options       []string               `protobuf:"bytes,6,rep,name=options,proto3" json:"options,omitempty"` // for select/radio
+	Options       []string               `protobuf:"bytes,6,rep,name=options,proto3" json:"options,omitempty"`
 	Required      bool                   `protobuf:"varint,7,opt,name=required,proto3" json:"required,omitempty"`
 	Multiline     bool                   `protobuf:"varint,8,opt,name=multiline,proto3" json:"multiline,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -406,7 +320,7 @@ type ParameterField struct {
 
 func (x *ParameterField) Reset() {
 	*x = ParameterField{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -418,7 +332,7 @@ func (x *ParameterField) String() string {
 func (*ParameterField) ProtoMessage() {}
 
 func (x *ParameterField) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -431,7 +345,7 @@ func (x *ParameterField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ParameterField.ProtoReflect.Descriptor instead.
 func (*ParameterField) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{4}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *ParameterField) GetName() string {
@@ -488,6 +402,98 @@ func (x *ParameterField) GetMultiline() bool {
 		return x.Multiline
 	}
 	return false
+}
+
+type CommandTemplate struct {
+	state             protoimpl.MessageState `protogen:"open.v1"`
+	CommandTemplateId int64                  `protobuf:"varint,1,opt,name=command_template_id,json=commandTemplateId,proto3" json:"command_template_id,omitempty"`
+	GroupId           int64                  `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
+	Command           string                 `protobuf:"bytes,3,opt,name=command,proto3" json:"command,omitempty"`
+	Fields            []*ParameterField      `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
+	SensitiveKeys     []string               `protobuf:"bytes,5,rep,name=sensitive_keys,json=sensitiveKeys,proto3" json:"sensitive_keys,omitempty"`
+	Tags              []string               `protobuf:"bytes,6,rep,name=tags,proto3" json:"tags,omitempty"`
+	Description       string                 `protobuf:"bytes,7,opt,name=description,proto3" json:"description,omitempty"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *CommandTemplate) Reset() {
+	*x = CommandTemplate{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommandTemplate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommandTemplate) ProtoMessage() {}
+
+func (x *CommandTemplate) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommandTemplate.ProtoReflect.Descriptor instead.
+func (*CommandTemplate) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CommandTemplate) GetCommandTemplateId() int64 {
+	if x != nil {
+		return x.CommandTemplateId
+	}
+	return 0
+}
+
+func (x *CommandTemplate) GetGroupId() int64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
+func (x *CommandTemplate) GetCommand() string {
+	if x != nil {
+		return x.Command
+	}
+	return ""
+}
+
+func (x *CommandTemplate) GetFields() []*ParameterField {
+	if x != nil {
+		return x.Fields
+	}
+	return nil
+}
+
+func (x *CommandTemplate) GetSensitiveKeys() []string {
+	if x != nil {
+		return x.SensitiveKeys
+	}
+	return nil
+}
+
+func (x *CommandTemplate) GetTags() []string {
+	if x != nil {
+		return x.Tags
+	}
+	return nil
+}
+
+func (x *CommandTemplate) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
 }
 
 type AddCommandTemplateRequest struct {
@@ -618,6 +624,7 @@ func (x *DeleteCommandTemplateRequest) GetCommandTemplateId() int64 {
 	return 0
 }
 
+// ------------- COMMAND EXECUTION -------------
 type ExecuteRequest struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	CommandTemplateId  int64                  `protobuf:"varint,1,opt,name=command_template_id,json=commandTemplateId,proto3" json:"command_template_id,omitempty"`
@@ -930,6 +937,7 @@ func (x *DryRunResult) GetMessage() string {
 	return ""
 }
 
+// ------------- LOG STREAMING -------------
 type SubscribeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -1090,6 +1098,247 @@ func (x *CommandLog) GetResultCode() string {
 	return ""
 }
 
+// ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
+type UpdateExecutionStatusRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ExecutionId   int64                  `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
+	Status        ExecutionStatus        `protobuf:"varint,2,opt,name=status,proto3,enum=command.ExecutionStatus" json:"status,omitempty"`
+	ResultCode    string                 `protobuf:"bytes,3,opt,name=result_code,json=resultCode,proto3" json:"result_code,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateExecutionStatusRequest) Reset() {
+	*x = UpdateExecutionStatusRequest{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateExecutionStatusRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateExecutionStatusRequest) ProtoMessage() {}
+
+func (x *UpdateExecutionStatusRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateExecutionStatusRequest.ProtoReflect.Descriptor instead.
+func (*UpdateExecutionStatusRequest) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *UpdateExecutionStatusRequest) GetExecutionId() int64 {
+	if x != nil {
+		return x.ExecutionId
+	}
+	return 0
+}
+
+func (x *UpdateExecutionStatusRequest) GetStatus() ExecutionStatus {
+	if x != nil {
+		return x.Status
+	}
+	return ExecutionStatus_UNKNOWN
+}
+
+func (x *UpdateExecutionStatusRequest) GetResultCode() string {
+	if x != nil {
+		return x.ResultCode
+	}
+	return ""
+}
+
+type UpdateExecutionStatusResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateExecutionStatusResponse) Reset() {
+	*x = UpdateExecutionStatusResponse{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateExecutionStatusResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateExecutionStatusResponse) ProtoMessage() {}
+
+func (x *UpdateExecutionStatusResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateExecutionStatusResponse.ProtoReflect.Descriptor instead.
+func (*UpdateExecutionStatusResponse) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *UpdateExecutionStatusResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
+type SubscribeCommandEventsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        int64                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	GroupIds      []int64                `protobuf:"varint,2,rep,packed,name=group_ids,json=groupIds,proto3" json:"group_ids,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SubscribeCommandEventsRequest) Reset() {
+	*x = SubscribeCommandEventsRequest{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SubscribeCommandEventsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SubscribeCommandEventsRequest) ProtoMessage() {}
+
+func (x *SubscribeCommandEventsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SubscribeCommandEventsRequest.ProtoReflect.Descriptor instead.
+func (*SubscribeCommandEventsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *SubscribeCommandEventsRequest) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *SubscribeCommandEventsRequest) GetGroupIds() []int64 {
+	if x != nil {
+		return x.GroupIds
+	}
+	return nil
+}
+
+type CommandEvent struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	ExecutionId         int64                  `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
+	CommandTemplateId   int64                  `protobuf:"varint,2,opt,name=command_template_id,json=commandTemplateId,proto3" json:"command_template_id,omitempty"`
+	UserId              int64                  `protobuf:"varint,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Command             string                 `protobuf:"bytes,4,opt,name=command,proto3" json:"command,omitempty"`
+	EffectiveParameters map[string]string      `protobuf:"bytes,5,rep,name=effective_parameters,json=effectiveParameters,proto3" json:"effective_parameters,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Timestamp           int64                  `protobuf:"varint,6,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *CommandEvent) Reset() {
+	*x = CommandEvent{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CommandEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CommandEvent) ProtoMessage() {}
+
+func (x *CommandEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CommandEvent.ProtoReflect.Descriptor instead.
+func (*CommandEvent) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *CommandEvent) GetExecutionId() int64 {
+	if x != nil {
+		return x.ExecutionId
+	}
+	return 0
+}
+
+func (x *CommandEvent) GetCommandTemplateId() int64 {
+	if x != nil {
+		return x.CommandTemplateId
+	}
+	return 0
+}
+
+func (x *CommandEvent) GetUserId() int64 {
+	if x != nil {
+		return x.UserId
+	}
+	return 0
+}
+
+func (x *CommandEvent) GetCommand() string {
+	if x != nil {
+		return x.Command
+	}
+	return ""
+}
+
+func (x *CommandEvent) GetEffectiveParameters() map[string]string {
+	if x != nil {
+		return x.EffectiveParameters
+	}
+	return nil
+}
+
+func (x *CommandEvent) GetTimestamp() int64 {
+	if x != nil {
+		return x.Timestamp
+	}
+	return 0
+}
+
 var File_proto_cmd_cmd_proto protoreflect.FileDescriptor
 
 const file_proto_cmd_cmd_proto_rawDesc = "" +
@@ -1104,15 +1353,7 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x10UserGroupRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12%\n" +
-	"\x04role\x18\x03 \x01(\x0e2\x11.command.UserRoleR\x04role\"\x84\x02\n" +
-	"\x0fCommandTemplate\x12.\n" +
-	"\x13command_template_id\x18\x01 \x01(\x03R\x11commandTemplateId\x12\x19\n" +
-	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x18\n" +
-	"\acommand\x18\x03 \x01(\tR\acommand\x12/\n" +
-	"\x06fields\x18\x04 \x03(\v2\x17.command.ParameterFieldR\x06fields\x12%\n" +
-	"\x0esensitive_keys\x18\x05 \x03(\tR\rsensitiveKeys\x12\x12\n" +
-	"\x04tags\x18\x06 \x03(\tR\x04tags\x12 \n" +
-	"\vdescription\x18\a \x01(\tR\vdescription\"\xe9\x01\n" +
+	"\x04role\x18\x03 \x01(\x0e2\x11.command.UserRoleR\x04role\"\xe9\x01\n" +
 	"\x0eParameterField\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05label\x18\x02 \x01(\tR\x05label\x12\x12\n" +
@@ -1121,7 +1362,15 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x18\n" +
 	"\aoptions\x18\x06 \x03(\tR\aoptions\x12\x1a\n" +
 	"\brequired\x18\a \x01(\bR\brequired\x12\x1c\n" +
-	"\tmultiline\x18\b \x01(\bR\tmultiline\"\xde\x01\n" +
+	"\tmultiline\x18\b \x01(\bR\tmultiline\"\x84\x02\n" +
+	"\x0fCommandTemplate\x12.\n" +
+	"\x13command_template_id\x18\x01 \x01(\x03R\x11commandTemplateId\x12\x19\n" +
+	"\bgroup_id\x18\x02 \x01(\x03R\agroupId\x12\x18\n" +
+	"\acommand\x18\x03 \x01(\tR\acommand\x12/\n" +
+	"\x06fields\x18\x04 \x03(\v2\x17.command.ParameterFieldR\x06fields\x12%\n" +
+	"\x0esensitive_keys\x18\x05 \x03(\tR\rsensitiveKeys\x12\x12\n" +
+	"\x04tags\x18\x06 \x03(\tR\x04tags\x12 \n" +
+	"\vdescription\x18\a \x01(\tR\vdescription\"\xde\x01\n" +
 	"\x19AddCommandTemplateRequest\x12\x19\n" +
 	"\bgroup_id\x18\x01 \x01(\x03R\agroupId\x12\x18\n" +
 	"\acommand\x18\x02 \x01(\tR\acommand\x12/\n" +
@@ -1169,7 +1418,27 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"resultCode\x1aF\n" +
 	"\x18EffectiveParametersEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01*\x8d\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x94\x01\n" +
+	"\x1cUpdateExecutionStatusRequest\x12!\n" +
+	"\fexecution_id\x18\x01 \x01(\x03R\vexecutionId\x120\n" +
+	"\x06status\x18\x02 \x01(\x0e2\x18.command.ExecutionStatusR\x06status\x12\x1f\n" +
+	"\vresult_code\x18\x03 \x01(\tR\n" +
+	"resultCode\"9\n" +
+	"\x1dUpdateExecutionStatusResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"U\n" +
+	"\x1dSubscribeCommandEventsRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x1b\n" +
+	"\tgroup_ids\x18\x02 \x03(\x03R\bgroupIds\"\xdd\x02\n" +
+	"\fCommandEvent\x12!\n" +
+	"\fexecution_id\x18\x01 \x01(\x03R\vexecutionId\x12.\n" +
+	"\x13command_template_id\x18\x02 \x01(\x03R\x11commandTemplateId\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\x03R\x06userId\x12\x18\n" +
+	"\acommand\x18\x04 \x01(\tR\acommand\x12a\n" +
+	"\x14effective_parameters\x18\x05 \x03(\v2..command.CommandEvent.EffectiveParametersEntryR\x13effectiveParameters\x12\x1c\n" +
+	"\ttimestamp\x18\x06 \x01(\x03R\ttimestamp\x1aF\n" +
+	"\x18EffectiveParametersEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01*\xa6\x01\n" +
 	"\x0fExecutionStatus\x12\v\n" +
 	"\aUNKNOWN\x10\x00\x12\v\n" +
 	"\aPENDING\x10\x01\x12\v\n" +
@@ -1179,12 +1448,13 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x06FAILED\x10\x04\x12\r\n" +
 	"\tCANCELLED\x10\x05\x12\x18\n" +
 	"\x14CANCELLED_BY_TIMEOUT\x10\x06\x12\x11\n" +
-	"\rNOT_PERMITTED\x10\a*/\n" +
+	"\rNOT_PERMITTED\x10\a\x12\x17\n" +
+	"\x13EXECUTORS_NOT_FOUND\x10\b*/\n" +
 	"\bUserRole\x12\n" +
 	"\n" +
 	"\x06VIEWER\x10\x00\x12\f\n" +
 	"\bEXECUTOR\x10\x01\x12\t\n" +
-	"\x05ADMIN\x10\x022\xe8\x05\n" +
+	"\x05ADMIN\x10\x022\xab\a\n" +
 	"\x0eCommandService\x12-\n" +
 	"\vCreateGroup\x12\x0e.command.Group\x1a\x0e.command.Group\x124\n" +
 	"\vDeleteGroup\x12\x15.command.GroupRequest\x1a\x0e.command.Group\x12F\n" +
@@ -1195,8 +1465,10 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\aExecute\x12\x17.command.ExecuteRequest\x1a\x18.command.ExecuteResponse\x129\n" +
 	"\x06Cancel\x12\x16.command.CancelRequest\x1a\x17.command.CancelResponse\x128\n" +
 	"\x05Retry\x12\x15.command.RetryRequest\x1a\x18.command.ExecuteResponse\x128\n" +
-	"\x06DryRun\x12\x17.command.ExecuteRequest\x1a\x15.command.DryRunResult\x12A\n" +
-	"\rSubscribeLogs\x12\x19.command.SubscribeRequest\x1a\x13.command.CommandLog0\x01B!\n" +
+	"\x06DryRun\x12\x17.command.ExecuteRequest\x1a\x15.command.DryRunResult\x12f\n" +
+	"\x15UpdateExecutionStatus\x12%.command.UpdateExecutionStatusRequest\x1a&.command.UpdateExecutionStatusResponse\x12A\n" +
+	"\rSubscribeLogs\x12\x19.command.SubscribeRequest\x1a\x13.command.CommandLog0\x01\x12Y\n" +
+	"\x16SubscribeCommandEvents\x12&.command.SubscribeCommandEventsRequest\x1a\x15.command.CommandEvent0\x01B!\n" +
 	"\x03cmdB\aCommandP\x01Z\tcmd/proto\xa2\x02\x03CMDb\x06proto3"
 
 var (
@@ -1212,63 +1484,74 @@ func file_proto_cmd_cmd_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_cmd_cmd_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_proto_cmd_cmd_proto_msgTypes = make([]protoimpl.MessageInfo, 17)
+var file_proto_cmd_cmd_proto_msgTypes = make([]protoimpl.MessageInfo, 22)
 var file_proto_cmd_cmd_proto_goTypes = []any{
-	(ExecutionStatus)(0),                 // 0: command.ExecutionStatus
-	(UserRole)(0),                        // 1: command.UserRole
-	(*Group)(nil),                        // 2: command.Group
-	(*GroupRequest)(nil),                 // 3: command.GroupRequest
-	(*UserGroupRequest)(nil),             // 4: command.UserGroupRequest
-	(*CommandTemplate)(nil),              // 5: command.CommandTemplate
-	(*ParameterField)(nil),               // 6: command.ParameterField
-	(*AddCommandTemplateRequest)(nil),    // 7: command.AddCommandTemplateRequest
-	(*DeleteCommandTemplateRequest)(nil), // 8: command.DeleteCommandTemplateRequest
-	(*ExecuteRequest)(nil),               // 9: command.ExecuteRequest
-	(*ExecuteResponse)(nil),              // 10: command.ExecuteResponse
-	(*CancelRequest)(nil),                // 11: command.CancelRequest
-	(*CancelResponse)(nil),               // 12: command.CancelResponse
-	(*RetryRequest)(nil),                 // 13: command.RetryRequest
-	(*DryRunResult)(nil),                 // 14: command.DryRunResult
-	(*SubscribeRequest)(nil),             // 15: command.SubscribeRequest
-	(*CommandLog)(nil),                   // 16: command.CommandLog
-	nil,                                  // 17: command.ExecuteRequest.OverrideParametersEntry
-	nil,                                  // 18: command.CommandLog.EffectiveParametersEntry
+	(ExecutionStatus)(0),                  // 0: command.ExecutionStatus
+	(UserRole)(0),                         // 1: command.UserRole
+	(*Group)(nil),                         // 2: command.Group
+	(*GroupRequest)(nil),                  // 3: command.GroupRequest
+	(*UserGroupRequest)(nil),              // 4: command.UserGroupRequest
+	(*ParameterField)(nil),                // 5: command.ParameterField
+	(*CommandTemplate)(nil),               // 6: command.CommandTemplate
+	(*AddCommandTemplateRequest)(nil),     // 7: command.AddCommandTemplateRequest
+	(*DeleteCommandTemplateRequest)(nil),  // 8: command.DeleteCommandTemplateRequest
+	(*ExecuteRequest)(nil),                // 9: command.ExecuteRequest
+	(*ExecuteResponse)(nil),               // 10: command.ExecuteResponse
+	(*CancelRequest)(nil),                 // 11: command.CancelRequest
+	(*CancelResponse)(nil),                // 12: command.CancelResponse
+	(*RetryRequest)(nil),                  // 13: command.RetryRequest
+	(*DryRunResult)(nil),                  // 14: command.DryRunResult
+	(*SubscribeRequest)(nil),              // 15: command.SubscribeRequest
+	(*CommandLog)(nil),                    // 16: command.CommandLog
+	(*UpdateExecutionStatusRequest)(nil),  // 17: command.UpdateExecutionStatusRequest
+	(*UpdateExecutionStatusResponse)(nil), // 18: command.UpdateExecutionStatusResponse
+	(*SubscribeCommandEventsRequest)(nil), // 19: command.SubscribeCommandEventsRequest
+	(*CommandEvent)(nil),                  // 20: command.CommandEvent
+	nil,                                   // 21: command.ExecuteRequest.OverrideParametersEntry
+	nil,                                   // 22: command.CommandLog.EffectiveParametersEntry
+	nil,                                   // 23: command.CommandEvent.EffectiveParametersEntry
 }
 var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	1,  // 0: command.UserGroupRequest.role:type_name -> command.UserRole
-	6,  // 1: command.CommandTemplate.fields:type_name -> command.ParameterField
-	6,  // 2: command.AddCommandTemplateRequest.fields:type_name -> command.ParameterField
-	17, // 3: command.ExecuteRequest.override_parameters:type_name -> command.ExecuteRequest.OverrideParametersEntry
+	5,  // 1: command.CommandTemplate.fields:type_name -> command.ParameterField
+	5,  // 2: command.AddCommandTemplateRequest.fields:type_name -> command.ParameterField
+	21, // 3: command.ExecuteRequest.override_parameters:type_name -> command.ExecuteRequest.OverrideParametersEntry
 	0,  // 4: command.ExecuteResponse.queue_status:type_name -> command.ExecutionStatus
 	0,  // 5: command.CommandLog.status:type_name -> command.ExecutionStatus
-	18, // 6: command.CommandLog.effective_parameters:type_name -> command.CommandLog.EffectiveParametersEntry
-	2,  // 7: command.CommandService.CreateGroup:input_type -> command.Group
-	3,  // 8: command.CommandService.DeleteGroup:input_type -> command.GroupRequest
-	4,  // 9: command.CommandService.AddUserToGroup:input_type -> command.UserGroupRequest
-	4,  // 10: command.CommandService.RemoveUserFromGroup:input_type -> command.UserGroupRequest
-	7,  // 11: command.CommandService.AddCommandTemplate:input_type -> command.AddCommandTemplateRequest
-	8,  // 12: command.CommandService.DeleteCommandTemplate:input_type -> command.DeleteCommandTemplateRequest
-	9,  // 13: command.CommandService.Execute:input_type -> command.ExecuteRequest
-	11, // 14: command.CommandService.Cancel:input_type -> command.CancelRequest
-	13, // 15: command.CommandService.Retry:input_type -> command.RetryRequest
-	9,  // 16: command.CommandService.DryRun:input_type -> command.ExecuteRequest
-	15, // 17: command.CommandService.SubscribeLogs:input_type -> command.SubscribeRequest
-	2,  // 18: command.CommandService.CreateGroup:output_type -> command.Group
-	2,  // 19: command.CommandService.DeleteGroup:output_type -> command.Group
-	4,  // 20: command.CommandService.AddUserToGroup:output_type -> command.UserGroupRequest
-	4,  // 21: command.CommandService.RemoveUserFromGroup:output_type -> command.UserGroupRequest
-	5,  // 22: command.CommandService.AddCommandTemplate:output_type -> command.CommandTemplate
-	5,  // 23: command.CommandService.DeleteCommandTemplate:output_type -> command.CommandTemplate
-	10, // 24: command.CommandService.Execute:output_type -> command.ExecuteResponse
-	12, // 25: command.CommandService.Cancel:output_type -> command.CancelResponse
-	10, // 26: command.CommandService.Retry:output_type -> command.ExecuteResponse
-	14, // 27: command.CommandService.DryRun:output_type -> command.DryRunResult
-	16, // 28: command.CommandService.SubscribeLogs:output_type -> command.CommandLog
-	18, // [18:29] is the sub-list for method output_type
-	7,  // [7:18] is the sub-list for method input_type
-	7,  // [7:7] is the sub-list for extension type_name
-	7,  // [7:7] is the sub-list for extension extendee
-	0,  // [0:7] is the sub-list for field type_name
+	22, // 6: command.CommandLog.effective_parameters:type_name -> command.CommandLog.EffectiveParametersEntry
+	0,  // 7: command.UpdateExecutionStatusRequest.status:type_name -> command.ExecutionStatus
+	23, // 8: command.CommandEvent.effective_parameters:type_name -> command.CommandEvent.EffectiveParametersEntry
+	2,  // 9: command.CommandService.CreateGroup:input_type -> command.Group
+	3,  // 10: command.CommandService.DeleteGroup:input_type -> command.GroupRequest
+	4,  // 11: command.CommandService.AddUserToGroup:input_type -> command.UserGroupRequest
+	4,  // 12: command.CommandService.RemoveUserFromGroup:input_type -> command.UserGroupRequest
+	7,  // 13: command.CommandService.AddCommandTemplate:input_type -> command.AddCommandTemplateRequest
+	8,  // 14: command.CommandService.DeleteCommandTemplate:input_type -> command.DeleteCommandTemplateRequest
+	9,  // 15: command.CommandService.Execute:input_type -> command.ExecuteRequest
+	11, // 16: command.CommandService.Cancel:input_type -> command.CancelRequest
+	13, // 17: command.CommandService.Retry:input_type -> command.RetryRequest
+	9,  // 18: command.CommandService.DryRun:input_type -> command.ExecuteRequest
+	17, // 19: command.CommandService.UpdateExecutionStatus:input_type -> command.UpdateExecutionStatusRequest
+	15, // 20: command.CommandService.SubscribeLogs:input_type -> command.SubscribeRequest
+	19, // 21: command.CommandService.SubscribeCommandEvents:input_type -> command.SubscribeCommandEventsRequest
+	2,  // 22: command.CommandService.CreateGroup:output_type -> command.Group
+	2,  // 23: command.CommandService.DeleteGroup:output_type -> command.Group
+	4,  // 24: command.CommandService.AddUserToGroup:output_type -> command.UserGroupRequest
+	4,  // 25: command.CommandService.RemoveUserFromGroup:output_type -> command.UserGroupRequest
+	6,  // 26: command.CommandService.AddCommandTemplate:output_type -> command.CommandTemplate
+	6,  // 27: command.CommandService.DeleteCommandTemplate:output_type -> command.CommandTemplate
+	10, // 28: command.CommandService.Execute:output_type -> command.ExecuteResponse
+	12, // 29: command.CommandService.Cancel:output_type -> command.CancelResponse
+	10, // 30: command.CommandService.Retry:output_type -> command.ExecuteResponse
+	14, // 31: command.CommandService.DryRun:output_type -> command.DryRunResult
+	18, // 32: command.CommandService.UpdateExecutionStatus:output_type -> command.UpdateExecutionStatusResponse
+	16, // 33: command.CommandService.SubscribeLogs:output_type -> command.CommandLog
+	20, // 34: command.CommandService.SubscribeCommandEvents:output_type -> command.CommandEvent
+	22, // [22:35] is the sub-list for method output_type
+	9,  // [9:22] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_proto_cmd_cmd_proto_init() }
@@ -1282,7 +1565,7 @@ func file_proto_cmd_cmd_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_cmd_cmd_proto_rawDesc), len(file_proto_cmd_cmd_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   17,
+			NumMessages:   22,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

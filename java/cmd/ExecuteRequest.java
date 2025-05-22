@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * ------------- COMMAND EXECUTION -------------
+ * </pre>
+ *
  * Protobuf type {@code command.ExecuteRequest}
  */
 public final class ExecuteRequest extends
@@ -349,6 +353,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------- COMMAND EXECUTION -------------
+   * </pre>
+   *
    * Protobuf type {@code command.ExecuteRequest}
    */
   public static final class Builder extends

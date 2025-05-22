@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * ---------------- ENUMS ----------------
+ * </pre>
+ *
  * Protobuf enum {@code command.ExecutionStatus}
  */
 public enum ExecutionStatus
@@ -37,13 +41,13 @@ public enum ExecutionStatus
    */
   CANCELLED_BY_TIMEOUT(6),
   /**
-   * <pre>
-   * Fixed typo
-   * </pre>
-   *
    * <code>NOT_PERMITTED = 7;</code>
    */
   NOT_PERMITTED(7),
+  /**
+   * <code>EXECUTORS_NOT_FOUND = 8;</code>
+   */
+  EXECUTORS_NOT_FOUND(8),
   UNRECOGNIZED(-1),
   ;
 
@@ -76,13 +80,13 @@ public enum ExecutionStatus
    */
   public static final int CANCELLED_BY_TIMEOUT_VALUE = 6;
   /**
-   * <pre>
-   * Fixed typo
-   * </pre>
-   *
    * <code>NOT_PERMITTED = 7;</code>
    */
   public static final int NOT_PERMITTED_VALUE = 7;
+  /**
+   * <code>EXECUTORS_NOT_FOUND = 8;</code>
+   */
+  public static final int EXECUTORS_NOT_FOUND_VALUE = 8;
 
 
   public final int getNumber() {
@@ -117,6 +121,7 @@ public enum ExecutionStatus
       case 5: return CANCELLED;
       case 6: return CANCELLED_BY_TIMEOUT;
       case 7: return NOT_PERMITTED;
+      case 8: return EXECUTORS_NOT_FOUND;
       default: return null;
     }
   }

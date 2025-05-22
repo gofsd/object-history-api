@@ -3,6 +3,9 @@ package cmd;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * ------------- SERVICE -------------
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.71.0)",
@@ -325,6 +328,37 @@ public final class CommandServiceGrpc {
     return getDryRunMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<cmd.UpdateExecutionStatusRequest,
+      cmd.UpdateExecutionStatusResponse> getUpdateExecutionStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateExecutionStatus",
+      requestType = cmd.UpdateExecutionStatusRequest.class,
+      responseType = cmd.UpdateExecutionStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cmd.UpdateExecutionStatusRequest,
+      cmd.UpdateExecutionStatusResponse> getUpdateExecutionStatusMethod() {
+    io.grpc.MethodDescriptor<cmd.UpdateExecutionStatusRequest, cmd.UpdateExecutionStatusResponse> getUpdateExecutionStatusMethod;
+    if ((getUpdateExecutionStatusMethod = CommandServiceGrpc.getUpdateExecutionStatusMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getUpdateExecutionStatusMethod = CommandServiceGrpc.getUpdateExecutionStatusMethod) == null) {
+          CommandServiceGrpc.getUpdateExecutionStatusMethod = getUpdateExecutionStatusMethod =
+              io.grpc.MethodDescriptor.<cmd.UpdateExecutionStatusRequest, cmd.UpdateExecutionStatusResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateExecutionStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.UpdateExecutionStatusRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.UpdateExecutionStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("UpdateExecutionStatus"))
+              .build();
+        }
+      }
+    }
+    return getUpdateExecutionStatusMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<cmd.SubscribeRequest,
       cmd.CommandLog> getSubscribeLogsMethod;
 
@@ -354,6 +388,37 @@ public final class CommandServiceGrpc {
       }
     }
     return getSubscribeLogsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cmd.SubscribeCommandEventsRequest,
+      cmd.CommandEvent> getSubscribeCommandEventsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SubscribeCommandEvents",
+      requestType = cmd.SubscribeCommandEventsRequest.class,
+      responseType = cmd.CommandEvent.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<cmd.SubscribeCommandEventsRequest,
+      cmd.CommandEvent> getSubscribeCommandEventsMethod() {
+    io.grpc.MethodDescriptor<cmd.SubscribeCommandEventsRequest, cmd.CommandEvent> getSubscribeCommandEventsMethod;
+    if ((getSubscribeCommandEventsMethod = CommandServiceGrpc.getSubscribeCommandEventsMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getSubscribeCommandEventsMethod = CommandServiceGrpc.getSubscribeCommandEventsMethod) == null) {
+          CommandServiceGrpc.getSubscribeCommandEventsMethod = getSubscribeCommandEventsMethod =
+              io.grpc.MethodDescriptor.<cmd.SubscribeCommandEventsRequest, cmd.CommandEvent>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeCommandEvents"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.SubscribeCommandEventsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.CommandEvent.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("SubscribeCommandEvents"))
+              .build();
+        }
+      }
+    }
+    return getSubscribeCommandEventsMethod;
   }
 
   /**
@@ -416,6 +481,9 @@ public final class CommandServiceGrpc {
   }
 
   /**
+   * <pre>
+   * ------------- SERVICE -------------
+   * </pre>
    */
   public interface AsyncService {
 
@@ -500,6 +568,16 @@ public final class CommandServiceGrpc {
 
     /**
      * <pre>
+     * Update execution status
+     * </pre>
+     */
+    default void updateExecutionStatus(cmd.UpdateExecutionStatusRequest request,
+        io.grpc.stub.StreamObserver<cmd.UpdateExecutionStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateExecutionStatusMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
      * Streaming logs
      * </pre>
      */
@@ -507,10 +585,23 @@ public final class CommandServiceGrpc {
         io.grpc.stub.StreamObserver<cmd.CommandLog> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeLogsMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Event listener for executors
+     * </pre>
+     */
+    default void subscribeCommandEvents(cmd.SubscribeCommandEventsRequest request,
+        io.grpc.stub.StreamObserver<cmd.CommandEvent> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeCommandEventsMethod(), responseObserver);
+    }
   }
 
   /**
    * Base class for the server implementation of the service CommandService.
+   * <pre>
+   * ------------- SERVICE -------------
+   * </pre>
    */
   public static abstract class CommandServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -522,6 +613,9 @@ public final class CommandServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service CommandService.
+   * <pre>
+   * ------------- SERVICE -------------
+   * </pre>
    */
   public static final class CommandServiceStub
       extends io.grpc.stub.AbstractAsyncStub<CommandServiceStub> {
@@ -627,6 +721,17 @@ public final class CommandServiceGrpc {
 
     /**
      * <pre>
+     * Update execution status
+     * </pre>
+     */
+    public void updateExecutionStatus(cmd.UpdateExecutionStatusRequest request,
+        io.grpc.stub.StreamObserver<cmd.UpdateExecutionStatusResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateExecutionStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
      * Streaming logs
      * </pre>
      */
@@ -635,10 +740,24 @@ public final class CommandServiceGrpc {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSubscribeLogsMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Event listener for executors
+     * </pre>
+     */
+    public void subscribeCommandEvents(cmd.SubscribeCommandEventsRequest request,
+        io.grpc.stub.StreamObserver<cmd.CommandEvent> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeCommandEventsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service CommandService.
+   * <pre>
+   * ------------- SERVICE -------------
+   * </pre>
    */
   public static final class CommandServiceBlockingV2Stub
       extends io.grpc.stub.AbstractBlockingStub<CommandServiceBlockingV2Stub> {
@@ -734,6 +853,16 @@ public final class CommandServiceGrpc {
 
     /**
      * <pre>
+     * Update execution status
+     * </pre>
+     */
+    public cmd.UpdateExecutionStatusResponse updateExecutionStatus(cmd.UpdateExecutionStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateExecutionStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * Streaming logs
      * </pre>
      */
@@ -743,10 +872,25 @@ public final class CommandServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
           getChannel(), getSubscribeLogsMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Event listener for executors
+     * </pre>
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, cmd.CommandEvent>
+        subscribeCommandEvents(cmd.SubscribeCommandEventsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getSubscribeCommandEventsMethod(), getCallOptions(), request);
+    }
   }
 
   /**
    * A stub to allow clients to do limited synchronous rpc calls to service CommandService.
+   * <pre>
+   * ------------- SERVICE -------------
+   * </pre>
    */
   public static final class CommandServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<CommandServiceBlockingStub> {
@@ -842,6 +986,16 @@ public final class CommandServiceGrpc {
 
     /**
      * <pre>
+     * Update execution status
+     * </pre>
+     */
+    public cmd.UpdateExecutionStatusResponse updateExecutionStatus(cmd.UpdateExecutionStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateExecutionStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
      * Streaming logs
      * </pre>
      */
@@ -850,10 +1004,24 @@ public final class CommandServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSubscribeLogsMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Event listener for executors
+     * </pre>
+     */
+    public java.util.Iterator<cmd.CommandEvent> subscribeCommandEvents(
+        cmd.SubscribeCommandEventsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSubscribeCommandEventsMethod(), getCallOptions(), request);
+    }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service CommandService.
+   * <pre>
+   * ------------- SERVICE -------------
+   * </pre>
    */
   public static final class CommandServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<CommandServiceFutureStub> {
@@ -956,6 +1124,17 @@ public final class CommandServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDryRunMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Update execution status
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cmd.UpdateExecutionStatusResponse> updateExecutionStatus(
+        cmd.UpdateExecutionStatusRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateExecutionStatusMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_GROUP = 0;
@@ -968,7 +1147,9 @@ public final class CommandServiceGrpc {
   private static final int METHODID_CANCEL = 7;
   private static final int METHODID_RETRY = 8;
   private static final int METHODID_DRY_RUN = 9;
-  private static final int METHODID_SUBSCRIBE_LOGS = 10;
+  private static final int METHODID_UPDATE_EXECUTION_STATUS = 10;
+  private static final int METHODID_SUBSCRIBE_LOGS = 11;
+  private static final int METHODID_SUBSCRIBE_COMMAND_EVENTS = 12;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1027,9 +1208,17 @@ public final class CommandServiceGrpc {
           serviceImpl.dryRun((cmd.ExecuteRequest) request,
               (io.grpc.stub.StreamObserver<cmd.DryRunResult>) responseObserver);
           break;
+        case METHODID_UPDATE_EXECUTION_STATUS:
+          serviceImpl.updateExecutionStatus((cmd.UpdateExecutionStatusRequest) request,
+              (io.grpc.stub.StreamObserver<cmd.UpdateExecutionStatusResponse>) responseObserver);
+          break;
         case METHODID_SUBSCRIBE_LOGS:
           serviceImpl.subscribeLogs((cmd.SubscribeRequest) request,
               (io.grpc.stub.StreamObserver<cmd.CommandLog>) responseObserver);
+          break;
+        case METHODID_SUBSCRIBE_COMMAND_EVENTS:
+          serviceImpl.subscribeCommandEvents((cmd.SubscribeCommandEventsRequest) request,
+              (io.grpc.stub.StreamObserver<cmd.CommandEvent>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1120,12 +1309,26 @@ public final class CommandServiceGrpc {
               cmd.DryRunResult>(
                 service, METHODID_DRY_RUN)))
         .addMethod(
+          getUpdateExecutionStatusMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              cmd.UpdateExecutionStatusRequest,
+              cmd.UpdateExecutionStatusResponse>(
+                service, METHODID_UPDATE_EXECUTION_STATUS)))
+        .addMethod(
           getSubscribeLogsMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
               cmd.SubscribeRequest,
               cmd.CommandLog>(
                 service, METHODID_SUBSCRIBE_LOGS)))
+        .addMethod(
+          getSubscribeCommandEventsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              cmd.SubscribeCommandEventsRequest,
+              cmd.CommandEvent>(
+                service, METHODID_SUBSCRIBE_COMMAND_EVENTS)))
         .build();
   }
 
@@ -1184,7 +1387,9 @@ public final class CommandServiceGrpc {
               .addMethod(getCancelMethod())
               .addMethod(getRetryMethod())
               .addMethod(getDryRunMethod())
+              .addMethod(getUpdateExecutionStatusMethod())
               .addMethod(getSubscribeLogsMethod())
+              .addMethod(getSubscribeCommandEventsMethod())
               .build();
         }
       }

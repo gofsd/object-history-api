@@ -19,22 +19,26 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CommandService_CreateGroup_FullMethodName           = "/command.CommandService/CreateGroup"
-	CommandService_DeleteGroup_FullMethodName           = "/command.CommandService/DeleteGroup"
-	CommandService_AddUserToGroup_FullMethodName        = "/command.CommandService/AddUserToGroup"
-	CommandService_RemoveUserFromGroup_FullMethodName   = "/command.CommandService/RemoveUserFromGroup"
-	CommandService_AddCommandTemplate_FullMethodName    = "/command.CommandService/AddCommandTemplate"
-	CommandService_DeleteCommandTemplate_FullMethodName = "/command.CommandService/DeleteCommandTemplate"
-	CommandService_Execute_FullMethodName               = "/command.CommandService/Execute"
-	CommandService_Cancel_FullMethodName                = "/command.CommandService/Cancel"
-	CommandService_Retry_FullMethodName                 = "/command.CommandService/Retry"
-	CommandService_DryRun_FullMethodName                = "/command.CommandService/DryRun"
-	CommandService_SubscribeLogs_FullMethodName         = "/command.CommandService/SubscribeLogs"
+	CommandService_CreateGroup_FullMethodName            = "/command.CommandService/CreateGroup"
+	CommandService_DeleteGroup_FullMethodName            = "/command.CommandService/DeleteGroup"
+	CommandService_AddUserToGroup_FullMethodName         = "/command.CommandService/AddUserToGroup"
+	CommandService_RemoveUserFromGroup_FullMethodName    = "/command.CommandService/RemoveUserFromGroup"
+	CommandService_AddCommandTemplate_FullMethodName     = "/command.CommandService/AddCommandTemplate"
+	CommandService_DeleteCommandTemplate_FullMethodName  = "/command.CommandService/DeleteCommandTemplate"
+	CommandService_Execute_FullMethodName                = "/command.CommandService/Execute"
+	CommandService_Cancel_FullMethodName                 = "/command.CommandService/Cancel"
+	CommandService_Retry_FullMethodName                  = "/command.CommandService/Retry"
+	CommandService_DryRun_FullMethodName                 = "/command.CommandService/DryRun"
+	CommandService_UpdateExecutionStatus_FullMethodName  = "/command.CommandService/UpdateExecutionStatus"
+	CommandService_SubscribeLogs_FullMethodName          = "/command.CommandService/SubscribeLogs"
+	CommandService_SubscribeCommandEvents_FullMethodName = "/command.CommandService/SubscribeCommandEvents"
 )
 
 // CommandServiceClient is the client API for CommandService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+//
+// ------------- SERVICE -------------
 type CommandServiceClient interface {
 	// Group management
 	CreateGroup(ctx context.Context, in *Group, opts ...grpc.CallOption) (*Group, error)
@@ -49,8 +53,12 @@ type CommandServiceClient interface {
 	Cancel(ctx context.Context, in *CancelRequest, opts ...grpc.CallOption) (*CancelResponse, error)
 	Retry(ctx context.Context, in *RetryRequest, opts ...grpc.CallOption) (*ExecuteResponse, error)
 	DryRun(ctx context.Context, in *ExecuteRequest, opts ...grpc.CallOption) (*DryRunResult, error)
+	// Update execution status
+	UpdateExecutionStatus(ctx context.Context, in *UpdateExecutionStatusRequest, opts ...grpc.CallOption) (*UpdateExecutionStatusResponse, error)
 	// Streaming logs
 	SubscribeLogs(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandLog], error)
+	// Event listener for executors
+	SubscribeCommandEvents(ctx context.Context, in *SubscribeCommandEventsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error)
 }
 
 type commandServiceClient struct {
@@ -161,6 +169,16 @@ func (c *commandServiceClient) DryRun(ctx context.Context, in *ExecuteRequest, o
 	return out, nil
 }
 
+func (c *commandServiceClient) UpdateExecutionStatus(ctx context.Context, in *UpdateExecutionStatusRequest, opts ...grpc.CallOption) (*UpdateExecutionStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateExecutionStatusResponse)
+	err := c.cc.Invoke(ctx, CommandService_UpdateExecutionStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *commandServiceClient) SubscribeLogs(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandLog], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[0], CommandService_SubscribeLogs_FullMethodName, cOpts...)
@@ -180,9 +198,30 @@ func (c *commandServiceClient) SubscribeLogs(ctx context.Context, in *SubscribeR
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type CommandService_SubscribeLogsClient = grpc.ServerStreamingClient[CommandLog]
 
+func (c *commandServiceClient) SubscribeCommandEvents(ctx context.Context, in *SubscribeCommandEventsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[1], CommandService_SubscribeCommandEvents_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[SubscribeCommandEventsRequest, CommandEvent]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type CommandService_SubscribeCommandEventsClient = grpc.ServerStreamingClient[CommandEvent]
+
 // CommandServiceServer is the server API for CommandService service.
 // All implementations must embed UnimplementedCommandServiceServer
 // for forward compatibility.
+//
+// ------------- SERVICE -------------
 type CommandServiceServer interface {
 	// Group management
 	CreateGroup(context.Context, *Group) (*Group, error)
@@ -197,8 +236,12 @@ type CommandServiceServer interface {
 	Cancel(context.Context, *CancelRequest) (*CancelResponse, error)
 	Retry(context.Context, *RetryRequest) (*ExecuteResponse, error)
 	DryRun(context.Context, *ExecuteRequest) (*DryRunResult, error)
+	// Update execution status
+	UpdateExecutionStatus(context.Context, *UpdateExecutionStatusRequest) (*UpdateExecutionStatusResponse, error)
 	// Streaming logs
 	SubscribeLogs(*SubscribeRequest, grpc.ServerStreamingServer[CommandLog]) error
+	// Event listener for executors
+	SubscribeCommandEvents(*SubscribeCommandEventsRequest, grpc.ServerStreamingServer[CommandEvent]) error
 	mustEmbedUnimplementedCommandServiceServer()
 }
 
@@ -239,8 +282,14 @@ func (UnimplementedCommandServiceServer) Retry(context.Context, *RetryRequest) (
 func (UnimplementedCommandServiceServer) DryRun(context.Context, *ExecuteRequest) (*DryRunResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DryRun not implemented")
 }
+func (UnimplementedCommandServiceServer) UpdateExecutionStatus(context.Context, *UpdateExecutionStatusRequest) (*UpdateExecutionStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateExecutionStatus not implemented")
+}
 func (UnimplementedCommandServiceServer) SubscribeLogs(*SubscribeRequest, grpc.ServerStreamingServer[CommandLog]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeLogs not implemented")
+}
+func (UnimplementedCommandServiceServer) SubscribeCommandEvents(*SubscribeCommandEventsRequest, grpc.ServerStreamingServer[CommandEvent]) error {
+	return status.Errorf(codes.Unimplemented, "method SubscribeCommandEvents not implemented")
 }
 func (UnimplementedCommandServiceServer) mustEmbedUnimplementedCommandServiceServer() {}
 func (UnimplementedCommandServiceServer) testEmbeddedByValue()                        {}
@@ -443,6 +492,24 @@ func _CommandService_DryRun_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CommandService_UpdateExecutionStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateExecutionStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommandServiceServer).UpdateExecutionStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommandService_UpdateExecutionStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommandServiceServer).UpdateExecutionStatus(ctx, req.(*UpdateExecutionStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _CommandService_SubscribeLogs_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(SubscribeRequest)
 	if err := stream.RecvMsg(m); err != nil {
@@ -453,6 +520,17 @@ func _CommandService_SubscribeLogs_Handler(srv interface{}, stream grpc.ServerSt
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type CommandService_SubscribeLogsServer = grpc.ServerStreamingServer[CommandLog]
+
+func _CommandService_SubscribeCommandEvents_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(SubscribeCommandEventsRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(CommandServiceServer).SubscribeCommandEvents(m, &grpc.GenericServerStream[SubscribeCommandEventsRequest, CommandEvent]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type CommandService_SubscribeCommandEventsServer = grpc.ServerStreamingServer[CommandEvent]
 
 // CommandService_ServiceDesc is the grpc.ServiceDesc for CommandService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -501,11 +579,20 @@ var CommandService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "DryRun",
 			Handler:    _CommandService_DryRun_Handler,
 		},
+		{
+			MethodName: "UpdateExecutionStatus",
+			Handler:    _CommandService_UpdateExecutionStatus_Handler,
+		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
 			StreamName:    "SubscribeLogs",
 			Handler:       _CommandService_SubscribeLogs_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SubscribeCommandEvents",
+			Handler:       _CommandService_SubscribeCommandEvents_Handler,
 			ServerStreams: true,
 		},
 	},

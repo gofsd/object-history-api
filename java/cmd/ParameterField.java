@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * ------------- COMMAND TEMPLATES -------------
+ * </pre>
+ *
  * Protobuf type {@code command.ParameterField}
  */
 public final class ParameterField extends
@@ -128,10 +132,6 @@ private static final long serialVersionUID = 0L;
   public static final int TYPE_FIELD_NUMBER = 3;
   private volatile java.lang.Object type_;
   /**
-   * <pre>
-   * string, int, boolean, select, multiline, etc.
-   * </pre>
-   *
    * <code>string type = 3;</code>
    * @return The type.
    */
@@ -149,10 +149,6 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <pre>
-   * string, int, boolean, select, multiline, etc.
-   * </pre>
-   *
    * <code>string type = 3;</code>
    * @return The bytes for type.
    */
@@ -250,10 +246,6 @@ private static final long serialVersionUID = 0L;
   public static final int OPTIONS_FIELD_NUMBER = 6;
   private com.google.protobuf.LazyStringList options_;
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @return A list containing the options.
    */
@@ -262,10 +254,6 @@ private static final long serialVersionUID = 0L;
     return options_;
   }
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @return The count of options.
    */
@@ -273,10 +261,6 @@ private static final long serialVersionUID = 0L;
     return options_.size();
   }
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @param index The index of the element to return.
    * @return The options at the given index.
@@ -285,10 +269,6 @@ private static final long serialVersionUID = 0L;
     return options_.get(index);
   }
   /**
-   * <pre>
-   * for select/radio
-   * </pre>
-   *
    * <code>repeated string options = 6;</code>
    * @param index The index of the value to return.
    * @return The bytes of the options at the given index.
@@ -556,6 +536,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------- COMMAND TEMPLATES -------------
+   * </pre>
+   *
    * Protobuf type {@code command.ParameterField}
    */
   public static final class Builder extends
@@ -965,10 +949,6 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object type_ = "";
     /**
-     * <pre>
-     * string, int, boolean, select, multiline, etc.
-     * </pre>
-     *
      * <code>string type = 3;</code>
      * @return The type.
      */
@@ -985,10 +965,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * string, int, boolean, select, multiline, etc.
-     * </pre>
-     *
      * <code>string type = 3;</code>
      * @return The bytes for type.
      */
@@ -1006,10 +982,6 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * string, int, boolean, select, multiline, etc.
-     * </pre>
-     *
      * <code>string type = 3;</code>
      * @param value The type to set.
      * @return This builder for chaining.
@@ -1025,10 +997,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * string, int, boolean, select, multiline, etc.
-     * </pre>
-     *
      * <code>string type = 3;</code>
      * @return This builder for chaining.
      */
@@ -1039,10 +1007,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * string, int, boolean, select, multiline, etc.
-     * </pre>
-     *
      * <code>string type = 3;</code>
      * @param value The bytes for type to set.
      * @return This builder for chaining.
@@ -1219,10 +1183,6 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @return A list containing the options.
      */
@@ -1231,10 +1191,6 @@ private static final long serialVersionUID = 0L;
       return options_.getUnmodifiableView();
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @return The count of options.
      */
@@ -1242,10 +1198,6 @@ private static final long serialVersionUID = 0L;
       return options_.size();
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @param index The index of the element to return.
      * @return The options at the given index.
@@ -1254,10 +1206,6 @@ private static final long serialVersionUID = 0L;
       return options_.get(index);
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @param index The index of the value to return.
      * @return The bytes of the options at the given index.
@@ -1267,10 +1215,6 @@ private static final long serialVersionUID = 0L;
       return options_.getByteString(index);
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @param index The index to set the value at.
      * @param value The options to set.
@@ -1287,10 +1231,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @param value The options to add.
      * @return This builder for chaining.
@@ -1306,10 +1246,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @param values The options to add.
      * @return This builder for chaining.
@@ -1323,10 +1259,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @return This builder for chaining.
      */
@@ -1337,10 +1269,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * for select/radio
-     * </pre>
-     *
      * <code>repeated string options = 6;</code>
      * @param value The bytes of the options to add.
      * @return This builder for chaining.
