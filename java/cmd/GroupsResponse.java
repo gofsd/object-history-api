@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * GroupsResponse is a wrapper for a list of groups.
+ * </pre>
+ *
  * Protobuf type {@code cmd.GroupsResponse}
  */
 public final class GroupsResponse extends
@@ -242,6 +246,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * GroupsResponse is a wrapper for a list of groups.
+   * </pre>
+   *
    * Protobuf type {@code cmd.GroupsResponse}
    */
   public static final class Builder extends

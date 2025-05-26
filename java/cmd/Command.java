@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * Command represents a command template.
+ * </pre>
+ *
  * Protobuf type {@code cmd.Command}
  */
 public final class Command extends
@@ -265,6 +269,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Command represents a command template.
+   * </pre>
+   *
    * Protobuf type {@code cmd.Command}
    */
   public static final class Builder extends

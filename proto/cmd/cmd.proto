@@ -11,40 +11,46 @@ option objc_class_prefix = "CMD";
 
 
 // ---------------- ENUMS ----------------
+// ExecutionStatus represents the state of a command execution.
 enum ExecutionStatus {
-  UNKNOWN = 0;
-  PENDING = 1;
-  RUNNING = 2;
-  SUCCESS = 3;
-  FAILED = 4;
-  CANCELLED = 5;
-  CANCELLED_BY_TIMEOUT = 6;
-  NOT_PERMITTED = 7;
-  EXECUTORS_NOT_FOUND = 8;
+  EXECUTION_STATUS_UNKNOWN = 0;
+  EXECUTION_STATUS_PENDING = 1;
+  EXECUTION_STATUS_RUNNING = 2;
+  EXECUTION_STATUS_SUCCESS = 3;
+  EXECUTION_STATUS_FAILED = 4;
+  EXECUTION_STATUS_CANCELLED = 5;
+  EXECUTION_STATUS_CANCELLED_BY_TIMEOUT = 6;
+  EXECUTION_STATUS_NOT_PERMITTED = 7;
+  EXECUTION_STATUS_EXECUTORS_NOT_FOUND = 8;
 }
 
+// UserRole represents the role of a user in a group.
 enum UserRole {
-  VIEWER = 0;
-  EXECUTOR = 1;
-  ADMIN = 2;
+  USER_ROLE_VIEWER = 0;
+  USER_ROLE_EXECUTOR = 1;
+  USER_ROLE_ADMIN = 2;
 }
 
 // ------------- CORE MESSAGES -------------
 
+// Group represents a group of users.
 message Group {
   uint64 group_id = 1;
   string name = 2;
   string description = 3;
 }
 
+// GroupsResponse is a wrapper for a list of groups.
 message GroupsResponse {
   repeated Group groups = 1;
 }
 
+// GroupRequest is used to request a specific group by ID.
 message GroupRequest {
   uint64 group_id = 1;
 }
 
+// UserGroupRequest is used to add or remove a user from a group.
 message UserGroupRequest {
   uint64 user_id = 1;
   uint64 group_id = 2;
@@ -52,6 +58,7 @@ message UserGroupRequest {
 }
 
 // ------------- COMMAND TEMPLATES -------------
+// ParameterField describes a parameter for a command template.
 message ParameterField {
   string name = 1;
   string label = 2;
@@ -63,53 +70,65 @@ message ParameterField {
   bool multiline = 8;
 }
 
+// Command represents a command template.
 message Command {
   uint64 id = 1;
   repeated ParameterField fields = 2;
 }
 
+// AddCommandRequest is used to add a new command template.
 message AddCommandRequest {
   repeated ParameterField fields = 1;
 }
 
+// CommandsResponse is a wrapper for a list of commands.
 message CommandsResponse {
   repeated Command commands = 1;
 }
 
+// DeleteCommandRequest is used to delete a command template.
 message DeleteCommandRequest {
   uint64 id = 1;
 }
 
 // ------------- COMMAND EXECUTION -------------
+// ExecuteRequest is used to execute a command.
 message ExecuteRequest {
   uint64 command_id = 1;
   map<string, string> override_parameters = 2;
 }
 
+// ExecuteResponse contains the result of a command execution request.
 message ExecuteResponse {
   uint64 execution_id = 1;
   ExecutionStatus queue_status = 2;
 }
 
+// CancelRequest is used to cancel a command execution.
 message CancelRequest {
   uint64 execution_id = 1;
 }
 
+// CancelResponse indicates if a cancel operation was successful.
 message CancelResponse {
   bool success = 1;
 }
 
+// RetryRequest is used to retry a command execution.
 message RetryRequest {
   uint64 execution_id = 1;
 }
 
+// DryRunResult contains the result of a dry run.
 message DryRunResult {
   uint64 command_id = 1;
 }
 
 // ------------- LOG STREAMING -------------
+// SubscribeRequest is used to subscribe to logs.
 message SubscribeRequest {}
 
+// CommandLog represents a log entry for a command execution.
 message CommandLog {
   uint64 execution_id = 1;
   uint64 command_id = 2;
@@ -121,6 +140,7 @@ message CommandLog {
 }
 
 // ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
+// UpdateExecutionStatusRequest is used to update the status of a command execution.
 message UpdateExecutionStatusRequest {
   uint64 execution_id = 1;
   ExecutionStatus status = 2;
@@ -128,12 +148,15 @@ message UpdateExecutionStatusRequest {
   string output = 4;
 }
 
+// UpdateExecutionStatusResponse indicates if the update was successful.
 message UpdateExecutionStatusResponse {
   bool success = 1;
 }
 
+// SubscribeCommandEventsRequest is used to subscribe to command events.
 message SubscribeCommandEventsRequest {}
 
+// CommandEvent represents an event related to a command execution.
 message CommandEvent {
   uint64 execution_id = 1;
   uint64 command_id = 2;
@@ -141,20 +164,25 @@ message CommandEvent {
   uint64 timestamp = 4;
 }
 
+// Object represents a generic object with fields.
 message Object {
   uint64 id = 1;
   map<string, string> fields = 2;
 }
 
+// UserGroupResponse is the response for user-group operations.
 message UserGroupResponse {
   uint64 user_id = 1;
   uint64 group_id = 2;
   UserRole role = 3;
   string message = 4;
 }
-message Empty{}
+
+// Empty is an empty message for RPCs that require no parameters.
+message Empty {}
 // ------------- SERVICE -------------
 
+// CommandService provides all command and group management operations.
 service CommandService {
   // Group management
   rpc ListGroups(Empty) returns (GroupsResponse);
@@ -169,7 +197,9 @@ service CommandService {
   rpc DeleteCommand(DeleteCommandRequest) returns (Command);
   rpc AddCommandToGroup(UserGroupRequest) returns (UserGroupResponse);
   rpc DeleteCommandFromGroup(UserGroupRequest) returns (UserGroupResponse);
+
   // Execution
+  rpc ListExecutions(Empty) returns (stream CommandLog);
   rpc Execute(ExecuteRequest) returns (ExecuteResponse);
   rpc Cancel(CancelRequest) returns (CancelResponse);
   rpc Retry(RetryRequest) returns (ExecuteResponse);
@@ -180,7 +210,8 @@ service CommandService {
 
   // Streaming logs
   rpc SubscribeLogs(SubscribeRequest) returns (stream CommandLog);
-
+  // List command events
+  rpc ListCommandEvents(Empty) returns (stream CommandEvent);
   // Event listener for executors
   rpc SubscribeCommandEvents(SubscribeCommandEventsRequest) returns (stream CommandEvent);
 }

@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * GroupRequest is used to request a specific group by ID.
+ * </pre>
+ *
  * Protobuf type {@code cmd.GroupRequest}
  */
 public final class GroupRequest extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * GroupRequest is used to request a specific group by ID.
+   * </pre>
+   *
    * Protobuf type {@code cmd.GroupRequest}
    */
   public static final class Builder extends

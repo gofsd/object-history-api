@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * AddCommandRequest is used to add a new command template.
+ * </pre>
+ *
  * Protobuf type {@code cmd.AddCommandRequest}
  */
 public final class AddCommandRequest extends
@@ -242,6 +246,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * AddCommandRequest is used to add a new command template.
+   * </pre>
+   *
    * Protobuf type {@code cmd.AddCommandRequest}
    */
   public static final class Builder extends

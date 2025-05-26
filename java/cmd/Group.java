@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * Group represents a group of users.
+ * </pre>
+ *
  * Protobuf type {@code cmd.Group}
  */
 public final class Group extends
@@ -309,6 +313,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Group represents a group of users.
+   * </pre>
+   *
    * Protobuf type {@code cmd.Group}
    */
   public static final class Builder extends

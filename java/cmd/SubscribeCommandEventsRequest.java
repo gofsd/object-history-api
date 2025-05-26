@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * SubscribeCommandEventsRequest is used to subscribe to command events.
+ * </pre>
+ *
  * Protobuf type {@code cmd.SubscribeCommandEventsRequest}
  */
 public final class SubscribeCommandEventsRequest extends
@@ -188,6 +192,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * SubscribeCommandEventsRequest is used to subscribe to command events.
+   * </pre>
+   *
    * Protobuf type {@code cmd.SubscribeCommandEventsRequest}
    */
   public static final class Builder extends

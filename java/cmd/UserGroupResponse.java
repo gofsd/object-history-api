@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * UserGroupResponse is the response for user-group operations.
+ * </pre>
+ *
  * Protobuf type {@code cmd.UserGroupResponse}
  */
 public final class UserGroupResponse extends
@@ -144,7 +148,7 @@ private static final long serialVersionUID = 0L;
     if (groupId_ != 0L) {
       output.writeUInt64(2, groupId_);
     }
-    if (role_ != cmd.UserRole.VIEWER.getNumber()) {
+    if (role_ != cmd.UserRole.USER_ROLE_VIEWER.getNumber()) {
       output.writeEnum(3, role_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
@@ -167,7 +171,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(2, groupId_);
     }
-    if (role_ != cmd.UserRole.VIEWER.getNumber()) {
+    if (role_ != cmd.UserRole.USER_ROLE_VIEWER.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(3, role_);
     }
@@ -313,6 +317,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * UserGroupResponse is the response for user-group operations.
+   * </pre>
+   *
    * Protobuf type {@code cmd.UserGroupResponse}
    */
   public static final class Builder extends

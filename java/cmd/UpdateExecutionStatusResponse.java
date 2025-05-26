@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * UpdateExecutionStatusResponse indicates if the update was successful.
+ * </pre>
+ *
  * Protobuf type {@code cmd.UpdateExecutionStatusResponse}
  */
 public final class UpdateExecutionStatusResponse extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * UpdateExecutionStatusResponse indicates if the update was successful.
+   * </pre>
+   *
    * Protobuf type {@code cmd.UpdateExecutionStatusResponse}
    */
   public static final class Builder extends

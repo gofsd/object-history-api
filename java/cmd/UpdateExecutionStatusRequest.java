@@ -6,6 +6,7 @@ package cmd;
 /**
  * <pre>
  * ------------- STATUS UPDATE &amp; EVENT SUBSCRIPTION -------------
+ * UpdateExecutionStatusRequest is used to update the status of a command execution.
  * </pre>
  *
  * Protobuf type {@code cmd.UpdateExecutionStatusRequest}
@@ -173,7 +174,7 @@ private static final long serialVersionUID = 0L;
     if (executionId_ != 0L) {
       output.writeUInt64(1, executionId_);
     }
-    if (status_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
+    if (status_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       output.writeEnum(2, status_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
@@ -195,7 +196,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, executionId_);
     }
-    if (status_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
+    if (status_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, status_);
     }
@@ -345,6 +346,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * ------------- STATUS UPDATE &amp; EVENT SUBSCRIPTION -------------
+   * UpdateExecutionStatusRequest is used to update the status of a command execution.
    * </pre>
    *
    * Protobuf type {@code cmd.UpdateExecutionStatusRequest}

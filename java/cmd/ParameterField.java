@@ -6,6 +6,7 @@ package cmd;
 /**
  * <pre>
  * ------------- COMMAND TEMPLATES -------------
+ * ParameterField describes a parameter for a command template.
  * </pre>
  *
  * Protobuf type {@code cmd.ParameterField}
@@ -538,6 +539,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * ------------- COMMAND TEMPLATES -------------
+   * ParameterField describes a parameter for a command template.
    * </pre>
    *
    * Protobuf type {@code cmd.ParameterField}

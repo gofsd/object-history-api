@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * CancelResponse indicates if a cancel operation was successful.
+ * </pre>
+ *
  * Protobuf type {@code cmd.CancelResponse}
  */
 public final class CancelResponse extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * CancelResponse indicates if a cancel operation was successful.
+   * </pre>
+   *
    * Protobuf type {@code cmd.CancelResponse}
    */
   public static final class Builder extends

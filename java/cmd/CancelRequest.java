@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * CancelRequest is used to cancel a command execution.
+ * </pre>
+ *
  * Protobuf type {@code cmd.CancelRequest}
  */
 public final class CancelRequest extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * CancelRequest is used to cancel a command execution.
+   * </pre>
+   *
    * Protobuf type {@code cmd.CancelRequest}
    */
   public static final class Builder extends

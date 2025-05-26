@@ -6,6 +6,7 @@ package cmd;
 /**
  * <pre>
  * ------------- LOG STREAMING -------------
+ * SubscribeRequest is used to subscribe to logs.
  * </pre>
  *
  * Protobuf type {@code cmd.SubscribeRequest}
@@ -194,6 +195,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * ------------- LOG STREAMING -------------
+   * SubscribeRequest is used to subscribe to logs.
    * </pre>
    *
    * Protobuf type {@code cmd.SubscribeRequest}

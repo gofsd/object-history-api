@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * Object represents a generic object with fields.
+ * </pre>
+ *
  * Protobuf type {@code cmd.Object}
  */
 public final class Object extends
@@ -326,6 +330,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Object represents a generic object with fields.
+   * </pre>
+   *
    * Protobuf type {@code cmd.Object}
    */
   public static final class Builder extends

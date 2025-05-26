@@ -6,6 +6,7 @@ package cmd;
 /**
  * <pre>
  * ---------------- ENUMS ----------------
+ * ExecutionStatus represents the state of a command execution.
  * </pre>
  *
  * Protobuf enum {@code cmd.ExecutionStatus}
@@ -13,80 +14,80 @@ package cmd;
 public enum ExecutionStatus
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNKNOWN = 0;</code>
+   * <code>EXECUTION_STATUS_UNKNOWN = 0;</code>
    */
-  UNKNOWN(0),
+  EXECUTION_STATUS_UNKNOWN(0),
   /**
-   * <code>PENDING = 1;</code>
+   * <code>EXECUTION_STATUS_PENDING = 1;</code>
    */
-  PENDING(1),
+  EXECUTION_STATUS_PENDING(1),
   /**
-   * <code>RUNNING = 2;</code>
+   * <code>EXECUTION_STATUS_RUNNING = 2;</code>
    */
-  RUNNING(2),
+  EXECUTION_STATUS_RUNNING(2),
   /**
-   * <code>SUCCESS = 3;</code>
+   * <code>EXECUTION_STATUS_SUCCESS = 3;</code>
    */
-  SUCCESS(3),
+  EXECUTION_STATUS_SUCCESS(3),
   /**
-   * <code>FAILED = 4;</code>
+   * <code>EXECUTION_STATUS_FAILED = 4;</code>
    */
-  FAILED(4),
+  EXECUTION_STATUS_FAILED(4),
   /**
-   * <code>CANCELLED = 5;</code>
+   * <code>EXECUTION_STATUS_CANCELLED = 5;</code>
    */
-  CANCELLED(5),
+  EXECUTION_STATUS_CANCELLED(5),
   /**
-   * <code>CANCELLED_BY_TIMEOUT = 6;</code>
+   * <code>EXECUTION_STATUS_CANCELLED_BY_TIMEOUT = 6;</code>
    */
-  CANCELLED_BY_TIMEOUT(6),
+  EXECUTION_STATUS_CANCELLED_BY_TIMEOUT(6),
   /**
-   * <code>NOT_PERMITTED = 7;</code>
+   * <code>EXECUTION_STATUS_NOT_PERMITTED = 7;</code>
    */
-  NOT_PERMITTED(7),
+  EXECUTION_STATUS_NOT_PERMITTED(7),
   /**
-   * <code>EXECUTORS_NOT_FOUND = 8;</code>
+   * <code>EXECUTION_STATUS_EXECUTORS_NOT_FOUND = 8;</code>
    */
-  EXECUTORS_NOT_FOUND(8),
+  EXECUTION_STATUS_EXECUTORS_NOT_FOUND(8),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>UNKNOWN = 0;</code>
+   * <code>EXECUTION_STATUS_UNKNOWN = 0;</code>
    */
-  public static final int UNKNOWN_VALUE = 0;
+  public static final int EXECUTION_STATUS_UNKNOWN_VALUE = 0;
   /**
-   * <code>PENDING = 1;</code>
+   * <code>EXECUTION_STATUS_PENDING = 1;</code>
    */
-  public static final int PENDING_VALUE = 1;
+  public static final int EXECUTION_STATUS_PENDING_VALUE = 1;
   /**
-   * <code>RUNNING = 2;</code>
+   * <code>EXECUTION_STATUS_RUNNING = 2;</code>
    */
-  public static final int RUNNING_VALUE = 2;
+  public static final int EXECUTION_STATUS_RUNNING_VALUE = 2;
   /**
-   * <code>SUCCESS = 3;</code>
+   * <code>EXECUTION_STATUS_SUCCESS = 3;</code>
    */
-  public static final int SUCCESS_VALUE = 3;
+  public static final int EXECUTION_STATUS_SUCCESS_VALUE = 3;
   /**
-   * <code>FAILED = 4;</code>
+   * <code>EXECUTION_STATUS_FAILED = 4;</code>
    */
-  public static final int FAILED_VALUE = 4;
+  public static final int EXECUTION_STATUS_FAILED_VALUE = 4;
   /**
-   * <code>CANCELLED = 5;</code>
+   * <code>EXECUTION_STATUS_CANCELLED = 5;</code>
    */
-  public static final int CANCELLED_VALUE = 5;
+  public static final int EXECUTION_STATUS_CANCELLED_VALUE = 5;
   /**
-   * <code>CANCELLED_BY_TIMEOUT = 6;</code>
+   * <code>EXECUTION_STATUS_CANCELLED_BY_TIMEOUT = 6;</code>
    */
-  public static final int CANCELLED_BY_TIMEOUT_VALUE = 6;
+  public static final int EXECUTION_STATUS_CANCELLED_BY_TIMEOUT_VALUE = 6;
   /**
-   * <code>NOT_PERMITTED = 7;</code>
+   * <code>EXECUTION_STATUS_NOT_PERMITTED = 7;</code>
    */
-  public static final int NOT_PERMITTED_VALUE = 7;
+  public static final int EXECUTION_STATUS_NOT_PERMITTED_VALUE = 7;
   /**
-   * <code>EXECUTORS_NOT_FOUND = 8;</code>
+   * <code>EXECUTION_STATUS_EXECUTORS_NOT_FOUND = 8;</code>
    */
-  public static final int EXECUTORS_NOT_FOUND_VALUE = 8;
+  public static final int EXECUTION_STATUS_EXECUTORS_NOT_FOUND_VALUE = 8;
 
 
   public final int getNumber() {
@@ -113,15 +114,15 @@ public enum ExecutionStatus
    */
   public static ExecutionStatus forNumber(int value) {
     switch (value) {
-      case 0: return UNKNOWN;
-      case 1: return PENDING;
-      case 2: return RUNNING;
-      case 3: return SUCCESS;
-      case 4: return FAILED;
-      case 5: return CANCELLED;
-      case 6: return CANCELLED_BY_TIMEOUT;
-      case 7: return NOT_PERMITTED;
-      case 8: return EXECUTORS_NOT_FOUND;
+      case 0: return EXECUTION_STATUS_UNKNOWN;
+      case 1: return EXECUTION_STATUS_PENDING;
+      case 2: return EXECUTION_STATUS_RUNNING;
+      case 3: return EXECUTION_STATUS_SUCCESS;
+      case 4: return EXECUTION_STATUS_FAILED;
+      case 5: return EXECUTION_STATUS_CANCELLED;
+      case 6: return EXECUTION_STATUS_CANCELLED_BY_TIMEOUT;
+      case 7: return EXECUTION_STATUS_NOT_PERMITTED;
+      case 8: return EXECUTION_STATUS_EXECUTORS_NOT_FOUND;
       default: return null;
     }
   }

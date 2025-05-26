@@ -6,6 +6,7 @@ package cmd;
 /**
  * <pre>
  * ------------- COMMAND EXECUTION -------------
+ * ExecuteRequest is used to execute a command.
  * </pre>
  *
  * Protobuf type {@code cmd.ExecuteRequest}
@@ -332,6 +333,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * ------------- COMMAND EXECUTION -------------
+   * ExecuteRequest is used to execute a command.
    * </pre>
    *
    * Protobuf type {@code cmd.ExecuteRequest}

@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * UserGroupRequest is used to add or remove a user from a group.
+ * </pre>
+ *
  * Protobuf type {@code cmd.UserGroupRequest}
  */
 public final class UserGroupRequest extends
@@ -105,7 +109,7 @@ private static final long serialVersionUID = 0L;
     if (groupId_ != 0L) {
       output.writeUInt64(2, groupId_);
     }
-    if (role_ != cmd.UserRole.VIEWER.getNumber()) {
+    if (role_ != cmd.UserRole.USER_ROLE_VIEWER.getNumber()) {
       output.writeEnum(3, role_);
     }
     getUnknownFields().writeTo(output);
@@ -125,7 +129,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(2, groupId_);
     }
-    if (role_ != cmd.UserRole.VIEWER.getNumber()) {
+    if (role_ != cmd.UserRole.USER_ROLE_VIEWER.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(3, role_);
     }
@@ -264,6 +268,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * UserGroupRequest is used to add or remove a user from a group.
+   * </pre>
+   *
    * Protobuf type {@code cmd.UserGroupRequest}
    */
   public static final class Builder extends

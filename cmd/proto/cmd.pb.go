@@ -22,43 +22,44 @@ const (
 )
 
 // ---------------- ENUMS ----------------
+// ExecutionStatus represents the state of a command execution.
 type ExecutionStatus int32
 
 const (
-	ExecutionStatus_UNKNOWN              ExecutionStatus = 0
-	ExecutionStatus_PENDING              ExecutionStatus = 1
-	ExecutionStatus_RUNNING              ExecutionStatus = 2
-	ExecutionStatus_SUCCESS              ExecutionStatus = 3
-	ExecutionStatus_FAILED               ExecutionStatus = 4
-	ExecutionStatus_CANCELLED            ExecutionStatus = 5
-	ExecutionStatus_CANCELLED_BY_TIMEOUT ExecutionStatus = 6
-	ExecutionStatus_NOT_PERMITTED        ExecutionStatus = 7
-	ExecutionStatus_EXECUTORS_NOT_FOUND  ExecutionStatus = 8
+	ExecutionStatus_EXECUTION_STATUS_UNKNOWN              ExecutionStatus = 0
+	ExecutionStatus_EXECUTION_STATUS_PENDING              ExecutionStatus = 1
+	ExecutionStatus_EXECUTION_STATUS_RUNNING              ExecutionStatus = 2
+	ExecutionStatus_EXECUTION_STATUS_SUCCESS              ExecutionStatus = 3
+	ExecutionStatus_EXECUTION_STATUS_FAILED               ExecutionStatus = 4
+	ExecutionStatus_EXECUTION_STATUS_CANCELLED            ExecutionStatus = 5
+	ExecutionStatus_EXECUTION_STATUS_CANCELLED_BY_TIMEOUT ExecutionStatus = 6
+	ExecutionStatus_EXECUTION_STATUS_NOT_PERMITTED        ExecutionStatus = 7
+	ExecutionStatus_EXECUTION_STATUS_EXECUTORS_NOT_FOUND  ExecutionStatus = 8
 )
 
 // Enum value maps for ExecutionStatus.
 var (
 	ExecutionStatus_name = map[int32]string{
-		0: "UNKNOWN",
-		1: "PENDING",
-		2: "RUNNING",
-		3: "SUCCESS",
-		4: "FAILED",
-		5: "CANCELLED",
-		6: "CANCELLED_BY_TIMEOUT",
-		7: "NOT_PERMITTED",
-		8: "EXECUTORS_NOT_FOUND",
+		0: "EXECUTION_STATUS_UNKNOWN",
+		1: "EXECUTION_STATUS_PENDING",
+		2: "EXECUTION_STATUS_RUNNING",
+		3: "EXECUTION_STATUS_SUCCESS",
+		4: "EXECUTION_STATUS_FAILED",
+		5: "EXECUTION_STATUS_CANCELLED",
+		6: "EXECUTION_STATUS_CANCELLED_BY_TIMEOUT",
+		7: "EXECUTION_STATUS_NOT_PERMITTED",
+		8: "EXECUTION_STATUS_EXECUTORS_NOT_FOUND",
 	}
 	ExecutionStatus_value = map[string]int32{
-		"UNKNOWN":              0,
-		"PENDING":              1,
-		"RUNNING":              2,
-		"SUCCESS":              3,
-		"FAILED":               4,
-		"CANCELLED":            5,
-		"CANCELLED_BY_TIMEOUT": 6,
-		"NOT_PERMITTED":        7,
-		"EXECUTORS_NOT_FOUND":  8,
+		"EXECUTION_STATUS_UNKNOWN":              0,
+		"EXECUTION_STATUS_PENDING":              1,
+		"EXECUTION_STATUS_RUNNING":              2,
+		"EXECUTION_STATUS_SUCCESS":              3,
+		"EXECUTION_STATUS_FAILED":               4,
+		"EXECUTION_STATUS_CANCELLED":            5,
+		"EXECUTION_STATUS_CANCELLED_BY_TIMEOUT": 6,
+		"EXECUTION_STATUS_NOT_PERMITTED":        7,
+		"EXECUTION_STATUS_EXECUTORS_NOT_FOUND":  8,
 	}
 )
 
@@ -89,25 +90,26 @@ func (ExecutionStatus) EnumDescriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{0}
 }
 
+// UserRole represents the role of a user in a group.
 type UserRole int32
 
 const (
-	UserRole_VIEWER   UserRole = 0
-	UserRole_EXECUTOR UserRole = 1
-	UserRole_ADMIN    UserRole = 2
+	UserRole_USER_ROLE_VIEWER   UserRole = 0
+	UserRole_USER_ROLE_EXECUTOR UserRole = 1
+	UserRole_USER_ROLE_ADMIN    UserRole = 2
 )
 
 // Enum value maps for UserRole.
 var (
 	UserRole_name = map[int32]string{
-		0: "VIEWER",
-		1: "EXECUTOR",
-		2: "ADMIN",
+		0: "USER_ROLE_VIEWER",
+		1: "USER_ROLE_EXECUTOR",
+		2: "USER_ROLE_ADMIN",
 	}
 	UserRole_value = map[string]int32{
-		"VIEWER":   0,
-		"EXECUTOR": 1,
-		"ADMIN":    2,
+		"USER_ROLE_VIEWER":   0,
+		"USER_ROLE_EXECUTOR": 1,
+		"USER_ROLE_ADMIN":    2,
 	}
 )
 
@@ -138,6 +140,7 @@ func (UserRole) EnumDescriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{1}
 }
 
+// Group represents a group of users.
 type Group struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GroupId       uint64                 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
@@ -198,6 +201,7 @@ func (x *Group) GetDescription() string {
 	return ""
 }
 
+// GroupsResponse is a wrapper for a list of groups.
 type GroupsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Groups        []*Group               `protobuf:"bytes,1,rep,name=groups,proto3" json:"groups,omitempty"`
@@ -242,6 +246,7 @@ func (x *GroupsResponse) GetGroups() []*Group {
 	return nil
 }
 
+// GroupRequest is used to request a specific group by ID.
 type GroupRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	GroupId       uint64                 `protobuf:"varint,1,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`
@@ -286,6 +291,7 @@ func (x *GroupRequest) GetGroupId() uint64 {
 	return 0
 }
 
+// UserGroupRequest is used to add or remove a user from a group.
 type UserGroupRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -343,10 +349,11 @@ func (x *UserGroupRequest) GetRole() UserRole {
 	if x != nil {
 		return x.Role
 	}
-	return UserRole_VIEWER
+	return UserRole_USER_ROLE_VIEWER
 }
 
 // ------------- COMMAND TEMPLATES -------------
+// ParameterField describes a parameter for a command template.
 type ParameterField struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
@@ -447,6 +454,7 @@ func (x *ParameterField) GetMultiline() bool {
 	return false
 }
 
+// Command represents a command template.
 type Command struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -499,6 +507,7 @@ func (x *Command) GetFields() []*ParameterField {
 	return nil
 }
 
+// AddCommandRequest is used to add a new command template.
 type AddCommandRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Fields        []*ParameterField      `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty"`
@@ -543,6 +552,7 @@ func (x *AddCommandRequest) GetFields() []*ParameterField {
 	return nil
 }
 
+// CommandsResponse is a wrapper for a list of commands.
 type CommandsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Commands      []*Command             `protobuf:"bytes,1,rep,name=commands,proto3" json:"commands,omitempty"`
@@ -587,6 +597,7 @@ func (x *CommandsResponse) GetCommands() []*Command {
 	return nil
 }
 
+// DeleteCommandRequest is used to delete a command template.
 type DeleteCommandRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -632,6 +643,7 @@ func (x *DeleteCommandRequest) GetId() uint64 {
 }
 
 // ------------- COMMAND EXECUTION -------------
+// ExecuteRequest is used to execute a command.
 type ExecuteRequest struct {
 	state              protoimpl.MessageState `protogen:"open.v1"`
 	CommandId          uint64                 `protobuf:"varint,1,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
@@ -684,6 +696,7 @@ func (x *ExecuteRequest) GetOverrideParameters() map[string]string {
 	return nil
 }
 
+// ExecuteResponse contains the result of a command execution request.
 type ExecuteResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId   uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
@@ -733,9 +746,10 @@ func (x *ExecuteResponse) GetQueueStatus() ExecutionStatus {
 	if x != nil {
 		return x.QueueStatus
 	}
-	return ExecutionStatus_UNKNOWN
+	return ExecutionStatus_EXECUTION_STATUS_UNKNOWN
 }
 
+// CancelRequest is used to cancel a command execution.
 type CancelRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId   uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
@@ -780,6 +794,7 @@ func (x *CancelRequest) GetExecutionId() uint64 {
 	return 0
 }
 
+// CancelResponse indicates if a cancel operation was successful.
 type CancelResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
@@ -824,6 +839,7 @@ func (x *CancelResponse) GetSuccess() bool {
 	return false
 }
 
+// RetryRequest is used to retry a command execution.
 type RetryRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId   uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
@@ -868,6 +884,7 @@ func (x *RetryRequest) GetExecutionId() uint64 {
 	return 0
 }
 
+// DryRunResult contains the result of a dry run.
 type DryRunResult struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	CommandId     uint64                 `protobuf:"varint,1,opt,name=command_id,json=commandId,proto3" json:"command_id,omitempty"`
@@ -913,6 +930,7 @@ func (x *DryRunResult) GetCommandId() uint64 {
 }
 
 // ------------- LOG STREAMING -------------
+// SubscribeRequest is used to subscribe to logs.
 type SubscribeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -949,6 +967,7 @@ func (*SubscribeRequest) Descriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{15}
 }
 
+// CommandLog represents a log entry for a command execution.
 type CommandLog struct {
 	state               protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId         uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
@@ -1017,7 +1036,7 @@ func (x *CommandLog) GetStatus() ExecutionStatus {
 	if x != nil {
 		return x.Status
 	}
-	return ExecutionStatus_UNKNOWN
+	return ExecutionStatus_EXECUTION_STATUS_UNKNOWN
 }
 
 func (x *CommandLog) GetTimestamp() uint64 {
@@ -1042,6 +1061,7 @@ func (x *CommandLog) GetResultCode() string {
 }
 
 // ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
+// UpdateExecutionStatusRequest is used to update the status of a command execution.
 type UpdateExecutionStatusRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId   uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
@@ -1093,7 +1113,7 @@ func (x *UpdateExecutionStatusRequest) GetStatus() ExecutionStatus {
 	if x != nil {
 		return x.Status
 	}
-	return ExecutionStatus_UNKNOWN
+	return ExecutionStatus_EXECUTION_STATUS_UNKNOWN
 }
 
 func (x *UpdateExecutionStatusRequest) GetResultCode() string {
@@ -1110,6 +1130,7 @@ func (x *UpdateExecutionStatusRequest) GetOutput() string {
 	return ""
 }
 
+// UpdateExecutionStatusResponse indicates if the update was successful.
 type UpdateExecutionStatusResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
@@ -1154,6 +1175,7 @@ func (x *UpdateExecutionStatusResponse) GetSuccess() bool {
 	return false
 }
 
+// SubscribeCommandEventsRequest is used to subscribe to command events.
 type SubscribeCommandEventsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1190,6 +1212,7 @@ func (*SubscribeCommandEventsRequest) Descriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{19}
 }
 
+// CommandEvent represents an event related to a command execution.
 type CommandEvent struct {
 	state               protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId         uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
@@ -1258,6 +1281,7 @@ func (x *CommandEvent) GetTimestamp() uint64 {
 	return 0
 }
 
+// Object represents a generic object with fields.
 type Object struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1310,6 +1334,7 @@ func (x *Object) GetFields() map[string]string {
 	return nil
 }
 
+// UserGroupResponse is the response for user-group operations.
 type UserGroupResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -1368,7 +1393,7 @@ func (x *UserGroupResponse) GetRole() UserRole {
 	if x != nil {
 		return x.Role
 	}
-	return UserRole_VIEWER
+	return UserRole_USER_ROLE_VIEWER
 }
 
 func (x *UserGroupResponse) GetMessage() string {
@@ -1378,6 +1403,7 @@ func (x *UserGroupResponse) GetMessage() string {
 	return ""
 }
 
+// Empty is an empty message for RPCs that require no parameters.
 type Empty struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	unknownFields protoimpl.UnknownFields
@@ -1513,23 +1539,21 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\bgroup_id\x18\x02 \x01(\x04R\agroupId\x12!\n" +
 	"\x04role\x18\x03 \x01(\x0e2\r.cmd.UserRoleR\x04role\x12\x18\n" +
 	"\amessage\x18\x04 \x01(\tR\amessage\"\a\n" +
-	"\x05Empty*\xa6\x01\n" +
-	"\x0fExecutionStatus\x12\v\n" +
-	"\aUNKNOWN\x10\x00\x12\v\n" +
-	"\aPENDING\x10\x01\x12\v\n" +
-	"\aRUNNING\x10\x02\x12\v\n" +
-	"\aSUCCESS\x10\x03\x12\n" +
-	"\n" +
-	"\x06FAILED\x10\x04\x12\r\n" +
-	"\tCANCELLED\x10\x05\x12\x18\n" +
-	"\x14CANCELLED_BY_TIMEOUT\x10\x06\x12\x11\n" +
-	"\rNOT_PERMITTED\x10\a\x12\x17\n" +
-	"\x13EXECUTORS_NOT_FOUND\x10\b*/\n" +
-	"\bUserRole\x12\n" +
-	"\n" +
-	"\x06VIEWER\x10\x00\x12\f\n" +
-	"\bEXECUTOR\x10\x01\x12\t\n" +
-	"\x05ADMIN\x10\x022\x81\b\n" +
+	"\x05Empty*\xbf\x02\n" +
+	"\x0fExecutionStatus\x12\x1c\n" +
+	"\x18EXECUTION_STATUS_UNKNOWN\x10\x00\x12\x1c\n" +
+	"\x18EXECUTION_STATUS_PENDING\x10\x01\x12\x1c\n" +
+	"\x18EXECUTION_STATUS_RUNNING\x10\x02\x12\x1c\n" +
+	"\x18EXECUTION_STATUS_SUCCESS\x10\x03\x12\x1b\n" +
+	"\x17EXECUTION_STATUS_FAILED\x10\x04\x12\x1e\n" +
+	"\x1aEXECUTION_STATUS_CANCELLED\x10\x05\x12)\n" +
+	"%EXECUTION_STATUS_CANCELLED_BY_TIMEOUT\x10\x06\x12\"\n" +
+	"\x1eEXECUTION_STATUS_NOT_PERMITTED\x10\a\x12(\n" +
+	"$EXECUTION_STATUS_EXECUTORS_NOT_FOUND\x10\b*M\n" +
+	"\bUserRole\x12\x14\n" +
+	"\x10USER_ROLE_VIEWER\x10\x00\x12\x16\n" +
+	"\x12USER_ROLE_EXECUTOR\x10\x01\x12\x13\n" +
+	"\x0fUSER_ROLE_ADMIN\x10\x022\xe8\b\n" +
 	"\x0eCommandService\x12-\n" +
 	"\n" +
 	"ListGroups\x12\n" +
@@ -1547,13 +1571,17 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"AddCommand\x12\x16.cmd.AddCommandRequest\x1a\f.cmd.Command\x128\n" +
 	"\rDeleteCommand\x12\x19.cmd.DeleteCommandRequest\x1a\f.cmd.Command\x12B\n" +
 	"\x11AddCommandToGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12G\n" +
-	"\x16DeleteCommandFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x124\n" +
+	"\x16DeleteCommandFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12/\n" +
+	"\x0eListExecutions\x12\n" +
+	".cmd.Empty\x1a\x0f.cmd.CommandLog0\x01\x124\n" +
 	"\aExecute\x12\x13.cmd.ExecuteRequest\x1a\x14.cmd.ExecuteResponse\x121\n" +
 	"\x06Cancel\x12\x12.cmd.CancelRequest\x1a\x13.cmd.CancelResponse\x120\n" +
 	"\x05Retry\x12\x11.cmd.RetryRequest\x1a\x14.cmd.ExecuteResponse\x120\n" +
 	"\x06DryRun\x12\x13.cmd.ExecuteRequest\x1a\x11.cmd.DryRunResult\x12^\n" +
 	"\x15UpdateExecutionStatus\x12!.cmd.UpdateExecutionStatusRequest\x1a\".cmd.UpdateExecutionStatusResponse\x129\n" +
-	"\rSubscribeLogs\x12\x15.cmd.SubscribeRequest\x1a\x0f.cmd.CommandLog0\x01\x12Q\n" +
+	"\rSubscribeLogs\x12\x15.cmd.SubscribeRequest\x1a\x0f.cmd.CommandLog0\x01\x124\n" +
+	"\x11ListCommandEvents\x12\n" +
+	".cmd.Empty\x1a\x11.cmd.CommandEvent0\x01\x12Q\n" +
 	"\x16SubscribeCommandEvents\x12\".cmd.SubscribeCommandEventsRequest\x1a\x11.cmd.CommandEvent0\x01B\x1d\n" +
 	"\x03cmdB\x03CmdP\x01Z\tcmd/proto\xa2\x02\x03CMDb\x06proto3"
 
@@ -1627,32 +1655,36 @@ var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	10, // 20: cmd.CommandService.DeleteCommand:input_type -> cmd.DeleteCommandRequest
 	5,  // 21: cmd.CommandService.AddCommandToGroup:input_type -> cmd.UserGroupRequest
 	5,  // 22: cmd.CommandService.DeleteCommandFromGroup:input_type -> cmd.UserGroupRequest
-	11, // 23: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
-	13, // 24: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
-	15, // 25: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
-	11, // 26: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
-	19, // 27: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
-	17, // 28: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
-	21, // 29: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.SubscribeCommandEventsRequest
-	3,  // 30: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
-	2,  // 31: cmd.CommandService.AddGroup:output_type -> cmd.Group
-	2,  // 32: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
-	24, // 33: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
-	24, // 34: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
-	9,  // 35: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
-	7,  // 36: cmd.CommandService.AddCommand:output_type -> cmd.Command
-	7,  // 37: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
-	24, // 38: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
-	24, // 39: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
-	12, // 40: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
-	14, // 41: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
-	12, // 42: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
-	16, // 43: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
-	20, // 44: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
-	18, // 45: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
-	22, // 46: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
-	30, // [30:47] is the sub-list for method output_type
-	13, // [13:30] is the sub-list for method input_type
+	25, // 23: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
+	11, // 24: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
+	13, // 25: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
+	15, // 26: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
+	11, // 27: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
+	19, // 28: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
+	17, // 29: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
+	25, // 30: cmd.CommandService.ListCommandEvents:input_type -> cmd.Empty
+	21, // 31: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.SubscribeCommandEventsRequest
+	3,  // 32: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
+	2,  // 33: cmd.CommandService.AddGroup:output_type -> cmd.Group
+	2,  // 34: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
+	24, // 35: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
+	24, // 36: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
+	9,  // 37: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
+	7,  // 38: cmd.CommandService.AddCommand:output_type -> cmd.Command
+	7,  // 39: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
+	24, // 40: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
+	24, // 41: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
+	18, // 42: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
+	12, // 43: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
+	14, // 44: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
+	12, // 45: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
+	16, // 46: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
+	20, // 47: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
+	18, // 48: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
+	22, // 49: cmd.CommandService.ListCommandEvents:output_type -> cmd.CommandEvent
+	22, // 50: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
+	32, // [32:51] is the sub-list for method output_type
+	13, // [13:32] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name

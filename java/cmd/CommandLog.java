@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * CommandLog represents a log entry for a command execution.
+ * </pre>
+ *
  * Protobuf type {@code cmd.CommandLog}
  */
 public final class CommandLog extends
@@ -290,7 +294,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(output_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, output_);
     }
-    if (status_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
+    if (status_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       output.writeEnum(4, status_);
     }
     if (timestamp_ != 0L) {
@@ -325,7 +329,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(output_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, output_);
     }
-    if (status_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
+    if (status_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(4, status_);
     }
@@ -500,6 +504,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * CommandLog represents a log entry for a command execution.
+   * </pre>
+   *
    * Protobuf type {@code cmd.CommandLog}
    */
   public static final class Builder extends

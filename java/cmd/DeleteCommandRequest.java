@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * DeleteCommandRequest is used to delete a command template.
+ * </pre>
+ *
  * Protobuf type {@code cmd.DeleteCommandRequest}
  */
 public final class DeleteCommandRequest extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * DeleteCommandRequest is used to delete a command template.
+   * </pre>
+   *
    * Protobuf type {@code cmd.DeleteCommandRequest}
    */
   public static final class Builder extends

@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * CommandEvent represents an event related to a command execution.
+ * </pre>
+ *
  * Protobuf type {@code cmd.CommandEvent}
  */
 public final class CommandEvent extends
@@ -372,6 +376,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * CommandEvent represents an event related to a command execution.
+   * </pre>
+   *
    * Protobuf type {@code cmd.CommandEvent}
    */
   public static final class Builder extends

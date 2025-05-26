@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * DryRunResult contains the result of a dry run.
+ * </pre>
+ *
  * Protobuf type {@code cmd.DryRunResult}
  */
 public final class DryRunResult extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * DryRunResult contains the result of a dry run.
+   * </pre>
+   *
    * Protobuf type {@code cmd.DryRunResult}
    */
   public static final class Builder extends

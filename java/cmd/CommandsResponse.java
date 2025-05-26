@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * CommandsResponse is a wrapper for a list of commands.
+ * </pre>
+ *
  * Protobuf type {@code cmd.CommandsResponse}
  */
 public final class CommandsResponse extends
@@ -242,6 +246,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * CommandsResponse is a wrapper for a list of commands.
+   * </pre>
+   *
    * Protobuf type {@code cmd.CommandsResponse}
    */
   public static final class Builder extends

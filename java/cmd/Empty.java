@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * Empty is an empty message for RPCs that require no parameters.
+ * </pre>
+ *
  * Protobuf type {@code cmd.Empty}
  */
 public final class Empty extends
@@ -188,6 +192,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Empty is an empty message for RPCs that require no parameters.
+   * </pre>
+   *
    * Protobuf type {@code cmd.Empty}
    */
   public static final class Builder extends

@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * ExecuteResponse contains the result of a command execution request.
+ * </pre>
+ *
  * Protobuf type {@code cmd.ExecuteResponse}
  */
 public final class ExecuteResponse extends
@@ -91,7 +95,7 @@ private static final long serialVersionUID = 0L;
     if (executionId_ != 0L) {
       output.writeUInt64(1, executionId_);
     }
-    if (queueStatus_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
+    if (queueStatus_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       output.writeEnum(2, queueStatus_);
     }
     getUnknownFields().writeTo(output);
@@ -107,7 +111,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, executionId_);
     }
-    if (queueStatus_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
+    if (queueStatus_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, queueStatus_);
     }
@@ -241,6 +245,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ExecuteResponse contains the result of a command execution request.
+   * </pre>
+   *
    * Protobuf type {@code cmd.ExecuteResponse}
    */
   public static final class Builder extends

@@ -4,37 +4,41 @@
 package cmd;
 
 /**
+ * <pre>
+ * UserRole represents the role of a user in a group.
+ * </pre>
+ *
  * Protobuf enum {@code cmd.UserRole}
  */
 public enum UserRole
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>VIEWER = 0;</code>
+   * <code>USER_ROLE_VIEWER = 0;</code>
    */
-  VIEWER(0),
+  USER_ROLE_VIEWER(0),
   /**
-   * <code>EXECUTOR = 1;</code>
+   * <code>USER_ROLE_EXECUTOR = 1;</code>
    */
-  EXECUTOR(1),
+  USER_ROLE_EXECUTOR(1),
   /**
-   * <code>ADMIN = 2;</code>
+   * <code>USER_ROLE_ADMIN = 2;</code>
    */
-  ADMIN(2),
+  USER_ROLE_ADMIN(2),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>VIEWER = 0;</code>
+   * <code>USER_ROLE_VIEWER = 0;</code>
    */
-  public static final int VIEWER_VALUE = 0;
+  public static final int USER_ROLE_VIEWER_VALUE = 0;
   /**
-   * <code>EXECUTOR = 1;</code>
+   * <code>USER_ROLE_EXECUTOR = 1;</code>
    */
-  public static final int EXECUTOR_VALUE = 1;
+  public static final int USER_ROLE_EXECUTOR_VALUE = 1;
   /**
-   * <code>ADMIN = 2;</code>
+   * <code>USER_ROLE_ADMIN = 2;</code>
    */
-  public static final int ADMIN_VALUE = 2;
+  public static final int USER_ROLE_ADMIN_VALUE = 2;
 
 
   public final int getNumber() {
@@ -61,9 +65,9 @@ public enum UserRole
    */
   public static UserRole forNumber(int value) {
     switch (value) {
-      case 0: return VIEWER;
-      case 1: return EXECUTOR;
-      case 2: return ADMIN;
+      case 0: return USER_ROLE_VIEWER;
+      case 1: return USER_ROLE_EXECUTOR;
+      case 2: return USER_ROLE_ADMIN;
       default: return null;
     }
   }

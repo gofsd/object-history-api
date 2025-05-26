@@ -4,6 +4,10 @@
 package cmd;
 
 /**
+ * <pre>
+ * RetryRequest is used to retry a command execution.
+ * </pre>
+ *
  * Protobuf type {@code cmd.RetryRequest}
  */
 public final class RetryRequest extends
@@ -211,6 +215,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * RetryRequest is used to retry a command execution.
+   * </pre>
+   *
    * Protobuf type {@code cmd.RetryRequest}
    */
   public static final class Builder extends
