@@ -4,29 +4,6 @@
 package cmd;
 
 public interface SubscribeCommandEventsRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.SubscribeCommandEventsRequest)
+    // @@protoc_insertion_point(interface_extends:cmd.SubscribeCommandEventsRequest)
     com.google.protobuf.MessageOrBuilder {
-
-  /**
-   * <code>int64 user_id = 1;</code>
-   * @return The userId.
-   */
-  long getUserId();
-
-  /**
-   * <code>repeated int64 group_ids = 2;</code>
-   * @return A list containing the groupIds.
-   */
-  java.util.List<java.lang.Long> getGroupIdsList();
-  /**
-   * <code>repeated int64 group_ids = 2;</code>
-   * @return The count of groupIds.
-   */
-  int getGroupIdsCount();
-  /**
-   * <code>repeated int64 group_ids = 2;</code>
-   * @param index The index of the element to return.
-   * @return The groupIds at the given index.
-   */
-  long getGroupIds(int index);
 }

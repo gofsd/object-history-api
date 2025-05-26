@@ -4,11 +4,11 @@
 package cmd;
 
 public interface GroupRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.GroupRequest)
+    // @@protoc_insertion_point(interface_extends:cmd.GroupRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 group_id = 1;</code>
+   * <code>uint64 group_id = 1;</code>
    * @return The groupId.
    */
   long getGroupId();

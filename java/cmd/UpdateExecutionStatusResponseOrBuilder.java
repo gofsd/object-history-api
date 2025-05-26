@@ -4,7 +4,7 @@
 package cmd;
 
 public interface UpdateExecutionStatusResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.UpdateExecutionStatusResponse)
+    // @@protoc_insertion_point(interface_extends:cmd.UpdateExecutionStatusResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

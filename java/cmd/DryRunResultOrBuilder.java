@@ -4,30 +4,12 @@
 package cmd;
 
 public interface DryRunResultOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.DryRunResult)
+    // @@protoc_insertion_point(interface_extends:cmd.DryRunResult)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string rendered_command = 1;</code>
-   * @return The renderedCommand.
+   * <code>uint64 command_id = 1;</code>
+   * @return The commandId.
    */
-  java.lang.String getRenderedCommand();
-  /**
-   * <code>string rendered_command = 1;</code>
-   * @return The bytes for renderedCommand.
-   */
-  com.google.protobuf.ByteString
-      getRenderedCommandBytes();
-
-  /**
-   * <code>string message = 2;</code>
-   * @return The message.
-   */
-  java.lang.String getMessage();
-  /**
-   * <code>string message = 2;</code>
-   * @return The bytes for message.
-   */
-  com.google.protobuf.ByteString
-      getMessageBytes();
+  long getCommandId();
 }

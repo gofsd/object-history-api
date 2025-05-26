@@ -4,6 +4,10 @@
 package auth;
 
 /**
+ * <pre>
+ * ------------------- CORE MESSAGES -------------------
+ * </pre>
+ *
  * Protobuf type {@code auth.RegisterRequest}
  */
 public final class RegisterRequest extends
@@ -286,6 +290,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------------- CORE MESSAGES -------------------
+   * </pre>
+   *
    * Protobuf type {@code auth.RegisterRequest}
    */
   public static final class Builder extends

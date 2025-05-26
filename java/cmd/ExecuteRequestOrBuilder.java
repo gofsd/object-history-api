@@ -4,14 +4,14 @@
 package cmd;
 
 public interface ExecuteRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.ExecuteRequest)
+    // @@protoc_insertion_point(interface_extends:cmd.ExecuteRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 command_template_id = 1;</code>
-   * @return The commandTemplateId.
+   * <code>uint64 command_id = 1;</code>
+   * @return The commandId.
    */
-  long getCommandTemplateId();
+  long getCommandId();
 
   /**
    * <code>map&lt;string, string&gt; override_parameters = 2;</code>
@@ -46,10 +46,4 @@ public interface ExecuteRequestOrBuilder extends
 
   java.lang.String getOverrideParametersOrThrow(
       java.lang.String key);
-
-  /**
-   * <code>int64 user_id = 3;</code>
-   * @return The userId.
-   */
-  long getUserId();
 }

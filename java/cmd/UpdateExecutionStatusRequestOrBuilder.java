@@ -4,22 +4,22 @@
 package cmd;
 
 public interface UpdateExecutionStatusRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.UpdateExecutionStatusRequest)
+    // @@protoc_insertion_point(interface_extends:cmd.UpdateExecutionStatusRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   long getExecutionId();
 
   /**
-   * <code>.command.ExecutionStatus status = 2;</code>
+   * <code>.cmd.ExecutionStatus status = 2;</code>
    * @return The enum numeric value on the wire for status.
    */
   int getStatusValue();
   /**
-   * <code>.command.ExecutionStatus status = 2;</code>
+   * <code>.cmd.ExecutionStatus status = 2;</code>
    * @return The status.
    */
   cmd.ExecutionStatus getStatus();
@@ -35,4 +35,16 @@ public interface UpdateExecutionStatusRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getResultCodeBytes();
+
+  /**
+   * <code>string output = 4;</code>
+   * @return The output.
+   */
+  java.lang.String getOutput();
+  /**
+   * <code>string output = 4;</code>
+   * @return The bytes for output.
+   */
+  com.google.protobuf.ByteString
+      getOutputBytes();
 }

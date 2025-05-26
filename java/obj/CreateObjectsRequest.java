@@ -4,6 +4,10 @@
 package obj;
 
 /**
+ * <pre>
+ * ------------------- BATCH/UNIQUE REQUESTS -------------------
+ * </pre>
+ *
  * Protobuf type {@code object.CreateObjectsRequest}
  */
 public final class CreateObjectsRequest extends
@@ -325,6 +329,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------------- BATCH/UNIQUE REQUESTS -------------------
+   * </pre>
+   *
    * Protobuf type {@code object.CreateObjectsRequest}
    */
   public static final class Builder extends

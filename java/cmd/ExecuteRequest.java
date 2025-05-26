@@ -8,11 +8,11 @@ package cmd;
  * ------------- COMMAND EXECUTION -------------
  * </pre>
  *
- * Protobuf type {@code command.ExecuteRequest}
+ * Protobuf type {@code cmd.ExecuteRequest}
  */
 public final class ExecuteRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.ExecuteRequest)
+    // @@protoc_insertion_point(message_implements:cmd.ExecuteRequest)
     ExecuteRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use ExecuteRequest.newBuilder() to construct.
@@ -36,7 +36,7 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_ExecuteRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_ExecuteRequest_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
@@ -54,20 +54,20 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_ExecuteRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_ExecuteRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.ExecuteRequest.class, cmd.ExecuteRequest.Builder.class);
   }
 
-  public static final int COMMAND_TEMPLATE_ID_FIELD_NUMBER = 1;
-  private long commandTemplateId_;
+  public static final int COMMAND_ID_FIELD_NUMBER = 1;
+  private long commandId_;
   /**
-   * <code>int64 command_template_id = 1;</code>
-   * @return The commandTemplateId.
+   * <code>uint64 command_id = 1;</code>
+   * @return The commandId.
    */
   @java.lang.Override
-  public long getCommandTemplateId() {
-    return commandTemplateId_;
+  public long getCommandId() {
+    return commandId_;
   }
 
   public static final int OVERRIDE_PARAMETERS_FIELD_NUMBER = 2;
@@ -76,7 +76,7 @@ private static final long serialVersionUID = 0L;
         java.lang.String, java.lang.String> defaultEntry =
             com.google.protobuf.MapEntry
             .<java.lang.String, java.lang.String>newDefaultInstance(
-                cmd.Command.internal_static_command_ExecuteRequest_OverrideParametersEntry_descriptor, 
+                cmd.Cmd.internal_static_cmd_ExecuteRequest_OverrideParametersEntry_descriptor, 
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "",
                 com.google.protobuf.WireFormat.FieldType.STRING,
@@ -151,17 +151,6 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
-  public static final int USER_ID_FIELD_NUMBER = 3;
-  private long userId_;
-  /**
-   * <code>int64 user_id = 3;</code>
-   * @return The userId.
-   */
-  @java.lang.Override
-  public long getUserId() {
-    return userId_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -176,8 +165,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (commandTemplateId_ != 0L) {
-      output.writeInt64(1, commandTemplateId_);
+    if (commandId_ != 0L) {
+      output.writeUInt64(1, commandId_);
     }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
@@ -185,9 +174,6 @@ private static final long serialVersionUID = 0L;
         internalGetOverrideParameters(),
         OverrideParametersDefaultEntryHolder.defaultEntry,
         2);
-    if (userId_ != 0L) {
-      output.writeInt64(3, userId_);
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -197,9 +183,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (commandTemplateId_ != 0L) {
+    if (commandId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, commandTemplateId_);
+        .computeUInt64Size(1, commandId_);
     }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetOverrideParameters().getMap().entrySet()) {
@@ -210,10 +196,6 @@ private static final long serialVersionUID = 0L;
           .build();
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, overrideParameters__);
-    }
-    if (userId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(3, userId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -230,12 +212,10 @@ private static final long serialVersionUID = 0L;
     }
     cmd.ExecuteRequest other = (cmd.ExecuteRequest) obj;
 
-    if (getCommandTemplateId()
-        != other.getCommandTemplateId()) return false;
+    if (getCommandId()
+        != other.getCommandId()) return false;
     if (!internalGetOverrideParameters().equals(
         other.internalGetOverrideParameters())) return false;
-    if (getUserId()
-        != other.getUserId()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -247,16 +227,13 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + COMMAND_TEMPLATE_ID_FIELD_NUMBER;
+    hash = (37 * hash) + COMMAND_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCommandTemplateId());
+        getCommandId());
     if (!internalGetOverrideParameters().getMap().isEmpty()) {
       hash = (37 * hash) + OVERRIDE_PARAMETERS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetOverrideParameters().hashCode();
     }
-    hash = (37 * hash) + USER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getUserId());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -357,15 +334,15 @@ private static final long serialVersionUID = 0L;
    * ------------- COMMAND EXECUTION -------------
    * </pre>
    *
-   * Protobuf type {@code command.ExecuteRequest}
+   * Protobuf type {@code cmd.ExecuteRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.ExecuteRequest)
+      // @@protoc_insertion_point(builder_implements:cmd.ExecuteRequest)
       cmd.ExecuteRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_ExecuteRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_ExecuteRequest_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -393,7 +370,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_ExecuteRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_ExecuteRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.ExecuteRequest.class, cmd.ExecuteRequest.Builder.class);
     }
@@ -411,18 +388,16 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      commandTemplateId_ = 0L;
+      commandId_ = 0L;
 
       internalGetMutableOverrideParameters().clear();
-      userId_ = 0L;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_ExecuteRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_ExecuteRequest_descriptor;
     }
 
     @java.lang.Override
@@ -443,10 +418,9 @@ private static final long serialVersionUID = 0L;
     public cmd.ExecuteRequest buildPartial() {
       cmd.ExecuteRequest result = new cmd.ExecuteRequest(this);
       int from_bitField0_ = bitField0_;
-      result.commandTemplateId_ = commandTemplateId_;
+      result.commandId_ = commandId_;
       result.overrideParameters_ = internalGetOverrideParameters();
       result.overrideParameters_.makeImmutable();
-      result.userId_ = userId_;
       onBuilt();
       return result;
     }
@@ -495,14 +469,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cmd.ExecuteRequest other) {
       if (other == cmd.ExecuteRequest.getDefaultInstance()) return this;
-      if (other.getCommandTemplateId() != 0L) {
-        setCommandTemplateId(other.getCommandTemplateId());
+      if (other.getCommandId() != 0L) {
+        setCommandId(other.getCommandId());
       }
       internalGetMutableOverrideParameters().mergeFrom(
           other.internalGetOverrideParameters());
-      if (other.getUserId() != 0L) {
-        setUserId(other.getUserId());
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -530,7 +501,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              commandTemplateId_ = input.readInt64();
+              commandId_ = input.readUInt64();
 
               break;
             } // case 8
@@ -542,11 +513,6 @@ private static final long serialVersionUID = 0L;
                   overrideParameters__.getKey(), overrideParameters__.getValue());
               break;
             } // case 18
-            case 24: {
-              userId_ = input.readInt64();
-
-              break;
-            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -564,33 +530,33 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long commandTemplateId_ ;
+    private long commandId_ ;
     /**
-     * <code>int64 command_template_id = 1;</code>
-     * @return The commandTemplateId.
+     * <code>uint64 command_id = 1;</code>
+     * @return The commandId.
      */
     @java.lang.Override
-    public long getCommandTemplateId() {
-      return commandTemplateId_;
+    public long getCommandId() {
+      return commandId_;
     }
     /**
-     * <code>int64 command_template_id = 1;</code>
-     * @param value The commandTemplateId to set.
+     * <code>uint64 command_id = 1;</code>
+     * @param value The commandId to set.
      * @return This builder for chaining.
      */
-    public Builder setCommandTemplateId(long value) {
+    public Builder setCommandId(long value) {
       
-      commandTemplateId_ = value;
+      commandId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 command_template_id = 1;</code>
+     * <code>uint64 command_id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCommandTemplateId() {
+    public Builder clearCommandId() {
       
-      commandTemplateId_ = 0L;
+      commandId_ = 0L;
       onChanged();
       return this;
     }
@@ -725,37 +691,6 @@ private static final long serialVersionUID = 0L;
           .putAll(values);
       return this;
     }
-
-    private long userId_ ;
-    /**
-     * <code>int64 user_id = 3;</code>
-     * @return The userId.
-     */
-    @java.lang.Override
-    public long getUserId() {
-      return userId_;
-    }
-    /**
-     * <code>int64 user_id = 3;</code>
-     * @param value The userId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUserId(long value) {
-      
-      userId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 user_id = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUserId() {
-      
-      userId_ = 0L;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -769,10 +704,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.ExecuteRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.ExecuteRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:command.ExecuteRequest)
+  // @@protoc_insertion_point(class_scope:cmd.ExecuteRequest)
   private static final cmd.ExecuteRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.ExecuteRequest();

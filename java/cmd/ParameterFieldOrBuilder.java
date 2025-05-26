@@ -4,7 +4,7 @@
 package cmd;
 
 public interface ParameterFieldOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.ParameterField)
+    // @@protoc_insertion_point(interface_extends:cmd.ParameterField)
     com.google.protobuf.MessageOrBuilder {
 
   /**

@@ -3,359 +3,815 @@
 
 package cmd;
 
-public final class Command {
-  private Command() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+/**
+ * Protobuf type {@code cmd.Command}
+ */
+public final class Command extends
+    com.google.protobuf.GeneratedMessageV3 implements
+    // @@protoc_insertion_point(message_implements:cmd.Command)
+    CommandOrBuilder {
+private static final long serialVersionUID = 0L;
+  // Use Command.newBuilder() to construct.
+  private Command(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    super(builder);
+  }
+  private Command() {
+    fields_ = java.util.Collections.emptyList();
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  @java.lang.Override
+  @SuppressWarnings({"unused"})
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
+    return new Command();
   }
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_Group_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_Group_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_GroupRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_GroupRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_UserGroupRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_UserGroupRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_ParameterField_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_ParameterField_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CommandTemplate_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CommandTemplate_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_AddCommandTemplateRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_AddCommandTemplateRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_DeleteCommandTemplateRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_DeleteCommandTemplateRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_ExecuteRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_ExecuteRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_ExecuteRequest_OverrideParametersEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_ExecuteRequest_OverrideParametersEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_ExecuteResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_ExecuteResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CancelRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CancelRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CancelResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CancelResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_RetryRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_RetryRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_DryRunResult_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_DryRunResult_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_SubscribeRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_SubscribeRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CommandLog_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CommandLog_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CommandLog_EffectiveParametersEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CommandLog_EffectiveParametersEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_UpdateExecutionStatusRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_UpdateExecutionStatusRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_UpdateExecutionStatusResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_UpdateExecutionStatusResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_SubscribeCommandEventsRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_SubscribeCommandEventsRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CommandEvent_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CommandEvent_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_command_CommandEvent_EffectiveParametersEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_command_CommandEvent_EffectiveParametersEntry_fieldAccessorTable;
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
+  @java.lang.Override
+  public final com.google.protobuf.UnknownFieldSet
+  getUnknownFields() {
+    return this.unknownFields;
+  }
+  public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\tcmd.proto\022\007command\"<\n\005Group\022\020\n\010group_i" +
-      "d\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\023\n\013description\030\003 \001" +
-      "(\t\" \n\014GroupRequest\022\020\n\010group_id\030\001 \001(\003\"V\n\020" +
-      "UserGroupRequest\022\017\n\007user_id\030\001 \001(\003\022\020\n\010gro" +
-      "up_id\030\002 \001(\003\022\037\n\004role\030\003 \001(\0162\021.command.User" +
-      "Role\"\235\001\n\016ParameterField\022\014\n\004name\030\001 \001(\t\022\r\n" +
-      "\005label\030\002 \001(\t\022\014\n\004type\030\003 \001(\t\022\025\n\rdefault_va" +
-      "lue\030\004 \001(\t\022\023\n\013description\030\005 \001(\t\022\017\n\007option" +
-      "s\030\006 \003(\t\022\020\n\010required\030\007 \001(\010\022\021\n\tmultiline\030\010" +
-      " \001(\010\"\265\001\n\017CommandTemplate\022\033\n\023command_temp" +
-      "late_id\030\001 \001(\003\022\020\n\010group_id\030\002 \001(\003\022\017\n\007comma" +
-      "nd\030\003 \001(\t\022\'\n\006fields\030\004 \003(\0132\027.command.Param" +
-      "eterField\022\026\n\016sensitive_keys\030\005 \003(\t\022\014\n\004tag" +
-      "s\030\006 \003(\t\022\023\n\013description\030\007 \001(\t\"\242\001\n\031AddComm" +
-      "andTemplateRequest\022\020\n\010group_id\030\001 \001(\003\022\017\n\007" +
-      "command\030\002 \001(\t\022\'\n\006fields\030\003 \003(\0132\027.command." +
-      "ParameterField\022\026\n\016sensitive_keys\030\004 \003(\t\022\014" +
-      "\n\004tags\030\005 \003(\t\022\023\n\013description\030\006 \001(\t\";\n\034Del" +
-      "eteCommandTemplateRequest\022\033\n\023command_tem" +
-      "plate_id\030\001 \001(\003\"\307\001\n\016ExecuteRequest\022\033\n\023com" +
-      "mand_template_id\030\001 \001(\003\022L\n\023override_param" +
-      "eters\030\002 \003(\0132/.command.ExecuteRequest.Ove" +
-      "rrideParametersEntry\022\017\n\007user_id\030\003 \001(\003\0329\n" +
-      "\027OverrideParametersEntry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\t:\0028\001\"W\n\017ExecuteResponse\022\024\n\014e" +
-      "xecution_id\030\001 \001(\003\022.\n\014queue_status\030\002 \001(\0162" +
-      "\030.command.ExecutionStatus\"6\n\rCancelReque" +
-      "st\022\024\n\014execution_id\030\001 \001(\003\022\017\n\007user_id\030\002 \001(" +
-      "\003\"!\n\016CancelResponse\022\017\n\007success\030\001 \001(\010\"5\n\014" +
-      "RetryRequest\022\024\n\014execution_id\030\001 \001(\003\022\017\n\007us" +
-      "er_id\030\002 \001(\003\"9\n\014DryRunResult\022\030\n\020rendered_" +
-      "command\030\001 \001(\t\022\017\n\007message\030\002 \001(\t\"M\n\020Subscr" +
-      "ibeRequest\022\017\n\007user_id\030\001 \001(\003\022\025\n\rexecution" +
-      "_ids\030\002 \003(\003\022\021\n\tgroup_ids\030\003 \003(\003\"\272\002\n\nComman" +
-      "dLog\022\024\n\014execution_id\030\001 \001(\003\022\033\n\023command_te" +
-      "mplate_id\030\002 \001(\003\022\017\n\007user_id\030\003 \001(\003\022\016\n\006outp" +
-      "ut\030\004 \001(\t\022(\n\006status\030\005 \001(\0162\030.command.Execu" +
-      "tionStatus\022\021\n\ttimestamp\030\006 \001(\003\022J\n\024effecti" +
-      "ve_parameters\030\007 \003(\0132,.command.CommandLog" +
-      ".EffectiveParametersEntry\022\023\n\013result_code" +
-      "\030\010 \001(\t\032:\n\030EffectiveParametersEntry\022\013\n\003ke" +
-      "y\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"s\n\034UpdateExec" +
-      "utionStatusRequest\022\024\n\014execution_id\030\001 \001(\003" +
-      "\022(\n\006status\030\002 \001(\0162\030.command.ExecutionStat" +
-      "us\022\023\n\013result_code\030\003 \001(\t\"0\n\035UpdateExecuti" +
-      "onStatusResponse\022\017\n\007success\030\001 \001(\010\"C\n\035Sub" +
-      "scribeCommandEventsRequest\022\017\n\007user_id\030\001 " +
-      "\001(\003\022\021\n\tgroup_ids\030\002 \003(\003\"\200\002\n\014CommandEvent\022" +
-      "\024\n\014execution_id\030\001 \001(\003\022\033\n\023command_templat" +
-      "e_id\030\002 \001(\003\022\017\n\007user_id\030\003 \001(\003\022\017\n\007command\030\004" +
-      " \001(\t\022L\n\024effective_parameters\030\005 \003(\0132..com" +
-      "mand.CommandEvent.EffectiveParametersEnt" +
-      "ry\022\021\n\ttimestamp\030\006 \001(\003\032:\n\030EffectiveParame" +
-      "tersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028" +
-      "\001*\246\001\n\017ExecutionStatus\022\013\n\007UNKNOWN\020\000\022\013\n\007PE" +
-      "NDING\020\001\022\013\n\007RUNNING\020\002\022\013\n\007SUCCESS\020\003\022\n\n\006FAI" +
-      "LED\020\004\022\r\n\tCANCELLED\020\005\022\030\n\024CANCELLED_BY_TIM" +
-      "EOUT\020\006\022\021\n\rNOT_PERMITTED\020\007\022\027\n\023EXECUTORS_N" +
-      "OT_FOUND\020\010*/\n\010UserRole\022\n\n\006VIEWER\020\000\022\014\n\010EX" +
-      "ECUTOR\020\001\022\t\n\005ADMIN\020\0022\253\007\n\016CommandService\022-" +
-      "\n\013CreateGroup\022\016.command.Group\032\016.command." +
-      "Group\0224\n\013DeleteGroup\022\025.command.GroupRequ" +
-      "est\032\016.command.Group\022F\n\016AddUserToGroup\022\031." +
-      "command.UserGroupRequest\032\031.command.UserG" +
-      "roupRequest\022K\n\023RemoveUserFromGroup\022\031.com" +
-      "mand.UserGroupRequest\032\031.command.UserGrou" +
-      "pRequest\022R\n\022AddCommandTemplate\022\".command" +
-      ".AddCommandTemplateRequest\032\030.command.Com" +
-      "mandTemplate\022X\n\025DeleteCommandTemplate\022%." +
-      "command.DeleteCommandTemplateRequest\032\030.c" +
-      "ommand.CommandTemplate\022<\n\007Execute\022\027.comm" +
-      "and.ExecuteRequest\032\030.command.ExecuteResp" +
-      "onse\0229\n\006Cancel\022\026.command.CancelRequest\032\027" +
-      ".command.CancelResponse\0228\n\005Retry\022\025.comma" +
-      "nd.RetryRequest\032\030.command.ExecuteRespons" +
-      "e\0228\n\006DryRun\022\027.command.ExecuteRequest\032\025.c" +
-      "ommand.DryRunResult\022f\n\025UpdateExecutionSt" +
-      "atus\022%.command.UpdateExecutionStatusRequ" +
-      "est\032&.command.UpdateExecutionStatusRespo" +
-      "nse\022A\n\rSubscribeLogs\022\031.command.Subscribe" +
-      "Request\032\023.command.CommandLog0\001\022Y\n\026Subscr" +
-      "ibeCommandEvents\022&.command.SubscribeComm" +
-      "andEventsRequest\032\025.command.CommandEvent0" +
-      "\001B!\n\003cmdB\007CommandP\001Z\tcmd/proto\242\002\003CMDb\006pr" +
-      "oto3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_command_Group_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_command_Group_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_Group_descriptor,
-        new java.lang.String[] { "GroupId", "Name", "Description", });
-    internal_static_command_GroupRequest_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_command_GroupRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_GroupRequest_descriptor,
-        new java.lang.String[] { "GroupId", });
-    internal_static_command_UserGroupRequest_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_command_UserGroupRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_UserGroupRequest_descriptor,
-        new java.lang.String[] { "UserId", "GroupId", "Role", });
-    internal_static_command_ParameterField_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_command_ParameterField_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_ParameterField_descriptor,
-        new java.lang.String[] { "Name", "Label", "Type", "DefaultValue", "Description", "Options", "Required", "Multiline", });
-    internal_static_command_CommandTemplate_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_command_CommandTemplate_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CommandTemplate_descriptor,
-        new java.lang.String[] { "CommandTemplateId", "GroupId", "Command", "Fields", "SensitiveKeys", "Tags", "Description", });
-    internal_static_command_AddCommandTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_command_AddCommandTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_AddCommandTemplateRequest_descriptor,
-        new java.lang.String[] { "GroupId", "Command", "Fields", "SensitiveKeys", "Tags", "Description", });
-    internal_static_command_DeleteCommandTemplateRequest_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_command_DeleteCommandTemplateRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_DeleteCommandTemplateRequest_descriptor,
-        new java.lang.String[] { "CommandTemplateId", });
-    internal_static_command_ExecuteRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_command_ExecuteRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_ExecuteRequest_descriptor,
-        new java.lang.String[] { "CommandTemplateId", "OverrideParameters", "UserId", });
-    internal_static_command_ExecuteRequest_OverrideParametersEntry_descriptor =
-      internal_static_command_ExecuteRequest_descriptor.getNestedTypes().get(0);
-    internal_static_command_ExecuteRequest_OverrideParametersEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_ExecuteRequest_OverrideParametersEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_command_ExecuteResponse_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_command_ExecuteResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_ExecuteResponse_descriptor,
-        new java.lang.String[] { "ExecutionId", "QueueStatus", });
-    internal_static_command_CancelRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_command_CancelRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CancelRequest_descriptor,
-        new java.lang.String[] { "ExecutionId", "UserId", });
-    internal_static_command_CancelResponse_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_command_CancelResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CancelResponse_descriptor,
-        new java.lang.String[] { "Success", });
-    internal_static_command_RetryRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_command_RetryRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_RetryRequest_descriptor,
-        new java.lang.String[] { "ExecutionId", "UserId", });
-    internal_static_command_DryRunResult_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_command_DryRunResult_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_DryRunResult_descriptor,
-        new java.lang.String[] { "RenderedCommand", "Message", });
-    internal_static_command_SubscribeRequest_descriptor =
-      getDescriptor().getMessageTypes().get(13);
-    internal_static_command_SubscribeRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_SubscribeRequest_descriptor,
-        new java.lang.String[] { "UserId", "ExecutionIds", "GroupIds", });
-    internal_static_command_CommandLog_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_command_CommandLog_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CommandLog_descriptor,
-        new java.lang.String[] { "ExecutionId", "CommandTemplateId", "UserId", "Output", "Status", "Timestamp", "EffectiveParameters", "ResultCode", });
-    internal_static_command_CommandLog_EffectiveParametersEntry_descriptor =
-      internal_static_command_CommandLog_descriptor.getNestedTypes().get(0);
-    internal_static_command_CommandLog_EffectiveParametersEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CommandLog_EffectiveParametersEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_command_UpdateExecutionStatusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_command_UpdateExecutionStatusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_UpdateExecutionStatusRequest_descriptor,
-        new java.lang.String[] { "ExecutionId", "Status", "ResultCode", });
-    internal_static_command_UpdateExecutionStatusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_command_UpdateExecutionStatusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_UpdateExecutionStatusResponse_descriptor,
-        new java.lang.String[] { "Success", });
-    internal_static_command_SubscribeCommandEventsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_command_SubscribeCommandEventsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_SubscribeCommandEventsRequest_descriptor,
-        new java.lang.String[] { "UserId", "GroupIds", });
-    internal_static_command_CommandEvent_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_command_CommandEvent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CommandEvent_descriptor,
-        new java.lang.String[] { "ExecutionId", "CommandTemplateId", "UserId", "Command", "EffectiveParameters", "Timestamp", });
-    internal_static_command_CommandEvent_EffectiveParametersEntry_descriptor =
-      internal_static_command_CommandEvent_descriptor.getNestedTypes().get(0);
-    internal_static_command_CommandEvent_EffectiveParametersEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_command_CommandEvent_EffectiveParametersEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+    return cmd.Cmd.internal_static_cmd_Command_descriptor;
   }
 
-  // @@protoc_insertion_point(outer_class_scope)
+  @java.lang.Override
+  protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internalGetFieldAccessorTable() {
+    return cmd.Cmd.internal_static_cmd_Command_fieldAccessorTable
+        .ensureFieldAccessorsInitialized(
+            cmd.Command.class, cmd.Command.Builder.class);
+  }
+
+  public static final int ID_FIELD_NUMBER = 1;
+  private long id_;
+  /**
+   * <code>uint64 id = 1;</code>
+   * @return The id.
+   */
+  @java.lang.Override
+  public long getId() {
+    return id_;
+  }
+
+  public static final int FIELDS_FIELD_NUMBER = 2;
+  private java.util.List<cmd.ParameterField> fields_;
+  /**
+   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   */
+  @java.lang.Override
+  public java.util.List<cmd.ParameterField> getFieldsList() {
+    return fields_;
+  }
+  /**
+   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends cmd.ParameterFieldOrBuilder> 
+      getFieldsOrBuilderList() {
+    return fields_;
+  }
+  /**
+   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   */
+  @java.lang.Override
+  public int getFieldsCount() {
+    return fields_.size();
+  }
+  /**
+   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   */
+  @java.lang.Override
+  public cmd.ParameterField getFields(int index) {
+    return fields_.get(index);
+  }
+  /**
+   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   */
+  @java.lang.Override
+  public cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
+      int index) {
+    return fields_.get(index);
+  }
+
+  private byte memoizedIsInitialized = -1;
+  @java.lang.Override
+  public final boolean isInitialized() {
+    byte isInitialized = memoizedIsInitialized;
+    if (isInitialized == 1) return true;
+    if (isInitialized == 0) return false;
+
+    memoizedIsInitialized = 1;
+    return true;
+  }
+
+  @java.lang.Override
+  public void writeTo(com.google.protobuf.CodedOutputStream output)
+                      throws java.io.IOException {
+    if (id_ != 0L) {
+      output.writeUInt64(1, id_);
+    }
+    for (int i = 0; i < fields_.size(); i++) {
+      output.writeMessage(2, fields_.get(i));
+    }
+    getUnknownFields().writeTo(output);
+  }
+
+  @java.lang.Override
+  public int getSerializedSize() {
+    int size = memoizedSize;
+    if (size != -1) return size;
+
+    size = 0;
+    if (id_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(1, id_);
+    }
+    for (int i = 0; i < fields_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, fields_.get(i));
+    }
+    size += getUnknownFields().getSerializedSize();
+    memoizedSize = size;
+    return size;
+  }
+
+  @java.lang.Override
+  public boolean equals(final java.lang.Object obj) {
+    if (obj == this) {
+     return true;
+    }
+    if (!(obj instanceof cmd.Command)) {
+      return super.equals(obj);
+    }
+    cmd.Command other = (cmd.Command) obj;
+
+    if (getId()
+        != other.getId()) return false;
+    if (!getFieldsList()
+        .equals(other.getFieldsList())) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+    return true;
+  }
+
+  @java.lang.Override
+  public int hashCode() {
+    if (memoizedHashCode != 0) {
+      return memoizedHashCode;
+    }
+    int hash = 41;
+    hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getId());
+    if (getFieldsCount() > 0) {
+      hash = (37 * hash) + FIELDS_FIELD_NUMBER;
+      hash = (53 * hash) + getFieldsList().hashCode();
+    }
+    hash = (29 * hash) + getUnknownFields().hashCode();
+    memoizedHashCode = hash;
+    return hash;
+  }
+
+  public static cmd.Command parseFrom(
+      java.nio.ByteBuffer data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static cmd.Command parseFrom(
+      java.nio.ByteBuffer data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static cmd.Command parseFrom(
+      com.google.protobuf.ByteString data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static cmd.Command parseFrom(
+      com.google.protobuf.ByteString data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static cmd.Command parseFrom(byte[] data)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data);
+  }
+  public static cmd.Command parseFrom(
+      byte[] data,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws com.google.protobuf.InvalidProtocolBufferException {
+    return PARSER.parseFrom(data, extensionRegistry);
+  }
+  public static cmd.Command parseFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static cmd.Command parseFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static cmd.Command parseDelimitedFrom(java.io.InputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input);
+  }
+  public static cmd.Command parseDelimitedFrom(
+      java.io.InputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+  }
+  public static cmd.Command parseFrom(
+      com.google.protobuf.CodedInputStream input)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input);
+  }
+  public static cmd.Command parseFrom(
+      com.google.protobuf.CodedInputStream input,
+      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+      throws java.io.IOException {
+    return com.google.protobuf.GeneratedMessageV3
+        .parseWithIOException(PARSER, input, extensionRegistry);
+  }
+
+  @java.lang.Override
+  public Builder newBuilderForType() { return newBuilder(); }
+  public static Builder newBuilder() {
+    return DEFAULT_INSTANCE.toBuilder();
+  }
+  public static Builder newBuilder(cmd.Command prototype) {
+    return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+  }
+  @java.lang.Override
+  public Builder toBuilder() {
+    return this == DEFAULT_INSTANCE
+        ? new Builder() : new Builder().mergeFrom(this);
+  }
+
+  @java.lang.Override
+  protected Builder newBuilderForType(
+      com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+    Builder builder = new Builder(parent);
+    return builder;
+  }
+  /**
+   * Protobuf type {@code cmd.Command}
+   */
+  public static final class Builder extends
+      com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+      // @@protoc_insertion_point(builder_implements:cmd.Command)
+      cmd.CommandOrBuilder {
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cmd.Cmd.internal_static_cmd_Command_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cmd.Cmd.internal_static_cmd_Command_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cmd.Command.class, cmd.Command.Builder.class);
+    }
+
+    // Construct using cmd.Command.newBuilder()
+    private Builder() {
+
+    }
+
+    private Builder(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      super(parent);
+
+    }
+    @java.lang.Override
+    public Builder clear() {
+      super.clear();
+      id_ = 0L;
+
+      if (fieldsBuilder_ == null) {
+        fields_ = java.util.Collections.emptyList();
+      } else {
+        fields_ = null;
+        fieldsBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000001);
+      return this;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor
+        getDescriptorForType() {
+      return cmd.Cmd.internal_static_cmd_Command_descriptor;
+    }
+
+    @java.lang.Override
+    public cmd.Command getDefaultInstanceForType() {
+      return cmd.Command.getDefaultInstance();
+    }
+
+    @java.lang.Override
+    public cmd.Command build() {
+      cmd.Command result = buildPartial();
+      if (!result.isInitialized()) {
+        throw newUninitializedMessageException(result);
+      }
+      return result;
+    }
+
+    @java.lang.Override
+    public cmd.Command buildPartial() {
+      cmd.Command result = new cmd.Command(this);
+      int from_bitField0_ = bitField0_;
+      result.id_ = id_;
+      if (fieldsBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          fields_ = java.util.Collections.unmodifiableList(fields_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.fields_ = fields_;
+      } else {
+        result.fields_ = fieldsBuilder_.build();
+      }
+      onBuilt();
+      return result;
+    }
+
+    @java.lang.Override
+    public Builder clone() {
+      return super.clone();
+    }
+    @java.lang.Override
+    public Builder setField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return super.setField(field, value);
+    }
+    @java.lang.Override
+    public Builder clearField(
+        com.google.protobuf.Descriptors.FieldDescriptor field) {
+      return super.clearField(field);
+    }
+    @java.lang.Override
+    public Builder clearOneof(
+        com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+      return super.clearOneof(oneof);
+    }
+    @java.lang.Override
+    public Builder setRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        int index, java.lang.Object value) {
+      return super.setRepeatedField(field, index, value);
+    }
+    @java.lang.Override
+    public Builder addRepeatedField(
+        com.google.protobuf.Descriptors.FieldDescriptor field,
+        java.lang.Object value) {
+      return super.addRepeatedField(field, value);
+    }
+    @java.lang.Override
+    public Builder mergeFrom(com.google.protobuf.Message other) {
+      if (other instanceof cmd.Command) {
+        return mergeFrom((cmd.Command)other);
+      } else {
+        super.mergeFrom(other);
+        return this;
+      }
+    }
+
+    public Builder mergeFrom(cmd.Command other) {
+      if (other == cmd.Command.getDefaultInstance()) return this;
+      if (other.getId() != 0L) {
+        setId(other.getId());
+      }
+      if (fieldsBuilder_ == null) {
+        if (!other.fields_.isEmpty()) {
+          if (fields_.isEmpty()) {
+            fields_ = other.fields_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureFieldsIsMutable();
+            fields_.addAll(other.fields_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.fields_.isEmpty()) {
+          if (fieldsBuilder_.isEmpty()) {
+            fieldsBuilder_.dispose();
+            fieldsBuilder_ = null;
+            fields_ = other.fields_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            fieldsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getFieldsFieldBuilder() : null;
+          } else {
+            fieldsBuilder_.addAllMessages(other.fields_);
+          }
+        }
+      }
+      this.mergeUnknownFields(other.getUnknownFields());
+      onChanged();
+      return this;
+    }
+
+    @java.lang.Override
+    public final boolean isInitialized() {
+      return true;
+    }
+
+    @java.lang.Override
+    public Builder mergeFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+              id_ = input.readUInt64();
+
+              break;
+            } // case 8
+            case 18: {
+              cmd.ParameterField m =
+                  input.readMessage(
+                      cmd.ParameterField.parser(),
+                      extensionRegistry);
+              if (fieldsBuilder_ == null) {
+                ensureFieldsIsMutable();
+                fields_.add(m);
+              } else {
+                fieldsBuilder_.addMessage(m);
+              }
+              break;
+            } // case 18
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.unwrapIOException();
+      } finally {
+        onChanged();
+      } // finally
+      return this;
+    }
+    private int bitField0_;
+
+    private long id_ ;
+    /**
+     * <code>uint64 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public long getId() {
+      return id_;
+    }
+    /**
+     * <code>uint64 id = 1;</code>
+     * @param value The id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setId(long value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 id = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearId() {
+      
+      id_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private java.util.List<cmd.ParameterField> fields_ =
+      java.util.Collections.emptyList();
+    private void ensureFieldsIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        fields_ = new java.util.ArrayList<cmd.ParameterField>(fields_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        cmd.ParameterField, cmd.ParameterField.Builder, cmd.ParameterFieldOrBuilder> fieldsBuilder_;
+
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public java.util.List<cmd.ParameterField> getFieldsList() {
+      if (fieldsBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(fields_);
+      } else {
+        return fieldsBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public int getFieldsCount() {
+      if (fieldsBuilder_ == null) {
+        return fields_.size();
+      } else {
+        return fieldsBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public cmd.ParameterField getFields(int index) {
+      if (fieldsBuilder_ == null) {
+        return fields_.get(index);
+      } else {
+        return fieldsBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder setFields(
+        int index, cmd.ParameterField value) {
+      if (fieldsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFieldsIsMutable();
+        fields_.set(index, value);
+        onChanged();
+      } else {
+        fieldsBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder setFields(
+        int index, cmd.ParameterField.Builder builderForValue) {
+      if (fieldsBuilder_ == null) {
+        ensureFieldsIsMutable();
+        fields_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        fieldsBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder addFields(cmd.ParameterField value) {
+      if (fieldsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFieldsIsMutable();
+        fields_.add(value);
+        onChanged();
+      } else {
+        fieldsBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder addFields(
+        int index, cmd.ParameterField value) {
+      if (fieldsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFieldsIsMutable();
+        fields_.add(index, value);
+        onChanged();
+      } else {
+        fieldsBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder addFields(
+        cmd.ParameterField.Builder builderForValue) {
+      if (fieldsBuilder_ == null) {
+        ensureFieldsIsMutable();
+        fields_.add(builderForValue.build());
+        onChanged();
+      } else {
+        fieldsBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder addFields(
+        int index, cmd.ParameterField.Builder builderForValue) {
+      if (fieldsBuilder_ == null) {
+        ensureFieldsIsMutable();
+        fields_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        fieldsBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder addAllFields(
+        java.lang.Iterable<? extends cmd.ParameterField> values) {
+      if (fieldsBuilder_ == null) {
+        ensureFieldsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, fields_);
+        onChanged();
+      } else {
+        fieldsBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder clearFields() {
+      if (fieldsBuilder_ == null) {
+        fields_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        fieldsBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public Builder removeFields(int index) {
+      if (fieldsBuilder_ == null) {
+        ensureFieldsIsMutable();
+        fields_.remove(index);
+        onChanged();
+      } else {
+        fieldsBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public cmd.ParameterField.Builder getFieldsBuilder(
+        int index) {
+      return getFieldsFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
+        int index) {
+      if (fieldsBuilder_ == null) {
+        return fields_.get(index);  } else {
+        return fieldsBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public java.util.List<? extends cmd.ParameterFieldOrBuilder> 
+         getFieldsOrBuilderList() {
+      if (fieldsBuilder_ != null) {
+        return fieldsBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(fields_);
+      }
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public cmd.ParameterField.Builder addFieldsBuilder() {
+      return getFieldsFieldBuilder().addBuilder(
+          cmd.ParameterField.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public cmd.ParameterField.Builder addFieldsBuilder(
+        int index) {
+      return getFieldsFieldBuilder().addBuilder(
+          index, cmd.ParameterField.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .cmd.ParameterField fields = 2;</code>
+     */
+    public java.util.List<cmd.ParameterField.Builder> 
+         getFieldsBuilderList() {
+      return getFieldsFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        cmd.ParameterField, cmd.ParameterField.Builder, cmd.ParameterFieldOrBuilder> 
+        getFieldsFieldBuilder() {
+      if (fieldsBuilder_ == null) {
+        fieldsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            cmd.ParameterField, cmd.ParameterField.Builder, cmd.ParameterFieldOrBuilder>(
+                fields_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        fields_ = null;
+      }
+      return fieldsBuilder_;
+    }
+    @java.lang.Override
+    public final Builder setUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.setUnknownFields(unknownFields);
+    }
+
+    @java.lang.Override
+    public final Builder mergeUnknownFields(
+        final com.google.protobuf.UnknownFieldSet unknownFields) {
+      return super.mergeUnknownFields(unknownFields);
+    }
+
+
+    // @@protoc_insertion_point(builder_scope:cmd.Command)
+  }
+
+  // @@protoc_insertion_point(class_scope:cmd.Command)
+  private static final cmd.Command DEFAULT_INSTANCE;
+  static {
+    DEFAULT_INSTANCE = new cmd.Command();
+  }
+
+  public static cmd.Command getDefaultInstance() {
+    return DEFAULT_INSTANCE;
+  }
+
+  private static final com.google.protobuf.Parser<Command>
+      PARSER = new com.google.protobuf.AbstractParser<Command>() {
+    @java.lang.Override
+    public Command parsePartialFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
+    }
+  };
+
+  public static com.google.protobuf.Parser<Command> parser() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  public com.google.protobuf.Parser<Command> getParserForType() {
+    return PARSER;
+  }
+
+  @java.lang.Override
+  public cmd.Command getDefaultInstanceForType() {
+    return DEFAULT_INSTANCE;
+  }
+
 }
+

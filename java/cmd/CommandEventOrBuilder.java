@@ -4,45 +4,27 @@
 package cmd;
 
 public interface CommandEventOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.CommandEvent)
+    // @@protoc_insertion_point(interface_extends:cmd.CommandEvent)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   long getExecutionId();
 
   /**
-   * <code>int64 command_template_id = 2;</code>
-   * @return The commandTemplateId.
+   * <code>uint64 command_id = 2;</code>
+   * @return The commandId.
    */
-  long getCommandTemplateId();
+  long getCommandId();
 
   /**
-   * <code>int64 user_id = 3;</code>
-   * @return The userId.
-   */
-  long getUserId();
-
-  /**
-   * <code>string command = 4;</code>
-   * @return The command.
-   */
-  java.lang.String getCommand();
-  /**
-   * <code>string command = 4;</code>
-   * @return The bytes for command.
-   */
-  com.google.protobuf.ByteString
-      getCommandBytes();
-
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 5;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
    */
   int getEffectiveParametersCount();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 5;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
    */
   boolean containsEffectiveParameters(
       java.lang.String key);
@@ -53,26 +35,26 @@ public interface CommandEventOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getEffectiveParameters();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 5;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getEffectiveParametersMap();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 5;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
    */
 
   java.lang.String getEffectiveParametersOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 5;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
    */
 
   java.lang.String getEffectiveParametersOrThrow(
       java.lang.String key);
 
   /**
-   * <code>int64 timestamp = 6;</code>
+   * <code>uint64 timestamp = 4;</code>
    * @return The timestamp.
    */
   long getTimestamp();

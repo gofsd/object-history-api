@@ -4,28 +4,28 @@
 package cmd;
 
 public interface UserGroupRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.UserGroupRequest)
+    // @@protoc_insertion_point(interface_extends:cmd.UserGroupRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 user_id = 1;</code>
+   * <code>uint64 user_id = 1;</code>
    * @return The userId.
    */
   long getUserId();
 
   /**
-   * <code>int64 group_id = 2;</code>
+   * <code>uint64 group_id = 2;</code>
    * @return The groupId.
    */
   long getGroupId();
 
   /**
-   * <code>.command.UserRole role = 3;</code>
+   * <code>.cmd.UserRole role = 3;</code>
    * @return The enum numeric value on the wire for role.
    */
   int getRoleValue();
   /**
-   * <code>.command.UserRole role = 3;</code>
+   * <code>.cmd.UserRole role = 3;</code>
    * @return The role.
    */
   cmd.UserRole getRole();

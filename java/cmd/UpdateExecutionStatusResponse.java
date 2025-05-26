@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.UpdateExecutionStatusResponse}
+ * Protobuf type {@code cmd.UpdateExecutionStatusResponse}
  */
 public final class UpdateExecutionStatusResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.UpdateExecutionStatusResponse)
+    // @@protoc_insertion_point(message_implements:cmd.UpdateExecutionStatusResponse)
     UpdateExecutionStatusResponseOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use UpdateExecutionStatusResponse.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_UpdateExecutionStatusResponse_descriptor;
+    return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_UpdateExecutionStatusResponse_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.UpdateExecutionStatusResponse.class, cmd.UpdateExecutionStatusResponse.Builder.class);
   }
@@ -211,21 +211,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.UpdateExecutionStatusResponse}
+   * Protobuf type {@code cmd.UpdateExecutionStatusResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.UpdateExecutionStatusResponse)
+      // @@protoc_insertion_point(builder_implements:cmd.UpdateExecutionStatusResponse)
       cmd.UpdateExecutionStatusResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_UpdateExecutionStatusResponse_descriptor;
+      return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_UpdateExecutionStatusResponse_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.UpdateExecutionStatusResponse.class, cmd.UpdateExecutionStatusResponse.Builder.class);
     }
@@ -251,7 +251,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_UpdateExecutionStatusResponse_descriptor;
+      return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusResponse_descriptor;
     }
 
     @java.lang.Override
@@ -413,10 +413,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.UpdateExecutionStatusResponse)
+    // @@protoc_insertion_point(builder_scope:cmd.UpdateExecutionStatusResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:command.UpdateExecutionStatusResponse)
+  // @@protoc_insertion_point(class_scope:cmd.UpdateExecutionStatusResponse)
   private static final cmd.UpdateExecutionStatusResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.UpdateExecutionStatusResponse();

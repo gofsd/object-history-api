@@ -21,6 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// ------------------- CORE MESSAGES -------------------
 type Object struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -105,6 +106,96 @@ func (x *Object) GetFields() map[string]string {
 	return nil
 }
 
+// Single and plural responses
+type ObjectResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Object        *Object                `protobuf:"bytes,1,opt,name=object,proto3" json:"object,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ObjectResponse) Reset() {
+	*x = ObjectResponse{}
+	mi := &file_proto_object_object_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ObjectResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ObjectResponse) ProtoMessage() {}
+
+func (x *ObjectResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ObjectResponse.ProtoReflect.Descriptor instead.
+func (*ObjectResponse) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *ObjectResponse) GetObject() *Object {
+	if x != nil {
+		return x.Object
+	}
+	return nil
+}
+
+type ObjectsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ObjectsResponse) Reset() {
+	*x = ObjectsResponse{}
+	mi := &file_proto_object_object_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ObjectsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ObjectsResponse) ProtoMessage() {}
+
+func (x *ObjectsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ObjectsResponse.ProtoReflect.Descriptor instead.
+func (*ObjectsResponse) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *ObjectsResponse) GetObjects() []*Object {
+	if x != nil {
+		return x.Objects
+	}
+	return nil
+}
+
+// ------------------- CRUD REQUESTS -------------------
 type CreateObjectRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Fields        map[string]string      `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
@@ -114,7 +205,7 @@ type CreateObjectRequest struct {
 
 func (x *CreateObjectRequest) Reset() {
 	*x = CreateObjectRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[1]
+	mi := &file_proto_object_object_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -126,7 +217,7 @@ func (x *CreateObjectRequest) String() string {
 func (*CreateObjectRequest) ProtoMessage() {}
 
 func (x *CreateObjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[1]
+	mi := &file_proto_object_object_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -139,7 +230,7 @@ func (x *CreateObjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CreateObjectRequest.ProtoReflect.Descriptor instead.
 func (*CreateObjectRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{1}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *CreateObjectRequest) GetFields() map[string]string {
@@ -158,7 +249,7 @@ type GetObjectRequest struct {
 
 func (x *GetObjectRequest) Reset() {
 	*x = GetObjectRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[2]
+	mi := &file_proto_object_object_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -170,7 +261,7 @@ func (x *GetObjectRequest) String() string {
 func (*GetObjectRequest) ProtoMessage() {}
 
 func (x *GetObjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[2]
+	mi := &file_proto_object_object_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -183,7 +274,7 @@ func (x *GetObjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetObjectRequest.ProtoReflect.Descriptor instead.
 func (*GetObjectRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{2}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetObjectRequest) GetObjectId() uint64 {
@@ -191,50 +282,6 @@ func (x *GetObjectRequest) GetObjectId() uint64 {
 		return x.ObjectId
 	}
 	return 0
-}
-
-type GetObjectsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ObjectId      []uint64               `protobuf:"varint,1,rep,packed,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *GetObjectsRequest) Reset() {
-	*x = GetObjectsRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[3]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *GetObjectsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GetObjectsRequest) ProtoMessage() {}
-
-func (x *GetObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[3]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GetObjectsRequest.ProtoReflect.Descriptor instead.
-func (*GetObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *GetObjectsRequest) GetObjectId() []uint64 {
-	if x != nil {
-		return x.ObjectId
-	}
-	return nil
 }
 
 type UpdateObjectRequest struct {
@@ -248,7 +295,7 @@ type UpdateObjectRequest struct {
 
 func (x *UpdateObjectRequest) Reset() {
 	*x = UpdateObjectRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[4]
+	mi := &file_proto_object_object_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -260,7 +307,7 @@ func (x *UpdateObjectRequest) String() string {
 func (*UpdateObjectRequest) ProtoMessage() {}
 
 func (x *UpdateObjectRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[4]
+	mi := &file_proto_object_object_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -273,7 +320,7 @@ func (x *UpdateObjectRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateObjectRequest.ProtoReflect.Descriptor instead.
 func (*UpdateObjectRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{4}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *UpdateObjectRequest) GetObjectId() uint64 {
@@ -291,66 +338,6 @@ func (x *UpdateObjectRequest) GetFields() map[string]string {
 }
 
 func (x *UpdateObjectRequest) GetIsNew() bool {
-	if x != nil {
-		return x.IsNew
-	}
-	return false
-}
-
-type UpdateObjectsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	ObjectId      []uint64               `protobuf:"varint,1,rep,packed,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	Fields        map[string]string      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	IsNew         bool                   `protobuf:"varint,3,opt,name=is_new,json=isNew,proto3" json:"is_new,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateObjectsRequest) Reset() {
-	*x = UpdateObjectsRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[5]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateObjectsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateObjectsRequest) ProtoMessage() {}
-
-func (x *UpdateObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[5]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateObjectsRequest.ProtoReflect.Descriptor instead.
-func (*UpdateObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *UpdateObjectsRequest) GetObjectId() []uint64 {
-	if x != nil {
-		return x.ObjectId
-	}
-	return nil
-}
-
-func (x *UpdateObjectsRequest) GetFields() map[string]string {
-	if x != nil {
-		return x.Fields
-	}
-	return nil
-}
-
-func (x *UpdateObjectsRequest) GetIsNew() bool {
 	if x != nil {
 		return x.IsNew
 	}
@@ -425,27 +412,29 @@ func (x *DeleteObjectsFieldsRequest) GetIsStrict() bool {
 	return false
 }
 
-type ObjectResponse struct {
+// ------------------- BATCH/UNIQUE REQUESTS -------------------
+type CreateObjectsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Object        *Object                `protobuf:"bytes,1,opt,name=object,proto3" json:"object,omitempty"`
+	Fields        map[string]string      `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Count         uint32                 `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *ObjectResponse) Reset() {
-	*x = ObjectResponse{}
+func (x *CreateObjectsRequest) Reset() {
+	*x = CreateObjectsRequest{}
 	mi := &file_proto_object_object_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *ObjectResponse) String() string {
+func (x *CreateObjectsRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*ObjectResponse) ProtoMessage() {}
+func (*CreateObjectsRequest) ProtoMessage() {}
 
-func (x *ObjectResponse) ProtoReflect() protoreflect.Message {
+func (x *CreateObjectsRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_object_object_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -457,18 +446,218 @@ func (x *ObjectResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use ObjectResponse.ProtoReflect.Descriptor instead.
-func (*ObjectResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use CreateObjectsRequest.ProtoReflect.Descriptor instead.
+func (*CreateObjectsRequest) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *ObjectResponse) GetObject() *Object {
+func (x *CreateObjectsRequest) GetFields() map[string]string {
 	if x != nil {
-		return x.Object
+		return x.Fields
 	}
 	return nil
 }
 
+func (x *CreateObjectsRequest) GetCount() uint32 {
+	if x != nil {
+		return x.Count
+	}
+	return 0
+}
+
+type CreateObjectsUniqueRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CreateObjectsUniqueRequest) Reset() {
+	*x = CreateObjectsUniqueRequest{}
+	mi := &file_proto_object_object_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CreateObjectsUniqueRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CreateObjectsUniqueRequest) ProtoMessage() {}
+
+func (x *CreateObjectsUniqueRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CreateObjectsUniqueRequest.ProtoReflect.Descriptor instead.
+func (*CreateObjectsUniqueRequest) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *CreateObjectsUniqueRequest) GetObjects() []*Object {
+	if x != nil {
+		return x.Objects
+	}
+	return nil
+}
+
+type GetObjectsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ObjectId      []uint64               `protobuf:"varint,1,rep,packed,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetObjectsRequest) Reset() {
+	*x = GetObjectsRequest{}
+	mi := &file_proto_object_object_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetObjectsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetObjectsRequest) ProtoMessage() {}
+
+func (x *GetObjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetObjectsRequest.ProtoReflect.Descriptor instead.
+func (*GetObjectsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *GetObjectsRequest) GetObjectId() []uint64 {
+	if x != nil {
+		return x.ObjectId
+	}
+	return nil
+}
+
+type UpdateObjectsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ObjectId      []uint64               `protobuf:"varint,1,rep,packed,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
+	Fields        map[string]string      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	IsNew         bool                   `protobuf:"varint,3,opt,name=is_new,json=isNew,proto3" json:"is_new,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateObjectsRequest) Reset() {
+	*x = UpdateObjectsRequest{}
+	mi := &file_proto_object_object_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateObjectsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateObjectsRequest) ProtoMessage() {}
+
+func (x *UpdateObjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateObjectsRequest.ProtoReflect.Descriptor instead.
+func (*UpdateObjectsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *UpdateObjectsRequest) GetObjectId() []uint64 {
+	if x != nil {
+		return x.ObjectId
+	}
+	return nil
+}
+
+func (x *UpdateObjectsRequest) GetFields() map[string]string {
+	if x != nil {
+		return x.Fields
+	}
+	return nil
+}
+
+func (x *UpdateObjectsRequest) GetIsNew() bool {
+	if x != nil {
+		return x.IsNew
+	}
+	return false
+}
+
+type UpdateObjectsUniqueRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateObjectsUniqueRequest) Reset() {
+	*x = UpdateObjectsUniqueRequest{}
+	mi := &file_proto_object_object_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateObjectsUniqueRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateObjectsUniqueRequest) ProtoMessage() {}
+
+func (x *UpdateObjectsUniqueRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateObjectsUniqueRequest.ProtoReflect.Descriptor instead.
+func (*UpdateObjectsUniqueRequest) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{11}
+}
+
+func (x *UpdateObjectsUniqueRequest) GetObjects() []*Object {
+	if x != nil {
+		return x.Objects
+	}
+	return nil
+}
+
+// ------------------- LIST & PAGINATION -------------------
 type ListObjectsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
@@ -480,7 +669,7 @@ type ListObjectsRequest struct {
 
 func (x *ListObjectsRequest) Reset() {
 	*x = ListObjectsRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[8]
+	mi := &file_proto_object_object_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -492,7 +681,7 @@ func (x *ListObjectsRequest) String() string {
 func (*ListObjectsRequest) ProtoMessage() {}
 
 func (x *ListObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[8]
+	mi := &file_proto_object_object_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -505,7 +694,7 @@ func (x *ListObjectsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListObjectsRequest.ProtoReflect.Descriptor instead.
 func (*ListObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{8}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *ListObjectsRequest) GetPage() int32 {
@@ -542,7 +731,7 @@ type ListObjectsResponse struct {
 
 func (x *ListObjectsResponse) Reset() {
 	*x = ListObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[9]
+	mi := &file_proto_object_object_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -554,7 +743,7 @@ func (x *ListObjectsResponse) String() string {
 func (*ListObjectsResponse) ProtoMessage() {}
 
 func (x *ListObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[9]
+	mi := &file_proto_object_object_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -567,7 +756,7 @@ func (x *ListObjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListObjectsResponse.ProtoReflect.Descriptor instead.
 func (*ListObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{9}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *ListObjectsResponse) GetObjects() []*Object {
@@ -605,6 +794,7 @@ func (x *ListObjectsResponse) GetTotalPages() int32 {
 	return 0
 }
 
+// ------------------- ACTION/TRANSFER -------------------
 type ExecuteActionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ActionId      uint64                 `protobuf:"varint,1,opt,name=action_id,json=actionId,proto3" json:"action_id,omitempty"`
@@ -615,7 +805,7 @@ type ExecuteActionRequest struct {
 
 func (x *ExecuteActionRequest) Reset() {
 	*x = ExecuteActionRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[10]
+	mi := &file_proto_object_object_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -627,7 +817,7 @@ func (x *ExecuteActionRequest) String() string {
 func (*ExecuteActionRequest) ProtoMessage() {}
 
 func (x *ExecuteActionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[10]
+	mi := &file_proto_object_object_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -640,7 +830,7 @@ func (x *ExecuteActionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteActionRequest.ProtoReflect.Descriptor instead.
 func (*ExecuteActionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{10}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ExecuteActionRequest) GetActionId() uint64 {
@@ -666,7 +856,7 @@ type ExecuteActionResponse struct {
 
 func (x *ExecuteActionResponse) Reset() {
 	*x = ExecuteActionResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[11]
+	mi := &file_proto_object_object_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -678,7 +868,7 @@ func (x *ExecuteActionResponse) String() string {
 func (*ExecuteActionResponse) ProtoMessage() {}
 
 func (x *ExecuteActionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[11]
+	mi := &file_proto_object_object_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -691,7 +881,7 @@ func (x *ExecuteActionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteActionResponse.ProtoReflect.Descriptor instead.
 func (*ExecuteActionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{11}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ExecuteActionResponse) GetObjects() []*Object {
@@ -710,7 +900,7 @@ type TransferObjectsRequest struct {
 
 func (x *TransferObjectsRequest) Reset() {
 	*x = TransferObjectsRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[12]
+	mi := &file_proto_object_object_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -722,7 +912,7 @@ func (x *TransferObjectsRequest) String() string {
 func (*TransferObjectsRequest) ProtoMessage() {}
 
 func (x *TransferObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[12]
+	mi := &file_proto_object_object_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -735,7 +925,7 @@ func (x *TransferObjectsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferObjectsRequest.ProtoReflect.Descriptor instead.
 func (*TransferObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{12}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *TransferObjectsRequest) GetObject() *Object {
@@ -754,7 +944,7 @@ type TransferObjectsResponse struct {
 
 func (x *TransferObjectsResponse) Reset() {
 	*x = TransferObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[13]
+	mi := &file_proto_object_object_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -766,7 +956,7 @@ func (x *TransferObjectsResponse) String() string {
 func (*TransferObjectsResponse) ProtoMessage() {}
 
 func (x *TransferObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[13]
+	mi := &file_proto_object_object_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -779,7 +969,7 @@ func (x *TransferObjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferObjectsResponse.ProtoReflect.Descriptor instead.
 func (*TransferObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{13}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *TransferObjectsResponse) GetSecretTransferId() uint64 {
@@ -787,146 +977,6 @@ func (x *TransferObjectsResponse) GetSecretTransferId() uint64 {
 		return x.SecretTransferId
 	}
 	return 0
-}
-
-type CreateObjectsRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Fields        map[string]string      `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Count         uint32                 `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateObjectsRequest) Reset() {
-	*x = CreateObjectsRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[14]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateObjectsRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateObjectsRequest) ProtoMessage() {}
-
-func (x *CreateObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[14]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateObjectsRequest.ProtoReflect.Descriptor instead.
-func (*CreateObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *CreateObjectsRequest) GetFields() map[string]string {
-	if x != nil {
-		return x.Fields
-	}
-	return nil
-}
-
-func (x *CreateObjectsRequest) GetCount() uint32 {
-	if x != nil {
-		return x.Count
-	}
-	return 0
-}
-
-type CreateObjectsUniqueRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *CreateObjectsUniqueRequest) Reset() {
-	*x = CreateObjectsUniqueRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[15]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *CreateObjectsUniqueRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*CreateObjectsUniqueRequest) ProtoMessage() {}
-
-func (x *CreateObjectsUniqueRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[15]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use CreateObjectsUniqueRequest.ProtoReflect.Descriptor instead.
-func (*CreateObjectsUniqueRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *CreateObjectsUniqueRequest) GetObjects() []*Object {
-	if x != nil {
-		return x.Objects
-	}
-	return nil
-}
-
-type UpdateObjectsUniqueRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *UpdateObjectsUniqueRequest) Reset() {
-	*x = UpdateObjectsUniqueRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[16]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *UpdateObjectsUniqueRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*UpdateObjectsUniqueRequest) ProtoMessage() {}
-
-func (x *UpdateObjectsUniqueRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[16]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use UpdateObjectsUniqueRequest.ProtoReflect.Descriptor instead.
-func (*UpdateObjectsUniqueRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *UpdateObjectsUniqueRequest) GetObjects() []*Object {
-	if x != nil {
-		return x.Objects
-	}
-	return nil
 }
 
 type ReceiveObjectsResponse struct {
@@ -938,7 +988,7 @@ type ReceiveObjectsResponse struct {
 
 func (x *ReceiveObjectsResponse) Reset() {
 	*x = ReceiveObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[17]
+	mi := &file_proto_object_object_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -950,7 +1000,7 @@ func (x *ReceiveObjectsResponse) String() string {
 func (*ReceiveObjectsResponse) ProtoMessage() {}
 
 func (x *ReceiveObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[17]
+	mi := &file_proto_object_object_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -963,7 +1013,7 @@ func (x *ReceiveObjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReceiveObjectsResponse.ProtoReflect.Descriptor instead.
 func (*ReceiveObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{17}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *ReceiveObjectsResponse) GetObjects() []*Object {
@@ -973,6 +1023,7 @@ func (x *ReceiveObjectsResponse) GetObjects() []*Object {
 	return nil
 }
 
+// ------------------- SUBSCRIPTION/STREAMING -------------------
 type SubscriptionRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
@@ -982,7 +1033,7 @@ type SubscriptionRequest struct {
 
 func (x *SubscriptionRequest) Reset() {
 	*x = SubscriptionRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[18]
+	mi := &file_proto_object_object_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -994,7 +1045,7 @@ func (x *SubscriptionRequest) String() string {
 func (*SubscriptionRequest) ProtoMessage() {}
 
 func (x *SubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[18]
+	mi := &file_proto_object_object_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1007,7 +1058,7 @@ func (x *SubscriptionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscriptionRequest.ProtoReflect.Descriptor instead.
 func (*SubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{18}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *SubscriptionRequest) GetUserId() uint64 {
@@ -1026,7 +1077,7 @@ type SubscriptionResponse struct {
 
 func (x *SubscriptionResponse) Reset() {
 	*x = SubscriptionResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[19]
+	mi := &file_proto_object_object_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1038,7 +1089,7 @@ func (x *SubscriptionResponse) String() string {
 func (*SubscriptionResponse) ProtoMessage() {}
 
 func (x *SubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[19]
+	mi := &file_proto_object_object_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1051,101 +1102,12 @@ func (x *SubscriptionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*SubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{19}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *SubscriptionResponse) GetObjects() []*Object {
 	if x != nil {
 		return x.Objects
-	}
-	return nil
-}
-
-// Use plural for repeated message responses
-type ObjectsResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *ObjectsResponse) Reset() {
-	*x = ObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[20]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *ObjectsResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*ObjectsResponse) ProtoMessage() {}
-
-func (x *ObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[20]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use ObjectsResponse.ProtoReflect.Descriptor instead.
-func (*ObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *ObjectsResponse) GetObjects() []*Object {
-	if x != nil {
-		return x.Objects
-	}
-	return nil
-}
-
-type Objects struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	Object        []*Object              `protobuf:"bytes,1,rep,name=object,proto3" json:"object,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *Objects) Reset() {
-	*x = Objects{}
-	mi := &file_proto_object_object_proto_msgTypes[21]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *Objects) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Objects) ProtoMessage() {}
-
-func (x *Objects) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[21]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Objects.ProtoReflect.Descriptor instead.
-func (*Objects) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *Objects) GetObject() []*Object {
-	if x != nil {
-		return x.Object
 	}
 	return nil
 }
@@ -1166,26 +1128,21 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x06fields\x18\x06 \x03(\v2\x1a.object.Object.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\x91\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"8\n" +
+	"\x0eObjectResponse\x12&\n" +
+	"\x06object\x18\x01 \x01(\v2\x0e.object.ObjectR\x06object\";\n" +
+	"\x0fObjectsResponse\x12(\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\x91\x01\n" +
 	"\x13CreateObjectRequest\x12?\n" +
 	"\x06fields\x18\x01 \x03(\v2'.object.CreateObjectRequest.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"/\n" +
 	"\x10GetObjectRequest\x12\x1b\n" +
-	"\tobject_id\x18\x01 \x01(\x04R\bobjectId\"0\n" +
-	"\x11GetObjectsRequest\x12\x1b\n" +
-	"\tobject_id\x18\x01 \x03(\x04R\bobjectId\"\xc5\x01\n" +
+	"\tobject_id\x18\x01 \x01(\x04R\bobjectId\"\xc5\x01\n" +
 	"\x13UpdateObjectRequest\x12\x1b\n" +
 	"\tobject_id\x18\x01 \x01(\x04R\bobjectId\x12?\n" +
 	"\x06fields\x18\x02 \x03(\v2'.object.UpdateObjectRequest.FieldsEntryR\x06fields\x12\x15\n" +
-	"\x06is_new\x18\x03 \x01(\bR\x05isNew\x1a9\n" +
-	"\vFieldsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xc7\x01\n" +
-	"\x14UpdateObjectsRequest\x12\x1b\n" +
-	"\tobject_id\x18\x01 \x03(\x04R\bobjectId\x12@\n" +
-	"\x06fields\x18\x02 \x03(\v2(.object.UpdateObjectsRequest.FieldsEntryR\x06fields\x12\x15\n" +
 	"\x06is_new\x18\x03 \x01(\bR\x05isNew\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
@@ -1197,9 +1154,26 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\tis_strict\x18\x04 \x01(\bR\bisStrict\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"8\n" +
-	"\x0eObjectResponse\x12&\n" +
-	"\x06object\x18\x01 \x01(\v2\x0e.object.ObjectR\x06object\"\xc0\x01\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa9\x01\n" +
+	"\x14CreateObjectsRequest\x12@\n" +
+	"\x06fields\x18\x01 \x03(\v2(.object.CreateObjectsRequest.FieldsEntryR\x06fields\x12\x14\n" +
+	"\x05count\x18\x02 \x01(\rR\x05count\x1a9\n" +
+	"\vFieldsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"F\n" +
+	"\x1aCreateObjectsUniqueRequest\x12(\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"0\n" +
+	"\x11GetObjectsRequest\x12\x1b\n" +
+	"\tobject_id\x18\x01 \x03(\x04R\bobjectId\"\xc7\x01\n" +
+	"\x14UpdateObjectsRequest\x12\x1b\n" +
+	"\tobject_id\x18\x01 \x03(\x04R\bobjectId\x12@\n" +
+	"\x06fields\x18\x02 \x03(\v2(.object.UpdateObjectsRequest.FieldsEntryR\x06fields\x12\x15\n" +
+	"\x06is_new\x18\x03 \x01(\bR\x05isNew\x1a9\n" +
+	"\vFieldsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"F\n" +
+	"\x1aUpdateObjectsUniqueRequest\x12(\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\xc0\x01\n" +
 	"\x12ListObjectsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12>\n" +
@@ -1226,44 +1200,30 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x16TransferObjectsRequest\x12&\n" +
 	"\x06object\x18\x01 \x01(\v2\x0e.object.ObjectR\x06object\"G\n" +
 	"\x17TransferObjectsResponse\x12,\n" +
-	"\x12secret_transfer_id\x18\x01 \x01(\x04R\x10secretTransferId\"\xa9\x01\n" +
-	"\x14CreateObjectsRequest\x12@\n" +
-	"\x06fields\x18\x01 \x03(\v2(.object.CreateObjectsRequest.FieldsEntryR\x06fields\x12\x14\n" +
-	"\x05count\x18\x02 \x01(\rR\x05count\x1a9\n" +
-	"\vFieldsEntry\x12\x10\n" +
-	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"F\n" +
-	"\x1aCreateObjectsUniqueRequest\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"F\n" +
-	"\x1aUpdateObjectsUniqueRequest\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"B\n" +
+	"\x12secret_transfer_id\x18\x01 \x01(\x04R\x10secretTransferId\"B\n" +
 	"\x16ReceiveObjectsResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\".\n" +
 	"\x13SubscriptionRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\"@\n" +
 	"\x14SubscriptionResponse\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\";\n" +
-	"\x0fObjectsResponse\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"1\n" +
-	"\aObjects\x12&\n" +
-	"\x06object\x18\x01 \x03(\v2\x0e.object.ObjectR\x06object2\xf0\b\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects2\xf0\b\n" +
 	"\rObjectService\x12C\n" +
-	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12F\n" +
-	"\rCreateObjects\x12\x1c.object.CreateObjectsRequest\x1a\x17.object.ObjectsResponse\x12=\n" +
-	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12@\n" +
+	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
+	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12C\n" +
+	"\fUpdateObject\x12\x1b.object.UpdateObjectRequest\x1a\x16.object.ObjectResponse\x12O\n" +
+	"\x11DeleteObjectField\x12\".object.DeleteObjectsFieldsRequest\x1a\x16.object.ObjectResponse\x12F\n" +
+	"\rCreateObjects\x12\x1c.object.CreateObjectsRequest\x1a\x17.object.ObjectsResponse\x12@\n" +
 	"\n" +
-	"GetObjects\x12\x19.object.GetObjectsRequest\x1a\x17.object.ObjectsResponse\x12C\n" +
-	"\fUpdateObject\x12\x1b.object.UpdateObjectRequest\x1a\x16.object.ObjectResponse\x12F\n" +
-	"\rUpdateObjects\x12\x1c.object.UpdateObjectsRequest\x1a\x17.object.ObjectsResponse\x12F\n" +
-	"\vListObjects\x12\x1a.object.ListObjectsRequest\x1a\x1b.object.ListObjectsResponse\x12O\n" +
-	"\x11DeleteObjectField\x12\".object.DeleteObjectsFieldsRequest\x1a\x16.object.ObjectResponse\x12L\n" +
+	"GetObjects\x12\x19.object.GetObjectsRequest\x1a\x17.object.ObjectsResponse\x12F\n" +
+	"\rUpdateObjects\x12\x1c.object.UpdateObjectsRequest\x1a\x17.object.ObjectsResponse\x12R\n" +
+	"\x13CreateObjectsUnique\x12\".object.CreateObjectsUniqueRequest\x1a\x17.object.ObjectsResponse\x12R\n" +
+	"\x13UpdateObjectsUnique\x12\".object.UpdateObjectsUniqueRequest\x1a\x17.object.ObjectsResponse\x12F\n" +
+	"\vListObjects\x12\x1a.object.ListObjectsRequest\x1a\x1b.object.ListObjectsResponse\x12L\n" +
 	"\rExecuteAction\x12\x1c.object.ExecuteActionRequest\x1a\x1d.object.ExecuteActionResponse\x12R\n" +
 	"\x0fTransferObjects\x12\x1e.object.TransferObjectsRequest\x1a\x1f.object.TransferObjectsResponse\x12Q\n" +
 	"\x0eReceiveObjects\x12\x1f.object.TransferObjectsResponse\x1a\x1e.object.ReceiveObjectsResponse\x12U\n" +
 	"\x16SubscribeToUserObjects\x12\x1b.object.SubscriptionRequest\x1a\x1c.object.SubscriptionResponse0\x01\x127\n" +
-	"\x11SubscribeToMyself\x12\x0e.object.Object\x1a\x0e.object.Object(\x010\x01\x12R\n" +
-	"\x13CreateObjectsUnique\x12\".object.CreateObjectsUniqueRequest\x1a\x17.object.ObjectsResponse\x12R\n" +
-	"\x13UpdateObjectsUnique\x12\".object.UpdateObjectsUniqueRequest\x1a\x17.object.ObjectsResponseB \n" +
+	"\x11SubscribeToMyself\x12\x0e.object.Object\x1a\x0e.object.Object(\x010\x01B \n" +
 	"\x03objB\x03ObjP\x01Z\fobject/proto\xa2\x02\x03OBJb\x06proto3"
 
 var (
@@ -1278,93 +1238,91 @@ func file_proto_object_object_proto_rawDescGZIP() []byte {
 	return file_proto_object_object_proto_rawDescData
 }
 
-var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
+var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_proto_object_object_proto_goTypes = []any{
 	(*Object)(nil),                     // 0: object.Object
-	(*CreateObjectRequest)(nil),        // 1: object.CreateObjectRequest
-	(*GetObjectRequest)(nil),           // 2: object.GetObjectRequest
-	(*GetObjectsRequest)(nil),          // 3: object.GetObjectsRequest
-	(*UpdateObjectRequest)(nil),        // 4: object.UpdateObjectRequest
-	(*UpdateObjectsRequest)(nil),       // 5: object.UpdateObjectsRequest
+	(*ObjectResponse)(nil),             // 1: object.ObjectResponse
+	(*ObjectsResponse)(nil),            // 2: object.ObjectsResponse
+	(*CreateObjectRequest)(nil),        // 3: object.CreateObjectRequest
+	(*GetObjectRequest)(nil),           // 4: object.GetObjectRequest
+	(*UpdateObjectRequest)(nil),        // 5: object.UpdateObjectRequest
 	(*DeleteObjectsFieldsRequest)(nil), // 6: object.DeleteObjectsFieldsRequest
-	(*ObjectResponse)(nil),             // 7: object.ObjectResponse
-	(*ListObjectsRequest)(nil),         // 8: object.ListObjectsRequest
-	(*ListObjectsResponse)(nil),        // 9: object.ListObjectsResponse
-	(*ExecuteActionRequest)(nil),       // 10: object.ExecuteActionRequest
-	(*ExecuteActionResponse)(nil),      // 11: object.ExecuteActionResponse
-	(*TransferObjectsRequest)(nil),     // 12: object.TransferObjectsRequest
-	(*TransferObjectsResponse)(nil),    // 13: object.TransferObjectsResponse
-	(*CreateObjectsRequest)(nil),       // 14: object.CreateObjectsRequest
-	(*CreateObjectsUniqueRequest)(nil), // 15: object.CreateObjectsUniqueRequest
-	(*UpdateObjectsUniqueRequest)(nil), // 16: object.UpdateObjectsUniqueRequest
-	(*ReceiveObjectsResponse)(nil),     // 17: object.ReceiveObjectsResponse
-	(*SubscriptionRequest)(nil),        // 18: object.SubscriptionRequest
-	(*SubscriptionResponse)(nil),       // 19: object.SubscriptionResponse
-	(*ObjectsResponse)(nil),            // 20: object.ObjectsResponse
-	(*Objects)(nil),                    // 21: object.Objects
-	nil,                                // 22: object.Object.FieldsEntry
-	nil,                                // 23: object.CreateObjectRequest.FieldsEntry
-	nil,                                // 24: object.UpdateObjectRequest.FieldsEntry
-	nil,                                // 25: object.UpdateObjectsRequest.FieldsEntry
-	nil,                                // 26: object.DeleteObjectsFieldsRequest.FieldsEntry
+	(*CreateObjectsRequest)(nil),       // 7: object.CreateObjectsRequest
+	(*CreateObjectsUniqueRequest)(nil), // 8: object.CreateObjectsUniqueRequest
+	(*GetObjectsRequest)(nil),          // 9: object.GetObjectsRequest
+	(*UpdateObjectsRequest)(nil),       // 10: object.UpdateObjectsRequest
+	(*UpdateObjectsUniqueRequest)(nil), // 11: object.UpdateObjectsUniqueRequest
+	(*ListObjectsRequest)(nil),         // 12: object.ListObjectsRequest
+	(*ListObjectsResponse)(nil),        // 13: object.ListObjectsResponse
+	(*ExecuteActionRequest)(nil),       // 14: object.ExecuteActionRequest
+	(*ExecuteActionResponse)(nil),      // 15: object.ExecuteActionResponse
+	(*TransferObjectsRequest)(nil),     // 16: object.TransferObjectsRequest
+	(*TransferObjectsResponse)(nil),    // 17: object.TransferObjectsResponse
+	(*ReceiveObjectsResponse)(nil),     // 18: object.ReceiveObjectsResponse
+	(*SubscriptionRequest)(nil),        // 19: object.SubscriptionRequest
+	(*SubscriptionResponse)(nil),       // 20: object.SubscriptionResponse
+	nil,                                // 21: object.Object.FieldsEntry
+	nil,                                // 22: object.CreateObjectRequest.FieldsEntry
+	nil,                                // 23: object.UpdateObjectRequest.FieldsEntry
+	nil,                                // 24: object.DeleteObjectsFieldsRequest.FieldsEntry
+	nil,                                // 25: object.CreateObjectsRequest.FieldsEntry
+	nil,                                // 26: object.UpdateObjectsRequest.FieldsEntry
 	nil,                                // 27: object.ListObjectsRequest.FieldsEntry
 	nil,                                // 28: object.ExecuteActionRequest.FieldsEntry
-	nil,                                // 29: object.CreateObjectsRequest.FieldsEntry
 }
 var file_proto_object_object_proto_depIdxs = []int32{
-	22, // 0: object.Object.fields:type_name -> object.Object.FieldsEntry
-	23, // 1: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
-	24, // 2: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
-	25, // 3: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
-	26, // 4: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
-	0,  // 5: object.ObjectResponse.object:type_name -> object.Object
-	27, // 6: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
-	0,  // 7: object.ListObjectsResponse.objects:type_name -> object.Object
-	28, // 8: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
-	0,  // 9: object.ExecuteActionResponse.objects:type_name -> object.Object
-	0,  // 10: object.TransferObjectsRequest.object:type_name -> object.Object
-	29, // 11: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
-	0,  // 12: object.CreateObjectsUniqueRequest.objects:type_name -> object.Object
-	0,  // 13: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
-	0,  // 14: object.ReceiveObjectsResponse.objects:type_name -> object.Object
-	0,  // 15: object.SubscriptionResponse.objects:type_name -> object.Object
-	0,  // 16: object.ObjectsResponse.objects:type_name -> object.Object
-	0,  // 17: object.Objects.object:type_name -> object.Object
-	1,  // 18: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
-	14, // 19: object.ObjectService.CreateObjects:input_type -> object.CreateObjectsRequest
-	2,  // 20: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
-	3,  // 21: object.ObjectService.GetObjects:input_type -> object.GetObjectsRequest
-	4,  // 22: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
-	5,  // 23: object.ObjectService.UpdateObjects:input_type -> object.UpdateObjectsRequest
-	8,  // 24: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
-	6,  // 25: object.ObjectService.DeleteObjectField:input_type -> object.DeleteObjectsFieldsRequest
-	10, // 26: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
-	12, // 27: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
-	13, // 28: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
-	18, // 29: object.ObjectService.SubscribeToUserObjects:input_type -> object.SubscriptionRequest
-	0,  // 30: object.ObjectService.SubscribeToMyself:input_type -> object.Object
-	15, // 31: object.ObjectService.CreateObjectsUnique:input_type -> object.CreateObjectsUniqueRequest
-	16, // 32: object.ObjectService.UpdateObjectsUnique:input_type -> object.UpdateObjectsUniqueRequest
-	7,  // 33: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
-	20, // 34: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
-	7,  // 35: object.ObjectService.GetObject:output_type -> object.ObjectResponse
-	20, // 36: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
-	7,  // 37: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
-	20, // 38: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
-	9,  // 39: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
-	7,  // 40: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
-	11, // 41: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
-	13, // 42: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
-	17, // 43: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
-	19, // 44: object.ObjectService.SubscribeToUserObjects:output_type -> object.SubscriptionResponse
-	0,  // 45: object.ObjectService.SubscribeToMyself:output_type -> object.Object
-	20, // 46: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
-	20, // 47: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
-	33, // [33:48] is the sub-list for method output_type
-	18, // [18:33] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	21, // 0: object.Object.fields:type_name -> object.Object.FieldsEntry
+	0,  // 1: object.ObjectResponse.object:type_name -> object.Object
+	0,  // 2: object.ObjectsResponse.objects:type_name -> object.Object
+	22, // 3: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
+	23, // 4: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
+	24, // 5: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
+	25, // 6: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
+	0,  // 7: object.CreateObjectsUniqueRequest.objects:type_name -> object.Object
+	26, // 8: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
+	0,  // 9: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
+	27, // 10: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
+	0,  // 11: object.ListObjectsResponse.objects:type_name -> object.Object
+	28, // 12: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
+	0,  // 13: object.ExecuteActionResponse.objects:type_name -> object.Object
+	0,  // 14: object.TransferObjectsRequest.object:type_name -> object.Object
+	0,  // 15: object.ReceiveObjectsResponse.objects:type_name -> object.Object
+	0,  // 16: object.SubscriptionResponse.objects:type_name -> object.Object
+	3,  // 17: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
+	4,  // 18: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
+	5,  // 19: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
+	6,  // 20: object.ObjectService.DeleteObjectField:input_type -> object.DeleteObjectsFieldsRequest
+	7,  // 21: object.ObjectService.CreateObjects:input_type -> object.CreateObjectsRequest
+	9,  // 22: object.ObjectService.GetObjects:input_type -> object.GetObjectsRequest
+	10, // 23: object.ObjectService.UpdateObjects:input_type -> object.UpdateObjectsRequest
+	8,  // 24: object.ObjectService.CreateObjectsUnique:input_type -> object.CreateObjectsUniqueRequest
+	11, // 25: object.ObjectService.UpdateObjectsUnique:input_type -> object.UpdateObjectsUniqueRequest
+	12, // 26: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
+	14, // 27: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
+	16, // 28: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
+	17, // 29: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
+	19, // 30: object.ObjectService.SubscribeToUserObjects:input_type -> object.SubscriptionRequest
+	0,  // 31: object.ObjectService.SubscribeToMyself:input_type -> object.Object
+	1,  // 32: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
+	1,  // 33: object.ObjectService.GetObject:output_type -> object.ObjectResponse
+	1,  // 34: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
+	1,  // 35: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
+	2,  // 36: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
+	2,  // 37: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
+	2,  // 38: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
+	2,  // 39: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
+	2,  // 40: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
+	13, // 41: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
+	15, // 42: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
+	17, // 43: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
+	18, // 44: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
+	20, // 45: object.ObjectService.SubscribeToUserObjects:output_type -> object.SubscriptionResponse
+	0,  // 46: object.ObjectService.SubscribeToMyself:output_type -> object.Object
+	32, // [32:47] is the sub-list for method output_type
+	17, // [17:32] is the sub-list for method input_type
+	17, // [17:17] is the sub-list for extension type_name
+	17, // [17:17] is the sub-list for extension extendee
+	0,  // [0:17] is the sub-list for field type_name
 }
 
 func init() { file_proto_object_object_proto_init() }
@@ -1378,7 +1336,7 @@ func file_proto_object_object_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_object_object_proto_rawDesc), len(file_proto_object_object_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   30,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

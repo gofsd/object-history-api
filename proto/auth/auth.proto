@@ -9,13 +9,8 @@ option java_multiple_files = true;
 option java_package = "auth";
 option java_outer_classname = "Auth";
 option objc_class_prefix = "AUTH";
-service AuthService {
-  rpc Register(RegisterRequest) returns (RegisterResponse);
-  rpc Login(LoginRequest) returns (LoginResponse);
-  rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
-  rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
-}
 
+// ------------------- CORE MESSAGES -------------------
 message RegisterRequest {
   string email = 1;
   string password = 2;
@@ -34,11 +29,19 @@ message LoginResponse {
   string token = 1;
 }
 
-
+// ------------------- INFO RESPONSES -------------------
 message AppInfoResponse {
   string version = 1;
 }
 
 message UserInfoResponse {
   string email = 1;
+}
+
+// ------------------- SERVICE -------------------
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
+  rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
 }

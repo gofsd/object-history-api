@@ -4,18 +4,12 @@
 package cmd;
 
 public interface CancelRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.CancelRequest)
+    // @@protoc_insertion_point(interface_extends:cmd.CancelRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   long getExecutionId();
-
-  /**
-   * <code>int64 user_id = 2;</code>
-   * @return The userId.
-   */
-  long getUserId();
 }

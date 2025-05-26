@@ -8,7 +8,7 @@ package cmd;
  * ---------------- ENUMS ----------------
  * </pre>
  *
- * Protobuf enum {@code command.ExecutionStatus}
+ * Protobuf enum {@code cmd.ExecutionStatus}
  */
 public enum ExecutionStatus
     implements com.google.protobuf.ProtocolMessageEnum {
@@ -152,7 +152,7 @@ public enum ExecutionStatus
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return cmd.Command.getDescriptor().getEnumTypes().get(0);
+    return cmd.Cmd.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final ExecutionStatus[] VALUES = values();
@@ -175,6 +175,6 @@ public enum ExecutionStatus
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:command.ExecutionStatus)
+  // @@protoc_insertion_point(enum_scope:cmd.ExecutionStatus)
 }
 

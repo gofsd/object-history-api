@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.DryRunResult}
+ * Protobuf type {@code cmd.DryRunResult}
  */
 public final class DryRunResult extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.DryRunResult)
+    // @@protoc_insertion_point(message_implements:cmd.DryRunResult)
     DryRunResultOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use DryRunResult.newBuilder() to construct.
@@ -16,8 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DryRunResult() {
-    renderedCommand_ = "";
-    message_ = "";
   }
 
   @java.lang.Override
@@ -34,91 +32,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_DryRunResult_descriptor;
+    return cmd.Cmd.internal_static_cmd_DryRunResult_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_DryRunResult_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_DryRunResult_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.DryRunResult.class, cmd.DryRunResult.Builder.class);
   }
 
-  public static final int RENDERED_COMMAND_FIELD_NUMBER = 1;
-  private volatile java.lang.Object renderedCommand_;
+  public static final int COMMAND_ID_FIELD_NUMBER = 1;
+  private long commandId_;
   /**
-   * <code>string rendered_command = 1;</code>
-   * @return The renderedCommand.
+   * <code>uint64 command_id = 1;</code>
+   * @return The commandId.
    */
   @java.lang.Override
-  public java.lang.String getRenderedCommand() {
-    java.lang.Object ref = renderedCommand_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      renderedCommand_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string rendered_command = 1;</code>
-   * @return The bytes for renderedCommand.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getRenderedCommandBytes() {
-    java.lang.Object ref = renderedCommand_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      renderedCommand_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int MESSAGE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object message_;
-  /**
-   * <code>string message = 2;</code>
-   * @return The message.
-   */
-  @java.lang.Override
-  public java.lang.String getMessage() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      message_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string message = 2;</code>
-   * @return The bytes for message.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getMessageBytes() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      message_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getCommandId() {
+    return commandId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -135,11 +68,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(renderedCommand_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, renderedCommand_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
+    if (commandId_ != 0L) {
+      output.writeUInt64(1, commandId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -150,11 +80,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(renderedCommand_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, renderedCommand_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
+    if (commandId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(1, commandId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -171,10 +99,8 @@ private static final long serialVersionUID = 0L;
     }
     cmd.DryRunResult other = (cmd.DryRunResult) obj;
 
-    if (!getRenderedCommand()
-        .equals(other.getRenderedCommand())) return false;
-    if (!getMessage()
-        .equals(other.getMessage())) return false;
+    if (getCommandId()
+        != other.getCommandId()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -186,10 +112,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + RENDERED_COMMAND_FIELD_NUMBER;
-    hash = (53 * hash) + getRenderedCommand().hashCode();
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
+    hash = (37 * hash) + COMMAND_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getCommandId());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -286,21 +211,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.DryRunResult}
+   * Protobuf type {@code cmd.DryRunResult}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.DryRunResult)
+      // @@protoc_insertion_point(builder_implements:cmd.DryRunResult)
       cmd.DryRunResultOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_DryRunResult_descriptor;
+      return cmd.Cmd.internal_static_cmd_DryRunResult_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_DryRunResult_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_DryRunResult_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.DryRunResult.class, cmd.DryRunResult.Builder.class);
     }
@@ -318,9 +243,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      renderedCommand_ = "";
-
-      message_ = "";
+      commandId_ = 0L;
 
       return this;
     }
@@ -328,7 +251,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_DryRunResult_descriptor;
+      return cmd.Cmd.internal_static_cmd_DryRunResult_descriptor;
     }
 
     @java.lang.Override
@@ -348,8 +271,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cmd.DryRunResult buildPartial() {
       cmd.DryRunResult result = new cmd.DryRunResult(this);
-      result.renderedCommand_ = renderedCommand_;
-      result.message_ = message_;
+      result.commandId_ = commandId_;
       onBuilt();
       return result;
     }
@@ -398,13 +320,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cmd.DryRunResult other) {
       if (other == cmd.DryRunResult.getDefaultInstance()) return this;
-      if (!other.getRenderedCommand().isEmpty()) {
-        renderedCommand_ = other.renderedCommand_;
-        onChanged();
-      }
-      if (!other.getMessage().isEmpty()) {
-        message_ = other.message_;
-        onChanged();
+      if (other.getCommandId() != 0L) {
+        setCommandId(other.getCommandId());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -432,16 +349,11 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
-              renderedCommand_ = input.readStringRequireUtf8();
+            case 8: {
+              commandId_ = input.readUInt64();
 
               break;
-            } // case 10
-            case 18: {
-              message_ = input.readStringRequireUtf8();
-
-              break;
-            } // case 18
+            } // case 8
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -458,154 +370,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object renderedCommand_ = "";
+    private long commandId_ ;
     /**
-     * <code>string rendered_command = 1;</code>
-     * @return The renderedCommand.
+     * <code>uint64 command_id = 1;</code>
+     * @return The commandId.
      */
-    public java.lang.String getRenderedCommand() {
-      java.lang.Object ref = renderedCommand_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        renderedCommand_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public long getCommandId() {
+      return commandId_;
     }
     /**
-     * <code>string rendered_command = 1;</code>
-     * @return The bytes for renderedCommand.
-     */
-    public com.google.protobuf.ByteString
-        getRenderedCommandBytes() {
-      java.lang.Object ref = renderedCommand_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        renderedCommand_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string rendered_command = 1;</code>
-     * @param value The renderedCommand to set.
+     * <code>uint64 command_id = 1;</code>
+     * @param value The commandId to set.
      * @return This builder for chaining.
      */
-    public Builder setRenderedCommand(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      renderedCommand_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string rendered_command = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearRenderedCommand() {
+    public Builder setCommandId(long value) {
       
-      renderedCommand_ = getDefaultInstance().getRenderedCommand();
+      commandId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string rendered_command = 1;</code>
-     * @param value The bytes for renderedCommand to set.
+     * <code>uint64 command_id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder setRenderedCommandBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
+    public Builder clearCommandId() {
       
-      renderedCommand_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object message_ = "";
-    /**
-     * <code>string message = 2;</code>
-     * @return The message.
-     */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string message = 2;</code>
-     * @return The bytes for message.
-     */
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string message = 2;</code>
-     * @param value The message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessage(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      message_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMessage() {
-      
-      message_ = getDefaultInstance().getMessage();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 2;</code>
-     * @param value The bytes for message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessageBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      message_ = value;
+      commandId_ = 0L;
       onChanged();
       return this;
     }
@@ -622,10 +413,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.DryRunResult)
+    // @@protoc_insertion_point(builder_scope:cmd.DryRunResult)
   }
 
-  // @@protoc_insertion_point(class_scope:command.DryRunResult)
+  // @@protoc_insertion_point(class_scope:cmd.DryRunResult)
   private static final cmd.DryRunResult DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.DryRunResult();

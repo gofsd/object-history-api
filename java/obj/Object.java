@@ -4,6 +4,10 @@
 package obj;
 
 /**
+ * <pre>
+ * ------------------- CORE MESSAGES -------------------
+ * </pre>
+ *
  * Protobuf type {@code object.Object}
  */
 public final class Object extends
@@ -418,6 +422,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------------- CORE MESSAGES -------------------
+   * </pre>
+   *
    * Protobuf type {@code object.Object}
    */
   public static final class Builder extends

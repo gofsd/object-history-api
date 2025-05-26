@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.RetryRequest}
+ * Protobuf type {@code cmd.RetryRequest}
  */
 public final class RetryRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.RetryRequest)
+    // @@protoc_insertion_point(message_implements:cmd.RetryRequest)
     RetryRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use RetryRequest.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_RetryRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_RetryRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_RetryRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_RetryRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.RetryRequest.class, cmd.RetryRequest.Builder.class);
   }
@@ -46,23 +46,12 @@ private static final long serialVersionUID = 0L;
   public static final int EXECUTION_ID_FIELD_NUMBER = 1;
   private long executionId_;
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   @java.lang.Override
   public long getExecutionId() {
     return executionId_;
-  }
-
-  public static final int USER_ID_FIELD_NUMBER = 2;
-  private long userId_;
-  /**
-   * <code>int64 user_id = 2;</code>
-   * @return The userId.
-   */
-  @java.lang.Override
-  public long getUserId() {
-    return userId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -80,10 +69,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (executionId_ != 0L) {
-      output.writeInt64(1, executionId_);
-    }
-    if (userId_ != 0L) {
-      output.writeInt64(2, userId_);
+      output.writeUInt64(1, executionId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -96,11 +82,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (executionId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, executionId_);
-    }
-    if (userId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, userId_);
+        .computeUInt64Size(1, executionId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -119,8 +101,6 @@ private static final long serialVersionUID = 0L;
 
     if (getExecutionId()
         != other.getExecutionId()) return false;
-    if (getUserId()
-        != other.getUserId()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -135,9 +115,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + EXECUTION_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getExecutionId());
-    hash = (37 * hash) + USER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getUserId());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -234,21 +211,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.RetryRequest}
+   * Protobuf type {@code cmd.RetryRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.RetryRequest)
+      // @@protoc_insertion_point(builder_implements:cmd.RetryRequest)
       cmd.RetryRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_RetryRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_RetryRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_RetryRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_RetryRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.RetryRequest.class, cmd.RetryRequest.Builder.class);
     }
@@ -268,15 +245,13 @@ private static final long serialVersionUID = 0L;
       super.clear();
       executionId_ = 0L;
 
-      userId_ = 0L;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_RetryRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_RetryRequest_descriptor;
     }
 
     @java.lang.Override
@@ -297,7 +272,6 @@ private static final long serialVersionUID = 0L;
     public cmd.RetryRequest buildPartial() {
       cmd.RetryRequest result = new cmd.RetryRequest(this);
       result.executionId_ = executionId_;
-      result.userId_ = userId_;
       onBuilt();
       return result;
     }
@@ -349,9 +323,6 @@ private static final long serialVersionUID = 0L;
       if (other.getExecutionId() != 0L) {
         setExecutionId(other.getExecutionId());
       }
-      if (other.getUserId() != 0L) {
-        setUserId(other.getUserId());
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -379,15 +350,10 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              executionId_ = input.readInt64();
+              executionId_ = input.readUInt64();
 
               break;
             } // case 8
-            case 16: {
-              userId_ = input.readInt64();
-
-              break;
-            } // case 16
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -406,7 +372,7 @@ private static final long serialVersionUID = 0L;
 
     private long executionId_ ;
     /**
-     * <code>int64 execution_id = 1;</code>
+     * <code>uint64 execution_id = 1;</code>
      * @return The executionId.
      */
     @java.lang.Override
@@ -414,7 +380,7 @@ private static final long serialVersionUID = 0L;
       return executionId_;
     }
     /**
-     * <code>int64 execution_id = 1;</code>
+     * <code>uint64 execution_id = 1;</code>
      * @param value The executionId to set.
      * @return This builder for chaining.
      */
@@ -425,43 +391,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 execution_id = 1;</code>
+     * <code>uint64 execution_id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearExecutionId() {
       
       executionId_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long userId_ ;
-    /**
-     * <code>int64 user_id = 2;</code>
-     * @return The userId.
-     */
-    @java.lang.Override
-    public long getUserId() {
-      return userId_;
-    }
-    /**
-     * <code>int64 user_id = 2;</code>
-     * @param value The userId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUserId(long value) {
-      
-      userId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 user_id = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUserId() {
-      
-      userId_ = 0L;
       onChanged();
       return this;
     }
@@ -478,10 +413,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.RetryRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.RetryRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:command.RetryRequest)
+  // @@protoc_insertion_point(class_scope:cmd.RetryRequest)
   private static final cmd.RetryRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.RetryRequest();

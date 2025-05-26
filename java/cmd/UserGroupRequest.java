@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.UserGroupRequest}
+ * Protobuf type {@code cmd.UserGroupRequest}
  */
 public final class UserGroupRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.UserGroupRequest)
+    // @@protoc_insertion_point(message_implements:cmd.UserGroupRequest)
     UserGroupRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use UserGroupRequest.newBuilder() to construct.
@@ -33,13 +33,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_UserGroupRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_UserGroupRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_UserGroupRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_UserGroupRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.UserGroupRequest.class, cmd.UserGroupRequest.Builder.class);
   }
@@ -47,7 +47,7 @@ private static final long serialVersionUID = 0L;
   public static final int USER_ID_FIELD_NUMBER = 1;
   private long userId_;
   /**
-   * <code>int64 user_id = 1;</code>
+   * <code>uint64 user_id = 1;</code>
    * @return The userId.
    */
   @java.lang.Override
@@ -58,7 +58,7 @@ private static final long serialVersionUID = 0L;
   public static final int GROUP_ID_FIELD_NUMBER = 2;
   private long groupId_;
   /**
-   * <code>int64 group_id = 2;</code>
+   * <code>uint64 group_id = 2;</code>
    * @return The groupId.
    */
   @java.lang.Override
@@ -69,14 +69,14 @@ private static final long serialVersionUID = 0L;
   public static final int ROLE_FIELD_NUMBER = 3;
   private int role_;
   /**
-   * <code>.command.UserRole role = 3;</code>
+   * <code>.cmd.UserRole role = 3;</code>
    * @return The enum numeric value on the wire for role.
    */
   @java.lang.Override public int getRoleValue() {
     return role_;
   }
   /**
-   * <code>.command.UserRole role = 3;</code>
+   * <code>.cmd.UserRole role = 3;</code>
    * @return The role.
    */
   @java.lang.Override public cmd.UserRole getRole() {
@@ -100,10 +100,10 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (userId_ != 0L) {
-      output.writeInt64(1, userId_);
+      output.writeUInt64(1, userId_);
     }
     if (groupId_ != 0L) {
-      output.writeInt64(2, groupId_);
+      output.writeUInt64(2, groupId_);
     }
     if (role_ != cmd.UserRole.VIEWER.getNumber()) {
       output.writeEnum(3, role_);
@@ -119,11 +119,11 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (userId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, userId_);
+        .computeUInt64Size(1, userId_);
     }
     if (groupId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, groupId_);
+        .computeUInt64Size(2, groupId_);
     }
     if (role_ != cmd.UserRole.VIEWER.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
@@ -264,21 +264,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.UserGroupRequest}
+   * Protobuf type {@code cmd.UserGroupRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.UserGroupRequest)
+      // @@protoc_insertion_point(builder_implements:cmd.UserGroupRequest)
       cmd.UserGroupRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_UserGroupRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_UserGroupRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_UserGroupRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_UserGroupRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.UserGroupRequest.class, cmd.UserGroupRequest.Builder.class);
     }
@@ -308,7 +308,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_UserGroupRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_UserGroupRequest_descriptor;
     }
 
     @java.lang.Override
@@ -415,12 +415,12 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              userId_ = input.readInt64();
+              userId_ = input.readUInt64();
 
               break;
             } // case 8
             case 16: {
-              groupId_ = input.readInt64();
+              groupId_ = input.readUInt64();
 
               break;
             } // case 16
@@ -447,7 +447,7 @@ private static final long serialVersionUID = 0L;
 
     private long userId_ ;
     /**
-     * <code>int64 user_id = 1;</code>
+     * <code>uint64 user_id = 1;</code>
      * @return The userId.
      */
     @java.lang.Override
@@ -455,7 +455,7 @@ private static final long serialVersionUID = 0L;
       return userId_;
     }
     /**
-     * <code>int64 user_id = 1;</code>
+     * <code>uint64 user_id = 1;</code>
      * @param value The userId to set.
      * @return This builder for chaining.
      */
@@ -466,7 +466,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 user_id = 1;</code>
+     * <code>uint64 user_id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearUserId() {
@@ -478,7 +478,7 @@ private static final long serialVersionUID = 0L;
 
     private long groupId_ ;
     /**
-     * <code>int64 group_id = 2;</code>
+     * <code>uint64 group_id = 2;</code>
      * @return The groupId.
      */
     @java.lang.Override
@@ -486,7 +486,7 @@ private static final long serialVersionUID = 0L;
       return groupId_;
     }
     /**
-     * <code>int64 group_id = 2;</code>
+     * <code>uint64 group_id = 2;</code>
      * @param value The groupId to set.
      * @return This builder for chaining.
      */
@@ -497,7 +497,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 group_id = 2;</code>
+     * <code>uint64 group_id = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearGroupId() {
@@ -509,14 +509,14 @@ private static final long serialVersionUID = 0L;
 
     private int role_ = 0;
     /**
-     * <code>.command.UserRole role = 3;</code>
+     * <code>.cmd.UserRole role = 3;</code>
      * @return The enum numeric value on the wire for role.
      */
     @java.lang.Override public int getRoleValue() {
       return role_;
     }
     /**
-     * <code>.command.UserRole role = 3;</code>
+     * <code>.cmd.UserRole role = 3;</code>
      * @param value The enum numeric value on the wire for role to set.
      * @return This builder for chaining.
      */
@@ -527,7 +527,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.command.UserRole role = 3;</code>
+     * <code>.cmd.UserRole role = 3;</code>
      * @return The role.
      */
     @java.lang.Override
@@ -537,7 +537,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? cmd.UserRole.UNRECOGNIZED : result;
     }
     /**
-     * <code>.command.UserRole role = 3;</code>
+     * <code>.cmd.UserRole role = 3;</code>
      * @param value The role to set.
      * @return This builder for chaining.
      */
@@ -551,7 +551,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.command.UserRole role = 3;</code>
+     * <code>.cmd.UserRole role = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearRole() {
@@ -573,10 +573,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.UserGroupRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.UserGroupRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:command.UserGroupRequest)
+  // @@protoc_insertion_point(class_scope:cmd.UserGroupRequest)
   private static final cmd.UserGroupRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.UserGroupRequest();

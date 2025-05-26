@@ -4,6 +4,10 @@
 package obj;
 
 /**
+ * <pre>
+ * Single and plural responses
+ * </pre>
+ *
  * Protobuf type {@code object.ObjectResponse}
  */
 public final class ObjectResponse extends
@@ -230,6 +234,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Single and plural responses
+   * </pre>
+   *
    * Protobuf type {@code object.ObjectResponse}
    */
   public static final class Builder extends

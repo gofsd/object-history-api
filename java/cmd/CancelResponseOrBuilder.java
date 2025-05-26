@@ -4,7 +4,7 @@
 package cmd;
 
 public interface CancelResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.CancelResponse)
+    // @@protoc_insertion_point(interface_extends:cmd.CancelResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**

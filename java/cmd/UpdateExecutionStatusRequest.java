@@ -8,11 +8,11 @@ package cmd;
  * ------------- STATUS UPDATE &amp; EVENT SUBSCRIPTION -------------
  * </pre>
  *
- * Protobuf type {@code command.UpdateExecutionStatusRequest}
+ * Protobuf type {@code cmd.UpdateExecutionStatusRequest}
  */
 public final class UpdateExecutionStatusRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.UpdateExecutionStatusRequest)
+    // @@protoc_insertion_point(message_implements:cmd.UpdateExecutionStatusRequest)
     UpdateExecutionStatusRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use UpdateExecutionStatusRequest.newBuilder() to construct.
@@ -22,6 +22,7 @@ private static final long serialVersionUID = 0L;
   private UpdateExecutionStatusRequest() {
     status_ = 0;
     resultCode_ = "";
+    output_ = "";
   }
 
   @java.lang.Override
@@ -38,13 +39,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_UpdateExecutionStatusRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_UpdateExecutionStatusRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.UpdateExecutionStatusRequest.class, cmd.UpdateExecutionStatusRequest.Builder.class);
   }
@@ -52,7 +53,7 @@ private static final long serialVersionUID = 0L;
   public static final int EXECUTION_ID_FIELD_NUMBER = 1;
   private long executionId_;
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   @java.lang.Override
@@ -63,14 +64,14 @@ private static final long serialVersionUID = 0L;
   public static final int STATUS_FIELD_NUMBER = 2;
   private int status_;
   /**
-   * <code>.command.ExecutionStatus status = 2;</code>
+   * <code>.cmd.ExecutionStatus status = 2;</code>
    * @return The enum numeric value on the wire for status.
    */
   @java.lang.Override public int getStatusValue() {
     return status_;
   }
   /**
-   * <code>.command.ExecutionStatus status = 2;</code>
+   * <code>.cmd.ExecutionStatus status = 2;</code>
    * @return The status.
    */
   @java.lang.Override public cmd.ExecutionStatus getStatus() {
@@ -117,6 +118,44 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int OUTPUT_FIELD_NUMBER = 4;
+  private volatile java.lang.Object output_;
+  /**
+   * <code>string output = 4;</code>
+   * @return The output.
+   */
+  @java.lang.Override
+  public java.lang.String getOutput() {
+    java.lang.Object ref = output_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      output_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string output = 4;</code>
+   * @return The bytes for output.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getOutputBytes() {
+    java.lang.Object ref = output_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      output_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,13 +171,16 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (executionId_ != 0L) {
-      output.writeInt64(1, executionId_);
+      output.writeUInt64(1, executionId_);
     }
     if (status_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
       output.writeEnum(2, status_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, resultCode_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(output_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, output_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -151,7 +193,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (executionId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, executionId_);
+        .computeUInt64Size(1, executionId_);
     }
     if (status_ != cmd.ExecutionStatus.UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
@@ -159,6 +201,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, resultCode_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(output_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, output_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -180,6 +225,8 @@ private static final long serialVersionUID = 0L;
     if (status_ != other.status_) return false;
     if (!getResultCode()
         .equals(other.getResultCode())) return false;
+    if (!getOutput()
+        .equals(other.getOutput())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -198,6 +245,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + status_;
     hash = (37 * hash) + RESULT_CODE_FIELD_NUMBER;
     hash = (53 * hash) + getResultCode().hashCode();
+    hash = (37 * hash) + OUTPUT_FIELD_NUMBER;
+    hash = (53 * hash) + getOutput().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -298,21 +347,21 @@ private static final long serialVersionUID = 0L;
    * ------------- STATUS UPDATE &amp; EVENT SUBSCRIPTION -------------
    * </pre>
    *
-   * Protobuf type {@code command.UpdateExecutionStatusRequest}
+   * Protobuf type {@code cmd.UpdateExecutionStatusRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.UpdateExecutionStatusRequest)
+      // @@protoc_insertion_point(builder_implements:cmd.UpdateExecutionStatusRequest)
       cmd.UpdateExecutionStatusRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_UpdateExecutionStatusRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_UpdateExecutionStatusRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.UpdateExecutionStatusRequest.class, cmd.UpdateExecutionStatusRequest.Builder.class);
     }
@@ -336,13 +385,15 @@ private static final long serialVersionUID = 0L;
 
       resultCode_ = "";
 
+      output_ = "";
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_UpdateExecutionStatusRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_UpdateExecutionStatusRequest_descriptor;
     }
 
     @java.lang.Override
@@ -365,6 +416,7 @@ private static final long serialVersionUID = 0L;
       result.executionId_ = executionId_;
       result.status_ = status_;
       result.resultCode_ = resultCode_;
+      result.output_ = output_;
       onBuilt();
       return result;
     }
@@ -423,6 +475,10 @@ private static final long serialVersionUID = 0L;
         resultCode_ = other.resultCode_;
         onChanged();
       }
+      if (!other.getOutput().isEmpty()) {
+        output_ = other.output_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -450,7 +506,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              executionId_ = input.readInt64();
+              executionId_ = input.readUInt64();
 
               break;
             } // case 8
@@ -464,6 +520,11 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 26
+            case 34: {
+              output_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -482,7 +543,7 @@ private static final long serialVersionUID = 0L;
 
     private long executionId_ ;
     /**
-     * <code>int64 execution_id = 1;</code>
+     * <code>uint64 execution_id = 1;</code>
      * @return The executionId.
      */
     @java.lang.Override
@@ -490,7 +551,7 @@ private static final long serialVersionUID = 0L;
       return executionId_;
     }
     /**
-     * <code>int64 execution_id = 1;</code>
+     * <code>uint64 execution_id = 1;</code>
      * @param value The executionId to set.
      * @return This builder for chaining.
      */
@@ -501,7 +562,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 execution_id = 1;</code>
+     * <code>uint64 execution_id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearExecutionId() {
@@ -513,14 +574,14 @@ private static final long serialVersionUID = 0L;
 
     private int status_ = 0;
     /**
-     * <code>.command.ExecutionStatus status = 2;</code>
+     * <code>.cmd.ExecutionStatus status = 2;</code>
      * @return The enum numeric value on the wire for status.
      */
     @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.command.ExecutionStatus status = 2;</code>
+     * <code>.cmd.ExecutionStatus status = 2;</code>
      * @param value The enum numeric value on the wire for status to set.
      * @return This builder for chaining.
      */
@@ -531,7 +592,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.command.ExecutionStatus status = 2;</code>
+     * <code>.cmd.ExecutionStatus status = 2;</code>
      * @return The status.
      */
     @java.lang.Override
@@ -541,7 +602,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? cmd.ExecutionStatus.UNRECOGNIZED : result;
     }
     /**
-     * <code>.command.ExecutionStatus status = 2;</code>
+     * <code>.cmd.ExecutionStatus status = 2;</code>
      * @param value The status to set.
      * @return This builder for chaining.
      */
@@ -555,7 +616,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.command.ExecutionStatus status = 2;</code>
+     * <code>.cmd.ExecutionStatus status = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearStatus() {
@@ -640,6 +701,82 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private java.lang.Object output_ = "";
+    /**
+     * <code>string output = 4;</code>
+     * @return The output.
+     */
+    public java.lang.String getOutput() {
+      java.lang.Object ref = output_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        output_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string output = 4;</code>
+     * @return The bytes for output.
+     */
+    public com.google.protobuf.ByteString
+        getOutputBytes() {
+      java.lang.Object ref = output_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        output_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string output = 4;</code>
+     * @param value The output to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutput(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      output_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string output = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOutput() {
+      
+      output_ = getDefaultInstance().getOutput();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string output = 4;</code>
+     * @param value The bytes for output to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOutputBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      output_ = value;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -653,10 +790,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.UpdateExecutionStatusRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.UpdateExecutionStatusRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:command.UpdateExecutionStatusRequest)
+  // @@protoc_insertion_point(class_scope:cmd.UpdateExecutionStatusRequest)
   private static final cmd.UpdateExecutionStatusRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.UpdateExecutionStatusRequest();

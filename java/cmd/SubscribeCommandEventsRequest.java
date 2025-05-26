@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.SubscribeCommandEventsRequest}
+ * Protobuf type {@code cmd.SubscribeCommandEventsRequest}
  */
 public final class SubscribeCommandEventsRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.SubscribeCommandEventsRequest)
+    // @@protoc_insertion_point(message_implements:cmd.SubscribeCommandEventsRequest)
     SubscribeCommandEventsRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use SubscribeCommandEventsRequest.newBuilder() to construct.
@@ -16,7 +16,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private SubscribeCommandEventsRequest() {
-    groupIds_ = emptyLongList();
   }
 
   @java.lang.Override
@@ -33,55 +32,16 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_SubscribeCommandEventsRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_SubscribeCommandEventsRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_SubscribeCommandEventsRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_SubscribeCommandEventsRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.SubscribeCommandEventsRequest.class, cmd.SubscribeCommandEventsRequest.Builder.class);
   }
-
-  public static final int USER_ID_FIELD_NUMBER = 1;
-  private long userId_;
-  /**
-   * <code>int64 user_id = 1;</code>
-   * @return The userId.
-   */
-  @java.lang.Override
-  public long getUserId() {
-    return userId_;
-  }
-
-  public static final int GROUP_IDS_FIELD_NUMBER = 2;
-  private com.google.protobuf.Internal.LongList groupIds_;
-  /**
-   * <code>repeated int64 group_ids = 2;</code>
-   * @return A list containing the groupIds.
-   */
-  @java.lang.Override
-  public java.util.List<java.lang.Long>
-      getGroupIdsList() {
-    return groupIds_;
-  }
-  /**
-   * <code>repeated int64 group_ids = 2;</code>
-   * @return The count of groupIds.
-   */
-  public int getGroupIdsCount() {
-    return groupIds_.size();
-  }
-  /**
-   * <code>repeated int64 group_ids = 2;</code>
-   * @param index The index of the element to return.
-   * @return The groupIds at the given index.
-   */
-  public long getGroupIds(int index) {
-    return groupIds_.getLong(index);
-  }
-  private int groupIdsMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -97,17 +57,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    getSerializedSize();
-    if (userId_ != 0L) {
-      output.writeInt64(1, userId_);
-    }
-    if (getGroupIdsList().size() > 0) {
-      output.writeUInt32NoTag(18);
-      output.writeUInt32NoTag(groupIdsMemoizedSerializedSize);
-    }
-    for (int i = 0; i < groupIds_.size(); i++) {
-      output.writeInt64NoTag(groupIds_.getLong(i));
-    }
     getUnknownFields().writeTo(output);
   }
 
@@ -117,24 +66,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (userId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, userId_);
-    }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < groupIds_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeInt64SizeNoTag(groupIds_.getLong(i));
-      }
-      size += dataSize;
-      if (!getGroupIdsList().isEmpty()) {
-        size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
-      }
-      groupIdsMemoizedSerializedSize = dataSize;
-    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -150,10 +81,6 @@ private static final long serialVersionUID = 0L;
     }
     cmd.SubscribeCommandEventsRequest other = (cmd.SubscribeCommandEventsRequest) obj;
 
-    if (getUserId()
-        != other.getUserId()) return false;
-    if (!getGroupIdsList()
-        .equals(other.getGroupIdsList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -165,13 +92,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + USER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getUserId());
-    if (getGroupIdsCount() > 0) {
-      hash = (37 * hash) + GROUP_IDS_FIELD_NUMBER;
-      hash = (53 * hash) + getGroupIdsList().hashCode();
-    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -268,21 +188,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.SubscribeCommandEventsRequest}
+   * Protobuf type {@code cmd.SubscribeCommandEventsRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.SubscribeCommandEventsRequest)
+      // @@protoc_insertion_point(builder_implements:cmd.SubscribeCommandEventsRequest)
       cmd.SubscribeCommandEventsRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_SubscribeCommandEventsRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_SubscribeCommandEventsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_SubscribeCommandEventsRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_SubscribeCommandEventsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.SubscribeCommandEventsRequest.class, cmd.SubscribeCommandEventsRequest.Builder.class);
     }
@@ -300,17 +220,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      userId_ = 0L;
-
-      groupIds_ = emptyLongList();
-      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_SubscribeCommandEventsRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_SubscribeCommandEventsRequest_descriptor;
     }
 
     @java.lang.Override
@@ -330,13 +246,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cmd.SubscribeCommandEventsRequest buildPartial() {
       cmd.SubscribeCommandEventsRequest result = new cmd.SubscribeCommandEventsRequest(this);
-      int from_bitField0_ = bitField0_;
-      result.userId_ = userId_;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        groupIds_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.groupIds_ = groupIds_;
       onBuilt();
       return result;
     }
@@ -385,19 +294,6 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cmd.SubscribeCommandEventsRequest other) {
       if (other == cmd.SubscribeCommandEventsRequest.getDefaultInstance()) return this;
-      if (other.getUserId() != 0L) {
-        setUserId(other.getUserId());
-      }
-      if (!other.groupIds_.isEmpty()) {
-        if (groupIds_.isEmpty()) {
-          groupIds_ = other.groupIds_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureGroupIdsIsMutable();
-          groupIds_.addAll(other.groupIds_);
-        }
-        onChanged();
-      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -424,27 +320,6 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              userId_ = input.readInt64();
-
-              break;
-            } // case 8
-            case 16: {
-              long v = input.readInt64();
-              ensureGroupIdsIsMutable();
-              groupIds_.addLong(v);
-              break;
-            } // case 16
-            case 18: {
-              int length = input.readRawVarint32();
-              int limit = input.pushLimit(length);
-              ensureGroupIdsIsMutable();
-              while (input.getBytesUntilLimit() > 0) {
-                groupIds_.addLong(input.readInt64());
-              }
-              input.popLimit(limit);
-              break;
-            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -460,117 +335,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
-
-    private long userId_ ;
-    /**
-     * <code>int64 user_id = 1;</code>
-     * @return The userId.
-     */
-    @java.lang.Override
-    public long getUserId() {
-      return userId_;
-    }
-    /**
-     * <code>int64 user_id = 1;</code>
-     * @param value The userId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUserId(long value) {
-      
-      userId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 user_id = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUserId() {
-      
-      userId_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.Internal.LongList groupIds_ = emptyLongList();
-    private void ensureGroupIdsIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        groupIds_ = mutableCopy(groupIds_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @return A list containing the groupIds.
-     */
-    public java.util.List<java.lang.Long>
-        getGroupIdsList() {
-      return ((bitField0_ & 0x00000001) != 0) ?
-               java.util.Collections.unmodifiableList(groupIds_) : groupIds_;
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @return The count of groupIds.
-     */
-    public int getGroupIdsCount() {
-      return groupIds_.size();
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @param index The index of the element to return.
-     * @return The groupIds at the given index.
-     */
-    public long getGroupIds(int index) {
-      return groupIds_.getLong(index);
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @param index The index to set the value at.
-     * @param value The groupIds to set.
-     * @return This builder for chaining.
-     */
-    public Builder setGroupIds(
-        int index, long value) {
-      ensureGroupIdsIsMutable();
-      groupIds_.setLong(index, value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @param value The groupIds to add.
-     * @return This builder for chaining.
-     */
-    public Builder addGroupIds(long value) {
-      ensureGroupIdsIsMutable();
-      groupIds_.addLong(value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @param values The groupIds to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllGroupIds(
-        java.lang.Iterable<? extends java.lang.Long> values) {
-      ensureGroupIdsIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, groupIds_);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated int64 group_ids = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearGroupIds() {
-      groupIds_ = emptyLongList();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -584,10 +348,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.SubscribeCommandEventsRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.SubscribeCommandEventsRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:command.SubscribeCommandEventsRequest)
+  // @@protoc_insertion_point(class_scope:cmd.SubscribeCommandEventsRequest)
   private static final cmd.SubscribeCommandEventsRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.SubscribeCommandEventsRequest();

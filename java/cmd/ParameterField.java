@@ -8,11 +8,11 @@ package cmd;
  * ------------- COMMAND TEMPLATES -------------
  * </pre>
  *
- * Protobuf type {@code command.ParameterField}
+ * Protobuf type {@code cmd.ParameterField}
  */
 public final class ParameterField extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.ParameterField)
+    // @@protoc_insertion_point(message_implements:cmd.ParameterField)
     ParameterFieldOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use ParameterField.newBuilder() to construct.
@@ -42,13 +42,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_ParameterField_descriptor;
+    return cmd.Cmd.internal_static_cmd_ParameterField_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_ParameterField_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_ParameterField_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.ParameterField.class, cmd.ParameterField.Builder.class);
   }
@@ -540,21 +540,21 @@ private static final long serialVersionUID = 0L;
    * ------------- COMMAND TEMPLATES -------------
    * </pre>
    *
-   * Protobuf type {@code command.ParameterField}
+   * Protobuf type {@code cmd.ParameterField}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.ParameterField)
+      // @@protoc_insertion_point(builder_implements:cmd.ParameterField)
       cmd.ParameterFieldOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_ParameterField_descriptor;
+      return cmd.Cmd.internal_static_cmd_ParameterField_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_ParameterField_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_ParameterField_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.ParameterField.class, cmd.ParameterField.Builder.class);
     }
@@ -594,7 +594,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_ParameterField_descriptor;
+      return cmd.Cmd.internal_static_cmd_ParameterField_descriptor;
     }
 
     @java.lang.Override
@@ -1359,10 +1359,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.ParameterField)
+    // @@protoc_insertion_point(builder_scope:cmd.ParameterField)
   }
 
-  // @@protoc_insertion_point(class_scope:command.ParameterField)
+  // @@protoc_insertion_point(class_scope:cmd.ParameterField)
   private static final cmd.ParameterField DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.ParameterField();

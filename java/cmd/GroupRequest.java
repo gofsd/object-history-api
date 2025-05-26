@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.GroupRequest}
+ * Protobuf type {@code cmd.GroupRequest}
  */
 public final class GroupRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.GroupRequest)
+    // @@protoc_insertion_point(message_implements:cmd.GroupRequest)
     GroupRequestOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use GroupRequest.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_GroupRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_GroupRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_GroupRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_GroupRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.GroupRequest.class, cmd.GroupRequest.Builder.class);
   }
@@ -46,7 +46,7 @@ private static final long serialVersionUID = 0L;
   public static final int GROUP_ID_FIELD_NUMBER = 1;
   private long groupId_;
   /**
-   * <code>int64 group_id = 1;</code>
+   * <code>uint64 group_id = 1;</code>
    * @return The groupId.
    */
   @java.lang.Override
@@ -69,7 +69,7 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (groupId_ != 0L) {
-      output.writeInt64(1, groupId_);
+      output.writeUInt64(1, groupId_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -82,7 +82,7 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (groupId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, groupId_);
+        .computeUInt64Size(1, groupId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -211,21 +211,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.GroupRequest}
+   * Protobuf type {@code cmd.GroupRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.GroupRequest)
+      // @@protoc_insertion_point(builder_implements:cmd.GroupRequest)
       cmd.GroupRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_GroupRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_GroupRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_GroupRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_GroupRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.GroupRequest.class, cmd.GroupRequest.Builder.class);
     }
@@ -251,7 +251,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_GroupRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_GroupRequest_descriptor;
     }
 
     @java.lang.Override
@@ -350,7 +350,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              groupId_ = input.readInt64();
+              groupId_ = input.readUInt64();
 
               break;
             } // case 8
@@ -372,7 +372,7 @@ private static final long serialVersionUID = 0L;
 
     private long groupId_ ;
     /**
-     * <code>int64 group_id = 1;</code>
+     * <code>uint64 group_id = 1;</code>
      * @return The groupId.
      */
     @java.lang.Override
@@ -380,7 +380,7 @@ private static final long serialVersionUID = 0L;
       return groupId_;
     }
     /**
-     * <code>int64 group_id = 1;</code>
+     * <code>uint64 group_id = 1;</code>
      * @param value The groupId to set.
      * @return This builder for chaining.
      */
@@ -391,7 +391,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 group_id = 1;</code>
+     * <code>uint64 group_id = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearGroupId() {
@@ -413,10 +413,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.GroupRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.GroupRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:command.GroupRequest)
+  // @@protoc_insertion_point(class_scope:cmd.GroupRequest)
   private static final cmd.GroupRequest DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.GroupRequest();

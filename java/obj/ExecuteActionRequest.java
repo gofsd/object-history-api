@@ -4,6 +4,10 @@
 package obj;
 
 /**
+ * <pre>
+ * ------------------- ACTION/TRANSFER -------------------
+ * </pre>
+ *
  * Protobuf type {@code object.ExecuteActionRequest}
  */
 public final class ExecuteActionRequest extends
@@ -326,6 +330,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------------- ACTION/TRANSFER -------------------
+   * </pre>
+   *
    * Protobuf type {@code object.ExecuteActionRequest}
    */
   public static final class Builder extends

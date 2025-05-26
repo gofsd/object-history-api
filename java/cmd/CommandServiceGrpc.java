@@ -3,9 +3,6 @@ package cmd;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
- * <pre>
- * ------------- SERVICE -------------
- * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.71.0)",
@@ -15,38 +12,69 @@ public final class CommandServiceGrpc {
 
   private CommandServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "command.CommandService";
+  public static final java.lang.String SERVICE_NAME = "cmd.CommandService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cmd.Group,
-      cmd.Group> getCreateGroupMethod;
+  private static volatile io.grpc.MethodDescriptor<cmd.Empty,
+      cmd.GroupsResponse> getListGroupsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateGroup",
+      fullMethodName = SERVICE_NAME + '/' + "ListGroups",
+      requestType = cmd.Empty.class,
+      responseType = cmd.GroupsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cmd.Empty,
+      cmd.GroupsResponse> getListGroupsMethod() {
+    io.grpc.MethodDescriptor<cmd.Empty, cmd.GroupsResponse> getListGroupsMethod;
+    if ((getListGroupsMethod = CommandServiceGrpc.getListGroupsMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getListGroupsMethod = CommandServiceGrpc.getListGroupsMethod) == null) {
+          CommandServiceGrpc.getListGroupsMethod = getListGroupsMethod =
+              io.grpc.MethodDescriptor.<cmd.Empty, cmd.GroupsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListGroups"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.GroupsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("ListGroups"))
+              .build();
+        }
+      }
+    }
+    return getListGroupsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cmd.Group,
+      cmd.Group> getAddGroupMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AddGroup",
       requestType = cmd.Group.class,
       responseType = cmd.Group.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<cmd.Group,
-      cmd.Group> getCreateGroupMethod() {
-    io.grpc.MethodDescriptor<cmd.Group, cmd.Group> getCreateGroupMethod;
-    if ((getCreateGroupMethod = CommandServiceGrpc.getCreateGroupMethod) == null) {
+      cmd.Group> getAddGroupMethod() {
+    io.grpc.MethodDescriptor<cmd.Group, cmd.Group> getAddGroupMethod;
+    if ((getAddGroupMethod = CommandServiceGrpc.getAddGroupMethod) == null) {
       synchronized (CommandServiceGrpc.class) {
-        if ((getCreateGroupMethod = CommandServiceGrpc.getCreateGroupMethod) == null) {
-          CommandServiceGrpc.getCreateGroupMethod = getCreateGroupMethod =
+        if ((getAddGroupMethod = CommandServiceGrpc.getAddGroupMethod) == null) {
+          CommandServiceGrpc.getAddGroupMethod = getAddGroupMethod =
               io.grpc.MethodDescriptor.<cmd.Group, cmd.Group>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateGroup"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddGroup"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cmd.Group.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cmd.Group.getDefaultInstance()))
-              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("CreateGroup"))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("AddGroup"))
               .build();
         }
       }
     }
-    return getCreateGroupMethod;
+    return getAddGroupMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<cmd.GroupRequest,
@@ -81,28 +109,28 @@ public final class CommandServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<cmd.UserGroupRequest,
-      cmd.UserGroupRequest> getAddUserToGroupMethod;
+      cmd.UserGroupResponse> getAddUserToGroupMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "AddUserToGroup",
       requestType = cmd.UserGroupRequest.class,
-      responseType = cmd.UserGroupRequest.class,
+      responseType = cmd.UserGroupResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<cmd.UserGroupRequest,
-      cmd.UserGroupRequest> getAddUserToGroupMethod() {
-    io.grpc.MethodDescriptor<cmd.UserGroupRequest, cmd.UserGroupRequest> getAddUserToGroupMethod;
+      cmd.UserGroupResponse> getAddUserToGroupMethod() {
+    io.grpc.MethodDescriptor<cmd.UserGroupRequest, cmd.UserGroupResponse> getAddUserToGroupMethod;
     if ((getAddUserToGroupMethod = CommandServiceGrpc.getAddUserToGroupMethod) == null) {
       synchronized (CommandServiceGrpc.class) {
         if ((getAddUserToGroupMethod = CommandServiceGrpc.getAddUserToGroupMethod) == null) {
           CommandServiceGrpc.getAddUserToGroupMethod = getAddUserToGroupMethod =
-              io.grpc.MethodDescriptor.<cmd.UserGroupRequest, cmd.UserGroupRequest>newBuilder()
+              io.grpc.MethodDescriptor.<cmd.UserGroupRequest, cmd.UserGroupResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddUserToGroup"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cmd.UserGroupRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.UserGroupRequest.getDefaultInstance()))
+                  cmd.UserGroupResponse.getDefaultInstance()))
               .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("AddUserToGroup"))
               .build();
         }
@@ -112,28 +140,28 @@ public final class CommandServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<cmd.UserGroupRequest,
-      cmd.UserGroupRequest> getRemoveUserFromGroupMethod;
+      cmd.UserGroupResponse> getRemoveUserFromGroupMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RemoveUserFromGroup",
       requestType = cmd.UserGroupRequest.class,
-      responseType = cmd.UserGroupRequest.class,
+      responseType = cmd.UserGroupResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<cmd.UserGroupRequest,
-      cmd.UserGroupRequest> getRemoveUserFromGroupMethod() {
-    io.grpc.MethodDescriptor<cmd.UserGroupRequest, cmd.UserGroupRequest> getRemoveUserFromGroupMethod;
+      cmd.UserGroupResponse> getRemoveUserFromGroupMethod() {
+    io.grpc.MethodDescriptor<cmd.UserGroupRequest, cmd.UserGroupResponse> getRemoveUserFromGroupMethod;
     if ((getRemoveUserFromGroupMethod = CommandServiceGrpc.getRemoveUserFromGroupMethod) == null) {
       synchronized (CommandServiceGrpc.class) {
         if ((getRemoveUserFromGroupMethod = CommandServiceGrpc.getRemoveUserFromGroupMethod) == null) {
           CommandServiceGrpc.getRemoveUserFromGroupMethod = getRemoveUserFromGroupMethod =
-              io.grpc.MethodDescriptor.<cmd.UserGroupRequest, cmd.UserGroupRequest>newBuilder()
+              io.grpc.MethodDescriptor.<cmd.UserGroupRequest, cmd.UserGroupResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RemoveUserFromGroup"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cmd.UserGroupRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.UserGroupRequest.getDefaultInstance()))
+                  cmd.UserGroupResponse.getDefaultInstance()))
               .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("RemoveUserFromGroup"))
               .build();
         }
@@ -142,66 +170,159 @@ public final class CommandServiceGrpc {
     return getRemoveUserFromGroupMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cmd.AddCommandTemplateRequest,
-      cmd.CommandTemplate> getAddCommandTemplateMethod;
+  private static volatile io.grpc.MethodDescriptor<cmd.Empty,
+      cmd.CommandsResponse> getListCommandsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "AddCommandTemplate",
-      requestType = cmd.AddCommandTemplateRequest.class,
-      responseType = cmd.CommandTemplate.class,
+      fullMethodName = SERVICE_NAME + '/' + "ListCommands",
+      requestType = cmd.Empty.class,
+      responseType = cmd.CommandsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cmd.AddCommandTemplateRequest,
-      cmd.CommandTemplate> getAddCommandTemplateMethod() {
-    io.grpc.MethodDescriptor<cmd.AddCommandTemplateRequest, cmd.CommandTemplate> getAddCommandTemplateMethod;
-    if ((getAddCommandTemplateMethod = CommandServiceGrpc.getAddCommandTemplateMethod) == null) {
+  public static io.grpc.MethodDescriptor<cmd.Empty,
+      cmd.CommandsResponse> getListCommandsMethod() {
+    io.grpc.MethodDescriptor<cmd.Empty, cmd.CommandsResponse> getListCommandsMethod;
+    if ((getListCommandsMethod = CommandServiceGrpc.getListCommandsMethod) == null) {
       synchronized (CommandServiceGrpc.class) {
-        if ((getAddCommandTemplateMethod = CommandServiceGrpc.getAddCommandTemplateMethod) == null) {
-          CommandServiceGrpc.getAddCommandTemplateMethod = getAddCommandTemplateMethod =
-              io.grpc.MethodDescriptor.<cmd.AddCommandTemplateRequest, cmd.CommandTemplate>newBuilder()
+        if ((getListCommandsMethod = CommandServiceGrpc.getListCommandsMethod) == null) {
+          CommandServiceGrpc.getListCommandsMethod = getListCommandsMethod =
+              io.grpc.MethodDescriptor.<cmd.Empty, cmd.CommandsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddCommandTemplate"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListCommands"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.AddCommandTemplateRequest.getDefaultInstance()))
+                  cmd.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.CommandTemplate.getDefaultInstance()))
-              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("AddCommandTemplate"))
+                  cmd.CommandsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("ListCommands"))
               .build();
         }
       }
     }
-    return getAddCommandTemplateMethod;
+    return getListCommandsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cmd.DeleteCommandTemplateRequest,
-      cmd.CommandTemplate> getDeleteCommandTemplateMethod;
+  private static volatile io.grpc.MethodDescriptor<cmd.AddCommandRequest,
+      cmd.Command> getAddCommandMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DeleteCommandTemplate",
-      requestType = cmd.DeleteCommandTemplateRequest.class,
-      responseType = cmd.CommandTemplate.class,
+      fullMethodName = SERVICE_NAME + '/' + "AddCommand",
+      requestType = cmd.AddCommandRequest.class,
+      responseType = cmd.Command.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cmd.DeleteCommandTemplateRequest,
-      cmd.CommandTemplate> getDeleteCommandTemplateMethod() {
-    io.grpc.MethodDescriptor<cmd.DeleteCommandTemplateRequest, cmd.CommandTemplate> getDeleteCommandTemplateMethod;
-    if ((getDeleteCommandTemplateMethod = CommandServiceGrpc.getDeleteCommandTemplateMethod) == null) {
+  public static io.grpc.MethodDescriptor<cmd.AddCommandRequest,
+      cmd.Command> getAddCommandMethod() {
+    io.grpc.MethodDescriptor<cmd.AddCommandRequest, cmd.Command> getAddCommandMethod;
+    if ((getAddCommandMethod = CommandServiceGrpc.getAddCommandMethod) == null) {
       synchronized (CommandServiceGrpc.class) {
-        if ((getDeleteCommandTemplateMethod = CommandServiceGrpc.getDeleteCommandTemplateMethod) == null) {
-          CommandServiceGrpc.getDeleteCommandTemplateMethod = getDeleteCommandTemplateMethod =
-              io.grpc.MethodDescriptor.<cmd.DeleteCommandTemplateRequest, cmd.CommandTemplate>newBuilder()
+        if ((getAddCommandMethod = CommandServiceGrpc.getAddCommandMethod) == null) {
+          CommandServiceGrpc.getAddCommandMethod = getAddCommandMethod =
+              io.grpc.MethodDescriptor.<cmd.AddCommandRequest, cmd.Command>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteCommandTemplate"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddCommand"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.DeleteCommandTemplateRequest.getDefaultInstance()))
+                  cmd.AddCommandRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.CommandTemplate.getDefaultInstance()))
-              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("DeleteCommandTemplate"))
+                  cmd.Command.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("AddCommand"))
               .build();
         }
       }
     }
-    return getDeleteCommandTemplateMethod;
+    return getAddCommandMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cmd.DeleteCommandRequest,
+      cmd.Command> getDeleteCommandMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteCommand",
+      requestType = cmd.DeleteCommandRequest.class,
+      responseType = cmd.Command.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cmd.DeleteCommandRequest,
+      cmd.Command> getDeleteCommandMethod() {
+    io.grpc.MethodDescriptor<cmd.DeleteCommandRequest, cmd.Command> getDeleteCommandMethod;
+    if ((getDeleteCommandMethod = CommandServiceGrpc.getDeleteCommandMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getDeleteCommandMethod = CommandServiceGrpc.getDeleteCommandMethod) == null) {
+          CommandServiceGrpc.getDeleteCommandMethod = getDeleteCommandMethod =
+              io.grpc.MethodDescriptor.<cmd.DeleteCommandRequest, cmd.Command>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteCommand"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.DeleteCommandRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.Command.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("DeleteCommand"))
+              .build();
+        }
+      }
+    }
+    return getDeleteCommandMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cmd.UserGroupRequest,
+      cmd.UserGroupResponse> getAddCommandToGroupMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AddCommandToGroup",
+      requestType = cmd.UserGroupRequest.class,
+      responseType = cmd.UserGroupResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cmd.UserGroupRequest,
+      cmd.UserGroupResponse> getAddCommandToGroupMethod() {
+    io.grpc.MethodDescriptor<cmd.UserGroupRequest, cmd.UserGroupResponse> getAddCommandToGroupMethod;
+    if ((getAddCommandToGroupMethod = CommandServiceGrpc.getAddCommandToGroupMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getAddCommandToGroupMethod = CommandServiceGrpc.getAddCommandToGroupMethod) == null) {
+          CommandServiceGrpc.getAddCommandToGroupMethod = getAddCommandToGroupMethod =
+              io.grpc.MethodDescriptor.<cmd.UserGroupRequest, cmd.UserGroupResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddCommandToGroup"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.UserGroupRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.UserGroupResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("AddCommandToGroup"))
+              .build();
+        }
+      }
+    }
+    return getAddCommandToGroupMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cmd.UserGroupRequest,
+      cmd.UserGroupResponse> getDeleteCommandFromGroupMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteCommandFromGroup",
+      requestType = cmd.UserGroupRequest.class,
+      responseType = cmd.UserGroupResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cmd.UserGroupRequest,
+      cmd.UserGroupResponse> getDeleteCommandFromGroupMethod() {
+    io.grpc.MethodDescriptor<cmd.UserGroupRequest, cmd.UserGroupResponse> getDeleteCommandFromGroupMethod;
+    if ((getDeleteCommandFromGroupMethod = CommandServiceGrpc.getDeleteCommandFromGroupMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getDeleteCommandFromGroupMethod = CommandServiceGrpc.getDeleteCommandFromGroupMethod) == null) {
+          CommandServiceGrpc.getDeleteCommandFromGroupMethod = getDeleteCommandFromGroupMethod =
+              io.grpc.MethodDescriptor.<cmd.UserGroupRequest, cmd.UserGroupResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteCommandFromGroup"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.UserGroupRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.UserGroupResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("DeleteCommandFromGroup"))
+              .build();
+        }
+      }
+    }
+    return getDeleteCommandFromGroupMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<cmd.ExecuteRequest,
@@ -481,9 +602,6 @@ public final class CommandServiceGrpc {
   }
 
   /**
-   * <pre>
-   * ------------- SERVICE -------------
-   * </pre>
    */
   public interface AsyncService {
 
@@ -492,9 +610,16 @@ public final class CommandServiceGrpc {
      * Group management
      * </pre>
      */
-    default void createGroup(cmd.Group request,
+    default void listGroups(cmd.Empty request,
+        io.grpc.stub.StreamObserver<cmd.GroupsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListGroupsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void addGroup(cmd.Group request,
         io.grpc.stub.StreamObserver<cmd.Group> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateGroupMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddGroupMethod(), responseObserver);
     }
 
     /**
@@ -507,14 +632,14 @@ public final class CommandServiceGrpc {
     /**
      */
     default void addUserToGroup(cmd.UserGroupRequest request,
-        io.grpc.stub.StreamObserver<cmd.UserGroupRequest> responseObserver) {
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddUserToGroupMethod(), responseObserver);
     }
 
     /**
      */
     default void removeUserFromGroup(cmd.UserGroupRequest request,
-        io.grpc.stub.StreamObserver<cmd.UserGroupRequest> responseObserver) {
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRemoveUserFromGroupMethod(), responseObserver);
     }
 
@@ -523,16 +648,37 @@ public final class CommandServiceGrpc {
      * Template management
      * </pre>
      */
-    default void addCommandTemplate(cmd.AddCommandTemplateRequest request,
-        io.grpc.stub.StreamObserver<cmd.CommandTemplate> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddCommandTemplateMethod(), responseObserver);
+    default void listCommands(cmd.Empty request,
+        io.grpc.stub.StreamObserver<cmd.CommandsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListCommandsMethod(), responseObserver);
     }
 
     /**
      */
-    default void deleteCommandTemplate(cmd.DeleteCommandTemplateRequest request,
-        io.grpc.stub.StreamObserver<cmd.CommandTemplate> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteCommandTemplateMethod(), responseObserver);
+    default void addCommand(cmd.AddCommandRequest request,
+        io.grpc.stub.StreamObserver<cmd.Command> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddCommandMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void deleteCommand(cmd.DeleteCommandRequest request,
+        io.grpc.stub.StreamObserver<cmd.Command> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteCommandMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void addCommandToGroup(cmd.UserGroupRequest request,
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddCommandToGroupMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void deleteCommandFromGroup(cmd.UserGroupRequest request,
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteCommandFromGroupMethod(), responseObserver);
     }
 
     /**
@@ -599,9 +745,6 @@ public final class CommandServiceGrpc {
 
   /**
    * Base class for the server implementation of the service CommandService.
-   * <pre>
-   * ------------- SERVICE -------------
-   * </pre>
    */
   public static abstract class CommandServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -613,9 +756,6 @@ public final class CommandServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service CommandService.
-   * <pre>
-   * ------------- SERVICE -------------
-   * </pre>
    */
   public static final class CommandServiceStub
       extends io.grpc.stub.AbstractAsyncStub<CommandServiceStub> {
@@ -635,10 +775,18 @@ public final class CommandServiceGrpc {
      * Group management
      * </pre>
      */
-    public void createGroup(cmd.Group request,
+    public void listGroups(cmd.Empty request,
+        io.grpc.stub.StreamObserver<cmd.GroupsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getListGroupsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void addGroup(cmd.Group request,
         io.grpc.stub.StreamObserver<cmd.Group> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateGroupMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getAddGroupMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -652,7 +800,7 @@ public final class CommandServiceGrpc {
     /**
      */
     public void addUserToGroup(cmd.UserGroupRequest request,
-        io.grpc.stub.StreamObserver<cmd.UserGroupRequest> responseObserver) {
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddUserToGroupMethod(), getCallOptions()), request, responseObserver);
     }
@@ -660,7 +808,7 @@ public final class CommandServiceGrpc {
     /**
      */
     public void removeUserFromGroup(cmd.UserGroupRequest request,
-        io.grpc.stub.StreamObserver<cmd.UserGroupRequest> responseObserver) {
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRemoveUserFromGroupMethod(), getCallOptions()), request, responseObserver);
     }
@@ -670,18 +818,42 @@ public final class CommandServiceGrpc {
      * Template management
      * </pre>
      */
-    public void addCommandTemplate(cmd.AddCommandTemplateRequest request,
-        io.grpc.stub.StreamObserver<cmd.CommandTemplate> responseObserver) {
+    public void listCommands(cmd.Empty request,
+        io.grpc.stub.StreamObserver<cmd.CommandsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getAddCommandTemplateMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getListCommandsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void deleteCommandTemplate(cmd.DeleteCommandTemplateRequest request,
-        io.grpc.stub.StreamObserver<cmd.CommandTemplate> responseObserver) {
+    public void addCommand(cmd.AddCommandRequest request,
+        io.grpc.stub.StreamObserver<cmd.Command> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDeleteCommandTemplateMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getAddCommandMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteCommand(cmd.DeleteCommandRequest request,
+        io.grpc.stub.StreamObserver<cmd.Command> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteCommandMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void addCommandToGroup(cmd.UserGroupRequest request,
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getAddCommandToGroupMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteCommandFromGroup(cmd.UserGroupRequest request,
+        io.grpc.stub.StreamObserver<cmd.UserGroupResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteCommandFromGroupMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -755,9 +927,6 @@ public final class CommandServiceGrpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service CommandService.
-   * <pre>
-   * ------------- SERVICE -------------
-   * </pre>
    */
   public static final class CommandServiceBlockingV2Stub
       extends io.grpc.stub.AbstractBlockingStub<CommandServiceBlockingV2Stub> {
@@ -777,9 +946,16 @@ public final class CommandServiceGrpc {
      * Group management
      * </pre>
      */
-    public cmd.Group createGroup(cmd.Group request) {
+    public cmd.GroupsResponse listGroups(cmd.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateGroupMethod(), getCallOptions(), request);
+          getChannel(), getListGroupsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.Group addGroup(cmd.Group request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAddGroupMethod(), getCallOptions(), request);
     }
 
     /**
@@ -791,14 +967,14 @@ public final class CommandServiceGrpc {
 
     /**
      */
-    public cmd.UserGroupRequest addUserToGroup(cmd.UserGroupRequest request) {
+    public cmd.UserGroupResponse addUserToGroup(cmd.UserGroupRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddUserToGroupMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cmd.UserGroupRequest removeUserFromGroup(cmd.UserGroupRequest request) {
+    public cmd.UserGroupResponse removeUserFromGroup(cmd.UserGroupRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveUserFromGroupMethod(), getCallOptions(), request);
     }
@@ -808,16 +984,37 @@ public final class CommandServiceGrpc {
      * Template management
      * </pre>
      */
-    public cmd.CommandTemplate addCommandTemplate(cmd.AddCommandTemplateRequest request) {
+    public cmd.CommandsResponse listCommands(cmd.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAddCommandTemplateMethod(), getCallOptions(), request);
+          getChannel(), getListCommandsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cmd.CommandTemplate deleteCommandTemplate(cmd.DeleteCommandTemplateRequest request) {
+    public cmd.Command addCommand(cmd.AddCommandRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteCommandTemplateMethod(), getCallOptions(), request);
+          getChannel(), getAddCommandMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.Command deleteCommand(cmd.DeleteCommandRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteCommandMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.UserGroupResponse addCommandToGroup(cmd.UserGroupRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAddCommandToGroupMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.UserGroupResponse deleteCommandFromGroup(cmd.UserGroupRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteCommandFromGroupMethod(), getCallOptions(), request);
     }
 
     /**
@@ -888,9 +1085,6 @@ public final class CommandServiceGrpc {
 
   /**
    * A stub to allow clients to do limited synchronous rpc calls to service CommandService.
-   * <pre>
-   * ------------- SERVICE -------------
-   * </pre>
    */
   public static final class CommandServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<CommandServiceBlockingStub> {
@@ -910,9 +1104,16 @@ public final class CommandServiceGrpc {
      * Group management
      * </pre>
      */
-    public cmd.Group createGroup(cmd.Group request) {
+    public cmd.GroupsResponse listGroups(cmd.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateGroupMethod(), getCallOptions(), request);
+          getChannel(), getListGroupsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.Group addGroup(cmd.Group request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAddGroupMethod(), getCallOptions(), request);
     }
 
     /**
@@ -924,14 +1125,14 @@ public final class CommandServiceGrpc {
 
     /**
      */
-    public cmd.UserGroupRequest addUserToGroup(cmd.UserGroupRequest request) {
+    public cmd.UserGroupResponse addUserToGroup(cmd.UserGroupRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddUserToGroupMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cmd.UserGroupRequest removeUserFromGroup(cmd.UserGroupRequest request) {
+    public cmd.UserGroupResponse removeUserFromGroup(cmd.UserGroupRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveUserFromGroupMethod(), getCallOptions(), request);
     }
@@ -941,16 +1142,37 @@ public final class CommandServiceGrpc {
      * Template management
      * </pre>
      */
-    public cmd.CommandTemplate addCommandTemplate(cmd.AddCommandTemplateRequest request) {
+    public cmd.CommandsResponse listCommands(cmd.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getAddCommandTemplateMethod(), getCallOptions(), request);
+          getChannel(), getListCommandsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public cmd.CommandTemplate deleteCommandTemplate(cmd.DeleteCommandTemplateRequest request) {
+    public cmd.Command addCommand(cmd.AddCommandRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteCommandTemplateMethod(), getCallOptions(), request);
+          getChannel(), getAddCommandMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.Command deleteCommand(cmd.DeleteCommandRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteCommandMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.UserGroupResponse addCommandToGroup(cmd.UserGroupRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAddCommandToGroupMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.UserGroupResponse deleteCommandFromGroup(cmd.UserGroupRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteCommandFromGroupMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1019,9 +1241,6 @@ public final class CommandServiceGrpc {
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service CommandService.
-   * <pre>
-   * ------------- SERVICE -------------
-   * </pre>
    */
   public static final class CommandServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<CommandServiceFutureStub> {
@@ -1041,10 +1260,18 @@ public final class CommandServiceGrpc {
      * Group management
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cmd.Group> createGroup(
+    public com.google.common.util.concurrent.ListenableFuture<cmd.GroupsResponse> listGroups(
+        cmd.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getListGroupsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cmd.Group> addGroup(
         cmd.Group request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateGroupMethod(), getCallOptions()), request);
+          getChannel().newCall(getAddGroupMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1057,7 +1284,7 @@ public final class CommandServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cmd.UserGroupRequest> addUserToGroup(
+    public com.google.common.util.concurrent.ListenableFuture<cmd.UserGroupResponse> addUserToGroup(
         cmd.UserGroupRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddUserToGroupMethod(), getCallOptions()), request);
@@ -1065,7 +1292,7 @@ public final class CommandServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cmd.UserGroupRequest> removeUserFromGroup(
+    public com.google.common.util.concurrent.ListenableFuture<cmd.UserGroupResponse> removeUserFromGroup(
         cmd.UserGroupRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRemoveUserFromGroupMethod(), getCallOptions()), request);
@@ -1076,18 +1303,42 @@ public final class CommandServiceGrpc {
      * Template management
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cmd.CommandTemplate> addCommandTemplate(
-        cmd.AddCommandTemplateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<cmd.CommandsResponse> listCommands(
+        cmd.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getAddCommandTemplateMethod(), getCallOptions()), request);
+          getChannel().newCall(getListCommandsMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<cmd.CommandTemplate> deleteCommandTemplate(
-        cmd.DeleteCommandTemplateRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<cmd.Command> addCommand(
+        cmd.AddCommandRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDeleteCommandTemplateMethod(), getCallOptions()), request);
+          getChannel().newCall(getAddCommandMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cmd.Command> deleteCommand(
+        cmd.DeleteCommandRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteCommandMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cmd.UserGroupResponse> addCommandToGroup(
+        cmd.UserGroupRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getAddCommandToGroupMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cmd.UserGroupResponse> deleteCommandFromGroup(
+        cmd.UserGroupRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteCommandFromGroupMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1137,19 +1388,23 @@ public final class CommandServiceGrpc {
     }
   }
 
-  private static final int METHODID_CREATE_GROUP = 0;
-  private static final int METHODID_DELETE_GROUP = 1;
-  private static final int METHODID_ADD_USER_TO_GROUP = 2;
-  private static final int METHODID_REMOVE_USER_FROM_GROUP = 3;
-  private static final int METHODID_ADD_COMMAND_TEMPLATE = 4;
-  private static final int METHODID_DELETE_COMMAND_TEMPLATE = 5;
-  private static final int METHODID_EXECUTE = 6;
-  private static final int METHODID_CANCEL = 7;
-  private static final int METHODID_RETRY = 8;
-  private static final int METHODID_DRY_RUN = 9;
-  private static final int METHODID_UPDATE_EXECUTION_STATUS = 10;
-  private static final int METHODID_SUBSCRIBE_LOGS = 11;
-  private static final int METHODID_SUBSCRIBE_COMMAND_EVENTS = 12;
+  private static final int METHODID_LIST_GROUPS = 0;
+  private static final int METHODID_ADD_GROUP = 1;
+  private static final int METHODID_DELETE_GROUP = 2;
+  private static final int METHODID_ADD_USER_TO_GROUP = 3;
+  private static final int METHODID_REMOVE_USER_FROM_GROUP = 4;
+  private static final int METHODID_LIST_COMMANDS = 5;
+  private static final int METHODID_ADD_COMMAND = 6;
+  private static final int METHODID_DELETE_COMMAND = 7;
+  private static final int METHODID_ADD_COMMAND_TO_GROUP = 8;
+  private static final int METHODID_DELETE_COMMAND_FROM_GROUP = 9;
+  private static final int METHODID_EXECUTE = 10;
+  private static final int METHODID_CANCEL = 11;
+  private static final int METHODID_RETRY = 12;
+  private static final int METHODID_DRY_RUN = 13;
+  private static final int METHODID_UPDATE_EXECUTION_STATUS = 14;
+  private static final int METHODID_SUBSCRIBE_LOGS = 15;
+  private static final int METHODID_SUBSCRIBE_COMMAND_EVENTS = 16;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1168,8 +1423,12 @@ public final class CommandServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_CREATE_GROUP:
-          serviceImpl.createGroup((cmd.Group) request,
+        case METHODID_LIST_GROUPS:
+          serviceImpl.listGroups((cmd.Empty) request,
+              (io.grpc.stub.StreamObserver<cmd.GroupsResponse>) responseObserver);
+          break;
+        case METHODID_ADD_GROUP:
+          serviceImpl.addGroup((cmd.Group) request,
               (io.grpc.stub.StreamObserver<cmd.Group>) responseObserver);
           break;
         case METHODID_DELETE_GROUP:
@@ -1178,19 +1437,31 @@ public final class CommandServiceGrpc {
           break;
         case METHODID_ADD_USER_TO_GROUP:
           serviceImpl.addUserToGroup((cmd.UserGroupRequest) request,
-              (io.grpc.stub.StreamObserver<cmd.UserGroupRequest>) responseObserver);
+              (io.grpc.stub.StreamObserver<cmd.UserGroupResponse>) responseObserver);
           break;
         case METHODID_REMOVE_USER_FROM_GROUP:
           serviceImpl.removeUserFromGroup((cmd.UserGroupRequest) request,
-              (io.grpc.stub.StreamObserver<cmd.UserGroupRequest>) responseObserver);
+              (io.grpc.stub.StreamObserver<cmd.UserGroupResponse>) responseObserver);
           break;
-        case METHODID_ADD_COMMAND_TEMPLATE:
-          serviceImpl.addCommandTemplate((cmd.AddCommandTemplateRequest) request,
-              (io.grpc.stub.StreamObserver<cmd.CommandTemplate>) responseObserver);
+        case METHODID_LIST_COMMANDS:
+          serviceImpl.listCommands((cmd.Empty) request,
+              (io.grpc.stub.StreamObserver<cmd.CommandsResponse>) responseObserver);
           break;
-        case METHODID_DELETE_COMMAND_TEMPLATE:
-          serviceImpl.deleteCommandTemplate((cmd.DeleteCommandTemplateRequest) request,
-              (io.grpc.stub.StreamObserver<cmd.CommandTemplate>) responseObserver);
+        case METHODID_ADD_COMMAND:
+          serviceImpl.addCommand((cmd.AddCommandRequest) request,
+              (io.grpc.stub.StreamObserver<cmd.Command>) responseObserver);
+          break;
+        case METHODID_DELETE_COMMAND:
+          serviceImpl.deleteCommand((cmd.DeleteCommandRequest) request,
+              (io.grpc.stub.StreamObserver<cmd.Command>) responseObserver);
+          break;
+        case METHODID_ADD_COMMAND_TO_GROUP:
+          serviceImpl.addCommandToGroup((cmd.UserGroupRequest) request,
+              (io.grpc.stub.StreamObserver<cmd.UserGroupResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_COMMAND_FROM_GROUP:
+          serviceImpl.deleteCommandFromGroup((cmd.UserGroupRequest) request,
+              (io.grpc.stub.StreamObserver<cmd.UserGroupResponse>) responseObserver);
           break;
         case METHODID_EXECUTE:
           serviceImpl.execute((cmd.ExecuteRequest) request,
@@ -1239,12 +1510,19 @@ public final class CommandServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getCreateGroupMethod(),
+          getListGroupsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              cmd.Empty,
+              cmd.GroupsResponse>(
+                service, METHODID_LIST_GROUPS)))
+        .addMethod(
+          getAddGroupMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               cmd.Group,
               cmd.Group>(
-                service, METHODID_CREATE_GROUP)))
+                service, METHODID_ADD_GROUP)))
         .addMethod(
           getDeleteGroupMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1257,29 +1535,50 @@ public final class CommandServiceGrpc {
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               cmd.UserGroupRequest,
-              cmd.UserGroupRequest>(
+              cmd.UserGroupResponse>(
                 service, METHODID_ADD_USER_TO_GROUP)))
         .addMethod(
           getRemoveUserFromGroupMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               cmd.UserGroupRequest,
-              cmd.UserGroupRequest>(
+              cmd.UserGroupResponse>(
                 service, METHODID_REMOVE_USER_FROM_GROUP)))
         .addMethod(
-          getAddCommandTemplateMethod(),
+          getListCommandsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              cmd.AddCommandTemplateRequest,
-              cmd.CommandTemplate>(
-                service, METHODID_ADD_COMMAND_TEMPLATE)))
+              cmd.Empty,
+              cmd.CommandsResponse>(
+                service, METHODID_LIST_COMMANDS)))
         .addMethod(
-          getDeleteCommandTemplateMethod(),
+          getAddCommandMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              cmd.DeleteCommandTemplateRequest,
-              cmd.CommandTemplate>(
-                service, METHODID_DELETE_COMMAND_TEMPLATE)))
+              cmd.AddCommandRequest,
+              cmd.Command>(
+                service, METHODID_ADD_COMMAND)))
+        .addMethod(
+          getDeleteCommandMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              cmd.DeleteCommandRequest,
+              cmd.Command>(
+                service, METHODID_DELETE_COMMAND)))
+        .addMethod(
+          getAddCommandToGroupMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              cmd.UserGroupRequest,
+              cmd.UserGroupResponse>(
+                service, METHODID_ADD_COMMAND_TO_GROUP)))
+        .addMethod(
+          getDeleteCommandFromGroupMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              cmd.UserGroupRequest,
+              cmd.UserGroupResponse>(
+                service, METHODID_DELETE_COMMAND_FROM_GROUP)))
         .addMethod(
           getExecuteMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1338,7 +1637,7 @@ public final class CommandServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return cmd.Command.getDescriptor();
+      return cmd.Cmd.getDescriptor();
     }
 
     @java.lang.Override
@@ -1377,12 +1676,16 @@ public final class CommandServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new CommandServiceFileDescriptorSupplier())
-              .addMethod(getCreateGroupMethod())
+              .addMethod(getListGroupsMethod())
+              .addMethod(getAddGroupMethod())
               .addMethod(getDeleteGroupMethod())
               .addMethod(getAddUserToGroupMethod())
               .addMethod(getRemoveUserFromGroupMethod())
-              .addMethod(getAddCommandTemplateMethod())
-              .addMethod(getDeleteCommandTemplateMethod())
+              .addMethod(getListCommandsMethod())
+              .addMethod(getAddCommandMethod())
+              .addMethod(getDeleteCommandMethod())
+              .addMethod(getAddCommandToGroupMethod())
+              .addMethod(getDeleteCommandFromGroupMethod())
               .addMethod(getExecuteMethod())
               .addMethod(getCancelMethod())
               .addMethod(getRetryMethod())

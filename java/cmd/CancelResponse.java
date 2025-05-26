@@ -4,11 +4,11 @@
 package cmd;
 
 /**
- * Protobuf type {@code command.CancelResponse}
+ * Protobuf type {@code cmd.CancelResponse}
  */
 public final class CancelResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:command.CancelResponse)
+    // @@protoc_insertion_point(message_implements:cmd.CancelResponse)
     CancelResponseOrBuilder {
 private static final long serialVersionUID = 0L;
   // Use CancelResponse.newBuilder() to construct.
@@ -32,13 +32,13 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Command.internal_static_command_CancelResponse_descriptor;
+    return cmd.Cmd.internal_static_cmd_CancelResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Command.internal_static_command_CancelResponse_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_CancelResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             cmd.CancelResponse.class, cmd.CancelResponse.Builder.class);
   }
@@ -211,21 +211,21 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code command.CancelResponse}
+   * Protobuf type {@code cmd.CancelResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:command.CancelResponse)
+      // @@protoc_insertion_point(builder_implements:cmd.CancelResponse)
       cmd.CancelResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Command.internal_static_command_CancelResponse_descriptor;
+      return cmd.Cmd.internal_static_cmd_CancelResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Command.internal_static_command_CancelResponse_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_CancelResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               cmd.CancelResponse.class, cmd.CancelResponse.Builder.class);
     }
@@ -251,7 +251,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Command.internal_static_command_CancelResponse_descriptor;
+      return cmd.Cmd.internal_static_cmd_CancelResponse_descriptor;
     }
 
     @java.lang.Override
@@ -413,10 +413,10 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:command.CancelResponse)
+    // @@protoc_insertion_point(builder_scope:cmd.CancelResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:command.CancelResponse)
+  // @@protoc_insertion_point(class_scope:cmd.CancelResponse)
   private static final cmd.CancelResponse DEFAULT_INSTANCE;
   static {
     DEFAULT_INSTANCE = new cmd.CancelResponse();

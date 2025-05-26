@@ -3,6 +3,9 @@ package auth;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
+ * <pre>
+ * ------------------- SERVICE -------------------
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.71.0)",
@@ -199,6 +202,9 @@ public final class AuthServiceGrpc {
   }
 
   /**
+   * <pre>
+   * ------------------- SERVICE -------------------
+   * </pre>
    */
   public interface AsyncService {
 
@@ -233,6 +239,9 @@ public final class AuthServiceGrpc {
 
   /**
    * Base class for the server implementation of the service AuthService.
+   * <pre>
+   * ------------------- SERVICE -------------------
+   * </pre>
    */
   public static abstract class AuthServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -244,6 +253,9 @@ public final class AuthServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service AuthService.
+   * <pre>
+   * ------------------- SERVICE -------------------
+   * </pre>
    */
   public static final class AuthServiceStub
       extends io.grpc.stub.AbstractAsyncStub<AuthServiceStub> {
@@ -293,6 +305,9 @@ public final class AuthServiceGrpc {
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service AuthService.
+   * <pre>
+   * ------------------- SERVICE -------------------
+   * </pre>
    */
   public static final class AuthServiceBlockingV2Stub
       extends io.grpc.stub.AbstractBlockingStub<AuthServiceBlockingV2Stub> {
@@ -338,6 +353,9 @@ public final class AuthServiceGrpc {
 
   /**
    * A stub to allow clients to do limited synchronous rpc calls to service AuthService.
+   * <pre>
+   * ------------------- SERVICE -------------------
+   * </pre>
    */
   public static final class AuthServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<AuthServiceBlockingStub> {
@@ -383,6 +401,9 @@ public final class AuthServiceGrpc {
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service AuthService.
+   * <pre>
+   * ------------------- SERVICE -------------------
+   * </pre>
    */
   public static final class AuthServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<AuthServiceFutureStub> {

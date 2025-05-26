@@ -4,62 +4,56 @@
 package cmd;
 
 public interface CommandLogOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.CommandLog)
+    // @@protoc_insertion_point(interface_extends:cmd.CommandLog)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   long getExecutionId();
 
   /**
-   * <code>int64 command_template_id = 2;</code>
-   * @return The commandTemplateId.
+   * <code>uint64 command_id = 2;</code>
+   * @return The commandId.
    */
-  long getCommandTemplateId();
+  long getCommandId();
 
   /**
-   * <code>int64 user_id = 3;</code>
-   * @return The userId.
-   */
-  long getUserId();
-
-  /**
-   * <code>string output = 4;</code>
+   * <code>string output = 3;</code>
    * @return The output.
    */
   java.lang.String getOutput();
   /**
-   * <code>string output = 4;</code>
+   * <code>string output = 3;</code>
    * @return The bytes for output.
    */
   com.google.protobuf.ByteString
       getOutputBytes();
 
   /**
-   * <code>.command.ExecutionStatus status = 5;</code>
+   * <code>.cmd.ExecutionStatus status = 4;</code>
    * @return The enum numeric value on the wire for status.
    */
   int getStatusValue();
   /**
-   * <code>.command.ExecutionStatus status = 5;</code>
+   * <code>.cmd.ExecutionStatus status = 4;</code>
    * @return The status.
    */
   cmd.ExecutionStatus getStatus();
 
   /**
-   * <code>int64 timestamp = 6;</code>
+   * <code>uint64 timestamp = 5;</code>
    * @return The timestamp.
    */
   long getTimestamp();
 
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 7;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
    */
   int getEffectiveParametersCount();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 7;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
    */
   boolean containsEffectiveParameters(
       java.lang.String key);
@@ -70,31 +64,31 @@ public interface CommandLogOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getEffectiveParameters();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 7;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getEffectiveParametersMap();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 7;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
    */
 
   java.lang.String getEffectiveParametersOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 7;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
    */
 
   java.lang.String getEffectiveParametersOrThrow(
       java.lang.String key);
 
   /**
-   * <code>string result_code = 8;</code>
+   * <code>string result_code = 7;</code>
    * @return The resultCode.
    */
   java.lang.String getResultCode();
   /**
-   * <code>string result_code = 8;</code>
+   * <code>string result_code = 7;</code>
    * @return The bytes for resultCode.
    */
   com.google.protobuf.ByteString

@@ -19,35 +19,41 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CommandService_CreateGroup_FullMethodName            = "/command.CommandService/CreateGroup"
-	CommandService_DeleteGroup_FullMethodName            = "/command.CommandService/DeleteGroup"
-	CommandService_AddUserToGroup_FullMethodName         = "/command.CommandService/AddUserToGroup"
-	CommandService_RemoveUserFromGroup_FullMethodName    = "/command.CommandService/RemoveUserFromGroup"
-	CommandService_AddCommandTemplate_FullMethodName     = "/command.CommandService/AddCommandTemplate"
-	CommandService_DeleteCommandTemplate_FullMethodName  = "/command.CommandService/DeleteCommandTemplate"
-	CommandService_Execute_FullMethodName                = "/command.CommandService/Execute"
-	CommandService_Cancel_FullMethodName                 = "/command.CommandService/Cancel"
-	CommandService_Retry_FullMethodName                  = "/command.CommandService/Retry"
-	CommandService_DryRun_FullMethodName                 = "/command.CommandService/DryRun"
-	CommandService_UpdateExecutionStatus_FullMethodName  = "/command.CommandService/UpdateExecutionStatus"
-	CommandService_SubscribeLogs_FullMethodName          = "/command.CommandService/SubscribeLogs"
-	CommandService_SubscribeCommandEvents_FullMethodName = "/command.CommandService/SubscribeCommandEvents"
+	CommandService_ListGroups_FullMethodName             = "/cmd.CommandService/ListGroups"
+	CommandService_AddGroup_FullMethodName               = "/cmd.CommandService/AddGroup"
+	CommandService_DeleteGroup_FullMethodName            = "/cmd.CommandService/DeleteGroup"
+	CommandService_AddUserToGroup_FullMethodName         = "/cmd.CommandService/AddUserToGroup"
+	CommandService_RemoveUserFromGroup_FullMethodName    = "/cmd.CommandService/RemoveUserFromGroup"
+	CommandService_ListCommands_FullMethodName           = "/cmd.CommandService/ListCommands"
+	CommandService_AddCommand_FullMethodName             = "/cmd.CommandService/AddCommand"
+	CommandService_DeleteCommand_FullMethodName          = "/cmd.CommandService/DeleteCommand"
+	CommandService_AddCommandToGroup_FullMethodName      = "/cmd.CommandService/AddCommandToGroup"
+	CommandService_DeleteCommandFromGroup_FullMethodName = "/cmd.CommandService/DeleteCommandFromGroup"
+	CommandService_Execute_FullMethodName                = "/cmd.CommandService/Execute"
+	CommandService_Cancel_FullMethodName                 = "/cmd.CommandService/Cancel"
+	CommandService_Retry_FullMethodName                  = "/cmd.CommandService/Retry"
+	CommandService_DryRun_FullMethodName                 = "/cmd.CommandService/DryRun"
+	CommandService_UpdateExecutionStatus_FullMethodName  = "/cmd.CommandService/UpdateExecutionStatus"
+	CommandService_SubscribeLogs_FullMethodName          = "/cmd.CommandService/SubscribeLogs"
+	CommandService_SubscribeCommandEvents_FullMethodName = "/cmd.CommandService/SubscribeCommandEvents"
 )
 
 // CommandServiceClient is the client API for CommandService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-//
-// ------------- SERVICE -------------
 type CommandServiceClient interface {
 	// Group management
-	CreateGroup(ctx context.Context, in *Group, opts ...grpc.CallOption) (*Group, error)
+	ListGroups(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GroupsResponse, error)
+	AddGroup(ctx context.Context, in *Group, opts ...grpc.CallOption) (*Group, error)
 	DeleteGroup(ctx context.Context, in *GroupRequest, opts ...grpc.CallOption) (*Group, error)
-	AddUserToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupRequest, error)
-	RemoveUserFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupRequest, error)
+	AddUserToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
+	RemoveUserFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	// Template management
-	AddCommandTemplate(ctx context.Context, in *AddCommandTemplateRequest, opts ...grpc.CallOption) (*CommandTemplate, error)
-	DeleteCommandTemplate(ctx context.Context, in *DeleteCommandTemplateRequest, opts ...grpc.CallOption) (*CommandTemplate, error)
+	ListCommands(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CommandsResponse, error)
+	AddCommand(ctx context.Context, in *AddCommandRequest, opts ...grpc.CallOption) (*Command, error)
+	DeleteCommand(ctx context.Context, in *DeleteCommandRequest, opts ...grpc.CallOption) (*Command, error)
+	AddCommandToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
+	DeleteCommandFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	// Execution
 	Execute(ctx context.Context, in *ExecuteRequest, opts ...grpc.CallOption) (*ExecuteResponse, error)
 	Cancel(ctx context.Context, in *CancelRequest, opts ...grpc.CallOption) (*CancelResponse, error)
@@ -69,10 +75,20 @@ func NewCommandServiceClient(cc grpc.ClientConnInterface) CommandServiceClient {
 	return &commandServiceClient{cc}
 }
 
-func (c *commandServiceClient) CreateGroup(ctx context.Context, in *Group, opts ...grpc.CallOption) (*Group, error) {
+func (c *commandServiceClient) ListGroups(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*GroupsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GroupsResponse)
+	err := c.cc.Invoke(ctx, CommandService_ListGroups_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commandServiceClient) AddGroup(ctx context.Context, in *Group, opts ...grpc.CallOption) (*Group, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Group)
-	err := c.cc.Invoke(ctx, CommandService_CreateGroup_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, CommandService_AddGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -89,9 +105,9 @@ func (c *commandServiceClient) DeleteGroup(ctx context.Context, in *GroupRequest
 	return out, nil
 }
 
-func (c *commandServiceClient) AddUserToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupRequest, error) {
+func (c *commandServiceClient) AddUserToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserGroupRequest)
+	out := new(UserGroupResponse)
 	err := c.cc.Invoke(ctx, CommandService_AddUserToGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -99,9 +115,9 @@ func (c *commandServiceClient) AddUserToGroup(ctx context.Context, in *UserGroup
 	return out, nil
 }
 
-func (c *commandServiceClient) RemoveUserFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupRequest, error) {
+func (c *commandServiceClient) RemoveUserFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(UserGroupRequest)
+	out := new(UserGroupResponse)
 	err := c.cc.Invoke(ctx, CommandService_RemoveUserFromGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
@@ -109,20 +125,50 @@ func (c *commandServiceClient) RemoveUserFromGroup(ctx context.Context, in *User
 	return out, nil
 }
 
-func (c *commandServiceClient) AddCommandTemplate(ctx context.Context, in *AddCommandTemplateRequest, opts ...grpc.CallOption) (*CommandTemplate, error) {
+func (c *commandServiceClient) ListCommands(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CommandsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CommandTemplate)
-	err := c.cc.Invoke(ctx, CommandService_AddCommandTemplate_FullMethodName, in, out, cOpts...)
+	out := new(CommandsResponse)
+	err := c.cc.Invoke(ctx, CommandService_ListCommands_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *commandServiceClient) DeleteCommandTemplate(ctx context.Context, in *DeleteCommandTemplateRequest, opts ...grpc.CallOption) (*CommandTemplate, error) {
+func (c *commandServiceClient) AddCommand(ctx context.Context, in *AddCommandRequest, opts ...grpc.CallOption) (*Command, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CommandTemplate)
-	err := c.cc.Invoke(ctx, CommandService_DeleteCommandTemplate_FullMethodName, in, out, cOpts...)
+	out := new(Command)
+	err := c.cc.Invoke(ctx, CommandService_AddCommand_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commandServiceClient) DeleteCommand(ctx context.Context, in *DeleteCommandRequest, opts ...grpc.CallOption) (*Command, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Command)
+	err := c.cc.Invoke(ctx, CommandService_DeleteCommand_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commandServiceClient) AddCommandToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UserGroupResponse)
+	err := c.cc.Invoke(ctx, CommandService_AddCommandToGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commandServiceClient) DeleteCommandFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UserGroupResponse)
+	err := c.cc.Invoke(ctx, CommandService_DeleteCommandFromGroup_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -220,17 +266,19 @@ type CommandService_SubscribeCommandEventsClient = grpc.ServerStreamingClient[Co
 // CommandServiceServer is the server API for CommandService service.
 // All implementations must embed UnimplementedCommandServiceServer
 // for forward compatibility.
-//
-// ------------- SERVICE -------------
 type CommandServiceServer interface {
 	// Group management
-	CreateGroup(context.Context, *Group) (*Group, error)
+	ListGroups(context.Context, *Empty) (*GroupsResponse, error)
+	AddGroup(context.Context, *Group) (*Group, error)
 	DeleteGroup(context.Context, *GroupRequest) (*Group, error)
-	AddUserToGroup(context.Context, *UserGroupRequest) (*UserGroupRequest, error)
-	RemoveUserFromGroup(context.Context, *UserGroupRequest) (*UserGroupRequest, error)
+	AddUserToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
+	RemoveUserFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	// Template management
-	AddCommandTemplate(context.Context, *AddCommandTemplateRequest) (*CommandTemplate, error)
-	DeleteCommandTemplate(context.Context, *DeleteCommandTemplateRequest) (*CommandTemplate, error)
+	ListCommands(context.Context, *Empty) (*CommandsResponse, error)
+	AddCommand(context.Context, *AddCommandRequest) (*Command, error)
+	DeleteCommand(context.Context, *DeleteCommandRequest) (*Command, error)
+	AddCommandToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
+	DeleteCommandFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	// Execution
 	Execute(context.Context, *ExecuteRequest) (*ExecuteResponse, error)
 	Cancel(context.Context, *CancelRequest) (*CancelResponse, error)
@@ -252,23 +300,35 @@ type CommandServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedCommandServiceServer struct{}
 
-func (UnimplementedCommandServiceServer) CreateGroup(context.Context, *Group) (*Group, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateGroup not implemented")
+func (UnimplementedCommandServiceServer) ListGroups(context.Context, *Empty) (*GroupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGroups not implemented")
+}
+func (UnimplementedCommandServiceServer) AddGroup(context.Context, *Group) (*Group, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddGroup not implemented")
 }
 func (UnimplementedCommandServiceServer) DeleteGroup(context.Context, *GroupRequest) (*Group, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteGroup not implemented")
 }
-func (UnimplementedCommandServiceServer) AddUserToGroup(context.Context, *UserGroupRequest) (*UserGroupRequest, error) {
+func (UnimplementedCommandServiceServer) AddUserToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddUserToGroup not implemented")
 }
-func (UnimplementedCommandServiceServer) RemoveUserFromGroup(context.Context, *UserGroupRequest) (*UserGroupRequest, error) {
+func (UnimplementedCommandServiceServer) RemoveUserFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveUserFromGroup not implemented")
 }
-func (UnimplementedCommandServiceServer) AddCommandTemplate(context.Context, *AddCommandTemplateRequest) (*CommandTemplate, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddCommandTemplate not implemented")
+func (UnimplementedCommandServiceServer) ListCommands(context.Context, *Empty) (*CommandsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListCommands not implemented")
 }
-func (UnimplementedCommandServiceServer) DeleteCommandTemplate(context.Context, *DeleteCommandTemplateRequest) (*CommandTemplate, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommandTemplate not implemented")
+func (UnimplementedCommandServiceServer) AddCommand(context.Context, *AddCommandRequest) (*Command, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddCommand not implemented")
+}
+func (UnimplementedCommandServiceServer) DeleteCommand(context.Context, *DeleteCommandRequest) (*Command, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommand not implemented")
+}
+func (UnimplementedCommandServiceServer) AddCommandToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AddCommandToGroup not implemented")
+}
+func (UnimplementedCommandServiceServer) DeleteCommandFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommandFromGroup not implemented")
 }
 func (UnimplementedCommandServiceServer) Execute(context.Context, *ExecuteRequest) (*ExecuteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Execute not implemented")
@@ -312,20 +372,38 @@ func RegisterCommandServiceServer(s grpc.ServiceRegistrar, srv CommandServiceSer
 	s.RegisterService(&CommandService_ServiceDesc, srv)
 }
 
-func _CommandService_CreateGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CommandService_ListGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommandServiceServer).ListGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommandService_ListGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommandServiceServer).ListGroups(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommandService_AddGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Group)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CommandServiceServer).CreateGroup(ctx, in)
+		return srv.(CommandServiceServer).AddGroup(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CommandService_CreateGroup_FullMethodName,
+		FullMethod: CommandService_AddGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).CreateGroup(ctx, req.(*Group))
+		return srv.(CommandServiceServer).AddGroup(ctx, req.(*Group))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -384,38 +462,92 @@ func _CommandService_RemoveUserFromGroup_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CommandService_AddCommandTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddCommandTemplateRequest)
+func _CommandService_ListCommands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CommandServiceServer).AddCommandTemplate(ctx, in)
+		return srv.(CommandServiceServer).ListCommands(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CommandService_AddCommandTemplate_FullMethodName,
+		FullMethod: CommandService_ListCommands_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).AddCommandTemplate(ctx, req.(*AddCommandTemplateRequest))
+		return srv.(CommandServiceServer).ListCommands(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CommandService_DeleteCommandTemplate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteCommandTemplateRequest)
+func _CommandService_AddCommand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AddCommandRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CommandServiceServer).DeleteCommandTemplate(ctx, in)
+		return srv.(CommandServiceServer).AddCommand(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CommandService_DeleteCommandTemplate_FullMethodName,
+		FullMethod: CommandService_AddCommand_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).DeleteCommandTemplate(ctx, req.(*DeleteCommandTemplateRequest))
+		return srv.(CommandServiceServer).AddCommand(ctx, req.(*AddCommandRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommandService_DeleteCommand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteCommandRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommandServiceServer).DeleteCommand(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommandService_DeleteCommand_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommandServiceServer).DeleteCommand(ctx, req.(*DeleteCommandRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommandService_AddCommandToGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommandServiceServer).AddCommandToGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommandService_AddCommandToGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommandServiceServer).AddCommandToGroup(ctx, req.(*UserGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommandService_DeleteCommandFromGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UserGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommandServiceServer).DeleteCommandFromGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommandService_DeleteCommandFromGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommandServiceServer).DeleteCommandFromGroup(ctx, req.(*UserGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -536,12 +668,16 @@ type CommandService_SubscribeCommandEventsServer = grpc.ServerStreamingServer[Co
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CommandService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "command.CommandService",
+	ServiceName: "cmd.CommandService",
 	HandlerType: (*CommandServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateGroup",
-			Handler:    _CommandService_CreateGroup_Handler,
+			MethodName: "ListGroups",
+			Handler:    _CommandService_ListGroups_Handler,
+		},
+		{
+			MethodName: "AddGroup",
+			Handler:    _CommandService_AddGroup_Handler,
 		},
 		{
 			MethodName: "DeleteGroup",
@@ -556,12 +692,24 @@ var CommandService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CommandService_RemoveUserFromGroup_Handler,
 		},
 		{
-			MethodName: "AddCommandTemplate",
-			Handler:    _CommandService_AddCommandTemplate_Handler,
+			MethodName: "ListCommands",
+			Handler:    _CommandService_ListCommands_Handler,
 		},
 		{
-			MethodName: "DeleteCommandTemplate",
-			Handler:    _CommandService_DeleteCommandTemplate_Handler,
+			MethodName: "AddCommand",
+			Handler:    _CommandService_AddCommand_Handler,
+		},
+		{
+			MethodName: "DeleteCommand",
+			Handler:    _CommandService_DeleteCommand_Handler,
+		},
+		{
+			MethodName: "AddCommandToGroup",
+			Handler:    _CommandService_AddCommandToGroup_Handler,
+		},
+		{
+			MethodName: "DeleteCommandFromGroup",
+			Handler:    _CommandService_DeleteCommandFromGroup_Handler,
 		},
 		{
 			MethodName: "Execute",

@@ -4,7 +4,7 @@
 package cmd;
 
 /**
- * Protobuf enum {@code command.UserRole}
+ * Protobuf enum {@code cmd.UserRole}
  */
 public enum UserRole
     implements com.google.protobuf.ProtocolMessageEnum {
@@ -94,7 +94,7 @@ public enum UserRole
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return cmd.Command.getDescriptor().getEnumTypes().get(1);
+    return cmd.Cmd.getDescriptor().getEnumTypes().get(1);
   }
 
   private static final UserRole[] VALUES = values();
@@ -117,6 +117,6 @@ public enum UserRole
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:command.UserRole)
+  // @@protoc_insertion_point(enum_scope:cmd.UserRole)
 }
 

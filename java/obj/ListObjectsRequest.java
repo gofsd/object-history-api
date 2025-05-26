@@ -4,6 +4,10 @@
 package obj;
 
 /**
+ * <pre>
+ * ------------------- LIST &amp; PAGINATION -------------------
+ * </pre>
+ *
  * Protobuf type {@code object.ListObjectsRequest}
  */
 public final class ListObjectsRequest extends
@@ -347,6 +351,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * ------------------- LIST &amp; PAGINATION -------------------
+   * </pre>
+   *
    * Protobuf type {@code object.ListObjectsRequest}
    */
   public static final class Builder extends

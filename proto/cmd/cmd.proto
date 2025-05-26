@@ -1,13 +1,14 @@
 syntax = "proto3";
 
-package command;
-
+package cmd;
 
 option go_package = "cmd/proto";
 option java_multiple_files = true;
 option java_package = "cmd";
-option java_outer_classname = "Command";
+option java_outer_classname = "Cmd";
 option objc_class_prefix = "CMD";
+
+
 
 // ---------------- ENUMS ----------------
 enum ExecutionStatus {
@@ -29,19 +30,24 @@ enum UserRole {
 }
 
 // ------------- CORE MESSAGES -------------
+
 message Group {
-  int64 group_id = 1;
+  uint64 group_id = 1;
   string name = 2;
   string description = 3;
 }
 
+message GroupsResponse {
+  repeated Group groups = 1;
+}
+
 message GroupRequest {
-  int64 group_id = 1;
+  uint64 group_id = 1;
 }
 
 message UserGroupRequest {
-  int64 user_id = 1;
-  int64 group_id = 2;
+  uint64 user_id = 1;
+  uint64 group_id = 2;
   UserRole role = 3;
 }
 
@@ -57,44 +63,36 @@ message ParameterField {
   bool multiline = 8;
 }
 
-message CommandTemplate {
-  int64 command_template_id = 1;
-  int64 group_id = 2;
-  string command = 3;
-  repeated ParameterField fields = 4;
-  repeated string sensitive_keys = 5;
-  repeated string tags = 6;
-  string description = 7;
+message Command {
+  uint64 id = 1;
+  repeated ParameterField fields = 2;
 }
 
-message AddCommandTemplateRequest {
-  int64 group_id = 1;
-  string command = 2;
-  repeated ParameterField fields = 3;
-  repeated string sensitive_keys = 4;
-  repeated string tags = 5;
-  string description = 6;
+message AddCommandRequest {
+  repeated ParameterField fields = 1;
 }
 
-message DeleteCommandTemplateRequest {
-  int64 command_template_id = 1;
+message CommandsResponse {
+  repeated Command commands = 1;
+}
+
+message DeleteCommandRequest {
+  uint64 id = 1;
 }
 
 // ------------- COMMAND EXECUTION -------------
 message ExecuteRequest {
-  int64 command_template_id = 1;
+  uint64 command_id = 1;
   map<string, string> override_parameters = 2;
-  int64 user_id = 3;
 }
 
 message ExecuteResponse {
-  int64 execution_id = 1;
+  uint64 execution_id = 1;
   ExecutionStatus queue_status = 2;
 }
 
 message CancelRequest {
-  int64 execution_id = 1;
-  int64 user_id = 2;
+  uint64 execution_id = 1;
 }
 
 message CancelResponse {
@@ -102,70 +100,75 @@ message CancelResponse {
 }
 
 message RetryRequest {
-  int64 execution_id = 1;
-  int64 user_id = 2;
+  uint64 execution_id = 1;
 }
 
 message DryRunResult {
-  string rendered_command = 1;
-  string message = 2;
+  uint64 command_id = 1;
 }
 
 // ------------- LOG STREAMING -------------
-message SubscribeRequest {
-  int64 user_id = 1;
-  repeated int64 execution_ids = 2;
-  repeated int64 group_ids = 3;
-}
+message SubscribeRequest {}
 
 message CommandLog {
-  int64 execution_id = 1;
-  int64 command_template_id = 2;
-  int64 user_id = 3;
-  string output = 4;
-  ExecutionStatus status = 5;
-  int64 timestamp = 6;
-  map<string, string> effective_parameters = 7;
-  string result_code = 8;
+  uint64 execution_id = 1;
+  uint64 command_id = 2;
+  string output = 3;
+  ExecutionStatus status = 4;
+  uint64 timestamp = 5;
+  map<string, string> effective_parameters = 6;
+  string result_code = 7;
 }
 
 // ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
 message UpdateExecutionStatusRequest {
-  int64 execution_id = 1;
+  uint64 execution_id = 1;
   ExecutionStatus status = 2;
   string result_code = 3;
+  string output = 4;
 }
 
 message UpdateExecutionStatusResponse {
   bool success = 1;
 }
 
-message SubscribeCommandEventsRequest {
-  int64 user_id = 1;
-  repeated int64 group_ids = 2;
-}
+message SubscribeCommandEventsRequest {}
 
 message CommandEvent {
-  int64 execution_id = 1;
-  int64 command_template_id = 2;
-  int64 user_id = 3;
-  string command = 4;
-  map<string, string> effective_parameters = 5;
-  int64 timestamp = 6;
+  uint64 execution_id = 1;
+  uint64 command_id = 2;
+  map<string, string> effective_parameters = 3;
+  uint64 timestamp = 4;
 }
 
+message Object {
+  uint64 id = 1;
+  map<string, string> fields = 2;
+}
+
+message UserGroupResponse {
+  uint64 user_id = 1;
+  uint64 group_id = 2;
+  UserRole role = 3;
+  string message = 4;
+}
+message Empty{}
 // ------------- SERVICE -------------
+
 service CommandService {
   // Group management
-  rpc CreateGroup(Group) returns (Group);
+  rpc ListGroups(Empty) returns (GroupsResponse);
+  rpc AddGroup(Group) returns (Group);
   rpc DeleteGroup(GroupRequest) returns (Group);
-  rpc AddUserToGroup(UserGroupRequest) returns (UserGroupRequest);
-  rpc RemoveUserFromGroup(UserGroupRequest) returns (UserGroupRequest);
+  rpc AddUserToGroup(UserGroupRequest) returns (UserGroupResponse);
+  rpc RemoveUserFromGroup(UserGroupRequest) returns (UserGroupResponse);
 
   // Template management
-  rpc AddCommandTemplate(AddCommandTemplateRequest) returns (CommandTemplate);
-  rpc DeleteCommandTemplate(DeleteCommandTemplateRequest) returns (CommandTemplate);
-
+  rpc ListCommands(Empty) returns (CommandsResponse);
+  rpc AddCommand(AddCommandRequest) returns (Command);
+  rpc DeleteCommand(DeleteCommandRequest) returns (Command);
+  rpc AddCommandToGroup(UserGroupRequest) returns (UserGroupResponse);
+  rpc DeleteCommandFromGroup(UserGroupRequest) returns (UserGroupResponse);
   // Execution
   rpc Execute(ExecuteRequest) returns (ExecuteResponse);
   rpc Cancel(CancelRequest) returns (CancelResponse);

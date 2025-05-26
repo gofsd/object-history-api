@@ -4,22 +4,22 @@
 package cmd;
 
 public interface ExecuteResponseOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:command.ExecuteResponse)
+    // @@protoc_insertion_point(interface_extends:cmd.ExecuteResponse)
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 execution_id = 1;</code>
+   * <code>uint64 execution_id = 1;</code>
    * @return The executionId.
    */
   long getExecutionId();
 
   /**
-   * <code>.command.ExecutionStatus queue_status = 2;</code>
+   * <code>.cmd.ExecutionStatus queue_status = 2;</code>
    * @return The enum numeric value on the wire for queueStatus.
    */
   int getQueueStatusValue();
   /**
-   * <code>.command.ExecutionStatus queue_status = 2;</code>
+   * <code>.cmd.ExecutionStatus queue_status = 2;</code>
    * @return The queueStatus.
    */
   cmd.ExecutionStatus getQueueStatus();

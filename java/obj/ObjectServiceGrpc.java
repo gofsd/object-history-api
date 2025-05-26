@@ -4,7 +4,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
  * <pre>
- * Object service definition
+ * ------------------- SERVICE -------------------
  * </pre>
  */
 @javax.annotation.Generated(
@@ -49,37 +49,6 @@ public final class ObjectServiceGrpc {
     return getCreateObjectMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.CreateObjectsRequest,
-      obj.ObjectsResponse> getCreateObjectsMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateObjects",
-      requestType = obj.CreateObjectsRequest.class,
-      responseType = obj.ObjectsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.CreateObjectsRequest,
-      obj.ObjectsResponse> getCreateObjectsMethod() {
-    io.grpc.MethodDescriptor<obj.CreateObjectsRequest, obj.ObjectsResponse> getCreateObjectsMethod;
-    if ((getCreateObjectsMethod = ObjectServiceGrpc.getCreateObjectsMethod) == null) {
-      synchronized (ObjectServiceGrpc.class) {
-        if ((getCreateObjectsMethod = ObjectServiceGrpc.getCreateObjectsMethod) == null) {
-          ObjectServiceGrpc.getCreateObjectsMethod = getCreateObjectsMethod =
-              io.grpc.MethodDescriptor.<obj.CreateObjectsRequest, obj.ObjectsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateObjects"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.CreateObjectsRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("CreateObjects"))
-              .build();
-        }
-      }
-    }
-    return getCreateObjectsMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<obj.GetObjectRequest,
       obj.ObjectResponse> getGetObjectMethod;
 
@@ -109,37 +78,6 @@ public final class ObjectServiceGrpc {
       }
     }
     return getGetObjectMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<obj.GetObjectsRequest,
-      obj.ObjectsResponse> getGetObjectsMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetObjects",
-      requestType = obj.GetObjectsRequest.class,
-      responseType = obj.ObjectsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.GetObjectsRequest,
-      obj.ObjectsResponse> getGetObjectsMethod() {
-    io.grpc.MethodDescriptor<obj.GetObjectsRequest, obj.ObjectsResponse> getGetObjectsMethod;
-    if ((getGetObjectsMethod = ObjectServiceGrpc.getGetObjectsMethod) == null) {
-      synchronized (ObjectServiceGrpc.class) {
-        if ((getGetObjectsMethod = ObjectServiceGrpc.getGetObjectsMethod) == null) {
-          ObjectServiceGrpc.getGetObjectsMethod = getGetObjectsMethod =
-              io.grpc.MethodDescriptor.<obj.GetObjectsRequest, obj.ObjectsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetObjects"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.GetObjectsRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("GetObjects"))
-              .build();
-        }
-      }
-    }
-    return getGetObjectsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<obj.UpdateObjectRequest,
@@ -173,6 +111,99 @@ public final class ObjectServiceGrpc {
     return getUpdateObjectMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<obj.DeleteObjectsFieldsRequest,
+      obj.ObjectResponse> getDeleteObjectFieldMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteObjectField",
+      requestType = obj.DeleteObjectsFieldsRequest.class,
+      responseType = obj.ObjectResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.DeleteObjectsFieldsRequest,
+      obj.ObjectResponse> getDeleteObjectFieldMethod() {
+    io.grpc.MethodDescriptor<obj.DeleteObjectsFieldsRequest, obj.ObjectResponse> getDeleteObjectFieldMethod;
+    if ((getDeleteObjectFieldMethod = ObjectServiceGrpc.getDeleteObjectFieldMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getDeleteObjectFieldMethod = ObjectServiceGrpc.getDeleteObjectFieldMethod) == null) {
+          ObjectServiceGrpc.getDeleteObjectFieldMethod = getDeleteObjectFieldMethod =
+              io.grpc.MethodDescriptor.<obj.DeleteObjectsFieldsRequest, obj.ObjectResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteObjectField"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.DeleteObjectsFieldsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("DeleteObjectField"))
+              .build();
+        }
+      }
+    }
+    return getDeleteObjectFieldMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<obj.CreateObjectsRequest,
+      obj.ObjectsResponse> getCreateObjectsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateObjects",
+      requestType = obj.CreateObjectsRequest.class,
+      responseType = obj.ObjectsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.CreateObjectsRequest,
+      obj.ObjectsResponse> getCreateObjectsMethod() {
+    io.grpc.MethodDescriptor<obj.CreateObjectsRequest, obj.ObjectsResponse> getCreateObjectsMethod;
+    if ((getCreateObjectsMethod = ObjectServiceGrpc.getCreateObjectsMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getCreateObjectsMethod = ObjectServiceGrpc.getCreateObjectsMethod) == null) {
+          ObjectServiceGrpc.getCreateObjectsMethod = getCreateObjectsMethod =
+              io.grpc.MethodDescriptor.<obj.CreateObjectsRequest, obj.ObjectsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateObjects"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.CreateObjectsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("CreateObjects"))
+              .build();
+        }
+      }
+    }
+    return getCreateObjectsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<obj.GetObjectsRequest,
+      obj.ObjectsResponse> getGetObjectsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetObjects",
+      requestType = obj.GetObjectsRequest.class,
+      responseType = obj.ObjectsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.GetObjectsRequest,
+      obj.ObjectsResponse> getGetObjectsMethod() {
+    io.grpc.MethodDescriptor<obj.GetObjectsRequest, obj.ObjectsResponse> getGetObjectsMethod;
+    if ((getGetObjectsMethod = ObjectServiceGrpc.getGetObjectsMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getGetObjectsMethod = ObjectServiceGrpc.getGetObjectsMethod) == null) {
+          ObjectServiceGrpc.getGetObjectsMethod = getGetObjectsMethod =
+              io.grpc.MethodDescriptor.<obj.GetObjectsRequest, obj.ObjectsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetObjects"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.GetObjectsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("GetObjects"))
+              .build();
+        }
+      }
+    }
+    return getGetObjectsMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<obj.UpdateObjectsRequest,
       obj.ObjectsResponse> getUpdateObjectsMethod;
 
@@ -204,6 +235,68 @@ public final class ObjectServiceGrpc {
     return getUpdateObjectsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<obj.CreateObjectsUniqueRequest,
+      obj.ObjectsResponse> getCreateObjectsUniqueMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateObjectsUnique",
+      requestType = obj.CreateObjectsUniqueRequest.class,
+      responseType = obj.ObjectsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.CreateObjectsUniqueRequest,
+      obj.ObjectsResponse> getCreateObjectsUniqueMethod() {
+    io.grpc.MethodDescriptor<obj.CreateObjectsUniqueRequest, obj.ObjectsResponse> getCreateObjectsUniqueMethod;
+    if ((getCreateObjectsUniqueMethod = ObjectServiceGrpc.getCreateObjectsUniqueMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getCreateObjectsUniqueMethod = ObjectServiceGrpc.getCreateObjectsUniqueMethod) == null) {
+          ObjectServiceGrpc.getCreateObjectsUniqueMethod = getCreateObjectsUniqueMethod =
+              io.grpc.MethodDescriptor.<obj.CreateObjectsUniqueRequest, obj.ObjectsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateObjectsUnique"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.CreateObjectsUniqueRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("CreateObjectsUnique"))
+              .build();
+        }
+      }
+    }
+    return getCreateObjectsUniqueMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<obj.UpdateObjectsUniqueRequest,
+      obj.ObjectsResponse> getUpdateObjectsUniqueMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "UpdateObjectsUnique",
+      requestType = obj.UpdateObjectsUniqueRequest.class,
+      responseType = obj.ObjectsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.UpdateObjectsUniqueRequest,
+      obj.ObjectsResponse> getUpdateObjectsUniqueMethod() {
+    io.grpc.MethodDescriptor<obj.UpdateObjectsUniqueRequest, obj.ObjectsResponse> getUpdateObjectsUniqueMethod;
+    if ((getUpdateObjectsUniqueMethod = ObjectServiceGrpc.getUpdateObjectsUniqueMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getUpdateObjectsUniqueMethod = ObjectServiceGrpc.getUpdateObjectsUniqueMethod) == null) {
+          ObjectServiceGrpc.getUpdateObjectsUniqueMethod = getUpdateObjectsUniqueMethod =
+              io.grpc.MethodDescriptor.<obj.UpdateObjectsUniqueRequest, obj.ObjectsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateObjectsUnique"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.UpdateObjectsUniqueRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("UpdateObjectsUnique"))
+              .build();
+        }
+      }
+    }
+    return getUpdateObjectsUniqueMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<obj.ListObjectsRequest,
       obj.ListObjectsResponse> getListObjectsMethod;
 
@@ -233,37 +326,6 @@ public final class ObjectServiceGrpc {
       }
     }
     return getListObjectsMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<obj.DeleteObjectsFieldsRequest,
-      obj.ObjectResponse> getDeleteObjectFieldMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DeleteObjectField",
-      requestType = obj.DeleteObjectsFieldsRequest.class,
-      responseType = obj.ObjectResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.DeleteObjectsFieldsRequest,
-      obj.ObjectResponse> getDeleteObjectFieldMethod() {
-    io.grpc.MethodDescriptor<obj.DeleteObjectsFieldsRequest, obj.ObjectResponse> getDeleteObjectFieldMethod;
-    if ((getDeleteObjectFieldMethod = ObjectServiceGrpc.getDeleteObjectFieldMethod) == null) {
-      synchronized (ObjectServiceGrpc.class) {
-        if ((getDeleteObjectFieldMethod = ObjectServiceGrpc.getDeleteObjectFieldMethod) == null) {
-          ObjectServiceGrpc.getDeleteObjectFieldMethod = getDeleteObjectFieldMethod =
-              io.grpc.MethodDescriptor.<obj.DeleteObjectsFieldsRequest, obj.ObjectResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteObjectField"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.DeleteObjectsFieldsRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("DeleteObjectField"))
-              .build();
-        }
-      }
-    }
-    return getDeleteObjectFieldMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<obj.ExecuteActionRequest,
@@ -421,68 +483,6 @@ public final class ObjectServiceGrpc {
     return getSubscribeToMyselfMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.CreateObjectsUniqueRequest,
-      obj.ObjectsResponse> getCreateObjectsUniqueMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateObjectsUnique",
-      requestType = obj.CreateObjectsUniqueRequest.class,
-      responseType = obj.ObjectsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.CreateObjectsUniqueRequest,
-      obj.ObjectsResponse> getCreateObjectsUniqueMethod() {
-    io.grpc.MethodDescriptor<obj.CreateObjectsUniqueRequest, obj.ObjectsResponse> getCreateObjectsUniqueMethod;
-    if ((getCreateObjectsUniqueMethod = ObjectServiceGrpc.getCreateObjectsUniqueMethod) == null) {
-      synchronized (ObjectServiceGrpc.class) {
-        if ((getCreateObjectsUniqueMethod = ObjectServiceGrpc.getCreateObjectsUniqueMethod) == null) {
-          ObjectServiceGrpc.getCreateObjectsUniqueMethod = getCreateObjectsUniqueMethod =
-              io.grpc.MethodDescriptor.<obj.CreateObjectsUniqueRequest, obj.ObjectsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateObjectsUnique"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.CreateObjectsUniqueRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("CreateObjectsUnique"))
-              .build();
-        }
-      }
-    }
-    return getCreateObjectsUniqueMethod;
-  }
-
-  private static volatile io.grpc.MethodDescriptor<obj.UpdateObjectsUniqueRequest,
-      obj.ObjectsResponse> getUpdateObjectsUniqueMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "UpdateObjectsUnique",
-      requestType = obj.UpdateObjectsUniqueRequest.class,
-      responseType = obj.ObjectsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.UpdateObjectsUniqueRequest,
-      obj.ObjectsResponse> getUpdateObjectsUniqueMethod() {
-    io.grpc.MethodDescriptor<obj.UpdateObjectsUniqueRequest, obj.ObjectsResponse> getUpdateObjectsUniqueMethod;
-    if ((getUpdateObjectsUniqueMethod = ObjectServiceGrpc.getUpdateObjectsUniqueMethod) == null) {
-      synchronized (ObjectServiceGrpc.class) {
-        if ((getUpdateObjectsUniqueMethod = ObjectServiceGrpc.getUpdateObjectsUniqueMethod) == null) {
-          ObjectServiceGrpc.getUpdateObjectsUniqueMethod = getUpdateObjectsUniqueMethod =
-              io.grpc.MethodDescriptor.<obj.UpdateObjectsUniqueRequest, obj.ObjectsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateObjectsUnique"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.UpdateObjectsUniqueRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("UpdateObjectsUnique"))
-              .build();
-        }
-      }
-    }
-    return getUpdateObjectsUniqueMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -544,23 +544,19 @@ public final class ObjectServiceGrpc {
 
   /**
    * <pre>
-   * Object service definition
+   * ------------------- SERVICE -------------------
    * </pre>
    */
   public interface AsyncService {
 
     /**
+     * <pre>
+     * CRUD
+     * </pre>
      */
     default void createObject(obj.CreateObjectRequest request,
         io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateObjectMethod(), responseObserver);
-    }
-
-    /**
-     */
-    default void createObjects(obj.CreateObjectsRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateObjectsMethod(), responseObserver);
     }
 
     /**
@@ -572,16 +568,33 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    default void getObjects(obj.GetObjectsRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetObjectsMethod(), responseObserver);
+    default void updateObject(obj.UpdateObjectRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateObjectMethod(), responseObserver);
     }
 
     /**
      */
-    default void updateObject(obj.UpdateObjectRequest request,
+    default void deleteObjectField(obj.DeleteObjectsFieldsRequest request,
         io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateObjectMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteObjectFieldMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Batch/Unique
+     * </pre>
+     */
+    default void createObjects(obj.CreateObjectsRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateObjectsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getObjects(obj.GetObjectsRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetObjectsMethod(), responseObserver);
     }
 
     /**
@@ -593,19 +606,32 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    default void createObjectsUnique(obj.CreateObjectsUniqueRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateObjectsUniqueMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void updateObjectsUnique(obj.UpdateObjectsUniqueRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateObjectsUniqueMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * List &amp; Pagination
+     * </pre>
+     */
     default void listObjects(obj.ListObjectsRequest request,
         io.grpc.stub.StreamObserver<obj.ListObjectsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListObjectsMethod(), responseObserver);
     }
 
     /**
-     */
-    default void deleteObjectField(obj.DeleteObjectsFieldsRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteObjectFieldMethod(), responseObserver);
-    }
-
-    /**
+     * <pre>
+     * Action/Transfer
+     * </pre>
      */
     default void executeAction(obj.ExecuteActionRequest request,
         io.grpc.stub.StreamObserver<obj.ExecuteActionResponse> responseObserver) {
@@ -627,6 +653,9 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Streaming/Subscription
+     * </pre>
      */
     default void subscribeToUserObjects(obj.SubscriptionRequest request,
         io.grpc.stub.StreamObserver<obj.SubscriptionResponse> responseObserver) {
@@ -639,26 +668,12 @@ public final class ObjectServiceGrpc {
         io.grpc.stub.StreamObserver<obj.Object> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSubscribeToMyselfMethod(), responseObserver);
     }
-
-    /**
-     */
-    default void createObjectsUnique(obj.CreateObjectsUniqueRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateObjectsUniqueMethod(), responseObserver);
-    }
-
-    /**
-     */
-    default void updateObjectsUnique(obj.UpdateObjectsUniqueRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateObjectsUniqueMethod(), responseObserver);
-    }
   }
 
   /**
    * Base class for the server implementation of the service ObjectService.
    * <pre>
-   * Object service definition
+   * ------------------- SERVICE -------------------
    * </pre>
    */
   public static abstract class ObjectServiceImplBase
@@ -672,7 +687,7 @@ public final class ObjectServiceGrpc {
   /**
    * A stub to allow clients to do asynchronous rpc calls to service ObjectService.
    * <pre>
-   * Object service definition
+   * ------------------- SERVICE -------------------
    * </pre>
    */
   public static final class ObjectServiceStub
@@ -689,19 +704,14 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * CRUD
+     * </pre>
      */
     public void createObject(obj.CreateObjectRequest request,
         io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreateObjectMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void createObjects(obj.CreateObjectsRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateObjectsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -714,18 +724,37 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public void getObjects(obj.GetObjectsRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetObjectsMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void updateObject(obj.UpdateObjectRequest request,
         io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdateObjectMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deleteObjectField(obj.DeleteObjectsFieldsRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteObjectFieldMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Batch/Unique
+     * </pre>
+     */
+    public void createObjects(obj.CreateObjectsRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateObjectsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getObjects(obj.GetObjectsRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetObjectsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -738,6 +767,25 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public void createObjectsUnique(obj.CreateObjectsUniqueRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateObjectsUniqueMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void updateObjectsUnique(obj.UpdateObjectsUniqueRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getUpdateObjectsUniqueMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * List &amp; Pagination
+     * </pre>
+     */
     public void listObjects(obj.ListObjectsRequest request,
         io.grpc.stub.StreamObserver<obj.ListObjectsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -745,14 +793,9 @@ public final class ObjectServiceGrpc {
     }
 
     /**
-     */
-    public void deleteObjectField(obj.DeleteObjectsFieldsRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDeleteObjectFieldMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
+     * <pre>
+     * Action/Transfer
+     * </pre>
      */
     public void executeAction(obj.ExecuteActionRequest request,
         io.grpc.stub.StreamObserver<obj.ExecuteActionResponse> responseObserver) {
@@ -777,6 +820,9 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Streaming/Subscription
+     * </pre>
      */
     public void subscribeToUserObjects(obj.SubscriptionRequest request,
         io.grpc.stub.StreamObserver<obj.SubscriptionResponse> responseObserver) {
@@ -791,28 +837,12 @@ public final class ObjectServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getSubscribeToMyselfMethod(), getCallOptions()), responseObserver);
     }
-
-    /**
-     */
-    public void createObjectsUnique(obj.CreateObjectsUniqueRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateObjectsUniqueMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void updateObjectsUnique(obj.UpdateObjectsUniqueRequest request,
-        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getUpdateObjectsUniqueMethod(), getCallOptions()), request, responseObserver);
-    }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service ObjectService.
    * <pre>
-   * Object service definition
+   * ------------------- SERVICE -------------------
    * </pre>
    */
   public static final class ObjectServiceBlockingV2Stub
@@ -829,17 +859,13 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * CRUD
+     * </pre>
      */
     public obj.ObjectResponse createObject(obj.CreateObjectRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateObjectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public obj.ObjectsResponse createObjects(obj.CreateObjectsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateObjectsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -851,16 +877,33 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public obj.ObjectsResponse getObjects(obj.GetObjectsRequest request) {
+    public obj.ObjectResponse updateObject(obj.UpdateObjectRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetObjectsMethod(), getCallOptions(), request);
+          getChannel(), getUpdateObjectMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public obj.ObjectResponse updateObject(obj.UpdateObjectRequest request) {
+    public obj.ObjectResponse deleteObjectField(obj.DeleteObjectsFieldsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUpdateObjectMethod(), getCallOptions(), request);
+          getChannel(), getDeleteObjectFieldMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Batch/Unique
+     * </pre>
+     */
+    public obj.ObjectsResponse createObjects(obj.CreateObjectsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateObjectsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public obj.ObjectsResponse getObjects(obj.GetObjectsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetObjectsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -872,19 +915,32 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public obj.ObjectsResponse createObjectsUnique(obj.CreateObjectsUniqueRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateObjectsUniqueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public obj.ObjectsResponse updateObjectsUnique(obj.UpdateObjectsUniqueRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateObjectsUniqueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * List &amp; Pagination
+     * </pre>
+     */
     public obj.ListObjectsResponse listObjects(obj.ListObjectsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListObjectsMethod(), getCallOptions(), request);
     }
 
     /**
-     */
-    public obj.ObjectResponse deleteObjectField(obj.DeleteObjectsFieldsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteObjectFieldMethod(), getCallOptions(), request);
-    }
-
-    /**
+     * <pre>
+     * Action/Transfer
+     * </pre>
      */
     public obj.ExecuteActionResponse executeAction(obj.ExecuteActionRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -906,6 +962,9 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Streaming/Subscription
+     * </pre>
      */
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
     public io.grpc.stub.BlockingClientCall<?, obj.SubscriptionResponse>
@@ -922,26 +981,12 @@ public final class ObjectServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
           getChannel(), getSubscribeToMyselfMethod(), getCallOptions());
     }
-
-    /**
-     */
-    public obj.ObjectsResponse createObjectsUnique(obj.CreateObjectsUniqueRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateObjectsUniqueMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public obj.ObjectsResponse updateObjectsUnique(obj.UpdateObjectsUniqueRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUpdateObjectsUniqueMethod(), getCallOptions(), request);
-    }
   }
 
   /**
    * A stub to allow clients to do limited synchronous rpc calls to service ObjectService.
    * <pre>
-   * Object service definition
+   * ------------------- SERVICE -------------------
    * </pre>
    */
   public static final class ObjectServiceBlockingStub
@@ -958,17 +1003,13 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * CRUD
+     * </pre>
      */
     public obj.ObjectResponse createObject(obj.CreateObjectRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreateObjectMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public obj.ObjectsResponse createObjects(obj.CreateObjectsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateObjectsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -980,16 +1021,33 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public obj.ObjectsResponse getObjects(obj.GetObjectsRequest request) {
+    public obj.ObjectResponse updateObject(obj.UpdateObjectRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetObjectsMethod(), getCallOptions(), request);
+          getChannel(), getUpdateObjectMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public obj.ObjectResponse updateObject(obj.UpdateObjectRequest request) {
+    public obj.ObjectResponse deleteObjectField(obj.DeleteObjectsFieldsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUpdateObjectMethod(), getCallOptions(), request);
+          getChannel(), getDeleteObjectFieldMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Batch/Unique
+     * </pre>
+     */
+    public obj.ObjectsResponse createObjects(obj.CreateObjectsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateObjectsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public obj.ObjectsResponse getObjects(obj.GetObjectsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetObjectsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1001,19 +1059,32 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public obj.ObjectsResponse createObjectsUnique(obj.CreateObjectsUniqueRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateObjectsUniqueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public obj.ObjectsResponse updateObjectsUnique(obj.UpdateObjectsUniqueRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getUpdateObjectsUniqueMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * List &amp; Pagination
+     * </pre>
+     */
     public obj.ListObjectsResponse listObjects(obj.ListObjectsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListObjectsMethod(), getCallOptions(), request);
     }
 
     /**
-     */
-    public obj.ObjectResponse deleteObjectField(obj.DeleteObjectsFieldsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteObjectFieldMethod(), getCallOptions(), request);
-    }
-
-    /**
+     * <pre>
+     * Action/Transfer
+     * </pre>
      */
     public obj.ExecuteActionResponse executeAction(obj.ExecuteActionRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -1035,32 +1106,21 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Streaming/Subscription
+     * </pre>
      */
     public java.util.Iterator<obj.SubscriptionResponse> subscribeToUserObjects(
         obj.SubscriptionRequest request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSubscribeToUserObjectsMethod(), getCallOptions(), request);
     }
-
-    /**
-     */
-    public obj.ObjectsResponse createObjectsUnique(obj.CreateObjectsUniqueRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateObjectsUniqueMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public obj.ObjectsResponse updateObjectsUnique(obj.UpdateObjectsUniqueRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getUpdateObjectsUniqueMethod(), getCallOptions(), request);
-    }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service ObjectService.
    * <pre>
-   * Object service definition
+   * ------------------- SERVICE -------------------
    * </pre>
    */
   public static final class ObjectServiceFutureStub
@@ -1077,19 +1137,14 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     * <pre>
+     * CRUD
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<obj.ObjectResponse> createObject(
         obj.CreateObjectRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreateObjectMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> createObjects(
-        obj.CreateObjectsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateObjectsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1102,18 +1157,37 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> getObjects(
-        obj.GetObjectsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetObjectsMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<obj.ObjectResponse> updateObject(
         obj.UpdateObjectRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdateObjectMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectResponse> deleteObjectField(
+        obj.DeleteObjectsFieldsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteObjectFieldMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Batch/Unique
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> createObjects(
+        obj.CreateObjectsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateObjectsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> getObjects(
+        obj.GetObjectsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetObjectsMethod(), getCallOptions()), request);
     }
 
     /**
@@ -1126,6 +1200,25 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> createObjectsUnique(
+        obj.CreateObjectsUniqueRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateObjectsUniqueMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> updateObjectsUnique(
+        obj.UpdateObjectsUniqueRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getUpdateObjectsUniqueMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * List &amp; Pagination
+     * </pre>
+     */
     public com.google.common.util.concurrent.ListenableFuture<obj.ListObjectsResponse> listObjects(
         obj.ListObjectsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -1133,14 +1226,9 @@ public final class ObjectServiceGrpc {
     }
 
     /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectResponse> deleteObjectField(
-        obj.DeleteObjectsFieldsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDeleteObjectFieldMethod(), getCallOptions()), request);
-    }
-
-    /**
+     * <pre>
+     * Action/Transfer
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<obj.ExecuteActionResponse> executeAction(
         obj.ExecuteActionRequest request) {
@@ -1163,38 +1251,22 @@ public final class ObjectServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getReceiveObjectsMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> createObjectsUnique(
-        obj.CreateObjectsUniqueRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateObjectsUniqueMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> updateObjectsUnique(
-        obj.UpdateObjectsUniqueRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getUpdateObjectsUniqueMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_CREATE_OBJECT = 0;
-  private static final int METHODID_CREATE_OBJECTS = 1;
-  private static final int METHODID_GET_OBJECT = 2;
-  private static final int METHODID_GET_OBJECTS = 3;
-  private static final int METHODID_UPDATE_OBJECT = 4;
-  private static final int METHODID_UPDATE_OBJECTS = 5;
-  private static final int METHODID_LIST_OBJECTS = 6;
-  private static final int METHODID_DELETE_OBJECT_FIELD = 7;
-  private static final int METHODID_EXECUTE_ACTION = 8;
-  private static final int METHODID_TRANSFER_OBJECTS = 9;
-  private static final int METHODID_RECEIVE_OBJECTS = 10;
-  private static final int METHODID_SUBSCRIBE_TO_USER_OBJECTS = 11;
-  private static final int METHODID_CREATE_OBJECTS_UNIQUE = 12;
-  private static final int METHODID_UPDATE_OBJECTS_UNIQUE = 13;
+  private static final int METHODID_GET_OBJECT = 1;
+  private static final int METHODID_UPDATE_OBJECT = 2;
+  private static final int METHODID_DELETE_OBJECT_FIELD = 3;
+  private static final int METHODID_CREATE_OBJECTS = 4;
+  private static final int METHODID_GET_OBJECTS = 5;
+  private static final int METHODID_UPDATE_OBJECTS = 6;
+  private static final int METHODID_CREATE_OBJECTS_UNIQUE = 7;
+  private static final int METHODID_UPDATE_OBJECTS_UNIQUE = 8;
+  private static final int METHODID_LIST_OBJECTS = 9;
+  private static final int METHODID_EXECUTE_ACTION = 10;
+  private static final int METHODID_TRANSFER_OBJECTS = 11;
+  private static final int METHODID_RECEIVE_OBJECTS = 12;
+  private static final int METHODID_SUBSCRIBE_TO_USER_OBJECTS = 13;
   private static final int METHODID_SUBSCRIBE_TO_MYSELF = 14;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -1218,33 +1290,41 @@ public final class ObjectServiceGrpc {
           serviceImpl.createObject((obj.CreateObjectRequest) request,
               (io.grpc.stub.StreamObserver<obj.ObjectResponse>) responseObserver);
           break;
-        case METHODID_CREATE_OBJECTS:
-          serviceImpl.createObjects((obj.CreateObjectsRequest) request,
-              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
-          break;
         case METHODID_GET_OBJECT:
           serviceImpl.getObject((obj.GetObjectRequest) request,
               (io.grpc.stub.StreamObserver<obj.ObjectResponse>) responseObserver);
-          break;
-        case METHODID_GET_OBJECTS:
-          serviceImpl.getObjects((obj.GetObjectsRequest) request,
-              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
           break;
         case METHODID_UPDATE_OBJECT:
           serviceImpl.updateObject((obj.UpdateObjectRequest) request,
               (io.grpc.stub.StreamObserver<obj.ObjectResponse>) responseObserver);
           break;
+        case METHODID_DELETE_OBJECT_FIELD:
+          serviceImpl.deleteObjectField((obj.DeleteObjectsFieldsRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_OBJECTS:
+          serviceImpl.createObjects((obj.CreateObjectsRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
+          break;
+        case METHODID_GET_OBJECTS:
+          serviceImpl.getObjects((obj.GetObjectsRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
+          break;
         case METHODID_UPDATE_OBJECTS:
           serviceImpl.updateObjects((obj.UpdateObjectsRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_OBJECTS_UNIQUE:
+          serviceImpl.createObjectsUnique((obj.CreateObjectsUniqueRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
+          break;
+        case METHODID_UPDATE_OBJECTS_UNIQUE:
+          serviceImpl.updateObjectsUnique((obj.UpdateObjectsUniqueRequest) request,
               (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
           break;
         case METHODID_LIST_OBJECTS:
           serviceImpl.listObjects((obj.ListObjectsRequest) request,
               (io.grpc.stub.StreamObserver<obj.ListObjectsResponse>) responseObserver);
-          break;
-        case METHODID_DELETE_OBJECT_FIELD:
-          serviceImpl.deleteObjectField((obj.DeleteObjectsFieldsRequest) request,
-              (io.grpc.stub.StreamObserver<obj.ObjectResponse>) responseObserver);
           break;
         case METHODID_EXECUTE_ACTION:
           serviceImpl.executeAction((obj.ExecuteActionRequest) request,
@@ -1261,14 +1341,6 @@ public final class ObjectServiceGrpc {
         case METHODID_SUBSCRIBE_TO_USER_OBJECTS:
           serviceImpl.subscribeToUserObjects((obj.SubscriptionRequest) request,
               (io.grpc.stub.StreamObserver<obj.SubscriptionResponse>) responseObserver);
-          break;
-        case METHODID_CREATE_OBJECTS_UNIQUE:
-          serviceImpl.createObjectsUnique((obj.CreateObjectsUniqueRequest) request,
-              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
-          break;
-        case METHODID_UPDATE_OBJECTS_UNIQUE:
-          serviceImpl.updateObjectsUnique((obj.UpdateObjectsUniqueRequest) request,
-              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1299,26 +1371,12 @@ public final class ObjectServiceGrpc {
               obj.ObjectResponse>(
                 service, METHODID_CREATE_OBJECT)))
         .addMethod(
-          getCreateObjectsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              obj.CreateObjectsRequest,
-              obj.ObjectsResponse>(
-                service, METHODID_CREATE_OBJECTS)))
-        .addMethod(
           getGetObjectMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               obj.GetObjectRequest,
               obj.ObjectResponse>(
                 service, METHODID_GET_OBJECT)))
-        .addMethod(
-          getGetObjectsMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              obj.GetObjectsRequest,
-              obj.ObjectsResponse>(
-                service, METHODID_GET_OBJECTS)))
         .addMethod(
           getUpdateObjectMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1327,6 +1385,27 @@ public final class ObjectServiceGrpc {
               obj.ObjectResponse>(
                 service, METHODID_UPDATE_OBJECT)))
         .addMethod(
+          getDeleteObjectFieldMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.DeleteObjectsFieldsRequest,
+              obj.ObjectResponse>(
+                service, METHODID_DELETE_OBJECT_FIELD)))
+        .addMethod(
+          getCreateObjectsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.CreateObjectsRequest,
+              obj.ObjectsResponse>(
+                service, METHODID_CREATE_OBJECTS)))
+        .addMethod(
+          getGetObjectsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.GetObjectsRequest,
+              obj.ObjectsResponse>(
+                service, METHODID_GET_OBJECTS)))
+        .addMethod(
           getUpdateObjectsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -1334,19 +1413,26 @@ public final class ObjectServiceGrpc {
               obj.ObjectsResponse>(
                 service, METHODID_UPDATE_OBJECTS)))
         .addMethod(
+          getCreateObjectsUniqueMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.CreateObjectsUniqueRequest,
+              obj.ObjectsResponse>(
+                service, METHODID_CREATE_OBJECTS_UNIQUE)))
+        .addMethod(
+          getUpdateObjectsUniqueMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.UpdateObjectsUniqueRequest,
+              obj.ObjectsResponse>(
+                service, METHODID_UPDATE_OBJECTS_UNIQUE)))
+        .addMethod(
           getListObjectsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
               obj.ListObjectsRequest,
               obj.ListObjectsResponse>(
                 service, METHODID_LIST_OBJECTS)))
-        .addMethod(
-          getDeleteObjectFieldMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              obj.DeleteObjectsFieldsRequest,
-              obj.ObjectResponse>(
-                service, METHODID_DELETE_OBJECT_FIELD)))
         .addMethod(
           getExecuteActionMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1382,20 +1468,6 @@ public final class ObjectServiceGrpc {
               obj.Object,
               obj.Object>(
                 service, METHODID_SUBSCRIBE_TO_MYSELF)))
-        .addMethod(
-          getCreateObjectsUniqueMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              obj.CreateObjectsUniqueRequest,
-              obj.ObjectsResponse>(
-                service, METHODID_CREATE_OBJECTS_UNIQUE)))
-        .addMethod(
-          getUpdateObjectsUniqueMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              obj.UpdateObjectsUniqueRequest,
-              obj.ObjectsResponse>(
-                service, METHODID_UPDATE_OBJECTS_UNIQUE)))
         .build();
   }
 
@@ -1445,20 +1517,20 @@ public final class ObjectServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new ObjectServiceFileDescriptorSupplier())
               .addMethod(getCreateObjectMethod())
-              .addMethod(getCreateObjectsMethod())
               .addMethod(getGetObjectMethod())
-              .addMethod(getGetObjectsMethod())
               .addMethod(getUpdateObjectMethod())
-              .addMethod(getUpdateObjectsMethod())
-              .addMethod(getListObjectsMethod())
               .addMethod(getDeleteObjectFieldMethod())
+              .addMethod(getCreateObjectsMethod())
+              .addMethod(getGetObjectsMethod())
+              .addMethod(getUpdateObjectsMethod())
+              .addMethod(getCreateObjectsUniqueMethod())
+              .addMethod(getUpdateObjectsUniqueMethod())
+              .addMethod(getListObjectsMethod())
               .addMethod(getExecuteActionMethod())
               .addMethod(getTransferObjectsMethod())
               .addMethod(getReceiveObjectsMethod())
               .addMethod(getSubscribeToUserObjectsMethod())
               .addMethod(getSubscribeToMyselfMethod())
-              .addMethod(getCreateObjectsUniqueMethod())
-              .addMethod(getUpdateObjectsUniqueMethod())
               .build();
         }
       }
