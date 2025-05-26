@@ -73,7 +73,9 @@ message ParameterField {
 // Command represents a command template.
 message Command {
   uint64 id = 1;
-  repeated ParameterField fields = 2;
+  string name = 2;
+  string description = 3;
+  repeated ParameterField fields = 4;
 }
 
 // AddCommandRequest is used to add a new command template.

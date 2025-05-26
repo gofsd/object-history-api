@@ -458,7 +458,9 @@ func (x *ParameterField) GetMultiline() bool {
 type Command struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Fields        []*ParameterField      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Description   string                 `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	Fields        []*ParameterField      `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -498,6 +500,20 @@ func (x *Command) GetId() uint64 {
 		return x.Id
 	}
 	return 0
+}
+
+func (x *Command) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *Command) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
 }
 
 func (x *Command) GetFields() []*ParameterField {
@@ -1466,10 +1482,12 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x18\n" +
 	"\aoptions\x18\x06 \x03(\tR\aoptions\x12\x1a\n" +
 	"\brequired\x18\a \x01(\bR\brequired\x12\x1c\n" +
-	"\tmultiline\x18\b \x01(\bR\tmultiline\"F\n" +
+	"\tmultiline\x18\b \x01(\bR\tmultiline\"|\n" +
 	"\aCommand\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12+\n" +
-	"\x06fields\x18\x02 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"@\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12+\n" +
+	"\x06fields\x18\x04 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"@\n" +
 	"\x11AddCommandRequest\x12+\n" +
 	"\x06fields\x18\x01 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"<\n" +
 	"\x10CommandsResponse\x12(\n" +

@@ -14,25 +14,49 @@ public interface CommandOrBuilder extends
   long getId();
 
   /**
-   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   * <code>string name = 2;</code>
+   * @return The name.
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 2;</code>
+   * @return The bytes for name.
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
+
+  /**
+   * <code>string description = 3;</code>
+   * @return The description.
+   */
+  java.lang.String getDescription();
+  /**
+   * <code>string description = 3;</code>
+   * @return The bytes for description.
+   */
+  com.google.protobuf.ByteString
+      getDescriptionBytes();
+
+  /**
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   java.util.List<cmd.ParameterField> 
       getFieldsList();
   /**
-   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   cmd.ParameterField getFields(int index);
   /**
-   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   int getFieldsCount();
   /**
-   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   java.util.List<? extends cmd.ParameterFieldOrBuilder> 
       getFieldsOrBuilderList();
   /**
-   * <code>repeated .cmd.ParameterField fields = 2;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
       int index);
