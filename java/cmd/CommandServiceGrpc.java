@@ -607,27 +607,27 @@ public final class CommandServiceGrpc {
     return getSubscribeCommandEventsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cmd.AddContactRequest,
+  private static volatile io.grpc.MethodDescriptor<cmd.Contact,
       cmd.AddContactResponse> getAddMutualContactMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "AddMutualContact",
-      requestType = cmd.AddContactRequest.class,
+      requestType = cmd.Contact.class,
       responseType = cmd.AddContactResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cmd.AddContactRequest,
+  public static io.grpc.MethodDescriptor<cmd.Contact,
       cmd.AddContactResponse> getAddMutualContactMethod() {
-    io.grpc.MethodDescriptor<cmd.AddContactRequest, cmd.AddContactResponse> getAddMutualContactMethod;
+    io.grpc.MethodDescriptor<cmd.Contact, cmd.AddContactResponse> getAddMutualContactMethod;
     if ((getAddMutualContactMethod = CommandServiceGrpc.getAddMutualContactMethod) == null) {
       synchronized (CommandServiceGrpc.class) {
         if ((getAddMutualContactMethod = CommandServiceGrpc.getAddMutualContactMethod) == null) {
           CommandServiceGrpc.getAddMutualContactMethod = getAddMutualContactMethod =
-              io.grpc.MethodDescriptor.<cmd.AddContactRequest, cmd.AddContactResponse>newBuilder()
+              io.grpc.MethodDescriptor.<cmd.Contact, cmd.AddContactResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AddMutualContact"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cmd.AddContactRequest.getDefaultInstance()))
+                  cmd.Contact.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cmd.AddContactResponse.getDefaultInstance()))
               .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("AddMutualContact"))
@@ -636,6 +636,37 @@ public final class CommandServiceGrpc {
       }
     }
     return getAddMutualContactMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cmd.Empty,
+      cmd.Contact> getShowMyContactMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ShowMyContact",
+      requestType = cmd.Empty.class,
+      responseType = cmd.Contact.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<cmd.Empty,
+      cmd.Contact> getShowMyContactMethod() {
+    io.grpc.MethodDescriptor<cmd.Empty, cmd.Contact> getShowMyContactMethod;
+    if ((getShowMyContactMethod = CommandServiceGrpc.getShowMyContactMethod) == null) {
+      synchronized (CommandServiceGrpc.class) {
+        if ((getShowMyContactMethod = CommandServiceGrpc.getShowMyContactMethod) == null) {
+          CommandServiceGrpc.getShowMyContactMethod = getShowMyContactMethod =
+              io.grpc.MethodDescriptor.<cmd.Empty, cmd.Contact>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ShowMyContact"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cmd.Contact.getDefaultInstance()))
+              .setSchemaDescriptor(new CommandServiceMethodDescriptorSupplier("ShowMyContact"))
+              .build();
+        }
+      }
+    }
+    return getShowMyContactMethod;
   }
 
   /**
@@ -863,9 +894,16 @@ public final class CommandServiceGrpc {
      * Add a contact for a user.
      * </pre>
      */
-    default void addMutualContact(cmd.AddContactRequest request,
+    default void addMutualContact(cmd.Contact request,
         io.grpc.stub.StreamObserver<cmd.AddContactResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAddMutualContactMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void showMyContact(cmd.Empty request,
+        io.grpc.stub.StreamObserver<cmd.Contact> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getShowMyContactMethod(), responseObserver);
     }
   }
 
@@ -1080,10 +1118,18 @@ public final class CommandServiceGrpc {
      * Add a contact for a user.
      * </pre>
      */
-    public void addMutualContact(cmd.AddContactRequest request,
+    public void addMutualContact(cmd.Contact request,
         io.grpc.stub.StreamObserver<cmd.AddContactResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getAddMutualContactMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void showMyContact(cmd.Empty request,
+        io.grpc.stub.StreamObserver<cmd.Contact> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getShowMyContactMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -1273,9 +1319,16 @@ public final class CommandServiceGrpc {
      * Add a contact for a user.
      * </pre>
      */
-    public cmd.AddContactResponse addMutualContact(cmd.AddContactRequest request) {
+    public cmd.AddContactResponse addMutualContact(cmd.Contact request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddMutualContactMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.Contact showMyContact(cmd.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getShowMyContactMethod(), getCallOptions(), request);
     }
   }
 
@@ -1461,9 +1514,16 @@ public final class CommandServiceGrpc {
      * Add a contact for a user.
      * </pre>
      */
-    public cmd.AddContactResponse addMutualContact(cmd.AddContactRequest request) {
+    public cmd.AddContactResponse addMutualContact(cmd.Contact request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getAddMutualContactMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public cmd.Contact showMyContact(cmd.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getShowMyContactMethod(), getCallOptions(), request);
     }
   }
 
@@ -1621,9 +1681,17 @@ public final class CommandServiceGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<cmd.AddContactResponse> addMutualContact(
-        cmd.AddContactRequest request) {
+        cmd.Contact request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getAddMutualContactMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<cmd.Contact> showMyContact(
+        cmd.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getShowMyContactMethod(), getCallOptions()), request);
     }
   }
 
@@ -1647,6 +1715,7 @@ public final class CommandServiceGrpc {
   private static final int METHODID_LIST_COMMAND_EVENTS = 17;
   private static final int METHODID_SUBSCRIBE_COMMAND_EVENTS = 18;
   private static final int METHODID_ADD_MUTUAL_CONTACT = 19;
+  private static final int METHODID_SHOW_MY_CONTACT = 20;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1742,8 +1811,12 @@ public final class CommandServiceGrpc {
               (io.grpc.stub.StreamObserver<cmd.CommandEvent>) responseObserver);
           break;
         case METHODID_ADD_MUTUAL_CONTACT:
-          serviceImpl.addMutualContact((cmd.AddContactRequest) request,
+          serviceImpl.addMutualContact((cmd.Contact) request,
               (io.grpc.stub.StreamObserver<cmd.AddContactResponse>) responseObserver);
+          break;
+        case METHODID_SHOW_MY_CONTACT:
+          serviceImpl.showMyContact((cmd.Empty) request,
+              (io.grpc.stub.StreamObserver<cmd.Contact>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1900,9 +1973,16 @@ public final class CommandServiceGrpc {
           getAddMutualContactMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              cmd.AddContactRequest,
+              cmd.Contact,
               cmd.AddContactResponse>(
                 service, METHODID_ADD_MUTUAL_CONTACT)))
+        .addMethod(
+          getShowMyContactMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              cmd.Empty,
+              cmd.Contact>(
+                service, METHODID_SHOW_MY_CONTACT)))
         .build();
   }
 
@@ -1971,6 +2051,7 @@ public final class CommandServiceGrpc {
               .addMethod(getListCommandEventsMethod())
               .addMethod(getSubscribeCommandEventsMethod())
               .addMethod(getAddMutualContactMethod())
+              .addMethod(getShowMyContactMethod())
               .build();
         }
       }

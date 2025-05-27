@@ -181,7 +181,7 @@ message UserGroupResponse {
 }
 
 // Request to add a contact.
-message AddContactRequest {
+message Contact {
   uint64 contact_id = 2;    // The ID of the user to be added as a contact.
 }
 
@@ -228,5 +228,7 @@ service CommandService {
   rpc SubscribeCommandEvents(SubscribeCommandEventsRequest) returns (stream CommandEvent);
 
     // Add a contact for a user.
-  rpc AddMutualContact(AddContactRequest) returns (AddContactResponse);
+  rpc AddMutualContact(Contact) returns (AddContactResponse);
+  rpc ShowMyContact(Empty) returns (Contact);
+
 }

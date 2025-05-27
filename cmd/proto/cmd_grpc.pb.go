@@ -39,6 +39,7 @@ const (
 	CommandService_ListCommandEvents_FullMethodName      = "/cmd.CommandService/ListCommandEvents"
 	CommandService_SubscribeCommandEvents_FullMethodName = "/cmd.CommandService/SubscribeCommandEvents"
 	CommandService_AddMutualContact_FullMethodName       = "/cmd.CommandService/AddMutualContact"
+	CommandService_ShowMyContact_FullMethodName          = "/cmd.CommandService/ShowMyContact"
 )
 
 // CommandServiceClient is the client API for CommandService service.
@@ -74,7 +75,8 @@ type CommandServiceClient interface {
 	// Event listener for executors
 	SubscribeCommandEvents(ctx context.Context, in *SubscribeCommandEventsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error)
 	// Add a contact for a user.
-	AddMutualContact(ctx context.Context, in *AddContactRequest, opts ...grpc.CallOption) (*AddContactResponse, error)
+	AddMutualContact(ctx context.Context, in *Contact, opts ...grpc.CallOption) (*AddContactResponse, error)
+	ShowMyContact(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Contact, error)
 }
 
 type commandServiceClient struct {
@@ -311,10 +313,20 @@ func (c *commandServiceClient) SubscribeCommandEvents(ctx context.Context, in *S
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type CommandService_SubscribeCommandEventsClient = grpc.ServerStreamingClient[CommandEvent]
 
-func (c *commandServiceClient) AddMutualContact(ctx context.Context, in *AddContactRequest, opts ...grpc.CallOption) (*AddContactResponse, error) {
+func (c *commandServiceClient) AddMutualContact(ctx context.Context, in *Contact, opts ...grpc.CallOption) (*AddContactResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(AddContactResponse)
 	err := c.cc.Invoke(ctx, CommandService_AddMutualContact_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commandServiceClient) ShowMyContact(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*Contact, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Contact)
+	err := c.cc.Invoke(ctx, CommandService_ShowMyContact_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -354,7 +366,8 @@ type CommandServiceServer interface {
 	// Event listener for executors
 	SubscribeCommandEvents(*SubscribeCommandEventsRequest, grpc.ServerStreamingServer[CommandEvent]) error
 	// Add a contact for a user.
-	AddMutualContact(context.Context, *AddContactRequest) (*AddContactResponse, error)
+	AddMutualContact(context.Context, *Contact) (*AddContactResponse, error)
+	ShowMyContact(context.Context, *Empty) (*Contact, error)
 	mustEmbedUnimplementedCommandServiceServer()
 }
 
@@ -422,8 +435,11 @@ func (UnimplementedCommandServiceServer) ListCommandEvents(*Empty, grpc.ServerSt
 func (UnimplementedCommandServiceServer) SubscribeCommandEvents(*SubscribeCommandEventsRequest, grpc.ServerStreamingServer[CommandEvent]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeCommandEvents not implemented")
 }
-func (UnimplementedCommandServiceServer) AddMutualContact(context.Context, *AddContactRequest) (*AddContactResponse, error) {
+func (UnimplementedCommandServiceServer) AddMutualContact(context.Context, *Contact) (*AddContactResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddMutualContact not implemented")
+}
+func (UnimplementedCommandServiceServer) ShowMyContact(context.Context, *Empty) (*Contact, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ShowMyContact not implemented")
 }
 func (UnimplementedCommandServiceServer) mustEmbedUnimplementedCommandServiceServer() {}
 func (UnimplementedCommandServiceServer) testEmbeddedByValue()                        {}
@@ -761,7 +777,7 @@ func _CommandService_SubscribeCommandEvents_Handler(srv interface{}, stream grpc
 type CommandService_SubscribeCommandEventsServer = grpc.ServerStreamingServer[CommandEvent]
 
 func _CommandService_AddMutualContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddContactRequest)
+	in := new(Contact)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -773,7 +789,25 @@ func _CommandService_AddMutualContact_Handler(srv interface{}, ctx context.Conte
 		FullMethod: CommandService_AddMutualContact_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).AddMutualContact(ctx, req.(*AddContactRequest))
+		return srv.(CommandServiceServer).AddMutualContact(ctx, req.(*Contact))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommandService_ShowMyContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommandServiceServer).ShowMyContact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommandService_ShowMyContact_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommandServiceServer).ShowMyContact(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -848,6 +882,10 @@ var CommandService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "AddMutualContact",
 			Handler:    _CommandService_AddMutualContact_Handler,
+		},
+		{
+			MethodName: "ShowMyContact",
+			Handler:    _CommandService_ShowMyContact_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

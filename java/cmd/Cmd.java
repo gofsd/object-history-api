@@ -150,10 +150,10 @@ public final class Cmd {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cmd_UserGroupResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_cmd_AddContactRequest_descriptor;
+    internal_static_cmd_Contact_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_cmd_AddContactRequest_fieldAccessorTable;
+      internal_static_cmd_Contact_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cmd_AddContactResponse_descriptor;
   static final 
@@ -222,50 +222,51 @@ public final class Cmd {
       "\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
       "\t:\0028\001\"d\n\021UserGroupResponse\022\017\n\007user_id\030\001 " +
       "\001(\004\022\020\n\010group_id\030\002 \001(\004\022\033\n\004role\030\003 \001(\0162\r.cm" +
-      "d.UserRole\022\017\n\007message\030\004 \001(\t\"\'\n\021AddContac" +
-      "tRequest\022\022\n\ncontact_id\030\002 \001(\004\"%\n\022AddConta" +
-      "ctResponse\022\017\n\007success\030\001 \001(\010\"\007\n\005Empty*\277\002\n" +
-      "\017ExecutionStatus\022\034\n\030EXECUTION_STATUS_UNK" +
-      "NOWN\020\000\022\034\n\030EXECUTION_STATUS_PENDING\020\001\022\034\n\030" +
-      "EXECUTION_STATUS_RUNNING\020\002\022\034\n\030EXECUTION_" +
-      "STATUS_SUCCESS\020\003\022\033\n\027EXECUTION_STATUS_FAI" +
-      "LED\020\004\022\036\n\032EXECUTION_STATUS_CANCELLED\020\005\022)\n" +
-      "%EXECUTION_STATUS_CANCELLED_BY_TIMEOUT\020\006" +
-      "\022\"\n\036EXECUTION_STATUS_NOT_PERMITTED\020\007\022(\n$" +
-      "EXECUTION_STATUS_EXECUTORS_NOT_FOUND\020\010*M" +
-      "\n\010UserRole\022\024\n\020USER_ROLE_VIEWER\020\000\022\026\n\022USER" +
-      "_ROLE_EXECUTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\255\t" +
-      "\n\016CommandService\022-\n\nListGroups\022\n.cmd.Emp" +
-      "ty\032\023.cmd.GroupsResponse\022\"\n\010AddGroup\022\n.cm" +
-      "d.Group\032\n.cmd.Group\022,\n\013DeleteGroup\022\021.cmd" +
-      ".GroupRequest\032\n.cmd.Group\022?\n\016AddUserToGr" +
-      "oup\022\025.cmd.UserGroupRequest\032\026.cmd.UserGro" +
-      "upResponse\022D\n\023RemoveUserFromGroup\022\025.cmd." +
+      "d.UserRole\022\017\n\007message\030\004 \001(\t\"\035\n\007Contact\022\022" +
+      "\n\ncontact_id\030\002 \001(\004\"%\n\022AddContactResponse" +
+      "\022\017\n\007success\030\001 \001(\010\"\007\n\005Empty*\277\002\n\017Execution" +
+      "Status\022\034\n\030EXECUTION_STATUS_UNKNOWN\020\000\022\034\n\030" +
+      "EXECUTION_STATUS_PENDING\020\001\022\034\n\030EXECUTION_" +
+      "STATUS_RUNNING\020\002\022\034\n\030EXECUTION_STATUS_SUC" +
+      "CESS\020\003\022\033\n\027EXECUTION_STATUS_FAILED\020\004\022\036\n\032E" +
+      "XECUTION_STATUS_CANCELLED\020\005\022)\n%EXECUTION" +
+      "_STATUS_CANCELLED_BY_TIMEOUT\020\006\022\"\n\036EXECUT" +
+      "ION_STATUS_NOT_PERMITTED\020\007\022(\n$EXECUTION_" +
+      "STATUS_EXECUTORS_NOT_FOUND\020\010*M\n\010UserRole" +
+      "\022\024\n\020USER_ROLE_VIEWER\020\000\022\026\n\022USER_ROLE_EXEC" +
+      "UTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\316\t\n\016CommandS" +
+      "ervice\022-\n\nListGroups\022\n.cmd.Empty\032\023.cmd.G" +
+      "roupsResponse\022\"\n\010AddGroup\022\n.cmd.Group\032\n." +
+      "cmd.Group\022,\n\013DeleteGroup\022\021.cmd.GroupRequ" +
+      "est\032\n.cmd.Group\022?\n\016AddUserToGroup\022\025.cmd." +
       "UserGroupRequest\032\026.cmd.UserGroupResponse" +
-      "\0221\n\014ListCommands\022\n.cmd.Empty\032\025.cmd.Comma" +
-      "ndsResponse\0222\n\nAddCommand\022\026.cmd.AddComma" +
-      "ndRequest\032\014.cmd.Command\0228\n\rDeleteCommand" +
-      "\022\031.cmd.DeleteCommandRequest\032\014.cmd.Comman" +
-      "d\022B\n\021AddCommandToGroup\022\025.cmd.UserGroupRe" +
-      "quest\032\026.cmd.UserGroupResponse\022G\n\026DeleteC" +
-      "ommandFromGroup\022\025.cmd.UserGroupRequest\032\026" +
-      ".cmd.UserGroupResponse\022/\n\016ListExecutions" +
-      "\022\n.cmd.Empty\032\017.cmd.CommandLog0\001\0224\n\007Execu" +
-      "te\022\023.cmd.ExecuteRequest\032\024.cmd.ExecuteRes" +
-      "ponse\0221\n\006Cancel\022\022.cmd.CancelRequest\032\023.cm" +
-      "d.CancelResponse\0220\n\005Retry\022\021.cmd.RetryReq" +
-      "uest\032\024.cmd.ExecuteResponse\0220\n\006DryRun\022\023.c" +
-      "md.ExecuteRequest\032\021.cmd.DryRunResult\022^\n\025" +
-      "UpdateExecutionStatus\022!.cmd.UpdateExecut" +
-      "ionStatusRequest\032\".cmd.UpdateExecutionSt" +
-      "atusResponse\0229\n\rSubscribeLogs\022\025.cmd.Subs" +
-      "cribeRequest\032\017.cmd.CommandLog0\001\0224\n\021ListC" +
-      "ommandEvents\022\n.cmd.Empty\032\021.cmd.CommandEv" +
-      "ent0\001\022Q\n\026SubscribeCommandEvents\022\".cmd.Su" +
-      "bscribeCommandEventsRequest\032\021.cmd.Comman" +
-      "dEvent0\001\022C\n\020AddMutualContact\022\026.cmd.AddCo" +
-      "ntactRequest\032\027.cmd.AddContactResponseB\035\n" +
-      "\003cmdB\003CmdP\001Z\tcmd/proto\242\002\003CMDb\006proto3"
+      "\022D\n\023RemoveUserFromGroup\022\025.cmd.UserGroupR" +
+      "equest\032\026.cmd.UserGroupResponse\0221\n\014ListCo" +
+      "mmands\022\n.cmd.Empty\032\025.cmd.CommandsRespons" +
+      "e\0222\n\nAddCommand\022\026.cmd.AddCommandRequest\032" +
+      "\014.cmd.Command\0228\n\rDeleteCommand\022\031.cmd.Del" +
+      "eteCommandRequest\032\014.cmd.Command\022B\n\021AddCo" +
+      "mmandToGroup\022\025.cmd.UserGroupRequest\032\026.cm" +
+      "d.UserGroupResponse\022G\n\026DeleteCommandFrom" +
+      "Group\022\025.cmd.UserGroupRequest\032\026.cmd.UserG" +
+      "roupResponse\022/\n\016ListExecutions\022\n.cmd.Emp" +
+      "ty\032\017.cmd.CommandLog0\001\0224\n\007Execute\022\023.cmd.E" +
+      "xecuteRequest\032\024.cmd.ExecuteResponse\0221\n\006C" +
+      "ancel\022\022.cmd.CancelRequest\032\023.cmd.CancelRe" +
+      "sponse\0220\n\005Retry\022\021.cmd.RetryRequest\032\024.cmd" +
+      ".ExecuteResponse\0220\n\006DryRun\022\023.cmd.Execute" +
+      "Request\032\021.cmd.DryRunResult\022^\n\025UpdateExec" +
+      "utionStatus\022!.cmd.UpdateExecutionStatusR" +
+      "equest\032\".cmd.UpdateExecutionStatusRespon" +
+      "se\0229\n\rSubscribeLogs\022\025.cmd.SubscribeReque" +
+      "st\032\017.cmd.CommandLog0\001\0224\n\021ListCommandEven" +
+      "ts\022\n.cmd.Empty\032\021.cmd.CommandEvent0\001\022Q\n\026S" +
+      "ubscribeCommandEvents\022\".cmd.SubscribeCom" +
+      "mandEventsRequest\032\021.cmd.CommandEvent0\001\0229" +
+      "\n\020AddMutualContact\022\014.cmd.Contact\032\027.cmd.A" +
+      "ddContactResponse\022)\n\rShowMyContact\022\n.cmd" +
+      ".Empty\032\014.cmd.ContactB\035\n\003cmdB\003CmdP\001Z\tcmd/" +
+      "proto\242\002\003CMDb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -433,11 +434,11 @@ public final class Cmd {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cmd_UserGroupResponse_descriptor,
         new java.lang.String[] { "UserId", "GroupId", "Role", "Message", });
-    internal_static_cmd_AddContactRequest_descriptor =
+    internal_static_cmd_Contact_descriptor =
       getDescriptor().getMessageTypes().get(23);
-    internal_static_cmd_AddContactRequest_fieldAccessorTable = new
+    internal_static_cmd_Contact_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_cmd_AddContactRequest_descriptor,
+        internal_static_cmd_Contact_descriptor,
         new java.lang.String[] { "ContactId", });
     internal_static_cmd_AddContactResponse_descriptor =
       getDescriptor().getMessageTypes().get(24);
