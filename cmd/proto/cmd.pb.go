@@ -1419,6 +1419,96 @@ func (x *UserGroupResponse) GetMessage() string {
 	return ""
 }
 
+// Request to add a contact.
+type AddContactRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ContactId     uint64                 `protobuf:"varint,2,opt,name=contact_id,json=contactId,proto3" json:"contact_id,omitempty"` // The ID of the user to be added as a contact.
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddContactRequest) Reset() {
+	*x = AddContactRequest{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddContactRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddContactRequest) ProtoMessage() {}
+
+func (x *AddContactRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddContactRequest.ProtoReflect.Descriptor instead.
+func (*AddContactRequest) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *AddContactRequest) GetContactId() uint64 {
+	if x != nil {
+		return x.ContactId
+	}
+	return 0
+}
+
+// Response for adding a contact.
+type AddContactResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"` // Indicates if the operation was successful.
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddContactResponse) Reset() {
+	*x = AddContactResponse{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddContactResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddContactResponse) ProtoMessage() {}
+
+func (x *AddContactResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddContactResponse.ProtoReflect.Descriptor instead.
+func (*AddContactResponse) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *AddContactResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 // Empty is an empty message for RPCs that require no parameters.
 type Empty struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1428,7 +1518,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1440,7 +1530,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1453,7 +1543,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{23}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{25}
 }
 
 var File_proto_cmd_cmd_proto protoreflect.FileDescriptor
@@ -1556,7 +1646,12 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x04R\agroupId\x12!\n" +
 	"\x04role\x18\x03 \x01(\x0e2\r.cmd.UserRoleR\x04role\x12\x18\n" +
-	"\amessage\x18\x04 \x01(\tR\amessage\"\a\n" +
+	"\amessage\x18\x04 \x01(\tR\amessage\"2\n" +
+	"\x11AddContactRequest\x12\x1d\n" +
+	"\n" +
+	"contact_id\x18\x02 \x01(\x04R\tcontactId\".\n" +
+	"\x12AddContactResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"\a\n" +
 	"\x05Empty*\xbf\x02\n" +
 	"\x0fExecutionStatus\x12\x1c\n" +
 	"\x18EXECUTION_STATUS_UNKNOWN\x10\x00\x12\x1c\n" +
@@ -1571,7 +1666,7 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\bUserRole\x12\x14\n" +
 	"\x10USER_ROLE_VIEWER\x10\x00\x12\x16\n" +
 	"\x12USER_ROLE_EXECUTOR\x10\x01\x12\x13\n" +
-	"\x0fUSER_ROLE_ADMIN\x10\x022\xe8\b\n" +
+	"\x0fUSER_ROLE_ADMIN\x10\x022\xad\t\n" +
 	"\x0eCommandService\x12-\n" +
 	"\n" +
 	"ListGroups\x12\n" +
@@ -1600,7 +1695,8 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\rSubscribeLogs\x12\x15.cmd.SubscribeRequest\x1a\x0f.cmd.CommandLog0\x01\x124\n" +
 	"\x11ListCommandEvents\x12\n" +
 	".cmd.Empty\x1a\x11.cmd.CommandEvent0\x01\x12Q\n" +
-	"\x16SubscribeCommandEvents\x12\".cmd.SubscribeCommandEventsRequest\x1a\x11.cmd.CommandEvent0\x01B\x1d\n" +
+	"\x16SubscribeCommandEvents\x12\".cmd.SubscribeCommandEventsRequest\x1a\x11.cmd.CommandEvent0\x01\x12C\n" +
+	"\x10AddMutualContact\x12\x16.cmd.AddContactRequest\x1a\x17.cmd.AddContactResponseB\x1d\n" +
 	"\x03cmdB\x03CmdP\x01Z\tcmd/proto\xa2\x02\x03CMDb\x06proto3"
 
 var (
@@ -1616,7 +1712,7 @@ func file_proto_cmd_cmd_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_cmd_cmd_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_proto_cmd_cmd_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
+var file_proto_cmd_cmd_proto_msgTypes = make([]protoimpl.MessageInfo, 30)
 var file_proto_cmd_cmd_proto_goTypes = []any{
 	(ExecutionStatus)(0),                  // 0: cmd.ExecutionStatus
 	(UserRole)(0),                         // 1: cmd.UserRole
@@ -1643,11 +1739,13 @@ var file_proto_cmd_cmd_proto_goTypes = []any{
 	(*CommandEvent)(nil),                  // 22: cmd.CommandEvent
 	(*Object)(nil),                        // 23: cmd.Object
 	(*UserGroupResponse)(nil),             // 24: cmd.UserGroupResponse
-	(*Empty)(nil),                         // 25: cmd.Empty
-	nil,                                   // 26: cmd.ExecuteRequest.OverrideParametersEntry
-	nil,                                   // 27: cmd.CommandLog.EffectiveParametersEntry
-	nil,                                   // 28: cmd.CommandEvent.EffectiveParametersEntry
-	nil,                                   // 29: cmd.Object.FieldsEntry
+	(*AddContactRequest)(nil),             // 25: cmd.AddContactRequest
+	(*AddContactResponse)(nil),            // 26: cmd.AddContactResponse
+	(*Empty)(nil),                         // 27: cmd.Empty
+	nil,                                   // 28: cmd.ExecuteRequest.OverrideParametersEntry
+	nil,                                   // 29: cmd.CommandLog.EffectiveParametersEntry
+	nil,                                   // 30: cmd.CommandEvent.EffectiveParametersEntry
+	nil,                                   // 31: cmd.Object.FieldsEntry
 }
 var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	2,  // 0: cmd.GroupsResponse.groups:type_name -> cmd.Group
@@ -1655,54 +1753,56 @@ var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	6,  // 2: cmd.Command.fields:type_name -> cmd.ParameterField
 	6,  // 3: cmd.AddCommandRequest.fields:type_name -> cmd.ParameterField
 	7,  // 4: cmd.CommandsResponse.commands:type_name -> cmd.Command
-	26, // 5: cmd.ExecuteRequest.override_parameters:type_name -> cmd.ExecuteRequest.OverrideParametersEntry
+	28, // 5: cmd.ExecuteRequest.override_parameters:type_name -> cmd.ExecuteRequest.OverrideParametersEntry
 	0,  // 6: cmd.ExecuteResponse.queue_status:type_name -> cmd.ExecutionStatus
 	0,  // 7: cmd.CommandLog.status:type_name -> cmd.ExecutionStatus
-	27, // 8: cmd.CommandLog.effective_parameters:type_name -> cmd.CommandLog.EffectiveParametersEntry
+	29, // 8: cmd.CommandLog.effective_parameters:type_name -> cmd.CommandLog.EffectiveParametersEntry
 	0,  // 9: cmd.UpdateExecutionStatusRequest.status:type_name -> cmd.ExecutionStatus
-	28, // 10: cmd.CommandEvent.effective_parameters:type_name -> cmd.CommandEvent.EffectiveParametersEntry
-	29, // 11: cmd.Object.fields:type_name -> cmd.Object.FieldsEntry
+	30, // 10: cmd.CommandEvent.effective_parameters:type_name -> cmd.CommandEvent.EffectiveParametersEntry
+	31, // 11: cmd.Object.fields:type_name -> cmd.Object.FieldsEntry
 	1,  // 12: cmd.UserGroupResponse.role:type_name -> cmd.UserRole
-	25, // 13: cmd.CommandService.ListGroups:input_type -> cmd.Empty
+	27, // 13: cmd.CommandService.ListGroups:input_type -> cmd.Empty
 	2,  // 14: cmd.CommandService.AddGroup:input_type -> cmd.Group
 	4,  // 15: cmd.CommandService.DeleteGroup:input_type -> cmd.GroupRequest
 	5,  // 16: cmd.CommandService.AddUserToGroup:input_type -> cmd.UserGroupRequest
 	5,  // 17: cmd.CommandService.RemoveUserFromGroup:input_type -> cmd.UserGroupRequest
-	25, // 18: cmd.CommandService.ListCommands:input_type -> cmd.Empty
+	27, // 18: cmd.CommandService.ListCommands:input_type -> cmd.Empty
 	8,  // 19: cmd.CommandService.AddCommand:input_type -> cmd.AddCommandRequest
 	10, // 20: cmd.CommandService.DeleteCommand:input_type -> cmd.DeleteCommandRequest
 	5,  // 21: cmd.CommandService.AddCommandToGroup:input_type -> cmd.UserGroupRequest
 	5,  // 22: cmd.CommandService.DeleteCommandFromGroup:input_type -> cmd.UserGroupRequest
-	25, // 23: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
+	27, // 23: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
 	11, // 24: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
 	13, // 25: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
 	15, // 26: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
 	11, // 27: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
 	19, // 28: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
 	17, // 29: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
-	25, // 30: cmd.CommandService.ListCommandEvents:input_type -> cmd.Empty
+	27, // 30: cmd.CommandService.ListCommandEvents:input_type -> cmd.Empty
 	21, // 31: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.SubscribeCommandEventsRequest
-	3,  // 32: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
-	2,  // 33: cmd.CommandService.AddGroup:output_type -> cmd.Group
-	2,  // 34: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
-	24, // 35: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
-	24, // 36: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
-	9,  // 37: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
-	7,  // 38: cmd.CommandService.AddCommand:output_type -> cmd.Command
-	7,  // 39: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
-	24, // 40: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
-	24, // 41: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
-	18, // 42: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
-	12, // 43: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
-	14, // 44: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
-	12, // 45: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
-	16, // 46: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
-	20, // 47: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
-	18, // 48: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
-	22, // 49: cmd.CommandService.ListCommandEvents:output_type -> cmd.CommandEvent
-	22, // 50: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
-	32, // [32:51] is the sub-list for method output_type
-	13, // [13:32] is the sub-list for method input_type
+	25, // 32: cmd.CommandService.AddMutualContact:input_type -> cmd.AddContactRequest
+	3,  // 33: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
+	2,  // 34: cmd.CommandService.AddGroup:output_type -> cmd.Group
+	2,  // 35: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
+	24, // 36: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
+	24, // 37: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
+	9,  // 38: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
+	7,  // 39: cmd.CommandService.AddCommand:output_type -> cmd.Command
+	7,  // 40: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
+	24, // 41: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
+	24, // 42: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
+	18, // 43: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
+	12, // 44: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
+	14, // 45: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
+	12, // 46: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
+	16, // 47: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
+	20, // 48: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
+	18, // 49: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
+	22, // 50: cmd.CommandService.ListCommandEvents:output_type -> cmd.CommandEvent
+	22, // 51: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
+	26, // 52: cmd.CommandService.AddMutualContact:output_type -> cmd.AddContactResponse
+	33, // [33:53] is the sub-list for method output_type
+	13, // [13:33] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name
@@ -1719,7 +1819,7 @@ func file_proto_cmd_cmd_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_cmd_cmd_proto_rawDesc), len(file_proto_cmd_cmd_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   28,
+			NumMessages:   30,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

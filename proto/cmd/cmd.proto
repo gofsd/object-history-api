@@ -180,6 +180,16 @@ message UserGroupResponse {
   string message = 4;
 }
 
+// Request to add a contact.
+message AddContactRequest {
+  uint64 contact_id = 2;    // The ID of the user to be added as a contact.
+}
+
+// Response for adding a contact.
+message AddContactResponse {
+  bool success = 1;         // Indicates if the operation was successful.
+}
+
 // Empty is an empty message for RPCs that require no parameters.
 message Empty {}
 // ------------- SERVICE -------------
@@ -216,4 +226,7 @@ service CommandService {
   rpc ListCommandEvents(Empty) returns (stream CommandEvent);
   // Event listener for executors
   rpc SubscribeCommandEvents(SubscribeCommandEventsRequest) returns (stream CommandEvent);
+
+    // Add a contact for a user.
+  rpc AddMutualContact(AddContactRequest) returns (AddContactResponse);
 }

@@ -150,6 +150,16 @@ public final class Cmd {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cmd_UserGroupResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cmd_AddContactRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cmd_AddContactRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cmd_AddContactResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cmd_AddContactResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cmd_Empty_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -212,7 +222,9 @@ public final class Cmd {
       "\n\013FieldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
       "\t:\0028\001\"d\n\021UserGroupResponse\022\017\n\007user_id\030\001 " +
       "\001(\004\022\020\n\010group_id\030\002 \001(\004\022\033\n\004role\030\003 \001(\0162\r.cm" +
-      "d.UserRole\022\017\n\007message\030\004 \001(\t\"\007\n\005Empty*\277\002\n" +
+      "d.UserRole\022\017\n\007message\030\004 \001(\t\"\'\n\021AddContac" +
+      "tRequest\022\022\n\ncontact_id\030\002 \001(\004\"%\n\022AddConta" +
+      "ctResponse\022\017\n\007success\030\001 \001(\010\"\007\n\005Empty*\277\002\n" +
       "\017ExecutionStatus\022\034\n\030EXECUTION_STATUS_UNK" +
       "NOWN\020\000\022\034\n\030EXECUTION_STATUS_PENDING\020\001\022\034\n\030" +
       "EXECUTION_STATUS_RUNNING\020\002\022\034\n\030EXECUTION_" +
@@ -222,7 +234,7 @@ public final class Cmd {
       "\022\"\n\036EXECUTION_STATUS_NOT_PERMITTED\020\007\022(\n$" +
       "EXECUTION_STATUS_EXECUTORS_NOT_FOUND\020\010*M" +
       "\n\010UserRole\022\024\n\020USER_ROLE_VIEWER\020\000\022\026\n\022USER" +
-      "_ROLE_EXECUTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\350\010" +
+      "_ROLE_EXECUTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\255\t" +
       "\n\016CommandService\022-\n\nListGroups\022\n.cmd.Emp" +
       "ty\032\023.cmd.GroupsResponse\022\"\n\010AddGroup\022\n.cm" +
       "d.Group\032\n.cmd.Group\022,\n\013DeleteGroup\022\021.cmd" +
@@ -251,8 +263,9 @@ public final class Cmd {
       "ommandEvents\022\n.cmd.Empty\032\021.cmd.CommandEv" +
       "ent0\001\022Q\n\026SubscribeCommandEvents\022\".cmd.Su" +
       "bscribeCommandEventsRequest\032\021.cmd.Comman" +
-      "dEvent0\001B\035\n\003cmdB\003CmdP\001Z\tcmd/proto\242\002\003CMDb" +
-      "\006proto3"
+      "dEvent0\001\022C\n\020AddMutualContact\022\026.cmd.AddCo" +
+      "ntactRequest\032\027.cmd.AddContactResponseB\035\n" +
+      "\003cmdB\003CmdP\001Z\tcmd/proto\242\002\003CMDb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -420,8 +433,20 @@ public final class Cmd {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cmd_UserGroupResponse_descriptor,
         new java.lang.String[] { "UserId", "GroupId", "Role", "Message", });
-    internal_static_cmd_Empty_descriptor =
+    internal_static_cmd_AddContactRequest_descriptor =
       getDescriptor().getMessageTypes().get(23);
+    internal_static_cmd_AddContactRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cmd_AddContactRequest_descriptor,
+        new java.lang.String[] { "ContactId", });
+    internal_static_cmd_AddContactResponse_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_cmd_AddContactResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cmd_AddContactResponse_descriptor,
+        new java.lang.String[] { "Success", });
+    internal_static_cmd_Empty_descriptor =
+      getDescriptor().getMessageTypes().get(25);
     internal_static_cmd_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cmd_Empty_descriptor,
