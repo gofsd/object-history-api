@@ -150,15 +150,15 @@ public final class Obj {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_object_ReceiveObjectsResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_object_SubscriptionRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_object_SubscriptionRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_object_SubscriptionResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_object_SubscriptionResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_Empty_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_object_Empty_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -217,39 +217,38 @@ public final class Obj {
       "\036\n\006object\030\001 \001(\0132\016.object.Object\"5\n\027Trans" +
       "ferObjectsResponse\022\032\n\022secret_transfer_id" +
       "\030\001 \001(\004\"9\n\026ReceiveObjectsResponse\022\037\n\007obje" +
-      "cts\030\001 \003(\0132\016.object.Object\"&\n\023Subscriptio" +
-      "nRequest\022\017\n\007user_id\030\001 \001(\004\"7\n\024Subscriptio" +
+      "cts\030\001 \003(\0132\016.object.Object\"7\n\024Subscriptio" +
       "nResponse\022\037\n\007objects\030\001 \003(\0132\016.object.Obje" +
-      "ct2\360\010\n\rObjectService\022C\n\014CreateObject\022\033.o" +
-      "bject.CreateObjectRequest\032\026.object.Objec" +
-      "tResponse\022=\n\tGetObject\022\030.object.GetObjec" +
-      "tRequest\032\026.object.ObjectResponse\022C\n\014Upda" +
-      "teObject\022\033.object.UpdateObjectRequest\032\026." +
-      "object.ObjectResponse\022O\n\021DeleteObjectFie" +
-      "ld\022\".object.DeleteObjectsFieldsRequest\032\026" +
-      ".object.ObjectResponse\022F\n\rCreateObjects\022" +
-      "\034.object.CreateObjectsRequest\032\027.object.O" +
-      "bjectsResponse\022@\n\nGetObjects\022\031.object.Ge" +
-      "tObjectsRequest\032\027.object.ObjectsResponse" +
-      "\022F\n\rUpdateObjects\022\034.object.UpdateObjects" +
-      "Request\032\027.object.ObjectsResponse\022R\n\023Crea" +
-      "teObjectsUnique\022\".object.CreateObjectsUn" +
-      "iqueRequest\032\027.object.ObjectsResponse\022R\n\023" +
-      "UpdateObjectsUnique\022\".object.UpdateObjec" +
-      "tsUniqueRequest\032\027.object.ObjectsResponse" +
-      "\022F\n\013ListObjects\022\032.object.ListObjectsRequ" +
-      "est\032\033.object.ListObjectsResponse\022L\n\rExec" +
-      "uteAction\022\034.object.ExecuteActionRequest\032" +
-      "\035.object.ExecuteActionResponse\022R\n\017Transf" +
-      "erObjects\022\036.object.TransferObjectsReques" +
-      "t\032\037.object.TransferObjectsResponse\022Q\n\016Re" +
-      "ceiveObjects\022\037.object.TransferObjectsRes" +
-      "ponse\032\036.object.ReceiveObjectsResponse\022U\n" +
-      "\026SubscribeToUserObjects\022\033.object.Subscri" +
-      "ptionRequest\032\034.object.SubscriptionRespon" +
-      "se0\001\0227\n\021SubscribeToMyself\022\016.object.Objec" +
-      "t\032\016.object.Object(\0010\001B \n\003objB\003ObjP\001Z\014obj" +
-      "ect/proto\242\002\003OBJb\006proto3"
+      "ct\"\007\n\005Empty2\343\010\n\rObjectService\022C\n\014CreateO" +
+      "bject\022\033.object.CreateObjectRequest\032\026.obj" +
+      "ect.ObjectResponse\022=\n\tGetObject\022\030.object" +
+      ".GetObjectRequest\032\026.object.ObjectRespons" +
+      "e\022C\n\014UpdateObject\022\033.object.UpdateObjectR" +
+      "equest\032\026.object.ObjectResponse\022O\n\021Delete" +
+      "ObjectField\022\".object.DeleteObjectsFields" +
+      "Request\032\026.object.ObjectResponse\022F\n\rCreat" +
+      "eObjects\022\034.object.CreateObjectsRequest\032\027" +
+      ".object.ObjectsResponse\022@\n\nGetObjects\022\031." +
+      "object.GetObjectsRequest\032\027.object.Object" +
+      "sResponse\022F\n\rUpdateObjects\022\034.object.Upda" +
+      "teObjectsRequest\032\027.object.ObjectsRespons" +
+      "e\022R\n\023CreateObjectsUnique\022\".object.Create" +
+      "ObjectsUniqueRequest\032\027.object.ObjectsRes" +
+      "ponse\022R\n\023UpdateObjectsUnique\022\".object.Up" +
+      "dateObjectsUniqueRequest\032\027.object.Object" +
+      "sResponse\022F\n\013ListObjects\022\032.object.ListOb" +
+      "jectsRequest\032\033.object.ListObjectsRespons" +
+      "e\022L\n\rExecuteAction\022\034.object.ExecuteActio" +
+      "nRequest\032\035.object.ExecuteActionResponse\022" +
+      "R\n\017TransferObjects\022\036.object.TransferObje" +
+      "ctsRequest\032\037.object.TransferObjectsRespo" +
+      "nse\022Q\n\016ReceiveObjects\022\037.object.TransferO" +
+      "bjectsResponse\032\036.object.ReceiveObjectsRe" +
+      "sponse\022H\n\027SubscribeToUsersObjects\022\r.obje" +
+      "ct.Empty\032\034.object.SubscriptionResponse0\001" +
+      "\0227\n\021SubscribeToMyself\022\016.object.Object\032\016." +
+      "object.Object(\0010\001B \n\003objB\003ObjP\001Z\014object/" +
+      "proto\242\002\003OBJb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -417,18 +416,18 @@ public final class Obj {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ReceiveObjectsResponse_descriptor,
         new java.lang.String[] { "Objects", });
-    internal_static_object_SubscriptionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(19);
-    internal_static_object_SubscriptionRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_object_SubscriptionRequest_descriptor,
-        new java.lang.String[] { "UserId", });
     internal_static_object_SubscriptionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(20);
+      getDescriptor().getMessageTypes().get(19);
     internal_static_object_SubscriptionResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_SubscriptionResponse_descriptor,
         new java.lang.String[] { "Objects", });
+    internal_static_object_Empty_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_object_Empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_object_Empty_descriptor,
+        new java.lang.String[] { });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

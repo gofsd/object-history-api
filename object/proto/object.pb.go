@@ -1023,51 +1023,6 @@ func (x *ReceiveObjectsResponse) GetObjects() []*Object {
 	return nil
 }
 
-// ------------------- SUBSCRIPTION/STREAMING -------------------
-type SubscriptionRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        uint64                 `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
-}
-
-func (x *SubscriptionRequest) Reset() {
-	*x = SubscriptionRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[19]
-	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-	ms.StoreMessageInfo(mi)
-}
-
-func (x *SubscriptionRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SubscriptionRequest) ProtoMessage() {}
-
-func (x *SubscriptionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[19]
-	if x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SubscriptionRequest.ProtoReflect.Descriptor instead.
-func (*SubscriptionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *SubscriptionRequest) GetUserId() uint64 {
-	if x != nil {
-		return x.UserId
-	}
-	return 0
-}
-
 type SubscriptionResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
@@ -1077,7 +1032,7 @@ type SubscriptionResponse struct {
 
 func (x *SubscriptionResponse) Reset() {
 	*x = SubscriptionResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[20]
+	mi := &file_proto_object_object_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1089,7 +1044,7 @@ func (x *SubscriptionResponse) String() string {
 func (*SubscriptionResponse) ProtoMessage() {}
 
 func (x *SubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[20]
+	mi := &file_proto_object_object_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1102,7 +1057,7 @@ func (x *SubscriptionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*SubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{20}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *SubscriptionResponse) GetObjects() []*Object {
@@ -1110,6 +1065,42 @@ func (x *SubscriptionResponse) GetObjects() []*Object {
 		return x.Objects
 	}
 	return nil
+}
+
+type Empty struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Empty) Reset() {
+	*x = Empty{}
+	mi := &file_proto_object_object_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Empty) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Empty) ProtoMessage() {}
+
+func (x *Empty) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Empty.ProtoReflect.Descriptor instead.
+func (*Empty) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{20}
 }
 
 var File_proto_object_object_proto protoreflect.FileDescriptor
@@ -1202,11 +1193,10 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x17TransferObjectsResponse\x12,\n" +
 	"\x12secret_transfer_id\x18\x01 \x01(\x04R\x10secretTransferId\"B\n" +
 	"\x16ReceiveObjectsResponse\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\".\n" +
-	"\x13SubscriptionRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\"@\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"@\n" +
 	"\x14SubscriptionResponse\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects2\xf0\b\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\a\n" +
+	"\x05Empty2\xe3\b\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
 	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12C\n" +
@@ -1221,8 +1211,8 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\vListObjects\x12\x1a.object.ListObjectsRequest\x1a\x1b.object.ListObjectsResponse\x12L\n" +
 	"\rExecuteAction\x12\x1c.object.ExecuteActionRequest\x1a\x1d.object.ExecuteActionResponse\x12R\n" +
 	"\x0fTransferObjects\x12\x1e.object.TransferObjectsRequest\x1a\x1f.object.TransferObjectsResponse\x12Q\n" +
-	"\x0eReceiveObjects\x12\x1f.object.TransferObjectsResponse\x1a\x1e.object.ReceiveObjectsResponse\x12U\n" +
-	"\x16SubscribeToUserObjects\x12\x1b.object.SubscriptionRequest\x1a\x1c.object.SubscriptionResponse0\x01\x127\n" +
+	"\x0eReceiveObjects\x12\x1f.object.TransferObjectsResponse\x1a\x1e.object.ReceiveObjectsResponse\x12H\n" +
+	"\x17SubscribeToUsersObjects\x12\r.object.Empty\x1a\x1c.object.SubscriptionResponse0\x01\x127\n" +
 	"\x11SubscribeToMyself\x12\x0e.object.Object\x1a\x0e.object.Object(\x010\x01B \n" +
 	"\x03objB\x03ObjP\x01Z\fobject/proto\xa2\x02\x03OBJb\x06proto3"
 
@@ -1259,8 +1249,8 @@ var file_proto_object_object_proto_goTypes = []any{
 	(*TransferObjectsRequest)(nil),     // 16: object.TransferObjectsRequest
 	(*TransferObjectsResponse)(nil),    // 17: object.TransferObjectsResponse
 	(*ReceiveObjectsResponse)(nil),     // 18: object.ReceiveObjectsResponse
-	(*SubscriptionRequest)(nil),        // 19: object.SubscriptionRequest
-	(*SubscriptionResponse)(nil),       // 20: object.SubscriptionResponse
+	(*SubscriptionResponse)(nil),       // 19: object.SubscriptionResponse
+	(*Empty)(nil),                      // 20: object.Empty
 	nil,                                // 21: object.Object.FieldsEntry
 	nil,                                // 22: object.CreateObjectRequest.FieldsEntry
 	nil,                                // 23: object.UpdateObjectRequest.FieldsEntry
@@ -1301,7 +1291,7 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	14, // 27: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
 	16, // 28: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
 	17, // 29: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
-	19, // 30: object.ObjectService.SubscribeToUserObjects:input_type -> object.SubscriptionRequest
+	20, // 30: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
 	0,  // 31: object.ObjectService.SubscribeToMyself:input_type -> object.Object
 	1,  // 32: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
 	1,  // 33: object.ObjectService.GetObject:output_type -> object.ObjectResponse
@@ -1316,7 +1306,7 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	15, // 42: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
 	17, // 43: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
 	18, // 44: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
-	20, // 45: object.ObjectService.SubscribeToUserObjects:output_type -> object.SubscriptionResponse
+	19, // 45: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
 	0,  // 46: object.ObjectService.SubscribeToMyself:output_type -> object.Object
 	32, // [32:47] is the sub-list for method output_type
 	17, // [17:32] is the sub-list for method input_type

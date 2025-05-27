@@ -111,13 +111,12 @@ message ReceiveObjectsResponse {
 }
 
 // ------------------- SUBSCRIPTION/STREAMING -------------------
-message SubscriptionRequest {
-  uint64 user_id = 1;
-}
 
 message SubscriptionResponse {
   repeated Object objects = 1;
 }
+
+message Empty{}
 
 // ------------------- SERVICE -------------------
 service ObjectService {
@@ -143,6 +142,6 @@ service ObjectService {
   rpc ReceiveObjects(TransferObjectsResponse) returns (ReceiveObjectsResponse);
 
   // Streaming/Subscription
-  rpc SubscribeToUserObjects(SubscriptionRequest) returns (stream SubscriptionResponse);
+  rpc SubscribeToUsersObjects(Empty) returns (stream SubscriptionResponse);
   rpc SubscribeToMyself(stream Object) returns (stream Object);
 }

@@ -421,35 +421,35 @@ public final class ObjectServiceGrpc {
     return getReceiveObjectsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.SubscriptionRequest,
-      obj.SubscriptionResponse> getSubscribeToUserObjectsMethod;
+  private static volatile io.grpc.MethodDescriptor<obj.Empty,
+      obj.SubscriptionResponse> getSubscribeToUsersObjectsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "SubscribeToUserObjects",
-      requestType = obj.SubscriptionRequest.class,
+      fullMethodName = SERVICE_NAME + '/' + "SubscribeToUsersObjects",
+      requestType = obj.Empty.class,
       responseType = obj.SubscriptionResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-  public static io.grpc.MethodDescriptor<obj.SubscriptionRequest,
-      obj.SubscriptionResponse> getSubscribeToUserObjectsMethod() {
-    io.grpc.MethodDescriptor<obj.SubscriptionRequest, obj.SubscriptionResponse> getSubscribeToUserObjectsMethod;
-    if ((getSubscribeToUserObjectsMethod = ObjectServiceGrpc.getSubscribeToUserObjectsMethod) == null) {
+  public static io.grpc.MethodDescriptor<obj.Empty,
+      obj.SubscriptionResponse> getSubscribeToUsersObjectsMethod() {
+    io.grpc.MethodDescriptor<obj.Empty, obj.SubscriptionResponse> getSubscribeToUsersObjectsMethod;
+    if ((getSubscribeToUsersObjectsMethod = ObjectServiceGrpc.getSubscribeToUsersObjectsMethod) == null) {
       synchronized (ObjectServiceGrpc.class) {
-        if ((getSubscribeToUserObjectsMethod = ObjectServiceGrpc.getSubscribeToUserObjectsMethod) == null) {
-          ObjectServiceGrpc.getSubscribeToUserObjectsMethod = getSubscribeToUserObjectsMethod =
-              io.grpc.MethodDescriptor.<obj.SubscriptionRequest, obj.SubscriptionResponse>newBuilder()
+        if ((getSubscribeToUsersObjectsMethod = ObjectServiceGrpc.getSubscribeToUsersObjectsMethod) == null) {
+          ObjectServiceGrpc.getSubscribeToUsersObjectsMethod = getSubscribeToUsersObjectsMethod =
+              io.grpc.MethodDescriptor.<obj.Empty, obj.SubscriptionResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeToUserObjects"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeToUsersObjects"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.SubscriptionRequest.getDefaultInstance()))
+                  obj.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   obj.SubscriptionResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("SubscribeToUserObjects"))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("SubscribeToUsersObjects"))
               .build();
         }
       }
     }
-    return getSubscribeToUserObjectsMethod;
+    return getSubscribeToUsersObjectsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<obj.Object,
@@ -657,9 +657,9 @@ public final class ObjectServiceGrpc {
      * Streaming/Subscription
      * </pre>
      */
-    default void subscribeToUserObjects(obj.SubscriptionRequest request,
+    default void subscribeToUsersObjects(obj.Empty request,
         io.grpc.stub.StreamObserver<obj.SubscriptionResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeToUserObjectsMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeToUsersObjectsMethod(), responseObserver);
     }
 
     /**
@@ -824,10 +824,10 @@ public final class ObjectServiceGrpc {
      * Streaming/Subscription
      * </pre>
      */
-    public void subscribeToUserObjects(obj.SubscriptionRequest request,
+    public void subscribeToUsersObjects(obj.Empty request,
         io.grpc.stub.StreamObserver<obj.SubscriptionResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
-          getChannel().newCall(getSubscribeToUserObjectsMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getSubscribeToUsersObjectsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -968,9 +968,9 @@ public final class ObjectServiceGrpc {
      */
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
     public io.grpc.stub.BlockingClientCall<?, obj.SubscriptionResponse>
-        subscribeToUserObjects(obj.SubscriptionRequest request) {
+        subscribeToUsersObjects(obj.Empty request) {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
-          getChannel(), getSubscribeToUserObjectsMethod(), getCallOptions(), request);
+          getChannel(), getSubscribeToUsersObjectsMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1110,10 +1110,10 @@ public final class ObjectServiceGrpc {
      * Streaming/Subscription
      * </pre>
      */
-    public java.util.Iterator<obj.SubscriptionResponse> subscribeToUserObjects(
-        obj.SubscriptionRequest request) {
+    public java.util.Iterator<obj.SubscriptionResponse> subscribeToUsersObjects(
+        obj.Empty request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
-          getChannel(), getSubscribeToUserObjectsMethod(), getCallOptions(), request);
+          getChannel(), getSubscribeToUsersObjectsMethod(), getCallOptions(), request);
     }
   }
 
@@ -1266,7 +1266,7 @@ public final class ObjectServiceGrpc {
   private static final int METHODID_EXECUTE_ACTION = 10;
   private static final int METHODID_TRANSFER_OBJECTS = 11;
   private static final int METHODID_RECEIVE_OBJECTS = 12;
-  private static final int METHODID_SUBSCRIBE_TO_USER_OBJECTS = 13;
+  private static final int METHODID_SUBSCRIBE_TO_USERS_OBJECTS = 13;
   private static final int METHODID_SUBSCRIBE_TO_MYSELF = 14;
 
   private static final class MethodHandlers<Req, Resp> implements
@@ -1338,8 +1338,8 @@ public final class ObjectServiceGrpc {
           serviceImpl.receiveObjects((obj.TransferObjectsResponse) request,
               (io.grpc.stub.StreamObserver<obj.ReceiveObjectsResponse>) responseObserver);
           break;
-        case METHODID_SUBSCRIBE_TO_USER_OBJECTS:
-          serviceImpl.subscribeToUserObjects((obj.SubscriptionRequest) request,
+        case METHODID_SUBSCRIBE_TO_USERS_OBJECTS:
+          serviceImpl.subscribeToUsersObjects((obj.Empty) request,
               (io.grpc.stub.StreamObserver<obj.SubscriptionResponse>) responseObserver);
           break;
         default:
@@ -1455,12 +1455,12 @@ public final class ObjectServiceGrpc {
               obj.ReceiveObjectsResponse>(
                 service, METHODID_RECEIVE_OBJECTS)))
         .addMethod(
-          getSubscribeToUserObjectsMethod(),
+          getSubscribeToUsersObjectsMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              obj.SubscriptionRequest,
+              obj.Empty,
               obj.SubscriptionResponse>(
-                service, METHODID_SUBSCRIBE_TO_USER_OBJECTS)))
+                service, METHODID_SUBSCRIBE_TO_USERS_OBJECTS)))
         .addMethod(
           getSubscribeToMyselfMethod(),
           io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
@@ -1529,7 +1529,7 @@ public final class ObjectServiceGrpc {
               .addMethod(getExecuteActionMethod())
               .addMethod(getTransferObjectsMethod())
               .addMethod(getReceiveObjectsMethod())
-              .addMethod(getSubscribeToUserObjectsMethod())
+              .addMethod(getSubscribeToUsersObjectsMethod())
               .addMethod(getSubscribeToMyselfMethod())
               .build();
         }
