@@ -80,7 +80,10 @@ message Command {
 
 // AddCommandRequest is used to add a new command template.
 message AddCommandRequest {
-  repeated ParameterField fields = 1;
+  string name = 1;
+  string description = 2;
+  repeated ParameterField fields = 3;
+
 }
 
 // CommandsResponse is a wrapper for a list of commands.
@@ -182,12 +185,8 @@ message UserGroupResponse {
 
 // Request to add a contact.
 message Contact {
-  uint64 contact_id = 2;    // The ID of the user to be added as a contact.
-}
-
-// Response for adding a contact.
-message AddContactResponse {
-  bool success = 1;         // Indicates if the operation was successful.
+  uint64 id = 1;    // The ID of the user to be added as a contact.
+  string email = 2;  // The email address of the user to be added as a contact.
 }
 
 // Empty is an empty message for RPCs that require no parameters.
@@ -228,7 +227,8 @@ service CommandService {
   rpc SubscribeCommandEvents(SubscribeCommandEventsRequest) returns (stream CommandEvent);
 
     // Add a contact for a user.
-  rpc AddMutualContact(Contact) returns (AddContactResponse);
+  rpc AddMutualContact(Contact) returns (Contact);
+  rpc RemoveMutualContact(Contact) returns (Contact);
   rpc ShowMyContact(Empty) returns (Contact);
 
 }

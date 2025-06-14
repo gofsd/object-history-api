@@ -12,8 +12,28 @@ public interface ContactOrBuilder extends
    * The ID of the user to be added as a contact.
    * </pre>
    *
-   * <code>uint64 contact_id = 2;</code>
-   * @return The contactId.
+   * <code>uint64 id = 1;</code>
+   * @return The id.
    */
-  long getContactId();
+  long getId();
+
+  /**
+   * <pre>
+   * The email address of the user to be added as a contact.
+   * </pre>
+   *
+   * <code>string email = 2;</code>
+   * @return The email.
+   */
+  java.lang.String getEmail();
+  /**
+   * <pre>
+   * The email address of the user to be added as a contact.
+   * </pre>
+   *
+   * <code>string email = 2;</code>
+   * @return The bytes for email.
+   */
+  com.google.protobuf.ByteString
+      getEmailBytes();
 }

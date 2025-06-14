@@ -101,8 +101,12 @@ tasks:
   patch:
     desc: "Patch Go module version and push to GitHub"
     cmds:
+      - rm -rf auth cmd object java && mkdir java
       - task all
+      - git add .
+      - git commit -m "Update generated code"
       - "echo \"Current version: {{.CURRENT_VERSION}}\""
       - "echo \"Next version: v{{.NEXT_VERSION}}\""
+      - git push origin main
       - git tag {{.NEXT_VERSION}}
       - git push origin {{.NEXT_VERSION}}

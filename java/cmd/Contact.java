@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Contact() {
+    email_ = "";
   }
 
   @java.lang.Override
@@ -47,19 +48,65 @@ private static final long serialVersionUID = 0L;
             cmd.Contact.class, cmd.Contact.Builder.class);
   }
 
-  public static final int CONTACT_ID_FIELD_NUMBER = 2;
-  private long contactId_;
+  public static final int ID_FIELD_NUMBER = 1;
+  private long id_;
   /**
    * <pre>
    * The ID of the user to be added as a contact.
    * </pre>
    *
-   * <code>uint64 contact_id = 2;</code>
-   * @return The contactId.
+   * <code>uint64 id = 1;</code>
+   * @return The id.
    */
   @java.lang.Override
-  public long getContactId() {
-    return contactId_;
+  public long getId() {
+    return id_;
+  }
+
+  public static final int EMAIL_FIELD_NUMBER = 2;
+  private volatile java.lang.Object email_;
+  /**
+   * <pre>
+   * The email address of the user to be added as a contact.
+   * </pre>
+   *
+   * <code>string email = 2;</code>
+   * @return The email.
+   */
+  @java.lang.Override
+  public java.lang.String getEmail() {
+    java.lang.Object ref = email_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      email_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * The email address of the user to be added as a contact.
+   * </pre>
+   *
+   * <code>string email = 2;</code>
+   * @return The bytes for email.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getEmailBytes() {
+    java.lang.Object ref = email_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      email_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -76,8 +123,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (contactId_ != 0L) {
-      output.writeUInt64(2, contactId_);
+    if (id_ != 0L) {
+      output.writeUInt64(1, id_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, email_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -88,9 +138,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (contactId_ != 0L) {
+    if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, contactId_);
+        .computeUInt64Size(1, id_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(email_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, email_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -107,8 +160,10 @@ private static final long serialVersionUID = 0L;
     }
     cmd.Contact other = (cmd.Contact) obj;
 
-    if (getContactId()
-        != other.getContactId()) return false;
+    if (getId()
+        != other.getId()) return false;
+    if (!getEmail()
+        .equals(other.getEmail())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -120,9 +175,11 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + CONTACT_ID_FIELD_NUMBER;
+    hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getContactId());
+        getId());
+    hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+    hash = (53 * hash) + getEmail().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -255,7 +312,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      contactId_ = 0L;
+      id_ = 0L;
+
+      email_ = "";
 
       return this;
     }
@@ -283,7 +342,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cmd.Contact buildPartial() {
       cmd.Contact result = new cmd.Contact(this);
-      result.contactId_ = contactId_;
+      result.id_ = id_;
+      result.email_ = email_;
       onBuilt();
       return result;
     }
@@ -332,8 +392,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cmd.Contact other) {
       if (other == cmd.Contact.getDefaultInstance()) return this;
-      if (other.getContactId() != 0L) {
-        setContactId(other.getContactId());
+      if (other.getId() != 0L) {
+        setId(other.getId());
+      }
+      if (!other.getEmail().isEmpty()) {
+        email_ = other.email_;
+        onChanged();
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -361,11 +425,16 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 16: {
-              contactId_ = input.readUInt64();
+            case 8: {
+              id_ = input.readUInt64();
 
               break;
-            } // case 16
+            } // case 8
+            case 18: {
+              email_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -382,31 +451,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long contactId_ ;
+    private long id_ ;
     /**
      * <pre>
      * The ID of the user to be added as a contact.
      * </pre>
      *
-     * <code>uint64 contact_id = 2;</code>
-     * @return The contactId.
+     * <code>uint64 id = 1;</code>
+     * @return The id.
      */
     @java.lang.Override
-    public long getContactId() {
-      return contactId_;
+    public long getId() {
+      return id_;
     }
     /**
      * <pre>
      * The ID of the user to be added as a contact.
      * </pre>
      *
-     * <code>uint64 contact_id = 2;</code>
-     * @param value The contactId to set.
+     * <code>uint64 id = 1;</code>
+     * @param value The id to set.
      * @return This builder for chaining.
      */
-    public Builder setContactId(long value) {
+    public Builder setId(long value) {
       
-      contactId_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
@@ -415,12 +484,108 @@ private static final long serialVersionUID = 0L;
      * The ID of the user to be added as a contact.
      * </pre>
      *
-     * <code>uint64 contact_id = 2;</code>
+     * <code>uint64 id = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearContactId() {
+    public Builder clearId() {
       
-      contactId_ = 0L;
+      id_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object email_ = "";
+    /**
+     * <pre>
+     * The email address of the user to be added as a contact.
+     * </pre>
+     *
+     * <code>string email = 2;</code>
+     * @return The email.
+     */
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        email_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * The email address of the user to be added as a contact.
+     * </pre>
+     *
+     * <code>string email = 2;</code>
+     * @return The bytes for email.
+     */
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      java.lang.Object ref = email_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        email_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * The email address of the user to be added as a contact.
+     * </pre>
+     *
+     * <code>string email = 2;</code>
+     * @param value The email to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEmail(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      email_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * The email address of the user to be added as a contact.
+     * </pre>
+     *
+     * <code>string email = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEmail() {
+      
+      email_ = getDefaultInstance().getEmail();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * The email address of the user to be added as a contact.
+     * </pre>
+     *
+     * <code>string email = 2;</code>
+     * @param value The bytes for email to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEmailBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      email_ = value;
       onChanged();
       return this;
     }

@@ -452,27 +452,27 @@ public final class ObjectServiceGrpc {
     return getSubscribeToUsersObjectsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.Object,
+  private static volatile io.grpc.MethodDescriptor<obj.Empty,
       obj.Object> getSubscribeToMyselfMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SubscribeToMyself",
-      requestType = obj.Object.class,
+      requestType = obj.Empty.class,
       responseType = obj.Object.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<obj.Object,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<obj.Empty,
       obj.Object> getSubscribeToMyselfMethod() {
-    io.grpc.MethodDescriptor<obj.Object, obj.Object> getSubscribeToMyselfMethod;
+    io.grpc.MethodDescriptor<obj.Empty, obj.Object> getSubscribeToMyselfMethod;
     if ((getSubscribeToMyselfMethod = ObjectServiceGrpc.getSubscribeToMyselfMethod) == null) {
       synchronized (ObjectServiceGrpc.class) {
         if ((getSubscribeToMyselfMethod = ObjectServiceGrpc.getSubscribeToMyselfMethod) == null) {
           ObjectServiceGrpc.getSubscribeToMyselfMethod = getSubscribeToMyselfMethod =
-              io.grpc.MethodDescriptor.<obj.Object, obj.Object>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              io.grpc.MethodDescriptor.<obj.Empty, obj.Object>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubscribeToMyself"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.Object.getDefaultInstance()))
+                  obj.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   obj.Object.getDefaultInstance()))
               .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("SubscribeToMyself"))
@@ -664,9 +664,9 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    default io.grpc.stub.StreamObserver<obj.Object> subscribeToMyself(
+    default void subscribeToMyself(obj.Empty request,
         io.grpc.stub.StreamObserver<obj.Object> responseObserver) {
-      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSubscribeToMyselfMethod(), responseObserver);
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeToMyselfMethod(), responseObserver);
     }
   }
 
@@ -832,10 +832,10 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public io.grpc.stub.StreamObserver<obj.Object> subscribeToMyself(
+    public void subscribeToMyself(obj.Empty request,
         io.grpc.stub.StreamObserver<obj.Object> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
-          getChannel().newCall(getSubscribeToMyselfMethod(), getCallOptions()), responseObserver);
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSubscribeToMyselfMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -976,10 +976,10 @@ public final class ObjectServiceGrpc {
     /**
      */
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
-    public io.grpc.stub.BlockingClientCall<obj.Object, obj.Object>
-        subscribeToMyself() {
-      return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
-          getChannel(), getSubscribeToMyselfMethod(), getCallOptions());
+    public io.grpc.stub.BlockingClientCall<?, obj.Object>
+        subscribeToMyself(obj.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getSubscribeToMyselfMethod(), getCallOptions(), request);
     }
   }
 
@@ -1114,6 +1114,14 @@ public final class ObjectServiceGrpc {
         obj.Empty request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSubscribeToUsersObjectsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<obj.Object> subscribeToMyself(
+        obj.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSubscribeToMyselfMethod(), getCallOptions(), request);
     }
   }
 
@@ -1342,6 +1350,10 @@ public final class ObjectServiceGrpc {
           serviceImpl.subscribeToUsersObjects((obj.Empty) request,
               (io.grpc.stub.StreamObserver<obj.SubscriptionResponse>) responseObserver);
           break;
+        case METHODID_SUBSCRIBE_TO_MYSELF:
+          serviceImpl.subscribeToMyself((obj.Empty) request,
+              (io.grpc.stub.StreamObserver<obj.Object>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -1352,9 +1364,6 @@ public final class ObjectServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_SUBSCRIBE_TO_MYSELF:
-          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.subscribeToMyself(
-              (io.grpc.stub.StreamObserver<obj.Object>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -1463,9 +1472,9 @@ public final class ObjectServiceGrpc {
                 service, METHODID_SUBSCRIBE_TO_USERS_OBJECTS)))
         .addMethod(
           getSubscribeToMyselfMethod(),
-          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
-              obj.Object,
+              obj.Empty,
               obj.Object>(
                 service, METHODID_SUBSCRIBE_TO_MYSELF)))
         .build();
