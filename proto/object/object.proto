@@ -143,5 +143,5 @@ service ObjectService {
 
   // Streaming/Subscription
   rpc SubscribeToUsersObjects(Empty) returns (stream SubscriptionResponse);
-  rpc SubscribeToMyself(Empty) returns (stream Object);
+  rpc SubscribeToMyself(stream Object) returns (stream Object);
 }
