@@ -61,7 +61,7 @@ type ObjectServiceClient interface {
 	ReceiveObjects(ctx context.Context, in *TransferObjectsResponse, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error)
 	// Streaming/Subscription
 	SubscribeToUsersObjects(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscriptionResponse], error)
-	SubscribeToMyself(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[Object, Object], error)
+	SubscribeToMyself(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Object], error)
 }
 
 type objectServiceClient struct {
@@ -221,18 +221,24 @@ func (c *objectServiceClient) SubscribeToUsersObjects(ctx context.Context, in *E
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_SubscribeToUsersObjectsClient = grpc.ServerStreamingClient[SubscriptionResponse]
 
-func (c *objectServiceClient) SubscribeToMyself(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[Object, Object], error) {
+func (c *objectServiceClient) SubscribeToMyself(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Object], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &ObjectService_ServiceDesc.Streams[1], ObjectService_SubscribeToMyself_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[Object, Object]{ClientStream: stream}
+	x := &grpc.GenericClientStream[Empty, Object]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
 	return x, nil
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type ObjectService_SubscribeToMyselfClient = grpc.BidiStreamingClient[Object, Object]
+type ObjectService_SubscribeToMyselfClient = grpc.ServerStreamingClient[Object]
 
 // ObjectServiceServer is the server API for ObjectService service.
 // All implementations must embed UnimplementedObjectServiceServer
@@ -259,7 +265,7 @@ type ObjectServiceServer interface {
 	ReceiveObjects(context.Context, *TransferObjectsResponse) (*ReceiveObjectsResponse, error)
 	// Streaming/Subscription
 	SubscribeToUsersObjects(*Empty, grpc.ServerStreamingServer[SubscriptionResponse]) error
-	SubscribeToMyself(grpc.BidiStreamingServer[Object, Object]) error
+	SubscribeToMyself(*Empty, grpc.ServerStreamingServer[Object]) error
 	mustEmbedUnimplementedObjectServiceServer()
 }
 
@@ -312,7 +318,7 @@ func (UnimplementedObjectServiceServer) ReceiveObjects(context.Context, *Transfe
 func (UnimplementedObjectServiceServer) SubscribeToUsersObjects(*Empty, grpc.ServerStreamingServer[SubscriptionResponse]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeToUsersObjects not implemented")
 }
-func (UnimplementedObjectServiceServer) SubscribeToMyself(grpc.BidiStreamingServer[Object, Object]) error {
+func (UnimplementedObjectServiceServer) SubscribeToMyself(*Empty, grpc.ServerStreamingServer[Object]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeToMyself not implemented")
 }
 func (UnimplementedObjectServiceServer) mustEmbedUnimplementedObjectServiceServer() {}
@@ -582,11 +588,15 @@ func _ObjectService_SubscribeToUsersObjects_Handler(srv interface{}, stream grpc
 type ObjectService_SubscribeToUsersObjectsServer = grpc.ServerStreamingServer[SubscriptionResponse]
 
 func _ObjectService_SubscribeToMyself_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(ObjectServiceServer).SubscribeToMyself(&grpc.GenericServerStream[Object, Object]{ServerStream: stream})
+	m := new(Empty)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ObjectServiceServer).SubscribeToMyself(m, &grpc.GenericServerStream[Empty, Object]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type ObjectService_SubscribeToMyselfServer = grpc.BidiStreamingServer[Object, Object]
+type ObjectService_SubscribeToMyselfServer = grpc.ServerStreamingServer[Object]
 
 // ObjectService_ServiceDesc is the grpc.ServiceDesc for ObjectService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -658,7 +668,6 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 			StreamName:    "SubscribeToMyself",
 			Handler:       _ObjectService_SubscribeToMyself_Handler,
 			ServerStreams: true,
-			ClientStreams: true,
 		},
 	},
 	Metadata: "proto/object/object.proto",
