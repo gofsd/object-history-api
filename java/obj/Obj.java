@@ -219,7 +219,7 @@ public final class Obj {
       "\030\001 \001(\004\"9\n\026ReceiveObjectsResponse\022\037\n\007obje" +
       "cts\030\001 \003(\0132\016.object.Object\"7\n\024Subscriptio" +
       "nResponse\022\037\n\007objects\030\001 \003(\0132\016.object.Obje" +
-      "ct\"\007\n\005Empty2\340\010\n\rObjectService\022C\n\014CreateO" +
+      "ct\"\007\n\005Empty2\343\010\n\rObjectService\022C\n\014CreateO" +
       "bject\022\033.object.CreateObjectRequest\032\026.obj" +
       "ect.ObjectResponse\022=\n\tGetObject\022\030.object" +
       ".GetObjectRequest\032\026.object.ObjectRespons" +
@@ -246,9 +246,9 @@ public final class Obj {
       "bjectsResponse\032\036.object.ReceiveObjectsRe" +
       "sponse\022H\n\027SubscribeToUsersObjects\022\r.obje" +
       "ct.Empty\032\034.object.SubscriptionResponse0\001" +
-      "\0224\n\021SubscribeToMyself\022\r.object.Empty\032\016.o" +
-      "bject.Object0\001B \n\003objB\003ObjP\001Z\014object/pro" +
-      "to\242\002\003OBJb\006proto3"
+      "\0227\n\021SubscribeToMyself\022\016.object.Object\032\016." +
+      "object.Object(\0010\001B \n\003objB\003ObjP\001Z\014object/" +
+      "proto\242\002\003OBJb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

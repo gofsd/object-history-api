@@ -1196,7 +1196,7 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"@\n" +
 	"\x14SubscriptionResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\a\n" +
-	"\x05Empty2\xe0\b\n" +
+	"\x05Empty2\xe3\b\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
 	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12C\n" +
@@ -1212,8 +1212,8 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\rExecuteAction\x12\x1c.object.ExecuteActionRequest\x1a\x1d.object.ExecuteActionResponse\x12R\n" +
 	"\x0fTransferObjects\x12\x1e.object.TransferObjectsRequest\x1a\x1f.object.TransferObjectsResponse\x12Q\n" +
 	"\x0eReceiveObjects\x12\x1f.object.TransferObjectsResponse\x1a\x1e.object.ReceiveObjectsResponse\x12H\n" +
-	"\x17SubscribeToUsersObjects\x12\r.object.Empty\x1a\x1c.object.SubscriptionResponse0\x01\x124\n" +
-	"\x11SubscribeToMyself\x12\r.object.Empty\x1a\x0e.object.Object0\x01B \n" +
+	"\x17SubscribeToUsersObjects\x12\r.object.Empty\x1a\x1c.object.SubscriptionResponse0\x01\x127\n" +
+	"\x11SubscribeToMyself\x12\x0e.object.Object\x1a\x0e.object.Object(\x010\x01B \n" +
 	"\x03objB\x03ObjP\x01Z\fobject/proto\xa2\x02\x03OBJb\x06proto3"
 
 var (
@@ -1292,7 +1292,7 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	16, // 28: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
 	17, // 29: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
 	20, // 30: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
-	20, // 31: object.ObjectService.SubscribeToMyself:input_type -> object.Empty
+	0,  // 31: object.ObjectService.SubscribeToMyself:input_type -> object.Object
 	1,  // 32: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
 	1,  // 33: object.ObjectService.GetObject:output_type -> object.ObjectResponse
 	1,  // 34: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
