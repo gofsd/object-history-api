@@ -718,6 +718,74 @@ func (x *ListObjectsRequest) GetFields() map[string]string {
 	return nil
 }
 
+type ListObjectsExtRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          int32                  `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`
+	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	Fields        map[string]string      `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ObjectType    int32                  `protobuf:"varint,4,opt,name=object_type,json=objectType,proto3" json:"object_type,omitempty"` // Optional filter by object type
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListObjectsExtRequest) Reset() {
+	*x = ListObjectsExtRequest{}
+	mi := &file_proto_object_object_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListObjectsExtRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListObjectsExtRequest) ProtoMessage() {}
+
+func (x *ListObjectsExtRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_object_object_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListObjectsExtRequest.ProtoReflect.Descriptor instead.
+func (*ListObjectsExtRequest) Descriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *ListObjectsExtRequest) GetPage() int32 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *ListObjectsExtRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListObjectsExtRequest) GetFields() map[string]string {
+	if x != nil {
+		return x.Fields
+	}
+	return nil
+}
+
+func (x *ListObjectsExtRequest) GetObjectType() int32 {
+	if x != nil {
+		return x.ObjectType
+	}
+	return 0
+}
+
 type ListObjectsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Objects       []*Object              `protobuf:"bytes,1,rep,name=objects,proto3" json:"objects,omitempty"`
@@ -731,7 +799,7 @@ type ListObjectsResponse struct {
 
 func (x *ListObjectsResponse) Reset() {
 	*x = ListObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[13]
+	mi := &file_proto_object_object_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -743,7 +811,7 @@ func (x *ListObjectsResponse) String() string {
 func (*ListObjectsResponse) ProtoMessage() {}
 
 func (x *ListObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[13]
+	mi := &file_proto_object_object_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -756,7 +824,7 @@ func (x *ListObjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ListObjectsResponse.ProtoReflect.Descriptor instead.
 func (*ListObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{13}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ListObjectsResponse) GetObjects() []*Object {
@@ -805,7 +873,7 @@ type ExecuteActionRequest struct {
 
 func (x *ExecuteActionRequest) Reset() {
 	*x = ExecuteActionRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[14]
+	mi := &file_proto_object_object_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -817,7 +885,7 @@ func (x *ExecuteActionRequest) String() string {
 func (*ExecuteActionRequest) ProtoMessage() {}
 
 func (x *ExecuteActionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[14]
+	mi := &file_proto_object_object_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -830,7 +898,7 @@ func (x *ExecuteActionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteActionRequest.ProtoReflect.Descriptor instead.
 func (*ExecuteActionRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{14}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *ExecuteActionRequest) GetActionId() uint64 {
@@ -856,7 +924,7 @@ type ExecuteActionResponse struct {
 
 func (x *ExecuteActionResponse) Reset() {
 	*x = ExecuteActionResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[15]
+	mi := &file_proto_object_object_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -868,7 +936,7 @@ func (x *ExecuteActionResponse) String() string {
 func (*ExecuteActionResponse) ProtoMessage() {}
 
 func (x *ExecuteActionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[15]
+	mi := &file_proto_object_object_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -881,7 +949,7 @@ func (x *ExecuteActionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteActionResponse.ProtoReflect.Descriptor instead.
 func (*ExecuteActionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{15}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *ExecuteActionResponse) GetObjects() []*Object {
@@ -900,7 +968,7 @@ type TransferObjectsRequest struct {
 
 func (x *TransferObjectsRequest) Reset() {
 	*x = TransferObjectsRequest{}
-	mi := &file_proto_object_object_proto_msgTypes[16]
+	mi := &file_proto_object_object_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -912,7 +980,7 @@ func (x *TransferObjectsRequest) String() string {
 func (*TransferObjectsRequest) ProtoMessage() {}
 
 func (x *TransferObjectsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[16]
+	mi := &file_proto_object_object_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -925,7 +993,7 @@ func (x *TransferObjectsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferObjectsRequest.ProtoReflect.Descriptor instead.
 func (*TransferObjectsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{16}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *TransferObjectsRequest) GetObject() *Object {
@@ -944,7 +1012,7 @@ type TransferObjectsResponse struct {
 
 func (x *TransferObjectsResponse) Reset() {
 	*x = TransferObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[17]
+	mi := &file_proto_object_object_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -956,7 +1024,7 @@ func (x *TransferObjectsResponse) String() string {
 func (*TransferObjectsResponse) ProtoMessage() {}
 
 func (x *TransferObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[17]
+	mi := &file_proto_object_object_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -969,7 +1037,7 @@ func (x *TransferObjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferObjectsResponse.ProtoReflect.Descriptor instead.
 func (*TransferObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{17}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *TransferObjectsResponse) GetSecretTransferId() uint64 {
@@ -988,7 +1056,7 @@ type ReceiveObjectsResponse struct {
 
 func (x *ReceiveObjectsResponse) Reset() {
 	*x = ReceiveObjectsResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[18]
+	mi := &file_proto_object_object_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1000,7 +1068,7 @@ func (x *ReceiveObjectsResponse) String() string {
 func (*ReceiveObjectsResponse) ProtoMessage() {}
 
 func (x *ReceiveObjectsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[18]
+	mi := &file_proto_object_object_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1013,7 +1081,7 @@ func (x *ReceiveObjectsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReceiveObjectsResponse.ProtoReflect.Descriptor instead.
 func (*ReceiveObjectsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{18}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *ReceiveObjectsResponse) GetObjects() []*Object {
@@ -1032,7 +1100,7 @@ type SubscriptionResponse struct {
 
 func (x *SubscriptionResponse) Reset() {
 	*x = SubscriptionResponse{}
-	mi := &file_proto_object_object_proto_msgTypes[19]
+	mi := &file_proto_object_object_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1044,7 +1112,7 @@ func (x *SubscriptionResponse) String() string {
 func (*SubscriptionResponse) ProtoMessage() {}
 
 func (x *SubscriptionResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[19]
+	mi := &file_proto_object_object_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1057,7 +1125,7 @@ func (x *SubscriptionResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscriptionResponse.ProtoReflect.Descriptor instead.
 func (*SubscriptionResponse) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{19}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *SubscriptionResponse) GetObjects() []*Object {
@@ -1075,7 +1143,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_proto_object_object_proto_msgTypes[20]
+	mi := &file_proto_object_object_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1087,7 +1155,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_object_object_proto_msgTypes[20]
+	mi := &file_proto_object_object_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1100,7 +1168,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_proto_object_object_proto_rawDescGZIP(), []int{20}
+	return file_proto_object_object_proto_rawDescGZIP(), []int{21}
 }
 
 var File_proto_object_object_proto protoreflect.FileDescriptor
@@ -1171,6 +1239,15 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x06fields\x18\x03 \x03(\v2&.object.ListObjectsRequest.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xe7\x01\n" +
+	"\x15ListObjectsExtRequest\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12A\n" +
+	"\x06fields\x18\x03 \x03(\v2).object.ListObjectsExtRequest.FieldsEntryR\x06fields\x12\x1f\n" +
+	"\vobject_type\x18\x04 \x01(\x05R\n" +
+	"objectType\x1a9\n" +
+	"\vFieldsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb2\x01\n" +
 	"\x13ListObjectsResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\x12\x1f\n" +
@@ -1196,7 +1273,7 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"@\n" +
 	"\x14SubscriptionResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\a\n" +
-	"\x05Empty2\xe0\b\n" +
+	"\x05Empty2\xae\t\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
 	"\tGetObject\x12\x18.object.GetObjectRequest\x1a\x16.object.ObjectResponse\x12C\n" +
@@ -1209,6 +1286,7 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x13CreateObjectsUnique\x12\".object.CreateObjectsUniqueRequest\x1a\x17.object.ObjectsResponse\x12R\n" +
 	"\x13UpdateObjectsUnique\x12\".object.UpdateObjectsUniqueRequest\x1a\x17.object.ObjectsResponse\x12F\n" +
 	"\vListObjects\x12\x1a.object.ListObjectsRequest\x1a\x1b.object.ListObjectsResponse\x12L\n" +
+	"\x0eListObjectsExt\x12\x1d.object.ListObjectsExtRequest\x1a\x1b.object.ListObjectsResponse\x12L\n" +
 	"\rExecuteAction\x12\x1c.object.ExecuteActionRequest\x1a\x1d.object.ExecuteActionResponse\x12R\n" +
 	"\x0fTransferObjects\x12\x1e.object.TransferObjectsRequest\x1a\x1f.object.TransferObjectsResponse\x12Q\n" +
 	"\x0eReceiveObjects\x12\x1f.object.TransferObjectsResponse\x1a\x1e.object.ReceiveObjectsResponse\x12H\n" +
@@ -1228,7 +1306,7 @@ func file_proto_object_object_proto_rawDescGZIP() []byte {
 	return file_proto_object_object_proto_rawDescData
 }
 
-var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
+var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 31)
 var file_proto_object_object_proto_goTypes = []any{
 	(*Object)(nil),                     // 0: object.Object
 	(*ObjectResponse)(nil),             // 1: object.ObjectResponse
@@ -1243,76 +1321,81 @@ var file_proto_object_object_proto_goTypes = []any{
 	(*UpdateObjectsRequest)(nil),       // 10: object.UpdateObjectsRequest
 	(*UpdateObjectsUniqueRequest)(nil), // 11: object.UpdateObjectsUniqueRequest
 	(*ListObjectsRequest)(nil),         // 12: object.ListObjectsRequest
-	(*ListObjectsResponse)(nil),        // 13: object.ListObjectsResponse
-	(*ExecuteActionRequest)(nil),       // 14: object.ExecuteActionRequest
-	(*ExecuteActionResponse)(nil),      // 15: object.ExecuteActionResponse
-	(*TransferObjectsRequest)(nil),     // 16: object.TransferObjectsRequest
-	(*TransferObjectsResponse)(nil),    // 17: object.TransferObjectsResponse
-	(*ReceiveObjectsResponse)(nil),     // 18: object.ReceiveObjectsResponse
-	(*SubscriptionResponse)(nil),       // 19: object.SubscriptionResponse
-	(*Empty)(nil),                      // 20: object.Empty
-	nil,                                // 21: object.Object.FieldsEntry
-	nil,                                // 22: object.CreateObjectRequest.FieldsEntry
-	nil,                                // 23: object.UpdateObjectRequest.FieldsEntry
-	nil,                                // 24: object.DeleteObjectsFieldsRequest.FieldsEntry
-	nil,                                // 25: object.CreateObjectsRequest.FieldsEntry
-	nil,                                // 26: object.UpdateObjectsRequest.FieldsEntry
-	nil,                                // 27: object.ListObjectsRequest.FieldsEntry
-	nil,                                // 28: object.ExecuteActionRequest.FieldsEntry
+	(*ListObjectsExtRequest)(nil),      // 13: object.ListObjectsExtRequest
+	(*ListObjectsResponse)(nil),        // 14: object.ListObjectsResponse
+	(*ExecuteActionRequest)(nil),       // 15: object.ExecuteActionRequest
+	(*ExecuteActionResponse)(nil),      // 16: object.ExecuteActionResponse
+	(*TransferObjectsRequest)(nil),     // 17: object.TransferObjectsRequest
+	(*TransferObjectsResponse)(nil),    // 18: object.TransferObjectsResponse
+	(*ReceiveObjectsResponse)(nil),     // 19: object.ReceiveObjectsResponse
+	(*SubscriptionResponse)(nil),       // 20: object.SubscriptionResponse
+	(*Empty)(nil),                      // 21: object.Empty
+	nil,                                // 22: object.Object.FieldsEntry
+	nil,                                // 23: object.CreateObjectRequest.FieldsEntry
+	nil,                                // 24: object.UpdateObjectRequest.FieldsEntry
+	nil,                                // 25: object.DeleteObjectsFieldsRequest.FieldsEntry
+	nil,                                // 26: object.CreateObjectsRequest.FieldsEntry
+	nil,                                // 27: object.UpdateObjectsRequest.FieldsEntry
+	nil,                                // 28: object.ListObjectsRequest.FieldsEntry
+	nil,                                // 29: object.ListObjectsExtRequest.FieldsEntry
+	nil,                                // 30: object.ExecuteActionRequest.FieldsEntry
 }
 var file_proto_object_object_proto_depIdxs = []int32{
-	21, // 0: object.Object.fields:type_name -> object.Object.FieldsEntry
+	22, // 0: object.Object.fields:type_name -> object.Object.FieldsEntry
 	0,  // 1: object.ObjectResponse.object:type_name -> object.Object
 	0,  // 2: object.ObjectsResponse.objects:type_name -> object.Object
-	22, // 3: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
-	23, // 4: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
-	24, // 5: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
-	25, // 6: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
+	23, // 3: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
+	24, // 4: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
+	25, // 5: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
+	26, // 6: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
 	0,  // 7: object.CreateObjectsUniqueRequest.objects:type_name -> object.Object
-	26, // 8: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
+	27, // 8: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
 	0,  // 9: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
-	27, // 10: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
-	0,  // 11: object.ListObjectsResponse.objects:type_name -> object.Object
-	28, // 12: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
-	0,  // 13: object.ExecuteActionResponse.objects:type_name -> object.Object
-	0,  // 14: object.TransferObjectsRequest.object:type_name -> object.Object
-	0,  // 15: object.ReceiveObjectsResponse.objects:type_name -> object.Object
-	0,  // 16: object.SubscriptionResponse.objects:type_name -> object.Object
-	3,  // 17: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
-	4,  // 18: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
-	5,  // 19: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
-	6,  // 20: object.ObjectService.DeleteObjectField:input_type -> object.DeleteObjectsFieldsRequest
-	7,  // 21: object.ObjectService.CreateObjects:input_type -> object.CreateObjectsRequest
-	9,  // 22: object.ObjectService.GetObjects:input_type -> object.GetObjectsRequest
-	10, // 23: object.ObjectService.UpdateObjects:input_type -> object.UpdateObjectsRequest
-	8,  // 24: object.ObjectService.CreateObjectsUnique:input_type -> object.CreateObjectsUniqueRequest
-	11, // 25: object.ObjectService.UpdateObjectsUnique:input_type -> object.UpdateObjectsUniqueRequest
-	12, // 26: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
-	14, // 27: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
-	16, // 28: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
-	17, // 29: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
-	20, // 30: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
-	20, // 31: object.ObjectService.SubscribeToMyself:input_type -> object.Empty
-	1,  // 32: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
-	1,  // 33: object.ObjectService.GetObject:output_type -> object.ObjectResponse
-	1,  // 34: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
-	1,  // 35: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
-	2,  // 36: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
-	2,  // 37: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
-	2,  // 38: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
-	2,  // 39: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
-	2,  // 40: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
-	13, // 41: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
-	15, // 42: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
-	17, // 43: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
-	18, // 44: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
-	19, // 45: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
-	0,  // 46: object.ObjectService.SubscribeToMyself:output_type -> object.Object
-	32, // [32:47] is the sub-list for method output_type
-	17, // [17:32] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	28, // 10: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
+	29, // 11: object.ListObjectsExtRequest.fields:type_name -> object.ListObjectsExtRequest.FieldsEntry
+	0,  // 12: object.ListObjectsResponse.objects:type_name -> object.Object
+	30, // 13: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
+	0,  // 14: object.ExecuteActionResponse.objects:type_name -> object.Object
+	0,  // 15: object.TransferObjectsRequest.object:type_name -> object.Object
+	0,  // 16: object.ReceiveObjectsResponse.objects:type_name -> object.Object
+	0,  // 17: object.SubscriptionResponse.objects:type_name -> object.Object
+	3,  // 18: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
+	4,  // 19: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
+	5,  // 20: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
+	6,  // 21: object.ObjectService.DeleteObjectField:input_type -> object.DeleteObjectsFieldsRequest
+	7,  // 22: object.ObjectService.CreateObjects:input_type -> object.CreateObjectsRequest
+	9,  // 23: object.ObjectService.GetObjects:input_type -> object.GetObjectsRequest
+	10, // 24: object.ObjectService.UpdateObjects:input_type -> object.UpdateObjectsRequest
+	8,  // 25: object.ObjectService.CreateObjectsUnique:input_type -> object.CreateObjectsUniqueRequest
+	11, // 26: object.ObjectService.UpdateObjectsUnique:input_type -> object.UpdateObjectsUniqueRequest
+	12, // 27: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
+	13, // 28: object.ObjectService.ListObjectsExt:input_type -> object.ListObjectsExtRequest
+	15, // 29: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
+	17, // 30: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
+	18, // 31: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
+	21, // 32: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
+	21, // 33: object.ObjectService.SubscribeToMyself:input_type -> object.Empty
+	1,  // 34: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
+	1,  // 35: object.ObjectService.GetObject:output_type -> object.ObjectResponse
+	1,  // 36: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
+	1,  // 37: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
+	2,  // 38: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
+	2,  // 39: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
+	2,  // 40: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
+	2,  // 41: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
+	2,  // 42: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
+	14, // 43: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
+	14, // 44: object.ObjectService.ListObjectsExt:output_type -> object.ListObjectsResponse
+	16, // 45: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
+	18, // 46: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
+	19, // 47: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
+	20, // 48: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
+	0,  // 49: object.ObjectService.SubscribeToMyself:output_type -> object.Object
+	34, // [34:50] is the sub-list for method output_type
+	18, // [18:34] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_proto_object_object_proto_init() }
@@ -1326,7 +1409,7 @@ func file_proto_object_object_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_object_object_proto_rawDesc), len(file_proto_object_object_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   29,
+			NumMessages:   31,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -29,6 +29,7 @@ const (
 	ObjectService_CreateObjectsUnique_FullMethodName     = "/object.ObjectService/CreateObjectsUnique"
 	ObjectService_UpdateObjectsUnique_FullMethodName     = "/object.ObjectService/UpdateObjectsUnique"
 	ObjectService_ListObjects_FullMethodName             = "/object.ObjectService/ListObjects"
+	ObjectService_ListObjectsExt_FullMethodName          = "/object.ObjectService/ListObjectsExt"
 	ObjectService_ExecuteAction_FullMethodName           = "/object.ObjectService/ExecuteAction"
 	ObjectService_TransferObjects_FullMethodName         = "/object.ObjectService/TransferObjects"
 	ObjectService_ReceiveObjects_FullMethodName          = "/object.ObjectService/ReceiveObjects"
@@ -55,6 +56,7 @@ type ObjectServiceClient interface {
 	UpdateObjectsUnique(ctx context.Context, in *UpdateObjectsUniqueRequest, opts ...grpc.CallOption) (*ObjectsResponse, error)
 	// List & Pagination
 	ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
+	ListObjectsExt(ctx context.Context, in *ListObjectsExtRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
 	// Action/Transfer
 	ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error)
 	TransferObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*TransferObjectsResponse, error)
@@ -172,6 +174,16 @@ func (c *objectServiceClient) ListObjects(ctx context.Context, in *ListObjectsRe
 	return out, nil
 }
 
+func (c *objectServiceClient) ListObjectsExt(ctx context.Context, in *ListObjectsExtRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_ListObjectsExt_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *objectServiceClient) ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ExecuteActionResponse)
@@ -259,6 +271,7 @@ type ObjectServiceServer interface {
 	UpdateObjectsUnique(context.Context, *UpdateObjectsUniqueRequest) (*ObjectsResponse, error)
 	// List & Pagination
 	ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error)
+	ListObjectsExt(context.Context, *ListObjectsExtRequest) (*ListObjectsResponse, error)
 	// Action/Transfer
 	ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error)
 	TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error)
@@ -305,6 +318,9 @@ func (UnimplementedObjectServiceServer) UpdateObjectsUnique(context.Context, *Up
 }
 func (UnimplementedObjectServiceServer) ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListObjects not implemented")
+}
+func (UnimplementedObjectServiceServer) ListObjectsExt(context.Context, *ListObjectsExtRequest) (*ListObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListObjectsExt not implemented")
 }
 func (UnimplementedObjectServiceServer) ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteAction not implemented")
@@ -522,6 +538,24 @@ func _ObjectService_ListObjects_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ObjectService_ListObjectsExt_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListObjectsExtRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).ListObjectsExt(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_ListObjectsExt_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).ListObjectsExt(ctx, req.(*ListObjectsExtRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ObjectService_ExecuteAction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ExecuteActionRequest)
 	if err := dec(in); err != nil {
@@ -644,6 +678,10 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListObjects",
 			Handler:    _ObjectService_ListObjects_Handler,
+		},
+		{
+			MethodName: "ListObjectsExt",
+			Handler:    _ObjectService_ListObjectsExt_Handler,
 		},
 		{
 			MethodName: "ExecuteAction",
