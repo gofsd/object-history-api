@@ -162,6 +162,21 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int OBJECT_TYPE_FIELD_NUMBER = 4;
+  private int objectType_;
+  /**
+   * <pre>
+   * Optional filter by object type
+   * </pre>
+   *
+   * <code>int32 object_type = 4;</code>
+   * @return The objectType.
+   */
+  @java.lang.Override
+  public int getObjectType() {
+    return objectType_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -188,6 +203,9 @@ private static final long serialVersionUID = 0L;
         internalGetFields(),
         FieldsDefaultEntryHolder.defaultEntry,
         3);
+    if (objectType_ != 0) {
+      output.writeInt32(4, objectType_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -215,6 +233,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, fields__);
     }
+    if (objectType_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, objectType_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -236,6 +258,8 @@ private static final long serialVersionUID = 0L;
         != other.getPageSize()) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
+    if (getObjectType()
+        != other.getObjectType()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -255,6 +279,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
     }
+    hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getObjectType();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -414,6 +440,8 @@ private static final long serialVersionUID = 0L;
       pageSize_ = 0;
 
       internalGetMutableFields().clear();
+      objectType_ = 0;
+
       return this;
     }
 
@@ -445,6 +473,7 @@ private static final long serialVersionUID = 0L;
       result.pageSize_ = pageSize_;
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
+      result.objectType_ = objectType_;
       onBuilt();
       return result;
     }
@@ -501,6 +530,9 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
+      if (other.getObjectType() != 0) {
+        setObjectType(other.getObjectType());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -545,6 +577,11 @@ private static final long serialVersionUID = 0L;
                   fields__.getKey(), fields__.getValue());
               break;
             } // case 26
+            case 32: {
+              objectType_ = input.readInt32();
+
+              break;
+            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -752,6 +789,49 @@ private static final long serialVersionUID = 0L;
         java.util.Map<java.lang.String, java.lang.String> values) {
       internalGetMutableFields().getMutableMap()
           .putAll(values);
+      return this;
+    }
+
+    private int objectType_ ;
+    /**
+     * <pre>
+     * Optional filter by object type
+     * </pre>
+     *
+     * <code>int32 object_type = 4;</code>
+     * @return The objectType.
+     */
+    @java.lang.Override
+    public int getObjectType() {
+      return objectType_;
+    }
+    /**
+     * <pre>
+     * Optional filter by object type
+     * </pre>
+     *
+     * <code>int32 object_type = 4;</code>
+     * @param value The objectType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setObjectType(int value) {
+      
+      objectType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Optional filter by object type
+     * </pre>
+     *
+     * <code>int32 object_type = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearObjectType() {
+      
+      objectType_ = 0;
+      onChanged();
       return this;
     }
     @java.lang.Override

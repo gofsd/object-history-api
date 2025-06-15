@@ -328,37 +328,6 @@ public final class ObjectServiceGrpc {
     return getListObjectsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.ListObjectsExtRequest,
-      obj.ListObjectsResponse> getListObjectsExtMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ListObjectsExt",
-      requestType = obj.ListObjectsExtRequest.class,
-      responseType = obj.ListObjectsResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<obj.ListObjectsExtRequest,
-      obj.ListObjectsResponse> getListObjectsExtMethod() {
-    io.grpc.MethodDescriptor<obj.ListObjectsExtRequest, obj.ListObjectsResponse> getListObjectsExtMethod;
-    if ((getListObjectsExtMethod = ObjectServiceGrpc.getListObjectsExtMethod) == null) {
-      synchronized (ObjectServiceGrpc.class) {
-        if ((getListObjectsExtMethod = ObjectServiceGrpc.getListObjectsExtMethod) == null) {
-          ObjectServiceGrpc.getListObjectsExtMethod = getListObjectsExtMethod =
-              io.grpc.MethodDescriptor.<obj.ListObjectsExtRequest, obj.ListObjectsResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListObjectsExt"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ListObjectsExtRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ListObjectsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("ListObjectsExt"))
-              .build();
-        }
-      }
-    }
-    return getListObjectsExtMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<obj.ExecuteActionRequest,
       obj.ExecuteActionResponse> getExecuteActionMethod;
 
@@ -660,13 +629,6 @@ public final class ObjectServiceGrpc {
     }
 
     /**
-     */
-    default void listObjectsExt(obj.ListObjectsExtRequest request,
-        io.grpc.stub.StreamObserver<obj.ListObjectsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListObjectsExtMethod(), responseObserver);
-    }
-
-    /**
      * <pre>
      * Action/Transfer
      * </pre>
@@ -831,14 +793,6 @@ public final class ObjectServiceGrpc {
     }
 
     /**
-     */
-    public void listObjectsExt(obj.ListObjectsExtRequest request,
-        io.grpc.stub.StreamObserver<obj.ListObjectsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getListObjectsExtMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
      * <pre>
      * Action/Transfer
      * </pre>
@@ -984,13 +938,6 @@ public final class ObjectServiceGrpc {
     }
 
     /**
-     */
-    public obj.ListObjectsResponse listObjectsExt(obj.ListObjectsExtRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getListObjectsExtMethod(), getCallOptions(), request);
-    }
-
-    /**
      * <pre>
      * Action/Transfer
      * </pre>
@@ -1132,13 +1079,6 @@ public final class ObjectServiceGrpc {
     public obj.ListObjectsResponse listObjects(obj.ListObjectsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListObjectsMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public obj.ListObjectsResponse listObjectsExt(obj.ListObjectsExtRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getListObjectsExtMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1294,14 +1234,6 @@ public final class ObjectServiceGrpc {
     }
 
     /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<obj.ListObjectsResponse> listObjectsExt(
-        obj.ListObjectsExtRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getListObjectsExtMethod(), getCallOptions()), request);
-    }
-
-    /**
      * <pre>
      * Action/Transfer
      * </pre>
@@ -1339,12 +1271,11 @@ public final class ObjectServiceGrpc {
   private static final int METHODID_CREATE_OBJECTS_UNIQUE = 7;
   private static final int METHODID_UPDATE_OBJECTS_UNIQUE = 8;
   private static final int METHODID_LIST_OBJECTS = 9;
-  private static final int METHODID_LIST_OBJECTS_EXT = 10;
-  private static final int METHODID_EXECUTE_ACTION = 11;
-  private static final int METHODID_TRANSFER_OBJECTS = 12;
-  private static final int METHODID_RECEIVE_OBJECTS = 13;
-  private static final int METHODID_SUBSCRIBE_TO_USERS_OBJECTS = 14;
-  private static final int METHODID_SUBSCRIBE_TO_MYSELF = 15;
+  private static final int METHODID_EXECUTE_ACTION = 10;
+  private static final int METHODID_TRANSFER_OBJECTS = 11;
+  private static final int METHODID_RECEIVE_OBJECTS = 12;
+  private static final int METHODID_SUBSCRIBE_TO_USERS_OBJECTS = 13;
+  private static final int METHODID_SUBSCRIBE_TO_MYSELF = 14;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1401,10 +1332,6 @@ public final class ObjectServiceGrpc {
           break;
         case METHODID_LIST_OBJECTS:
           serviceImpl.listObjects((obj.ListObjectsRequest) request,
-              (io.grpc.stub.StreamObserver<obj.ListObjectsResponse>) responseObserver);
-          break;
-        case METHODID_LIST_OBJECTS_EXT:
-          serviceImpl.listObjectsExt((obj.ListObjectsExtRequest) request,
               (io.grpc.stub.StreamObserver<obj.ListObjectsResponse>) responseObserver);
           break;
         case METHODID_EXECUTE_ACTION:
@@ -1516,13 +1443,6 @@ public final class ObjectServiceGrpc {
               obj.ListObjectsResponse>(
                 service, METHODID_LIST_OBJECTS)))
         .addMethod(
-          getListObjectsExtMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              obj.ListObjectsExtRequest,
-              obj.ListObjectsResponse>(
-                service, METHODID_LIST_OBJECTS_EXT)))
-        .addMethod(
           getExecuteActionMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -1615,7 +1535,6 @@ public final class ObjectServiceGrpc {
               .addMethod(getCreateObjectsUniqueMethod())
               .addMethod(getUpdateObjectsUniqueMethod())
               .addMethod(getListObjectsMethod())
-              .addMethod(getListObjectsExtMethod())
               .addMethod(getExecuteActionMethod())
               .addMethod(getTransferObjectsMethod())
               .addMethod(getReceiveObjectsMethod())

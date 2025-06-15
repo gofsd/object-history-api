@@ -52,4 +52,14 @@ public interface ListObjectsRequestOrBuilder extends
 
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
+
+  /**
+   * <pre>
+   * Optional filter by object type
+   * </pre>
+   *
+   * <code>int32 object_type = 4;</code>
+   * @return The objectType.
+   */
+  int getObjectType();
 }

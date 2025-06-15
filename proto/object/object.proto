@@ -78,13 +78,6 @@ message ListObjectsRequest {
   int32 page = 1;
   int32 page_size = 2;
   map<string, string> fields = 3;
-}
-
-
-message ListObjectsExtRequest {
-  int32 page = 1;
-  int32 page_size = 2;
-  map<string, string> fields = 3;
   int32 object_type = 4; // Optional filter by object type
 }
 
@@ -143,7 +136,6 @@ service ObjectService {
 
   // List & Pagination
   rpc ListObjects(ListObjectsRequest) returns (ListObjectsResponse);
-  rpc ListObjectsExt(ListObjectsExtRequest) returns (ListObjectsResponse);
 
 
   // Action/Transfer
