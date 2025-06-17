@@ -21,7 +21,6 @@ private static final long serialVersionUID = 0L;
   }
   private CommandLog() {
     output_ = "";
-    status_ = 0;
     resultCode_ = "";
   }
 
@@ -42,18 +41,6 @@ private static final long serialVersionUID = 0L;
     return cmd.Cmd.internal_static_cmd_CommandLog_descriptor;
   }
 
-  @SuppressWarnings({"rawtypes"})
-  @java.lang.Override
-  protected com.google.protobuf.MapField internalGetMapField(
-      int number) {
-    switch (number) {
-      case 6:
-        return internalGetEffectiveParameters();
-      default:
-        throw new RuntimeException(
-            "Invalid map field number: " + number);
-    }
-  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -73,21 +60,10 @@ private static final long serialVersionUID = 0L;
     return executionId_;
   }
 
-  public static final int COMMAND_ID_FIELD_NUMBER = 2;
-  private long commandId_;
-  /**
-   * <code>uint64 command_id = 2;</code>
-   * @return The commandId.
-   */
-  @java.lang.Override
-  public long getCommandId() {
-    return commandId_;
-  }
-
-  public static final int OUTPUT_FIELD_NUMBER = 3;
+  public static final int OUTPUT_FIELD_NUMBER = 2;
   private volatile java.lang.Object output_;
   /**
-   * <code>string output = 3;</code>
+   * <code>string output = 2;</code>
    * @return The output.
    */
   @java.lang.Override
@@ -104,7 +80,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string output = 3;</code>
+   * <code>string output = 2;</code>
    * @return The bytes for output.
    */
   @java.lang.Override
@@ -122,29 +98,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int STATUS_FIELD_NUMBER = 4;
-  private int status_;
-  /**
-   * <code>.cmd.ExecutionStatus status = 4;</code>
-   * @return The enum numeric value on the wire for status.
-   */
-  @java.lang.Override public int getStatusValue() {
-    return status_;
-  }
-  /**
-   * <code>.cmd.ExecutionStatus status = 4;</code>
-   * @return The status.
-   */
-  @java.lang.Override public cmd.ExecutionStatus getStatus() {
-    @SuppressWarnings("deprecation")
-    cmd.ExecutionStatus result = cmd.ExecutionStatus.valueOf(status_);
-    return result == null ? cmd.ExecutionStatus.UNRECOGNIZED : result;
-  }
-
-  public static final int TIMESTAMP_FIELD_NUMBER = 5;
+  public static final int TIMESTAMP_FIELD_NUMBER = 3;
   private long timestamp_;
   /**
-   * <code>uint64 timestamp = 5;</code>
+   * <code>uint64 timestamp = 3;</code>
    * @return The timestamp.
    */
   @java.lang.Override
@@ -152,91 +109,10 @@ private static final long serialVersionUID = 0L;
     return timestamp_;
   }
 
-  public static final int EFFECTIVE_PARAMETERS_FIELD_NUMBER = 6;
-  private static final class EffectiveParametersDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<
-        java.lang.String, java.lang.String> defaultEntry =
-            com.google.protobuf.MapEntry
-            .<java.lang.String, java.lang.String>newDefaultInstance(
-                cmd.Cmd.internal_static_cmd_CommandLog_EffectiveParametersEntry_descriptor, 
-                com.google.protobuf.WireFormat.FieldType.STRING,
-                "",
-                com.google.protobuf.WireFormat.FieldType.STRING,
-                "");
-  }
-  private com.google.protobuf.MapField<
-      java.lang.String, java.lang.String> effectiveParameters_;
-  private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-  internalGetEffectiveParameters() {
-    if (effectiveParameters_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          EffectiveParametersDefaultEntryHolder.defaultEntry);
-    }
-    return effectiveParameters_;
-  }
-
-  public int getEffectiveParametersCount() {
-    return internalGetEffectiveParameters().getMap().size();
-  }
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-
-  @java.lang.Override
-  public boolean containsEffectiveParameters(
-      java.lang.String key) {
-    if (key == null) { throw new NullPointerException("map key"); }
-    return internalGetEffectiveParameters().getMap().containsKey(key);
-  }
-  /**
-   * Use {@link #getEffectiveParametersMap()} instead.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.Map<java.lang.String, java.lang.String> getEffectiveParameters() {
-    return getEffectiveParametersMap();
-  }
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-  @java.lang.Override
-
-  public java.util.Map<java.lang.String, java.lang.String> getEffectiveParametersMap() {
-    return internalGetEffectiveParameters().getMap();
-  }
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-  @java.lang.Override
-
-  public java.lang.String getEffectiveParametersOrDefault(
-      java.lang.String key,
-      java.lang.String defaultValue) {
-    if (key == null) { throw new NullPointerException("map key"); }
-    java.util.Map<java.lang.String, java.lang.String> map =
-        internalGetEffectiveParameters().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-  @java.lang.Override
-
-  public java.lang.String getEffectiveParametersOrThrow(
-      java.lang.String key) {
-    if (key == null) { throw new NullPointerException("map key"); }
-    java.util.Map<java.lang.String, java.lang.String> map =
-        internalGetEffectiveParameters().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
-    }
-    return map.get(key);
-  }
-
-  public static final int RESULT_CODE_FIELD_NUMBER = 7;
+  public static final int RESULT_CODE_FIELD_NUMBER = 4;
   private volatile java.lang.Object resultCode_;
   /**
-   * <code>string result_code = 7;</code>
+   * <code>string result_code = 4;</code>
    * @return The resultCode.
    */
   @java.lang.Override
@@ -253,7 +129,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string result_code = 7;</code>
+   * <code>string result_code = 4;</code>
    * @return The bytes for resultCode.
    */
   @java.lang.Override
@@ -288,26 +164,14 @@ private static final long serialVersionUID = 0L;
     if (executionId_ != 0L) {
       output.writeUInt64(1, executionId_);
     }
-    if (commandId_ != 0L) {
-      output.writeUInt64(2, commandId_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(output_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, output_);
-    }
-    if (status_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
-      output.writeEnum(4, status_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, output_);
     }
     if (timestamp_ != 0L) {
-      output.writeUInt64(5, timestamp_);
+      output.writeUInt64(3, timestamp_);
     }
-    com.google.protobuf.GeneratedMessageV3
-      .serializeStringMapTo(
-        output,
-        internalGetEffectiveParameters(),
-        EffectiveParametersDefaultEntryHolder.defaultEntry,
-        6);
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, resultCode_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, resultCode_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -322,33 +186,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, executionId_);
     }
-    if (commandId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, commandId_);
-    }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(output_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, output_);
-    }
-    if (status_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(4, status_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, output_);
     }
     if (timestamp_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(5, timestamp_);
-    }
-    for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
-         : internalGetEffectiveParameters().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
-      effectiveParameters__ = EffectiveParametersDefaultEntryHolder.defaultEntry.newBuilderForType()
-          .setKey(entry.getKey())
-          .setValue(entry.getValue())
-          .build();
-      size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, effectiveParameters__);
+        .computeUInt64Size(3, timestamp_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, resultCode_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, resultCode_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -367,15 +213,10 @@ private static final long serialVersionUID = 0L;
 
     if (getExecutionId()
         != other.getExecutionId()) return false;
-    if (getCommandId()
-        != other.getCommandId()) return false;
     if (!getOutput()
         .equals(other.getOutput())) return false;
-    if (status_ != other.status_) return false;
     if (getTimestamp()
         != other.getTimestamp()) return false;
-    if (!internalGetEffectiveParameters().equals(
-        other.internalGetEffectiveParameters())) return false;
     if (!getResultCode()
         .equals(other.getResultCode())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -392,20 +233,11 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + EXECUTION_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getExecutionId());
-    hash = (37 * hash) + COMMAND_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCommandId());
     hash = (37 * hash) + OUTPUT_FIELD_NUMBER;
     hash = (53 * hash) + getOutput().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + status_;
     hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTimestamp());
-    if (!internalGetEffectiveParameters().getMap().isEmpty()) {
-      hash = (37 * hash) + EFFECTIVE_PARAMETERS_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetEffectiveParameters().hashCode();
-    }
     hash = (37 * hash) + RESULT_CODE_FIELD_NUMBER;
     hash = (53 * hash) + getResultCode().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
@@ -519,28 +351,6 @@ private static final long serialVersionUID = 0L;
       return cmd.Cmd.internal_static_cmd_CommandLog_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMapField(
-        int number) {
-      switch (number) {
-        case 6:
-          return internalGetEffectiveParameters();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapField internalGetMutableMapField(
-        int number) {
-      switch (number) {
-        case 6:
-          return internalGetMutableEffectiveParameters();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -564,15 +374,10 @@ private static final long serialVersionUID = 0L;
       super.clear();
       executionId_ = 0L;
 
-      commandId_ = 0L;
-
       output_ = "";
-
-      status_ = 0;
 
       timestamp_ = 0L;
 
-      internalGetMutableEffectiveParameters().clear();
       resultCode_ = "";
 
       return this;
@@ -601,14 +406,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cmd.CommandLog buildPartial() {
       cmd.CommandLog result = new cmd.CommandLog(this);
-      int from_bitField0_ = bitField0_;
       result.executionId_ = executionId_;
-      result.commandId_ = commandId_;
       result.output_ = output_;
-      result.status_ = status_;
       result.timestamp_ = timestamp_;
-      result.effectiveParameters_ = internalGetEffectiveParameters();
-      result.effectiveParameters_.makeImmutable();
       result.resultCode_ = resultCode_;
       onBuilt();
       return result;
@@ -661,21 +461,13 @@ private static final long serialVersionUID = 0L;
       if (other.getExecutionId() != 0L) {
         setExecutionId(other.getExecutionId());
       }
-      if (other.getCommandId() != 0L) {
-        setCommandId(other.getCommandId());
-      }
       if (!other.getOutput().isEmpty()) {
         output_ = other.output_;
         onChanged();
       }
-      if (other.status_ != 0) {
-        setStatusValue(other.getStatusValue());
-      }
       if (other.getTimestamp() != 0L) {
         setTimestamp(other.getTimestamp());
       }
-      internalGetMutableEffectiveParameters().mergeFrom(
-          other.internalGetEffectiveParameters());
       if (!other.getResultCode().isEmpty()) {
         resultCode_ = other.resultCode_;
         onChanged();
@@ -711,39 +503,21 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 8
-            case 16: {
-              commandId_ = input.readUInt64();
-
-              break;
-            } // case 16
-            case 26: {
+            case 18: {
               output_ = input.readStringRequireUtf8();
 
               break;
-            } // case 26
-            case 32: {
-              status_ = input.readEnum();
-
-              break;
-            } // case 32
-            case 40: {
+            } // case 18
+            case 24: {
               timestamp_ = input.readUInt64();
 
               break;
-            } // case 40
-            case 50: {
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
-              effectiveParameters__ = input.readMessage(
-                  EffectiveParametersDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              internalGetMutableEffectiveParameters().getMutableMap().put(
-                  effectiveParameters__.getKey(), effectiveParameters__.getValue());
-              break;
-            } // case 50
-            case 58: {
+            } // case 24
+            case 34: {
               resultCode_ = input.readStringRequireUtf8();
 
               break;
-            } // case 58
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -759,7 +533,6 @@ private static final long serialVersionUID = 0L;
       } // finally
       return this;
     }
-    private int bitField0_;
 
     private long executionId_ ;
     /**
@@ -792,40 +565,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long commandId_ ;
-    /**
-     * <code>uint64 command_id = 2;</code>
-     * @return The commandId.
-     */
-    @java.lang.Override
-    public long getCommandId() {
-      return commandId_;
-    }
-    /**
-     * <code>uint64 command_id = 2;</code>
-     * @param value The commandId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCommandId(long value) {
-      
-      commandId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 command_id = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCommandId() {
-      
-      commandId_ = 0L;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object output_ = "";
     /**
-     * <code>string output = 3;</code>
+     * <code>string output = 2;</code>
      * @return The output.
      */
     public java.lang.String getOutput() {
@@ -841,7 +583,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string output = 3;</code>
+     * <code>string output = 2;</code>
      * @return The bytes for output.
      */
     public com.google.protobuf.ByteString
@@ -858,7 +600,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string output = 3;</code>
+     * <code>string output = 2;</code>
      * @param value The output to set.
      * @return This builder for chaining.
      */
@@ -873,7 +615,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string output = 3;</code>
+     * <code>string output = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearOutput() {
@@ -883,7 +625,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string output = 3;</code>
+     * <code>string output = 2;</code>
      * @param value The bytes for output to set.
      * @return This builder for chaining.
      */
@@ -899,63 +641,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int status_ = 0;
-    /**
-     * <code>.cmd.ExecutionStatus status = 4;</code>
-     * @return The enum numeric value on the wire for status.
-     */
-    @java.lang.Override public int getStatusValue() {
-      return status_;
-    }
-    /**
-     * <code>.cmd.ExecutionStatus status = 4;</code>
-     * @param value The enum numeric value on the wire for status to set.
-     * @return This builder for chaining.
-     */
-    public Builder setStatusValue(int value) {
-      
-      status_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.cmd.ExecutionStatus status = 4;</code>
-     * @return The status.
-     */
-    @java.lang.Override
-    public cmd.ExecutionStatus getStatus() {
-      @SuppressWarnings("deprecation")
-      cmd.ExecutionStatus result = cmd.ExecutionStatus.valueOf(status_);
-      return result == null ? cmd.ExecutionStatus.UNRECOGNIZED : result;
-    }
-    /**
-     * <code>.cmd.ExecutionStatus status = 4;</code>
-     * @param value The status to set.
-     * @return This builder for chaining.
-     */
-    public Builder setStatus(cmd.ExecutionStatus value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
-      status_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.cmd.ExecutionStatus status = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearStatus() {
-      
-      status_ = 0;
-      onChanged();
-      return this;
-    }
-
     private long timestamp_ ;
     /**
-     * <code>uint64 timestamp = 5;</code>
+     * <code>uint64 timestamp = 3;</code>
      * @return The timestamp.
      */
     @java.lang.Override
@@ -963,7 +651,7 @@ private static final long serialVersionUID = 0L;
       return timestamp_;
     }
     /**
-     * <code>uint64 timestamp = 5;</code>
+     * <code>uint64 timestamp = 3;</code>
      * @param value The timestamp to set.
      * @return This builder for chaining.
      */
@@ -974,7 +662,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 timestamp = 5;</code>
+     * <code>uint64 timestamp = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearTimestamp() {
@@ -984,140 +672,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.google.protobuf.MapField<
-        java.lang.String, java.lang.String> effectiveParameters_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-    internalGetEffectiveParameters() {
-      if (effectiveParameters_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            EffectiveParametersDefaultEntryHolder.defaultEntry);
-      }
-      return effectiveParameters_;
-    }
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-    internalGetMutableEffectiveParameters() {
-      onChanged();;
-      if (effectiveParameters_ == null) {
-        effectiveParameters_ = com.google.protobuf.MapField.newMapField(
-            EffectiveParametersDefaultEntryHolder.defaultEntry);
-      }
-      if (!effectiveParameters_.isMutable()) {
-        effectiveParameters_ = effectiveParameters_.copy();
-      }
-      return effectiveParameters_;
-    }
-
-    public int getEffectiveParametersCount() {
-      return internalGetEffectiveParameters().getMap().size();
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-
-    @java.lang.Override
-    public boolean containsEffectiveParameters(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      return internalGetEffectiveParameters().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getEffectiveParametersMap()} instead.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String> getEffectiveParameters() {
-      return getEffectiveParametersMap();
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-    @java.lang.Override
-
-    public java.util.Map<java.lang.String, java.lang.String> getEffectiveParametersMap() {
-      return internalGetEffectiveParameters().getMap();
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-    @java.lang.Override
-
-    public java.lang.String getEffectiveParametersOrDefault(
-        java.lang.String key,
-        java.lang.String defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.String> map =
-          internalGetEffectiveParameters().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-    @java.lang.Override
-
-    public java.lang.String getEffectiveParametersOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.String> map =
-          internalGetEffectiveParameters().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-
-    public Builder clearEffectiveParameters() {
-      internalGetMutableEffectiveParameters().getMutableMap()
-          .clear();
-      return this;
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-
-    public Builder removeEffectiveParameters(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      internalGetMutableEffectiveParameters().getMutableMap()
-          .remove(key);
-      return this;
-    }
-    /**
-     * Use alternate mutation accessors instead.
-     */
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String>
-    getMutableEffectiveParameters() {
-      return internalGetMutableEffectiveParameters().getMutableMap();
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-    public Builder putEffectiveParameters(
-        java.lang.String key,
-        java.lang.String value) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) {
-  throw new NullPointerException("map value");
-}
-
-      internalGetMutableEffectiveParameters().getMutableMap()
-          .put(key, value);
-      return this;
-    }
-    /**
-     * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-     */
-
-    public Builder putAllEffectiveParameters(
-        java.util.Map<java.lang.String, java.lang.String> values) {
-      internalGetMutableEffectiveParameters().getMutableMap()
-          .putAll(values);
-      return this;
-    }
-
     private java.lang.Object resultCode_ = "";
     /**
-     * <code>string result_code = 7;</code>
+     * <code>string result_code = 4;</code>
      * @return The resultCode.
      */
     public java.lang.String getResultCode() {
@@ -1133,7 +690,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string result_code = 7;</code>
+     * <code>string result_code = 4;</code>
      * @return The bytes for resultCode.
      */
     public com.google.protobuf.ByteString
@@ -1150,7 +707,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string result_code = 7;</code>
+     * <code>string result_code = 4;</code>
      * @param value The resultCode to set.
      * @return This builder for chaining.
      */
@@ -1165,7 +722,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string result_code = 7;</code>
+     * <code>string result_code = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearResultCode() {
@@ -1175,7 +732,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string result_code = 7;</code>
+     * <code>string result_code = 4;</code>
      * @param value The bytes for resultCode to set.
      * @return This builder for chaining.
      */

@@ -36,7 +36,6 @@ const (
 	CommandService_DryRun_FullMethodName                 = "/cmd.CommandService/DryRun"
 	CommandService_UpdateExecutionStatus_FullMethodName  = "/cmd.CommandService/UpdateExecutionStatus"
 	CommandService_SubscribeLogs_FullMethodName          = "/cmd.CommandService/SubscribeLogs"
-	CommandService_ListCommandEvents_FullMethodName      = "/cmd.CommandService/ListCommandEvents"
 	CommandService_SubscribeCommandEvents_FullMethodName = "/cmd.CommandService/SubscribeCommandEvents"
 	CommandService_AddMutualContact_FullMethodName       = "/cmd.CommandService/AddMutualContact"
 	CommandService_RemoveMutualContact_FullMethodName    = "/cmd.CommandService/RemoveMutualContact"
@@ -71,10 +70,8 @@ type CommandServiceClient interface {
 	UpdateExecutionStatus(ctx context.Context, in *UpdateExecutionStatusRequest, opts ...grpc.CallOption) (*UpdateExecutionStatusResponse, error)
 	// Streaming logs
 	SubscribeLogs(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandLog], error)
-	// List command events
-	ListCommandEvents(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error)
 	// Event listener for executors
-	SubscribeCommandEvents(ctx context.Context, in *SubscribeCommandEventsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error)
+	SubscribeCommandEvents(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[CommandLog, CommandEvent], error)
 	// Add a contact for a user.
 	AddMutualContact(ctx context.Context, in *Contact, opts ...grpc.CallOption) (*Contact, error)
 	RemoveMutualContact(ctx context.Context, in *Contact, opts ...grpc.CallOption) (*Contact, error)
@@ -277,43 +274,18 @@ func (c *commandServiceClient) SubscribeLogs(ctx context.Context, in *SubscribeR
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type CommandService_SubscribeLogsClient = grpc.ServerStreamingClient[CommandLog]
 
-func (c *commandServiceClient) ListCommandEvents(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error) {
+func (c *commandServiceClient) SubscribeCommandEvents(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[CommandLog, CommandEvent], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[2], CommandService_ListCommandEvents_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[2], CommandService_SubscribeCommandEvents_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &grpc.GenericClientStream[Empty, CommandEvent]{ClientStream: stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
+	x := &grpc.GenericClientStream[CommandLog, CommandEvent]{ClientStream: stream}
 	return x, nil
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CommandService_ListCommandEventsClient = grpc.ServerStreamingClient[CommandEvent]
-
-func (c *commandServiceClient) SubscribeCommandEvents(ctx context.Context, in *SubscribeCommandEventsRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandEvent], error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[3], CommandService_SubscribeCommandEvents_FullMethodName, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &grpc.GenericClientStream[SubscribeCommandEventsRequest, CommandEvent]{ClientStream: stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CommandService_SubscribeCommandEventsClient = grpc.ServerStreamingClient[CommandEvent]
+type CommandService_SubscribeCommandEventsClient = grpc.BidiStreamingClient[CommandLog, CommandEvent]
 
 func (c *commandServiceClient) AddMutualContact(ctx context.Context, in *Contact, opts ...grpc.CallOption) (*Contact, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
@@ -373,10 +345,8 @@ type CommandServiceServer interface {
 	UpdateExecutionStatus(context.Context, *UpdateExecutionStatusRequest) (*UpdateExecutionStatusResponse, error)
 	// Streaming logs
 	SubscribeLogs(*SubscribeRequest, grpc.ServerStreamingServer[CommandLog]) error
-	// List command events
-	ListCommandEvents(*Empty, grpc.ServerStreamingServer[CommandEvent]) error
 	// Event listener for executors
-	SubscribeCommandEvents(*SubscribeCommandEventsRequest, grpc.ServerStreamingServer[CommandEvent]) error
+	SubscribeCommandEvents(grpc.BidiStreamingServer[CommandLog, CommandEvent]) error
 	// Add a contact for a user.
 	AddMutualContact(context.Context, *Contact) (*Contact, error)
 	RemoveMutualContact(context.Context, *Contact) (*Contact, error)
@@ -442,10 +412,7 @@ func (UnimplementedCommandServiceServer) UpdateExecutionStatus(context.Context, 
 func (UnimplementedCommandServiceServer) SubscribeLogs(*SubscribeRequest, grpc.ServerStreamingServer[CommandLog]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeLogs not implemented")
 }
-func (UnimplementedCommandServiceServer) ListCommandEvents(*Empty, grpc.ServerStreamingServer[CommandEvent]) error {
-	return status.Errorf(codes.Unimplemented, "method ListCommandEvents not implemented")
-}
-func (UnimplementedCommandServiceServer) SubscribeCommandEvents(*SubscribeCommandEventsRequest, grpc.ServerStreamingServer[CommandEvent]) error {
+func (UnimplementedCommandServiceServer) SubscribeCommandEvents(grpc.BidiStreamingServer[CommandLog, CommandEvent]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeCommandEvents not implemented")
 }
 func (UnimplementedCommandServiceServer) AddMutualContact(context.Context, *Contact) (*Contact, error) {
@@ -770,27 +737,12 @@ func _CommandService_SubscribeLogs_Handler(srv interface{}, stream grpc.ServerSt
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type CommandService_SubscribeLogsServer = grpc.ServerStreamingServer[CommandLog]
 
-func _CommandService_ListCommandEvents_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CommandServiceServer).ListCommandEvents(m, &grpc.GenericServerStream[Empty, CommandEvent]{ServerStream: stream})
-}
-
-// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CommandService_ListCommandEventsServer = grpc.ServerStreamingServer[CommandEvent]
-
 func _CommandService_SubscribeCommandEvents_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SubscribeCommandEventsRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CommandServiceServer).SubscribeCommandEvents(m, &grpc.GenericServerStream[SubscribeCommandEventsRequest, CommandEvent]{ServerStream: stream})
+	return srv.(CommandServiceServer).SubscribeCommandEvents(&grpc.GenericServerStream[CommandLog, CommandEvent]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CommandService_SubscribeCommandEventsServer = grpc.ServerStreamingServer[CommandEvent]
+type CommandService_SubscribeCommandEventsServer = grpc.BidiStreamingServer[CommandLog, CommandEvent]
 
 func _CommandService_AddMutualContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Contact)
@@ -938,14 +890,10 @@ var CommandService_ServiceDesc = grpc.ServiceDesc{
 			ServerStreams: true,
 		},
 		{
-			StreamName:    "ListCommandEvents",
-			Handler:       _CommandService_ListCommandEvents_Handler,
-			ServerStreams: true,
-		},
-		{
 			StreamName:    "SubscribeCommandEvents",
 			Handler:       _CommandService_SubscribeCommandEvents_Handler,
 			ServerStreams: true,
+			ClientStreams: true,
 		},
 	},
 	Metadata: "proto/cmd/cmd.proto",

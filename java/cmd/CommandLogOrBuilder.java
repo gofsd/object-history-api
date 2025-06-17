@@ -14,81 +14,30 @@ public interface CommandLogOrBuilder extends
   long getExecutionId();
 
   /**
-   * <code>uint64 command_id = 2;</code>
-   * @return The commandId.
-   */
-  long getCommandId();
-
-  /**
-   * <code>string output = 3;</code>
+   * <code>string output = 2;</code>
    * @return The output.
    */
   java.lang.String getOutput();
   /**
-   * <code>string output = 3;</code>
+   * <code>string output = 2;</code>
    * @return The bytes for output.
    */
   com.google.protobuf.ByteString
       getOutputBytes();
 
   /**
-   * <code>.cmd.ExecutionStatus status = 4;</code>
-   * @return The enum numeric value on the wire for status.
-   */
-  int getStatusValue();
-  /**
-   * <code>.cmd.ExecutionStatus status = 4;</code>
-   * @return The status.
-   */
-  cmd.ExecutionStatus getStatus();
-
-  /**
-   * <code>uint64 timestamp = 5;</code>
+   * <code>uint64 timestamp = 3;</code>
    * @return The timestamp.
    */
   long getTimestamp();
 
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-  int getEffectiveParametersCount();
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-  boolean containsEffectiveParameters(
-      java.lang.String key);
-  /**
-   * Use {@link #getEffectiveParametersMap()} instead.
-   */
-  @java.lang.Deprecated
-  java.util.Map<java.lang.String, java.lang.String>
-  getEffectiveParameters();
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-  java.util.Map<java.lang.String, java.lang.String>
-  getEffectiveParametersMap();
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-
-  java.lang.String getEffectiveParametersOrDefault(
-      java.lang.String key,
-      java.lang.String defaultValue);
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 6;</code>
-   */
-
-  java.lang.String getEffectiveParametersOrThrow(
-      java.lang.String key);
-
-  /**
-   * <code>string result_code = 7;</code>
+   * <code>string result_code = 4;</code>
    * @return The resultCode.
    */
   java.lang.String getResultCode();
   /**
-   * <code>string result_code = 7;</code>
+   * <code>string result_code = 4;</code>
    * @return The bytes for resultCode.
    */
   com.google.protobuf.ByteString

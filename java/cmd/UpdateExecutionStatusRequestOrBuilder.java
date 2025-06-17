@@ -23,28 +23,4 @@ public interface UpdateExecutionStatusRequestOrBuilder extends
    * @return The status.
    */
   cmd.ExecutionStatus getStatus();
-
-  /**
-   * <code>string result_code = 3;</code>
-   * @return The resultCode.
-   */
-  java.lang.String getResultCode();
-  /**
-   * <code>string result_code = 3;</code>
-   * @return The bytes for resultCode.
-   */
-  com.google.protobuf.ByteString
-      getResultCodeBytes();
-
-  /**
-   * <code>string output = 4;</code>
-   * @return The output.
-   */
-  java.lang.String getOutput();
-  /**
-   * <code>string output = 4;</code>
-   * @return The bytes for output.
-   */
-  com.google.protobuf.ByteString
-      getOutputBytes();
 }

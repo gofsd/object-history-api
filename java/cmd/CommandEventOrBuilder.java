@@ -14,17 +14,11 @@ public interface CommandEventOrBuilder extends
   long getExecutionId();
 
   /**
-   * <code>uint64 command_id = 2;</code>
-   * @return The commandId.
-   */
-  long getCommandId();
-
-  /**
-   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 2;</code>
    */
   int getEffectiveParametersCount();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 2;</code>
    */
   boolean containsEffectiveParameters(
       java.lang.String key);
@@ -35,26 +29,26 @@ public interface CommandEventOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getEffectiveParameters();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 2;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getEffectiveParametersMap();
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 2;</code>
    */
 
   java.lang.String getEffectiveParametersOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; effective_parameters = 3;</code>
+   * <code>map&lt;string, string&gt; effective_parameters = 2;</code>
    */
 
   java.lang.String getEffectiveParametersOrThrow(
       java.lang.String key);
 
   /**
-   * <code>uint64 timestamp = 4;</code>
+   * <code>uint64 timestamp = 3;</code>
    * @return The timestamp.
    */
   long getTimestamp();
