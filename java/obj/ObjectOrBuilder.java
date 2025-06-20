@@ -26,10 +26,23 @@ public interface ObjectOrBuilder extends
   long getOwnerId();
 
   /**
-   * <code>uint64 object_type = 4;</code>
+   * <pre>
+   * Updated to use the enum
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 4;</code>
+   * @return The enum numeric value on the wire for objectType.
+   */
+  int getObjectTypeValue();
+  /**
+   * <pre>
+   * Updated to use the enum
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 4;</code>
    * @return The objectType.
    */
-  long getObjectType();
+  obj.ObjectType getObjectType();
 
   /**
    * <code>uint64 version = 5;</code>

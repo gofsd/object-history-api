@@ -9,11 +9,21 @@ option java_outer_classname = "Obj";
 option objc_class_prefix = "OBJ";
 
 // ------------------- CORE MESSAGES -------------------
+enum ObjectType {
+  UNKNOWN = 0;
+  ITEM = 1;
+  TYPE = 2;
+  GROUP = 3;
+  COMMAND = 4;
+  USER = 5;
+  EXECUTION = 6;
+}
+
 message Object {
   uint64 id = 1;
   uint64 creator_id = 2;
   uint64 owner_id = 3;
-  uint64 object_type = 4;
+  ObjectType object_type = 4; // Updated to use the enum
   uint64 version = 5;
   map<string, string> fields = 6;
 }
@@ -146,4 +156,7 @@ service ObjectService {
   // Streaming/Subscription
   rpc SubscribeToUsersObjects(Empty) returns (stream SubscriptionResponse);
   rpc SubscribeToMyself(Empty) returns (stream Object);
+
+  // Get object commands
+  rpc GetObjectCommands(GetObjectRequest) returns (ObjectsResponse);
 }

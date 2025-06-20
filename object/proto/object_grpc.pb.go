@@ -34,6 +34,7 @@ const (
 	ObjectService_ReceiveObjects_FullMethodName          = "/object.ObjectService/ReceiveObjects"
 	ObjectService_SubscribeToUsersObjects_FullMethodName = "/object.ObjectService/SubscribeToUsersObjects"
 	ObjectService_SubscribeToMyself_FullMethodName       = "/object.ObjectService/SubscribeToMyself"
+	ObjectService_GetObjectCommands_FullMethodName       = "/object.ObjectService/GetObjectCommands"
 )
 
 // ObjectServiceClient is the client API for ObjectService service.
@@ -62,6 +63,8 @@ type ObjectServiceClient interface {
 	// Streaming/Subscription
 	SubscribeToUsersObjects(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscriptionResponse], error)
 	SubscribeToMyself(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Object], error)
+	// Get object commands
+	GetObjectCommands(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectsResponse, error)
 }
 
 type objectServiceClient struct {
@@ -240,6 +243,16 @@ func (c *objectServiceClient) SubscribeToMyself(ctx context.Context, in *Empty, 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_SubscribeToMyselfClient = grpc.ServerStreamingClient[Object]
 
+func (c *objectServiceClient) GetObjectCommands(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ObjectsResponse)
+	err := c.cc.Invoke(ctx, ObjectService_GetObjectCommands_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ObjectServiceServer is the server API for ObjectService service.
 // All implementations must embed UnimplementedObjectServiceServer
 // for forward compatibility.
@@ -266,6 +279,8 @@ type ObjectServiceServer interface {
 	// Streaming/Subscription
 	SubscribeToUsersObjects(*Empty, grpc.ServerStreamingServer[SubscriptionResponse]) error
 	SubscribeToMyself(*Empty, grpc.ServerStreamingServer[Object]) error
+	// Get object commands
+	GetObjectCommands(context.Context, *GetObjectRequest) (*ObjectsResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
 }
 
@@ -320,6 +335,9 @@ func (UnimplementedObjectServiceServer) SubscribeToUsersObjects(*Empty, grpc.Ser
 }
 func (UnimplementedObjectServiceServer) SubscribeToMyself(*Empty, grpc.ServerStreamingServer[Object]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeToMyself not implemented")
+}
+func (UnimplementedObjectServiceServer) GetObjectCommands(context.Context, *GetObjectRequest) (*ObjectsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetObjectCommands not implemented")
 }
 func (UnimplementedObjectServiceServer) mustEmbedUnimplementedObjectServiceServer() {}
 func (UnimplementedObjectServiceServer) testEmbeddedByValue()                       {}
@@ -598,6 +616,24 @@ func _ObjectService_SubscribeToMyself_Handler(srv interface{}, stream grpc.Serve
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_SubscribeToMyselfServer = grpc.ServerStreamingServer[Object]
 
+func _ObjectService_GetObjectCommands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetObjectRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).GetObjectCommands(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_GetObjectCommands_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).GetObjectCommands(ctx, req.(*GetObjectRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ObjectService_ServiceDesc is the grpc.ServiceDesc for ObjectService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -656,6 +692,10 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ReceiveObjects",
 			Handler:    _ObjectService_ReceiveObjects_Handler,
+		},
+		{
+			MethodName: "GetObjectCommands",
+			Handler:    _ObjectService_GetObjectCommands_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

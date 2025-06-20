@@ -483,6 +483,37 @@ public final class ObjectServiceGrpc {
     return getSubscribeToMyselfMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<obj.GetObjectRequest,
+      obj.ObjectsResponse> getGetObjectCommandsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetObjectCommands",
+      requestType = obj.GetObjectRequest.class,
+      responseType = obj.ObjectsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.GetObjectRequest,
+      obj.ObjectsResponse> getGetObjectCommandsMethod() {
+    io.grpc.MethodDescriptor<obj.GetObjectRequest, obj.ObjectsResponse> getGetObjectCommandsMethod;
+    if ((getGetObjectCommandsMethod = ObjectServiceGrpc.getGetObjectCommandsMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getGetObjectCommandsMethod = ObjectServiceGrpc.getGetObjectCommandsMethod) == null) {
+          ObjectServiceGrpc.getGetObjectCommandsMethod = getGetObjectCommandsMethod =
+              io.grpc.MethodDescriptor.<obj.GetObjectRequest, obj.ObjectsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetObjectCommands"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.GetObjectRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("GetObjectCommands"))
+              .build();
+        }
+      }
+    }
+    return getGetObjectCommandsMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -668,6 +699,16 @@ public final class ObjectServiceGrpc {
         io.grpc.stub.StreamObserver<obj.Object> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeToMyselfMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Get object commands
+     * </pre>
+     */
+    default void getObjectCommands(obj.GetObjectRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetObjectCommandsMethod(), responseObserver);
+    }
   }
 
   /**
@@ -837,6 +878,17 @@ public final class ObjectServiceGrpc {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSubscribeToMyselfMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Get object commands
+     * </pre>
+     */
+    public void getObjectCommands(obj.GetObjectRequest request,
+        io.grpc.stub.StreamObserver<obj.ObjectsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetObjectCommandsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -981,6 +1033,16 @@ public final class ObjectServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
           getChannel(), getSubscribeToMyselfMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Get object commands
+     * </pre>
+     */
+    public obj.ObjectsResponse getObjectCommands(obj.GetObjectRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetObjectCommandsMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1123,6 +1185,16 @@ public final class ObjectServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSubscribeToMyselfMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Get object commands
+     * </pre>
+     */
+    public obj.ObjectsResponse getObjectCommands(obj.GetObjectRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetObjectCommandsMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1259,6 +1331,17 @@ public final class ObjectServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getReceiveObjectsMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Get object commands
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ObjectsResponse> getObjectCommands(
+        obj.GetObjectRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetObjectCommandsMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_OBJECT = 0;
@@ -1276,6 +1359,7 @@ public final class ObjectServiceGrpc {
   private static final int METHODID_RECEIVE_OBJECTS = 12;
   private static final int METHODID_SUBSCRIBE_TO_USERS_OBJECTS = 13;
   private static final int METHODID_SUBSCRIBE_TO_MYSELF = 14;
+  private static final int METHODID_GET_OBJECT_COMMANDS = 15;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1353,6 +1437,10 @@ public final class ObjectServiceGrpc {
         case METHODID_SUBSCRIBE_TO_MYSELF:
           serviceImpl.subscribeToMyself((obj.Empty) request,
               (io.grpc.stub.StreamObserver<obj.Object>) responseObserver);
+          break;
+        case METHODID_GET_OBJECT_COMMANDS:
+          serviceImpl.getObjectCommands((obj.GetObjectRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1477,6 +1565,13 @@ public final class ObjectServiceGrpc {
               obj.Empty,
               obj.Object>(
                 service, METHODID_SUBSCRIBE_TO_MYSELF)))
+        .addMethod(
+          getGetObjectCommandsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.GetObjectRequest,
+              obj.ObjectsResponse>(
+                service, METHODID_GET_OBJECT_COMMANDS)))
         .build();
   }
 
@@ -1540,6 +1635,7 @@ public final class ObjectServiceGrpc {
               .addMethod(getReceiveObjectsMethod())
               .addMethod(getSubscribeToUsersObjectsMethod())
               .addMethod(getSubscribeToMyselfMethod())
+              .addMethod(getGetObjectCommandsMethod())
               .build();
         }
       }

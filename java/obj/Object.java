@@ -4,10 +4,6 @@
 package obj;
 
 /**
- * <pre>
- * ------------------- CORE MESSAGES -------------------
- * </pre>
- *
  * Protobuf type {@code object.Object}
  */
 public final class Object extends
@@ -20,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Object() {
+    objectType_ = 0;
   }
 
   @java.lang.Override
@@ -93,14 +90,30 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int OBJECT_TYPE_FIELD_NUMBER = 4;
-  private long objectType_;
+  private int objectType_;
   /**
-   * <code>uint64 object_type = 4;</code>
+   * <pre>
+   * Updated to use the enum
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 4;</code>
+   * @return The enum numeric value on the wire for objectType.
+   */
+  @java.lang.Override public int getObjectTypeValue() {
+    return objectType_;
+  }
+  /**
+   * <pre>
+   * Updated to use the enum
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 4;</code>
    * @return The objectType.
    */
-  @java.lang.Override
-  public long getObjectType() {
-    return objectType_;
+  @java.lang.Override public obj.ObjectType getObjectType() {
+    @SuppressWarnings("deprecation")
+    obj.ObjectType result = obj.ObjectType.valueOf(objectType_);
+    return result == null ? obj.ObjectType.UNRECOGNIZED : result;
   }
 
   public static final int VERSION_FIELD_NUMBER = 5;
@@ -218,8 +231,8 @@ private static final long serialVersionUID = 0L;
     if (ownerId_ != 0L) {
       output.writeUInt64(3, ownerId_);
     }
-    if (objectType_ != 0L) {
-      output.writeUInt64(4, objectType_);
+    if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
+      output.writeEnum(4, objectType_);
     }
     if (version_ != 0L) {
       output.writeUInt64(5, version_);
@@ -251,9 +264,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(3, ownerId_);
     }
-    if (objectType_ != 0L) {
+    if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(4, objectType_);
+        .computeEnumSize(4, objectType_);
     }
     if (version_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -290,8 +303,7 @@ private static final long serialVersionUID = 0L;
         != other.getCreatorId()) return false;
     if (getOwnerId()
         != other.getOwnerId()) return false;
-    if (getObjectType()
-        != other.getObjectType()) return false;
+    if (objectType_ != other.objectType_) return false;
     if (getVersion()
         != other.getVersion()) return false;
     if (!internalGetFields().equals(
@@ -317,8 +329,7 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getOwnerId());
     hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getObjectType());
+    hash = (53 * hash) + objectType_;
     hash = (37 * hash) + VERSION_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getVersion());
@@ -422,10 +433,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * ------------------- CORE MESSAGES -------------------
-   * </pre>
-   *
    * Protobuf type {@code object.Object}
    */
   public static final class Builder extends
@@ -486,7 +493,7 @@ private static final long serialVersionUID = 0L;
 
       ownerId_ = 0L;
 
-      objectType_ = 0L;
+      objectType_ = 0;
 
       version_ = 0L;
 
@@ -582,8 +589,8 @@ private static final long serialVersionUID = 0L;
       if (other.getOwnerId() != 0L) {
         setOwnerId(other.getOwnerId());
       }
-      if (other.getObjectType() != 0L) {
-        setObjectType(other.getObjectType());
+      if (other.objectType_ != 0) {
+        setObjectTypeValue(other.getObjectTypeValue());
       }
       if (other.getVersion() != 0L) {
         setVersion(other.getVersion());
@@ -632,7 +639,7 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 24
             case 32: {
-              objectType_ = input.readUInt64();
+              objectType_ = input.readEnum();
 
               break;
             } // case 32
@@ -759,33 +766,76 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long objectType_ ;
+    private int objectType_ = 0;
     /**
-     * <code>uint64 object_type = 4;</code>
-     * @return The objectType.
+     * <pre>
+     * Updated to use the enum
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 4;</code>
+     * @return The enum numeric value on the wire for objectType.
      */
-    @java.lang.Override
-    public long getObjectType() {
+    @java.lang.Override public int getObjectTypeValue() {
       return objectType_;
     }
     /**
-     * <code>uint64 object_type = 4;</code>
-     * @param value The objectType to set.
+     * <pre>
+     * Updated to use the enum
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 4;</code>
+     * @param value The enum numeric value on the wire for objectType to set.
      * @return This builder for chaining.
      */
-    public Builder setObjectType(long value) {
+    public Builder setObjectTypeValue(int value) {
       
       objectType_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 object_type = 4;</code>
+     * <pre>
+     * Updated to use the enum
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 4;</code>
+     * @return The objectType.
+     */
+    @java.lang.Override
+    public obj.ObjectType getObjectType() {
+      @SuppressWarnings("deprecation")
+      obj.ObjectType result = obj.ObjectType.valueOf(objectType_);
+      return result == null ? obj.ObjectType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * Updated to use the enum
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 4;</code>
+     * @param value The objectType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setObjectType(obj.ObjectType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      objectType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Updated to use the enum
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearObjectType() {
       
-      objectType_ = 0L;
+      objectType_ = 0;
       onChanged();
       return this;
     }
