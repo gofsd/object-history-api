@@ -105,6 +105,10 @@ message ExecuteActionRequest {
   map<string, string> fields = 2;
 }
 
+message ExecuteActionsRequest{
+  repeated ExecuteActionRequest actions = 1;
+}
+
 message ExecuteActionResponse {
   repeated Object objects = 1;
 }
@@ -129,6 +133,27 @@ message SubscriptionResponse {
 
 message Empty{}
 
+// ---- Synchronous Subscription ----
+message ObjectAction {
+  uint64 id = 1;
+  uint64 action = 2;
+  uint64 object_id = 3;
+  string data = 4;
+}
+
+message ObjectActions {
+  repeated ObjectAction actions = 1;
+}
+
+message DiffByUser{
+  uint64 user_id = 1;
+  uint64 action_id = 2;
+}
+
+message DiffByUsers {
+  repeated DiffByUser diffs = 1;
+}
+
 // ------------------- SERVICE -------------------
 service ObjectService {
   // CRUD
@@ -150,12 +175,14 @@ service ObjectService {
 
   // Action/Transfer
   rpc ExecuteAction(ExecuteActionRequest) returns (ExecuteActionResponse);
+  rpc ExecuteActions(ExecuteActionsRequest) returns (ExecuteActionResponse);
   rpc TransferObjects(TransferObjectsRequest) returns (TransferObjectsResponse);
   rpc ReceiveObjects(TransferObjectsResponse) returns (ReceiveObjectsResponse);
 
   // Streaming/Subscription
   rpc SubscribeToUsersObjects(Empty) returns (stream SubscriptionResponse);
   rpc SubscribeToMyself(Empty) returns (stream Object);
+  rpc SyncWithUsers(DiffByUsers) returns (stream ObjectActions);
 
   // Get object commands
   rpc GetObjectCommands(GetObjectRequest) returns (ObjectsResponse);

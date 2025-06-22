@@ -359,6 +359,37 @@ public final class ObjectServiceGrpc {
     return getExecuteActionMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<obj.ExecuteActionsRequest,
+      obj.ExecuteActionResponse> getExecuteActionsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ExecuteActions",
+      requestType = obj.ExecuteActionsRequest.class,
+      responseType = obj.ExecuteActionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<obj.ExecuteActionsRequest,
+      obj.ExecuteActionResponse> getExecuteActionsMethod() {
+    io.grpc.MethodDescriptor<obj.ExecuteActionsRequest, obj.ExecuteActionResponse> getExecuteActionsMethod;
+    if ((getExecuteActionsMethod = ObjectServiceGrpc.getExecuteActionsMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getExecuteActionsMethod = ObjectServiceGrpc.getExecuteActionsMethod) == null) {
+          ObjectServiceGrpc.getExecuteActionsMethod = getExecuteActionsMethod =
+              io.grpc.MethodDescriptor.<obj.ExecuteActionsRequest, obj.ExecuteActionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ExecuteActions"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ExecuteActionsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ExecuteActionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("ExecuteActions"))
+              .build();
+        }
+      }
+    }
+    return getExecuteActionsMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<obj.TransferObjectsRequest,
       obj.TransferObjectsResponse> getTransferObjectsMethod;
 
@@ -481,6 +512,37 @@ public final class ObjectServiceGrpc {
       }
     }
     return getSubscribeToMyselfMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<obj.DiffByUsers,
+      obj.ObjectActions> getSyncWithUsersMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SyncWithUsers",
+      requestType = obj.DiffByUsers.class,
+      responseType = obj.ObjectActions.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<obj.DiffByUsers,
+      obj.ObjectActions> getSyncWithUsersMethod() {
+    io.grpc.MethodDescriptor<obj.DiffByUsers, obj.ObjectActions> getSyncWithUsersMethod;
+    if ((getSyncWithUsersMethod = ObjectServiceGrpc.getSyncWithUsersMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getSyncWithUsersMethod = ObjectServiceGrpc.getSyncWithUsersMethod) == null) {
+          ObjectServiceGrpc.getSyncWithUsersMethod = getSyncWithUsersMethod =
+              io.grpc.MethodDescriptor.<obj.DiffByUsers, obj.ObjectActions>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SyncWithUsers"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.DiffByUsers.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectActions.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("SyncWithUsers"))
+              .build();
+        }
+      }
+    }
+    return getSyncWithUsersMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<obj.GetObjectRequest,
@@ -671,6 +733,13 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    default void executeActions(obj.ExecuteActionsRequest request,
+        io.grpc.stub.StreamObserver<obj.ExecuteActionResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getExecuteActionsMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void transferObjects(obj.TransferObjectsRequest request,
         io.grpc.stub.StreamObserver<obj.TransferObjectsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getTransferObjectsMethod(), responseObserver);
@@ -698,6 +767,13 @@ public final class ObjectServiceGrpc {
     default void subscribeToMyself(obj.Empty request,
         io.grpc.stub.StreamObserver<obj.Object> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubscribeToMyselfMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void syncWithUsers(obj.DiffByUsers request,
+        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSyncWithUsersMethod(), responseObserver);
     }
 
     /**
@@ -846,6 +922,14 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public void executeActions(obj.ExecuteActionsRequest request,
+        io.grpc.stub.StreamObserver<obj.ExecuteActionResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getExecuteActionsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void transferObjects(obj.TransferObjectsRequest request,
         io.grpc.stub.StreamObserver<obj.TransferObjectsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -877,6 +961,14 @@ public final class ObjectServiceGrpc {
         io.grpc.stub.StreamObserver<obj.Object> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSubscribeToMyselfMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void syncWithUsers(obj.DiffByUsers request,
+        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getSyncWithUsersMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
@@ -1001,6 +1093,13 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public obj.ExecuteActionResponse executeActions(obj.ExecuteActionsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getExecuteActionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public obj.TransferObjectsResponse transferObjects(obj.TransferObjectsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getTransferObjectsMethod(), getCallOptions(), request);
@@ -1032,6 +1131,15 @@ public final class ObjectServiceGrpc {
         subscribeToMyself(obj.Empty request) {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
           getChannel(), getSubscribeToMyselfMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<?, obj.ObjectActions>
+        syncWithUsers(obj.DiffByUsers request) {
+      return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
+          getChannel(), getSyncWithUsersMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1155,6 +1263,13 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public obj.ExecuteActionResponse executeActions(obj.ExecuteActionsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getExecuteActionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public obj.TransferObjectsResponse transferObjects(obj.TransferObjectsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getTransferObjectsMethod(), getCallOptions(), request);
@@ -1184,6 +1299,14 @@ public final class ObjectServiceGrpc {
         obj.Empty request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSubscribeToMyselfMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public java.util.Iterator<obj.ObjectActions> syncWithUsers(
+        obj.DiffByUsers request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getSyncWithUsersMethod(), getCallOptions(), request);
     }
 
     /**
@@ -1318,6 +1441,14 @@ public final class ObjectServiceGrpc {
 
     /**
      */
+    public com.google.common.util.concurrent.ListenableFuture<obj.ExecuteActionResponse> executeActions(
+        obj.ExecuteActionsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getExecuteActionsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
     public com.google.common.util.concurrent.ListenableFuture<obj.TransferObjectsResponse> transferObjects(
         obj.TransferObjectsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -1355,11 +1486,13 @@ public final class ObjectServiceGrpc {
   private static final int METHODID_UPDATE_OBJECTS_UNIQUE = 8;
   private static final int METHODID_LIST_OBJECTS = 9;
   private static final int METHODID_EXECUTE_ACTION = 10;
-  private static final int METHODID_TRANSFER_OBJECTS = 11;
-  private static final int METHODID_RECEIVE_OBJECTS = 12;
-  private static final int METHODID_SUBSCRIBE_TO_USERS_OBJECTS = 13;
-  private static final int METHODID_SUBSCRIBE_TO_MYSELF = 14;
-  private static final int METHODID_GET_OBJECT_COMMANDS = 15;
+  private static final int METHODID_EXECUTE_ACTIONS = 11;
+  private static final int METHODID_TRANSFER_OBJECTS = 12;
+  private static final int METHODID_RECEIVE_OBJECTS = 13;
+  private static final int METHODID_SUBSCRIBE_TO_USERS_OBJECTS = 14;
+  private static final int METHODID_SUBSCRIBE_TO_MYSELF = 15;
+  private static final int METHODID_SYNC_WITH_USERS = 16;
+  private static final int METHODID_GET_OBJECT_COMMANDS = 17;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1422,6 +1555,10 @@ public final class ObjectServiceGrpc {
           serviceImpl.executeAction((obj.ExecuteActionRequest) request,
               (io.grpc.stub.StreamObserver<obj.ExecuteActionResponse>) responseObserver);
           break;
+        case METHODID_EXECUTE_ACTIONS:
+          serviceImpl.executeActions((obj.ExecuteActionsRequest) request,
+              (io.grpc.stub.StreamObserver<obj.ExecuteActionResponse>) responseObserver);
+          break;
         case METHODID_TRANSFER_OBJECTS:
           serviceImpl.transferObjects((obj.TransferObjectsRequest) request,
               (io.grpc.stub.StreamObserver<obj.TransferObjectsResponse>) responseObserver);
@@ -1437,6 +1574,10 @@ public final class ObjectServiceGrpc {
         case METHODID_SUBSCRIBE_TO_MYSELF:
           serviceImpl.subscribeToMyself((obj.Empty) request,
               (io.grpc.stub.StreamObserver<obj.Object>) responseObserver);
+          break;
+        case METHODID_SYNC_WITH_USERS:
+          serviceImpl.syncWithUsers((obj.DiffByUsers) request,
+              (io.grpc.stub.StreamObserver<obj.ObjectActions>) responseObserver);
           break;
         case METHODID_GET_OBJECT_COMMANDS:
           serviceImpl.getObjectCommands((obj.GetObjectRequest) request,
@@ -1538,6 +1679,13 @@ public final class ObjectServiceGrpc {
               obj.ExecuteActionResponse>(
                 service, METHODID_EXECUTE_ACTION)))
         .addMethod(
+          getExecuteActionsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              obj.ExecuteActionsRequest,
+              obj.ExecuteActionResponse>(
+                service, METHODID_EXECUTE_ACTIONS)))
+        .addMethod(
           getTransferObjectsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -1565,6 +1713,13 @@ public final class ObjectServiceGrpc {
               obj.Empty,
               obj.Object>(
                 service, METHODID_SUBSCRIBE_TO_MYSELF)))
+        .addMethod(
+          getSyncWithUsersMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              obj.DiffByUsers,
+              obj.ObjectActions>(
+                service, METHODID_SYNC_WITH_USERS)))
         .addMethod(
           getGetObjectCommandsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1631,10 +1786,12 @@ public final class ObjectServiceGrpc {
               .addMethod(getUpdateObjectsUniqueMethod())
               .addMethod(getListObjectsMethod())
               .addMethod(getExecuteActionMethod())
+              .addMethod(getExecuteActionsMethod())
               .addMethod(getTransferObjectsMethod())
               .addMethod(getReceiveObjectsMethod())
               .addMethod(getSubscribeToUsersObjectsMethod())
               .addMethod(getSubscribeToMyselfMethod())
+              .addMethod(getSyncWithUsersMethod())
               .addMethod(getGetObjectCommandsMethod())
               .build();
         }

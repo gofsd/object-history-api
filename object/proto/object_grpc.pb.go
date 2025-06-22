@@ -30,10 +30,12 @@ const (
 	ObjectService_UpdateObjectsUnique_FullMethodName     = "/object.ObjectService/UpdateObjectsUnique"
 	ObjectService_ListObjects_FullMethodName             = "/object.ObjectService/ListObjects"
 	ObjectService_ExecuteAction_FullMethodName           = "/object.ObjectService/ExecuteAction"
+	ObjectService_ExecuteActions_FullMethodName          = "/object.ObjectService/ExecuteActions"
 	ObjectService_TransferObjects_FullMethodName         = "/object.ObjectService/TransferObjects"
 	ObjectService_ReceiveObjects_FullMethodName          = "/object.ObjectService/ReceiveObjects"
 	ObjectService_SubscribeToUsersObjects_FullMethodName = "/object.ObjectService/SubscribeToUsersObjects"
 	ObjectService_SubscribeToMyself_FullMethodName       = "/object.ObjectService/SubscribeToMyself"
+	ObjectService_SyncWithUsers_FullMethodName           = "/object.ObjectService/SyncWithUsers"
 	ObjectService_GetObjectCommands_FullMethodName       = "/object.ObjectService/GetObjectCommands"
 )
 
@@ -58,11 +60,13 @@ type ObjectServiceClient interface {
 	ListObjects(ctx context.Context, in *ListObjectsRequest, opts ...grpc.CallOption) (*ListObjectsResponse, error)
 	// Action/Transfer
 	ExecuteAction(ctx context.Context, in *ExecuteActionRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error)
+	ExecuteActions(ctx context.Context, in *ExecuteActionsRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error)
 	TransferObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*TransferObjectsResponse, error)
 	ReceiveObjects(ctx context.Context, in *TransferObjectsResponse, opts ...grpc.CallOption) (*ReceiveObjectsResponse, error)
 	// Streaming/Subscription
 	SubscribeToUsersObjects(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[SubscriptionResponse], error)
 	SubscribeToMyself(ctx context.Context, in *Empty, opts ...grpc.CallOption) (grpc.ServerStreamingClient[Object], error)
+	SyncWithUsers(ctx context.Context, in *DiffByUsers, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ObjectActions], error)
 	// Get object commands
 	GetObjectCommands(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectsResponse, error)
 }
@@ -185,6 +189,16 @@ func (c *objectServiceClient) ExecuteAction(ctx context.Context, in *ExecuteActi
 	return out, nil
 }
 
+func (c *objectServiceClient) ExecuteActions(ctx context.Context, in *ExecuteActionsRequest, opts ...grpc.CallOption) (*ExecuteActionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ExecuteActionResponse)
+	err := c.cc.Invoke(ctx, ObjectService_ExecuteActions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *objectServiceClient) TransferObjects(ctx context.Context, in *TransferObjectsRequest, opts ...grpc.CallOption) (*TransferObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(TransferObjectsResponse)
@@ -243,6 +257,25 @@ func (c *objectServiceClient) SubscribeToMyself(ctx context.Context, in *Empty, 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_SubscribeToMyselfClient = grpc.ServerStreamingClient[Object]
 
+func (c *objectServiceClient) SyncWithUsers(ctx context.Context, in *DiffByUsers, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ObjectActions], error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &ObjectService_ServiceDesc.Streams[2], ObjectService_SyncWithUsers_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &grpc.GenericClientStream[DiffByUsers, ObjectActions]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ObjectService_SyncWithUsersClient = grpc.ServerStreamingClient[ObjectActions]
+
 func (c *objectServiceClient) GetObjectCommands(ctx context.Context, in *GetObjectRequest, opts ...grpc.CallOption) (*ObjectsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ObjectsResponse)
@@ -274,11 +307,13 @@ type ObjectServiceServer interface {
 	ListObjects(context.Context, *ListObjectsRequest) (*ListObjectsResponse, error)
 	// Action/Transfer
 	ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error)
+	ExecuteActions(context.Context, *ExecuteActionsRequest) (*ExecuteActionResponse, error)
 	TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error)
 	ReceiveObjects(context.Context, *TransferObjectsResponse) (*ReceiveObjectsResponse, error)
 	// Streaming/Subscription
 	SubscribeToUsersObjects(*Empty, grpc.ServerStreamingServer[SubscriptionResponse]) error
 	SubscribeToMyself(*Empty, grpc.ServerStreamingServer[Object]) error
+	SyncWithUsers(*DiffByUsers, grpc.ServerStreamingServer[ObjectActions]) error
 	// Get object commands
 	GetObjectCommands(context.Context, *GetObjectRequest) (*ObjectsResponse, error)
 	mustEmbedUnimplementedObjectServiceServer()
@@ -324,6 +359,9 @@ func (UnimplementedObjectServiceServer) ListObjects(context.Context, *ListObject
 func (UnimplementedObjectServiceServer) ExecuteAction(context.Context, *ExecuteActionRequest) (*ExecuteActionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteAction not implemented")
 }
+func (UnimplementedObjectServiceServer) ExecuteActions(context.Context, *ExecuteActionsRequest) (*ExecuteActionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ExecuteActions not implemented")
+}
 func (UnimplementedObjectServiceServer) TransferObjects(context.Context, *TransferObjectsRequest) (*TransferObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TransferObjects not implemented")
 }
@@ -335,6 +373,9 @@ func (UnimplementedObjectServiceServer) SubscribeToUsersObjects(*Empty, grpc.Ser
 }
 func (UnimplementedObjectServiceServer) SubscribeToMyself(*Empty, grpc.ServerStreamingServer[Object]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeToMyself not implemented")
+}
+func (UnimplementedObjectServiceServer) SyncWithUsers(*DiffByUsers, grpc.ServerStreamingServer[ObjectActions]) error {
+	return status.Errorf(codes.Unimplemented, "method SyncWithUsers not implemented")
 }
 func (UnimplementedObjectServiceServer) GetObjectCommands(context.Context, *GetObjectRequest) (*ObjectsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetObjectCommands not implemented")
@@ -558,6 +599,24 @@ func _ObjectService_ExecuteAction_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ObjectService_ExecuteActions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ExecuteActionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ObjectServiceServer).ExecuteActions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: ObjectService_ExecuteActions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ObjectServiceServer).ExecuteActions(ctx, req.(*ExecuteActionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _ObjectService_TransferObjects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TransferObjectsRequest)
 	if err := dec(in); err != nil {
@@ -615,6 +674,17 @@ func _ObjectService_SubscribeToMyself_Handler(srv interface{}, stream grpc.Serve
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
 type ObjectService_SubscribeToMyselfServer = grpc.ServerStreamingServer[Object]
+
+func _ObjectService_SyncWithUsers_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(DiffByUsers)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(ObjectServiceServer).SyncWithUsers(m, &grpc.GenericServerStream[DiffByUsers, ObjectActions]{ServerStream: stream})
+}
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type ObjectService_SyncWithUsersServer = grpc.ServerStreamingServer[ObjectActions]
 
 func _ObjectService_GetObjectCommands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetObjectRequest)
@@ -686,6 +756,10 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _ObjectService_ExecuteAction_Handler,
 		},
 		{
+			MethodName: "ExecuteActions",
+			Handler:    _ObjectService_ExecuteActions_Handler,
+		},
+		{
 			MethodName: "TransferObjects",
 			Handler:    _ObjectService_TransferObjects_Handler,
 		},
@@ -707,6 +781,11 @@ var ObjectService_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "SubscribeToMyself",
 			Handler:       _ObjectService_SubscribeToMyself_Handler,
+			ServerStreams: true,
+		},
+		{
+			StreamName:    "SyncWithUsers",
+			Handler:       _ObjectService_SyncWithUsers_Handler,
 			ServerStreams: true,
 		},
 	},
