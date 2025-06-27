@@ -86,6 +86,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int IS_LOGGED_IN_FIELD_NUMBER = 2;
+  private boolean isLoggedIn_;
+  /**
+   * <code>bool is_logged_in = 2;</code>
+   * @return The isLoggedIn.
+   */
+  @java.lang.Override
+  public boolean getIsLoggedIn() {
+    return isLoggedIn_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -103,6 +114,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, version_);
     }
+    if (isLoggedIn_ != false) {
+      output.writeBool(2, isLoggedIn_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -114,6 +128,10 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(version_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, version_);
+    }
+    if (isLoggedIn_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(2, isLoggedIn_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -132,6 +150,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getVersion()
         .equals(other.getVersion())) return false;
+    if (getIsLoggedIn()
+        != other.getIsLoggedIn()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -145,6 +165,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + VERSION_FIELD_NUMBER;
     hash = (53 * hash) + getVersion().hashCode();
+    hash = (37 * hash) + IS_LOGGED_IN_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getIsLoggedIn());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -279,6 +302,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       version_ = "";
 
+      isLoggedIn_ = false;
+
       return this;
     }
 
@@ -306,6 +331,7 @@ private static final long serialVersionUID = 0L;
     public auth.AppInfoResponse buildPartial() {
       auth.AppInfoResponse result = new auth.AppInfoResponse(this);
       result.version_ = version_;
+      result.isLoggedIn_ = isLoggedIn_;
       onBuilt();
       return result;
     }
@@ -358,6 +384,9 @@ private static final long serialVersionUID = 0L;
         version_ = other.version_;
         onChanged();
       }
+      if (other.getIsLoggedIn() != false) {
+        setIsLoggedIn(other.getIsLoggedIn());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -389,6 +418,11 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 10
+            case 16: {
+              isLoggedIn_ = input.readBool();
+
+              break;
+            } // case 16
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -477,6 +511,37 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       version_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean isLoggedIn_ ;
+    /**
+     * <code>bool is_logged_in = 2;</code>
+     * @return The isLoggedIn.
+     */
+    @java.lang.Override
+    public boolean getIsLoggedIn() {
+      return isLoggedIn_;
+    }
+    /**
+     * <code>bool is_logged_in = 2;</code>
+     * @param value The isLoggedIn to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIsLoggedIn(boolean value) {
+      
+      isLoggedIn_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool is_logged_in = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIsLoggedIn() {
+      
+      isLoggedIn_ = false;
       onChanged();
       return this;
     }

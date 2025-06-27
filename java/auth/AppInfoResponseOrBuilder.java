@@ -18,4 +18,10 @@ public interface AppInfoResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getVersionBytes();
+
+  /**
+   * <code>bool is_logged_in = 2;</code>
+   * @return The isLoggedIn.
+   */
+  boolean getIsLoggedIn();
 }

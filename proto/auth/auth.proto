@@ -32,6 +32,7 @@ message LoginResponse {
 // ------------------- INFO RESPONSES -------------------
 message AppInfoResponse {
   string version = 1;
+  bool is_logged_in = 2;
 }
 
 message UserInfoResponse {
