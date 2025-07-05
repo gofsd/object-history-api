@@ -22,11 +22,9 @@ enum ObjectType {
 
 message Object {
   uint64 id = 1;
-  uint64 creator_id = 2;
-  uint64 owner_id = 3;
-  ObjectType object_type = 4; // Updated to use the enum
-  uint64 version = 5;
-  map<string, string> fields = 6;
+  ObjectType object_type = 2;
+  uint64 version = 3;
+  map<string, string> fields = 4;
 }
 
 // Single and plural responses
@@ -40,8 +38,8 @@ message ObjectsResponse {
 
 // ------------------- CRUD REQUESTS -------------------
 message CreateObjectRequest {
-  ObjectType object_type = 1; // Specify the type of object to create
-  map<string, string> fields = 2;
+  map<string, string> fields = 1;
+  repeated Relation relation = 2; // Optional relation for the object
 }
 
 message GetObjectRequest {
@@ -63,9 +61,9 @@ message DeleteObjectsFieldsRequest {
 
 // ------------------- BATCH/UNIQUE REQUESTS -------------------
 message CreateObjectsRequest {
-  ObjectType object_type = 1; // Specify the type of objects to create
-  map<string, string> fields = 2;
-  uint32 count = 3;
+  map<string, string> fields = 1;
+  uint32 count = 2;
+  repeated Relation relation = 3; // Optional relations for the objects
 }
 
 message CreateObjectsUniqueRequest {

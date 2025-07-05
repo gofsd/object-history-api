@@ -8,30 +8,11 @@ public interface CreateObjectRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   * Specify the type of object to create
-   * </pre>
-   *
-   * <code>.object.ObjectType object_type = 1;</code>
-   * @return The enum numeric value on the wire for objectType.
-   */
-  int getObjectTypeValue();
-  /**
-   * <pre>
-   * Specify the type of object to create
-   * </pre>
-   *
-   * <code>.object.ObjectType object_type = 1;</code>
-   * @return The objectType.
-   */
-  obj.ObjectType getObjectType();
-
-  /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -42,21 +23,65 @@ public interface CreateObjectRequestOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
 
   java.lang.String getFieldsOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 2;</code>
+   * <code>map&lt;string, string&gt; fields = 1;</code>
    */
 
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
+
+  /**
+   * <pre>
+   * Optional relation for the object
+   * </pre>
+   *
+   * <code>repeated .object.Relation relation = 2;</code>
+   */
+  java.util.List<obj.Relation> 
+      getRelationList();
+  /**
+   * <pre>
+   * Optional relation for the object
+   * </pre>
+   *
+   * <code>repeated .object.Relation relation = 2;</code>
+   */
+  obj.Relation getRelation(int index);
+  /**
+   * <pre>
+   * Optional relation for the object
+   * </pre>
+   *
+   * <code>repeated .object.Relation relation = 2;</code>
+   */
+  int getRelationCount();
+  /**
+   * <pre>
+   * Optional relation for the object
+   * </pre>
+   *
+   * <code>repeated .object.Relation relation = 2;</code>
+   */
+  java.util.List<? extends obj.RelationOrBuilder> 
+      getRelationOrBuilderList();
+  /**
+   * <pre>
+   * Optional relation for the object
+   * </pre>
+   *
+   * <code>repeated .object.Relation relation = 2;</code>
+   */
+  obj.RelationOrBuilder getRelationOrBuilder(
+      int index);
 }

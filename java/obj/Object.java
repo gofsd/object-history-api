@@ -41,7 +41,7 @@ private static final long serialVersionUID = 0L;
   protected com.google.protobuf.MapField internalGetMapField(
       int number) {
     switch (number) {
-      case 6:
+      case 4:
         return internalGetFields();
       default:
         throw new RuntimeException(
@@ -67,47 +67,17 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int CREATOR_ID_FIELD_NUMBER = 2;
-  private long creatorId_;
-  /**
-   * <code>uint64 creator_id = 2;</code>
-   * @return The creatorId.
-   */
-  @java.lang.Override
-  public long getCreatorId() {
-    return creatorId_;
-  }
-
-  public static final int OWNER_ID_FIELD_NUMBER = 3;
-  private long ownerId_;
-  /**
-   * <code>uint64 owner_id = 3;</code>
-   * @return The ownerId.
-   */
-  @java.lang.Override
-  public long getOwnerId() {
-    return ownerId_;
-  }
-
-  public static final int OBJECT_TYPE_FIELD_NUMBER = 4;
+  public static final int OBJECT_TYPE_FIELD_NUMBER = 2;
   private int objectType_;
   /**
-   * <pre>
-   * Updated to use the enum
-   * </pre>
-   *
-   * <code>.object.ObjectType object_type = 4;</code>
+   * <code>.object.ObjectType object_type = 2;</code>
    * @return The enum numeric value on the wire for objectType.
    */
   @java.lang.Override public int getObjectTypeValue() {
     return objectType_;
   }
   /**
-   * <pre>
-   * Updated to use the enum
-   * </pre>
-   *
-   * <code>.object.ObjectType object_type = 4;</code>
+   * <code>.object.ObjectType object_type = 2;</code>
    * @return The objectType.
    */
   @java.lang.Override public obj.ObjectType getObjectType() {
@@ -116,10 +86,10 @@ private static final long serialVersionUID = 0L;
     return result == null ? obj.ObjectType.UNRECOGNIZED : result;
   }
 
-  public static final int VERSION_FIELD_NUMBER = 5;
+  public static final int VERSION_FIELD_NUMBER = 3;
   private long version_;
   /**
-   * <code>uint64 version = 5;</code>
+   * <code>uint64 version = 3;</code>
    * @return The version.
    */
   @java.lang.Override
@@ -127,7 +97,7 @@ private static final long serialVersionUID = 0L;
     return version_;
   }
 
-  public static final int FIELDS_FIELD_NUMBER = 6;
+  public static final int FIELDS_FIELD_NUMBER = 4;
   private static final class FieldsDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
         java.lang.String, java.lang.String> defaultEntry =
@@ -154,7 +124,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap().size();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
 
   @java.lang.Override
@@ -172,7 +142,7 @@ private static final long serialVersionUID = 0L;
     return getFieldsMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
 
@@ -180,7 +150,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
 
@@ -193,7 +163,7 @@ private static final long serialVersionUID = 0L;
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   @java.lang.Override
 
@@ -225,24 +195,18 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0L) {
       output.writeUInt64(1, id_);
     }
-    if (creatorId_ != 0L) {
-      output.writeUInt64(2, creatorId_);
-    }
-    if (ownerId_ != 0L) {
-      output.writeUInt64(3, ownerId_);
-    }
     if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
-      output.writeEnum(4, objectType_);
+      output.writeEnum(2, objectType_);
     }
     if (version_ != 0L) {
-      output.writeUInt64(5, version_);
+      output.writeUInt64(3, version_);
     }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
         output,
         internalGetFields(),
         FieldsDefaultEntryHolder.defaultEntry,
-        6);
+        4);
     getUnknownFields().writeTo(output);
   }
 
@@ -256,21 +220,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, id_);
     }
-    if (creatorId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, creatorId_);
-    }
-    if (ownerId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(3, ownerId_);
-    }
     if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(4, objectType_);
+        .computeEnumSize(2, objectType_);
     }
     if (version_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(5, version_);
+        .computeUInt64Size(3, version_);
     }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetFields().getMap().entrySet()) {
@@ -280,7 +236,7 @@ private static final long serialVersionUID = 0L;
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, fields__);
+          .computeMessageSize(4, fields__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -299,10 +255,6 @@ private static final long serialVersionUID = 0L;
 
     if (getId()
         != other.getId()) return false;
-    if (getCreatorId()
-        != other.getCreatorId()) return false;
-    if (getOwnerId()
-        != other.getOwnerId()) return false;
     if (objectType_ != other.objectType_) return false;
     if (getVersion()
         != other.getVersion()) return false;
@@ -322,12 +274,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getId());
-    hash = (37 * hash) + CREATOR_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCreatorId());
-    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getOwnerId());
     hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + objectType_;
     hash = (37 * hash) + VERSION_FIELD_NUMBER;
@@ -448,7 +394,7 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 6:
+        case 4:
           return internalGetFields();
         default:
           throw new RuntimeException(
@@ -459,7 +405,7 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMutableMapField(
         int number) {
       switch (number) {
-        case 6:
+        case 4:
           return internalGetMutableFields();
         default:
           throw new RuntimeException(
@@ -488,10 +434,6 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       id_ = 0L;
-
-      creatorId_ = 0L;
-
-      ownerId_ = 0L;
 
       objectType_ = 0;
 
@@ -526,8 +468,6 @@ private static final long serialVersionUID = 0L;
       obj.Object result = new obj.Object(this);
       int from_bitField0_ = bitField0_;
       result.id_ = id_;
-      result.creatorId_ = creatorId_;
-      result.ownerId_ = ownerId_;
       result.objectType_ = objectType_;
       result.version_ = version_;
       result.fields_ = internalGetFields();
@@ -583,12 +523,6 @@ private static final long serialVersionUID = 0L;
       if (other.getId() != 0L) {
         setId(other.getId());
       }
-      if (other.getCreatorId() != 0L) {
-        setCreatorId(other.getCreatorId());
-      }
-      if (other.getOwnerId() != 0L) {
-        setOwnerId(other.getOwnerId());
-      }
       if (other.objectType_ != 0) {
         setObjectTypeValue(other.getObjectTypeValue());
       }
@@ -629,33 +563,23 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 8
             case 16: {
-              creatorId_ = input.readUInt64();
+              objectType_ = input.readEnum();
 
               break;
             } // case 16
             case 24: {
-              ownerId_ = input.readUInt64();
-
-              break;
-            } // case 24
-            case 32: {
-              objectType_ = input.readEnum();
-
-              break;
-            } // case 32
-            case 40: {
               version_ = input.readUInt64();
 
               break;
-            } // case 40
-            case 50: {
+            } // case 24
+            case 34: {
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               fields__ = input.readMessage(
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
               break;
-            } // case 50
+            } // case 34
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -704,86 +628,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long creatorId_ ;
-    /**
-     * <code>uint64 creator_id = 2;</code>
-     * @return The creatorId.
-     */
-    @java.lang.Override
-    public long getCreatorId() {
-      return creatorId_;
-    }
-    /**
-     * <code>uint64 creator_id = 2;</code>
-     * @param value The creatorId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCreatorId(long value) {
-      
-      creatorId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 creator_id = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCreatorId() {
-      
-      creatorId_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long ownerId_ ;
-    /**
-     * <code>uint64 owner_id = 3;</code>
-     * @return The ownerId.
-     */
-    @java.lang.Override
-    public long getOwnerId() {
-      return ownerId_;
-    }
-    /**
-     * <code>uint64 owner_id = 3;</code>
-     * @param value The ownerId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setOwnerId(long value) {
-      
-      ownerId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 owner_id = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearOwnerId() {
-      
-      ownerId_ = 0L;
-      onChanged();
-      return this;
-    }
-
     private int objectType_ = 0;
     /**
-     * <pre>
-     * Updated to use the enum
-     * </pre>
-     *
-     * <code>.object.ObjectType object_type = 4;</code>
+     * <code>.object.ObjectType object_type = 2;</code>
      * @return The enum numeric value on the wire for objectType.
      */
     @java.lang.Override public int getObjectTypeValue() {
       return objectType_;
     }
     /**
-     * <pre>
-     * Updated to use the enum
-     * </pre>
-     *
-     * <code>.object.ObjectType object_type = 4;</code>
+     * <code>.object.ObjectType object_type = 2;</code>
      * @param value The enum numeric value on the wire for objectType to set.
      * @return This builder for chaining.
      */
@@ -794,11 +648,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * Updated to use the enum
-     * </pre>
-     *
-     * <code>.object.ObjectType object_type = 4;</code>
+     * <code>.object.ObjectType object_type = 2;</code>
      * @return The objectType.
      */
     @java.lang.Override
@@ -808,11 +658,7 @@ private static final long serialVersionUID = 0L;
       return result == null ? obj.ObjectType.UNRECOGNIZED : result;
     }
     /**
-     * <pre>
-     * Updated to use the enum
-     * </pre>
-     *
-     * <code>.object.ObjectType object_type = 4;</code>
+     * <code>.object.ObjectType object_type = 2;</code>
      * @param value The objectType to set.
      * @return This builder for chaining.
      */
@@ -826,11 +672,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * Updated to use the enum
-     * </pre>
-     *
-     * <code>.object.ObjectType object_type = 4;</code>
+     * <code>.object.ObjectType object_type = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearObjectType() {
@@ -842,7 +684,7 @@ private static final long serialVersionUID = 0L;
 
     private long version_ ;
     /**
-     * <code>uint64 version = 5;</code>
+     * <code>uint64 version = 3;</code>
      * @return The version.
      */
     @java.lang.Override
@@ -850,7 +692,7 @@ private static final long serialVersionUID = 0L;
       return version_;
     }
     /**
-     * <code>uint64 version = 5;</code>
+     * <code>uint64 version = 3;</code>
      * @param value The version to set.
      * @return This builder for chaining.
      */
@@ -861,7 +703,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 version = 5;</code>
+     * <code>uint64 version = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearVersion() {
@@ -898,7 +740,7 @@ private static final long serialVersionUID = 0L;
       return internalGetFields().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
 
     @java.lang.Override
@@ -916,7 +758,7 @@ private static final long serialVersionUID = 0L;
       return getFieldsMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
 
@@ -924,7 +766,7 @@ private static final long serialVersionUID = 0L;
       return internalGetFields().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
 
@@ -937,7 +779,7 @@ private static final long serialVersionUID = 0L;
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     @java.lang.Override
 
@@ -958,7 +800,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
 
     public Builder removeFields(
@@ -977,7 +819,7 @@ private static final long serialVersionUID = 0L;
       return internalGetMutableFields().getMutableMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
     public Builder putFields(
         java.lang.String key,
@@ -992,7 +834,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 6;</code>
+     * <code>map&lt;string, string&gt; fields = 4;</code>
      */
 
     public Builder putAllFields(

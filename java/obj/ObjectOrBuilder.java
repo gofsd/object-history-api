@@ -14,48 +14,28 @@ public interface ObjectOrBuilder extends
   long getId();
 
   /**
-   * <code>uint64 creator_id = 2;</code>
-   * @return The creatorId.
-   */
-  long getCreatorId();
-
-  /**
-   * <code>uint64 owner_id = 3;</code>
-   * @return The ownerId.
-   */
-  long getOwnerId();
-
-  /**
-   * <pre>
-   * Updated to use the enum
-   * </pre>
-   *
-   * <code>.object.ObjectType object_type = 4;</code>
+   * <code>.object.ObjectType object_type = 2;</code>
    * @return The enum numeric value on the wire for objectType.
    */
   int getObjectTypeValue();
   /**
-   * <pre>
-   * Updated to use the enum
-   * </pre>
-   *
-   * <code>.object.ObjectType object_type = 4;</code>
+   * <code>.object.ObjectType object_type = 2;</code>
    * @return The objectType.
    */
   obj.ObjectType getObjectType();
 
   /**
-   * <code>uint64 version = 5;</code>
+   * <code>uint64 version = 3;</code>
    * @return The version.
    */
   long getVersion();
 
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -66,19 +46,19 @@ public interface ObjectOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
 
   java.lang.String getFieldsOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 6;</code>
+   * <code>map&lt;string, string&gt; fields = 4;</code>
    */
 
   java.lang.String getFieldsOrThrow(

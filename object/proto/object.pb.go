@@ -89,11 +89,9 @@ func (ObjectType) EnumDescriptor() ([]byte, []int) {
 type Object struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	CreatorId     uint64                 `protobuf:"varint,2,opt,name=creator_id,json=creatorId,proto3" json:"creator_id,omitempty"`
-	OwnerId       uint64                 `protobuf:"varint,3,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"`
-	ObjectType    ObjectType             `protobuf:"varint,4,opt,name=object_type,json=objectType,proto3,enum=object.ObjectType" json:"object_type,omitempty"` // Updated to use the enum
-	Version       uint64                 `protobuf:"varint,5,opt,name=version,proto3" json:"version,omitempty"`
-	Fields        map[string]string      `protobuf:"bytes,6,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	ObjectType    ObjectType             `protobuf:"varint,2,opt,name=object_type,json=objectType,proto3,enum=object.ObjectType" json:"object_type,omitempty"`
+	Version       uint64                 `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
+	Fields        map[string]string      `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -131,20 +129,6 @@ func (*Object) Descriptor() ([]byte, []int) {
 func (x *Object) GetId() uint64 {
 	if x != nil {
 		return x.Id
-	}
-	return 0
-}
-
-func (x *Object) GetCreatorId() uint64 {
-	if x != nil {
-		return x.CreatorId
-	}
-	return 0
-}
-
-func (x *Object) GetOwnerId() uint64 {
-	if x != nil {
-		return x.OwnerId
 	}
 	return 0
 }
@@ -262,8 +246,8 @@ func (x *ObjectsResponse) GetObjects() []*Object {
 // ------------------- CRUD REQUESTS -------------------
 type CreateObjectRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ObjectType    ObjectType             `protobuf:"varint,1,opt,name=object_type,json=objectType,proto3,enum=object.ObjectType" json:"object_type,omitempty"` // Specify the type of object to create
-	Fields        map[string]string      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Fields        map[string]string      `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Relation      []*Relation            `protobuf:"bytes,2,rep,name=relation,proto3" json:"relation,omitempty"` // Optional relation for the object
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -298,16 +282,16 @@ func (*CreateObjectRequest) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *CreateObjectRequest) GetObjectType() ObjectType {
-	if x != nil {
-		return x.ObjectType
-	}
-	return ObjectType_UNKNOWN
-}
-
 func (x *CreateObjectRequest) GetFields() map[string]string {
 	if x != nil {
 		return x.Fields
+	}
+	return nil
+}
+
+func (x *CreateObjectRequest) GetRelation() []*Relation {
+	if x != nil {
+		return x.Relation
 	}
 	return nil
 }
@@ -487,9 +471,9 @@ func (x *DeleteObjectsFieldsRequest) GetIsStrict() bool {
 // ------------------- BATCH/UNIQUE REQUESTS -------------------
 type CreateObjectsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	ObjectType    ObjectType             `protobuf:"varint,1,opt,name=object_type,json=objectType,proto3,enum=object.ObjectType" json:"object_type,omitempty"` // Specify the type of objects to create
-	Fields        map[string]string      `protobuf:"bytes,2,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Count         uint32                 `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
+	Fields        map[string]string      `protobuf:"bytes,1,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Count         uint32                 `protobuf:"varint,2,opt,name=count,proto3" json:"count,omitempty"`
+	Relation      []*Relation            `protobuf:"bytes,3,rep,name=relation,proto3" json:"relation,omitempty"` // Optional relations for the objects
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -524,13 +508,6 @@ func (*CreateObjectsRequest) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{7}
 }
 
-func (x *CreateObjectsRequest) GetObjectType() ObjectType {
-	if x != nil {
-		return x.ObjectType
-	}
-	return ObjectType_UNKNOWN
-}
-
 func (x *CreateObjectsRequest) GetFields() map[string]string {
 	if x != nil {
 		return x.Fields
@@ -543,6 +520,13 @@ func (x *CreateObjectsRequest) GetCount() uint32 {
 		return x.Count
 	}
 	return 0
+}
+
+func (x *CreateObjectsRequest) GetRelation() []*Relation {
+	if x != nil {
+		return x.Relation
+	}
+	return nil
 }
 
 type CreateObjectsUniqueRequest struct {
@@ -1508,27 +1492,23 @@ var File_proto_object_object_proto protoreflect.FileDescriptor
 
 const file_proto_object_object_proto_rawDesc = "" +
 	"\n" +
-	"\x19proto/object/object.proto\x12\x06object\"\x90\x02\n" +
+	"\x19proto/object/object.proto\x12\x06object\"\xd6\x01\n" +
 	"\x06Object\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1d\n" +
-	"\n" +
-	"creator_id\x18\x02 \x01(\x04R\tcreatorId\x12\x19\n" +
-	"\bowner_id\x18\x03 \x01(\x04R\aownerId\x123\n" +
-	"\vobject_type\x18\x04 \x01(\x0e2\x12.object.ObjectTypeR\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x123\n" +
+	"\vobject_type\x18\x02 \x01(\x0e2\x12.object.ObjectTypeR\n" +
 	"objectType\x12\x18\n" +
-	"\aversion\x18\x05 \x01(\x04R\aversion\x122\n" +
-	"\x06fields\x18\x06 \x03(\v2\x1a.object.Object.FieldsEntryR\x06fields\x1a9\n" +
+	"\aversion\x18\x03 \x01(\x04R\aversion\x122\n" +
+	"\x06fields\x18\x04 \x03(\v2\x1a.object.Object.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"8\n" +
 	"\x0eObjectResponse\x12&\n" +
 	"\x06object\x18\x01 \x01(\v2\x0e.object.ObjectR\x06object\";\n" +
 	"\x0fObjectsResponse\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\xc6\x01\n" +
-	"\x13CreateObjectRequest\x123\n" +
-	"\vobject_type\x18\x01 \x01(\x0e2\x12.object.ObjectTypeR\n" +
-	"objectType\x12?\n" +
-	"\x06fields\x18\x02 \x03(\v2'.object.CreateObjectRequest.FieldsEntryR\x06fields\x1a9\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\xbf\x01\n" +
+	"\x13CreateObjectRequest\x12?\n" +
+	"\x06fields\x18\x01 \x03(\v2'.object.CreateObjectRequest.FieldsEntryR\x06fields\x12,\n" +
+	"\brelation\x18\x02 \x03(\v2\x10.object.RelationR\brelation\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"/\n" +
@@ -1548,12 +1528,11 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\tis_strict\x18\x04 \x01(\bR\bisStrict\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xde\x01\n" +
-	"\x14CreateObjectsRequest\x123\n" +
-	"\vobject_type\x18\x01 \x01(\x0e2\x12.object.ObjectTypeR\n" +
-	"objectType\x12@\n" +
-	"\x06fields\x18\x02 \x03(\v2(.object.CreateObjectsRequest.FieldsEntryR\x06fields\x12\x14\n" +
-	"\x05count\x18\x03 \x01(\rR\x05count\x1a9\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xd7\x01\n" +
+	"\x14CreateObjectsRequest\x12@\n" +
+	"\x06fields\x18\x01 \x03(\v2(.object.CreateObjectsRequest.FieldsEntryR\x06fields\x12\x14\n" +
+	"\x05count\x18\x02 \x01(\rR\x05count\x12,\n" +
+	"\brelation\x18\x03 \x03(\v2\x10.object.RelationR\brelation\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"F\n" +
@@ -1713,12 +1692,12 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	28, // 1: object.Object.fields:type_name -> object.Object.FieldsEntry
 	1,  // 2: object.ObjectResponse.object:type_name -> object.Object
 	1,  // 3: object.ObjectsResponse.objects:type_name -> object.Object
-	0,  // 4: object.CreateObjectRequest.object_type:type_name -> object.ObjectType
-	29, // 5: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
+	29, // 4: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
+	27, // 5: object.CreateObjectRequest.relation:type_name -> object.Relation
 	30, // 6: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
 	31, // 7: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
-	0,  // 8: object.CreateObjectsRequest.object_type:type_name -> object.ObjectType
-	32, // 9: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
+	32, // 8: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
+	27, // 9: object.CreateObjectsRequest.relation:type_name -> object.Relation
 	1,  // 10: object.CreateObjectsUniqueRequest.objects:type_name -> object.Object
 	33, // 11: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
 	1,  // 12: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
