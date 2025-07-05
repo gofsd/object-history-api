@@ -21,7 +21,7 @@ private static final long serialVersionUID = 0L;
   }
   private CommandLog() {
     output_ = "";
-    resultCode_ = "";
+    resultCode_ = 0;
   }
 
   @java.lang.Override
@@ -110,41 +110,22 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int RESULT_CODE_FIELD_NUMBER = 4;
-  private volatile java.lang.Object resultCode_;
+  private int resultCode_;
   /**
-   * <code>string result_code = 4;</code>
-   * @return The resultCode.
+   * <code>.cmd.ExecutionStatus result_code = 4;</code>
+   * @return The enum numeric value on the wire for resultCode.
    */
-  @java.lang.Override
-  public java.lang.String getResultCode() {
-    java.lang.Object ref = resultCode_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      resultCode_ = s;
-      return s;
-    }
+  @java.lang.Override public int getResultCodeValue() {
+    return resultCode_;
   }
   /**
-   * <code>string result_code = 4;</code>
-   * @return The bytes for resultCode.
+   * <code>.cmd.ExecutionStatus result_code = 4;</code>
+   * @return The resultCode.
    */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getResultCodeBytes() {
-    java.lang.Object ref = resultCode_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      resultCode_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  @java.lang.Override public cmd.ExecutionStatus getResultCode() {
+    @SuppressWarnings("deprecation")
+    cmd.ExecutionStatus result = cmd.ExecutionStatus.valueOf(resultCode_);
+    return result == null ? cmd.ExecutionStatus.UNRECOGNIZED : result;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -170,8 +151,8 @@ private static final long serialVersionUID = 0L;
     if (timestamp_ != 0L) {
       output.writeUInt64(3, timestamp_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, resultCode_);
+    if (resultCode_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
+      output.writeEnum(4, resultCode_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -193,8 +174,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(3, timestamp_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(resultCode_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, resultCode_);
+    if (resultCode_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(4, resultCode_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -217,8 +199,7 @@ private static final long serialVersionUID = 0L;
         .equals(other.getOutput())) return false;
     if (getTimestamp()
         != other.getTimestamp()) return false;
-    if (!getResultCode()
-        .equals(other.getResultCode())) return false;
+    if (resultCode_ != other.resultCode_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -239,7 +220,7 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTimestamp());
     hash = (37 * hash) + RESULT_CODE_FIELD_NUMBER;
-    hash = (53 * hash) + getResultCode().hashCode();
+    hash = (53 * hash) + resultCode_;
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -378,7 +359,7 @@ private static final long serialVersionUID = 0L;
 
       timestamp_ = 0L;
 
-      resultCode_ = "";
+      resultCode_ = 0;
 
       return this;
     }
@@ -468,9 +449,8 @@ private static final long serialVersionUID = 0L;
       if (other.getTimestamp() != 0L) {
         setTimestamp(other.getTimestamp());
       }
-      if (!other.getResultCode().isEmpty()) {
-        resultCode_ = other.resultCode_;
-        onChanged();
+      if (other.resultCode_ != 0) {
+        setResultCodeValue(other.getResultCodeValue());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -513,11 +493,11 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 24
-            case 34: {
-              resultCode_ = input.readStringRequireUtf8();
+            case 32: {
+              resultCode_ = input.readEnum();
 
               break;
-            } // case 34
+            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -672,78 +652,56 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object resultCode_ = "";
+    private int resultCode_ = 0;
     /**
-     * <code>string result_code = 4;</code>
-     * @return The resultCode.
+     * <code>.cmd.ExecutionStatus result_code = 4;</code>
+     * @return The enum numeric value on the wire for resultCode.
      */
-    public java.lang.String getResultCode() {
-      java.lang.Object ref = resultCode_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        resultCode_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override public int getResultCodeValue() {
+      return resultCode_;
     }
     /**
-     * <code>string result_code = 4;</code>
-     * @return The bytes for resultCode.
-     */
-    public com.google.protobuf.ByteString
-        getResultCodeBytes() {
-      java.lang.Object ref = resultCode_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        resultCode_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string result_code = 4;</code>
-     * @param value The resultCode to set.
+     * <code>.cmd.ExecutionStatus result_code = 4;</code>
+     * @param value The enum numeric value on the wire for resultCode to set.
      * @return This builder for chaining.
      */
-    public Builder setResultCode(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+    public Builder setResultCodeValue(int value) {
+      
       resultCode_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string result_code = 4;</code>
+     * <code>.cmd.ExecutionStatus result_code = 4;</code>
+     * @return The resultCode.
+     */
+    @java.lang.Override
+    public cmd.ExecutionStatus getResultCode() {
+      @SuppressWarnings("deprecation")
+      cmd.ExecutionStatus result = cmd.ExecutionStatus.valueOf(resultCode_);
+      return result == null ? cmd.ExecutionStatus.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.cmd.ExecutionStatus result_code = 4;</code>
+     * @param value The resultCode to set.
+     * @return This builder for chaining.
+     */
+    public Builder setResultCode(cmd.ExecutionStatus value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      resultCode_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.cmd.ExecutionStatus result_code = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearResultCode() {
       
-      resultCode_ = getDefaultInstance().getResultCode();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string result_code = 4;</code>
-     * @param value The bytes for resultCode to set.
-     * @return This builder for chaining.
-     */
-    public Builder setResultCodeBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      resultCode_ = value;
+      resultCode_ = 0;
       onChanged();
       return this;
     }

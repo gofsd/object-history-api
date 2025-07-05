@@ -629,28 +629,28 @@ func (x *CommandsResponse) GetCommands() []*Command {
 	return nil
 }
 
-// DeleteCommandRequest is used to delete a command template.
-type DeleteCommandRequest struct {
+// CommandRequest is used to get, delete a command template.
+type CommandRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *DeleteCommandRequest) Reset() {
-	*x = DeleteCommandRequest{}
+func (x *CommandRequest) Reset() {
+	*x = CommandRequest{}
 	mi := &file_proto_cmd_cmd_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *DeleteCommandRequest) String() string {
+func (x *CommandRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*DeleteCommandRequest) ProtoMessage() {}
+func (*CommandRequest) ProtoMessage() {}
 
-func (x *DeleteCommandRequest) ProtoReflect() protoreflect.Message {
+func (x *CommandRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_proto_cmd_cmd_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -662,12 +662,12 @@ func (x *DeleteCommandRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use DeleteCommandRequest.ProtoReflect.Descriptor instead.
-func (*DeleteCommandRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use CommandRequest.ProtoReflect.Descriptor instead.
+func (*CommandRequest) Descriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{8}
 }
 
-func (x *DeleteCommandRequest) GetId() uint64 {
+func (x *CommandRequest) GetId() uint64 {
 	if x != nil {
 		return x.Id
 	}
@@ -965,6 +965,8 @@ func (x *DryRunResult) GetCommandId() uint64 {
 // SubscribeRequest is used to subscribe to logs.
 type SubscribeRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	Page          uint64                 `protobuf:"varint,1,opt,name=page,proto3" json:"page,omitempty"`                         // Page number for pagination
+	PageSize      uint64                 `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"` // Number of logs per page
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -999,13 +1001,27 @@ func (*SubscribeRequest) Descriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{15}
 }
 
+func (x *SubscribeRequest) GetPage() uint64 {
+	if x != nil {
+		return x.Page
+	}
+	return 0
+}
+
+func (x *SubscribeRequest) GetPageSize() uint64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
 // CommandLog represents a log entry for a command execution.
 type CommandLog struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	ExecutionId   uint64                 `protobuf:"varint,1,opt,name=execution_id,json=executionId,proto3" json:"execution_id,omitempty"`
 	Output        string                 `protobuf:"bytes,2,opt,name=output,proto3" json:"output,omitempty"`
 	Timestamp     uint64                 `protobuf:"varint,3,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
-	ResultCode    string                 `protobuf:"bytes,4,opt,name=result_code,json=resultCode,proto3" json:"result_code,omitempty"`
+	ResultCode    ExecutionStatus        `protobuf:"varint,4,opt,name=result_code,json=resultCode,proto3,enum=cmd.ExecutionStatus" json:"result_code,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1061,11 +1077,11 @@ func (x *CommandLog) GetTimestamp() uint64 {
 	return 0
 }
 
-func (x *CommandLog) GetResultCode() string {
+func (x *CommandLog) GetResultCode() ExecutionStatus {
 	if x != nil {
 		return x.ResultCode
 	}
-	return ""
+	return ExecutionStatus_EXECUTION_STATUS_UNKNOWN
 }
 
 // ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
@@ -1514,8 +1530,8 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12+\n" +
 	"\x06fields\x18\x03 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"<\n" +
 	"\x10CommandsResponse\x12(\n" +
-	"\bcommands\x18\x01 \x03(\v2\f.cmd.CommandR\bcommands\"&\n" +
-	"\x14DeleteCommandRequest\x12\x0e\n" +
+	"\bcommands\x18\x01 \x03(\v2\f.cmd.CommandR\bcommands\" \n" +
+	"\x0eCommandRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"\xd4\x01\n" +
 	"\x0eExecuteRequest\x12\x1d\n" +
 	"\n" +
@@ -1535,14 +1551,16 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\fexecution_id\x18\x01 \x01(\x04R\vexecutionId\"-\n" +
 	"\fDryRunResult\x12\x1d\n" +
 	"\n" +
-	"command_id\x18\x01 \x01(\x04R\tcommandId\"\x12\n" +
-	"\x10SubscribeRequest\"\x86\x01\n" +
+	"command_id\x18\x01 \x01(\x04R\tcommandId\"C\n" +
+	"\x10SubscribeRequest\x12\x12\n" +
+	"\x04page\x18\x01 \x01(\x04R\x04page\x12\x1b\n" +
+	"\tpage_size\x18\x02 \x01(\x04R\bpageSize\"\x9c\x01\n" +
 	"\n" +
 	"CommandLog\x12!\n" +
 	"\fexecution_id\x18\x01 \x01(\x04R\vexecutionId\x12\x16\n" +
 	"\x06output\x18\x02 \x01(\tR\x06output\x12\x1c\n" +
-	"\ttimestamp\x18\x03 \x01(\x04R\ttimestamp\x12\x1f\n" +
-	"\vresult_code\x18\x04 \x01(\tR\n" +
+	"\ttimestamp\x18\x03 \x01(\x04R\ttimestamp\x125\n" +
+	"\vresult_code\x18\x04 \x01(\x0e2\x14.cmd.ExecutionStatusR\n" +
 	"resultCode\"o\n" +
 	"\x1cUpdateExecutionStatusRequest\x12!\n" +
 	"\fexecution_id\x18\x01 \x01(\x04R\vexecutionId\x12,\n" +
@@ -1585,7 +1603,7 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\bUserRole\x12\x14\n" +
 	"\x10USER_ROLE_VIEWER\x10\x00\x12\x16\n" +
 	"\x12USER_ROLE_EXECUTOR\x10\x01\x12\x13\n" +
-	"\x0fUSER_ROLE_ADMIN\x10\x022\xaf\t\n" +
+	"\x0fUSER_ROLE_ADMIN\x10\x022\xb4\t\n" +
 	"\x0eCommandService\x12-\n" +
 	"\n" +
 	"ListGroups\x12\n" +
@@ -1596,12 +1614,11 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\vDeleteGroup\x12\x11.cmd.GroupRequest\x1a\n" +
 	".cmd.Group\x12?\n" +
 	"\x0eAddUserToGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12D\n" +
-	"\x13RemoveUserFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x121\n" +
-	"\fListCommands\x12\n" +
-	".cmd.Empty\x1a\x15.cmd.CommandsResponse\x122\n" +
+	"\x13RemoveUserFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12:\n" +
+	"\fListCommands\x12\x13.cmd.CommandRequest\x1a\x15.cmd.CommandsResponse\x122\n" +
 	"\n" +
-	"AddCommand\x12\x16.cmd.AddCommandRequest\x1a\f.cmd.Command\x128\n" +
-	"\rDeleteCommand\x12\x19.cmd.DeleteCommandRequest\x1a\f.cmd.Command\x12B\n" +
+	"AddCommand\x12\x16.cmd.AddCommandRequest\x1a\f.cmd.Command\x122\n" +
+	"\rDeleteCommand\x12\x13.cmd.CommandRequest\x1a\f.cmd.Command\x12B\n" +
 	"\x11AddCommandToGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12G\n" +
 	"\x16DeleteCommandFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12/\n" +
 	"\x0eListExecutions\x12\n" +
@@ -1610,8 +1627,8 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x06Cancel\x12\x12.cmd.CancelRequest\x1a\x13.cmd.CancelResponse\x120\n" +
 	"\x05Retry\x12\x11.cmd.RetryRequest\x1a\x14.cmd.ExecuteResponse\x120\n" +
 	"\x06DryRun\x12\x13.cmd.ExecuteRequest\x1a\x11.cmd.DryRunResult\x12^\n" +
-	"\x15UpdateExecutionStatus\x12!.cmd.UpdateExecutionStatusRequest\x1a\".cmd.UpdateExecutionStatusResponse\x129\n" +
-	"\rSubscribeLogs\x12\x15.cmd.SubscribeRequest\x1a\x0f.cmd.CommandLog0\x01\x12@\n" +
+	"\x15UpdateExecutionStatus\x12!.cmd.UpdateExecutionStatusRequest\x1a\".cmd.UpdateExecutionStatusResponse\x12;\n" +
+	"\rSubscribeLogs\x12\x15.cmd.SubscribeRequest\x1a\x0f.cmd.CommandLog(\x010\x01\x12@\n" +
 	"\x16SubscribeCommandEvents\x12\x0f.cmd.CommandLog\x1a\x11.cmd.CommandEvent(\x010\x01\x12.\n" +
 	"\x10AddMutualContact\x12\f.cmd.Contact\x1a\f.cmd.Contact\x121\n" +
 	"\x13RemoveMutualContact\x12\f.cmd.Contact\x1a\f.cmd.Contact\x12)\n" +
@@ -1644,7 +1661,7 @@ var file_proto_cmd_cmd_proto_goTypes = []any{
 	(*Command)(nil),                       // 7: cmd.Command
 	(*AddCommandRequest)(nil),             // 8: cmd.AddCommandRequest
 	(*CommandsResponse)(nil),              // 9: cmd.CommandsResponse
-	(*DeleteCommandRequest)(nil),          // 10: cmd.DeleteCommandRequest
+	(*CommandRequest)(nil),                // 10: cmd.CommandRequest
 	(*ExecuteRequest)(nil),                // 11: cmd.ExecuteRequest
 	(*ExecuteResponse)(nil),               // 12: cmd.ExecuteResponse
 	(*CancelRequest)(nil),                 // 13: cmd.CancelRequest
@@ -1673,57 +1690,58 @@ var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	7,  // 4: cmd.CommandsResponse.commands:type_name -> cmd.Command
 	27, // 5: cmd.ExecuteRequest.override_parameters:type_name -> cmd.ExecuteRequest.OverrideParametersEntry
 	0,  // 6: cmd.ExecuteResponse.queue_status:type_name -> cmd.ExecutionStatus
-	0,  // 7: cmd.UpdateExecutionStatusRequest.status:type_name -> cmd.ExecutionStatus
-	28, // 8: cmd.CommandEvent.effective_parameters:type_name -> cmd.CommandEvent.EffectiveParametersEntry
-	29, // 9: cmd.Object.fields:type_name -> cmd.Object.FieldsEntry
-	1,  // 10: cmd.UserGroupResponse.role:type_name -> cmd.UserRole
-	26, // 11: cmd.CommandService.ListGroups:input_type -> cmd.Empty
-	2,  // 12: cmd.CommandService.AddGroup:input_type -> cmd.Group
-	4,  // 13: cmd.CommandService.DeleteGroup:input_type -> cmd.GroupRequest
-	5,  // 14: cmd.CommandService.AddUserToGroup:input_type -> cmd.UserGroupRequest
-	5,  // 15: cmd.CommandService.RemoveUserFromGroup:input_type -> cmd.UserGroupRequest
-	26, // 16: cmd.CommandService.ListCommands:input_type -> cmd.Empty
-	8,  // 17: cmd.CommandService.AddCommand:input_type -> cmd.AddCommandRequest
-	10, // 18: cmd.CommandService.DeleteCommand:input_type -> cmd.DeleteCommandRequest
-	5,  // 19: cmd.CommandService.AddCommandToGroup:input_type -> cmd.UserGroupRequest
-	5,  // 20: cmd.CommandService.DeleteCommandFromGroup:input_type -> cmd.UserGroupRequest
-	26, // 21: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
-	11, // 22: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
-	13, // 23: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
-	15, // 24: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
-	11, // 25: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
-	19, // 26: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
-	17, // 27: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
-	18, // 28: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.CommandLog
-	25, // 29: cmd.CommandService.AddMutualContact:input_type -> cmd.Contact
-	25, // 30: cmd.CommandService.RemoveMutualContact:input_type -> cmd.Contact
-	26, // 31: cmd.CommandService.ShowMyContact:input_type -> cmd.Empty
-	3,  // 32: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
-	2,  // 33: cmd.CommandService.AddGroup:output_type -> cmd.Group
-	2,  // 34: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
-	24, // 35: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
-	24, // 36: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
-	9,  // 37: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
-	7,  // 38: cmd.CommandService.AddCommand:output_type -> cmd.Command
-	7,  // 39: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
-	24, // 40: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
-	24, // 41: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
-	18, // 42: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
-	12, // 43: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
-	14, // 44: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
-	12, // 45: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
-	16, // 46: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
-	20, // 47: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
-	18, // 48: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
-	22, // 49: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
-	25, // 50: cmd.CommandService.AddMutualContact:output_type -> cmd.Contact
-	25, // 51: cmd.CommandService.RemoveMutualContact:output_type -> cmd.Contact
-	25, // 52: cmd.CommandService.ShowMyContact:output_type -> cmd.Contact
-	32, // [32:53] is the sub-list for method output_type
-	11, // [11:32] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	0,  // 7: cmd.CommandLog.result_code:type_name -> cmd.ExecutionStatus
+	0,  // 8: cmd.UpdateExecutionStatusRequest.status:type_name -> cmd.ExecutionStatus
+	28, // 9: cmd.CommandEvent.effective_parameters:type_name -> cmd.CommandEvent.EffectiveParametersEntry
+	29, // 10: cmd.Object.fields:type_name -> cmd.Object.FieldsEntry
+	1,  // 11: cmd.UserGroupResponse.role:type_name -> cmd.UserRole
+	26, // 12: cmd.CommandService.ListGroups:input_type -> cmd.Empty
+	2,  // 13: cmd.CommandService.AddGroup:input_type -> cmd.Group
+	4,  // 14: cmd.CommandService.DeleteGroup:input_type -> cmd.GroupRequest
+	5,  // 15: cmd.CommandService.AddUserToGroup:input_type -> cmd.UserGroupRequest
+	5,  // 16: cmd.CommandService.RemoveUserFromGroup:input_type -> cmd.UserGroupRequest
+	10, // 17: cmd.CommandService.ListCommands:input_type -> cmd.CommandRequest
+	8,  // 18: cmd.CommandService.AddCommand:input_type -> cmd.AddCommandRequest
+	10, // 19: cmd.CommandService.DeleteCommand:input_type -> cmd.CommandRequest
+	5,  // 20: cmd.CommandService.AddCommandToGroup:input_type -> cmd.UserGroupRequest
+	5,  // 21: cmd.CommandService.DeleteCommandFromGroup:input_type -> cmd.UserGroupRequest
+	26, // 22: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
+	11, // 23: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
+	13, // 24: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
+	15, // 25: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
+	11, // 26: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
+	19, // 27: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
+	17, // 28: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
+	18, // 29: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.CommandLog
+	25, // 30: cmd.CommandService.AddMutualContact:input_type -> cmd.Contact
+	25, // 31: cmd.CommandService.RemoveMutualContact:input_type -> cmd.Contact
+	26, // 32: cmd.CommandService.ShowMyContact:input_type -> cmd.Empty
+	3,  // 33: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
+	2,  // 34: cmd.CommandService.AddGroup:output_type -> cmd.Group
+	2,  // 35: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
+	24, // 36: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
+	24, // 37: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
+	9,  // 38: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
+	7,  // 39: cmd.CommandService.AddCommand:output_type -> cmd.Command
+	7,  // 40: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
+	24, // 41: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
+	24, // 42: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
+	18, // 43: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
+	12, // 44: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
+	14, // 45: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
+	12, // 46: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
+	16, // 47: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
+	20, // 48: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
+	18, // 49: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
+	22, // 50: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
+	25, // 51: cmd.CommandService.AddMutualContact:output_type -> cmd.Contact
+	25, // 52: cmd.CommandService.RemoveMutualContact:output_type -> cmd.Contact
+	25, // 53: cmd.CommandService.ShowMyContact:output_type -> cmd.Contact
+	33, // [33:54] is the sub-list for method output_type
+	12, // [12:33] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_proto_cmd_cmd_proto_init() }

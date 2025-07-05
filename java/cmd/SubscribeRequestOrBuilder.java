@@ -6,4 +6,24 @@ package cmd;
 public interface SubscribeRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:cmd.SubscribeRequest)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <pre>
+   * Page number for pagination
+   * </pre>
+   *
+   * <code>uint64 page = 1;</code>
+   * @return The page.
+   */
+  long getPage();
+
+  /**
+   * <pre>
+   * Number of logs per page
+   * </pre>
+   *
+   * <code>uint64 page_size = 2;</code>
+   * @return The pageSize.
+   */
+  long getPageSize();
 }

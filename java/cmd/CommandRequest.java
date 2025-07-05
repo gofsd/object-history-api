@@ -5,28 +5,28 @@ package cmd;
 
 /**
  * <pre>
- * DeleteCommandRequest is used to delete a command template.
+ * CommandRequest is used to get, delete a command template.
  * </pre>
  *
- * Protobuf type {@code cmd.DeleteCommandRequest}
+ * Protobuf type {@code cmd.CommandRequest}
  */
-public final class DeleteCommandRequest extends
+public final class CommandRequest extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:cmd.DeleteCommandRequest)
-    DeleteCommandRequestOrBuilder {
+    // @@protoc_insertion_point(message_implements:cmd.CommandRequest)
+    CommandRequestOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use DeleteCommandRequest.newBuilder() to construct.
-  private DeleteCommandRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CommandRequest.newBuilder() to construct.
+  private CommandRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private DeleteCommandRequest() {
+  private CommandRequest() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new DeleteCommandRequest();
+    return new CommandRequest();
   }
 
   @java.lang.Override
@@ -36,15 +36,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return cmd.Cmd.internal_static_cmd_DeleteCommandRequest_descriptor;
+    return cmd.Cmd.internal_static_cmd_CommandRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return cmd.Cmd.internal_static_cmd_DeleteCommandRequest_fieldAccessorTable
+    return cmd.Cmd.internal_static_cmd_CommandRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            cmd.DeleteCommandRequest.class, cmd.DeleteCommandRequest.Builder.class);
+            cmd.CommandRequest.class, cmd.CommandRequest.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -98,10 +98,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof cmd.DeleteCommandRequest)) {
+    if (!(obj instanceof cmd.CommandRequest)) {
       return super.equals(obj);
     }
-    cmd.DeleteCommandRequest other = (cmd.DeleteCommandRequest) obj;
+    cmd.CommandRequest other = (cmd.CommandRequest) obj;
 
     if (getId()
         != other.getId()) return false;
@@ -124,69 +124,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cmd.DeleteCommandRequest parseFrom(byte[] data)
+  public static cmd.CommandRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static cmd.DeleteCommandRequest parseFrom(java.io.InputStream input)
+  public static cmd.CommandRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cmd.DeleteCommandRequest parseDelimitedFrom(java.io.InputStream input)
+  public static cmd.CommandRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static cmd.DeleteCommandRequest parseDelimitedFrom(
+  public static cmd.CommandRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static cmd.DeleteCommandRequest parseFrom(
+  public static cmd.CommandRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -199,7 +199,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(cmd.DeleteCommandRequest prototype) {
+  public static Builder newBuilder(cmd.CommandRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -216,29 +216,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * DeleteCommandRequest is used to delete a command template.
+   * CommandRequest is used to get, delete a command template.
    * </pre>
    *
-   * Protobuf type {@code cmd.DeleteCommandRequest}
+   * Protobuf type {@code cmd.CommandRequest}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:cmd.DeleteCommandRequest)
-      cmd.DeleteCommandRequestOrBuilder {
+      // @@protoc_insertion_point(builder_implements:cmd.CommandRequest)
+      cmd.CommandRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return cmd.Cmd.internal_static_cmd_DeleteCommandRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_CommandRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return cmd.Cmd.internal_static_cmd_DeleteCommandRequest_fieldAccessorTable
+      return cmd.Cmd.internal_static_cmd_CommandRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              cmd.DeleteCommandRequest.class, cmd.DeleteCommandRequest.Builder.class);
+              cmd.CommandRequest.class, cmd.CommandRequest.Builder.class);
     }
 
-    // Construct using cmd.DeleteCommandRequest.newBuilder()
+    // Construct using cmd.CommandRequest.newBuilder()
     private Builder() {
 
     }
@@ -259,17 +259,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return cmd.Cmd.internal_static_cmd_DeleteCommandRequest_descriptor;
+      return cmd.Cmd.internal_static_cmd_CommandRequest_descriptor;
     }
 
     @java.lang.Override
-    public cmd.DeleteCommandRequest getDefaultInstanceForType() {
-      return cmd.DeleteCommandRequest.getDefaultInstance();
+    public cmd.CommandRequest getDefaultInstanceForType() {
+      return cmd.CommandRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public cmd.DeleteCommandRequest build() {
-      cmd.DeleteCommandRequest result = buildPartial();
+    public cmd.CommandRequest build() {
+      cmd.CommandRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -277,8 +277,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public cmd.DeleteCommandRequest buildPartial() {
-      cmd.DeleteCommandRequest result = new cmd.DeleteCommandRequest(this);
+    public cmd.CommandRequest buildPartial() {
+      cmd.CommandRequest result = new cmd.CommandRequest(this);
       result.id_ = id_;
       onBuilt();
       return result;
@@ -318,16 +318,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof cmd.DeleteCommandRequest) {
-        return mergeFrom((cmd.DeleteCommandRequest)other);
+      if (other instanceof cmd.CommandRequest) {
+        return mergeFrom((cmd.CommandRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(cmd.DeleteCommandRequest other) {
-      if (other == cmd.DeleteCommandRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(cmd.CommandRequest other) {
+      if (other == cmd.CommandRequest.getDefaultInstance()) return this;
       if (other.getId() != 0L) {
         setId(other.getId());
       }
@@ -421,23 +421,23 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:cmd.DeleteCommandRequest)
+    // @@protoc_insertion_point(builder_scope:cmd.CommandRequest)
   }
 
-  // @@protoc_insertion_point(class_scope:cmd.DeleteCommandRequest)
-  private static final cmd.DeleteCommandRequest DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:cmd.CommandRequest)
+  private static final cmd.CommandRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new cmd.DeleteCommandRequest();
+    DEFAULT_INSTANCE = new cmd.CommandRequest();
   }
 
-  public static cmd.DeleteCommandRequest getDefaultInstance() {
+  public static cmd.CommandRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<DeleteCommandRequest>
-      PARSER = new com.google.protobuf.AbstractParser<DeleteCommandRequest>() {
+  private static final com.google.protobuf.Parser<CommandRequest>
+      PARSER = new com.google.protobuf.AbstractParser<CommandRequest>() {
     @java.lang.Override
-    public DeleteCommandRequest parsePartialFrom(
+    public CommandRequest parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -456,17 +456,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<DeleteCommandRequest> parser() {
+  public static com.google.protobuf.Parser<CommandRequest> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<DeleteCommandRequest> getParserForType() {
+  public com.google.protobuf.Parser<CommandRequest> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public cmd.DeleteCommandRequest getDefaultInstanceForType() {
+  public cmd.CommandRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

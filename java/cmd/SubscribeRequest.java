@@ -48,6 +48,36 @@ private static final long serialVersionUID = 0L;
             cmd.SubscribeRequest.class, cmd.SubscribeRequest.Builder.class);
   }
 
+  public static final int PAGE_FIELD_NUMBER = 1;
+  private long page_;
+  /**
+   * <pre>
+   * Page number for pagination
+   * </pre>
+   *
+   * <code>uint64 page = 1;</code>
+   * @return The page.
+   */
+  @java.lang.Override
+  public long getPage() {
+    return page_;
+  }
+
+  public static final int PAGE_SIZE_FIELD_NUMBER = 2;
+  private long pageSize_;
+  /**
+   * <pre>
+   * Number of logs per page
+   * </pre>
+   *
+   * <code>uint64 page_size = 2;</code>
+   * @return The pageSize.
+   */
+  @java.lang.Override
+  public long getPageSize() {
+    return pageSize_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -62,6 +92,12 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (page_ != 0L) {
+      output.writeUInt64(1, page_);
+    }
+    if (pageSize_ != 0L) {
+      output.writeUInt64(2, pageSize_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -71,6 +107,14 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (page_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(1, page_);
+    }
+    if (pageSize_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(2, pageSize_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -86,6 +130,10 @@ private static final long serialVersionUID = 0L;
     }
     cmd.SubscribeRequest other = (cmd.SubscribeRequest) obj;
 
+    if (getPage()
+        != other.getPage()) return false;
+    if (getPageSize()
+        != other.getPageSize()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -97,6 +145,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + PAGE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getPage());
+    hash = (37 * hash) + PAGE_SIZE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getPageSize());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -230,6 +284,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      page_ = 0L;
+
+      pageSize_ = 0L;
+
       return this;
     }
 
@@ -256,6 +314,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public cmd.SubscribeRequest buildPartial() {
       cmd.SubscribeRequest result = new cmd.SubscribeRequest(this);
+      result.page_ = page_;
+      result.pageSize_ = pageSize_;
       onBuilt();
       return result;
     }
@@ -304,6 +364,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cmd.SubscribeRequest other) {
       if (other == cmd.SubscribeRequest.getDefaultInstance()) return this;
+      if (other.getPage() != 0L) {
+        setPage(other.getPage());
+      }
+      if (other.getPageSize() != 0L) {
+        setPageSize(other.getPageSize());
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -330,6 +396,16 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 8: {
+              page_ = input.readUInt64();
+
+              break;
+            } // case 8
+            case 16: {
+              pageSize_ = input.readUInt64();
+
+              break;
+            } // case 16
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -343,6 +419,92 @@ private static final long serialVersionUID = 0L;
       } finally {
         onChanged();
       } // finally
+      return this;
+    }
+
+    private long page_ ;
+    /**
+     * <pre>
+     * Page number for pagination
+     * </pre>
+     *
+     * <code>uint64 page = 1;</code>
+     * @return The page.
+     */
+    @java.lang.Override
+    public long getPage() {
+      return page_;
+    }
+    /**
+     * <pre>
+     * Page number for pagination
+     * </pre>
+     *
+     * <code>uint64 page = 1;</code>
+     * @param value The page to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPage(long value) {
+      
+      page_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Page number for pagination
+     * </pre>
+     *
+     * <code>uint64 page = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPage() {
+      
+      page_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long pageSize_ ;
+    /**
+     * <pre>
+     * Number of logs per page
+     * </pre>
+     *
+     * <code>uint64 page_size = 2;</code>
+     * @return The pageSize.
+     */
+    @java.lang.Override
+    public long getPageSize() {
+      return pageSize_;
+    }
+    /**
+     * <pre>
+     * Number of logs per page
+     * </pre>
+     *
+     * <code>uint64 page_size = 2;</code>
+     * @param value The pageSize to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPageSize(long value) {
+      
+      pageSize_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Number of logs per page
+     * </pre>
+     *
+     * <code>uint64 page_size = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPageSize() {
+      
+      pageSize_ = 0L;
+      onChanged();
       return this;
     }
     @java.lang.Override

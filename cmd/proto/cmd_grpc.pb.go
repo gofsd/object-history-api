@@ -55,9 +55,9 @@ type CommandServiceClient interface {
 	AddUserToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	RemoveUserFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	// Template management
-	ListCommands(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CommandsResponse, error)
+	ListCommands(ctx context.Context, in *CommandRequest, opts ...grpc.CallOption) (*CommandsResponse, error)
 	AddCommand(ctx context.Context, in *AddCommandRequest, opts ...grpc.CallOption) (*Command, error)
-	DeleteCommand(ctx context.Context, in *DeleteCommandRequest, opts ...grpc.CallOption) (*Command, error)
+	DeleteCommand(ctx context.Context, in *CommandRequest, opts ...grpc.CallOption) (*Command, error)
 	AddCommandToGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	DeleteCommandFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	// Execution
@@ -69,7 +69,7 @@ type CommandServiceClient interface {
 	// Update execution status
 	UpdateExecutionStatus(ctx context.Context, in *UpdateExecutionStatusRequest, opts ...grpc.CallOption) (*UpdateExecutionStatusResponse, error)
 	// Streaming logs
-	SubscribeLogs(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandLog], error)
+	SubscribeLogs(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[SubscribeRequest, CommandLog], error)
 	// Event listener for executors
 	SubscribeCommandEvents(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[CommandLog, CommandEvent], error)
 	// Add a contact for a user.
@@ -136,7 +136,7 @@ func (c *commandServiceClient) RemoveUserFromGroup(ctx context.Context, in *User
 	return out, nil
 }
 
-func (c *commandServiceClient) ListCommands(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*CommandsResponse, error) {
+func (c *commandServiceClient) ListCommands(ctx context.Context, in *CommandRequest, opts ...grpc.CallOption) (*CommandsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CommandsResponse)
 	err := c.cc.Invoke(ctx, CommandService_ListCommands_FullMethodName, in, out, cOpts...)
@@ -156,7 +156,7 @@ func (c *commandServiceClient) AddCommand(ctx context.Context, in *AddCommandReq
 	return out, nil
 }
 
-func (c *commandServiceClient) DeleteCommand(ctx context.Context, in *DeleteCommandRequest, opts ...grpc.CallOption) (*Command, error) {
+func (c *commandServiceClient) DeleteCommand(ctx context.Context, in *CommandRequest, opts ...grpc.CallOption) (*Command, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Command)
 	err := c.cc.Invoke(ctx, CommandService_DeleteCommand_FullMethodName, in, out, cOpts...)
@@ -255,24 +255,18 @@ func (c *commandServiceClient) UpdateExecutionStatus(ctx context.Context, in *Up
 	return out, nil
 }
 
-func (c *commandServiceClient) SubscribeLogs(ctx context.Context, in *SubscribeRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[CommandLog], error) {
+func (c *commandServiceClient) SubscribeLogs(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[SubscribeRequest, CommandLog], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[1], CommandService_SubscribeLogs_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	x := &grpc.GenericClientStream[SubscribeRequest, CommandLog]{ClientStream: stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
 	return x, nil
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CommandService_SubscribeLogsClient = grpc.ServerStreamingClient[CommandLog]
+type CommandService_SubscribeLogsClient = grpc.BidiStreamingClient[SubscribeRequest, CommandLog]
 
 func (c *commandServiceClient) SubscribeCommandEvents(ctx context.Context, opts ...grpc.CallOption) (grpc.BidiStreamingClient[CommandLog, CommandEvent], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
@@ -330,9 +324,9 @@ type CommandServiceServer interface {
 	AddUserToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	RemoveUserFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	// Template management
-	ListCommands(context.Context, *Empty) (*CommandsResponse, error)
+	ListCommands(context.Context, *CommandRequest) (*CommandsResponse, error)
 	AddCommand(context.Context, *AddCommandRequest) (*Command, error)
-	DeleteCommand(context.Context, *DeleteCommandRequest) (*Command, error)
+	DeleteCommand(context.Context, *CommandRequest) (*Command, error)
 	AddCommandToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	DeleteCommandFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	// Execution
@@ -344,7 +338,7 @@ type CommandServiceServer interface {
 	// Update execution status
 	UpdateExecutionStatus(context.Context, *UpdateExecutionStatusRequest) (*UpdateExecutionStatusResponse, error)
 	// Streaming logs
-	SubscribeLogs(*SubscribeRequest, grpc.ServerStreamingServer[CommandLog]) error
+	SubscribeLogs(grpc.BidiStreamingServer[SubscribeRequest, CommandLog]) error
 	// Event listener for executors
 	SubscribeCommandEvents(grpc.BidiStreamingServer[CommandLog, CommandEvent]) error
 	// Add a contact for a user.
@@ -376,13 +370,13 @@ func (UnimplementedCommandServiceServer) AddUserToGroup(context.Context, *UserGr
 func (UnimplementedCommandServiceServer) RemoveUserFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveUserFromGroup not implemented")
 }
-func (UnimplementedCommandServiceServer) ListCommands(context.Context, *Empty) (*CommandsResponse, error) {
+func (UnimplementedCommandServiceServer) ListCommands(context.Context, *CommandRequest) (*CommandsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListCommands not implemented")
 }
 func (UnimplementedCommandServiceServer) AddCommand(context.Context, *AddCommandRequest) (*Command, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddCommand not implemented")
 }
-func (UnimplementedCommandServiceServer) DeleteCommand(context.Context, *DeleteCommandRequest) (*Command, error) {
+func (UnimplementedCommandServiceServer) DeleteCommand(context.Context, *CommandRequest) (*Command, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommand not implemented")
 }
 func (UnimplementedCommandServiceServer) AddCommandToGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
@@ -409,7 +403,7 @@ func (UnimplementedCommandServiceServer) DryRun(context.Context, *ExecuteRequest
 func (UnimplementedCommandServiceServer) UpdateExecutionStatus(context.Context, *UpdateExecutionStatusRequest) (*UpdateExecutionStatusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateExecutionStatus not implemented")
 }
-func (UnimplementedCommandServiceServer) SubscribeLogs(*SubscribeRequest, grpc.ServerStreamingServer[CommandLog]) error {
+func (UnimplementedCommandServiceServer) SubscribeLogs(grpc.BidiStreamingServer[SubscribeRequest, CommandLog]) error {
 	return status.Errorf(codes.Unimplemented, "method SubscribeLogs not implemented")
 }
 func (UnimplementedCommandServiceServer) SubscribeCommandEvents(grpc.BidiStreamingServer[CommandLog, CommandEvent]) error {
@@ -536,7 +530,7 @@ func _CommandService_RemoveUserFromGroup_Handler(srv interface{}, ctx context.Co
 }
 
 func _CommandService_ListCommands_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Empty)
+	in := new(CommandRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -548,7 +542,7 @@ func _CommandService_ListCommands_Handler(srv interface{}, ctx context.Context, 
 		FullMethod: CommandService_ListCommands_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).ListCommands(ctx, req.(*Empty))
+		return srv.(CommandServiceServer).ListCommands(ctx, req.(*CommandRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -572,7 +566,7 @@ func _CommandService_AddCommand_Handler(srv interface{}, ctx context.Context, de
 }
 
 func _CommandService_DeleteCommand_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteCommandRequest)
+	in := new(CommandRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -584,7 +578,7 @@ func _CommandService_DeleteCommand_Handler(srv interface{}, ctx context.Context,
 		FullMethod: CommandService_DeleteCommand_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).DeleteCommand(ctx, req.(*DeleteCommandRequest))
+		return srv.(CommandServiceServer).DeleteCommand(ctx, req.(*CommandRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -727,15 +721,11 @@ func _CommandService_UpdateExecutionStatus_Handler(srv interface{}, ctx context.
 }
 
 func _CommandService_SubscribeLogs_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(SubscribeRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CommandServiceServer).SubscribeLogs(m, &grpc.GenericServerStream[SubscribeRequest, CommandLog]{ServerStream: stream})
+	return srv.(CommandServiceServer).SubscribeLogs(&grpc.GenericServerStream[SubscribeRequest, CommandLog]{ServerStream: stream})
 }
 
 // This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
-type CommandService_SubscribeLogsServer = grpc.ServerStreamingServer[CommandLog]
+type CommandService_SubscribeLogsServer = grpc.BidiStreamingServer[SubscribeRequest, CommandLog]
 
 func _CommandService_SubscribeCommandEvents_Handler(srv interface{}, stream grpc.ServerStream) error {
 	return srv.(CommandServiceServer).SubscribeCommandEvents(&grpc.GenericServerStream[CommandLog, CommandEvent]{ServerStream: stream})
@@ -888,6 +878,7 @@ var CommandService_ServiceDesc = grpc.ServiceDesc{
 			StreamName:    "SubscribeLogs",
 			Handler:       _CommandService_SubscribeLogs_Handler,
 			ServerStreams: true,
+			ClientStreams: true,
 		},
 		{
 			StreamName:    "SubscribeCommandEvents",

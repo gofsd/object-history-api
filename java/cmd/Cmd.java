@@ -55,10 +55,10 @@ public final class Cmd {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cmd_CommandsResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_cmd_DeleteCommandRequest_descriptor;
+    internal_static_cmd_CommandRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_cmd_DeleteCommandRequest_fieldAccessorTable;
+      internal_static_cmd_CommandRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cmd_ExecuteRequest_descriptor;
   static final 
@@ -179,77 +179,78 @@ public final class Cmd {
       "\n\004name\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022#\n\006fie" +
       "lds\030\003 \003(\0132\023.cmd.ParameterField\"2\n\020Comman" +
       "dsResponse\022\036\n\010commands\030\001 \003(\0132\014.cmd.Comma" +
-      "nd\"\"\n\024DeleteCommandRequest\022\n\n\002id\030\001 \001(\004\"\251" +
-      "\001\n\016ExecuteRequest\022\022\n\ncommand_id\030\001 \001(\004\022H\n" +
-      "\023override_parameters\030\002 \003(\0132+.cmd.Execute" +
-      "Request.OverrideParametersEntry\0329\n\027Overr" +
-      "ideParametersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value" +
-      "\030\002 \001(\t:\0028\001\"S\n\017ExecuteResponse\022\024\n\014executi" +
-      "on_id\030\001 \001(\004\022*\n\014queue_status\030\002 \001(\0162\024.cmd." +
-      "ExecutionStatus\"%\n\rCancelRequest\022\024\n\014exec" +
-      "ution_id\030\001 \001(\004\"!\n\016CancelResponse\022\017\n\007succ" +
-      "ess\030\001 \001(\010\"$\n\014RetryRequest\022\024\n\014execution_i" +
-      "d\030\001 \001(\004\"\"\n\014DryRunResult\022\022\n\ncommand_id\030\001 " +
-      "\001(\004\"\022\n\020SubscribeRequest\"Z\n\nCommandLog\022\024\n" +
-      "\014execution_id\030\001 \001(\004\022\016\n\006output\030\002 \001(\t\022\021\n\tt" +
-      "imestamp\030\003 \001(\004\022\023\n\013result_code\030\004 \001(\t\"Z\n\034U" +
-      "pdateExecutionStatusRequest\022\024\n\014execution" +
-      "_id\030\001 \001(\004\022$\n\006status\030\002 \001(\0162\024.cmd.Executio" +
-      "nStatus\"0\n\035UpdateExecutionStatusResponse" +
-      "\022\017\n\007success\030\001 \001(\010\"\037\n\035SubscribeCommandEve" +
-      "ntsRequest\"\275\001\n\014CommandEvent\022\024\n\014execution" +
-      "_id\030\001 \001(\004\022H\n\024effective_parameters\030\002 \003(\0132" +
-      "*.cmd.CommandEvent.EffectiveParametersEn" +
-      "try\022\021\n\ttimestamp\030\003 \001(\004\032:\n\030EffectiveParam" +
-      "etersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\002" +
-      "8\001\"l\n\006Object\022\n\n\002id\030\001 \001(\004\022\'\n\006fields\030\002 \003(\013" +
-      "2\027.cmd.Object.FieldsEntry\032-\n\013FieldsEntry" +
-      "\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"d\n\021User" +
-      "GroupResponse\022\017\n\007user_id\030\001 \001(\004\022\020\n\010group_" +
-      "id\030\002 \001(\004\022\033\n\004role\030\003 \001(\0162\r.cmd.UserRole\022\017\n" +
-      "\007message\030\004 \001(\t\"$\n\007Contact\022\n\n\002id\030\001 \001(\004\022\r\n" +
-      "\005email\030\002 \001(\t\"\007\n\005Empty*\277\002\n\017ExecutionStatu" +
-      "s\022\034\n\030EXECUTION_STATUS_UNKNOWN\020\000\022\034\n\030EXECU" +
-      "TION_STATUS_PENDING\020\001\022\034\n\030EXECUTION_STATU" +
-      "S_RUNNING\020\002\022\034\n\030EXECUTION_STATUS_SUCCESS\020" +
-      "\003\022\033\n\027EXECUTION_STATUS_FAILED\020\004\022\036\n\032EXECUT" +
-      "ION_STATUS_CANCELLED\020\005\022)\n%EXECUTION_STAT" +
-      "US_CANCELLED_BY_TIMEOUT\020\006\022\"\n\036EXECUTION_S" +
-      "TATUS_NOT_PERMITTED\020\007\022(\n$EXECUTION_STATU" +
-      "S_EXECUTORS_NOT_FOUND\020\010*M\n\010UserRole\022\024\n\020U" +
-      "SER_ROLE_VIEWER\020\000\022\026\n\022USER_ROLE_EXECUTOR\020" +
-      "\001\022\023\n\017USER_ROLE_ADMIN\020\0022\257\t\n\016CommandServic" +
-      "e\022-\n\nListGroups\022\n.cmd.Empty\032\023.cmd.Groups" +
-      "Response\022\"\n\010AddGroup\022\n.cmd.Group\032\n.cmd.G" +
-      "roup\022,\n\013DeleteGroup\022\021.cmd.GroupRequest\032\n" +
-      ".cmd.Group\022?\n\016AddUserToGroup\022\025.cmd.UserG" +
-      "roupRequest\032\026.cmd.UserGroupResponse\022D\n\023R" +
-      "emoveUserFromGroup\022\025.cmd.UserGroupReques" +
-      "t\032\026.cmd.UserGroupResponse\0221\n\014ListCommand" +
-      "s\022\n.cmd.Empty\032\025.cmd.CommandsResponse\0222\n\n" +
-      "AddCommand\022\026.cmd.AddCommandRequest\032\014.cmd" +
-      ".Command\0228\n\rDeleteCommand\022\031.cmd.DeleteCo" +
-      "mmandRequest\032\014.cmd.Command\022B\n\021AddCommand" +
-      "ToGroup\022\025.cmd.UserGroupRequest\032\026.cmd.Use" +
-      "rGroupResponse\022G\n\026DeleteCommandFromGroup" +
-      "\022\025.cmd.UserGroupRequest\032\026.cmd.UserGroupR" +
-      "esponse\022/\n\016ListExecutions\022\n.cmd.Empty\032\017." +
-      "cmd.CommandLog0\001\0224\n\007Execute\022\023.cmd.Execut" +
-      "eRequest\032\024.cmd.ExecuteResponse\0221\n\006Cancel" +
-      "\022\022.cmd.CancelRequest\032\023.cmd.CancelRespons" +
-      "e\0220\n\005Retry\022\021.cmd.RetryRequest\032\024.cmd.Exec" +
-      "uteResponse\0220\n\006DryRun\022\023.cmd.ExecuteReque" +
-      "st\032\021.cmd.DryRunResult\022^\n\025UpdateExecution" +
-      "Status\022!.cmd.UpdateExecutionStatusReques" +
-      "t\032\".cmd.UpdateExecutionStatusResponse\0229\n" +
-      "\rSubscribeLogs\022\025.cmd.SubscribeRequest\032\017." +
-      "cmd.CommandLog0\001\022@\n\026SubscribeCommandEven" +
-      "ts\022\017.cmd.CommandLog\032\021.cmd.CommandEvent(\001" +
-      "0\001\022.\n\020AddMutualContact\022\014.cmd.Contact\032\014.c" +
-      "md.Contact\0221\n\023RemoveMutualContact\022\014.cmd." +
-      "Contact\032\014.cmd.Contact\022)\n\rShowMyContact\022\n" +
-      ".cmd.Empty\032\014.cmd.ContactB\035\n\003cmdB\003CmdP\001Z\t" +
-      "cmd/proto\242\002\003CMDb\006proto3"
+      "nd\"\034\n\016CommandRequest\022\n\n\002id\030\001 \001(\004\"\251\001\n\016Exe" +
+      "cuteRequest\022\022\n\ncommand_id\030\001 \001(\004\022H\n\023overr" +
+      "ide_parameters\030\002 \003(\0132+.cmd.ExecuteReques" +
+      "t.OverrideParametersEntry\0329\n\027OverridePar" +
+      "ametersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t" +
+      ":\0028\001\"S\n\017ExecuteResponse\022\024\n\014execution_id\030" +
+      "\001 \001(\004\022*\n\014queue_status\030\002 \001(\0162\024.cmd.Execut" +
+      "ionStatus\"%\n\rCancelRequest\022\024\n\014execution_" +
+      "id\030\001 \001(\004\"!\n\016CancelResponse\022\017\n\007success\030\001 " +
+      "\001(\010\"$\n\014RetryRequest\022\024\n\014execution_id\030\001 \001(" +
+      "\004\"\"\n\014DryRunResult\022\022\n\ncommand_id\030\001 \001(\004\"3\n" +
+      "\020SubscribeRequest\022\014\n\004page\030\001 \001(\004\022\021\n\tpage_" +
+      "size\030\002 \001(\004\"p\n\nCommandLog\022\024\n\014execution_id" +
+      "\030\001 \001(\004\022\016\n\006output\030\002 \001(\t\022\021\n\ttimestamp\030\003 \001(" +
+      "\004\022)\n\013result_code\030\004 \001(\0162\024.cmd.ExecutionSt" +
+      "atus\"Z\n\034UpdateExecutionStatusRequest\022\024\n\014" +
+      "execution_id\030\001 \001(\004\022$\n\006status\030\002 \001(\0162\024.cmd" +
+      ".ExecutionStatus\"0\n\035UpdateExecutionStatu" +
+      "sResponse\022\017\n\007success\030\001 \001(\010\"\037\n\035SubscribeC" +
+      "ommandEventsRequest\"\275\001\n\014CommandEvent\022\024\n\014" +
+      "execution_id\030\001 \001(\004\022H\n\024effective_paramete" +
+      "rs\030\002 \003(\0132*.cmd.CommandEvent.EffectivePar" +
+      "ametersEntry\022\021\n\ttimestamp\030\003 \001(\004\032:\n\030Effec" +
+      "tiveParametersEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005valu" +
+      "e\030\002 \001(\t:\0028\001\"l\n\006Object\022\n\n\002id\030\001 \001(\004\022\'\n\006fie" +
+      "lds\030\002 \003(\0132\027.cmd.Object.FieldsEntry\032-\n\013Fi" +
+      "eldsEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028" +
+      "\001\"d\n\021UserGroupResponse\022\017\n\007user_id\030\001 \001(\004\022" +
+      "\020\n\010group_id\030\002 \001(\004\022\033\n\004role\030\003 \001(\0162\r.cmd.Us" +
+      "erRole\022\017\n\007message\030\004 \001(\t\"$\n\007Contact\022\n\n\002id" +
+      "\030\001 \001(\004\022\r\n\005email\030\002 \001(\t\"\007\n\005Empty*\277\002\n\017Execu" +
+      "tionStatus\022\034\n\030EXECUTION_STATUS_UNKNOWN\020\000" +
+      "\022\034\n\030EXECUTION_STATUS_PENDING\020\001\022\034\n\030EXECUT" +
+      "ION_STATUS_RUNNING\020\002\022\034\n\030EXECUTION_STATUS" +
+      "_SUCCESS\020\003\022\033\n\027EXECUTION_STATUS_FAILED\020\004\022" +
+      "\036\n\032EXECUTION_STATUS_CANCELLED\020\005\022)\n%EXECU" +
+      "TION_STATUS_CANCELLED_BY_TIMEOUT\020\006\022\"\n\036EX" +
+      "ECUTION_STATUS_NOT_PERMITTED\020\007\022(\n$EXECUT" +
+      "ION_STATUS_EXECUTORS_NOT_FOUND\020\010*M\n\010User" +
+      "Role\022\024\n\020USER_ROLE_VIEWER\020\000\022\026\n\022USER_ROLE_" +
+      "EXECUTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\264\t\n\016Comm" +
+      "andService\022-\n\nListGroups\022\n.cmd.Empty\032\023.c" +
+      "md.GroupsResponse\022\"\n\010AddGroup\022\n.cmd.Grou" +
+      "p\032\n.cmd.Group\022,\n\013DeleteGroup\022\021.cmd.Group" +
+      "Request\032\n.cmd.Group\022?\n\016AddUserToGroup\022\025." +
+      "cmd.UserGroupRequest\032\026.cmd.UserGroupResp" +
+      "onse\022D\n\023RemoveUserFromGroup\022\025.cmd.UserGr" +
+      "oupRequest\032\026.cmd.UserGroupResponse\022:\n\014Li" +
+      "stCommands\022\023.cmd.CommandRequest\032\025.cmd.Co" +
+      "mmandsResponse\0222\n\nAddCommand\022\026.cmd.AddCo" +
+      "mmandRequest\032\014.cmd.Command\0222\n\rDeleteComm" +
+      "and\022\023.cmd.CommandRequest\032\014.cmd.Command\022B" +
+      "\n\021AddCommandToGroup\022\025.cmd.UserGroupReque" +
+      "st\032\026.cmd.UserGroupResponse\022G\n\026DeleteComm" +
+      "andFromGroup\022\025.cmd.UserGroupRequest\032\026.cm" +
+      "d.UserGroupResponse\022/\n\016ListExecutions\022\n." +
+      "cmd.Empty\032\017.cmd.CommandLog0\001\0224\n\007Execute\022" +
+      "\023.cmd.ExecuteRequest\032\024.cmd.ExecuteRespon" +
+      "se\0221\n\006Cancel\022\022.cmd.CancelRequest\032\023.cmd.C" +
+      "ancelResponse\0220\n\005Retry\022\021.cmd.RetryReques" +
+      "t\032\024.cmd.ExecuteResponse\0220\n\006DryRun\022\023.cmd." +
+      "ExecuteRequest\032\021.cmd.DryRunResult\022^\n\025Upd" +
+      "ateExecutionStatus\022!.cmd.UpdateExecution" +
+      "StatusRequest\032\".cmd.UpdateExecutionStatu" +
+      "sResponse\022;\n\rSubscribeLogs\022\025.cmd.Subscri" +
+      "beRequest\032\017.cmd.CommandLog(\0010\001\022@\n\026Subscr" +
+      "ibeCommandEvents\022\017.cmd.CommandLog\032\021.cmd." +
+      "CommandEvent(\0010\001\022.\n\020AddMutualContact\022\014.c" +
+      "md.Contact\032\014.cmd.Contact\0221\n\023RemoveMutual" +
+      "Contact\022\014.cmd.Contact\032\014.cmd.Contact\022)\n\rS" +
+      "howMyContact\022\n.cmd.Empty\032\014.cmd.ContactB\035" +
+      "\n\003cmdB\003CmdP\001Z\tcmd/proto\242\002\003CMDb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -303,11 +304,11 @@ public final class Cmd {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cmd_CommandsResponse_descriptor,
         new java.lang.String[] { "Commands", });
-    internal_static_cmd_DeleteCommandRequest_descriptor =
+    internal_static_cmd_CommandRequest_descriptor =
       getDescriptor().getMessageTypes().get(8);
-    internal_static_cmd_DeleteCommandRequest_fieldAccessorTable = new
+    internal_static_cmd_CommandRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_cmd_DeleteCommandRequest_descriptor,
+        internal_static_cmd_CommandRequest_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_cmd_ExecuteRequest_descriptor =
       getDescriptor().getMessageTypes().get(9);
@@ -356,7 +357,7 @@ public final class Cmd {
     internal_static_cmd_SubscribeRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cmd_SubscribeRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Page", "PageSize", });
     internal_static_cmd_CommandLog_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_cmd_CommandLog_fieldAccessorTable = new

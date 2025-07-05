@@ -32,14 +32,13 @@ public interface CommandLogOrBuilder extends
   long getTimestamp();
 
   /**
-   * <code>string result_code = 4;</code>
+   * <code>.cmd.ExecutionStatus result_code = 4;</code>
+   * @return The enum numeric value on the wire for resultCode.
+   */
+  int getResultCodeValue();
+  /**
+   * <code>.cmd.ExecutionStatus result_code = 4;</code>
    * @return The resultCode.
    */
-  java.lang.String getResultCode();
-  /**
-   * <code>string result_code = 4;</code>
-   * @return The bytes for resultCode.
-   */
-  com.google.protobuf.ByteString
-      getResultCodeBytes();
+  cmd.ExecutionStatus getResultCode();
 }

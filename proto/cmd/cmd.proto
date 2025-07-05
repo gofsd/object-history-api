@@ -91,8 +91,8 @@ message CommandsResponse {
   repeated Command commands = 1;
 }
 
-// DeleteCommandRequest is used to delete a command template.
-message DeleteCommandRequest {
+// CommandRequest is used to get, delete a command template.
+message CommandRequest {
   uint64 id = 1;
 }
 
@@ -131,14 +131,17 @@ message DryRunResult {
 
 // ------------- LOG STREAMING -------------
 // SubscribeRequest is used to subscribe to logs.
-message SubscribeRequest {}
+message SubscribeRequest {
+  uint64 page = 1; // Page number for pagination
+  uint64 page_size = 2; // Number of logs per page
+}
 
 // CommandLog represents a log entry for a command execution.
 message CommandLog {
   uint64 execution_id = 1;
   string output = 2;
   uint64 timestamp = 3;
-  string result_code = 4;
+  ExecutionStatus result_code = 4;
 }
 
 // ------------- STATUS UPDATE & EVENT SUBSCRIPTION -------------
@@ -197,9 +200,9 @@ service CommandService {
   rpc RemoveUserFromGroup(UserGroupRequest) returns (UserGroupResponse);
 
   // Template management
-  rpc ListCommands(Empty) returns (CommandsResponse);
+  rpc ListCommands(CommandRequest) returns (CommandsResponse);
   rpc AddCommand(AddCommandRequest) returns (Command);
-  rpc DeleteCommand(DeleteCommandRequest) returns (Command);
+  rpc DeleteCommand(CommandRequest) returns (Command);
   rpc AddCommandToGroup(UserGroupRequest) returns (UserGroupResponse);
   rpc DeleteCommandFromGroup(UserGroupRequest) returns (UserGroupResponse);
 
@@ -214,7 +217,7 @@ service CommandService {
   rpc UpdateExecutionStatus(UpdateExecutionStatusRequest) returns (UpdateExecutionStatusResponse);
 
   // Streaming logs
-  rpc SubscribeLogs(SubscribeRequest) returns (stream CommandLog);
+  rpc SubscribeLogs(stream SubscribeRequest) returns (stream CommandLog);
 
   // Event listener for executors
   rpc SubscribeCommandEvents(stream CommandLog) returns (stream CommandEvent);

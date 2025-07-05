@@ -3,8 +3,8 @@
 
 package cmd;
 
-public interface DeleteCommandRequestOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:cmd.DeleteCommandRequest)
+public interface CommandRequestOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:cmd.CommandRequest)
     com.google.protobuf.MessageOrBuilder {
 
   /**
