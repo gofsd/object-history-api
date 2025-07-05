@@ -54,12 +54,32 @@ public interface ListObjectsRequestOrBuilder extends
       java.lang.String key);
 
   /**
-   * <pre>
-   * Optional filter by object type
-   * </pre>
-   *
    * <code>int32 object_type = 4;</code>
    * @return The objectType.
    */
   int getObjectType();
+
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  java.util.List<obj.Relation> 
+      getRelationTypeList();
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  obj.Relation getRelationType(int index);
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  int getRelationTypeCount();
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  java.util.List<? extends obj.RelationOrBuilder> 
+      getRelationTypeOrBuilderList();
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  obj.RelationOrBuilder getRelationTypeOrBuilder(
+      int index);
 }

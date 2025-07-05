@@ -8,11 +8,30 @@ public interface CreateObjectsRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <pre>
+   * Specify the type of objects to create
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 1;</code>
+   * @return The enum numeric value on the wire for objectType.
+   */
+  int getObjectTypeValue();
+  /**
+   * <pre>
+   * Specify the type of objects to create
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 1;</code>
+   * @return The objectType.
+   */
+  obj.ObjectType getObjectType();
+
+  /**
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -23,26 +42,26 @@ public interface CreateObjectsRequestOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
 
   java.lang.String getFieldsOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
 
   java.lang.String getFieldsOrThrow(
       java.lang.String key);
 
   /**
-   * <code>uint32 count = 2;</code>
+   * <code>uint32 count = 3;</code>
    * @return The count.
    */
   int getCount();

@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ListObjectsRequest() {
+    relationType_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -165,16 +166,52 @@ private static final long serialVersionUID = 0L;
   public static final int OBJECT_TYPE_FIELD_NUMBER = 4;
   private int objectType_;
   /**
-   * <pre>
-   * Optional filter by object type
-   * </pre>
-   *
    * <code>int32 object_type = 4;</code>
    * @return The objectType.
    */
   @java.lang.Override
   public int getObjectType() {
     return objectType_;
+  }
+
+  public static final int RELATION_TYPE_FIELD_NUMBER = 5;
+  private java.util.List<obj.Relation> relationType_;
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.List<obj.Relation> getRelationTypeList() {
+    return relationType_;
+  }
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends obj.RelationOrBuilder> 
+      getRelationTypeOrBuilderList() {
+    return relationType_;
+  }
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  @java.lang.Override
+  public int getRelationTypeCount() {
+    return relationType_.size();
+  }
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  @java.lang.Override
+  public obj.Relation getRelationType(int index) {
+    return relationType_.get(index);
+  }
+  /**
+   * <code>repeated .object.Relation relation_type = 5;</code>
+   */
+  @java.lang.Override
+  public obj.RelationOrBuilder getRelationTypeOrBuilder(
+      int index) {
+    return relationType_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -205,6 +242,9 @@ private static final long serialVersionUID = 0L;
         3);
     if (objectType_ != 0) {
       output.writeInt32(4, objectType_);
+    }
+    for (int i = 0; i < relationType_.size(); i++) {
+      output.writeMessage(5, relationType_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -237,6 +277,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, objectType_);
     }
+    for (int i = 0; i < relationType_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, relationType_.get(i));
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -260,6 +304,8 @@ private static final long serialVersionUID = 0L;
         other.internalGetFields())) return false;
     if (getObjectType()
         != other.getObjectType()) return false;
+    if (!getRelationTypeList()
+        .equals(other.getRelationTypeList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -281,6 +327,10 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getObjectType();
+    if (getRelationTypeCount() > 0) {
+      hash = (37 * hash) + RELATION_TYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getRelationTypeList().hashCode();
+    }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -442,6 +492,13 @@ private static final long serialVersionUID = 0L;
       internalGetMutableFields().clear();
       objectType_ = 0;
 
+      if (relationTypeBuilder_ == null) {
+        relationType_ = java.util.Collections.emptyList();
+      } else {
+        relationType_ = null;
+        relationTypeBuilder_.clear();
+      }
+      bitField0_ = (bitField0_ & ~0x00000002);
       return this;
     }
 
@@ -474,6 +531,15 @@ private static final long serialVersionUID = 0L;
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
       result.objectType_ = objectType_;
+      if (relationTypeBuilder_ == null) {
+        if (((bitField0_ & 0x00000002) != 0)) {
+          relationType_ = java.util.Collections.unmodifiableList(relationType_);
+          bitField0_ = (bitField0_ & ~0x00000002);
+        }
+        result.relationType_ = relationType_;
+      } else {
+        result.relationType_ = relationTypeBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -533,6 +599,32 @@ private static final long serialVersionUID = 0L;
       if (other.getObjectType() != 0) {
         setObjectType(other.getObjectType());
       }
+      if (relationTypeBuilder_ == null) {
+        if (!other.relationType_.isEmpty()) {
+          if (relationType_.isEmpty()) {
+            relationType_ = other.relationType_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+          } else {
+            ensureRelationTypeIsMutable();
+            relationType_.addAll(other.relationType_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.relationType_.isEmpty()) {
+          if (relationTypeBuilder_.isEmpty()) {
+            relationTypeBuilder_.dispose();
+            relationTypeBuilder_ = null;
+            relationType_ = other.relationType_;
+            bitField0_ = (bitField0_ & ~0x00000002);
+            relationTypeBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getRelationTypeFieldBuilder() : null;
+          } else {
+            relationTypeBuilder_.addAllMessages(other.relationType_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -582,6 +674,19 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 32
+            case 42: {
+              obj.Relation m =
+                  input.readMessage(
+                      obj.Relation.parser(),
+                      extensionRegistry);
+              if (relationTypeBuilder_ == null) {
+                ensureRelationTypeIsMutable();
+                relationType_.add(m);
+              } else {
+                relationTypeBuilder_.addMessage(m);
+              }
+              break;
+            } // case 42
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -794,10 +899,6 @@ private static final long serialVersionUID = 0L;
 
     private int objectType_ ;
     /**
-     * <pre>
-     * Optional filter by object type
-     * </pre>
-     *
      * <code>int32 object_type = 4;</code>
      * @return The objectType.
      */
@@ -806,10 +907,6 @@ private static final long serialVersionUID = 0L;
       return objectType_;
     }
     /**
-     * <pre>
-     * Optional filter by object type
-     * </pre>
-     *
      * <code>int32 object_type = 4;</code>
      * @param value The objectType to set.
      * @return This builder for chaining.
@@ -821,10 +918,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * Optional filter by object type
-     * </pre>
-     *
      * <code>int32 object_type = 4;</code>
      * @return This builder for chaining.
      */
@@ -833,6 +926,246 @@ private static final long serialVersionUID = 0L;
       objectType_ = 0;
       onChanged();
       return this;
+    }
+
+    private java.util.List<obj.Relation> relationType_ =
+      java.util.Collections.emptyList();
+    private void ensureRelationTypeIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        relationType_ = new java.util.ArrayList<obj.Relation>(relationType_);
+        bitField0_ |= 0x00000002;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        obj.Relation, obj.Relation.Builder, obj.RelationOrBuilder> relationTypeBuilder_;
+
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public java.util.List<obj.Relation> getRelationTypeList() {
+      if (relationTypeBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(relationType_);
+      } else {
+        return relationTypeBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public int getRelationTypeCount() {
+      if (relationTypeBuilder_ == null) {
+        return relationType_.size();
+      } else {
+        return relationTypeBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public obj.Relation getRelationType(int index) {
+      if (relationTypeBuilder_ == null) {
+        return relationType_.get(index);
+      } else {
+        return relationTypeBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder setRelationType(
+        int index, obj.Relation value) {
+      if (relationTypeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRelationTypeIsMutable();
+        relationType_.set(index, value);
+        onChanged();
+      } else {
+        relationTypeBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder setRelationType(
+        int index, obj.Relation.Builder builderForValue) {
+      if (relationTypeBuilder_ == null) {
+        ensureRelationTypeIsMutable();
+        relationType_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        relationTypeBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder addRelationType(obj.Relation value) {
+      if (relationTypeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRelationTypeIsMutable();
+        relationType_.add(value);
+        onChanged();
+      } else {
+        relationTypeBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder addRelationType(
+        int index, obj.Relation value) {
+      if (relationTypeBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRelationTypeIsMutable();
+        relationType_.add(index, value);
+        onChanged();
+      } else {
+        relationTypeBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder addRelationType(
+        obj.Relation.Builder builderForValue) {
+      if (relationTypeBuilder_ == null) {
+        ensureRelationTypeIsMutable();
+        relationType_.add(builderForValue.build());
+        onChanged();
+      } else {
+        relationTypeBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder addRelationType(
+        int index, obj.Relation.Builder builderForValue) {
+      if (relationTypeBuilder_ == null) {
+        ensureRelationTypeIsMutable();
+        relationType_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        relationTypeBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder addAllRelationType(
+        java.lang.Iterable<? extends obj.Relation> values) {
+      if (relationTypeBuilder_ == null) {
+        ensureRelationTypeIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, relationType_);
+        onChanged();
+      } else {
+        relationTypeBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder clearRelationType() {
+      if (relationTypeBuilder_ == null) {
+        relationType_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+      } else {
+        relationTypeBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public Builder removeRelationType(int index) {
+      if (relationTypeBuilder_ == null) {
+        ensureRelationTypeIsMutable();
+        relationType_.remove(index);
+        onChanged();
+      } else {
+        relationTypeBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public obj.Relation.Builder getRelationTypeBuilder(
+        int index) {
+      return getRelationTypeFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public obj.RelationOrBuilder getRelationTypeOrBuilder(
+        int index) {
+      if (relationTypeBuilder_ == null) {
+        return relationType_.get(index);  } else {
+        return relationTypeBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public java.util.List<? extends obj.RelationOrBuilder> 
+         getRelationTypeOrBuilderList() {
+      if (relationTypeBuilder_ != null) {
+        return relationTypeBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(relationType_);
+      }
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public obj.Relation.Builder addRelationTypeBuilder() {
+      return getRelationTypeFieldBuilder().addBuilder(
+          obj.Relation.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public obj.Relation.Builder addRelationTypeBuilder(
+        int index) {
+      return getRelationTypeFieldBuilder().addBuilder(
+          index, obj.Relation.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .object.Relation relation_type = 5;</code>
+     */
+    public java.util.List<obj.Relation.Builder> 
+         getRelationTypeBuilderList() {
+      return getRelationTypeFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        obj.Relation, obj.Relation.Builder, obj.RelationOrBuilder> 
+        getRelationTypeFieldBuilder() {
+      if (relationTypeBuilder_ == null) {
+        relationTypeBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            obj.Relation, obj.Relation.Builder, obj.RelationOrBuilder>(
+                relationType_,
+                ((bitField0_ & 0x00000002) != 0),
+                getParentForChildren(),
+                isClean());
+        relationType_ = null;
+      }
+      return relationTypeBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private CreateObjectsRequest() {
+    objectType_ = 0;
   }
 
   @java.lang.Override
@@ -44,7 +45,7 @@ private static final long serialVersionUID = 0L;
   protected com.google.protobuf.MapField internalGetMapField(
       int number) {
     switch (number) {
-      case 1:
+      case 2:
         return internalGetFields();
       default:
         throw new RuntimeException(
@@ -59,7 +60,34 @@ private static final long serialVersionUID = 0L;
             obj.CreateObjectsRequest.class, obj.CreateObjectsRequest.Builder.class);
   }
 
-  public static final int FIELDS_FIELD_NUMBER = 1;
+  public static final int OBJECT_TYPE_FIELD_NUMBER = 1;
+  private int objectType_;
+  /**
+   * <pre>
+   * Specify the type of objects to create
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 1;</code>
+   * @return The enum numeric value on the wire for objectType.
+   */
+  @java.lang.Override public int getObjectTypeValue() {
+    return objectType_;
+  }
+  /**
+   * <pre>
+   * Specify the type of objects to create
+   * </pre>
+   *
+   * <code>.object.ObjectType object_type = 1;</code>
+   * @return The objectType.
+   */
+  @java.lang.Override public obj.ObjectType getObjectType() {
+    @SuppressWarnings("deprecation")
+    obj.ObjectType result = obj.ObjectType.valueOf(objectType_);
+    return result == null ? obj.ObjectType.UNRECOGNIZED : result;
+  }
+
+  public static final int FIELDS_FIELD_NUMBER = 2;
   private static final class FieldsDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
         java.lang.String, java.lang.String> defaultEntry =
@@ -86,7 +114,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap().size();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
 
   @java.lang.Override
@@ -104,7 +132,7 @@ private static final long serialVersionUID = 0L;
     return getFieldsMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   @java.lang.Override
 
@@ -112,7 +140,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   @java.lang.Override
 
@@ -125,7 +153,7 @@ private static final long serialVersionUID = 0L;
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 1;</code>
+   * <code>map&lt;string, string&gt; fields = 2;</code>
    */
   @java.lang.Override
 
@@ -140,10 +168,10 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
-  public static final int COUNT_FIELD_NUMBER = 2;
+  public static final int COUNT_FIELD_NUMBER = 3;
   private int count_;
   /**
-   * <code>uint32 count = 2;</code>
+   * <code>uint32 count = 3;</code>
    * @return The count.
    */
   @java.lang.Override
@@ -165,14 +193,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
+      output.writeEnum(1, objectType_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
         output,
         internalGetFields(),
         FieldsDefaultEntryHolder.defaultEntry,
-        1);
+        2);
     if (count_ != 0) {
-      output.writeUInt32(2, count_);
+      output.writeUInt32(3, count_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -183,6 +214,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(1, objectType_);
+    }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetFields().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
@@ -191,11 +226,11 @@ private static final long serialVersionUID = 0L;
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, fields__);
+          .computeMessageSize(2, fields__);
     }
     if (count_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(2, count_);
+        .computeUInt32Size(3, count_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -212,6 +247,7 @@ private static final long serialVersionUID = 0L;
     }
     obj.CreateObjectsRequest other = (obj.CreateObjectsRequest) obj;
 
+    if (objectType_ != other.objectType_) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
     if (getCount()
@@ -227,6 +263,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + objectType_;
     if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
@@ -348,7 +386,7 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 1:
+        case 2:
           return internalGetFields();
         default:
           throw new RuntimeException(
@@ -359,7 +397,7 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMutableMapField(
         int number) {
       switch (number) {
-        case 1:
+        case 2:
           return internalGetMutableFields();
         default:
           throw new RuntimeException(
@@ -387,6 +425,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      objectType_ = 0;
+
       internalGetMutableFields().clear();
       count_ = 0;
 
@@ -417,6 +457,7 @@ private static final long serialVersionUID = 0L;
     public obj.CreateObjectsRequest buildPartial() {
       obj.CreateObjectsRequest result = new obj.CreateObjectsRequest(this);
       int from_bitField0_ = bitField0_;
+      result.objectType_ = objectType_;
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
       result.count_ = count_;
@@ -468,6 +509,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(obj.CreateObjectsRequest other) {
       if (other == obj.CreateObjectsRequest.getDefaultInstance()) return this;
+      if (other.objectType_ != 0) {
+        setObjectTypeValue(other.getObjectTypeValue());
+      }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
       if (other.getCount() != 0) {
@@ -499,19 +543,24 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+              objectType_ = input.readEnum();
+
+              break;
+            } // case 8
+            case 18: {
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               fields__ = input.readMessage(
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
               break;
-            } // case 10
-            case 16: {
+            } // case 18
+            case 24: {
               count_ = input.readUInt32();
 
               break;
-            } // case 16
+            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -528,6 +577,80 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     private int bitField0_;
+
+    private int objectType_ = 0;
+    /**
+     * <pre>
+     * Specify the type of objects to create
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 1;</code>
+     * @return The enum numeric value on the wire for objectType.
+     */
+    @java.lang.Override public int getObjectTypeValue() {
+      return objectType_;
+    }
+    /**
+     * <pre>
+     * Specify the type of objects to create
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 1;</code>
+     * @param value The enum numeric value on the wire for objectType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setObjectTypeValue(int value) {
+      
+      objectType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Specify the type of objects to create
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 1;</code>
+     * @return The objectType.
+     */
+    @java.lang.Override
+    public obj.ObjectType getObjectType() {
+      @SuppressWarnings("deprecation")
+      obj.ObjectType result = obj.ObjectType.valueOf(objectType_);
+      return result == null ? obj.ObjectType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * Specify the type of objects to create
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 1;</code>
+     * @param value The objectType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setObjectType(obj.ObjectType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      objectType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Specify the type of objects to create
+     * </pre>
+     *
+     * <code>.object.ObjectType object_type = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearObjectType() {
+      
+      objectType_ = 0;
+      onChanged();
+      return this;
+    }
 
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> fields_;
@@ -556,7 +679,7 @@ private static final long serialVersionUID = 0L;
       return internalGetFields().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
 
     @java.lang.Override
@@ -574,7 +697,7 @@ private static final long serialVersionUID = 0L;
       return getFieldsMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     @java.lang.Override
 
@@ -582,7 +705,7 @@ private static final long serialVersionUID = 0L;
       return internalGetFields().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     @java.lang.Override
 
@@ -595,7 +718,7 @@ private static final long serialVersionUID = 0L;
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     @java.lang.Override
 
@@ -616,7 +739,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
 
     public Builder removeFields(
@@ -635,7 +758,7 @@ private static final long serialVersionUID = 0L;
       return internalGetMutableFields().getMutableMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
     public Builder putFields(
         java.lang.String key,
@@ -650,7 +773,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 1;</code>
+     * <code>map&lt;string, string&gt; fields = 2;</code>
      */
 
     public Builder putAllFields(
@@ -662,7 +785,7 @@ private static final long serialVersionUID = 0L;
 
     private int count_ ;
     /**
-     * <code>uint32 count = 2;</code>
+     * <code>uint32 count = 3;</code>
      * @return The count.
      */
     @java.lang.Override
@@ -670,7 +793,7 @@ private static final long serialVersionUID = 0L;
       return count_;
     }
     /**
-     * <code>uint32 count = 2;</code>
+     * <code>uint32 count = 3;</code>
      * @param value The count to set.
      * @return This builder for chaining.
      */
@@ -681,7 +804,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint32 count = 2;</code>
+     * <code>uint32 count = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearCount() {

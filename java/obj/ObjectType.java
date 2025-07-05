@@ -40,6 +40,10 @@ public enum ObjectType
    * <code>EXECUTION = 6;</code>
    */
   EXECUTION(6),
+  /**
+   * <code>RELATION = 7;</code>
+   */
+  RELATION(7),
   UNRECOGNIZED(-1),
   ;
 
@@ -71,6 +75,10 @@ public enum ObjectType
    * <code>EXECUTION = 6;</code>
    */
   public static final int EXECUTION_VALUE = 6;
+  /**
+   * <code>RELATION = 7;</code>
+   */
+  public static final int RELATION_VALUE = 7;
 
 
   public final int getNumber() {
@@ -104,6 +112,7 @@ public enum ObjectType
       case 4: return COMMAND;
       case 5: return USER;
       case 6: return EXECUTION;
+      case 7: return RELATION;
       default: return null;
     }
   }
