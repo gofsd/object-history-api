@@ -352,6 +352,58 @@ func (x *UserGroupRequest) GetRole() UserRole {
 	return UserRole_USER_ROLE_VIEWER
 }
 
+type AddObjectsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ObjectIds     []uint64               `protobuf:"varint,1,rep,packed,name=object_ids,json=objectIds,proto3" json:"object_ids,omitempty"` // IDs of objects to add
+	GroupId       uint64                 `protobuf:"varint,2,opt,name=group_id,json=groupId,proto3" json:"group_id,omitempty"`              // ID of the group to which objects are added
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddObjectsRequest) Reset() {
+	*x = AddObjectsRequest{}
+	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddObjectsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddObjectsRequest) ProtoMessage() {}
+
+func (x *AddObjectsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddObjectsRequest.ProtoReflect.Descriptor instead.
+func (*AddObjectsRequest) Descriptor() ([]byte, []int) {
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AddObjectsRequest) GetObjectIds() []uint64 {
+	if x != nil {
+		return x.ObjectIds
+	}
+	return nil
+}
+
+func (x *AddObjectsRequest) GetGroupId() uint64 {
+	if x != nil {
+		return x.GroupId
+	}
+	return 0
+}
+
 // ------------- COMMAND TEMPLATES -------------
 // ParameterField describes a parameter for a command template.
 type ParameterField struct {
@@ -370,7 +422,7 @@ type ParameterField struct {
 
 func (x *ParameterField) Reset() {
 	*x = ParameterField{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -382,7 +434,7 @@ func (x *ParameterField) String() string {
 func (*ParameterField) ProtoMessage() {}
 
 func (x *ParameterField) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[4]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -395,7 +447,7 @@ func (x *ParameterField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ParameterField.ProtoReflect.Descriptor instead.
 func (*ParameterField) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{4}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *ParameterField) GetName() string {
@@ -467,7 +519,7 @@ type Command struct {
 
 func (x *Command) Reset() {
 	*x = Command{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[5]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -479,7 +531,7 @@ func (x *Command) String() string {
 func (*Command) ProtoMessage() {}
 
 func (x *Command) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[5]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -492,7 +544,7 @@ func (x *Command) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Command.ProtoReflect.Descriptor instead.
 func (*Command) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{5}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *Command) GetId() uint64 {
@@ -535,7 +587,7 @@ type AddCommandRequest struct {
 
 func (x *AddCommandRequest) Reset() {
 	*x = AddCommandRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[6]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -547,7 +599,7 @@ func (x *AddCommandRequest) String() string {
 func (*AddCommandRequest) ProtoMessage() {}
 
 func (x *AddCommandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[6]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -560,7 +612,7 @@ func (x *AddCommandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AddCommandRequest.ProtoReflect.Descriptor instead.
 func (*AddCommandRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{6}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *AddCommandRequest) GetName() string {
@@ -594,7 +646,7 @@ type CommandsResponse struct {
 
 func (x *CommandsResponse) Reset() {
 	*x = CommandsResponse{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[7]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -606,7 +658,7 @@ func (x *CommandsResponse) String() string {
 func (*CommandsResponse) ProtoMessage() {}
 
 func (x *CommandsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[7]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -619,7 +671,7 @@ func (x *CommandsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandsResponse.ProtoReflect.Descriptor instead.
 func (*CommandsResponse) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{7}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *CommandsResponse) GetCommands() []*Command {
@@ -639,7 +691,7 @@ type CommandRequest struct {
 
 func (x *CommandRequest) Reset() {
 	*x = CommandRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[8]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -651,7 +703,7 @@ func (x *CommandRequest) String() string {
 func (*CommandRequest) ProtoMessage() {}
 
 func (x *CommandRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[8]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -664,7 +716,7 @@ func (x *CommandRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandRequest.ProtoReflect.Descriptor instead.
 func (*CommandRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{8}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *CommandRequest) GetId() uint64 {
@@ -686,7 +738,7 @@ type ExecuteRequest struct {
 
 func (x *ExecuteRequest) Reset() {
 	*x = ExecuteRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[9]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -698,7 +750,7 @@ func (x *ExecuteRequest) String() string {
 func (*ExecuteRequest) ProtoMessage() {}
 
 func (x *ExecuteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[9]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -711,7 +763,7 @@ func (x *ExecuteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteRequest.ProtoReflect.Descriptor instead.
 func (*ExecuteRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{9}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *ExecuteRequest) GetCommandId() uint64 {
@@ -739,7 +791,7 @@ type ExecuteResponse struct {
 
 func (x *ExecuteResponse) Reset() {
 	*x = ExecuteResponse{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[10]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -751,7 +803,7 @@ func (x *ExecuteResponse) String() string {
 func (*ExecuteResponse) ProtoMessage() {}
 
 func (x *ExecuteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[10]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -764,7 +816,7 @@ func (x *ExecuteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExecuteResponse.ProtoReflect.Descriptor instead.
 func (*ExecuteResponse) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{10}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ExecuteResponse) GetExecutionId() uint64 {
@@ -791,7 +843,7 @@ type CancelRequest struct {
 
 func (x *CancelRequest) Reset() {
 	*x = CancelRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[11]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[12]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -803,7 +855,7 @@ func (x *CancelRequest) String() string {
 func (*CancelRequest) ProtoMessage() {}
 
 func (x *CancelRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[11]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[12]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -816,7 +868,7 @@ func (x *CancelRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelRequest.ProtoReflect.Descriptor instead.
 func (*CancelRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{11}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *CancelRequest) GetExecutionId() uint64 {
@@ -836,7 +888,7 @@ type CancelResponse struct {
 
 func (x *CancelResponse) Reset() {
 	*x = CancelResponse{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[12]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[13]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -848,7 +900,7 @@ func (x *CancelResponse) String() string {
 func (*CancelResponse) ProtoMessage() {}
 
 func (x *CancelResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[12]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[13]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -861,7 +913,7 @@ func (x *CancelResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CancelResponse.ProtoReflect.Descriptor instead.
 func (*CancelResponse) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{12}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *CancelResponse) GetSuccess() bool {
@@ -881,7 +933,7 @@ type RetryRequest struct {
 
 func (x *RetryRequest) Reset() {
 	*x = RetryRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[13]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -893,7 +945,7 @@ func (x *RetryRequest) String() string {
 func (*RetryRequest) ProtoMessage() {}
 
 func (x *RetryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[13]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -906,7 +958,7 @@ func (x *RetryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RetryRequest.ProtoReflect.Descriptor instead.
 func (*RetryRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{13}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *RetryRequest) GetExecutionId() uint64 {
@@ -926,7 +978,7 @@ type DryRunResult struct {
 
 func (x *DryRunResult) Reset() {
 	*x = DryRunResult{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[14]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -938,7 +990,7 @@ func (x *DryRunResult) String() string {
 func (*DryRunResult) ProtoMessage() {}
 
 func (x *DryRunResult) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[14]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -951,7 +1003,7 @@ func (x *DryRunResult) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DryRunResult.ProtoReflect.Descriptor instead.
 func (*DryRunResult) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{14}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *DryRunResult) GetCommandId() uint64 {
@@ -973,7 +1025,7 @@ type SubscribeRequest struct {
 
 func (x *SubscribeRequest) Reset() {
 	*x = SubscribeRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[15]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -985,7 +1037,7 @@ func (x *SubscribeRequest) String() string {
 func (*SubscribeRequest) ProtoMessage() {}
 
 func (x *SubscribeRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[15]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -998,7 +1050,7 @@ func (x *SubscribeRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscribeRequest.ProtoReflect.Descriptor instead.
 func (*SubscribeRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{15}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *SubscribeRequest) GetPage() uint64 {
@@ -1028,7 +1080,7 @@ type CommandLog struct {
 
 func (x *CommandLog) Reset() {
 	*x = CommandLog{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[16]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1040,7 +1092,7 @@ func (x *CommandLog) String() string {
 func (*CommandLog) ProtoMessage() {}
 
 func (x *CommandLog) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[16]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1053,7 +1105,7 @@ func (x *CommandLog) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandLog.ProtoReflect.Descriptor instead.
 func (*CommandLog) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{16}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *CommandLog) GetExecutionId() uint64 {
@@ -1096,7 +1148,7 @@ type UpdateExecutionStatusRequest struct {
 
 func (x *UpdateExecutionStatusRequest) Reset() {
 	*x = UpdateExecutionStatusRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[17]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1108,7 +1160,7 @@ func (x *UpdateExecutionStatusRequest) String() string {
 func (*UpdateExecutionStatusRequest) ProtoMessage() {}
 
 func (x *UpdateExecutionStatusRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[17]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1121,7 +1173,7 @@ func (x *UpdateExecutionStatusRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateExecutionStatusRequest.ProtoReflect.Descriptor instead.
 func (*UpdateExecutionStatusRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{17}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *UpdateExecutionStatusRequest) GetExecutionId() uint64 {
@@ -1148,7 +1200,7 @@ type UpdateExecutionStatusResponse struct {
 
 func (x *UpdateExecutionStatusResponse) Reset() {
 	*x = UpdateExecutionStatusResponse{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[18]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1160,7 +1212,7 @@ func (x *UpdateExecutionStatusResponse) String() string {
 func (*UpdateExecutionStatusResponse) ProtoMessage() {}
 
 func (x *UpdateExecutionStatusResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[18]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1173,7 +1225,7 @@ func (x *UpdateExecutionStatusResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UpdateExecutionStatusResponse.ProtoReflect.Descriptor instead.
 func (*UpdateExecutionStatusResponse) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{18}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *UpdateExecutionStatusResponse) GetSuccess() bool {
@@ -1192,7 +1244,7 @@ type SubscribeCommandEventsRequest struct {
 
 func (x *SubscribeCommandEventsRequest) Reset() {
 	*x = SubscribeCommandEventsRequest{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[19]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1204,7 +1256,7 @@ func (x *SubscribeCommandEventsRequest) String() string {
 func (*SubscribeCommandEventsRequest) ProtoMessage() {}
 
 func (x *SubscribeCommandEventsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[19]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1217,7 +1269,7 @@ func (x *SubscribeCommandEventsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SubscribeCommandEventsRequest.ProtoReflect.Descriptor instead.
 func (*SubscribeCommandEventsRequest) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{19}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{20}
 }
 
 // CommandEvent represents an event related to a command execution.
@@ -1232,7 +1284,7 @@ type CommandEvent struct {
 
 func (x *CommandEvent) Reset() {
 	*x = CommandEvent{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[20]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1244,7 +1296,7 @@ func (x *CommandEvent) String() string {
 func (*CommandEvent) ProtoMessage() {}
 
 func (x *CommandEvent) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[20]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1257,7 +1309,7 @@ func (x *CommandEvent) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CommandEvent.ProtoReflect.Descriptor instead.
 func (*CommandEvent) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{20}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *CommandEvent) GetExecutionId() uint64 {
@@ -1292,7 +1344,7 @@ type Object struct {
 
 func (x *Object) Reset() {
 	*x = Object{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[21]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1304,7 +1356,7 @@ func (x *Object) String() string {
 func (*Object) ProtoMessage() {}
 
 func (x *Object) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[21]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1317,7 +1369,7 @@ func (x *Object) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Object.ProtoReflect.Descriptor instead.
 func (*Object) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{21}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *Object) GetId() uint64 {
@@ -1347,7 +1399,7 @@ type UserGroupResponse struct {
 
 func (x *UserGroupResponse) Reset() {
 	*x = UserGroupResponse{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[22]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1359,7 +1411,7 @@ func (x *UserGroupResponse) String() string {
 func (*UserGroupResponse) ProtoMessage() {}
 
 func (x *UserGroupResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[22]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1372,7 +1424,7 @@ func (x *UserGroupResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserGroupResponse.ProtoReflect.Descriptor instead.
 func (*UserGroupResponse) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{22}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *UserGroupResponse) GetUserId() uint64 {
@@ -1414,7 +1466,7 @@ type Contact struct {
 
 func (x *Contact) Reset() {
 	*x = Contact{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1426,7 +1478,7 @@ func (x *Contact) String() string {
 func (*Contact) ProtoMessage() {}
 
 func (x *Contact) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[23]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1439,7 +1491,7 @@ func (x *Contact) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Contact.ProtoReflect.Descriptor instead.
 func (*Contact) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{23}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *Contact) GetId() uint64 {
@@ -1465,7 +1517,7 @@ type Empty struct {
 
 func (x *Empty) Reset() {
 	*x = Empty{}
-	mi := &file_proto_cmd_cmd_proto_msgTypes[24]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[25]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1477,7 +1529,7 @@ func (x *Empty) String() string {
 func (*Empty) ProtoMessage() {}
 
 func (x *Empty) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_cmd_cmd_proto_msgTypes[24]
+	mi := &file_proto_cmd_cmd_proto_msgTypes[25]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1490,7 +1542,7 @@ func (x *Empty) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Empty.ProtoReflect.Descriptor instead.
 func (*Empty) Descriptor() ([]byte, []int) {
-	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{24}
+	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{25}
 }
 
 var File_proto_cmd_cmd_proto protoreflect.FileDescriptor
@@ -1510,7 +1562,11 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x10UserGroupRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x04R\x06userId\x12\x19\n" +
 	"\bgroup_id\x18\x02 \x01(\x04R\agroupId\x12!\n" +
-	"\x04role\x18\x03 \x01(\x0e2\r.cmd.UserRoleR\x04role\"\xe9\x01\n" +
+	"\x04role\x18\x03 \x01(\x0e2\r.cmd.UserRoleR\x04role\"M\n" +
+	"\x11AddObjectsRequest\x12\x1d\n" +
+	"\n" +
+	"object_ids\x18\x01 \x03(\x04R\tobjectIds\x12\x19\n" +
+	"\bgroup_id\x18\x02 \x01(\x04R\agroupId\"\xe9\x01\n" +
 	"\x0eParameterField\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05label\x18\x02 \x01(\tR\x05label\x12\x12\n" +
@@ -1603,7 +1659,7 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\bUserRole\x12\x14\n" +
 	"\x10USER_ROLE_VIEWER\x10\x00\x12\x16\n" +
 	"\x12USER_ROLE_EXECUTOR\x10\x01\x12\x13\n" +
-	"\x0fUSER_ROLE_ADMIN\x10\x022\xb4\t\n" +
+	"\x0fUSER_ROLE_ADMIN\x10\x022\xf9\t\n" +
 	"\x0eCommandService\x12-\n" +
 	"\n" +
 	"ListGroups\x12\n" +
@@ -1620,7 +1676,8 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"AddCommand\x12\x16.cmd.AddCommandRequest\x1a\f.cmd.Command\x122\n" +
 	"\rDeleteCommand\x12\x13.cmd.CommandRequest\x1a\f.cmd.Command\x12B\n" +
 	"\x11AddCommandToGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12G\n" +
-	"\x16DeleteCommandFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12/\n" +
+	"\x16DeleteCommandFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12C\n" +
+	"\x11AddObjectsToGroup\x12\x16.cmd.AddObjectsRequest\x1a\x16.cmd.UserGroupResponse\x12/\n" +
 	"\x0eListExecutions\x12\n" +
 	".cmd.Empty\x1a\x0f.cmd.CommandLog0\x01\x124\n" +
 	"\aExecute\x12\x13.cmd.ExecuteRequest\x1a\x14.cmd.ExecuteResponse\x121\n" +
@@ -1649,7 +1706,7 @@ func file_proto_cmd_cmd_proto_rawDescGZIP() []byte {
 }
 
 var file_proto_cmd_cmd_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
-var file_proto_cmd_cmd_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
+var file_proto_cmd_cmd_proto_msgTypes = make([]protoimpl.MessageInfo, 29)
 var file_proto_cmd_cmd_proto_goTypes = []any{
 	(ExecutionStatus)(0),                  // 0: cmd.ExecutionStatus
 	(UserRole)(0),                         // 1: cmd.UserRole
@@ -1657,88 +1714,91 @@ var file_proto_cmd_cmd_proto_goTypes = []any{
 	(*GroupsResponse)(nil),                // 3: cmd.GroupsResponse
 	(*GroupRequest)(nil),                  // 4: cmd.GroupRequest
 	(*UserGroupRequest)(nil),              // 5: cmd.UserGroupRequest
-	(*ParameterField)(nil),                // 6: cmd.ParameterField
-	(*Command)(nil),                       // 7: cmd.Command
-	(*AddCommandRequest)(nil),             // 8: cmd.AddCommandRequest
-	(*CommandsResponse)(nil),              // 9: cmd.CommandsResponse
-	(*CommandRequest)(nil),                // 10: cmd.CommandRequest
-	(*ExecuteRequest)(nil),                // 11: cmd.ExecuteRequest
-	(*ExecuteResponse)(nil),               // 12: cmd.ExecuteResponse
-	(*CancelRequest)(nil),                 // 13: cmd.CancelRequest
-	(*CancelResponse)(nil),                // 14: cmd.CancelResponse
-	(*RetryRequest)(nil),                  // 15: cmd.RetryRequest
-	(*DryRunResult)(nil),                  // 16: cmd.DryRunResult
-	(*SubscribeRequest)(nil),              // 17: cmd.SubscribeRequest
-	(*CommandLog)(nil),                    // 18: cmd.CommandLog
-	(*UpdateExecutionStatusRequest)(nil),  // 19: cmd.UpdateExecutionStatusRequest
-	(*UpdateExecutionStatusResponse)(nil), // 20: cmd.UpdateExecutionStatusResponse
-	(*SubscribeCommandEventsRequest)(nil), // 21: cmd.SubscribeCommandEventsRequest
-	(*CommandEvent)(nil),                  // 22: cmd.CommandEvent
-	(*Object)(nil),                        // 23: cmd.Object
-	(*UserGroupResponse)(nil),             // 24: cmd.UserGroupResponse
-	(*Contact)(nil),                       // 25: cmd.Contact
-	(*Empty)(nil),                         // 26: cmd.Empty
-	nil,                                   // 27: cmd.ExecuteRequest.OverrideParametersEntry
-	nil,                                   // 28: cmd.CommandEvent.EffectiveParametersEntry
-	nil,                                   // 29: cmd.Object.FieldsEntry
+	(*AddObjectsRequest)(nil),             // 6: cmd.AddObjectsRequest
+	(*ParameterField)(nil),                // 7: cmd.ParameterField
+	(*Command)(nil),                       // 8: cmd.Command
+	(*AddCommandRequest)(nil),             // 9: cmd.AddCommandRequest
+	(*CommandsResponse)(nil),              // 10: cmd.CommandsResponse
+	(*CommandRequest)(nil),                // 11: cmd.CommandRequest
+	(*ExecuteRequest)(nil),                // 12: cmd.ExecuteRequest
+	(*ExecuteResponse)(nil),               // 13: cmd.ExecuteResponse
+	(*CancelRequest)(nil),                 // 14: cmd.CancelRequest
+	(*CancelResponse)(nil),                // 15: cmd.CancelResponse
+	(*RetryRequest)(nil),                  // 16: cmd.RetryRequest
+	(*DryRunResult)(nil),                  // 17: cmd.DryRunResult
+	(*SubscribeRequest)(nil),              // 18: cmd.SubscribeRequest
+	(*CommandLog)(nil),                    // 19: cmd.CommandLog
+	(*UpdateExecutionStatusRequest)(nil),  // 20: cmd.UpdateExecutionStatusRequest
+	(*UpdateExecutionStatusResponse)(nil), // 21: cmd.UpdateExecutionStatusResponse
+	(*SubscribeCommandEventsRequest)(nil), // 22: cmd.SubscribeCommandEventsRequest
+	(*CommandEvent)(nil),                  // 23: cmd.CommandEvent
+	(*Object)(nil),                        // 24: cmd.Object
+	(*UserGroupResponse)(nil),             // 25: cmd.UserGroupResponse
+	(*Contact)(nil),                       // 26: cmd.Contact
+	(*Empty)(nil),                         // 27: cmd.Empty
+	nil,                                   // 28: cmd.ExecuteRequest.OverrideParametersEntry
+	nil,                                   // 29: cmd.CommandEvent.EffectiveParametersEntry
+	nil,                                   // 30: cmd.Object.FieldsEntry
 }
 var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	2,  // 0: cmd.GroupsResponse.groups:type_name -> cmd.Group
 	1,  // 1: cmd.UserGroupRequest.role:type_name -> cmd.UserRole
-	6,  // 2: cmd.Command.fields:type_name -> cmd.ParameterField
-	6,  // 3: cmd.AddCommandRequest.fields:type_name -> cmd.ParameterField
-	7,  // 4: cmd.CommandsResponse.commands:type_name -> cmd.Command
-	27, // 5: cmd.ExecuteRequest.override_parameters:type_name -> cmd.ExecuteRequest.OverrideParametersEntry
+	7,  // 2: cmd.Command.fields:type_name -> cmd.ParameterField
+	7,  // 3: cmd.AddCommandRequest.fields:type_name -> cmd.ParameterField
+	8,  // 4: cmd.CommandsResponse.commands:type_name -> cmd.Command
+	28, // 5: cmd.ExecuteRequest.override_parameters:type_name -> cmd.ExecuteRequest.OverrideParametersEntry
 	0,  // 6: cmd.ExecuteResponse.queue_status:type_name -> cmd.ExecutionStatus
 	0,  // 7: cmd.CommandLog.result_code:type_name -> cmd.ExecutionStatus
 	0,  // 8: cmd.UpdateExecutionStatusRequest.status:type_name -> cmd.ExecutionStatus
-	28, // 9: cmd.CommandEvent.effective_parameters:type_name -> cmd.CommandEvent.EffectiveParametersEntry
-	29, // 10: cmd.Object.fields:type_name -> cmd.Object.FieldsEntry
+	29, // 9: cmd.CommandEvent.effective_parameters:type_name -> cmd.CommandEvent.EffectiveParametersEntry
+	30, // 10: cmd.Object.fields:type_name -> cmd.Object.FieldsEntry
 	1,  // 11: cmd.UserGroupResponse.role:type_name -> cmd.UserRole
-	26, // 12: cmd.CommandService.ListGroups:input_type -> cmd.Empty
+	27, // 12: cmd.CommandService.ListGroups:input_type -> cmd.Empty
 	2,  // 13: cmd.CommandService.AddGroup:input_type -> cmd.Group
 	4,  // 14: cmd.CommandService.DeleteGroup:input_type -> cmd.GroupRequest
 	5,  // 15: cmd.CommandService.AddUserToGroup:input_type -> cmd.UserGroupRequest
 	5,  // 16: cmd.CommandService.RemoveUserFromGroup:input_type -> cmd.UserGroupRequest
-	10, // 17: cmd.CommandService.ListCommands:input_type -> cmd.CommandRequest
-	8,  // 18: cmd.CommandService.AddCommand:input_type -> cmd.AddCommandRequest
-	10, // 19: cmd.CommandService.DeleteCommand:input_type -> cmd.CommandRequest
+	11, // 17: cmd.CommandService.ListCommands:input_type -> cmd.CommandRequest
+	9,  // 18: cmd.CommandService.AddCommand:input_type -> cmd.AddCommandRequest
+	11, // 19: cmd.CommandService.DeleteCommand:input_type -> cmd.CommandRequest
 	5,  // 20: cmd.CommandService.AddCommandToGroup:input_type -> cmd.UserGroupRequest
 	5,  // 21: cmd.CommandService.DeleteCommandFromGroup:input_type -> cmd.UserGroupRequest
-	26, // 22: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
-	11, // 23: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
-	13, // 24: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
-	15, // 25: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
-	11, // 26: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
-	19, // 27: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
-	17, // 28: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
-	18, // 29: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.CommandLog
-	25, // 30: cmd.CommandService.AddMutualContact:input_type -> cmd.Contact
-	25, // 31: cmd.CommandService.RemoveMutualContact:input_type -> cmd.Contact
-	26, // 32: cmd.CommandService.ShowMyContact:input_type -> cmd.Empty
-	3,  // 33: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
-	2,  // 34: cmd.CommandService.AddGroup:output_type -> cmd.Group
-	2,  // 35: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
-	24, // 36: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
-	24, // 37: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
-	9,  // 38: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
-	7,  // 39: cmd.CommandService.AddCommand:output_type -> cmd.Command
-	7,  // 40: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
-	24, // 41: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
-	24, // 42: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
-	18, // 43: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
-	12, // 44: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
-	14, // 45: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
-	12, // 46: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
-	16, // 47: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
-	20, // 48: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
-	18, // 49: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
-	22, // 50: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
-	25, // 51: cmd.CommandService.AddMutualContact:output_type -> cmd.Contact
-	25, // 52: cmd.CommandService.RemoveMutualContact:output_type -> cmd.Contact
-	25, // 53: cmd.CommandService.ShowMyContact:output_type -> cmd.Contact
-	33, // [33:54] is the sub-list for method output_type
-	12, // [12:33] is the sub-list for method input_type
+	6,  // 22: cmd.CommandService.AddObjectsToGroup:input_type -> cmd.AddObjectsRequest
+	27, // 23: cmd.CommandService.ListExecutions:input_type -> cmd.Empty
+	12, // 24: cmd.CommandService.Execute:input_type -> cmd.ExecuteRequest
+	14, // 25: cmd.CommandService.Cancel:input_type -> cmd.CancelRequest
+	16, // 26: cmd.CommandService.Retry:input_type -> cmd.RetryRequest
+	12, // 27: cmd.CommandService.DryRun:input_type -> cmd.ExecuteRequest
+	20, // 28: cmd.CommandService.UpdateExecutionStatus:input_type -> cmd.UpdateExecutionStatusRequest
+	18, // 29: cmd.CommandService.SubscribeLogs:input_type -> cmd.SubscribeRequest
+	19, // 30: cmd.CommandService.SubscribeCommandEvents:input_type -> cmd.CommandLog
+	26, // 31: cmd.CommandService.AddMutualContact:input_type -> cmd.Contact
+	26, // 32: cmd.CommandService.RemoveMutualContact:input_type -> cmd.Contact
+	27, // 33: cmd.CommandService.ShowMyContact:input_type -> cmd.Empty
+	3,  // 34: cmd.CommandService.ListGroups:output_type -> cmd.GroupsResponse
+	2,  // 35: cmd.CommandService.AddGroup:output_type -> cmd.Group
+	2,  // 36: cmd.CommandService.DeleteGroup:output_type -> cmd.Group
+	25, // 37: cmd.CommandService.AddUserToGroup:output_type -> cmd.UserGroupResponse
+	25, // 38: cmd.CommandService.RemoveUserFromGroup:output_type -> cmd.UserGroupResponse
+	10, // 39: cmd.CommandService.ListCommands:output_type -> cmd.CommandsResponse
+	8,  // 40: cmd.CommandService.AddCommand:output_type -> cmd.Command
+	8,  // 41: cmd.CommandService.DeleteCommand:output_type -> cmd.Command
+	25, // 42: cmd.CommandService.AddCommandToGroup:output_type -> cmd.UserGroupResponse
+	25, // 43: cmd.CommandService.DeleteCommandFromGroup:output_type -> cmd.UserGroupResponse
+	25, // 44: cmd.CommandService.AddObjectsToGroup:output_type -> cmd.UserGroupResponse
+	19, // 45: cmd.CommandService.ListExecutions:output_type -> cmd.CommandLog
+	13, // 46: cmd.CommandService.Execute:output_type -> cmd.ExecuteResponse
+	15, // 47: cmd.CommandService.Cancel:output_type -> cmd.CancelResponse
+	13, // 48: cmd.CommandService.Retry:output_type -> cmd.ExecuteResponse
+	17, // 49: cmd.CommandService.DryRun:output_type -> cmd.DryRunResult
+	21, // 50: cmd.CommandService.UpdateExecutionStatus:output_type -> cmd.UpdateExecutionStatusResponse
+	19, // 51: cmd.CommandService.SubscribeLogs:output_type -> cmd.CommandLog
+	23, // 52: cmd.CommandService.SubscribeCommandEvents:output_type -> cmd.CommandEvent
+	26, // 53: cmd.CommandService.AddMutualContact:output_type -> cmd.Contact
+	26, // 54: cmd.CommandService.RemoveMutualContact:output_type -> cmd.Contact
+	26, // 55: cmd.CommandService.ShowMyContact:output_type -> cmd.Contact
+	34, // [34:56] is the sub-list for method output_type
+	12, // [12:34] is the sub-list for method input_type
 	12, // [12:12] is the sub-list for extension type_name
 	12, // [12:12] is the sub-list for extension extendee
 	0,  // [0:12] is the sub-list for field type_name
@@ -1755,7 +1815,7 @@ func file_proto_cmd_cmd_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_cmd_cmd_proto_rawDesc), len(file_proto_cmd_cmd_proto_rawDesc)),
 			NumEnums:      2,
-			NumMessages:   28,
+			NumMessages:   29,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

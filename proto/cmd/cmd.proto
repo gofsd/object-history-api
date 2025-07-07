@@ -57,6 +57,11 @@ message UserGroupRequest {
   UserRole role = 3;
 }
 
+message AddObjectsRequest {
+  repeated uint64 object_ids = 1; // IDs of objects to add
+  uint64 group_id = 2; // ID of the group to which objects are added
+}
+
 // ------------- COMMAND TEMPLATES -------------
 // ParameterField describes a parameter for a command template.
 message ParameterField {
@@ -205,6 +210,9 @@ service CommandService {
   rpc DeleteCommand(CommandRequest) returns (Command);
   rpc AddCommandToGroup(UserGroupRequest) returns (UserGroupResponse);
   rpc DeleteCommandFromGroup(UserGroupRequest) returns (UserGroupResponse);
+
+  // Object management
+  rpc AddObjectsToGroup(AddObjectsRequest) returns (UserGroupResponse);
 
   // Execution
   rpc ListExecutions(Empty) returns (stream CommandLog);
