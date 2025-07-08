@@ -59,7 +59,7 @@ type CommandServiceClient interface {
 	ListCommands(ctx context.Context, in *CommandRequest, opts ...grpc.CallOption) (*CommandsResponse, error)
 	AddCommand(ctx context.Context, in *AddCommandRequest, opts ...grpc.CallOption) (*Command, error)
 	DeleteCommand(ctx context.Context, in *CommandRequest, opts ...grpc.CallOption) (*Command, error)
-	AddCommandToGroup(ctx context.Context, in *AddCommandRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
+	AddCommandToGroup(ctx context.Context, in *AddCommandToGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	DeleteCommandFromGroup(ctx context.Context, in *UserGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	// Object management
 	AddObjectsToGroup(ctx context.Context, in *AddObjectsRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
@@ -169,7 +169,7 @@ func (c *commandServiceClient) DeleteCommand(ctx context.Context, in *CommandReq
 	return out, nil
 }
 
-func (c *commandServiceClient) AddCommandToGroup(ctx context.Context, in *AddCommandRequest, opts ...grpc.CallOption) (*UserGroupResponse, error) {
+func (c *commandServiceClient) AddCommandToGroup(ctx context.Context, in *AddCommandToGroupRequest, opts ...grpc.CallOption) (*UserGroupResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(UserGroupResponse)
 	err := c.cc.Invoke(ctx, CommandService_AddCommandToGroup_FullMethodName, in, out, cOpts...)
@@ -340,7 +340,7 @@ type CommandServiceServer interface {
 	ListCommands(context.Context, *CommandRequest) (*CommandsResponse, error)
 	AddCommand(context.Context, *AddCommandRequest) (*Command, error)
 	DeleteCommand(context.Context, *CommandRequest) (*Command, error)
-	AddCommandToGroup(context.Context, *AddCommandRequest) (*UserGroupResponse, error)
+	AddCommandToGroup(context.Context, *AddCommandToGroupRequest) (*UserGroupResponse, error)
 	DeleteCommandFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error)
 	// Object management
 	AddObjectsToGroup(context.Context, *AddObjectsRequest) (*UserGroupResponse, error)
@@ -394,7 +394,7 @@ func (UnimplementedCommandServiceServer) AddCommand(context.Context, *AddCommand
 func (UnimplementedCommandServiceServer) DeleteCommand(context.Context, *CommandRequest) (*Command, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommand not implemented")
 }
-func (UnimplementedCommandServiceServer) AddCommandToGroup(context.Context, *AddCommandRequest) (*UserGroupResponse, error) {
+func (UnimplementedCommandServiceServer) AddCommandToGroup(context.Context, *AddCommandToGroupRequest) (*UserGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddCommandToGroup not implemented")
 }
 func (UnimplementedCommandServiceServer) DeleteCommandFromGroup(context.Context, *UserGroupRequest) (*UserGroupResponse, error) {
@@ -602,7 +602,7 @@ func _CommandService_DeleteCommand_Handler(srv interface{}, ctx context.Context,
 }
 
 func _CommandService_AddCommandToGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(AddCommandRequest)
+	in := new(AddCommandToGroupRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -614,7 +614,7 @@ func _CommandService_AddCommandToGroup_Handler(srv interface{}, ctx context.Cont
 		FullMethod: CommandService_AddCommandToGroup_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CommandServiceServer).AddCommandToGroup(ctx, req.(*AddCommandRequest))
+		return srv.(CommandServiceServer).AddCommandToGroup(ctx, req.(*AddCommandToGroupRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }

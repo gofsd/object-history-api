@@ -57,6 +57,11 @@ message UserGroupRequest {
   UserRole role = 3;
 }
 
+message AddCommandToGroupRequest {
+  uint64 command_id = 1;
+  uint64 group_id = 2;
+}
+
 message AddObjectsRequest {
   repeated uint64 object_ids = 1; // IDs of objects to add
   uint64 group_id = 2; // ID of the group to which objects are added
@@ -208,7 +213,7 @@ service CommandService {
   rpc ListCommands(CommandRequest) returns (CommandsResponse);
   rpc AddCommand(AddCommandRequest) returns (Command);
   rpc DeleteCommand(CommandRequest) returns (Command);
-  rpc AddCommandToGroup(AddCommandRequest) returns (UserGroupResponse);
+  rpc AddCommandToGroup(AddCommandToGroupRequest) returns (UserGroupResponse);
   rpc DeleteCommandFromGroup(UserGroupRequest) returns (UserGroupResponse);
 
   // Object management
