@@ -1659,7 +1659,7 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\bUserRole\x12\x14\n" +
 	"\x10USER_ROLE_VIEWER\x10\x00\x12\x16\n" +
 	"\x12USER_ROLE_EXECUTOR\x10\x01\x12\x13\n" +
-	"\x0fUSER_ROLE_ADMIN\x10\x022\xf9\t\n" +
+	"\x0fUSER_ROLE_ADMIN\x10\x022\xfa\t\n" +
 	"\x0eCommandService\x12-\n" +
 	"\n" +
 	"ListGroups\x12\n" +
@@ -1674,8 +1674,8 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\fListCommands\x12\x13.cmd.CommandRequest\x1a\x15.cmd.CommandsResponse\x122\n" +
 	"\n" +
 	"AddCommand\x12\x16.cmd.AddCommandRequest\x1a\f.cmd.Command\x122\n" +
-	"\rDeleteCommand\x12\x13.cmd.CommandRequest\x1a\f.cmd.Command\x12B\n" +
-	"\x11AddCommandToGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12G\n" +
+	"\rDeleteCommand\x12\x13.cmd.CommandRequest\x1a\f.cmd.Command\x12C\n" +
+	"\x11AddCommandToGroup\x12\x16.cmd.AddCommandRequest\x1a\x16.cmd.UserGroupResponse\x12G\n" +
 	"\x16DeleteCommandFromGroup\x12\x15.cmd.UserGroupRequest\x1a\x16.cmd.UserGroupResponse\x12C\n" +
 	"\x11AddObjectsToGroup\x12\x16.cmd.AddObjectsRequest\x1a\x16.cmd.UserGroupResponse\x12/\n" +
 	"\x0eListExecutions\x12\n" +
@@ -1761,7 +1761,7 @@ var file_proto_cmd_cmd_proto_depIdxs = []int32{
 	11, // 17: cmd.CommandService.ListCommands:input_type -> cmd.CommandRequest
 	9,  // 18: cmd.CommandService.AddCommand:input_type -> cmd.AddCommandRequest
 	11, // 19: cmd.CommandService.DeleteCommand:input_type -> cmd.CommandRequest
-	5,  // 20: cmd.CommandService.AddCommandToGroup:input_type -> cmd.UserGroupRequest
+	9,  // 20: cmd.CommandService.AddCommandToGroup:input_type -> cmd.AddCommandRequest
 	5,  // 21: cmd.CommandService.DeleteCommandFromGroup:input_type -> cmd.UserGroupRequest
 	6,  // 22: cmd.CommandService.AddObjectsToGroup:input_type -> cmd.AddObjectsRequest
 	27, // 23: cmd.CommandService.ListExecutions:input_type -> cmd.Empty

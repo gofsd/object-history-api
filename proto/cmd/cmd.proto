@@ -208,7 +208,7 @@ service CommandService {
   rpc ListCommands(CommandRequest) returns (CommandsResponse);
   rpc AddCommand(AddCommandRequest) returns (Command);
   rpc DeleteCommand(CommandRequest) returns (Command);
-  rpc AddCommandToGroup(UserGroupRequest) returns (UserGroupResponse);
+  rpc AddCommandToGroup(AddCommandRequest) returns (UserGroupResponse);
   rpc DeleteCommandFromGroup(UserGroupRequest) returns (UserGroupResponse);
 
   // Object management

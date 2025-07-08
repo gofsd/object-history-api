@@ -226,7 +226,7 @@ public final class Cmd {
       "RMITTED\020\007\022(\n$EXECUTION_STATUS_EXECUTORS_" +
       "NOT_FOUND\020\010*M\n\010UserRole\022\024\n\020USER_ROLE_VIE" +
       "WER\020\000\022\026\n\022USER_ROLE_EXECUTOR\020\001\022\023\n\017USER_RO" +
-      "LE_ADMIN\020\0022\371\t\n\016CommandService\022-\n\nListGro" +
+      "LE_ADMIN\020\0022\372\t\n\016CommandService\022-\n\nListGro" +
       "ups\022\n.cmd.Empty\032\023.cmd.GroupsResponse\022\"\n\010" +
       "AddGroup\022\n.cmd.Group\032\n.cmd.Group\022,\n\013Dele" +
       "teGroup\022\021.cmd.GroupRequest\032\n.cmd.Group\022?" +
@@ -237,29 +237,29 @@ public final class Cmd {
       "andRequest\032\025.cmd.CommandsResponse\0222\n\nAdd" +
       "Command\022\026.cmd.AddCommandRequest\032\014.cmd.Co" +
       "mmand\0222\n\rDeleteCommand\022\023.cmd.CommandRequ" +
-      "est\032\014.cmd.Command\022B\n\021AddCommandToGroup\022\025" +
-      ".cmd.UserGroupRequest\032\026.cmd.UserGroupRes" +
-      "ponse\022G\n\026DeleteCommandFromGroup\022\025.cmd.Us" +
-      "erGroupRequest\032\026.cmd.UserGroupResponse\022C" +
-      "\n\021AddObjectsToGroup\022\026.cmd.AddObjectsRequ" +
-      "est\032\026.cmd.UserGroupResponse\022/\n\016ListExecu" +
-      "tions\022\n.cmd.Empty\032\017.cmd.CommandLog0\001\0224\n\007" +
-      "Execute\022\023.cmd.ExecuteRequest\032\024.cmd.Execu" +
-      "teResponse\0221\n\006Cancel\022\022.cmd.CancelRequest" +
-      "\032\023.cmd.CancelResponse\0220\n\005Retry\022\021.cmd.Ret" +
-      "ryRequest\032\024.cmd.ExecuteResponse\0220\n\006DryRu" +
-      "n\022\023.cmd.ExecuteRequest\032\021.cmd.DryRunResul" +
-      "t\022^\n\025UpdateExecutionStatus\022!.cmd.UpdateE" +
-      "xecutionStatusRequest\032\".cmd.UpdateExecut" +
-      "ionStatusResponse\022;\n\rSubscribeLogs\022\025.cmd" +
-      ".SubscribeRequest\032\017.cmd.CommandLog(\0010\001\022@" +
-      "\n\026SubscribeCommandEvents\022\017.cmd.CommandLo" +
-      "g\032\021.cmd.CommandEvent(\0010\001\022.\n\020AddMutualCon" +
-      "tact\022\014.cmd.Contact\032\014.cmd.Contact\0221\n\023Remo" +
-      "veMutualContact\022\014.cmd.Contact\032\014.cmd.Cont" +
-      "act\022)\n\rShowMyContact\022\n.cmd.Empty\032\014.cmd.C" +
-      "ontactB\035\n\003cmdB\003CmdP\001Z\tcmd/proto\242\002\003CMDb\006p" +
-      "roto3"
+      "est\032\014.cmd.Command\022C\n\021AddCommandToGroup\022\026" +
+      ".cmd.AddCommandRequest\032\026.cmd.UserGroupRe" +
+      "sponse\022G\n\026DeleteCommandFromGroup\022\025.cmd.U" +
+      "serGroupRequest\032\026.cmd.UserGroupResponse\022" +
+      "C\n\021AddObjectsToGroup\022\026.cmd.AddObjectsReq" +
+      "uest\032\026.cmd.UserGroupResponse\022/\n\016ListExec" +
+      "utions\022\n.cmd.Empty\032\017.cmd.CommandLog0\001\0224\n" +
+      "\007Execute\022\023.cmd.ExecuteRequest\032\024.cmd.Exec" +
+      "uteResponse\0221\n\006Cancel\022\022.cmd.CancelReques" +
+      "t\032\023.cmd.CancelResponse\0220\n\005Retry\022\021.cmd.Re" +
+      "tryRequest\032\024.cmd.ExecuteResponse\0220\n\006DryR" +
+      "un\022\023.cmd.ExecuteRequest\032\021.cmd.DryRunResu" +
+      "lt\022^\n\025UpdateExecutionStatus\022!.cmd.Update" +
+      "ExecutionStatusRequest\032\".cmd.UpdateExecu" +
+      "tionStatusResponse\022;\n\rSubscribeLogs\022\025.cm" +
+      "d.SubscribeRequest\032\017.cmd.CommandLog(\0010\001\022" +
+      "@\n\026SubscribeCommandEvents\022\017.cmd.CommandL" +
+      "og\032\021.cmd.CommandEvent(\0010\001\022.\n\020AddMutualCo" +
+      "ntact\022\014.cmd.Contact\032\014.cmd.Contact\0221\n\023Rem" +
+      "oveMutualContact\022\014.cmd.Contact\032\014.cmd.Con" +
+      "tact\022)\n\rShowMyContact\022\n.cmd.Empty\032\014.cmd." +
+      "ContactB\035\n\003cmdB\003CmdP\001Z\tcmd/proto\242\002\003CMDb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
