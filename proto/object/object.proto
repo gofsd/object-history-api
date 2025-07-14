@@ -90,7 +90,8 @@ message ListObjectsRequest {
   int32 page_size = 2;
   map<string, string> fields = 3;
   int32 object_type = 4;
-  repeated Relation relation_type = 5;
+  repeated Relation relations = 5;
+  bool is_ascending = 6;
 }
 
 message ListObjectsResponse {

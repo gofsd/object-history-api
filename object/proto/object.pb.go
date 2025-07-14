@@ -728,7 +728,8 @@ type ListObjectsRequest struct {
 	PageSize      int32                  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
 	Fields        map[string]string      `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	ObjectType    int32                  `protobuf:"varint,4,opt,name=object_type,json=objectType,proto3" json:"object_type,omitempty"`
-	RelationType  []*Relation            `protobuf:"bytes,5,rep,name=relation_type,json=relationType,proto3" json:"relation_type,omitempty"`
+	Relations     []*Relation            `protobuf:"bytes,5,rep,name=relations,proto3" json:"relations,omitempty"`
+	IsAscending   bool                   `protobuf:"varint,6,opt,name=is_ascending,json=isAscending,proto3" json:"is_ascending,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -791,11 +792,18 @@ func (x *ListObjectsRequest) GetObjectType() int32 {
 	return 0
 }
 
-func (x *ListObjectsRequest) GetRelationType() []*Relation {
+func (x *ListObjectsRequest) GetRelations() []*Relation {
 	if x != nil {
-		return x.RelationType
+		return x.Relations
 	}
 	return nil
+}
+
+func (x *ListObjectsRequest) GetIsAscending() bool {
+	if x != nil {
+		return x.IsAscending
+	}
+	return false
 }
 
 type ListObjectsResponse struct {
@@ -1548,14 +1556,15 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"F\n" +
 	"\x1aUpdateObjectsUniqueRequest\x12(\n" +
-	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\x98\x02\n" +
+	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\xb4\x02\n" +
 	"\x12ListObjectsRequest\x12\x12\n" +
 	"\x04page\x18\x01 \x01(\x05R\x04page\x12\x1b\n" +
 	"\tpage_size\x18\x02 \x01(\x05R\bpageSize\x12>\n" +
 	"\x06fields\x18\x03 \x03(\v2&.object.ListObjectsRequest.FieldsEntryR\x06fields\x12\x1f\n" +
 	"\vobject_type\x18\x04 \x01(\x05R\n" +
-	"objectType\x125\n" +
-	"\rrelation_type\x18\x05 \x03(\v2\x10.object.RelationR\frelationType\x1a9\n" +
+	"objectType\x12.\n" +
+	"\trelations\x18\x05 \x03(\v2\x10.object.RelationR\trelations\x12!\n" +
+	"\fis_ascending\x18\x06 \x01(\bR\visAscending\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xb2\x01\n" +
@@ -1702,7 +1711,7 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	33, // 11: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
 	1,  // 12: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
 	34, // 13: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
-	27, // 14: object.ListObjectsRequest.relation_type:type_name -> object.Relation
+	27, // 14: object.ListObjectsRequest.relations:type_name -> object.Relation
 	1,  // 15: object.ListObjectsResponse.objects:type_name -> object.Object
 	35, // 16: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
 	15, // 17: object.ExecuteActionsRequest.actions:type_name -> object.ExecuteActionRequest

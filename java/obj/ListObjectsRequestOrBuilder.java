@@ -60,26 +60,32 @@ public interface ListObjectsRequestOrBuilder extends
   int getObjectType();
 
   /**
-   * <code>repeated .object.Relation relation_type = 5;</code>
+   * <code>repeated .object.Relation relations = 5;</code>
    */
   java.util.List<obj.Relation> 
-      getRelationTypeList();
+      getRelationsList();
   /**
-   * <code>repeated .object.Relation relation_type = 5;</code>
+   * <code>repeated .object.Relation relations = 5;</code>
    */
-  obj.Relation getRelationType(int index);
+  obj.Relation getRelations(int index);
   /**
-   * <code>repeated .object.Relation relation_type = 5;</code>
+   * <code>repeated .object.Relation relations = 5;</code>
    */
-  int getRelationTypeCount();
+  int getRelationsCount();
   /**
-   * <code>repeated .object.Relation relation_type = 5;</code>
+   * <code>repeated .object.Relation relations = 5;</code>
    */
   java.util.List<? extends obj.RelationOrBuilder> 
-      getRelationTypeOrBuilderList();
+      getRelationsOrBuilderList();
   /**
-   * <code>repeated .object.Relation relation_type = 5;</code>
+   * <code>repeated .object.Relation relations = 5;</code>
    */
-  obj.RelationOrBuilder getRelationTypeOrBuilder(
+  obj.RelationOrBuilder getRelationsOrBuilder(
       int index);
+
+  /**
+   * <code>bool is_ascending = 6;</code>
+   * @return The isAscending.
+   */
+  boolean getIsAscending();
 }
