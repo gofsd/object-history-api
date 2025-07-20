@@ -691,7 +691,8 @@ func (x *AddCommandRequest) GetFields() []*ParameterField {
 // CommandsResponse is a wrapper for a list of commands.
 type CommandsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Commands      []*Command             `protobuf:"bytes,1,rep,name=commands,proto3" json:"commands,omitempty"`
+	OwnerId       uint64                 `protobuf:"varint,1,opt,name=owner_id,json=ownerId,proto3" json:"owner_id,omitempty"` // ID of the owner of the commands
+	Commands      []*Command             `protobuf:"bytes,2,rep,name=commands,proto3" json:"commands,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -724,6 +725,13 @@ func (x *CommandsResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use CommandsResponse.ProtoReflect.Descriptor instead.
 func (*CommandsResponse) Descriptor() ([]byte, []int) {
 	return file_proto_cmd_cmd_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *CommandsResponse) GetOwnerId() uint64 {
+	if x != nil {
+		return x.OwnerId
+	}
+	return 0
 }
 
 func (x *CommandsResponse) GetCommands() []*Command {
@@ -1640,9 +1648,10 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x11AddCommandRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x02 \x01(\tR\vdescription\x12+\n" +
-	"\x06fields\x18\x03 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"<\n" +
-	"\x10CommandsResponse\x12(\n" +
-	"\bcommands\x18\x01 \x03(\v2\f.cmd.CommandR\bcommands\" \n" +
+	"\x06fields\x18\x03 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"W\n" +
+	"\x10CommandsResponse\x12\x19\n" +
+	"\bowner_id\x18\x01 \x01(\x04R\aownerId\x12(\n" +
+	"\bcommands\x18\x02 \x03(\v2\f.cmd.CommandR\bcommands\" \n" +
 	"\x0eCommandRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\"\xd4\x01\n" +
 	"\x0eExecuteRequest\x12\x1d\n" +

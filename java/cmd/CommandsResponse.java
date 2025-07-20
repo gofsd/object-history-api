@@ -48,17 +48,32 @@ private static final long serialVersionUID = 0L;
             cmd.CommandsResponse.class, cmd.CommandsResponse.Builder.class);
   }
 
-  public static final int COMMANDS_FIELD_NUMBER = 1;
+  public static final int OWNER_ID_FIELD_NUMBER = 1;
+  private long ownerId_;
+  /**
+   * <pre>
+   * ID of the owner of the commands
+   * </pre>
+   *
+   * <code>uint64 owner_id = 1;</code>
+   * @return The ownerId.
+   */
+  @java.lang.Override
+  public long getOwnerId() {
+    return ownerId_;
+  }
+
+  public static final int COMMANDS_FIELD_NUMBER = 2;
   private java.util.List<cmd.Command> commands_;
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   @java.lang.Override
   public java.util.List<cmd.Command> getCommandsList() {
     return commands_;
   }
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   @java.lang.Override
   public java.util.List<? extends cmd.CommandOrBuilder> 
@@ -66,21 +81,21 @@ private static final long serialVersionUID = 0L;
     return commands_;
   }
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   @java.lang.Override
   public int getCommandsCount() {
     return commands_.size();
   }
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   @java.lang.Override
   public cmd.Command getCommands(int index) {
     return commands_.get(index);
   }
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   @java.lang.Override
   public cmd.CommandOrBuilder getCommandsOrBuilder(
@@ -102,8 +117,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (ownerId_ != 0L) {
+      output.writeUInt64(1, ownerId_);
+    }
     for (int i = 0; i < commands_.size(); i++) {
-      output.writeMessage(1, commands_.get(i));
+      output.writeMessage(2, commands_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -114,9 +132,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (ownerId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(1, ownerId_);
+    }
     for (int i = 0; i < commands_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, commands_.get(i));
+        .computeMessageSize(2, commands_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -133,6 +155,8 @@ private static final long serialVersionUID = 0L;
     }
     cmd.CommandsResponse other = (cmd.CommandsResponse) obj;
 
+    if (getOwnerId()
+        != other.getOwnerId()) return false;
     if (!getCommandsList()
         .equals(other.getCommandsList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -146,6 +170,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getOwnerId());
     if (getCommandsCount() > 0) {
       hash = (37 * hash) + COMMANDS_FIELD_NUMBER;
       hash = (53 * hash) + getCommandsList().hashCode();
@@ -282,6 +309,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      ownerId_ = 0L;
+
       if (commandsBuilder_ == null) {
         commands_ = java.util.Collections.emptyList();
       } else {
@@ -316,6 +345,7 @@ private static final long serialVersionUID = 0L;
     public cmd.CommandsResponse buildPartial() {
       cmd.CommandsResponse result = new cmd.CommandsResponse(this);
       int from_bitField0_ = bitField0_;
+      result.ownerId_ = ownerId_;
       if (commandsBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           commands_ = java.util.Collections.unmodifiableList(commands_);
@@ -373,6 +403,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(cmd.CommandsResponse other) {
       if (other == cmd.CommandsResponse.getDefaultInstance()) return this;
+      if (other.getOwnerId() != 0L) {
+        setOwnerId(other.getOwnerId());
+      }
       if (commandsBuilder_ == null) {
         if (!other.commands_.isEmpty()) {
           if (commands_.isEmpty()) {
@@ -425,7 +458,12 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 10: {
+            case 8: {
+              ownerId_ = input.readUInt64();
+
+              break;
+            } // case 8
+            case 18: {
               cmd.Command m =
                   input.readMessage(
                       cmd.Command.parser(),
@@ -437,7 +475,7 @@ private static final long serialVersionUID = 0L;
                 commandsBuilder_.addMessage(m);
               }
               break;
-            } // case 10
+            } // case 18
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -455,6 +493,49 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
+    private long ownerId_ ;
+    /**
+     * <pre>
+     * ID of the owner of the commands
+     * </pre>
+     *
+     * <code>uint64 owner_id = 1;</code>
+     * @return The ownerId.
+     */
+    @java.lang.Override
+    public long getOwnerId() {
+      return ownerId_;
+    }
+    /**
+     * <pre>
+     * ID of the owner of the commands
+     * </pre>
+     *
+     * <code>uint64 owner_id = 1;</code>
+     * @param value The ownerId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOwnerId(long value) {
+      
+      ownerId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * ID of the owner of the commands
+     * </pre>
+     *
+     * <code>uint64 owner_id = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOwnerId() {
+      
+      ownerId_ = 0L;
+      onChanged();
+      return this;
+    }
+
     private java.util.List<cmd.Command> commands_ =
       java.util.Collections.emptyList();
     private void ensureCommandsIsMutable() {
@@ -468,7 +549,7 @@ private static final long serialVersionUID = 0L;
         cmd.Command, cmd.Command.Builder, cmd.CommandOrBuilder> commandsBuilder_;
 
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public java.util.List<cmd.Command> getCommandsList() {
       if (commandsBuilder_ == null) {
@@ -478,7 +559,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public int getCommandsCount() {
       if (commandsBuilder_ == null) {
@@ -488,7 +569,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public cmd.Command getCommands(int index) {
       if (commandsBuilder_ == null) {
@@ -498,7 +579,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder setCommands(
         int index, cmd.Command value) {
@@ -515,7 +596,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder setCommands(
         int index, cmd.Command.Builder builderForValue) {
@@ -529,7 +610,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder addCommands(cmd.Command value) {
       if (commandsBuilder_ == null) {
@@ -545,7 +626,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder addCommands(
         int index, cmd.Command value) {
@@ -562,7 +643,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder addCommands(
         cmd.Command.Builder builderForValue) {
@@ -576,7 +657,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder addCommands(
         int index, cmd.Command.Builder builderForValue) {
@@ -590,7 +671,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder addAllCommands(
         java.lang.Iterable<? extends cmd.Command> values) {
@@ -605,7 +686,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder clearCommands() {
       if (commandsBuilder_ == null) {
@@ -618,7 +699,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public Builder removeCommands(int index) {
       if (commandsBuilder_ == null) {
@@ -631,14 +712,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public cmd.Command.Builder getCommandsBuilder(
         int index) {
       return getCommandsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public cmd.CommandOrBuilder getCommandsOrBuilder(
         int index) {
@@ -648,7 +729,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public java.util.List<? extends cmd.CommandOrBuilder> 
          getCommandsOrBuilderList() {
@@ -659,14 +740,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public cmd.Command.Builder addCommandsBuilder() {
       return getCommandsFieldBuilder().addBuilder(
           cmd.Command.getDefaultInstance());
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public cmd.Command.Builder addCommandsBuilder(
         int index) {
@@ -674,7 +755,7 @@ private static final long serialVersionUID = 0L;
           index, cmd.Command.getDefaultInstance());
     }
     /**
-     * <code>repeated .cmd.Command commands = 1;</code>
+     * <code>repeated .cmd.Command commands = 2;</code>
      */
     public java.util.List<cmd.Command.Builder> 
          getCommandsBuilderList() {

@@ -98,7 +98,8 @@ message AddCommandRequest {
 
 // CommandsResponse is a wrapper for a list of commands.
 message CommandsResponse {
-  repeated Command commands = 1;
+  uint64 owner_id = 1; // ID of the owner of the commands
+  repeated Command commands = 2;
 }
 
 // CommandRequest is used to get, delete a command template.

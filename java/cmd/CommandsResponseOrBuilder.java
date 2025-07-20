@@ -8,25 +8,35 @@ public interface CommandsResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <pre>
+   * ID of the owner of the commands
+   * </pre>
+   *
+   * <code>uint64 owner_id = 1;</code>
+   * @return The ownerId.
+   */
+  long getOwnerId();
+
+  /**
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   java.util.List<cmd.Command> 
       getCommandsList();
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   cmd.Command getCommands(int index);
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   int getCommandsCount();
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   java.util.List<? extends cmd.CommandOrBuilder> 
       getCommandsOrBuilderList();
   /**
-   * <code>repeated .cmd.Command commands = 1;</code>
+   * <code>repeated .cmd.Command commands = 2;</code>
    */
   cmd.CommandOrBuilder getCommandsOrBuilder(
       int index);
