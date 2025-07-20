@@ -32,25 +32,45 @@ public interface AddCommandRequestOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <code>repeated .cmd.ParameterField fields = 3;</code>
+   * <pre>
+   * Optional label for the command
+   * </pre>
+   *
+   * <code>string label = 3;</code>
+   * @return The label.
+   */
+  java.lang.String getLabel();
+  /**
+   * <pre>
+   * Optional label for the command
+   * </pre>
+   *
+   * <code>string label = 3;</code>
+   * @return The bytes for label.
+   */
+  com.google.protobuf.ByteString
+      getLabelBytes();
+
+  /**
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   java.util.List<cmd.ParameterField> 
       getFieldsList();
   /**
-   * <code>repeated .cmd.ParameterField fields = 3;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   cmd.ParameterField getFields(int index);
   /**
-   * <code>repeated .cmd.ParameterField fields = 3;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   int getFieldsCount();
   /**
-   * <code>repeated .cmd.ParameterField fields = 3;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   java.util.List<? extends cmd.ParameterFieldOrBuilder> 
       getFieldsOrBuilderList();
   /**
-   * <code>repeated .cmd.ParameterField fields = 3;</code>
+   * <code>repeated .cmd.ParameterField fields = 4;</code>
    */
   cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
       int index);

@@ -632,7 +632,8 @@ type AddCommandRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
 	Description   string                 `protobuf:"bytes,2,opt,name=description,proto3" json:"description,omitempty"`
-	Fields        []*ParameterField      `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty"`
+	Label         string                 `protobuf:"bytes,3,opt,name=label,proto3" json:"label,omitempty"` // Optional label for the command
+	Fields        []*ParameterField      `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -677,6 +678,13 @@ func (x *AddCommandRequest) GetName() string {
 func (x *AddCommandRequest) GetDescription() string {
 	if x != nil {
 		return x.Description
+	}
+	return ""
+}
+
+func (x *AddCommandRequest) GetLabel() string {
+	if x != nil {
+		return x.Label
 	}
 	return ""
 }
@@ -1644,11 +1652,12 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +
 	"\vdescription\x18\x03 \x01(\tR\vdescription\x12+\n" +
-	"\x06fields\x18\x04 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"v\n" +
+	"\x06fields\x18\x04 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"\x8c\x01\n" +
 	"\x11AddCommandRequest\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12 \n" +
-	"\vdescription\x18\x02 \x01(\tR\vdescription\x12+\n" +
-	"\x06fields\x18\x03 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"W\n" +
+	"\vdescription\x18\x02 \x01(\tR\vdescription\x12\x14\n" +
+	"\x05label\x18\x03 \x01(\tR\x05label\x12+\n" +
+	"\x06fields\x18\x04 \x03(\v2\x13.cmd.ParameterFieldR\x06fields\"W\n" +
 	"\x10CommandsResponse\x12\x19\n" +
 	"\bowner_id\x18\x01 \x01(\x04R\aownerId\x12(\n" +
 	"\bcommands\x18\x02 \x03(\v2\f.cmd.CommandR\bcommands\" \n" +

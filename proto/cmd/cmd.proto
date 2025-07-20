@@ -92,7 +92,8 @@ message Command {
 message AddCommandRequest {
   string name = 1;
   string description = 2;
-  repeated ParameterField fields = 3;
+  string label = 3; // Optional label for the command
+  repeated ParameterField fields = 4;
 
 }
 
