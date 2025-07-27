@@ -1238,10 +1238,11 @@ func (*Empty) Descriptor() ([]byte, []int) {
 // ---- Synchronous Subscription ----
 type ObjectAction struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Action        uint64                 `protobuf:"varint,2,opt,name=action,proto3" json:"action,omitempty"`
-	ObjectId      uint64                 `protobuf:"varint,3,opt,name=object_id,json=objectId,proto3" json:"object_id,omitempty"`
-	Data          string                 `protobuf:"bytes,4,opt,name=data,proto3" json:"data,omitempty"`
+	Action        uint64                 `protobuf:"varint,1,opt,name=action,proto3" json:"action,omitempty"`
+	SourceId      uint64                 `protobuf:"varint,2,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
+	TargetId      uint64                 `protobuf:"varint,3,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
+	ValueId       uint64                 `protobuf:"varint,4,opt,name=value_id,json=valueId,proto3" json:"value_id,omitempty"`
+	Value         string                 `protobuf:"bytes,5,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1276,13 +1277,6 @@ func (*ObjectAction) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *ObjectAction) GetId() uint64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
 func (x *ObjectAction) GetAction() uint64 {
 	if x != nil {
 		return x.Action
@@ -1290,16 +1284,30 @@ func (x *ObjectAction) GetAction() uint64 {
 	return 0
 }
 
-func (x *ObjectAction) GetObjectId() uint64 {
+func (x *ObjectAction) GetSourceId() uint64 {
 	if x != nil {
-		return x.ObjectId
+		return x.SourceId
 	}
 	return 0
 }
 
-func (x *ObjectAction) GetData() string {
+func (x *ObjectAction) GetTargetId() uint64 {
 	if x != nil {
-		return x.Data
+		return x.TargetId
+	}
+	return 0
+}
+
+func (x *ObjectAction) GetValueId() uint64 {
+	if x != nil {
+		return x.ValueId
+	}
+	return 0
+}
+
+func (x *ObjectAction) GetValue() string {
+	if x != nil {
+		return x.Value
 	}
 	return ""
 }
@@ -1594,12 +1602,13 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"@\n" +
 	"\x14SubscriptionResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\a\n" +
-	"\x05Empty\"g\n" +
-	"\fObjectAction\x12\x0e\n" +
-	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x16\n" +
-	"\x06action\x18\x02 \x01(\x04R\x06action\x12\x1b\n" +
-	"\tobject_id\x18\x03 \x01(\x04R\bobjectId\x12\x12\n" +
-	"\x04data\x18\x04 \x01(\tR\x04data\"?\n" +
+	"\x05Empty\"\x91\x01\n" +
+	"\fObjectAction\x12\x16\n" +
+	"\x06action\x18\x01 \x01(\x04R\x06action\x12\x1b\n" +
+	"\tsource_id\x18\x02 \x01(\x04R\bsourceId\x12\x1b\n" +
+	"\ttarget_id\x18\x03 \x01(\x04R\btargetId\x12\x19\n" +
+	"\bvalue_id\x18\x04 \x01(\x04R\avalueId\x12\x14\n" +
+	"\x05value\x18\x05 \x01(\tR\x05value\"?\n" +
 	"\rObjectActions\x12.\n" +
 	"\aactions\x18\x01 \x03(\v2\x14.object.ObjectActionR\aactions\"B\n" +
 	"\n" +
@@ -1620,7 +1629,7 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\aCOMMAND\x10\x04\x12\b\n" +
 	"\x04USER\x10\x05\x12\r\n" +
 	"\tEXECUTION\x10\x06\x12\f\n" +
-	"\bRELATION\x10\a2\xb7\n" +
+	"\bRELATION\x10\a2\xf1\n" +
 	"\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
@@ -1640,7 +1649,8 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x0eReceiveObjects\x12\x1f.object.TransferObjectsResponse\x1a\x1e.object.ReceiveObjectsResponse\x12H\n" +
 	"\x17SubscribeToUsersObjects\x12\r.object.Empty\x1a\x1c.object.SubscriptionResponse0\x01\x124\n" +
 	"\x11SubscribeToMyself\x12\r.object.Empty\x1a\x0e.object.Object0\x01\x12=\n" +
-	"\rSyncWithUsers\x12\x13.object.DiffByUsers\x1a\x15.object.ObjectActions0\x01\x12F\n" +
+	"\rSyncWithUsers\x12\x13.object.DiffByUsers\x1a\x15.object.ObjectActions0\x01\x128\n" +
+	"\x04Sync\x12\x15.object.ObjectActions\x1a\x15.object.ObjectActions(\x010\x01\x12F\n" +
 	"\x11GetObjectCommands\x12\x18.object.GetObjectRequest\x1a\x17.object.ObjectsResponseB \n" +
 	"\x03objB\x03ObjP\x01Z\fobject/proto\xa2\x02\x03OBJb\x06proto3"
 
@@ -1738,27 +1748,29 @@ var file_proto_object_object_proto_depIdxs = []int32{
 	22, // 38: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
 	22, // 39: object.ObjectService.SubscribeToMyself:input_type -> object.Empty
 	26, // 40: object.ObjectService.SyncWithUsers:input_type -> object.DiffByUsers
-	5,  // 41: object.ObjectService.GetObjectCommands:input_type -> object.GetObjectRequest
-	2,  // 42: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
-	2,  // 43: object.ObjectService.GetObject:output_type -> object.ObjectResponse
-	2,  // 44: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
-	2,  // 45: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
-	3,  // 46: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
-	3,  // 47: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
-	3,  // 48: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
-	3,  // 49: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
-	3,  // 50: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
-	14, // 51: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
-	17, // 52: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
-	17, // 53: object.ObjectService.ExecuteActions:output_type -> object.ExecuteActionResponse
-	19, // 54: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
-	20, // 55: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
-	21, // 56: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
-	1,  // 57: object.ObjectService.SubscribeToMyself:output_type -> object.Object
-	24, // 58: object.ObjectService.SyncWithUsers:output_type -> object.ObjectActions
-	3,  // 59: object.ObjectService.GetObjectCommands:output_type -> object.ObjectsResponse
-	42, // [42:60] is the sub-list for method output_type
-	24, // [24:42] is the sub-list for method input_type
+	24, // 41: object.ObjectService.Sync:input_type -> object.ObjectActions
+	5,  // 42: object.ObjectService.GetObjectCommands:input_type -> object.GetObjectRequest
+	2,  // 43: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
+	2,  // 44: object.ObjectService.GetObject:output_type -> object.ObjectResponse
+	2,  // 45: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
+	2,  // 46: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
+	3,  // 47: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
+	3,  // 48: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
+	3,  // 49: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
+	3,  // 50: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
+	3,  // 51: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
+	14, // 52: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
+	17, // 53: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
+	17, // 54: object.ObjectService.ExecuteActions:output_type -> object.ExecuteActionResponse
+	19, // 55: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
+	20, // 56: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
+	21, // 57: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
+	1,  // 58: object.ObjectService.SubscribeToMyself:output_type -> object.Object
+	24, // 59: object.ObjectService.SyncWithUsers:output_type -> object.ObjectActions
+	24, // 60: object.ObjectService.Sync:output_type -> object.ObjectActions
+	3,  // 61: object.ObjectService.GetObjectCommands:output_type -> object.ObjectsResponse
+	43, // [43:62] is the sub-list for method output_type
+	24, // [24:43] is the sub-list for method input_type
 	24, // [24:24] is the sub-list for extension type_name
 	24, // [24:24] is the sub-list for extension extendee
 	0,  // [0:24] is the sub-list for field type_name

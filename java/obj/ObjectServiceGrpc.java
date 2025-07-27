@@ -545,6 +545,37 @@ public final class ObjectServiceGrpc {
     return getSyncWithUsersMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<obj.ObjectActions,
+      obj.ObjectActions> getSyncMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Sync",
+      requestType = obj.ObjectActions.class,
+      responseType = obj.ObjectActions.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<obj.ObjectActions,
+      obj.ObjectActions> getSyncMethod() {
+    io.grpc.MethodDescriptor<obj.ObjectActions, obj.ObjectActions> getSyncMethod;
+    if ((getSyncMethod = ObjectServiceGrpc.getSyncMethod) == null) {
+      synchronized (ObjectServiceGrpc.class) {
+        if ((getSyncMethod = ObjectServiceGrpc.getSyncMethod) == null) {
+          ObjectServiceGrpc.getSyncMethod = getSyncMethod =
+              io.grpc.MethodDescriptor.<obj.ObjectActions, obj.ObjectActions>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Sync"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectActions.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  obj.ObjectActions.getDefaultInstance()))
+              .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("Sync"))
+              .build();
+        }
+      }
+    }
+    return getSyncMethod;
+  }
+
   private static volatile io.grpc.MethodDescriptor<obj.GetObjectRequest,
       obj.ObjectsResponse> getGetObjectCommandsMethod;
 
@@ -777,6 +808,13 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     */
+    default io.grpc.stub.StreamObserver<obj.ObjectActions> sync(
+        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSyncMethod(), responseObserver);
+    }
+
+    /**
      * <pre>
      * Get object commands
      * </pre>
@@ -972,6 +1010,14 @@ public final class ObjectServiceGrpc {
     }
 
     /**
+     */
+    public io.grpc.stub.StreamObserver<obj.ObjectActions> sync(
+        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getSyncMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
      * <pre>
      * Get object commands
      * </pre>
@@ -1140,6 +1186,15 @@ public final class ObjectServiceGrpc {
         syncWithUsers(obj.DiffByUsers request) {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
           getChannel(), getSyncWithUsersMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
+    public io.grpc.stub.BlockingClientCall<obj.ObjectActions, obj.ObjectActions>
+        sync() {
+      return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
+          getChannel(), getSyncMethod(), getCallOptions());
     }
 
     /**
@@ -1493,6 +1548,7 @@ public final class ObjectServiceGrpc {
   private static final int METHODID_SUBSCRIBE_TO_MYSELF = 15;
   private static final int METHODID_SYNC_WITH_USERS = 16;
   private static final int METHODID_GET_OBJECT_COMMANDS = 17;
+  private static final int METHODID_SYNC = 18;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1593,6 +1649,9 @@ public final class ObjectServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_SYNC:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.sync(
+              (io.grpc.stub.StreamObserver<obj.ObjectActions>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -1721,6 +1780,13 @@ public final class ObjectServiceGrpc {
               obj.ObjectActions>(
                 service, METHODID_SYNC_WITH_USERS)))
         .addMethod(
+          getSyncMethod(),
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+            new MethodHandlers<
+              obj.ObjectActions,
+              obj.ObjectActions>(
+                service, METHODID_SYNC)))
+        .addMethod(
           getGetObjectCommandsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -1792,6 +1858,7 @@ public final class ObjectServiceGrpc {
               .addMethod(getSubscribeToUsersObjectsMethod())
               .addMethod(getSubscribeToMyselfMethod())
               .addMethod(getSyncWithUsersMethod())
+              .addMethod(getSyncMethod())
               .addMethod(getGetObjectCommandsMethod())
               .build();
         }

@@ -138,10 +138,11 @@ message Empty{}
 
 // ---- Synchronous Subscription ----
 message ObjectAction {
-  uint64 id = 1;
-  uint64 action = 2;
-  uint64 object_id = 3;
-  string data = 4;
+  uint64 action = 1;
+  uint64 source_id = 2;
+  uint64 target_id = 3;
+  uint64 value_id = 4;
+  string value = 5;
 }
 
 message ObjectActions {
@@ -191,6 +192,7 @@ service ObjectService {
   rpc SubscribeToUsersObjects(Empty) returns (stream SubscriptionResponse);
   rpc SubscribeToMyself(Empty) returns (stream Object);
   rpc SyncWithUsers(DiffByUsers) returns (stream ObjectActions);
+  rpc Sync(stream ObjectActions) returns (stream ObjectActions);
 
   // Get object commands
   rpc GetObjectCommands(GetObjectRequest) returns (ObjectsResponse);

@@ -8,32 +8,38 @@ public interface ObjectActionOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 id = 1;</code>
-   * @return The id.
-   */
-  long getId();
-
-  /**
-   * <code>uint64 action = 2;</code>
+   * <code>uint64 action = 1;</code>
    * @return The action.
    */
   long getAction();
 
   /**
-   * <code>uint64 object_id = 3;</code>
-   * @return The objectId.
+   * <code>uint64 source_id = 2;</code>
+   * @return The sourceId.
    */
-  long getObjectId();
+  long getSourceId();
 
   /**
-   * <code>string data = 4;</code>
-   * @return The data.
+   * <code>uint64 target_id = 3;</code>
+   * @return The targetId.
    */
-  java.lang.String getData();
+  long getTargetId();
+
   /**
-   * <code>string data = 4;</code>
-   * @return The bytes for data.
+   * <code>uint64 value_id = 4;</code>
+   * @return The valueId.
+   */
+  long getValueId();
+
+  /**
+   * <code>string value = 5;</code>
+   * @return The value.
+   */
+  java.lang.String getValue();
+  /**
+   * <code>string value = 5;</code>
+   * @return The bytes for value.
    */
   com.google.protobuf.ByteString
-      getDataBytes();
+      getValueBytes();
 }

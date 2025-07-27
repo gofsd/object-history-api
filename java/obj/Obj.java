@@ -254,51 +254,53 @@ public final class Obj {
       "sfer_id\030\001 \001(\004\"9\n\026ReceiveObjectsResponse\022" +
       "\037\n\007objects\030\001 \003(\0132\016.object.Object\"7\n\024Subs" +
       "criptionResponse\022\037\n\007objects\030\001 \003(\0132\016.obje" +
-      "ct.Object\"\007\n\005Empty\"K\n\014ObjectAction\022\n\n\002id" +
-      "\030\001 \001(\004\022\016\n\006action\030\002 \001(\004\022\021\n\tobject_id\030\003 \001(" +
-      "\004\022\014\n\004data\030\004 \001(\t\"6\n\rObjectActions\022%\n\007acti" +
-      "ons\030\001 \003(\0132\024.object.ObjectAction\"0\n\nDiffB" +
-      "yUser\022\017\n\007user_id\030\001 \001(\004\022\021\n\taction_id\030\002 \001(" +
-      "\004\"0\n\013DiffByUsers\022!\n\005diffs\030\001 \003(\0132\022.object" +
-      ".DiffByUser\")\n\010Relation\022\n\n\002id\030\001 \001(\004\022\021\n\tt" +
-      "arget_id\030\002 \001(\004*l\n\nObjectType\022\013\n\007UNKNOWN\020" +
-      "\000\022\010\n\004ITEM\020\001\022\010\n\004TYPE\020\002\022\t\n\005GROUP\020\003\022\013\n\007COMM" +
-      "AND\020\004\022\010\n\004USER\020\005\022\r\n\tEXECUTION\020\006\022\014\n\010RELATI" +
-      "ON\020\0072\267\n\n\rObjectService\022C\n\014CreateObject\022\033" +
-      ".object.CreateObjectRequest\032\026.object.Obj" +
-      "ectResponse\022=\n\tGetObject\022\030.object.GetObj" +
-      "ectRequest\032\026.object.ObjectResponse\022C\n\014Up" +
-      "dateObject\022\033.object.UpdateObjectRequest\032" +
-      "\026.object.ObjectResponse\022O\n\021DeleteObjectF" +
-      "ield\022\".object.DeleteObjectsFieldsRequest" +
-      "\032\026.object.ObjectResponse\022F\n\rCreateObject" +
-      "s\022\034.object.CreateObjectsRequest\032\027.object" +
-      ".ObjectsResponse\022@\n\nGetObjects\022\031.object." +
-      "GetObjectsRequest\032\027.object.ObjectsRespon" +
-      "se\022F\n\rUpdateObjects\022\034.object.UpdateObjec" +
-      "tsRequest\032\027.object.ObjectsResponse\022R\n\023Cr" +
-      "eateObjectsUnique\022\".object.CreateObjects" +
-      "UniqueRequest\032\027.object.ObjectsResponse\022R" +
-      "\n\023UpdateObjectsUnique\022\".object.UpdateObj" +
-      "ectsUniqueRequest\032\027.object.ObjectsRespon" +
-      "se\022F\n\013ListObjects\022\032.object.ListObjectsRe" +
-      "quest\032\033.object.ListObjectsResponse\022L\n\rEx" +
-      "ecuteAction\022\034.object.ExecuteActionReques" +
-      "t\032\035.object.ExecuteActionResponse\022N\n\016Exec" +
-      "uteActions\022\035.object.ExecuteActionsReques" +
-      "t\032\035.object.ExecuteActionResponse\022R\n\017Tran" +
-      "sferObjects\022\036.object.TransferObjectsRequ" +
-      "est\032\037.object.TransferObjectsResponse\022Q\n\016" +
-      "ReceiveObjects\022\037.object.TransferObjectsR" +
-      "esponse\032\036.object.ReceiveObjectsResponse\022" +
-      "H\n\027SubscribeToUsersObjects\022\r.object.Empt" +
-      "y\032\034.object.SubscriptionResponse0\001\0224\n\021Sub" +
-      "scribeToMyself\022\r.object.Empty\032\016.object.O" +
-      "bject0\001\022=\n\rSyncWithUsers\022\023.object.DiffBy" +
-      "Users\032\025.object.ObjectActions0\001\022F\n\021GetObj" +
-      "ectCommands\022\030.object.GetObjectRequest\032\027." +
-      "object.ObjectsResponseB \n\003objB\003ObjP\001Z\014ob" +
-      "ject/proto\242\002\003OBJb\006proto3"
+      "ct.Object\"\007\n\005Empty\"e\n\014ObjectAction\022\016\n\006ac" +
+      "tion\030\001 \001(\004\022\021\n\tsource_id\030\002 \001(\004\022\021\n\ttarget_" +
+      "id\030\003 \001(\004\022\020\n\010value_id\030\004 \001(\004\022\r\n\005value\030\005 \001(" +
+      "\t\"6\n\rObjectActions\022%\n\007actions\030\001 \003(\0132\024.ob" +
+      "ject.ObjectAction\"0\n\nDiffByUser\022\017\n\007user_" +
+      "id\030\001 \001(\004\022\021\n\taction_id\030\002 \001(\004\"0\n\013DiffByUse" +
+      "rs\022!\n\005diffs\030\001 \003(\0132\022.object.DiffByUser\")\n" +
+      "\010Relation\022\n\n\002id\030\001 \001(\004\022\021\n\ttarget_id\030\002 \001(\004" +
+      "*l\n\nObjectType\022\013\n\007UNKNOWN\020\000\022\010\n\004ITEM\020\001\022\010\n" +
+      "\004TYPE\020\002\022\t\n\005GROUP\020\003\022\013\n\007COMMAND\020\004\022\010\n\004USER\020" +
+      "\005\022\r\n\tEXECUTION\020\006\022\014\n\010RELATION\020\0072\361\n\n\rObjec" +
+      "tService\022C\n\014CreateObject\022\033.object.Create" +
+      "ObjectRequest\032\026.object.ObjectResponse\022=\n" +
+      "\tGetObject\022\030.object.GetObjectRequest\032\026.o" +
+      "bject.ObjectResponse\022C\n\014UpdateObject\022\033.o" +
+      "bject.UpdateObjectRequest\032\026.object.Objec" +
+      "tResponse\022O\n\021DeleteObjectField\022\".object." +
+      "DeleteObjectsFieldsRequest\032\026.object.Obje" +
+      "ctResponse\022F\n\rCreateObjects\022\034.object.Cre" +
+      "ateObjectsRequest\032\027.object.ObjectsRespon" +
+      "se\022@\n\nGetObjects\022\031.object.GetObjectsRequ" +
+      "est\032\027.object.ObjectsResponse\022F\n\rUpdateOb" +
+      "jects\022\034.object.UpdateObjectsRequest\032\027.ob" +
+      "ject.ObjectsResponse\022R\n\023CreateObjectsUni" +
+      "que\022\".object.CreateObjectsUniqueRequest\032" +
+      "\027.object.ObjectsResponse\022R\n\023UpdateObject" +
+      "sUnique\022\".object.UpdateObjectsUniqueRequ" +
+      "est\032\027.object.ObjectsResponse\022F\n\013ListObje" +
+      "cts\022\032.object.ListObjectsRequest\032\033.object" +
+      ".ListObjectsResponse\022L\n\rExecuteAction\022\034." +
+      "object.ExecuteActionRequest\032\035.object.Exe" +
+      "cuteActionResponse\022N\n\016ExecuteActions\022\035.o" +
+      "bject.ExecuteActionsRequest\032\035.object.Exe" +
+      "cuteActionResponse\022R\n\017TransferObjects\022\036." +
+      "object.TransferObjectsRequest\032\037.object.T" +
+      "ransferObjectsResponse\022Q\n\016ReceiveObjects" +
+      "\022\037.object.TransferObjectsResponse\032\036.obje" +
+      "ct.ReceiveObjectsResponse\022H\n\027SubscribeTo" +
+      "UsersObjects\022\r.object.Empty\032\034.object.Sub" +
+      "scriptionResponse0\001\0224\n\021SubscribeToMyself" +
+      "\022\r.object.Empty\032\016.object.Object0\001\022=\n\rSyn" +
+      "cWithUsers\022\023.object.DiffByUsers\032\025.object" +
+      ".ObjectActions0\001\0228\n\004Sync\022\025.object.Object" +
+      "Actions\032\025.object.ObjectActions(\0010\001\022F\n\021Ge" +
+      "tObjectCommands\022\030.object.GetObjectReques" +
+      "t\032\027.object.ObjectsResponseB \n\003objB\003ObjP\001" +
+      "Z\014object/proto\242\002\003OBJb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -489,7 +491,7 @@ public final class Obj {
     internal_static_object_ObjectAction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_object_ObjectAction_descriptor,
-        new java.lang.String[] { "Id", "Action", "ObjectId", "Data", });
+        new java.lang.String[] { "Action", "SourceId", "TargetId", "ValueId", "Value", });
     internal_static_object_ObjectActions_descriptor =
       getDescriptor().getMessageTypes().get(23);
     internal_static_object_ObjectActions_fieldAccessorTable = new
