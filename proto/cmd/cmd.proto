@@ -78,6 +78,8 @@ message ParameterField {
   repeated string options = 6;
   bool required = 7;
   bool multiline = 8;
+  bool disabled = 9; // Indicates if the field is disabled in the UI
+  string placeholder = 10; // Placeholder text for the field
 }
 
 // Command represents a command template.

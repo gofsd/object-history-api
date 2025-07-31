@@ -468,6 +468,8 @@ type ParameterField struct {
 	Options       []string               `protobuf:"bytes,6,rep,name=options,proto3" json:"options,omitempty"`
 	Required      bool                   `protobuf:"varint,7,opt,name=required,proto3" json:"required,omitempty"`
 	Multiline     bool                   `protobuf:"varint,8,opt,name=multiline,proto3" json:"multiline,omitempty"`
+	Disabled      bool                   `protobuf:"varint,9,opt,name=disabled,proto3" json:"disabled,omitempty"`       // Indicates if the field is disabled in the UI
+	Placeholder   string                 `protobuf:"bytes,10,opt,name=placeholder,proto3" json:"placeholder,omitempty"` // Placeholder text for the field
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -556,6 +558,20 @@ func (x *ParameterField) GetMultiline() bool {
 		return x.Multiline
 	}
 	return false
+}
+
+func (x *ParameterField) GetDisabled() bool {
+	if x != nil {
+		return x.Disabled
+	}
+	return false
+}
+
+func (x *ParameterField) GetPlaceholder() string {
+	if x != nil {
+		return x.Placeholder
+	}
+	return ""
 }
 
 // Command represents a command template.
@@ -1638,7 +1654,7 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\x11AddObjectsRequest\x12\x1d\n" +
 	"\n" +
 	"object_ids\x18\x01 \x03(\x04R\tobjectIds\x12\x19\n" +
-	"\bgroup_id\x18\x02 \x01(\x04R\agroupId\"\xe9\x01\n" +
+	"\bgroup_id\x18\x02 \x01(\x04R\agroupId\"\xa7\x02\n" +
 	"\x0eParameterField\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x14\n" +
 	"\x05label\x18\x02 \x01(\tR\x05label\x12\x12\n" +
@@ -1647,7 +1663,10 @@ const file_proto_cmd_cmd_proto_rawDesc = "" +
 	"\vdescription\x18\x05 \x01(\tR\vdescription\x12\x18\n" +
 	"\aoptions\x18\x06 \x03(\tR\aoptions\x12\x1a\n" +
 	"\brequired\x18\a \x01(\bR\brequired\x12\x1c\n" +
-	"\tmultiline\x18\b \x01(\bR\tmultiline\"|\n" +
+	"\tmultiline\x18\b \x01(\bR\tmultiline\x12\x1a\n" +
+	"\bdisabled\x18\t \x01(\bR\bdisabled\x12 \n" +
+	"\vplaceholder\x18\n" +
+	" \x01(\tR\vplaceholder\"|\n" +
 	"\aCommand\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12 \n" +

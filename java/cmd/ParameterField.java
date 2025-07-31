@@ -27,6 +27,7 @@ private static final long serialVersionUID = 0L;
     defaultValue_ = "";
     description_ = "";
     options_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    placeholder_ = "";
   }
 
   @java.lang.Override
@@ -301,6 +302,67 @@ private static final long serialVersionUID = 0L;
     return multiline_;
   }
 
+  public static final int DISABLED_FIELD_NUMBER = 9;
+  private boolean disabled_;
+  /**
+   * <pre>
+   * Indicates if the field is disabled in the UI
+   * </pre>
+   *
+   * <code>bool disabled = 9;</code>
+   * @return The disabled.
+   */
+  @java.lang.Override
+  public boolean getDisabled() {
+    return disabled_;
+  }
+
+  public static final int PLACEHOLDER_FIELD_NUMBER = 10;
+  private volatile java.lang.Object placeholder_;
+  /**
+   * <pre>
+   * Placeholder text for the field
+   * </pre>
+   *
+   * <code>string placeholder = 10;</code>
+   * @return The placeholder.
+   */
+  @java.lang.Override
+  public java.lang.String getPlaceholder() {
+    java.lang.Object ref = placeholder_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      placeholder_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * Placeholder text for the field
+   * </pre>
+   *
+   * <code>string placeholder = 10;</code>
+   * @return The bytes for placeholder.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getPlaceholderBytes() {
+    java.lang.Object ref = placeholder_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      placeholder_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -338,6 +400,12 @@ private static final long serialVersionUID = 0L;
     }
     if (multiline_ != false) {
       output.writeBool(8, multiline_);
+    }
+    if (disabled_ != false) {
+      output.writeBool(9, disabled_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(placeholder_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, placeholder_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -379,6 +447,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(8, multiline_);
     }
+    if (disabled_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(9, disabled_);
+    }
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(placeholder_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, placeholder_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -410,6 +485,10 @@ private static final long serialVersionUID = 0L;
         != other.getRequired()) return false;
     if (getMultiline()
         != other.getMultiline()) return false;
+    if (getDisabled()
+        != other.getDisabled()) return false;
+    if (!getPlaceholder()
+        .equals(other.getPlaceholder())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -441,6 +520,11 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + MULTILINE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getMultiline());
+    hash = (37 * hash) + DISABLED_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getDisabled());
+    hash = (37 * hash) + PLACEHOLDER_FIELD_NUMBER;
+    hash = (53 * hash) + getPlaceholder().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -590,6 +674,10 @@ private static final long serialVersionUID = 0L;
 
       multiline_ = false;
 
+      disabled_ = false;
+
+      placeholder_ = "";
+
       return this;
     }
 
@@ -629,6 +717,8 @@ private static final long serialVersionUID = 0L;
       result.options_ = options_;
       result.required_ = required_;
       result.multiline_ = multiline_;
+      result.disabled_ = disabled_;
+      result.placeholder_ = placeholder_;
       onBuilt();
       return result;
     }
@@ -713,6 +803,13 @@ private static final long serialVersionUID = 0L;
       if (other.getMultiline() != false) {
         setMultiline(other.getMultiline());
       }
+      if (other.getDisabled() != false) {
+        setDisabled(other.getDisabled());
+      }
+      if (!other.getPlaceholder().isEmpty()) {
+        placeholder_ = other.placeholder_;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -780,6 +877,16 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 64
+            case 72: {
+              disabled_ = input.readBool();
+
+              break;
+            } // case 72
+            case 82: {
+              placeholder_ = input.readStringRequireUtf8();
+
+              break;
+            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1345,6 +1452,145 @@ private static final long serialVersionUID = 0L;
     public Builder clearMultiline() {
       
       multiline_ = false;
+      onChanged();
+      return this;
+    }
+
+    private boolean disabled_ ;
+    /**
+     * <pre>
+     * Indicates if the field is disabled in the UI
+     * </pre>
+     *
+     * <code>bool disabled = 9;</code>
+     * @return The disabled.
+     */
+    @java.lang.Override
+    public boolean getDisabled() {
+      return disabled_;
+    }
+    /**
+     * <pre>
+     * Indicates if the field is disabled in the UI
+     * </pre>
+     *
+     * <code>bool disabled = 9;</code>
+     * @param value The disabled to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDisabled(boolean value) {
+      
+      disabled_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Indicates if the field is disabled in the UI
+     * </pre>
+     *
+     * <code>bool disabled = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDisabled() {
+      
+      disabled_ = false;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object placeholder_ = "";
+    /**
+     * <pre>
+     * Placeholder text for the field
+     * </pre>
+     *
+     * <code>string placeholder = 10;</code>
+     * @return The placeholder.
+     */
+    public java.lang.String getPlaceholder() {
+      java.lang.Object ref = placeholder_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        placeholder_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Placeholder text for the field
+     * </pre>
+     *
+     * <code>string placeholder = 10;</code>
+     * @return The bytes for placeholder.
+     */
+    public com.google.protobuf.ByteString
+        getPlaceholderBytes() {
+      java.lang.Object ref = placeholder_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        placeholder_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * Placeholder text for the field
+     * </pre>
+     *
+     * <code>string placeholder = 10;</code>
+     * @param value The placeholder to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPlaceholder(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      placeholder_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Placeholder text for the field
+     * </pre>
+     *
+     * <code>string placeholder = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPlaceholder() {
+      
+      placeholder_ = getDefaultInstance().getPlaceholder();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Placeholder text for the field
+     * </pre>
+     *
+     * <code>string placeholder = 10;</code>
+     * @param value The bytes for placeholder to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPlaceholderBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      placeholder_ = value;
       onChanged();
       return this;
     }

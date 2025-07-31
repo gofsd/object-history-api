@@ -103,4 +103,34 @@ public interface ParameterFieldOrBuilder extends
    * @return The multiline.
    */
   boolean getMultiline();
+
+  /**
+   * <pre>
+   * Indicates if the field is disabled in the UI
+   * </pre>
+   *
+   * <code>bool disabled = 9;</code>
+   * @return The disabled.
+   */
+  boolean getDisabled();
+
+  /**
+   * <pre>
+   * Placeholder text for the field
+   * </pre>
+   *
+   * <code>string placeholder = 10;</code>
+   * @return The placeholder.
+   */
+  java.lang.String getPlaceholder();
+  /**
+   * <pre>
+   * Placeholder text for the field
+   * </pre>
+   *
+   * <code>string placeholder = 10;</code>
+   * @return The bytes for placeholder.
+   */
+  com.google.protobuf.ByteString
+      getPlaceholderBytes();
 }
