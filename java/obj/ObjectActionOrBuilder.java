@@ -8,38 +8,51 @@ public interface ObjectActionOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 action = 1;</code>
+   * <pre>
+   * field number = 1
+   * </pre>
+   *
+   * <code>.object.ActionType action = 1;</code>
+   * @return The enum numeric value on the wire for action.
+   */
+  int getActionValue();
+  /**
+   * <pre>
+   * field number = 1
+   * </pre>
+   *
+   * <code>.object.ActionType action = 1;</code>
    * @return The action.
    */
-  long getAction();
+  obj.ActionType getAction();
 
   /**
+   * <pre>
+   * field number = 2
+   * </pre>
+   *
    * <code>uint64 source_id = 2;</code>
    * @return The sourceId.
    */
   long getSourceId();
 
   /**
+   * <pre>
+   * field number = 3
+   * </pre>
+   *
    * <code>uint64 target_id = 3;</code>
    * @return The targetId.
    */
   long getTargetId();
 
   /**
-   * <code>uint64 value_id = 4;</code>
-   * @return The valueId.
+   * <pre>
+   * field number = 4
+   * </pre>
+   *
+   * <code>uint64 value_code = 4;</code>
+   * @return The valueCode.
    */
-  long getValueId();
-
-  /**
-   * <code>string value = 5;</code>
-   * @return The value.
-   */
-  java.lang.String getValue();
-  /**
-   * <code>string value = 5;</code>
-   * @return The bytes for value.
-   */
-  com.google.protobuf.ByteString
-      getValueBytes();
+  long getValueCode();
 }

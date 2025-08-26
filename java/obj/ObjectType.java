@@ -13,9 +13,9 @@ package obj;
 public enum ObjectType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNKNOWN = 0;</code>
+   * <code>UNKNOWN_OBJECT = 0;</code>
    */
-  UNKNOWN(0),
+  UNKNOWN_OBJECT(0),
   /**
    * <code>ITEM = 1;</code>
    */
@@ -48,9 +48,9 @@ public enum ObjectType
   ;
 
   /**
-   * <code>UNKNOWN = 0;</code>
+   * <code>UNKNOWN_OBJECT = 0;</code>
    */
-  public static final int UNKNOWN_VALUE = 0;
+  public static final int UNKNOWN_OBJECT_VALUE = 0;
   /**
    * <code>ITEM = 1;</code>
    */
@@ -105,7 +105,7 @@ public enum ObjectType
    */
   public static ObjectType forNumber(int value) {
     switch (value) {
-      case 0: return UNKNOWN;
+      case 0: return UNKNOWN_OBJECT;
       case 1: return ITEM;
       case 2: return TYPE;
       case 3: return GROUP;

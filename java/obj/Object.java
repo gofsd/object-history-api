@@ -195,7 +195,7 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0L) {
       output.writeUInt64(1, id_);
     }
-    if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
+    if (objectType_ != obj.ObjectType.UNKNOWN_OBJECT.getNumber()) {
       output.writeEnum(2, objectType_);
     }
     if (version_ != 0L) {
@@ -220,7 +220,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, id_);
     }
-    if (objectType_ != obj.ObjectType.UNKNOWN.getNumber()) {
+    if (objectType_ != obj.ObjectType.UNKNOWN_OBJECT.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, objectType_);
     }

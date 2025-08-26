@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ObjectAction() {
-    value_ = "";
+    action_ = 0;
   }
 
   @java.lang.Override
@@ -49,19 +49,39 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ACTION_FIELD_NUMBER = 1;
-  private long action_;
+  private int action_;
   /**
-   * <code>uint64 action = 1;</code>
+   * <pre>
+   * field number = 1
+   * </pre>
+   *
+   * <code>.object.ActionType action = 1;</code>
+   * @return The enum numeric value on the wire for action.
+   */
+  @java.lang.Override public int getActionValue() {
+    return action_;
+  }
+  /**
+   * <pre>
+   * field number = 1
+   * </pre>
+   *
+   * <code>.object.ActionType action = 1;</code>
    * @return The action.
    */
-  @java.lang.Override
-  public long getAction() {
-    return action_;
+  @java.lang.Override public obj.ActionType getAction() {
+    @SuppressWarnings("deprecation")
+    obj.ActionType result = obj.ActionType.valueOf(action_);
+    return result == null ? obj.ActionType.UNRECOGNIZED : result;
   }
 
   public static final int SOURCE_ID_FIELD_NUMBER = 2;
   private long sourceId_;
   /**
+   * <pre>
+   * field number = 2
+   * </pre>
+   *
    * <code>uint64 source_id = 2;</code>
    * @return The sourceId.
    */
@@ -73,6 +93,10 @@ private static final long serialVersionUID = 0L;
   public static final int TARGET_ID_FIELD_NUMBER = 3;
   private long targetId_;
   /**
+   * <pre>
+   * field number = 3
+   * </pre>
+   *
    * <code>uint64 target_id = 3;</code>
    * @return The targetId.
    */
@@ -81,53 +105,19 @@ private static final long serialVersionUID = 0L;
     return targetId_;
   }
 
-  public static final int VALUE_ID_FIELD_NUMBER = 4;
-  private long valueId_;
+  public static final int VALUE_CODE_FIELD_NUMBER = 4;
+  private long valueCode_;
   /**
-   * <code>uint64 value_id = 4;</code>
-   * @return The valueId.
+   * <pre>
+   * field number = 4
+   * </pre>
+   *
+   * <code>uint64 value_code = 4;</code>
+   * @return The valueCode.
    */
   @java.lang.Override
-  public long getValueId() {
-    return valueId_;
-  }
-
-  public static final int VALUE_FIELD_NUMBER = 5;
-  private volatile java.lang.Object value_;
-  /**
-   * <code>string value = 5;</code>
-   * @return The value.
-   */
-  @java.lang.Override
-  public java.lang.String getValue() {
-    java.lang.Object ref = value_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      value_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string value = 5;</code>
-   * @return The bytes for value.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getValueBytes() {
-    java.lang.Object ref = value_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      value_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public long getValueCode() {
+    return valueCode_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -144,8 +134,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (action_ != 0L) {
-      output.writeUInt64(1, action_);
+    if (action_ != obj.ActionType.UNKNOWN_ACTION.getNumber()) {
+      output.writeEnum(1, action_);
     }
     if (sourceId_ != 0L) {
       output.writeUInt64(2, sourceId_);
@@ -153,11 +143,8 @@ private static final long serialVersionUID = 0L;
     if (targetId_ != 0L) {
       output.writeUInt64(3, targetId_);
     }
-    if (valueId_ != 0L) {
-      output.writeUInt64(4, valueId_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, value_);
+    if (valueCode_ != 0L) {
+      output.writeUInt64(4, valueCode_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -168,9 +155,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (action_ != 0L) {
+    if (action_ != obj.ActionType.UNKNOWN_ACTION.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, action_);
+        .computeEnumSize(1, action_);
     }
     if (sourceId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -180,12 +167,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(3, targetId_);
     }
-    if (valueId_ != 0L) {
+    if (valueCode_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(4, valueId_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(value_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, value_);
+        .computeUInt64Size(4, valueCode_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -202,16 +186,13 @@ private static final long serialVersionUID = 0L;
     }
     obj.ObjectAction other = (obj.ObjectAction) obj;
 
-    if (getAction()
-        != other.getAction()) return false;
+    if (action_ != other.action_) return false;
     if (getSourceId()
         != other.getSourceId()) return false;
     if (getTargetId()
         != other.getTargetId()) return false;
-    if (getValueId()
-        != other.getValueId()) return false;
-    if (!getValue()
-        .equals(other.getValue())) return false;
+    if (getValueCode()
+        != other.getValueCode()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -224,19 +205,16 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ACTION_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getAction());
+    hash = (53 * hash) + action_;
     hash = (37 * hash) + SOURCE_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getSourceId());
     hash = (37 * hash) + TARGET_ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTargetId());
-    hash = (37 * hash) + VALUE_ID_FIELD_NUMBER;
+    hash = (37 * hash) + VALUE_CODE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getValueId());
-    hash = (37 * hash) + VALUE_FIELD_NUMBER;
-    hash = (53 * hash) + getValue().hashCode();
+        getValueCode());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -369,15 +347,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      action_ = 0L;
+      action_ = 0;
 
       sourceId_ = 0L;
 
       targetId_ = 0L;
 
-      valueId_ = 0L;
-
-      value_ = "";
+      valueCode_ = 0L;
 
       return this;
     }
@@ -408,8 +384,7 @@ private static final long serialVersionUID = 0L;
       result.action_ = action_;
       result.sourceId_ = sourceId_;
       result.targetId_ = targetId_;
-      result.valueId_ = valueId_;
-      result.value_ = value_;
+      result.valueCode_ = valueCode_;
       onBuilt();
       return result;
     }
@@ -458,8 +433,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(obj.ObjectAction other) {
       if (other == obj.ObjectAction.getDefaultInstance()) return this;
-      if (other.getAction() != 0L) {
-        setAction(other.getAction());
+      if (other.action_ != 0) {
+        setActionValue(other.getActionValue());
       }
       if (other.getSourceId() != 0L) {
         setSourceId(other.getSourceId());
@@ -467,12 +442,8 @@ private static final long serialVersionUID = 0L;
       if (other.getTargetId() != 0L) {
         setTargetId(other.getTargetId());
       }
-      if (other.getValueId() != 0L) {
-        setValueId(other.getValueId());
-      }
-      if (!other.getValue().isEmpty()) {
-        value_ = other.value_;
-        onChanged();
+      if (other.getValueCode() != 0L) {
+        setValueCode(other.getValueCode());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -501,7 +472,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              action_ = input.readUInt64();
+              action_ = input.readEnum();
 
               break;
             } // case 8
@@ -516,15 +487,10 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 24
             case 32: {
-              valueId_ = input.readUInt64();
+              valueCode_ = input.readUInt64();
 
               break;
             } // case 32
-            case 42: {
-              value_ = input.readStringRequireUtf8();
-
-              break;
-            } // case 42
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -541,39 +507,86 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long action_ ;
+    private int action_ = 0;
     /**
-     * <code>uint64 action = 1;</code>
-     * @return The action.
+     * <pre>
+     * field number = 1
+     * </pre>
+     *
+     * <code>.object.ActionType action = 1;</code>
+     * @return The enum numeric value on the wire for action.
      */
-    @java.lang.Override
-    public long getAction() {
+    @java.lang.Override public int getActionValue() {
       return action_;
     }
     /**
-     * <code>uint64 action = 1;</code>
-     * @param value The action to set.
+     * <pre>
+     * field number = 1
+     * </pre>
+     *
+     * <code>.object.ActionType action = 1;</code>
+     * @param value The enum numeric value on the wire for action to set.
      * @return This builder for chaining.
      */
-    public Builder setAction(long value) {
+    public Builder setActionValue(int value) {
       
       action_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 action = 1;</code>
+     * <pre>
+     * field number = 1
+     * </pre>
+     *
+     * <code>.object.ActionType action = 1;</code>
+     * @return The action.
+     */
+    @java.lang.Override
+    public obj.ActionType getAction() {
+      @SuppressWarnings("deprecation")
+      obj.ActionType result = obj.ActionType.valueOf(action_);
+      return result == null ? obj.ActionType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * field number = 1
+     * </pre>
+     *
+     * <code>.object.ActionType action = 1;</code>
+     * @param value The action to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAction(obj.ActionType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      action_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * field number = 1
+     * </pre>
+     *
+     * <code>.object.ActionType action = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearAction() {
       
-      action_ = 0L;
+      action_ = 0;
       onChanged();
       return this;
     }
 
     private long sourceId_ ;
     /**
+     * <pre>
+     * field number = 2
+     * </pre>
+     *
      * <code>uint64 source_id = 2;</code>
      * @return The sourceId.
      */
@@ -582,6 +595,10 @@ private static final long serialVersionUID = 0L;
       return sourceId_;
     }
     /**
+     * <pre>
+     * field number = 2
+     * </pre>
+     *
      * <code>uint64 source_id = 2;</code>
      * @param value The sourceId to set.
      * @return This builder for chaining.
@@ -593,6 +610,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * field number = 2
+     * </pre>
+     *
      * <code>uint64 source_id = 2;</code>
      * @return This builder for chaining.
      */
@@ -605,6 +626,10 @@ private static final long serialVersionUID = 0L;
 
     private long targetId_ ;
     /**
+     * <pre>
+     * field number = 3
+     * </pre>
+     *
      * <code>uint64 target_id = 3;</code>
      * @return The targetId.
      */
@@ -613,6 +638,10 @@ private static final long serialVersionUID = 0L;
       return targetId_;
     }
     /**
+     * <pre>
+     * field number = 3
+     * </pre>
+     *
      * <code>uint64 target_id = 3;</code>
      * @param value The targetId to set.
      * @return This builder for chaining.
@@ -624,6 +653,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * field number = 3
+     * </pre>
+     *
      * <code>uint64 target_id = 3;</code>
      * @return This builder for chaining.
      */
@@ -634,109 +667,45 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long valueId_ ;
+    private long valueCode_ ;
     /**
-     * <code>uint64 value_id = 4;</code>
-     * @return The valueId.
+     * <pre>
+     * field number = 4
+     * </pre>
+     *
+     * <code>uint64 value_code = 4;</code>
+     * @return The valueCode.
      */
     @java.lang.Override
-    public long getValueId() {
-      return valueId_;
+    public long getValueCode() {
+      return valueCode_;
     }
     /**
-     * <code>uint64 value_id = 4;</code>
-     * @param value The valueId to set.
+     * <pre>
+     * field number = 4
+     * </pre>
+     *
+     * <code>uint64 value_code = 4;</code>
+     * @param value The valueCode to set.
      * @return This builder for chaining.
      */
-    public Builder setValueId(long value) {
+    public Builder setValueCode(long value) {
       
-      valueId_ = value;
+      valueCode_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 value_id = 4;</code>
+     * <pre>
+     * field number = 4
+     * </pre>
+     *
+     * <code>uint64 value_code = 4;</code>
      * @return This builder for chaining.
      */
-    public Builder clearValueId() {
+    public Builder clearValueCode() {
       
-      valueId_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object value_ = "";
-    /**
-     * <code>string value = 5;</code>
-     * @return The value.
-     */
-    public java.lang.String getValue() {
-      java.lang.Object ref = value_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        value_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string value = 5;</code>
-     * @return The bytes for value.
-     */
-    public com.google.protobuf.ByteString
-        getValueBytes() {
-      java.lang.Object ref = value_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        value_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string value = 5;</code>
-     * @param value The value to set.
-     * @return This builder for chaining.
-     */
-    public Builder setValue(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      value_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string value = 5;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearValue() {
-      
-      value_ = getDefaultInstance().getValue();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string value = 5;</code>
-     * @param value The bytes for value to set.
-     * @return This builder for chaining.
-     */
-    public Builder setValueBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      value_ = value;
+      valueCode_ = 0L;
       onChanged();
       return this;
     }

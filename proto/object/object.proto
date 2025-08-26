@@ -10,7 +10,7 @@ option objc_class_prefix = "OBJ";
 
 // ------------------- CORE MESSAGES -------------------
 enum ObjectType {
-  UNKNOWN = 0;
+  UNKNOWN_OBJECT = 0;
   ITEM = 1;
   TYPE = 2;
   GROUP = 3;
@@ -135,14 +135,41 @@ message SubscriptionResponse {
 }
 
 message Empty{}
+// Enumerate all actions
+enum ActionType {
+    UNKNOWN_ACTION = 0;
 
+    // Object-level actions
+    CREATE_OBJECT = 1;
+    UPDATE_OBJECT = 2;
+    DELETE_OBJECT = 3;
+    READ_OBJECT = 4;
+
+    // Field-level actions
+    CREATE_FIELD = 10;
+    UPDATE_FIELD = 11;
+    DELETE_FIELD = 12;
+    READ_FIELD = 13;
+
+    // Value-level actions (char-based)
+    CREATE_VALUE = 20;
+    WRITE_VALUE = 21;
+    READ_VALUE = 22;
+    
+    // Relation-level actions
+    CREATE_RELATION = 30;
+    DELETE_RELATION = 31;
+    READ_RELATION = 32;
+
+    BEGIN = 40;
+    END = 41;
+}
 // ---- Synchronous Subscription ----
 message ObjectAction {
-  uint64 action = 1;
-  uint64 source_id = 2;
-  uint64 target_id = 3;
-  uint64 value_id = 4;
-  string value = 5;
+    ActionType action = 1;       // field number = 1
+    uint64 source_id = 2;        // field number = 2
+    uint64 target_id = 3;        // field number = 3
+    uint64 value_code = 4;       // field number = 4
 }
 
 message ObjectActions {

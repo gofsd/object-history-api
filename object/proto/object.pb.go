@@ -25,20 +25,20 @@ const (
 type ObjectType int32
 
 const (
-	ObjectType_UNKNOWN   ObjectType = 0
-	ObjectType_ITEM      ObjectType = 1
-	ObjectType_TYPE      ObjectType = 2
-	ObjectType_GROUP     ObjectType = 3
-	ObjectType_COMMAND   ObjectType = 4
-	ObjectType_USER      ObjectType = 5
-	ObjectType_EXECUTION ObjectType = 6
-	ObjectType_RELATION  ObjectType = 7
+	ObjectType_UNKNOWN_OBJECT ObjectType = 0
+	ObjectType_ITEM           ObjectType = 1
+	ObjectType_TYPE           ObjectType = 2
+	ObjectType_GROUP          ObjectType = 3
+	ObjectType_COMMAND        ObjectType = 4
+	ObjectType_USER           ObjectType = 5
+	ObjectType_EXECUTION      ObjectType = 6
+	ObjectType_RELATION       ObjectType = 7
 )
 
 // Enum value maps for ObjectType.
 var (
 	ObjectType_name = map[int32]string{
-		0: "UNKNOWN",
+		0: "UNKNOWN_OBJECT",
 		1: "ITEM",
 		2: "TYPE",
 		3: "GROUP",
@@ -48,14 +48,14 @@ var (
 		7: "RELATION",
 	}
 	ObjectType_value = map[string]int32{
-		"UNKNOWN":   0,
-		"ITEM":      1,
-		"TYPE":      2,
-		"GROUP":     3,
-		"COMMAND":   4,
-		"USER":      5,
-		"EXECUTION": 6,
-		"RELATION":  7,
+		"UNKNOWN_OBJECT": 0,
+		"ITEM":           1,
+		"TYPE":           2,
+		"GROUP":          3,
+		"COMMAND":        4,
+		"USER":           5,
+		"EXECUTION":      6,
+		"RELATION":       7,
 	}
 )
 
@@ -84,6 +84,102 @@ func (x ObjectType) Number() protoreflect.EnumNumber {
 // Deprecated: Use ObjectType.Descriptor instead.
 func (ObjectType) EnumDescriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{0}
+}
+
+// Enumerate all actions
+type ActionType int32
+
+const (
+	ActionType_UNKNOWN_ACTION ActionType = 0
+	// Object-level actions
+	ActionType_CREATE_OBJECT ActionType = 1
+	ActionType_UPDATE_OBJECT ActionType = 2
+	ActionType_DELETE_OBJECT ActionType = 3
+	ActionType_READ_OBJECT   ActionType = 4
+	// Field-level actions
+	ActionType_CREATE_FIELD ActionType = 10
+	ActionType_UPDATE_FIELD ActionType = 11
+	ActionType_DELETE_FIELD ActionType = 12
+	ActionType_READ_FIELD   ActionType = 13
+	// Value-level actions (char-based)
+	ActionType_CREATE_VALUE ActionType = 20
+	ActionType_WRITE_VALUE  ActionType = 21
+	ActionType_READ_VALUE   ActionType = 22
+	// Relation-level actions
+	ActionType_CREATE_RELATION ActionType = 30
+	ActionType_DELETE_RELATION ActionType = 31
+	ActionType_READ_RELATION   ActionType = 32
+	ActionType_BEGIN           ActionType = 40
+	ActionType_END             ActionType = 41
+)
+
+// Enum value maps for ActionType.
+var (
+	ActionType_name = map[int32]string{
+		0:  "UNKNOWN_ACTION",
+		1:  "CREATE_OBJECT",
+		2:  "UPDATE_OBJECT",
+		3:  "DELETE_OBJECT",
+		4:  "READ_OBJECT",
+		10: "CREATE_FIELD",
+		11: "UPDATE_FIELD",
+		12: "DELETE_FIELD",
+		13: "READ_FIELD",
+		20: "CREATE_VALUE",
+		21: "WRITE_VALUE",
+		22: "READ_VALUE",
+		30: "CREATE_RELATION",
+		31: "DELETE_RELATION",
+		32: "READ_RELATION",
+		40: "BEGIN",
+		41: "END",
+	}
+	ActionType_value = map[string]int32{
+		"UNKNOWN_ACTION":  0,
+		"CREATE_OBJECT":   1,
+		"UPDATE_OBJECT":   2,
+		"DELETE_OBJECT":   3,
+		"READ_OBJECT":     4,
+		"CREATE_FIELD":    10,
+		"UPDATE_FIELD":    11,
+		"DELETE_FIELD":    12,
+		"READ_FIELD":      13,
+		"CREATE_VALUE":    20,
+		"WRITE_VALUE":     21,
+		"READ_VALUE":      22,
+		"CREATE_RELATION": 30,
+		"DELETE_RELATION": 31,
+		"READ_RELATION":   32,
+		"BEGIN":           40,
+		"END":             41,
+	}
+)
+
+func (x ActionType) Enum() *ActionType {
+	p := new(ActionType)
+	*p = x
+	return p
+}
+
+func (x ActionType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ActionType) Descriptor() protoreflect.EnumDescriptor {
+	return file_proto_object_object_proto_enumTypes[1].Descriptor()
+}
+
+func (ActionType) Type() protoreflect.EnumType {
+	return &file_proto_object_object_proto_enumTypes[1]
+}
+
+func (x ActionType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ActionType.Descriptor instead.
+func (ActionType) EnumDescriptor() ([]byte, []int) {
+	return file_proto_object_object_proto_rawDescGZIP(), []int{1}
 }
 
 type Object struct {
@@ -137,7 +233,7 @@ func (x *Object) GetObjectType() ObjectType {
 	if x != nil {
 		return x.ObjectType
 	}
-	return ObjectType_UNKNOWN
+	return ObjectType_UNKNOWN_OBJECT
 }
 
 func (x *Object) GetVersion() uint64 {
@@ -1238,11 +1334,10 @@ func (*Empty) Descriptor() ([]byte, []int) {
 // ---- Synchronous Subscription ----
 type ObjectAction struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Action        uint64                 `protobuf:"varint,1,opt,name=action,proto3" json:"action,omitempty"`
-	SourceId      uint64                 `protobuf:"varint,2,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`
-	TargetId      uint64                 `protobuf:"varint,3,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`
-	ValueId       uint64                 `protobuf:"varint,4,opt,name=value_id,json=valueId,proto3" json:"value_id,omitempty"`
-	Value         string                 `protobuf:"bytes,5,opt,name=value,proto3" json:"value,omitempty"`
+	Action        ActionType             `protobuf:"varint,1,opt,name=action,proto3,enum=object.ActionType" json:"action,omitempty"` // field number = 1
+	SourceId      uint64                 `protobuf:"varint,2,opt,name=source_id,json=sourceId,proto3" json:"source_id,omitempty"`    // field number = 2
+	TargetId      uint64                 `protobuf:"varint,3,opt,name=target_id,json=targetId,proto3" json:"target_id,omitempty"`    // field number = 3
+	ValueCode     uint64                 `protobuf:"varint,4,opt,name=value_code,json=valueCode,proto3" json:"value_code,omitempty"` // field number = 4
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1277,11 +1372,11 @@ func (*ObjectAction) Descriptor() ([]byte, []int) {
 	return file_proto_object_object_proto_rawDescGZIP(), []int{22}
 }
 
-func (x *ObjectAction) GetAction() uint64 {
+func (x *ObjectAction) GetAction() ActionType {
 	if x != nil {
 		return x.Action
 	}
-	return 0
+	return ActionType_UNKNOWN_ACTION
 }
 
 func (x *ObjectAction) GetSourceId() uint64 {
@@ -1298,18 +1393,11 @@ func (x *ObjectAction) GetTargetId() uint64 {
 	return 0
 }
 
-func (x *ObjectAction) GetValueId() uint64 {
+func (x *ObjectAction) GetValueCode() uint64 {
 	if x != nil {
-		return x.ValueId
+		return x.ValueCode
 	}
 	return 0
-}
-
-func (x *ObjectAction) GetValue() string {
-	if x != nil {
-		return x.Value
-	}
-	return ""
 }
 
 type ObjectActions struct {
@@ -1602,13 +1690,13 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"@\n" +
 	"\x14SubscriptionResponse\x12(\n" +
 	"\aobjects\x18\x01 \x03(\v2\x0e.object.ObjectR\aobjects\"\a\n" +
-	"\x05Empty\"\x91\x01\n" +
-	"\fObjectAction\x12\x16\n" +
-	"\x06action\x18\x01 \x01(\x04R\x06action\x12\x1b\n" +
+	"\x05Empty\"\x93\x01\n" +
+	"\fObjectAction\x12*\n" +
+	"\x06action\x18\x01 \x01(\x0e2\x12.object.ActionTypeR\x06action\x12\x1b\n" +
 	"\tsource_id\x18\x02 \x01(\x04R\bsourceId\x12\x1b\n" +
-	"\ttarget_id\x18\x03 \x01(\x04R\btargetId\x12\x19\n" +
-	"\bvalue_id\x18\x04 \x01(\x04R\avalueId\x12\x14\n" +
-	"\x05value\x18\x05 \x01(\tR\x05value\"?\n" +
+	"\ttarget_id\x18\x03 \x01(\x04R\btargetId\x12\x1d\n" +
+	"\n" +
+	"value_code\x18\x04 \x01(\x04R\tvalueCode\"?\n" +
 	"\rObjectActions\x12.\n" +
 	"\aactions\x18\x01 \x03(\v2\x14.object.ObjectActionR\aactions\"B\n" +
 	"\n" +
@@ -1619,17 +1707,39 @@ const file_proto_object_object_proto_rawDesc = "" +
 	"\x05diffs\x18\x01 \x03(\v2\x12.object.DiffByUserR\x05diffs\"7\n" +
 	"\bRelation\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1b\n" +
-	"\ttarget_id\x18\x02 \x01(\x04R\btargetId*l\n" +
+	"\ttarget_id\x18\x02 \x01(\x04R\btargetId*s\n" +
 	"\n" +
-	"ObjectType\x12\v\n" +
-	"\aUNKNOWN\x10\x00\x12\b\n" +
+	"ObjectType\x12\x12\n" +
+	"\x0eUNKNOWN_OBJECT\x10\x00\x12\b\n" +
 	"\x04ITEM\x10\x01\x12\b\n" +
 	"\x04TYPE\x10\x02\x12\t\n" +
 	"\x05GROUP\x10\x03\x12\v\n" +
 	"\aCOMMAND\x10\x04\x12\b\n" +
 	"\x04USER\x10\x05\x12\r\n" +
 	"\tEXECUTION\x10\x06\x12\f\n" +
-	"\bRELATION\x10\a2\xf1\n" +
+	"\bRELATION\x10\a*\xb4\x02\n" +
+	"\n" +
+	"ActionType\x12\x12\n" +
+	"\x0eUNKNOWN_ACTION\x10\x00\x12\x11\n" +
+	"\rCREATE_OBJECT\x10\x01\x12\x11\n" +
+	"\rUPDATE_OBJECT\x10\x02\x12\x11\n" +
+	"\rDELETE_OBJECT\x10\x03\x12\x0f\n" +
+	"\vREAD_OBJECT\x10\x04\x12\x10\n" +
+	"\fCREATE_FIELD\x10\n" +
+	"\x12\x10\n" +
+	"\fUPDATE_FIELD\x10\v\x12\x10\n" +
+	"\fDELETE_FIELD\x10\f\x12\x0e\n" +
+	"\n" +
+	"READ_FIELD\x10\r\x12\x10\n" +
+	"\fCREATE_VALUE\x10\x14\x12\x0f\n" +
+	"\vWRITE_VALUE\x10\x15\x12\x0e\n" +
+	"\n" +
+	"READ_VALUE\x10\x16\x12\x13\n" +
+	"\x0fCREATE_RELATION\x10\x1e\x12\x13\n" +
+	"\x0fDELETE_RELATION\x10\x1f\x12\x11\n" +
+	"\rREAD_RELATION\x10 \x12\t\n" +
+	"\x05BEGIN\x10(\x12\a\n" +
+	"\x03END\x10)2\xf1\n" +
 	"\n" +
 	"\rObjectService\x12C\n" +
 	"\fCreateObject\x12\x1b.object.CreateObjectRequest\x1a\x16.object.ObjectResponse\x12=\n" +
@@ -1666,114 +1776,116 @@ func file_proto_object_object_proto_rawDescGZIP() []byte {
 	return file_proto_object_object_proto_rawDescData
 }
 
-var file_proto_object_object_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_proto_object_object_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_proto_object_object_proto_msgTypes = make([]protoimpl.MessageInfo, 35)
 var file_proto_object_object_proto_goTypes = []any{
 	(ObjectType)(0),                    // 0: object.ObjectType
-	(*Object)(nil),                     // 1: object.Object
-	(*ObjectResponse)(nil),             // 2: object.ObjectResponse
-	(*ObjectsResponse)(nil),            // 3: object.ObjectsResponse
-	(*CreateObjectRequest)(nil),        // 4: object.CreateObjectRequest
-	(*GetObjectRequest)(nil),           // 5: object.GetObjectRequest
-	(*UpdateObjectRequest)(nil),        // 6: object.UpdateObjectRequest
-	(*DeleteObjectsFieldsRequest)(nil), // 7: object.DeleteObjectsFieldsRequest
-	(*CreateObjectsRequest)(nil),       // 8: object.CreateObjectsRequest
-	(*CreateObjectsUniqueRequest)(nil), // 9: object.CreateObjectsUniqueRequest
-	(*GetObjectsRequest)(nil),          // 10: object.GetObjectsRequest
-	(*UpdateObjectsRequest)(nil),       // 11: object.UpdateObjectsRequest
-	(*UpdateObjectsUniqueRequest)(nil), // 12: object.UpdateObjectsUniqueRequest
-	(*ListObjectsRequest)(nil),         // 13: object.ListObjectsRequest
-	(*ListObjectsResponse)(nil),        // 14: object.ListObjectsResponse
-	(*ExecuteActionRequest)(nil),       // 15: object.ExecuteActionRequest
-	(*ExecuteActionsRequest)(nil),      // 16: object.ExecuteActionsRequest
-	(*ExecuteActionResponse)(nil),      // 17: object.ExecuteActionResponse
-	(*TransferObjectsRequest)(nil),     // 18: object.TransferObjectsRequest
-	(*TransferObjectsResponse)(nil),    // 19: object.TransferObjectsResponse
-	(*ReceiveObjectsResponse)(nil),     // 20: object.ReceiveObjectsResponse
-	(*SubscriptionResponse)(nil),       // 21: object.SubscriptionResponse
-	(*Empty)(nil),                      // 22: object.Empty
-	(*ObjectAction)(nil),               // 23: object.ObjectAction
-	(*ObjectActions)(nil),              // 24: object.ObjectActions
-	(*DiffByUser)(nil),                 // 25: object.DiffByUser
-	(*DiffByUsers)(nil),                // 26: object.DiffByUsers
-	(*Relation)(nil),                   // 27: object.Relation
-	nil,                                // 28: object.Object.FieldsEntry
-	nil,                                // 29: object.CreateObjectRequest.FieldsEntry
-	nil,                                // 30: object.UpdateObjectRequest.FieldsEntry
-	nil,                                // 31: object.DeleteObjectsFieldsRequest.FieldsEntry
-	nil,                                // 32: object.CreateObjectsRequest.FieldsEntry
-	nil,                                // 33: object.UpdateObjectsRequest.FieldsEntry
-	nil,                                // 34: object.ListObjectsRequest.FieldsEntry
-	nil,                                // 35: object.ExecuteActionRequest.FieldsEntry
+	(ActionType)(0),                    // 1: object.ActionType
+	(*Object)(nil),                     // 2: object.Object
+	(*ObjectResponse)(nil),             // 3: object.ObjectResponse
+	(*ObjectsResponse)(nil),            // 4: object.ObjectsResponse
+	(*CreateObjectRequest)(nil),        // 5: object.CreateObjectRequest
+	(*GetObjectRequest)(nil),           // 6: object.GetObjectRequest
+	(*UpdateObjectRequest)(nil),        // 7: object.UpdateObjectRequest
+	(*DeleteObjectsFieldsRequest)(nil), // 8: object.DeleteObjectsFieldsRequest
+	(*CreateObjectsRequest)(nil),       // 9: object.CreateObjectsRequest
+	(*CreateObjectsUniqueRequest)(nil), // 10: object.CreateObjectsUniqueRequest
+	(*GetObjectsRequest)(nil),          // 11: object.GetObjectsRequest
+	(*UpdateObjectsRequest)(nil),       // 12: object.UpdateObjectsRequest
+	(*UpdateObjectsUniqueRequest)(nil), // 13: object.UpdateObjectsUniqueRequest
+	(*ListObjectsRequest)(nil),         // 14: object.ListObjectsRequest
+	(*ListObjectsResponse)(nil),        // 15: object.ListObjectsResponse
+	(*ExecuteActionRequest)(nil),       // 16: object.ExecuteActionRequest
+	(*ExecuteActionsRequest)(nil),      // 17: object.ExecuteActionsRequest
+	(*ExecuteActionResponse)(nil),      // 18: object.ExecuteActionResponse
+	(*TransferObjectsRequest)(nil),     // 19: object.TransferObjectsRequest
+	(*TransferObjectsResponse)(nil),    // 20: object.TransferObjectsResponse
+	(*ReceiveObjectsResponse)(nil),     // 21: object.ReceiveObjectsResponse
+	(*SubscriptionResponse)(nil),       // 22: object.SubscriptionResponse
+	(*Empty)(nil),                      // 23: object.Empty
+	(*ObjectAction)(nil),               // 24: object.ObjectAction
+	(*ObjectActions)(nil),              // 25: object.ObjectActions
+	(*DiffByUser)(nil),                 // 26: object.DiffByUser
+	(*DiffByUsers)(nil),                // 27: object.DiffByUsers
+	(*Relation)(nil),                   // 28: object.Relation
+	nil,                                // 29: object.Object.FieldsEntry
+	nil,                                // 30: object.CreateObjectRequest.FieldsEntry
+	nil,                                // 31: object.UpdateObjectRequest.FieldsEntry
+	nil,                                // 32: object.DeleteObjectsFieldsRequest.FieldsEntry
+	nil,                                // 33: object.CreateObjectsRequest.FieldsEntry
+	nil,                                // 34: object.UpdateObjectsRequest.FieldsEntry
+	nil,                                // 35: object.ListObjectsRequest.FieldsEntry
+	nil,                                // 36: object.ExecuteActionRequest.FieldsEntry
 }
 var file_proto_object_object_proto_depIdxs = []int32{
 	0,  // 0: object.Object.object_type:type_name -> object.ObjectType
-	28, // 1: object.Object.fields:type_name -> object.Object.FieldsEntry
-	1,  // 2: object.ObjectResponse.object:type_name -> object.Object
-	1,  // 3: object.ObjectsResponse.objects:type_name -> object.Object
-	29, // 4: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
-	27, // 5: object.CreateObjectRequest.relation:type_name -> object.Relation
-	30, // 6: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
-	31, // 7: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
-	32, // 8: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
-	27, // 9: object.CreateObjectsRequest.relation:type_name -> object.Relation
-	1,  // 10: object.CreateObjectsUniqueRequest.objects:type_name -> object.Object
-	33, // 11: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
-	1,  // 12: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
-	34, // 13: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
-	27, // 14: object.ListObjectsRequest.relations:type_name -> object.Relation
-	1,  // 15: object.ListObjectsResponse.objects:type_name -> object.Object
-	35, // 16: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
-	15, // 17: object.ExecuteActionsRequest.actions:type_name -> object.ExecuteActionRequest
-	1,  // 18: object.ExecuteActionResponse.objects:type_name -> object.Object
-	1,  // 19: object.TransferObjectsRequest.object:type_name -> object.Object
-	1,  // 20: object.ReceiveObjectsResponse.objects:type_name -> object.Object
-	1,  // 21: object.SubscriptionResponse.objects:type_name -> object.Object
-	23, // 22: object.ObjectActions.actions:type_name -> object.ObjectAction
-	25, // 23: object.DiffByUsers.diffs:type_name -> object.DiffByUser
-	4,  // 24: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
-	5,  // 25: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
-	6,  // 26: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
-	7,  // 27: object.ObjectService.DeleteObjectField:input_type -> object.DeleteObjectsFieldsRequest
-	8,  // 28: object.ObjectService.CreateObjects:input_type -> object.CreateObjectsRequest
-	10, // 29: object.ObjectService.GetObjects:input_type -> object.GetObjectsRequest
-	11, // 30: object.ObjectService.UpdateObjects:input_type -> object.UpdateObjectsRequest
-	9,  // 31: object.ObjectService.CreateObjectsUnique:input_type -> object.CreateObjectsUniqueRequest
-	12, // 32: object.ObjectService.UpdateObjectsUnique:input_type -> object.UpdateObjectsUniqueRequest
-	13, // 33: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
-	15, // 34: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
-	16, // 35: object.ObjectService.ExecuteActions:input_type -> object.ExecuteActionsRequest
-	18, // 36: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
-	19, // 37: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
-	22, // 38: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
-	22, // 39: object.ObjectService.SubscribeToMyself:input_type -> object.Empty
-	26, // 40: object.ObjectService.SyncWithUsers:input_type -> object.DiffByUsers
-	24, // 41: object.ObjectService.Sync:input_type -> object.ObjectActions
-	5,  // 42: object.ObjectService.GetObjectCommands:input_type -> object.GetObjectRequest
-	2,  // 43: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
-	2,  // 44: object.ObjectService.GetObject:output_type -> object.ObjectResponse
-	2,  // 45: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
-	2,  // 46: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
-	3,  // 47: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
-	3,  // 48: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
-	3,  // 49: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
-	3,  // 50: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
-	3,  // 51: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
-	14, // 52: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
-	17, // 53: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
-	17, // 54: object.ObjectService.ExecuteActions:output_type -> object.ExecuteActionResponse
-	19, // 55: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
-	20, // 56: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
-	21, // 57: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
-	1,  // 58: object.ObjectService.SubscribeToMyself:output_type -> object.Object
-	24, // 59: object.ObjectService.SyncWithUsers:output_type -> object.ObjectActions
-	24, // 60: object.ObjectService.Sync:output_type -> object.ObjectActions
-	3,  // 61: object.ObjectService.GetObjectCommands:output_type -> object.ObjectsResponse
-	43, // [43:62] is the sub-list for method output_type
-	24, // [24:43] is the sub-list for method input_type
-	24, // [24:24] is the sub-list for extension type_name
-	24, // [24:24] is the sub-list for extension extendee
-	0,  // [0:24] is the sub-list for field type_name
+	29, // 1: object.Object.fields:type_name -> object.Object.FieldsEntry
+	2,  // 2: object.ObjectResponse.object:type_name -> object.Object
+	2,  // 3: object.ObjectsResponse.objects:type_name -> object.Object
+	30, // 4: object.CreateObjectRequest.fields:type_name -> object.CreateObjectRequest.FieldsEntry
+	28, // 5: object.CreateObjectRequest.relation:type_name -> object.Relation
+	31, // 6: object.UpdateObjectRequest.fields:type_name -> object.UpdateObjectRequest.FieldsEntry
+	32, // 7: object.DeleteObjectsFieldsRequest.fields:type_name -> object.DeleteObjectsFieldsRequest.FieldsEntry
+	33, // 8: object.CreateObjectsRequest.fields:type_name -> object.CreateObjectsRequest.FieldsEntry
+	28, // 9: object.CreateObjectsRequest.relation:type_name -> object.Relation
+	2,  // 10: object.CreateObjectsUniqueRequest.objects:type_name -> object.Object
+	34, // 11: object.UpdateObjectsRequest.fields:type_name -> object.UpdateObjectsRequest.FieldsEntry
+	2,  // 12: object.UpdateObjectsUniqueRequest.objects:type_name -> object.Object
+	35, // 13: object.ListObjectsRequest.fields:type_name -> object.ListObjectsRequest.FieldsEntry
+	28, // 14: object.ListObjectsRequest.relations:type_name -> object.Relation
+	2,  // 15: object.ListObjectsResponse.objects:type_name -> object.Object
+	36, // 16: object.ExecuteActionRequest.fields:type_name -> object.ExecuteActionRequest.FieldsEntry
+	16, // 17: object.ExecuteActionsRequest.actions:type_name -> object.ExecuteActionRequest
+	2,  // 18: object.ExecuteActionResponse.objects:type_name -> object.Object
+	2,  // 19: object.TransferObjectsRequest.object:type_name -> object.Object
+	2,  // 20: object.ReceiveObjectsResponse.objects:type_name -> object.Object
+	2,  // 21: object.SubscriptionResponse.objects:type_name -> object.Object
+	1,  // 22: object.ObjectAction.action:type_name -> object.ActionType
+	24, // 23: object.ObjectActions.actions:type_name -> object.ObjectAction
+	26, // 24: object.DiffByUsers.diffs:type_name -> object.DiffByUser
+	5,  // 25: object.ObjectService.CreateObject:input_type -> object.CreateObjectRequest
+	6,  // 26: object.ObjectService.GetObject:input_type -> object.GetObjectRequest
+	7,  // 27: object.ObjectService.UpdateObject:input_type -> object.UpdateObjectRequest
+	8,  // 28: object.ObjectService.DeleteObjectField:input_type -> object.DeleteObjectsFieldsRequest
+	9,  // 29: object.ObjectService.CreateObjects:input_type -> object.CreateObjectsRequest
+	11, // 30: object.ObjectService.GetObjects:input_type -> object.GetObjectsRequest
+	12, // 31: object.ObjectService.UpdateObjects:input_type -> object.UpdateObjectsRequest
+	10, // 32: object.ObjectService.CreateObjectsUnique:input_type -> object.CreateObjectsUniqueRequest
+	13, // 33: object.ObjectService.UpdateObjectsUnique:input_type -> object.UpdateObjectsUniqueRequest
+	14, // 34: object.ObjectService.ListObjects:input_type -> object.ListObjectsRequest
+	16, // 35: object.ObjectService.ExecuteAction:input_type -> object.ExecuteActionRequest
+	17, // 36: object.ObjectService.ExecuteActions:input_type -> object.ExecuteActionsRequest
+	19, // 37: object.ObjectService.TransferObjects:input_type -> object.TransferObjectsRequest
+	20, // 38: object.ObjectService.ReceiveObjects:input_type -> object.TransferObjectsResponse
+	23, // 39: object.ObjectService.SubscribeToUsersObjects:input_type -> object.Empty
+	23, // 40: object.ObjectService.SubscribeToMyself:input_type -> object.Empty
+	27, // 41: object.ObjectService.SyncWithUsers:input_type -> object.DiffByUsers
+	25, // 42: object.ObjectService.Sync:input_type -> object.ObjectActions
+	6,  // 43: object.ObjectService.GetObjectCommands:input_type -> object.GetObjectRequest
+	3,  // 44: object.ObjectService.CreateObject:output_type -> object.ObjectResponse
+	3,  // 45: object.ObjectService.GetObject:output_type -> object.ObjectResponse
+	3,  // 46: object.ObjectService.UpdateObject:output_type -> object.ObjectResponse
+	3,  // 47: object.ObjectService.DeleteObjectField:output_type -> object.ObjectResponse
+	4,  // 48: object.ObjectService.CreateObjects:output_type -> object.ObjectsResponse
+	4,  // 49: object.ObjectService.GetObjects:output_type -> object.ObjectsResponse
+	4,  // 50: object.ObjectService.UpdateObjects:output_type -> object.ObjectsResponse
+	4,  // 51: object.ObjectService.CreateObjectsUnique:output_type -> object.ObjectsResponse
+	4,  // 52: object.ObjectService.UpdateObjectsUnique:output_type -> object.ObjectsResponse
+	15, // 53: object.ObjectService.ListObjects:output_type -> object.ListObjectsResponse
+	18, // 54: object.ObjectService.ExecuteAction:output_type -> object.ExecuteActionResponse
+	18, // 55: object.ObjectService.ExecuteActions:output_type -> object.ExecuteActionResponse
+	20, // 56: object.ObjectService.TransferObjects:output_type -> object.TransferObjectsResponse
+	21, // 57: object.ObjectService.ReceiveObjects:output_type -> object.ReceiveObjectsResponse
+	22, // 58: object.ObjectService.SubscribeToUsersObjects:output_type -> object.SubscriptionResponse
+	2,  // 59: object.ObjectService.SubscribeToMyself:output_type -> object.Object
+	25, // 60: object.ObjectService.SyncWithUsers:output_type -> object.ObjectActions
+	25, // 61: object.ObjectService.Sync:output_type -> object.ObjectActions
+	4,  // 62: object.ObjectService.GetObjectCommands:output_type -> object.ObjectsResponse
+	44, // [44:63] is the sub-list for method output_type
+	25, // [25:44] is the sub-list for method input_type
+	25, // [25:25] is the sub-list for extension type_name
+	25, // [25:25] is the sub-list for extension extendee
+	0,  // [0:25] is the sub-list for field type_name
 }
 
 func init() { file_proto_object_object_proto_init() }
@@ -1786,7 +1898,7 @@ func file_proto_object_object_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_object_object_proto_rawDesc), len(file_proto_object_object_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      2,
 			NumMessages:   35,
 			NumExtensions: 0,
 			NumServices:   1,
