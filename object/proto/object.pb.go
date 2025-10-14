@@ -186,8 +186,7 @@ type Object struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	ObjectType    ObjectType             `protobuf:"varint,2,opt,name=object_type,json=objectType,proto3,enum=object.ObjectType" json:"object_type,omitempty"`
-	Version       uint64                 `protobuf:"varint,3,opt,name=version,proto3" json:"version,omitempty"`
-	Fields        map[string]string      `protobuf:"bytes,4,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Fields        map[string]string      `protobuf:"bytes,3,rep,name=fields,proto3" json:"fields,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -234,13 +233,6 @@ func (x *Object) GetObjectType() ObjectType {
 		return x.ObjectType
 	}
 	return ObjectType_UNKNOWN_OBJECT
-}
-
-func (x *Object) GetVersion() uint64 {
-	if x != nil {
-		return x.Version
-	}
-	return 0
 }
 
 func (x *Object) GetFields() map[string]string {
@@ -1596,13 +1588,12 @@ var File_proto_object_object_proto protoreflect.FileDescriptor
 
 const file_proto_object_object_proto_rawDesc = "" +
 	"\n" +
-	"\x19proto/object/object.proto\x12\x06object\"\xd6\x01\n" +
+	"\x19proto/object/object.proto\x12\x06object\"\xbc\x01\n" +
 	"\x06Object\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\x123\n" +
 	"\vobject_type\x18\x02 \x01(\x0e2\x12.object.ObjectTypeR\n" +
-	"objectType\x12\x18\n" +
-	"\aversion\x18\x03 \x01(\x04R\aversion\x122\n" +
-	"\x06fields\x18\x04 \x03(\v2\x1a.object.Object.FieldsEntryR\x06fields\x1a9\n" +
+	"objectType\x122\n" +
+	"\x06fields\x18\x03 \x03(\v2\x1a.object.Object.FieldsEntryR\x06fields\x1a9\n" +
 	"\vFieldsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"8\n" +

@@ -23,8 +23,7 @@ enum ObjectType {
 message Object {
   uint64 id = 1;
   ObjectType object_type = 2;
-  uint64 version = 3;
-  map<string, string> fields = 4;
+  map<string, string> fields = 3;
 }
 
 // Single and plural responses

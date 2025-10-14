@@ -22,6 +22,65 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// Message types for signaling
+type MessageType int32
+
+const (
+	MessageType_UNKNOWN       MessageType = 0
+	MessageType_OFFER         MessageType = 1
+	MessageType_ANSWER        MessageType = 2
+	MessageType_ICE_CANDIDATE MessageType = 3
+	MessageType_JOIN          MessageType = 4
+	MessageType_DEVICE_LIST   MessageType = 5
+)
+
+// Enum value maps for MessageType.
+var (
+	MessageType_name = map[int32]string{
+		0: "UNKNOWN",
+		1: "OFFER",
+		2: "ANSWER",
+		3: "ICE_CANDIDATE",
+		4: "JOIN",
+		5: "DEVICE_LIST",
+	}
+	MessageType_value = map[string]int32{
+		"UNKNOWN":       0,
+		"OFFER":         1,
+		"ANSWER":        2,
+		"ICE_CANDIDATE": 3,
+		"JOIN":          4,
+		"DEVICE_LIST":   5,
+	}
+)
+
+func (x MessageType) Enum() *MessageType {
+	p := new(MessageType)
+	*p = x
+	return p
+}
+
+func (x MessageType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (MessageType) Descriptor() protoreflect.EnumDescriptor {
+	return file_auth_auth_proto_enumTypes[0].Descriptor()
+}
+
+func (MessageType) Type() protoreflect.EnumType {
+	return &file_auth_auth_proto_enumTypes[0]
+}
+
+func (x MessageType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use MessageType.Descriptor instead.
+func (MessageType) EnumDescriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{0}
+}
+
 // ------------------- CORE MESSAGES -------------------
 type RegisterRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -123,6 +182,7 @@ type LoginRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Email         string                 `protobuf:"bytes,1,opt,name=email,proto3" json:"email,omitempty"`
 	Password      string                 `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`
+	DeviceName    string                 `protobuf:"bytes,3,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -171,6 +231,65 @@ func (x *LoginRequest) GetPassword() string {
 	return ""
 }
 
+func (x *LoginRequest) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+type LinkDeviceRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeviceName    string                 `protobuf:"bytes,1,opt,name=device_name,json=deviceName,proto3" json:"device_name,omitempty"`
+	Token         string                 `protobuf:"bytes,2,opt,name=token,proto3" json:"token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LinkDeviceRequest) Reset() {
+	*x = LinkDeviceRequest{}
+	mi := &file_auth_auth_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LinkDeviceRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LinkDeviceRequest) ProtoMessage() {}
+
+func (x *LinkDeviceRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LinkDeviceRequest.ProtoReflect.Descriptor instead.
+func (*LinkDeviceRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *LinkDeviceRequest) GetDeviceName() string {
+	if x != nil {
+		return x.DeviceName
+	}
+	return ""
+}
+
+func (x *LinkDeviceRequest) GetToken() string {
+	if x != nil {
+		return x.Token
+	}
+	return ""
+}
+
 type LoginResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Token         string                 `protobuf:"bytes,1,opt,name=token,proto3" json:"token,omitempty"`
@@ -180,7 +299,7 @@ type LoginResponse struct {
 
 func (x *LoginResponse) Reset() {
 	*x = LoginResponse{}
-	mi := &file_auth_auth_proto_msgTypes[3]
+	mi := &file_auth_auth_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -192,7 +311,7 @@ func (x *LoginResponse) String() string {
 func (*LoginResponse) ProtoMessage() {}
 
 func (x *LoginResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[3]
+	mi := &file_auth_auth_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -205,7 +324,7 @@ func (x *LoginResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LoginResponse.ProtoReflect.Descriptor instead.
 func (*LoginResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{3}
+	return file_auth_auth_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *LoginResponse) GetToken() string {
@@ -226,7 +345,7 @@ type AppInfoResponse struct {
 
 func (x *AppInfoResponse) Reset() {
 	*x = AppInfoResponse{}
-	mi := &file_auth_auth_proto_msgTypes[4]
+	mi := &file_auth_auth_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -238,7 +357,7 @@ func (x *AppInfoResponse) String() string {
 func (*AppInfoResponse) ProtoMessage() {}
 
 func (x *AppInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[4]
+	mi := &file_auth_auth_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -251,7 +370,7 @@ func (x *AppInfoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AppInfoResponse.ProtoReflect.Descriptor instead.
 func (*AppInfoResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{4}
+	return file_auth_auth_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *AppInfoResponse) GetVersion() string {
@@ -277,7 +396,7 @@ type UserInfoResponse struct {
 
 func (x *UserInfoResponse) Reset() {
 	*x = UserInfoResponse{}
-	mi := &file_auth_auth_proto_msgTypes[5]
+	mi := &file_auth_auth_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -289,7 +408,7 @@ func (x *UserInfoResponse) String() string {
 func (*UserInfoResponse) ProtoMessage() {}
 
 func (x *UserInfoResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_auth_auth_proto_msgTypes[5]
+	mi := &file_auth_auth_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -302,7 +421,7 @@ func (x *UserInfoResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use UserInfoResponse.ProtoReflect.Descriptor instead.
 func (*UserInfoResponse) Descriptor() ([]byte, []int) {
-	return file_auth_auth_proto_rawDescGZIP(), []int{5}
+	return file_auth_auth_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *UserInfoResponse) GetEmail() string {
@@ -310,6 +429,189 @@ func (x *UserInfoResponse) GetEmail() string {
 		return x.Email
 	}
 	return ""
+}
+
+// Generic signaling message
+type SignalMessage struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Type          MessageType            `protobuf:"varint,1,opt,name=type,proto3,enum=auth.MessageType" json:"type,omitempty"`
+	From          string                 `protobuf:"bytes,2,opt,name=from,proto3" json:"from,omitempty"`           // sender ID
+	To            string                 `protobuf:"bytes,3,opt,name=to,proto3" json:"to,omitempty"`               // receiver ID (optional, for direct messages)
+	Sdp           string                 `protobuf:"bytes,4,opt,name=sdp,proto3" json:"sdp,omitempty"`             // SDP offer/answer
+	Candidate     string                 `protobuf:"bytes,5,opt,name=candidate,proto3" json:"candidate,omitempty"` // ICE candidate
+	Room          string                 `protobuf:"bytes,6,opt,name=room,proto3" json:"room,omitempty"`           // Room ID (optional)
+	Devices       []string               `protobuf:"bytes,7,rep,name=devices,proto3" json:"devices,omitempty"`     // List of devices (for DEVICE_LIST response)
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignalMessage) Reset() {
+	*x = SignalMessage{}
+	mi := &file_auth_auth_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignalMessage) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignalMessage) ProtoMessage() {}
+
+func (x *SignalMessage) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignalMessage.ProtoReflect.Descriptor instead.
+func (*SignalMessage) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *SignalMessage) GetType() MessageType {
+	if x != nil {
+		return x.Type
+	}
+	return MessageType_UNKNOWN
+}
+
+func (x *SignalMessage) GetFrom() string {
+	if x != nil {
+		return x.From
+	}
+	return ""
+}
+
+func (x *SignalMessage) GetTo() string {
+	if x != nil {
+		return x.To
+	}
+	return ""
+}
+
+func (x *SignalMessage) GetSdp() string {
+	if x != nil {
+		return x.Sdp
+	}
+	return ""
+}
+
+func (x *SignalMessage) GetCandidate() string {
+	if x != nil {
+		return x.Candidate
+	}
+	return ""
+}
+
+func (x *SignalMessage) GetRoom() string {
+	if x != nil {
+		return x.Room
+	}
+	return ""
+}
+
+func (x *SignalMessage) GetDevices() []string {
+	if x != nil {
+		return x.Devices
+	}
+	return nil
+}
+
+// Request wrapper for RPC
+type SignalRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       *SignalMessage         `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignalRequest) Reset() {
+	*x = SignalRequest{}
+	mi := &file_auth_auth_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignalRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignalRequest) ProtoMessage() {}
+
+func (x *SignalRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignalRequest.ProtoReflect.Descriptor instead.
+func (*SignalRequest) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *SignalRequest) GetMessage() *SignalMessage {
+	if x != nil {
+		return x.Message
+	}
+	return nil
+}
+
+// Response wrapper for RPC
+type SignalResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       *SignalMessage         `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SignalResponse) Reset() {
+	*x = SignalResponse{}
+	mi := &file_auth_auth_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SignalResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SignalResponse) ProtoMessage() {}
+
+func (x *SignalResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_auth_auth_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SignalResponse.ProtoReflect.Descriptor instead.
+func (*SignalResponse) Descriptor() ([]byte, []int) {
+	return file_auth_auth_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *SignalResponse) GetMessage() *SignalMessage {
+	if x != nil {
+		return x.Message
+	}
+	return nil
 }
 
 var File_auth_auth_proto protoreflect.FileDescriptor
@@ -321,10 +623,16 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
 	"\bpassword\x18\x02 \x01(\tR\bpassword\"+\n" +
 	"\x10RegisterResponse\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x04R\x06userId\"@\n" +
+	"\auser_id\x18\x01 \x01(\x04R\x06userId\"a\n" +
 	"\fLoginRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\x12\x1a\n" +
-	"\bpassword\x18\x02 \x01(\tR\bpassword\"%\n" +
+	"\bpassword\x18\x02 \x01(\tR\bpassword\x12\x1f\n" +
+	"\vdevice_name\x18\x03 \x01(\tR\n" +
+	"deviceName\"J\n" +
+	"\x11LinkDeviceRequest\x12\x1f\n" +
+	"\vdevice_name\x18\x01 \x01(\tR\n" +
+	"deviceName\x12\x14\n" +
+	"\x05token\x18\x02 \x01(\tR\x05token\"%\n" +
 	"\rLoginResponse\x12\x14\n" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"M\n" +
 	"\x0fAppInfoResponse\x12\x18\n" +
@@ -332,13 +640,36 @@ const file_auth_auth_proto_rawDesc = "" +
 	"\fis_logged_in\x18\x02 \x01(\bR\n" +
 	"isLoggedIn\"(\n" +
 	"\x10UserInfoResponse\x12\x14\n" +
-	"\x05email\x18\x01 \x01(\tR\x05email2\xf6\x01\n" +
+	"\x05email\x18\x01 \x01(\tR\x05email\"\xb8\x01\n" +
+	"\rSignalMessage\x12%\n" +
+	"\x04type\x18\x01 \x01(\x0e2\x11.auth.MessageTypeR\x04type\x12\x12\n" +
+	"\x04from\x18\x02 \x01(\tR\x04from\x12\x0e\n" +
+	"\x02to\x18\x03 \x01(\tR\x02to\x12\x10\n" +
+	"\x03sdp\x18\x04 \x01(\tR\x03sdp\x12\x1c\n" +
+	"\tcandidate\x18\x05 \x01(\tR\tcandidate\x12\x12\n" +
+	"\x04room\x18\x06 \x01(\tR\x04room\x12\x18\n" +
+	"\adevices\x18\a \x03(\tR\adevices\">\n" +
+	"\rSignalRequest\x12-\n" +
+	"\amessage\x18\x01 \x01(\v2\x13.auth.SignalMessageR\amessage\"?\n" +
+	"\x0eSignalResponse\x12-\n" +
+	"\amessage\x18\x01 \x01(\v2\x13.auth.SignalMessageR\amessage*_\n" +
+	"\vMessageType\x12\v\n" +
+	"\aUNKNOWN\x10\x00\x12\t\n" +
+	"\x05OFFER\x10\x01\x12\n" +
+	"\n" +
+	"\x06ANSWER\x10\x02\x12\x11\n" +
+	"\rICE_CANDIDATE\x10\x03\x12\b\n" +
+	"\x04JOIN\x10\x04\x12\x0f\n" +
+	"\vDEVICE_LIST\x10\x052\xec\x02\n" +
 	"\vAuthService\x129\n" +
 	"\bRegister\x12\x15.auth.RegisterRequest\x1a\x16.auth.RegisterResponse\x120\n" +
-	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12;\n" +
+	"\x05Login\x12\x12.auth.LoginRequest\x1a\x13.auth.LoginResponse\x12:\n" +
+	"\n" +
+	"LinkDevice\x12\x17.auth.LinkDeviceRequest\x1a\x13.auth.LoginResponse\x12;\n" +
 	"\n" +
 	"GetAppInfo\x12\x16.google.protobuf.Empty\x1a\x15.auth.AppInfoResponse\x12=\n" +
-	"\vGetUserInfo\x12\x16.google.protobuf.Empty\x1a\x16.auth.UserInfoResponseB!\n" +
+	"\vGetUserInfo\x12\x16.google.protobuf.Empty\x1a\x16.auth.UserInfoResponse\x128\n" +
+	"\aConnect\x12\x13.auth.SignalRequest\x1a\x14.auth.SignalResponse(\x010\x01B!\n" +
 	"\x04authB\x04AuthP\x01Z\n" +
 	"auth/proto\xa2\x02\x04AUTHb\x06proto3"
 
@@ -354,30 +685,43 @@ func file_auth_auth_proto_rawDescGZIP() []byte {
 	return file_auth_auth_proto_rawDescData
 }
 
-var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_auth_auth_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_auth_auth_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_auth_auth_proto_goTypes = []any{
-	(*RegisterRequest)(nil),  // 0: auth.RegisterRequest
-	(*RegisterResponse)(nil), // 1: auth.RegisterResponse
-	(*LoginRequest)(nil),     // 2: auth.LoginRequest
-	(*LoginResponse)(nil),    // 3: auth.LoginResponse
-	(*AppInfoResponse)(nil),  // 4: auth.AppInfoResponse
-	(*UserInfoResponse)(nil), // 5: auth.UserInfoResponse
-	(*emptypb.Empty)(nil),    // 6: google.protobuf.Empty
+	(MessageType)(0),          // 0: auth.MessageType
+	(*RegisterRequest)(nil),   // 1: auth.RegisterRequest
+	(*RegisterResponse)(nil),  // 2: auth.RegisterResponse
+	(*LoginRequest)(nil),      // 3: auth.LoginRequest
+	(*LinkDeviceRequest)(nil), // 4: auth.LinkDeviceRequest
+	(*LoginResponse)(nil),     // 5: auth.LoginResponse
+	(*AppInfoResponse)(nil),   // 6: auth.AppInfoResponse
+	(*UserInfoResponse)(nil),  // 7: auth.UserInfoResponse
+	(*SignalMessage)(nil),     // 8: auth.SignalMessage
+	(*SignalRequest)(nil),     // 9: auth.SignalRequest
+	(*SignalResponse)(nil),    // 10: auth.SignalResponse
+	(*emptypb.Empty)(nil),     // 11: google.protobuf.Empty
 }
 var file_auth_auth_proto_depIdxs = []int32{
-	0, // 0: auth.AuthService.Register:input_type -> auth.RegisterRequest
-	2, // 1: auth.AuthService.Login:input_type -> auth.LoginRequest
-	6, // 2: auth.AuthService.GetAppInfo:input_type -> google.protobuf.Empty
-	6, // 3: auth.AuthService.GetUserInfo:input_type -> google.protobuf.Empty
-	1, // 4: auth.AuthService.Register:output_type -> auth.RegisterResponse
-	3, // 5: auth.AuthService.Login:output_type -> auth.LoginResponse
-	4, // 6: auth.AuthService.GetAppInfo:output_type -> auth.AppInfoResponse
-	5, // 7: auth.AuthService.GetUserInfo:output_type -> auth.UserInfoResponse
-	4, // [4:8] is the sub-list for method output_type
-	0, // [0:4] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0,  // 0: auth.SignalMessage.type:type_name -> auth.MessageType
+	8,  // 1: auth.SignalRequest.message:type_name -> auth.SignalMessage
+	8,  // 2: auth.SignalResponse.message:type_name -> auth.SignalMessage
+	1,  // 3: auth.AuthService.Register:input_type -> auth.RegisterRequest
+	3,  // 4: auth.AuthService.Login:input_type -> auth.LoginRequest
+	4,  // 5: auth.AuthService.LinkDevice:input_type -> auth.LinkDeviceRequest
+	11, // 6: auth.AuthService.GetAppInfo:input_type -> google.protobuf.Empty
+	11, // 7: auth.AuthService.GetUserInfo:input_type -> google.protobuf.Empty
+	9,  // 8: auth.AuthService.Connect:input_type -> auth.SignalRequest
+	2,  // 9: auth.AuthService.Register:output_type -> auth.RegisterResponse
+	5,  // 10: auth.AuthService.Login:output_type -> auth.LoginResponse
+	5,  // 11: auth.AuthService.LinkDevice:output_type -> auth.LoginResponse
+	6,  // 12: auth.AuthService.GetAppInfo:output_type -> auth.AppInfoResponse
+	7,  // 13: auth.AuthService.GetUserInfo:output_type -> auth.UserInfoResponse
+	10, // 14: auth.AuthService.Connect:output_type -> auth.SignalResponse
+	9,  // [9:15] is the sub-list for method output_type
+	3,  // [3:9] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_auth_auth_proto_init() }
@@ -390,13 +734,14 @@ func file_auth_auth_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_auth_auth_proto_rawDesc), len(file_auth_auth_proto_rawDesc)),
-			NumEnums:      0,
-			NumMessages:   6,
+			NumEnums:      1,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_auth_auth_proto_goTypes,
 		DependencyIndexes: file_auth_auth_proto_depIdxs,
+		EnumInfos:         file_auth_auth_proto_enumTypes,
 		MessageInfos:      file_auth_auth_proto_msgTypes,
 	}.Build()
 	File_auth_auth_proto = out.File

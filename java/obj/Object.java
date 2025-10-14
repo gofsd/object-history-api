@@ -41,7 +41,7 @@ private static final long serialVersionUID = 0L;
   protected com.google.protobuf.MapField internalGetMapField(
       int number) {
     switch (number) {
-      case 4:
+      case 3:
         return internalGetFields();
       default:
         throw new RuntimeException(
@@ -86,18 +86,7 @@ private static final long serialVersionUID = 0L;
     return result == null ? obj.ObjectType.UNRECOGNIZED : result;
   }
 
-  public static final int VERSION_FIELD_NUMBER = 3;
-  private long version_;
-  /**
-   * <code>uint64 version = 3;</code>
-   * @return The version.
-   */
-  @java.lang.Override
-  public long getVersion() {
-    return version_;
-  }
-
-  public static final int FIELDS_FIELD_NUMBER = 4;
+  public static final int FIELDS_FIELD_NUMBER = 3;
   private static final class FieldsDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
         java.lang.String, java.lang.String> defaultEntry =
@@ -124,7 +113,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap().size();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
 
   @java.lang.Override
@@ -142,7 +131,7 @@ private static final long serialVersionUID = 0L;
     return getFieldsMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   @java.lang.Override
 
@@ -150,7 +139,7 @@ private static final long serialVersionUID = 0L;
     return internalGetFields().getMap();
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   @java.lang.Override
 
@@ -163,7 +152,7 @@ private static final long serialVersionUID = 0L;
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   @java.lang.Override
 
@@ -198,15 +187,12 @@ private static final long serialVersionUID = 0L;
     if (objectType_ != obj.ObjectType.UNKNOWN_OBJECT.getNumber()) {
       output.writeEnum(2, objectType_);
     }
-    if (version_ != 0L) {
-      output.writeUInt64(3, version_);
-    }
     com.google.protobuf.GeneratedMessageV3
       .serializeStringMapTo(
         output,
         internalGetFields(),
         FieldsDefaultEntryHolder.defaultEntry,
-        4);
+        3);
     getUnknownFields().writeTo(output);
   }
 
@@ -224,10 +210,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, objectType_);
     }
-    if (version_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(3, version_);
-    }
     for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
          : internalGetFields().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
@@ -236,7 +218,7 @@ private static final long serialVersionUID = 0L;
           .setValue(entry.getValue())
           .build();
       size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, fields__);
+          .computeMessageSize(3, fields__);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -256,8 +238,6 @@ private static final long serialVersionUID = 0L;
     if (getId()
         != other.getId()) return false;
     if (objectType_ != other.objectType_) return false;
-    if (getVersion()
-        != other.getVersion()) return false;
     if (!internalGetFields().equals(
         other.internalGetFields())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -276,9 +256,6 @@ private static final long serialVersionUID = 0L;
         getId());
     hash = (37 * hash) + OBJECT_TYPE_FIELD_NUMBER;
     hash = (53 * hash) + objectType_;
-    hash = (37 * hash) + VERSION_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getVersion());
     if (!internalGetFields().getMap().isEmpty()) {
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + internalGetFields().hashCode();
@@ -394,7 +371,7 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
-        case 4:
+        case 3:
           return internalGetFields();
         default:
           throw new RuntimeException(
@@ -405,7 +382,7 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMutableMapField(
         int number) {
       switch (number) {
-        case 4:
+        case 3:
           return internalGetMutableFields();
         default:
           throw new RuntimeException(
@@ -437,8 +414,6 @@ private static final long serialVersionUID = 0L;
 
       objectType_ = 0;
 
-      version_ = 0L;
-
       internalGetMutableFields().clear();
       return this;
     }
@@ -469,7 +444,6 @@ private static final long serialVersionUID = 0L;
       int from_bitField0_ = bitField0_;
       result.id_ = id_;
       result.objectType_ = objectType_;
-      result.version_ = version_;
       result.fields_ = internalGetFields();
       result.fields_.makeImmutable();
       onBuilt();
@@ -526,9 +500,6 @@ private static final long serialVersionUID = 0L;
       if (other.objectType_ != 0) {
         setObjectTypeValue(other.getObjectTypeValue());
       }
-      if (other.getVersion() != 0L) {
-        setVersion(other.getVersion());
-      }
       internalGetMutableFields().mergeFrom(
           other.internalGetFields());
       this.mergeUnknownFields(other.getUnknownFields());
@@ -567,19 +538,14 @@ private static final long serialVersionUID = 0L;
 
               break;
             } // case 16
-            case 24: {
-              version_ = input.readUInt64();
-
-              break;
-            } // case 24
-            case 34: {
+            case 26: {
               com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
               fields__ = input.readMessage(
                   FieldsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               internalGetMutableFields().getMutableMap().put(
                   fields__.getKey(), fields__.getValue());
               break;
-            } // case 34
+            } // case 26
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -682,37 +648,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long version_ ;
-    /**
-     * <code>uint64 version = 3;</code>
-     * @return The version.
-     */
-    @java.lang.Override
-    public long getVersion() {
-      return version_;
-    }
-    /**
-     * <code>uint64 version = 3;</code>
-     * @param value The version to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVersion(long value) {
-      
-      version_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 version = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearVersion() {
-      
-      version_ = 0L;
-      onChanged();
-      return this;
-    }
-
     private com.google.protobuf.MapField<
         java.lang.String, java.lang.String> fields_;
     private com.google.protobuf.MapField<java.lang.String, java.lang.String>
@@ -740,7 +675,7 @@ private static final long serialVersionUID = 0L;
       return internalGetFields().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
 
     @java.lang.Override
@@ -758,7 +693,7 @@ private static final long serialVersionUID = 0L;
       return getFieldsMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     @java.lang.Override
 
@@ -766,7 +701,7 @@ private static final long serialVersionUID = 0L;
       return internalGetFields().getMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     @java.lang.Override
 
@@ -779,7 +714,7 @@ private static final long serialVersionUID = 0L;
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     @java.lang.Override
 
@@ -800,7 +735,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
 
     public Builder removeFields(
@@ -819,7 +754,7 @@ private static final long serialVersionUID = 0L;
       return internalGetMutableFields().getMutableMap();
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
     public Builder putFields(
         java.lang.String key,
@@ -834,7 +769,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; fields = 4;</code>
+     * <code>map&lt;string, string&gt; fields = 3;</code>
      */
 
     public Builder putAllFields(

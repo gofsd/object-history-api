@@ -23,6 +23,12 @@ message RegisterResponse {
 message LoginRequest {
   string email = 1;
   string password = 2;
+  string device_name = 3;
+}
+
+message LinkDeviceRequest {
+  string device_name = 1;
+  string token = 2;
 }
 
 message LoginResponse {
@@ -39,10 +45,43 @@ message UserInfoResponse {
   string email = 1;
 }
 
+// Message types for signaling
+enum MessageType {
+    UNKNOWN = 0;
+    OFFER = 1;
+    ANSWER = 2;
+    ICE_CANDIDATE = 3;
+    JOIN = 4;
+    DEVICE_LIST = 5;
+}
+
+// Generic signaling message
+message SignalMessage {
+    MessageType type = 1;
+    string from = 2;         // sender ID
+    string to = 3;           // receiver ID (optional, for direct messages)
+    string sdp = 4;          // SDP offer/answer
+    string candidate = 5;    // ICE candidate
+    string room = 6;         // Room ID (optional)
+    repeated string devices = 7; // List of devices (for DEVICE_LIST response)
+}
+
+// Request wrapper for RPC
+message SignalRequest {
+    SignalMessage message = 1;
+}
+
+// Response wrapper for RPC
+message SignalResponse {
+    SignalMessage message = 1;
+}
+
 // ------------------- SERVICE -------------------
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
+  rpc LinkDevice(LinkDeviceRequest) returns (LoginResponse);
   rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
   rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
+  rpc Connect(stream SignalRequest) returns (stream SignalResponse);
 }

@@ -30,6 +30,11 @@ public final class Auth {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_auth_LoginRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_LinkDeviceRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_auth_LinkDeviceRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_auth_LoginResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -44,6 +49,21 @@ public final class Auth {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_auth_UserInfoResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_SignalMessage_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_auth_SignalMessage_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_SignalRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_auth_SignalRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_SignalResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_auth_SignalResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -56,19 +76,32 @@ public final class Auth {
       "\n\017auth/auth.proto\022\004auth\032\033google/protobuf" +
       "/empty.proto\"2\n\017RegisterRequest\022\r\n\005email" +
       "\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"#\n\020RegisterResp" +
-      "onse\022\017\n\007user_id\030\001 \001(\004\"/\n\014LoginRequest\022\r\n" +
-      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"\036\n\rLoginR" +
-      "esponse\022\r\n\005token\030\001 \001(\t\"8\n\017AppInfoRespons" +
-      "e\022\017\n\007version\030\001 \001(\t\022\024\n\014is_logged_in\030\002 \001(\010" +
-      "\"!\n\020UserInfoResponse\022\r\n\005email\030\001 \001(\t2\366\001\n\013" +
-      "AuthService\0229\n\010Register\022\025.auth.RegisterR" +
-      "equest\032\026.auth.RegisterResponse\0220\n\005Login\022" +
-      "\022.auth.LoginRequest\032\023.auth.LoginResponse" +
-      "\022;\n\nGetAppInfo\022\026.google.protobuf.Empty\032\025" +
-      ".auth.AppInfoResponse\022=\n\013GetUserInfo\022\026.g" +
-      "oogle.protobuf.Empty\032\026.auth.UserInfoResp" +
-      "onseB!\n\004authB\004AuthP\001Z\nauth/proto\242\002\004AUTHb" +
-      "\006proto3"
+      "onse\022\017\n\007user_id\030\001 \001(\004\"D\n\014LoginRequest\022\r\n" +
+      "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\023\n\013device" +
+      "_name\030\003 \001(\t\"7\n\021LinkDeviceRequest\022\023\n\013devi" +
+      "ce_name\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\"\036\n\rLoginRes" +
+      "ponse\022\r\n\005token\030\001 \001(\t\"8\n\017AppInfoResponse\022" +
+      "\017\n\007version\030\001 \001(\t\022\024\n\014is_logged_in\030\002 \001(\010\"!" +
+      "\n\020UserInfoResponse\022\r\n\005email\030\001 \001(\t\"\211\001\n\rSi" +
+      "gnalMessage\022\037\n\004type\030\001 \001(\0162\021.auth.Message" +
+      "Type\022\014\n\004from\030\002 \001(\t\022\n\n\002to\030\003 \001(\t\022\013\n\003sdp\030\004 " +
+      "\001(\t\022\021\n\tcandidate\030\005 \001(\t\022\014\n\004room\030\006 \001(\t\022\017\n\007" +
+      "devices\030\007 \003(\t\"5\n\rSignalRequest\022$\n\007messag" +
+      "e\030\001 \001(\0132\023.auth.SignalMessage\"6\n\016SignalRe" +
+      "sponse\022$\n\007message\030\001 \001(\0132\023.auth.SignalMes" +
+      "sage*_\n\013MessageType\022\013\n\007UNKNOWN\020\000\022\t\n\005OFFE" +
+      "R\020\001\022\n\n\006ANSWER\020\002\022\021\n\rICE_CANDIDATE\020\003\022\010\n\004JO" +
+      "IN\020\004\022\017\n\013DEVICE_LIST\020\0052\354\002\n\013AuthService\0229\n" +
+      "\010Register\022\025.auth.RegisterRequest\032\026.auth." +
+      "RegisterResponse\0220\n\005Login\022\022.auth.LoginRe" +
+      "quest\032\023.auth.LoginResponse\022:\n\nLinkDevice" +
+      "\022\027.auth.LinkDeviceRequest\032\023.auth.LoginRe" +
+      "sponse\022;\n\nGetAppInfo\022\026.google.protobuf.E" +
+      "mpty\032\025.auth.AppInfoResponse\022=\n\013GetUserIn" +
+      "fo\022\026.google.protobuf.Empty\032\026.auth.UserIn" +
+      "foResponse\0228\n\007Connect\022\023.auth.SignalReque" +
+      "st\032\024.auth.SignalResponse(\0010\001B!\n\004authB\004Au" +
+      "thP\001Z\nauth/proto\242\002\004AUTHb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -92,25 +125,49 @@ public final class Auth {
     internal_static_auth_LoginRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_auth_LoginRequest_descriptor,
-        new java.lang.String[] { "Email", "Password", });
-    internal_static_auth_LoginResponse_descriptor =
+        new java.lang.String[] { "Email", "Password", "DeviceName", });
+    internal_static_auth_LinkDeviceRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_auth_LinkDeviceRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_auth_LinkDeviceRequest_descriptor,
+        new java.lang.String[] { "DeviceName", "Token", });
+    internal_static_auth_LoginResponse_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_auth_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_auth_LoginResponse_descriptor,
         new java.lang.String[] { "Token", });
     internal_static_auth_AppInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_auth_AppInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_auth_AppInfoResponse_descriptor,
         new java.lang.String[] { "Version", "IsLoggedIn", });
     internal_static_auth_UserInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_auth_UserInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_auth_UserInfoResponse_descriptor,
         new java.lang.String[] { "Email", });
+    internal_static_auth_SignalMessage_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_auth_SignalMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_auth_SignalMessage_descriptor,
+        new java.lang.String[] { "Type", "From", "To", "Sdp", "Candidate", "Room", "Devices", });
+    internal_static_auth_SignalRequest_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_auth_SignalRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_auth_SignalRequest_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_auth_SignalResponse_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_auth_SignalResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_auth_SignalResponse_descriptor,
+        new java.lang.String[] { "Message", });
     com.google.protobuf.EmptyProto.getDescriptor();
   }
 

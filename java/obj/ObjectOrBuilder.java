@@ -25,17 +25,11 @@ public interface ObjectOrBuilder extends
   obj.ObjectType getObjectType();
 
   /**
-   * <code>uint64 version = 3;</code>
-   * @return The version.
-   */
-  long getVersion();
-
-  /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   int getFieldsCount();
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   boolean containsFields(
       java.lang.String key);
@@ -46,19 +40,19 @@ public interface ObjectOrBuilder extends
   java.util.Map<java.lang.String, java.lang.String>
   getFields();
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
   java.util.Map<java.lang.String, java.lang.String>
   getFieldsMap();
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
 
   java.lang.String getFieldsOrDefault(
       java.lang.String key,
       java.lang.String defaultValue);
   /**
-   * <code>map&lt;string, string&gt; fields = 4;</code>
+   * <code>map&lt;string, string&gt; fields = 3;</code>
    */
 
   java.lang.String getFieldsOrThrow(

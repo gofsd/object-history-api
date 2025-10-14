@@ -30,4 +30,16 @@ public interface LoginRequestOrBuilder extends
    */
   com.google.protobuf.ByteString
       getPasswordBytes();
+
+  /**
+   * <code>string device_name = 3;</code>
+   * @return The deviceName.
+   */
+  java.lang.String getDeviceName();
+  /**
+   * <code>string device_name = 3;</code>
+   * @return The bytes for deviceName.
+   */
+  com.google.protobuf.ByteString
+      getDeviceNameBytes();
 }
