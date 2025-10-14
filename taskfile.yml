@@ -91,12 +91,57 @@ tasks:
       - task: java:auth
       - task: java:object
       - task: java:cmd
+
+  js:auth:
+    desc: Generate JavaScript gRPC code for auth
+    cmds:
+      - |
+        protoc \
+          --proto_path={{.PROTO_DIR}} \
+          --proto_path=third_party \
+          --js_out=import_style=commonjs:js \
+          --grpc_out=js \
+          --plugin=protoc-gen-grpc=$(which grpc_tools_node_protoc_plugin) \
+          {{.PROTO_DIR}}/auth/auth.proto
+
+  js:object:
+    desc: Generate JavaScript gRPC code for object
+    cmds:
+      - |
+        protoc \
+          --proto_path={{.PROTO_DIR}} \
+          --proto_path=third_party \
+          --js_out=import_style=commonjs:js \
+          --grpc_out=js \
+          --plugin=protoc-gen-grpc=$(which grpc_tools_node_protoc_plugin) \
+          {{.PROTO_DIR}}/object/object.proto
+
+  js:cmd:
+    desc: Generate JavaScript gRPC code for cmd
+    cmds:
+      - |
+        protoc \
+          --proto_path={{.PROTO_DIR}} \
+          --proto_path=third_party \
+          --js_out=import_style=commonjs:js \
+          --grpc_out=js \
+          --plugin=protoc-gen-grpc=$(which grpc_tools_node_protoc_plugin) \
+          {{.PROTO_DIR}}/cmd/cmd.proto
+
+  js:all:
+    desc: Generate JS code for all services
+    cmds:
+      - task: js:auth
+      - task: js:object
+      - task: js:cmd
+
   
   all:
     desc: Generate all languages and services
     cmds:
       - task: go:all
       - task: java:all
+      - task: js:all
 
   patch:
     desc: "Patch Go module version and push to GitHub"
