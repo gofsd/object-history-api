@@ -396,18 +396,7 @@ addObjectsToGroup: {
     responseDeserialize: deserialize_cmd_UserGroupResponse,
   },
   // Execution
-listExecutions: {
-    path: '/cmd.CommandService/ListExecutions',
-    requestStream: false,
-    responseStream: true,
-    requestType: cmd_cmd_pb.Empty,
-    responseType: cmd_cmd_pb.CommandLog,
-    requestSerialize: serialize_cmd_Empty,
-    requestDeserialize: deserialize_cmd_Empty,
-    responseSerialize: serialize_cmd_CommandLog,
-    responseDeserialize: deserialize_cmd_CommandLog,
-  },
-  execute: {
+execute: {
     path: '/cmd.CommandService/Execute',
     requestStream: false,
     responseStream: false,

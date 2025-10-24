@@ -245,7 +245,7 @@ public final class Cmd {
       "TION_STATUS_NOT_PERMITTED\020\007\022(\n$EXECUTION" +
       "_STATUS_EXECUTORS_NOT_FOUND\020\010*M\n\010UserRol" +
       "e\022\024\n\020USER_ROLE_VIEWER\020\000\022\026\n\022USER_ROLE_EXE" +
-      "CUTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\201\n\n\016Command" +
+      "CUTOR\020\001\022\023\n\017USER_ROLE_ADMIN\020\0022\320\t\n\016Command" +
       "Service\022-\n\nListGroups\022\n.cmd.Empty\032\023.cmd." +
       "GroupsResponse\022\"\n\010AddGroup\022\n.cmd.Group\032\n" +
       ".cmd.Group\022,\n\013DeleteGroup\022\021.cmd.GroupReq" +
@@ -262,23 +262,22 @@ public final class Cmd {
       "eCommandFromGroup\022\025.cmd.UserGroupRequest" +
       "\032\026.cmd.UserGroupResponse\022C\n\021AddObjectsTo" +
       "Group\022\026.cmd.AddObjectsRequest\032\026.cmd.User" +
-      "GroupResponse\022/\n\016ListExecutions\022\n.cmd.Em" +
-      "pty\032\017.cmd.CommandLog0\001\0224\n\007Execute\022\023.cmd." +
-      "ExecuteRequest\032\024.cmd.ExecuteResponse\0221\n\006" +
-      "Cancel\022\022.cmd.CancelRequest\032\023.cmd.CancelR" +
-      "esponse\0220\n\005Retry\022\021.cmd.RetryRequest\032\024.cm" +
-      "d.ExecuteResponse\0220\n\006DryRun\022\023.cmd.Execut" +
-      "eRequest\032\021.cmd.DryRunResult\022^\n\025UpdateExe" +
-      "cutionStatus\022!.cmd.UpdateExecutionStatus" +
-      "Request\032\".cmd.UpdateExecutionStatusRespo" +
-      "nse\022;\n\rSubscribeLogs\022\025.cmd.SubscribeRequ" +
-      "est\032\017.cmd.CommandLog(\0010\001\022@\n\026SubscribeCom" +
-      "mandEvents\022\017.cmd.CommandLog\032\021.cmd.Comman" +
-      "dEvent(\0010\001\022.\n\020AddMutualContact\022\014.cmd.Con" +
-      "tact\032\014.cmd.Contact\0221\n\023RemoveMutualContac" +
-      "t\022\014.cmd.Contact\032\014.cmd.Contact\022)\n\rShowMyC" +
-      "ontact\022\n.cmd.Empty\032\014.cmd.ContactB\035\n\003cmdB" +
-      "\003CmdP\001Z\tcmd/proto\242\002\003CMDb\006proto3"
+      "GroupResponse\0224\n\007Execute\022\023.cmd.ExecuteRe" +
+      "quest\032\024.cmd.ExecuteResponse\0221\n\006Cancel\022\022." +
+      "cmd.CancelRequest\032\023.cmd.CancelResponse\0220" +
+      "\n\005Retry\022\021.cmd.RetryRequest\032\024.cmd.Execute" +
+      "Response\0220\n\006DryRun\022\023.cmd.ExecuteRequest\032" +
+      "\021.cmd.DryRunResult\022^\n\025UpdateExecutionSta" +
+      "tus\022!.cmd.UpdateExecutionStatusRequest\032\"" +
+      ".cmd.UpdateExecutionStatusResponse\022;\n\rSu" +
+      "bscribeLogs\022\025.cmd.SubscribeRequest\032\017.cmd" +
+      ".CommandLog(\0010\001\022@\n\026SubscribeCommandEvent" +
+      "s\022\017.cmd.CommandLog\032\021.cmd.CommandEvent(\0010" +
+      "\001\022.\n\020AddMutualContact\022\014.cmd.Contact\032\014.cm" +
+      "d.Contact\0221\n\023RemoveMutualContact\022\014.cmd.C" +
+      "ontact\032\014.cmd.Contact\022)\n\rShowMyContact\022\n." +
+      "cmd.Empty\032\014.cmd.ContactB\035\n\003cmdB\003CmdP\001Z\tc" +
+      "md/proto\242\002\003CMDb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

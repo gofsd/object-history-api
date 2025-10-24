@@ -30,7 +30,6 @@ const (
 	CommandService_AddCommandToGroup_FullMethodName      = "/cmd.CommandService/AddCommandToGroup"
 	CommandService_DeleteCommandFromGroup_FullMethodName = "/cmd.CommandService/DeleteCommandFromGroup"
 	CommandService_AddObjectsToGroup_FullMethodName      = "/cmd.CommandService/AddObjectsToGroup"
-	CommandService_ListExecutions_FullMethodName         = "/cmd.CommandService/ListExecutions"
 	CommandService_Execute_FullMethodName                = "/cmd.CommandService/Execute"
 	CommandService_Cancel_FullMethodName                 = "/cmd.CommandService/Cancel"
 	CommandService_Retry_FullMethodName                  = "/cmd.CommandService/Retry"
@@ -62,7 +61,6 @@ type CommandServiceClient interface {
 	// Object management
 	AddObjectsToGroup(ctx context.Context, in *AddObjectsRequest, opts ...grpc.CallOption) (*UserGroupResponse, error)
 	// Execution
-	ListExecutions(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CommandService_ListExecutionsClient, error)
 	Execute(ctx context.Context, in *ExecuteRequest, opts ...grpc.CallOption) (*ExecuteResponse, error)
 	Cancel(ctx context.Context, in *CancelRequest, opts ...grpc.CallOption) (*CancelResponse, error)
 	Retry(ctx context.Context, in *RetryRequest, opts ...grpc.CallOption) (*ExecuteResponse, error)
@@ -186,38 +184,6 @@ func (c *commandServiceClient) AddObjectsToGroup(ctx context.Context, in *AddObj
 	return out, nil
 }
 
-func (c *commandServiceClient) ListExecutions(ctx context.Context, in *Empty, opts ...grpc.CallOption) (CommandService_ListExecutionsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[0], CommandService_ListExecutions_FullMethodName, opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &commandServiceListExecutionsClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	return x, nil
-}
-
-type CommandService_ListExecutionsClient interface {
-	Recv() (*CommandLog, error)
-	grpc.ClientStream
-}
-
-type commandServiceListExecutionsClient struct {
-	grpc.ClientStream
-}
-
-func (x *commandServiceListExecutionsClient) Recv() (*CommandLog, error) {
-	m := new(CommandLog)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
 func (c *commandServiceClient) Execute(ctx context.Context, in *ExecuteRequest, opts ...grpc.CallOption) (*ExecuteResponse, error) {
 	out := new(ExecuteResponse)
 	err := c.cc.Invoke(ctx, CommandService_Execute_FullMethodName, in, out, opts...)
@@ -264,7 +230,7 @@ func (c *commandServiceClient) UpdateExecutionStatus(ctx context.Context, in *Up
 }
 
 func (c *commandServiceClient) SubscribeLogs(ctx context.Context, opts ...grpc.CallOption) (CommandService_SubscribeLogsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[1], CommandService_SubscribeLogs_FullMethodName, opts...)
+	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[0], CommandService_SubscribeLogs_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -295,7 +261,7 @@ func (x *commandServiceSubscribeLogsClient) Recv() (*CommandLog, error) {
 }
 
 func (c *commandServiceClient) SubscribeCommandEvents(ctx context.Context, opts ...grpc.CallOption) (CommandService_SubscribeCommandEventsClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[2], CommandService_SubscribeCommandEvents_FullMethodName, opts...)
+	stream, err := c.cc.NewStream(ctx, &CommandService_ServiceDesc.Streams[1], CommandService_SubscribeCommandEvents_FullMethodName, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -371,7 +337,6 @@ type CommandServiceServer interface {
 	// Object management
 	AddObjectsToGroup(context.Context, *AddObjectsRequest) (*UserGroupResponse, error)
 	// Execution
-	ListExecutions(*Empty, CommandService_ListExecutionsServer) error
 	Execute(context.Context, *ExecuteRequest) (*ExecuteResponse, error)
 	Cancel(context.Context, *CancelRequest) (*CancelResponse, error)
 	Retry(context.Context, *RetryRequest) (*ExecuteResponse, error)
@@ -425,9 +390,6 @@ func (UnimplementedCommandServiceServer) DeleteCommandFromGroup(context.Context,
 }
 func (UnimplementedCommandServiceServer) AddObjectsToGroup(context.Context, *AddObjectsRequest) (*UserGroupResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddObjectsToGroup not implemented")
-}
-func (UnimplementedCommandServiceServer) ListExecutions(*Empty, CommandService_ListExecutionsServer) error {
-	return status.Errorf(codes.Unimplemented, "method ListExecutions not implemented")
 }
 func (UnimplementedCommandServiceServer) Execute(context.Context, *ExecuteRequest) (*ExecuteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Execute not implemented")
@@ -668,27 +630,6 @@ func _CommandService_AddObjectsToGroup_Handler(srv interface{}, ctx context.Cont
 		return srv.(CommandServiceServer).AddObjectsToGroup(ctx, req.(*AddObjectsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
-}
-
-func _CommandService_ListExecutions_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(Empty)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CommandServiceServer).ListExecutions(m, &commandServiceListExecutionsServer{stream})
-}
-
-type CommandService_ListExecutionsServer interface {
-	Send(*CommandLog) error
-	grpc.ServerStream
-}
-
-type commandServiceListExecutionsServer struct {
-	grpc.ServerStream
-}
-
-func (x *commandServiceListExecutionsServer) Send(m *CommandLog) error {
-	return x.ServerStream.SendMsg(m)
 }
 
 func _CommandService_Execute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -972,11 +913,6 @@ var CommandService_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams: []grpc.StreamDesc{
-		{
-			StreamName:    "ListExecutions",
-			Handler:       _CommandService_ListExecutions_Handler,
-			ServerStreams: true,
-		},
 		{
 			StreamName:    "SubscribeLogs",
 			Handler:       _CommandService_SubscribeLogs_Handler,

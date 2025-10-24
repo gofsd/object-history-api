@@ -224,7 +224,6 @@ service CommandService {
   rpc AddObjectsToGroup(AddObjectsRequest) returns (UserGroupResponse);
 
   // Execution
-  rpc ListExecutions(Empty) returns (stream CommandLog);
   rpc Execute(ExecuteRequest) returns (ExecuteResponse);
   rpc Cancel(CancelRequest) returns (CancelResponse);
   rpc Retry(RetryRequest) returns (ExecuteResponse);
