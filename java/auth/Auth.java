@@ -111,21 +111,23 @@ public final class Auth {
       "lue\030\004 \001(\t\"5\n\rSignalRequest\022$\n\007message\030\001 " +
       "\001(\0132\023.auth.SignalMessage\"6\n\016SignalRespon" +
       "se\022$\n\007message\030\001 \001(\0132\023.auth.SignalMessage" +
-      "\"!\n\023DeleteDeviceRequest\022\n\n\002id\030\001 \001(\004*N\n\013M" +
-      "essageType\022\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n\n\006AN" +
-      "SWER\020\002\022\021\n\rICE_CANDIDATE\020\003\022\010\n\004JOIN\020\0042\257\003\n\013" +
-      "AuthService\0229\n\010Register\022\025.auth.RegisterR" +
-      "equest\032\026.auth.RegisterResponse\0220\n\005Login\022" +
-      "\022.auth.LoginRequest\032\023.auth.LoginResponse" +
-      "\022:\n\nLinkDevice\022\027.auth.LinkDeviceRequest\032" +
-      "\023.auth.LoginResponse\022;\n\nGetAppInfo\022\026.goo" +
-      "gle.protobuf.Empty\032\025.auth.AppInfoRespons" +
-      "e\022=\n\013GetUserInfo\022\026.google.protobuf.Empty" +
-      "\032\026.auth.UserInfoResponse\0228\n\007Connect\022\023.au" +
-      "th.SignalRequest\032\024.auth.SignalResponse(\001" +
-      "0\001\022A\n\014DeleteDevice\022\031.auth.DeleteDeviceRe" +
-      "quest\032\026.google.protobuf.EmptyB!\n\004authB\004A" +
-      "uthP\001Z\nauth/proto\242\002\004AUTHb\006proto3"
+      "\"!\n\023DeleteDeviceRequest\022\n\n\002id\030\001 \001(\004*\223\001\n\013" +
+      "MessageType\022\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n\n\006A" +
+      "NSWER\020\002\022\021\n\rICE_CANDIDATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004" +
+      "LINK\020\005\022\016\n\nNEW_DEVICE\020\006\022\026\n\022CONFIRM_NEW_DE" +
+      "VICE\020\007\022\021\n\rDELETE_DEVICE\020\0102\257\003\n\013AuthServic" +
+      "e\0229\n\010Register\022\025.auth.RegisterRequest\032\026.a" +
+      "uth.RegisterResponse\0220\n\005Login\022\022.auth.Log" +
+      "inRequest\032\023.auth.LoginResponse\022:\n\nLinkDe" +
+      "vice\022\027.auth.LinkDeviceRequest\032\023.auth.Log" +
+      "inResponse\022;\n\nGetAppInfo\022\026.google.protob" +
+      "uf.Empty\032\025.auth.AppInfoResponse\022=\n\013GetUs" +
+      "erInfo\022\026.google.protobuf.Empty\032\026.auth.Us" +
+      "erInfoResponse\0228\n\007Connect\022\023.auth.SignalR" +
+      "equest\032\024.auth.SignalResponse(\0010\001\022A\n\014Dele" +
+      "teDevice\022\031.auth.DeleteDeviceRequest\032\026.go" +
+      "ogle.protobuf.EmptyB!\n\004authB\004AuthP\001Z\naut" +
+      "h/proto\242\002\004AUTHb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

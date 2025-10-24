@@ -2258,7 +2258,11 @@ proto.auth.MessageType = {
   OFFER: 1,
   ANSWER: 2,
   ICE_CANDIDATE: 3,
-  JOIN: 4
+  JOIN: 4,
+  LINK: 5,
+  NEW_DEVICE: 6,
+  CONFIRM_NEW_DEVICE: 7,
+  DELETE_DEVICE: 8
 };
 
 goog.object.extend(exports, proto.auth);

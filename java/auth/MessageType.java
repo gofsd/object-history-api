@@ -34,6 +34,22 @@ public enum MessageType
    * <code>JOIN = 4;</code>
    */
   JOIN(4),
+  /**
+   * <code>LINK = 5;</code>
+   */
+  LINK(5),
+  /**
+   * <code>NEW_DEVICE = 6;</code>
+   */
+  NEW_DEVICE(6),
+  /**
+   * <code>CONFIRM_NEW_DEVICE = 7;</code>
+   */
+  CONFIRM_NEW_DEVICE(7),
+  /**
+   * <code>DELETE_DEVICE = 8;</code>
+   */
+  DELETE_DEVICE(8),
   UNRECOGNIZED(-1),
   ;
 
@@ -66,6 +82,22 @@ public enum MessageType
    * <code>JOIN = 4;</code>
    */
   public static final int JOIN_VALUE = 4;
+  /**
+   * <code>LINK = 5;</code>
+   */
+  public static final int LINK_VALUE = 5;
+  /**
+   * <code>NEW_DEVICE = 6;</code>
+   */
+  public static final int NEW_DEVICE_VALUE = 6;
+  /**
+   * <code>CONFIRM_NEW_DEVICE = 7;</code>
+   */
+  public static final int CONFIRM_NEW_DEVICE_VALUE = 7;
+  /**
+   * <code>DELETE_DEVICE = 8;</code>
+   */
+  public static final int DELETE_DEVICE_VALUE = 8;
 
 
   public final int getNumber() {
@@ -97,6 +129,10 @@ public enum MessageType
       case 2: return ANSWER;
       case 3: return ICE_CANDIDATE;
       case 4: return JOIN;
+      case 5: return LINK;
+      case 6: return NEW_DEVICE;
+      case 7: return CONFIRM_NEW_DEVICE;
+      case 8: return DELETE_DEVICE;
       default: return null;
     }
   }

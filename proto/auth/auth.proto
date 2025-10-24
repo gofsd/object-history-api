@@ -59,6 +59,10 @@ enum MessageType {
     ANSWER = 2;
     ICE_CANDIDATE = 3;
     JOIN = 4;
+    LINK = 5;
+    NEW_DEVICE = 6;
+    CONFIRM_NEW_DEVICE = 7;
+    DELETE_DEVICE = 8;
 }
 
 // Generic signaling message
