@@ -41,11 +41,6 @@ public final class Auth {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_auth_LoginRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_auth_LinkDeviceRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_auth_LinkDeviceRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_auth_LoginResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -80,11 +75,6 @@ public final class Auth {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_auth_SignalResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_auth_DeleteDeviceRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_auth_DeleteDeviceRequest_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -99,35 +89,30 @@ public final class Auth {
       "\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"#\n\020RegisterResp" +
       "onse\022\017\n\007user_id\030\001 \001(\004\"D\n\014LoginRequest\022\r\n" +
       "\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\023\n\013device" +
-      "_name\030\003 \001(\t\"7\n\021LinkDeviceRequest\022\023\n\013devi" +
-      "ce_name\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\"\036\n\rLoginRes" +
-      "ponse\022\r\n\005token\030\001 \001(\t\"8\n\017AppInfoResponse\022" +
-      "\017\n\007version\030\001 \001(\t\022\024\n\014is_logged_in\030\002 \001(\010\"\"" +
-      "\n\006Device\022\n\n\002id\030\001 \001(\004\022\014\n\004name\030\002 \001(\t\"L\n\020Us" +
-      "erInfoResponse\022\n\n\002id\030\001 \001(\004\022\r\n\005email\030\002 \001(" +
-      "\t\022\035\n\007devices\030\003 \003(\0132\014.auth.Device\"_\n\rSign" +
-      "alMessage\022\037\n\004type\030\001 \001(\0162\021.auth.MessageTy" +
-      "pe\022\016\n\006source\030\002 \001(\004\022\016\n\006target\030\003 \001(\004\022\r\n\005va" +
-      "lue\030\004 \001(\t\"5\n\rSignalRequest\022$\n\007message\030\001 " +
-      "\001(\0132\023.auth.SignalMessage\"6\n\016SignalRespon" +
-      "se\022$\n\007message\030\001 \001(\0132\023.auth.SignalMessage" +
-      "\"!\n\023DeleteDeviceRequest\022\n\n\002id\030\001 \001(\004*\223\001\n\013" +
-      "MessageType\022\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n\n\006A" +
-      "NSWER\020\002\022\021\n\rICE_CANDIDATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004" +
-      "LINK\020\005\022\016\n\nNEW_DEVICE\020\006\022\026\n\022CONFIRM_NEW_DE" +
-      "VICE\020\007\022\021\n\rDELETE_DEVICE\020\0102\257\003\n\013AuthServic" +
-      "e\0229\n\010Register\022\025.auth.RegisterRequest\032\026.a" +
-      "uth.RegisterResponse\0220\n\005Login\022\022.auth.Log" +
-      "inRequest\032\023.auth.LoginResponse\022:\n\nLinkDe" +
-      "vice\022\027.auth.LinkDeviceRequest\032\023.auth.Log" +
-      "inResponse\022;\n\nGetAppInfo\022\026.google.protob" +
-      "uf.Empty\032\025.auth.AppInfoResponse\022=\n\013GetUs" +
-      "erInfo\022\026.google.protobuf.Empty\032\026.auth.Us" +
-      "erInfoResponse\0228\n\007Connect\022\023.auth.SignalR" +
-      "equest\032\024.auth.SignalResponse(\0010\001\022A\n\014Dele" +
-      "teDevice\022\031.auth.DeleteDeviceRequest\032\026.go" +
-      "ogle.protobuf.EmptyB!\n\004authB\004AuthP\001Z\naut" +
-      "h/proto\242\002\004AUTHb\006proto3"
+      "_name\030\003 \001(\t\"\036\n\rLoginResponse\022\r\n\005token\030\001 " +
+      "\001(\t\"8\n\017AppInfoResponse\022\017\n\007version\030\001 \001(\t\022" +
+      "\024\n\014is_logged_in\030\002 \001(\010\"\"\n\006Device\022\n\n\002id\030\001 " +
+      "\001(\004\022\014\n\004name\030\002 \001(\t\"L\n\020UserInfoResponse\022\n\n" +
+      "\002id\030\001 \001(\004\022\r\n\005email\030\002 \001(\t\022\035\n\007devices\030\003 \003(" +
+      "\0132\014.auth.Device\"_\n\rSignalMessage\022\037\n\004type" +
+      "\030\001 \001(\0162\021.auth.MessageType\022\016\n\006source\030\002 \001(" +
+      "\004\022\016\n\006target\030\003 \001(\004\022\r\n\005value\030\004 \001(\t\"5\n\rSign" +
+      "alRequest\022$\n\007message\030\001 \001(\0132\023.auth.Signal" +
+      "Message\"6\n\016SignalResponse\022$\n\007message\030\001 \001" +
+      "(\0132\023.auth.SignalMessage*\223\001\n\013MessageType\022" +
+      "\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n\n\006ANSWER\020\002\022\021\n\rI" +
+      "CE_CANDIDATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004LINK\020\005\022\016\n\nNE" +
+      "W_DEVICE\020\006\022\026\n\022CONFIRM_NEW_DEVICE\020\007\022\021\n\rDE" +
+      "LETE_DEVICE\020\0102\260\002\n\013AuthService\0229\n\010Registe" +
+      "r\022\025.auth.RegisterRequest\032\026.auth.Register" +
+      "Response\0220\n\005Login\022\022.auth.LoginRequest\032\023." +
+      "auth.LoginResponse\022;\n\nGetAppInfo\022\026.googl" +
+      "e.protobuf.Empty\032\025.auth.AppInfoResponse\022" +
+      "=\n\013GetUserInfo\022\026.google.protobuf.Empty\032\026" +
+      ".auth.UserInfoResponse\0228\n\007Connect\022\023.auth" +
+      ".SignalRequest\032\024.auth.SignalResponse(\0010\001" +
+      "B!\n\004authB\004AuthP\001Z\nauth/proto\242\002\004AUTHb\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -152,60 +137,48 @@ public final class Auth {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_LoginRequest_descriptor,
         new java.lang.String[] { "Email", "Password", "DeviceName", });
-    internal_static_auth_LinkDeviceRequest_descriptor =
-      getDescriptor().getMessageTypes().get(3);
-    internal_static_auth_LinkDeviceRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_auth_LinkDeviceRequest_descriptor,
-        new java.lang.String[] { "DeviceName", "Token", });
     internal_static_auth_LoginResponse_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_auth_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_LoginResponse_descriptor,
         new java.lang.String[] { "Token", });
     internal_static_auth_AppInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_auth_AppInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_AppInfoResponse_descriptor,
         new java.lang.String[] { "Version", "IsLoggedIn", });
     internal_static_auth_Device_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_auth_Device_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_Device_descriptor,
         new java.lang.String[] { "Id", "Name", });
     internal_static_auth_UserInfoResponse_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_auth_UserInfoResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_UserInfoResponse_descriptor,
         new java.lang.String[] { "Id", "Email", "Devices", });
     internal_static_auth_SignalMessage_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_auth_SignalMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_SignalMessage_descriptor,
         new java.lang.String[] { "Type", "Source", "Target", "Value", });
     internal_static_auth_SignalRequest_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_auth_SignalRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_SignalRequest_descriptor,
         new java.lang.String[] { "Message", });
     internal_static_auth_SignalResponse_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_auth_SignalResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_SignalResponse_descriptor,
         new java.lang.String[] { "Message", });
-    internal_static_auth_DeleteDeviceRequest_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_auth_DeleteDeviceRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_auth_DeleteDeviceRequest_descriptor,
-        new java.lang.String[] { "Id", });
     descriptor.resolveAllFeaturesImmutable();
     com.google.protobuf.EmptyProto.getDescriptor();
   }

@@ -16,28 +16,6 @@ function deserialize_auth_AppInfoResponse(buffer_arg) {
   return auth_auth_pb.AppInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_auth_DeleteDeviceRequest(arg) {
-  if (!(arg instanceof auth_auth_pb.DeleteDeviceRequest)) {
-    throw new Error('Expected argument of type auth.DeleteDeviceRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_auth_DeleteDeviceRequest(buffer_arg) {
-  return auth_auth_pb.DeleteDeviceRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_auth_LinkDeviceRequest(arg) {
-  if (!(arg instanceof auth_auth_pb.LinkDeviceRequest)) {
-    throw new Error('Expected argument of type auth.LinkDeviceRequest');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_auth_LinkDeviceRequest(buffer_arg) {
-  return auth_auth_pb.LinkDeviceRequest.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 function serialize_auth_LoginRequest(arg) {
   if (!(arg instanceof auth_auth_pb.LoginRequest)) {
     throw new Error('Expected argument of type auth.LoginRequest');
@@ -151,17 +129,6 @@ var AuthServiceService = exports.AuthServiceService = {
     responseSerialize: serialize_auth_LoginResponse,
     responseDeserialize: deserialize_auth_LoginResponse,
   },
-  linkDevice: {
-    path: '/auth.AuthService/LinkDevice',
-    requestStream: false,
-    responseStream: false,
-    requestType: auth_auth_pb.LinkDeviceRequest,
-    responseType: auth_auth_pb.LoginResponse,
-    requestSerialize: serialize_auth_LinkDeviceRequest,
-    requestDeserialize: deserialize_auth_LinkDeviceRequest,
-    responseSerialize: serialize_auth_LoginResponse,
-    responseDeserialize: deserialize_auth_LoginResponse,
-  },
   getAppInfo: {
     path: '/auth.AuthService/GetAppInfo',
     requestStream: false,
@@ -194,17 +161,6 @@ var AuthServiceService = exports.AuthServiceService = {
     requestDeserialize: deserialize_auth_SignalRequest,
     responseSerialize: serialize_auth_SignalResponse,
     responseDeserialize: deserialize_auth_SignalResponse,
-  },
-  deleteDevice: {
-    path: '/auth.AuthService/DeleteDevice',
-    requestStream: false,
-    responseStream: false,
-    requestType: auth_auth_pb.DeleteDeviceRequest,
-    responseType: google_protobuf_empty_pb.Empty,
-    requestSerialize: serialize_auth_DeleteDeviceRequest,
-    requestDeserialize: deserialize_auth_DeleteDeviceRequest,
-    responseSerialize: serialize_google_protobuf_Empty,
-    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

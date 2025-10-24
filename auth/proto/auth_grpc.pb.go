@@ -20,13 +20,11 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	AuthService_Register_FullMethodName     = "/auth.AuthService/Register"
-	AuthService_Login_FullMethodName        = "/auth.AuthService/Login"
-	AuthService_LinkDevice_FullMethodName   = "/auth.AuthService/LinkDevice"
-	AuthService_GetAppInfo_FullMethodName   = "/auth.AuthService/GetAppInfo"
-	AuthService_GetUserInfo_FullMethodName  = "/auth.AuthService/GetUserInfo"
-	AuthService_Connect_FullMethodName      = "/auth.AuthService/Connect"
-	AuthService_DeleteDevice_FullMethodName = "/auth.AuthService/DeleteDevice"
+	AuthService_Register_FullMethodName    = "/auth.AuthService/Register"
+	AuthService_Login_FullMethodName       = "/auth.AuthService/Login"
+	AuthService_GetAppInfo_FullMethodName  = "/auth.AuthService/GetAppInfo"
+	AuthService_GetUserInfo_FullMethodName = "/auth.AuthService/GetUserInfo"
+	AuthService_Connect_FullMethodName     = "/auth.AuthService/Connect"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -35,11 +33,9 @@ const (
 type AuthServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	LinkDevice(ctx context.Context, in *LinkDeviceRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 	GetAppInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*AppInfoResponse, error)
 	GetUserInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UserInfoResponse, error)
 	Connect(ctx context.Context, opts ...grpc.CallOption) (AuthService_ConnectClient, error)
-	DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
 type authServiceClient struct {
@@ -62,15 +58,6 @@ func (c *authServiceClient) Register(ctx context.Context, in *RegisterRequest, o
 func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	out := new(LoginResponse)
 	err := c.cc.Invoke(ctx, AuthService_Login_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *authServiceClient) LinkDevice(ctx context.Context, in *LinkDeviceRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
-	out := new(LoginResponse)
-	err := c.cc.Invoke(ctx, AuthService_LinkDevice_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -126,26 +113,15 @@ func (x *authServiceConnectClient) Recv() (*SignalResponse, error) {
 	return m, nil
 }
 
-func (c *authServiceClient) DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*emptypb.Empty, error) {
-	out := new(emptypb.Empty)
-	err := c.cc.Invoke(ctx, AuthService_DeleteDevice_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
 type AuthServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	LinkDevice(context.Context, *LinkDeviceRequest) (*LoginResponse, error)
 	GetAppInfo(context.Context, *emptypb.Empty) (*AppInfoResponse, error)
 	GetUserInfo(context.Context, *emptypb.Empty) (*UserInfoResponse, error)
 	Connect(AuthService_ConnectServer) error
-	DeleteDevice(context.Context, *DeleteDeviceRequest) (*emptypb.Empty, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -159,9 +135,6 @@ func (UnimplementedAuthServiceServer) Register(context.Context, *RegisterRequest
 func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthServiceServer) LinkDevice(context.Context, *LinkDeviceRequest) (*LoginResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method LinkDevice not implemented")
-}
 func (UnimplementedAuthServiceServer) GetAppInfo(context.Context, *emptypb.Empty) (*AppInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAppInfo not implemented")
 }
@@ -170,9 +143,6 @@ func (UnimplementedAuthServiceServer) GetUserInfo(context.Context, *emptypb.Empt
 }
 func (UnimplementedAuthServiceServer) Connect(AuthService_ConnectServer) error {
 	return status.Errorf(codes.Unimplemented, "method Connect not implemented")
-}
-func (UnimplementedAuthServiceServer) DeleteDevice(context.Context, *DeleteDeviceRequest) (*emptypb.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteDevice not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -219,24 +189,6 @@ func _AuthService_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(AuthServiceServer).Login(ctx, req.(*LoginRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _AuthService_LinkDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LinkDeviceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).LinkDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_LinkDevice_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).LinkDevice(ctx, req.(*LinkDeviceRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -303,24 +255,6 @@ func (x *authServiceConnectServer) Recv() (*SignalRequest, error) {
 	return m, nil
 }
 
-func _AuthService_DeleteDevice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(DeleteDeviceRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(AuthServiceServer).DeleteDevice(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: AuthService_DeleteDevice_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).DeleteDevice(ctx, req.(*DeleteDeviceRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -337,20 +271,12 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _AuthService_Login_Handler,
 		},
 		{
-			MethodName: "LinkDevice",
-			Handler:    _AuthService_LinkDevice_Handler,
-		},
-		{
 			MethodName: "GetAppInfo",
 			Handler:    _AuthService_GetAppInfo_Handler,
 		},
 		{
 			MethodName: "GetUserInfo",
 			Handler:    _AuthService_GetUserInfo_Handler,
-		},
-		{
-			MethodName: "DeleteDevice",
-			Handler:    _AuthService_DeleteDevice_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

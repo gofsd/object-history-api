@@ -26,11 +26,6 @@ message LoginRequest {
   string device_name = 3;
 }
 
-message LinkDeviceRequest {
-  string device_name = 1;
-  string token = 2;
-}
-
 message LoginResponse {
   string token = 1;
 }
@@ -83,18 +78,11 @@ message SignalResponse {
     SignalMessage message = 1;
 }
 
-
-message DeleteDeviceRequest{
-  uint64 id = 1;
-}
-
 // ------------------- SERVICE -------------------
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc LinkDevice(LinkDeviceRequest) returns (LoginResponse);
   rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
   rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
   rpc Connect(stream SignalRequest) returns (stream SignalResponse);
-  rpc DeleteDevice(DeleteDeviceRequest) returns (google.protobuf.Empty);
 }

@@ -80,37 +80,6 @@ public final class AuthServiceGrpc {
     return getLoginMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<auth.LinkDeviceRequest,
-      auth.LoginResponse> getLinkDeviceMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "LinkDevice",
-      requestType = auth.LinkDeviceRequest.class,
-      responseType = auth.LoginResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<auth.LinkDeviceRequest,
-      auth.LoginResponse> getLinkDeviceMethod() {
-    io.grpc.MethodDescriptor<auth.LinkDeviceRequest, auth.LoginResponse> getLinkDeviceMethod;
-    if ((getLinkDeviceMethod = AuthServiceGrpc.getLinkDeviceMethod) == null) {
-      synchronized (AuthServiceGrpc.class) {
-        if ((getLinkDeviceMethod = AuthServiceGrpc.getLinkDeviceMethod) == null) {
-          AuthServiceGrpc.getLinkDeviceMethod = getLinkDeviceMethod =
-              io.grpc.MethodDescriptor.<auth.LinkDeviceRequest, auth.LoginResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "LinkDevice"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  auth.LinkDeviceRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  auth.LoginResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new AuthServiceMethodDescriptorSupplier("LinkDevice"))
-              .build();
-        }
-      }
-    }
-    return getLinkDeviceMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
       auth.AppInfoResponse> getGetAppInfoMethod;
 
@@ -204,37 +173,6 @@ public final class AuthServiceGrpc {
     return getConnectMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<auth.DeleteDeviceRequest,
-      com.google.protobuf.Empty> getDeleteDeviceMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DeleteDevice",
-      requestType = auth.DeleteDeviceRequest.class,
-      responseType = com.google.protobuf.Empty.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<auth.DeleteDeviceRequest,
-      com.google.protobuf.Empty> getDeleteDeviceMethod() {
-    io.grpc.MethodDescriptor<auth.DeleteDeviceRequest, com.google.protobuf.Empty> getDeleteDeviceMethod;
-    if ((getDeleteDeviceMethod = AuthServiceGrpc.getDeleteDeviceMethod) == null) {
-      synchronized (AuthServiceGrpc.class) {
-        if ((getDeleteDeviceMethod = AuthServiceGrpc.getDeleteDeviceMethod) == null) {
-          AuthServiceGrpc.getDeleteDeviceMethod = getDeleteDeviceMethod =
-              io.grpc.MethodDescriptor.<auth.DeleteDeviceRequest, com.google.protobuf.Empty>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteDevice"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  auth.DeleteDeviceRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.google.protobuf.Empty.getDefaultInstance()))
-              .setSchemaDescriptor(new AuthServiceMethodDescriptorSupplier("DeleteDevice"))
-              .build();
-        }
-      }
-    }
-    return getDeleteDeviceMethod;
-  }
-
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -317,13 +255,6 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    default void linkDevice(auth.LinkDeviceRequest request,
-        io.grpc.stub.StreamObserver<auth.LoginResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLinkDeviceMethod(), responseObserver);
-    }
-
-    /**
-     */
     default void getAppInfo(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<auth.AppInfoResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAppInfoMethod(), responseObserver);
@@ -341,13 +272,6 @@ public final class AuthServiceGrpc {
     default io.grpc.stub.StreamObserver<auth.SignalRequest> connect(
         io.grpc.stub.StreamObserver<auth.SignalResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getConnectMethod(), responseObserver);
-    }
-
-    /**
-     */
-    default void deleteDevice(auth.DeleteDeviceRequest request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteDeviceMethod(), responseObserver);
     }
   }
 
@@ -402,14 +326,6 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public void linkDevice(auth.LinkDeviceRequest request,
-        io.grpc.stub.StreamObserver<auth.LoginResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getLinkDeviceMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
     public void getAppInfo(com.google.protobuf.Empty request,
         io.grpc.stub.StreamObserver<auth.AppInfoResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
@@ -430,14 +346,6 @@ public final class AuthServiceGrpc {
         io.grpc.stub.StreamObserver<auth.SignalResponse> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getConnectMethod(), getCallOptions()), responseObserver);
-    }
-
-    /**
-     */
-    public void deleteDevice(auth.DeleteDeviceRequest request,
-        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getDeleteDeviceMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -476,13 +384,6 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public auth.LoginResponse linkDevice(auth.LinkDeviceRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getLinkDeviceMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public auth.AppInfoResponse getAppInfo(com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetAppInfoMethod(), getCallOptions(), request);
@@ -502,13 +403,6 @@ public final class AuthServiceGrpc {
         connect() {
       return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
           getChannel(), getConnectMethod(), getCallOptions());
-    }
-
-    /**
-     */
-    public com.google.protobuf.Empty deleteDevice(auth.DeleteDeviceRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteDeviceMethod(), getCallOptions(), request);
     }
   }
 
@@ -547,13 +441,6 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public auth.LoginResponse linkDevice(auth.LinkDeviceRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getLinkDeviceMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
     public auth.AppInfoResponse getAppInfo(com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetAppInfoMethod(), getCallOptions(), request);
@@ -564,13 +451,6 @@ public final class AuthServiceGrpc {
     public auth.UserInfoResponse getUserInfo(com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserInfoMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public com.google.protobuf.Empty deleteDevice(auth.DeleteDeviceRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getDeleteDeviceMethod(), getCallOptions(), request);
     }
   }
 
@@ -611,14 +491,6 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<auth.LoginResponse> linkDevice(
-        auth.LinkDeviceRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getLinkDeviceMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
     public com.google.common.util.concurrent.ListenableFuture<auth.AppInfoResponse> getAppInfo(
         com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
@@ -632,23 +504,13 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserInfoMethod(), getCallOptions()), request);
     }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteDevice(
-        auth.DeleteDeviceRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getDeleteDeviceMethod(), getCallOptions()), request);
-    }
   }
 
   private static final int METHODID_REGISTER = 0;
   private static final int METHODID_LOGIN = 1;
-  private static final int METHODID_LINK_DEVICE = 2;
-  private static final int METHODID_GET_APP_INFO = 3;
-  private static final int METHODID_GET_USER_INFO = 4;
-  private static final int METHODID_DELETE_DEVICE = 5;
-  private static final int METHODID_CONNECT = 6;
+  private static final int METHODID_GET_APP_INFO = 2;
+  private static final int METHODID_GET_USER_INFO = 3;
+  private static final int METHODID_CONNECT = 4;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -675,10 +537,6 @@ public final class AuthServiceGrpc {
           serviceImpl.login((auth.LoginRequest) request,
               (io.grpc.stub.StreamObserver<auth.LoginResponse>) responseObserver);
           break;
-        case METHODID_LINK_DEVICE:
-          serviceImpl.linkDevice((auth.LinkDeviceRequest) request,
-              (io.grpc.stub.StreamObserver<auth.LoginResponse>) responseObserver);
-          break;
         case METHODID_GET_APP_INFO:
           serviceImpl.getAppInfo((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<auth.AppInfoResponse>) responseObserver);
@@ -686,10 +544,6 @@ public final class AuthServiceGrpc {
         case METHODID_GET_USER_INFO:
           serviceImpl.getUserInfo((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<auth.UserInfoResponse>) responseObserver);
-          break;
-        case METHODID_DELETE_DEVICE:
-          serviceImpl.deleteDevice((auth.DeleteDeviceRequest) request,
-              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -727,13 +581,6 @@ public final class AuthServiceGrpc {
               auth.LoginResponse>(
                 service, METHODID_LOGIN)))
         .addMethod(
-          getLinkDeviceMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              auth.LinkDeviceRequest,
-              auth.LoginResponse>(
-                service, METHODID_LINK_DEVICE)))
-        .addMethod(
           getGetAppInfoMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -754,13 +601,6 @@ public final class AuthServiceGrpc {
               auth.SignalRequest,
               auth.SignalResponse>(
                 service, METHODID_CONNECT)))
-        .addMethod(
-          getDeleteDeviceMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              auth.DeleteDeviceRequest,
-              com.google.protobuf.Empty>(
-                service, METHODID_DELETE_DEVICE)))
         .build();
   }
 
@@ -811,11 +651,9 @@ public final class AuthServiceGrpc {
               .setSchemaDescriptor(new AuthServiceFileDescriptorSupplier())
               .addMethod(getRegisterMethod())
               .addMethod(getLoginMethod())
-              .addMethod(getLinkDeviceMethod())
               .addMethod(getGetAppInfoMethod())
               .addMethod(getGetUserInfoMethod())
               .addMethod(getConnectMethod())
-              .addMethod(getDeleteDeviceMethod())
               .build();
         }
       }
