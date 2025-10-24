@@ -41,8 +41,15 @@ message AppInfoResponse {
   bool is_logged_in = 2;
 }
 
+message Device {
+  uint64 id = 1;
+  string name = 2;
+}
+
 message UserInfoResponse {
-  string email = 1;
+  uint64 id = 1;
+  string email = 2;
+  repeated Device devices = 3;
 }
 
 // Message types for signaling
@@ -52,18 +59,14 @@ enum MessageType {
     ANSWER = 2;
     ICE_CANDIDATE = 3;
     JOIN = 4;
-    DEVICE_LIST = 5;
 }
 
 // Generic signaling message
 message SignalMessage {
     MessageType type = 1;
-    string from = 2;         // sender ID
-    string to = 3;           // receiver ID (optional, for direct messages)
-    string sdp = 4;          // SDP offer/answer
-    string candidate = 5;    // ICE candidate
-    string room = 6;         // Room ID (optional)
-    repeated string devices = 7; // List of devices (for DEVICE_LIST response)
+    uint64 source = 2;
+    uint64 target = 3;
+    string value = 4;
 }
 
 // Request wrapper for RPC
@@ -76,6 +79,11 @@ message SignalResponse {
     SignalMessage message = 1;
 }
 
+
+message DeleteDeviceRequest{
+  uint64 id = 1;
+}
+
 // ------------------- SERVICE -------------------
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
@@ -84,4 +92,5 @@ service AuthService {
   rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
   rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
   rpc Connect(stream SignalRequest) returns (stream SignalResponse);
+  rpc DeleteDevice(DeleteDeviceRequest) returns (google.protobuf.Empty);
 }

@@ -1,7 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 'use strict';
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var auth_auth_pb = require('../auth/auth_pb.js');
 var google_protobuf_empty_pb = require('google-protobuf/google/protobuf/empty_pb.js');
 
@@ -14,6 +14,17 @@ function serialize_auth_AppInfoResponse(arg) {
 
 function deserialize_auth_AppInfoResponse(buffer_arg) {
   return auth_auth_pb.AppInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_auth_DeleteDeviceRequest(arg) {
+  if (!(arg instanceof auth_auth_pb.DeleteDeviceRequest)) {
+    throw new Error('Expected argument of type auth.DeleteDeviceRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_auth_DeleteDeviceRequest(buffer_arg) {
+  return auth_auth_pb.DeleteDeviceRequest.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_auth_LinkDeviceRequest(arg) {
@@ -183,6 +194,17 @@ var AuthServiceService = exports.AuthServiceService = {
     requestDeserialize: deserialize_auth_SignalRequest,
     responseSerialize: serialize_auth_SignalResponse,
     responseDeserialize: deserialize_auth_SignalResponse,
+  },
+  deleteDevice: {
+    path: '/auth.AuthService/DeleteDevice',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_auth_pb.DeleteDeviceRequest,
+    responseType: google_protobuf_empty_pb.Empty,
+    requestSerialize: serialize_auth_DeleteDeviceRequest,
+    requestDeserialize: deserialize_auth_DeleteDeviceRequest,
+    responseSerialize: serialize_google_protobuf_Empty,
+    responseDeserialize: deserialize_google_protobuf_Empty,
   },
 };
 

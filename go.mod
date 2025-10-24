@@ -3,6 +3,7 @@ module github.com/gofsd/object-history-api
 go 1.24.1
 
 require (
+	github.com/magefile/mage v1.15.0
 	google.golang.org/grpc v1.71.0
 	google.golang.org/protobuf v1.36.5
 )

@@ -204,6 +204,37 @@ public final class AuthServiceGrpc {
     return getConnectMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<auth.DeleteDeviceRequest,
+      com.google.protobuf.Empty> getDeleteDeviceMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DeleteDevice",
+      requestType = auth.DeleteDeviceRequest.class,
+      responseType = com.google.protobuf.Empty.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<auth.DeleteDeviceRequest,
+      com.google.protobuf.Empty> getDeleteDeviceMethod() {
+    io.grpc.MethodDescriptor<auth.DeleteDeviceRequest, com.google.protobuf.Empty> getDeleteDeviceMethod;
+    if ((getDeleteDeviceMethod = AuthServiceGrpc.getDeleteDeviceMethod) == null) {
+      synchronized (AuthServiceGrpc.class) {
+        if ((getDeleteDeviceMethod = AuthServiceGrpc.getDeleteDeviceMethod) == null) {
+          AuthServiceGrpc.getDeleteDeviceMethod = getDeleteDeviceMethod =
+              io.grpc.MethodDescriptor.<auth.DeleteDeviceRequest, com.google.protobuf.Empty>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteDevice"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  auth.DeleteDeviceRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.google.protobuf.Empty.getDefaultInstance()))
+              .setSchemaDescriptor(new AuthServiceMethodDescriptorSupplier("DeleteDevice"))
+              .build();
+        }
+      }
+    }
+    return getDeleteDeviceMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -311,6 +342,13 @@ public final class AuthServiceGrpc {
         io.grpc.stub.StreamObserver<auth.SignalResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getConnectMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void deleteDevice(auth.DeleteDeviceRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteDeviceMethod(), responseObserver);
+    }
   }
 
   /**
@@ -393,6 +431,14 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getConnectMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public void deleteDevice(auth.DeleteDeviceRequest request,
+        io.grpc.stub.StreamObserver<com.google.protobuf.Empty> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDeleteDeviceMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -457,6 +503,13 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
           getChannel(), getConnectMethod(), getCallOptions());
     }
+
+    /**
+     */
+    public com.google.protobuf.Empty deleteDevice(auth.DeleteDeviceRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteDeviceMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -511,6 +564,13 @@ public final class AuthServiceGrpc {
     public auth.UserInfoResponse getUserInfo(com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserInfoMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.google.protobuf.Empty deleteDevice(auth.DeleteDeviceRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDeleteDeviceMethod(), getCallOptions(), request);
     }
   }
 
@@ -572,6 +632,14 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserInfoMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.google.protobuf.Empty> deleteDevice(
+        auth.DeleteDeviceRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDeleteDeviceMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER = 0;
@@ -579,7 +647,8 @@ public final class AuthServiceGrpc {
   private static final int METHODID_LINK_DEVICE = 2;
   private static final int METHODID_GET_APP_INFO = 3;
   private static final int METHODID_GET_USER_INFO = 4;
-  private static final int METHODID_CONNECT = 5;
+  private static final int METHODID_DELETE_DEVICE = 5;
+  private static final int METHODID_CONNECT = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -617,6 +686,10 @@ public final class AuthServiceGrpc {
         case METHODID_GET_USER_INFO:
           serviceImpl.getUserInfo((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<auth.UserInfoResponse>) responseObserver);
+          break;
+        case METHODID_DELETE_DEVICE:
+          serviceImpl.deleteDevice((auth.DeleteDeviceRequest) request,
+              (io.grpc.stub.StreamObserver<com.google.protobuf.Empty>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -681,6 +754,13 @@ public final class AuthServiceGrpc {
               auth.SignalRequest,
               auth.SignalResponse>(
                 service, METHODID_CONNECT)))
+        .addMethod(
+          getDeleteDeviceMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              auth.DeleteDeviceRequest,
+              com.google.protobuf.Empty>(
+                service, METHODID_DELETE_DEVICE)))
         .build();
   }
 
@@ -735,6 +815,7 @@ public final class AuthServiceGrpc {
               .addMethod(getGetAppInfoMethod())
               .addMethod(getGetUserInfoMethod())
               .addMethod(getConnectMethod())
+              .addMethod(getDeleteDeviceMethod())
               .build();
         }
       }

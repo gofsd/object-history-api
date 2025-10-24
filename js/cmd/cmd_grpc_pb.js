@@ -1,7 +1,7 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 'use strict';
-var grpc = require('grpc');
+var grpc = require('@grpc/grpc-js');
 var cmd_cmd_pb = require('../cmd/cmd_pb.js');
 
 function serialize_cmd_AddCommandRequest(arg) {
