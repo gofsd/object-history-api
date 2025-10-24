@@ -170,9 +170,6 @@ message UpdateExecutionStatusResponse {
   bool success = 1;
 }
 
-// SubscribeCommandEventsRequest is used to subscribe to command events.
-message SubscribeCommandEventsRequest {}
-
 // CommandEvent represents an event related to a command execution.
 message CommandEvent {
   uint64 execution_id = 1;
