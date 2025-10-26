@@ -38,6 +38,28 @@ function deserialize_auth_LoginResponse(buffer_arg) {
   return auth_auth_pb.LoginResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_auth_LogoutRequest(arg) {
+  if (!(arg instanceof auth_auth_pb.LogoutRequest)) {
+    throw new Error('Expected argument of type auth.LogoutRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_auth_LogoutRequest(buffer_arg) {
+  return auth_auth_pb.LogoutRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_auth_LogoutResponse(arg) {
+  if (!(arg instanceof auth_auth_pb.LogoutResponse)) {
+    throw new Error('Expected argument of type auth.LogoutResponse');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_auth_LogoutResponse(buffer_arg) {
+  return auth_auth_pb.LogoutResponse.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_auth_RegisterRequest(arg) {
   if (!(arg instanceof auth_auth_pb.RegisterRequest)) {
     throw new Error('Expected argument of type auth.RegisterRequest');
@@ -161,6 +183,17 @@ var AuthServiceService = exports.AuthServiceService = {
     requestDeserialize: deserialize_auth_SignalRequest,
     responseSerialize: serialize_auth_SignalResponse,
     responseDeserialize: deserialize_auth_SignalResponse,
+  },
+  logout: {
+    path: '/auth.AuthService/Logout',
+    requestStream: false,
+    responseStream: false,
+    requestType: auth_auth_pb.LogoutRequest,
+    responseType: auth_auth_pb.LogoutResponse,
+    requestSerialize: serialize_auth_LogoutRequest,
+    requestDeserialize: deserialize_auth_LogoutRequest,
+    responseSerialize: serialize_auth_LogoutResponse,
+    responseDeserialize: deserialize_auth_LogoutResponse,
   },
 };
 

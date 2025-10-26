@@ -173,6 +173,37 @@ public final class AuthServiceGrpc {
     return getConnectMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<auth.LogoutRequest,
+      auth.LogoutResponse> getLogoutMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Logout",
+      requestType = auth.LogoutRequest.class,
+      responseType = auth.LogoutResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<auth.LogoutRequest,
+      auth.LogoutResponse> getLogoutMethod() {
+    io.grpc.MethodDescriptor<auth.LogoutRequest, auth.LogoutResponse> getLogoutMethod;
+    if ((getLogoutMethod = AuthServiceGrpc.getLogoutMethod) == null) {
+      synchronized (AuthServiceGrpc.class) {
+        if ((getLogoutMethod = AuthServiceGrpc.getLogoutMethod) == null) {
+          AuthServiceGrpc.getLogoutMethod = getLogoutMethod =
+              io.grpc.MethodDescriptor.<auth.LogoutRequest, auth.LogoutResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Logout"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  auth.LogoutRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  auth.LogoutResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AuthServiceMethodDescriptorSupplier("Logout"))
+              .build();
+        }
+      }
+    }
+    return getLogoutMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -273,6 +304,13 @@ public final class AuthServiceGrpc {
         io.grpc.stub.StreamObserver<auth.SignalResponse> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getConnectMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void logout(auth.LogoutRequest request,
+        io.grpc.stub.StreamObserver<auth.LogoutResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLogoutMethod(), responseObserver);
+    }
   }
 
   /**
@@ -347,6 +385,14 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getConnectMethod(), getCallOptions()), responseObserver);
     }
+
+    /**
+     */
+    public void logout(auth.LogoutRequest request,
+        io.grpc.stub.StreamObserver<auth.LogoutResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getLogoutMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -404,6 +450,13 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
           getChannel(), getConnectMethod(), getCallOptions());
     }
+
+    /**
+     */
+    public auth.LogoutResponse logout(auth.LogoutRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getLogoutMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -451,6 +504,13 @@ public final class AuthServiceGrpc {
     public auth.UserInfoResponse getUserInfo(com.google.protobuf.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserInfoMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public auth.LogoutResponse logout(auth.LogoutRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getLogoutMethod(), getCallOptions(), request);
     }
   }
 
@@ -504,13 +564,22 @@ public final class AuthServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserInfoMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<auth.LogoutResponse> logout(
+        auth.LogoutRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getLogoutMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER = 0;
   private static final int METHODID_LOGIN = 1;
   private static final int METHODID_GET_APP_INFO = 2;
   private static final int METHODID_GET_USER_INFO = 3;
-  private static final int METHODID_CONNECT = 4;
+  private static final int METHODID_LOGOUT = 4;
+  private static final int METHODID_CONNECT = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -544,6 +613,10 @@ public final class AuthServiceGrpc {
         case METHODID_GET_USER_INFO:
           serviceImpl.getUserInfo((com.google.protobuf.Empty) request,
               (io.grpc.stub.StreamObserver<auth.UserInfoResponse>) responseObserver);
+          break;
+        case METHODID_LOGOUT:
+          serviceImpl.logout((auth.LogoutRequest) request,
+              (io.grpc.stub.StreamObserver<auth.LogoutResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -601,6 +674,13 @@ public final class AuthServiceGrpc {
               auth.SignalRequest,
               auth.SignalResponse>(
                 service, METHODID_CONNECT)))
+        .addMethod(
+          getLogoutMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              auth.LogoutRequest,
+              auth.LogoutResponse>(
+                service, METHODID_LOGOUT)))
         .build();
   }
 
@@ -654,6 +734,7 @@ public final class AuthServiceGrpc {
               .addMethod(getGetAppInfoMethod())
               .addMethod(getGetUserInfoMethod())
               .addMethod(getConnectMethod())
+              .addMethod(getLogoutMethod())
               .build();
         }
       }

@@ -25,6 +25,7 @@ const (
 	AuthService_GetAppInfo_FullMethodName  = "/auth.AuthService/GetAppInfo"
 	AuthService_GetUserInfo_FullMethodName = "/auth.AuthService/GetUserInfo"
 	AuthService_Connect_FullMethodName     = "/auth.AuthService/Connect"
+	AuthService_Logout_FullMethodName      = "/auth.AuthService/Logout"
 )
 
 // AuthServiceClient is the client API for AuthService service.
@@ -36,6 +37,7 @@ type AuthServiceClient interface {
 	GetAppInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*AppInfoResponse, error)
 	GetUserInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UserInfoResponse, error)
 	Connect(ctx context.Context, opts ...grpc.CallOption) (AuthService_ConnectClient, error)
+	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 }
 
 type authServiceClient struct {
@@ -113,6 +115,15 @@ func (x *authServiceConnectClient) Recv() (*SignalResponse, error) {
 	return m, nil
 }
 
+func (c *authServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error) {
+	out := new(LogoutResponse)
+	err := c.cc.Invoke(ctx, AuthService_Logout_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthServiceServer is the server API for AuthService service.
 // All implementations must embed UnimplementedAuthServiceServer
 // for forward compatibility
@@ -122,6 +133,7 @@ type AuthServiceServer interface {
 	GetAppInfo(context.Context, *emptypb.Empty) (*AppInfoResponse, error)
 	GetUserInfo(context.Context, *emptypb.Empty) (*UserInfoResponse, error)
 	Connect(AuthService_ConnectServer) error
+	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
 }
 
@@ -143,6 +155,9 @@ func (UnimplementedAuthServiceServer) GetUserInfo(context.Context, *emptypb.Empt
 }
 func (UnimplementedAuthServiceServer) Connect(AuthService_ConnectServer) error {
 	return status.Errorf(codes.Unimplemented, "method Connect not implemented")
+}
+func (UnimplementedAuthServiceServer) Logout(context.Context, *LogoutRequest) (*LogoutResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Logout not implemented")
 }
 func (UnimplementedAuthServiceServer) mustEmbedUnimplementedAuthServiceServer() {}
 
@@ -255,6 +270,24 @@ func (x *authServiceConnectServer) Recv() (*SignalRequest, error) {
 	return m, nil
 }
 
+func _AuthService_Logout_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LogoutRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthServiceServer).Logout(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthService_Logout_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthServiceServer).Logout(ctx, req.(*LogoutRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthService_ServiceDesc is the grpc.ServiceDesc for AuthService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -277,6 +310,10 @@ var AuthService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUserInfo",
 			Handler:    _AuthService_GetUserInfo_Handler,
+		},
+		{
+			MethodName: "Logout",
+			Handler:    _AuthService_Logout_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{

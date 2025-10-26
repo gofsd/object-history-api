@@ -78,6 +78,16 @@ message SignalResponse {
     SignalMessage message = 1;
 }
 
+// Logout request contains the device id to log out
+message LogoutRequest {
+  uint64 device_id = 1;
+}
+
+// Logout response acknowledges the logout operation
+message LogoutResponse {
+  bool success = 1;
+}
+
 // ------------------- SERVICE -------------------
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
@@ -85,4 +95,5 @@ service AuthService {
   rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
   rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
   rpc Connect(stream SignalRequest) returns (stream SignalResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
