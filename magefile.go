@@ -118,21 +118,21 @@ func GoAll() {
 func JavaAuth() error {
 	protoDir := getEnv("PROTO_DIR", "proto")
 	// protoc --proto_path={{.PROTO_DIR}} --proto_path=third_party --proto_path=./proto/auth/ --java_out=java --grpc-java_out=java {{.PROTO_DIR}}/auth/auth.proto
-	args := []string{"--proto_path=" + protoDir, "--proto_path=third_party", "--proto_path=./proto/auth/", "--java_out=java", "--grpc-java_out=java", filepath.Join(protoDir, "auth/auth.proto")}
+	args := []string{"--proto_path=" + protoDir, "--proto_path=third_party", "--proto_path=./proto/auth/", "--java_out=java", "--grpc-java_out=java", "--plugin=protoc-gen-grpc-java=/home/madi/.local/bin/protoc-gen-grpc-java", filepath.Join(protoDir, "auth/auth.proto")}
 	return protoc(args...)
 }
 
 // JavaObject generates Java gRPC code for object
 func JavaObject() error {
 	protoDir := getEnv("PROTO_DIR", "proto")
-	args := []string{"--proto_path=./proto/object/", "--java_out=java", "--grpc-java_out=java", filepath.Join(protoDir, "object/object.proto")}
+	args := []string{"--proto_path=./proto/object/", "--java_out=java", "--grpc-java_out=java", "--plugin=protoc-gen-grpc-java=/home/madi/.local/bin/protoc-gen-grpc-java", filepath.Join(protoDir, "object/object.proto")}
 	return protoc(args...)
 }
 
 // JavaCmd generates Java gRPC code for cmd
 func JavaCmd() error {
 	protoDir := getEnv("PROTO_DIR", "proto")
-	args := []string{"--proto_path=./proto/cmd/", "--java_out=java", "--grpc-java_out=java", filepath.Join(protoDir, "cmd/cmd.proto")}
+	args := []string{"--proto_path=./proto/cmd/", "--java_out=java", "--grpc-java_out=java", "--plugin=protoc-gen-grpc-java=/home/madi/.local/bin/protoc-gen-grpc-java", filepath.Join(protoDir, "cmd/cmd.proto")}
 	return protoc(args...)
 }
 
