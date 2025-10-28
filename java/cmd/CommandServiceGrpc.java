@@ -9,7 +9,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.71.0)",
-    comments = "Source: cmd.proto")
+    comments = "Source: cmd/cmd.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class CommandServiceGrpc {
 
