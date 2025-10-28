@@ -23,7 +23,7 @@ sudo dnf groupinstall -y "Development Tools" || sudo dnf install -y @development
 # ===================================================
 # Install protoc compiler (v28.2) — download official release
 # ===================================================
-PROTOC_VERSION=28.2
+PROTOC_VERSION=32.1
 PROTOC_ZIP=protoc-${PROTOC_VERSION}-linux-x86_64.zip
 
 echo ">>> Installing protoc v${PROTOC_VERSION}..."
