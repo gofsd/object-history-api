@@ -35,6 +35,9 @@ private static final long serialVersionUID = 0L;
     name_ = "";
     description_ = "";
     fields_ = java.util.Collections.emptyList();
+    device_ = "";
+    label_ = "";
+    type_ = 0;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -180,6 +183,102 @@ private static final long serialVersionUID = 0L;
     return fields_.get(index);
   }
 
+  public static final int DEVICE_FIELD_NUMBER = 5;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object device_ = "";
+  /**
+   * <code>string device = 5;</code>
+   * @return The device.
+   */
+  @java.lang.Override
+  public java.lang.String getDevice() {
+    java.lang.Object ref = device_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      device_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string device = 5;</code>
+   * @return The bytes for device.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getDeviceBytes() {
+    java.lang.Object ref = device_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      device_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int LABEL_FIELD_NUMBER = 6;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object label_ = "";
+  /**
+   * <code>string label = 6;</code>
+   * @return The label.
+   */
+  @java.lang.Override
+  public java.lang.String getLabel() {
+    java.lang.Object ref = label_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      label_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string label = 6;</code>
+   * @return The bytes for label.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getLabelBytes() {
+    java.lang.Object ref = label_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      label_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 7;
+  private int type_ = 0;
+  /**
+   * <code>.cmd.CommandType type = 7;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  @java.lang.Override public int getTypeValue() {
+    return type_;
+  }
+  /**
+   * <code>.cmd.CommandType type = 7;</code>
+   * @return The type.
+   */
+  @java.lang.Override public cmd.CommandType getType() {
+    cmd.CommandType result = cmd.CommandType.forNumber(type_);
+    return result == null ? cmd.CommandType.UNRECOGNIZED : result;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -206,6 +305,15 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < fields_.size(); i++) {
       output.writeMessage(4, fields_.get(i));
     }
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(device_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 5, device_);
+    }
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(label_)) {
+      com.google.protobuf.GeneratedMessage.writeString(output, 6, label_);
+    }
+    if (type_ != cmd.CommandType.COMMAND_TYPE_UNKNOWN.getNumber()) {
+      output.writeEnum(7, type_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -228,6 +336,16 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < fields_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, fields_.get(i));
+    }
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(device_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(5, device_);
+    }
+    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(label_)) {
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(6, label_);
+    }
+    if (type_ != cmd.CommandType.COMMAND_TYPE_UNKNOWN.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(7, type_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -252,6 +370,11 @@ private static final long serialVersionUID = 0L;
         .equals(other.getDescription())) return false;
     if (!getFieldsList()
         .equals(other.getFieldsList())) return false;
+    if (!getDevice()
+        .equals(other.getDevice())) return false;
+    if (!getLabel()
+        .equals(other.getLabel())) return false;
+    if (type_ != other.type_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -274,6 +397,12 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FIELDS_FIELD_NUMBER;
       hash = (53 * hash) + getFieldsList().hashCode();
     }
+    hash = (37 * hash) + DEVICE_FIELD_NUMBER;
+    hash = (53 * hash) + getDevice().hashCode();
+    hash = (37 * hash) + LABEL_FIELD_NUMBER;
+    hash = (53 * hash) + getLabel().hashCode();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + type_;
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -419,6 +548,9 @@ private static final long serialVersionUID = 0L;
         fieldsBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000008);
+      device_ = "";
+      label_ = "";
+      type_ = 0;
       return this;
     }
 
@@ -474,6 +606,15 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.description_ = description_;
       }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.device_ = device_;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.label_ = label_;
+      }
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        result.type_ = type_;
+      }
     }
 
     @java.lang.Override
@@ -526,6 +667,19 @@ private static final long serialVersionUID = 0L;
             fieldsBuilder_.addAllMessages(other.fields_);
           }
         }
+      }
+      if (!other.getDevice().isEmpty()) {
+        device_ = other.device_;
+        bitField0_ |= 0x00000010;
+        onChanged();
+      }
+      if (!other.getLabel().isEmpty()) {
+        label_ = other.label_;
+        bitField0_ |= 0x00000020;
+        onChanged();
+      }
+      if (other.type_ != 0) {
+        setTypeValue(other.getTypeValue());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -581,6 +735,21 @@ private static final long serialVersionUID = 0L;
               }
               break;
             } // case 34
+            case 42: {
+              device_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 42
+            case 50: {
+              label_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 50
+            case 56: {
+              type_ = input.readEnum();
+              bitField0_ |= 0x00000040;
+              break;
+            } // case 56
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1012,6 +1181,201 @@ private static final long serialVersionUID = 0L;
         fields_ = null;
       }
       return fieldsBuilder_;
+    }
+
+    private java.lang.Object device_ = "";
+    /**
+     * <code>string device = 5;</code>
+     * @return The device.
+     */
+    public java.lang.String getDevice() {
+      java.lang.Object ref = device_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        device_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string device = 5;</code>
+     * @return The bytes for device.
+     */
+    public com.google.protobuf.ByteString
+        getDeviceBytes() {
+      java.lang.Object ref = device_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        device_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string device = 5;</code>
+     * @param value The device to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDevice(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      device_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string device = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDevice() {
+      device_ = getDefaultInstance().getDevice();
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string device = 5;</code>
+     * @param value The bytes for device to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDeviceBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      device_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object label_ = "";
+    /**
+     * <code>string label = 6;</code>
+     * @return The label.
+     */
+    public java.lang.String getLabel() {
+      java.lang.Object ref = label_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        label_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string label = 6;</code>
+     * @return The bytes for label.
+     */
+    public com.google.protobuf.ByteString
+        getLabelBytes() {
+      java.lang.Object ref = label_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        label_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string label = 6;</code>
+     * @param value The label to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLabel(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      label_ = value;
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string label = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLabel() {
+      label_ = getDefaultInstance().getLabel();
+      bitField0_ = (bitField0_ & ~0x00000020);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string label = 6;</code>
+     * @param value The bytes for label to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLabelBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      label_ = value;
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+
+    private int type_ = 0;
+    /**
+     * <code>.cmd.CommandType type = 7;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    @java.lang.Override public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.cmd.CommandType type = 7;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeValue(int value) {
+      type_ = value;
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.cmd.CommandType type = 7;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public cmd.CommandType getType() {
+      cmd.CommandType result = cmd.CommandType.forNumber(type_);
+      return result == null ? cmd.CommandType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.cmd.CommandType type = 7;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(cmd.CommandType value) {
+      if (value == null) { throw new NullPointerException(); }
+      bitField0_ |= 0x00000040;
+      type_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.cmd.CommandType type = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      type_ = 0;
+      onChanged();
+      return this;
     }
 
     // @@protoc_insertion_point(builder_scope:cmd.Command)

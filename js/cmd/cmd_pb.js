@@ -30,6 +30,7 @@ goog.exportSymbol('proto.cmd.Command', null, global);
 goog.exportSymbol('proto.cmd.CommandEvent', null, global);
 goog.exportSymbol('proto.cmd.CommandLog', null, global);
 goog.exportSymbol('proto.cmd.CommandRequest', null, global);
+goog.exportSymbol('proto.cmd.CommandType', null, global);
 goog.exportSymbol('proto.cmd.CommandsResponse', null, global);
 goog.exportSymbol('proto.cmd.Contact', null, global);
 goog.exportSymbol('proto.cmd.DryRunResult', null, global);
@@ -2082,7 +2083,10 @@ proto.cmd.Command.toObject = function(includeInstance, msg) {
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
     description: jspb.Message.getFieldWithDefault(msg, 3, ""),
     fieldsList: jspb.Message.toObjectList(msg.getFieldsList(),
-    proto.cmd.ParameterField.toObject, includeInstance)
+    proto.cmd.ParameterField.toObject, includeInstance),
+    device: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    label: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    type: jspb.Message.getFieldWithDefault(msg, 7, 0)
   };
 
   if (includeInstance) {
@@ -2135,6 +2139,18 @@ proto.cmd.Command.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto.cmd.ParameterField;
       reader.readMessage(value,proto.cmd.ParameterField.deserializeBinaryFromReader);
       msg.addFields(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDevice(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLabel(value);
+      break;
+    case 7:
+      var value = /** @type {!proto.cmd.CommandType} */ (reader.readEnum());
+      msg.setType(value);
       break;
     default:
       reader.skipField();
@@ -2192,6 +2208,27 @@ proto.cmd.Command.serializeBinaryToWriter = function(message, writer) {
       4,
       f,
       proto.cmd.ParameterField.serializeBinaryToWriter
+    );
+  }
+  f = message.getDevice();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
+  f = message.getLabel();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      7,
+      f
     );
   }
 };
@@ -2286,6 +2323,60 @@ proto.cmd.Command.prototype.addFields = function(opt_value, opt_index) {
  */
 proto.cmd.Command.prototype.clearFieldsList = function() {
   return this.setFieldsList([]);
+};
+
+
+/**
+ * optional string device = 5;
+ * @return {string}
+ */
+proto.cmd.Command.prototype.getDevice = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cmd.Command} returns this
+ */
+proto.cmd.Command.prototype.setDevice = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string label = 6;
+ * @return {string}
+ */
+proto.cmd.Command.prototype.getLabel = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cmd.Command} returns this
+ */
+proto.cmd.Command.prototype.setLabel = function(value) {
+  return jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional CommandType type = 7;
+ * @return {!proto.cmd.CommandType}
+ */
+proto.cmd.Command.prototype.getType = function() {
+  return /** @type {!proto.cmd.CommandType} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+};
+
+
+/**
+ * @param {!proto.cmd.CommandType} value
+ * @return {!proto.cmd.Command} returns this
+ */
+proto.cmd.Command.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 7, value);
 };
 
 
@@ -5231,6 +5322,17 @@ proto.cmd.UserRole = {
   USER_ROLE_VIEWER: 0,
   USER_ROLE_EXECUTOR: 1,
   USER_ROLE_ADMIN: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.cmd.CommandType = {
+  COMMAND_TYPE_UNKNOWN: 0,
+  COMMAND_TYPE_SINGLE: 1,
+  COMMAND_TYPE_MULTIPLE: 2,
+  COMMAND_TYPE_SHOW: 3,
+  COMMAND_TYPE_WAIT: 4
 };
 
 goog.object.extend(exports, proto.cmd);

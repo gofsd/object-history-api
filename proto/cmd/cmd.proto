@@ -82,12 +82,24 @@ message ParameterField {
   string placeholder = 10; // Placeholder text for the field
 }
 
+// CommandType describes how the command should be handled.
+enum CommandType {
+  COMMAND_TYPE_UNKNOWN = 0;
+  COMMAND_TYPE_SINGLE = 1;
+  COMMAND_TYPE_MULTIPLE = 2;
+  COMMAND_TYPE_SHOW = 3;
+  COMMAND_TYPE_WAIT = 4;
+}
+
 // Command represents a command template.
 message Command {
   uint64 id = 1;
   string name = 2;
   string description = 3;
   repeated ParameterField fields = 4;
+  string device = 5;
+  string label = 6;
+  CommandType type = 7;
 }
 
 // AddCommandRequest is used to add a new command template.

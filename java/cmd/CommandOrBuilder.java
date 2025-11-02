@@ -63,4 +63,39 @@ public interface CommandOrBuilder extends
    */
   cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
       int index);
+
+  /**
+   * <code>string device = 5;</code>
+   * @return The device.
+   */
+  java.lang.String getDevice();
+  /**
+   * <code>string device = 5;</code>
+   * @return The bytes for device.
+   */
+  com.google.protobuf.ByteString
+      getDeviceBytes();
+
+  /**
+   * <code>string label = 6;</code>
+   * @return The label.
+   */
+  java.lang.String getLabel();
+  /**
+   * <code>string label = 6;</code>
+   * @return The bytes for label.
+   */
+  com.google.protobuf.ByteString
+      getLabelBytes();
+
+  /**
+   * <code>.cmd.CommandType type = 7;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  int getTypeValue();
+  /**
+   * <code>.cmd.CommandType type = 7;</code>
+   * @return The type.
+   */
+  cmd.CommandType getType();
 }
