@@ -2232,7 +2232,8 @@ proto.auth.MessageType = {
   LINK: 5,
   NEW_DEVICE: 6,
   CONFIRM_NEW_DEVICE: 7,
-  DELETE_DEVICE: 8
+  DELETE_DEVICE: 8,
+  ERROR: 9
 };
 
 goog.object.extend(exports, proto.auth);

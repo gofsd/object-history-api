@@ -51,6 +51,10 @@ public enum MessageType
    * <code>DELETE_DEVICE = 8;</code>
    */
   DELETE_DEVICE(8),
+  /**
+   * <code>ERROR = 9;</code>
+   */
+  ERROR(9),
   UNRECOGNIZED(-1),
   ;
 
@@ -99,6 +103,10 @@ public enum MessageType
    * <code>DELETE_DEVICE = 8;</code>
    */
   public static final int DELETE_DEVICE_VALUE = 8;
+  /**
+   * <code>ERROR = 9;</code>
+   */
+  public static final int ERROR_VALUE = 9;
 
 
   public final int getNumber() {
@@ -134,6 +142,7 @@ public enum MessageType
       case 6: return NEW_DEVICE;
       case 7: return CONFIRM_NEW_DEVICE;
       case 8: return DELETE_DEVICE;
+      case 9: return ERROR;
       default: return null;
     }
   }

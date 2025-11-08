@@ -112,21 +112,21 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       "Message\"6\n\016SignalResponse\022$\n\007message\030\001 \001" +
       "(\0132\023.auth.SignalMessage\"\"\n\rLogoutRequest" +
       "\022\021\n\tdevice_id\030\001 \001(\004\"!\n\016LogoutResponse\022\017\n" +
-      "\007success\030\001 \001(\010*\223\001\n\013MessageType\022\013\n\007UNKNOW" +
+      "\007success\030\001 \001(\010*\236\001\n\013MessageType\022\013\n\007UNKNOW" +
       "N\020\000\022\t\n\005OFFER\020\001\022\n\n\006ANSWER\020\002\022\021\n\rICE_CANDID" +
       "ATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004LINK\020\005\022\016\n\nNEW_DEVICE\020" +
       "\006\022\026\n\022CONFIRM_NEW_DEVICE\020\007\022\021\n\rDELETE_DEVI" +
-      "CE\020\0102\345\002\n\013AuthService\0229\n\010Register\022\025.auth." +
-      "RegisterRequest\032\026.auth.RegisterResponse\022" +
-      "0\n\005Login\022\022.auth.LoginRequest\032\023.auth.Logi" +
-      "nResponse\022;\n\nGetAppInfo\022\026.google.protobu" +
-      "f.Empty\032\025.auth.AppInfoResponse\022=\n\013GetUse" +
-      "rInfo\022\026.google.protobuf.Empty\032\026.auth.Use" +
-      "rInfoResponse\0228\n\007Connect\022\023.auth.SignalRe" +
-      "quest\032\024.auth.SignalResponse(\0010\001\0223\n\006Logou" +
-      "t\022\023.auth.LogoutRequest\032\024.auth.LogoutResp" +
-      "onseB!\n\004authB\004AuthP\001Z\nauth/proto\242\002\004AUTHb" +
-      "\006proto3"
+      "CE\020\010\022\t\n\005ERROR\020\t2\345\002\n\013AuthService\0229\n\010Regis" +
+      "ter\022\025.auth.RegisterRequest\032\026.auth.Regist" +
+      "erResponse\0220\n\005Login\022\022.auth.LoginRequest\032" +
+      "\023.auth.LoginResponse\022;\n\nGetAppInfo\022\026.goo" +
+      "gle.protobuf.Empty\032\025.auth.AppInfoRespons" +
+      "e\022=\n\013GetUserInfo\022\026.google.protobuf.Empty" +
+      "\032\026.auth.UserInfoResponse\0228\n\007Connect\022\023.au" +
+      "th.SignalRequest\032\024.auth.SignalResponse(\001" +
+      "0\001\0223\n\006Logout\022\023.auth.LogoutRequest\032\024.auth" +
+      ".LogoutResponseB!\n\004authB\004AuthP\001Z\nauth/pr" +
+      "oto\242\002\004AUTHb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
