@@ -11,7 +11,6 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
 // This is a compile-time assertion to ensure that this generated file
@@ -34,8 +33,8 @@ const (
 type AuthServiceClient interface {
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 	Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
-	GetAppInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*AppInfoResponse, error)
-	GetUserInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UserInfoResponse, error)
+	GetAppInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*AppInfoResponse, error)
+	GetUserInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserInfoResponse, error)
 	Connect(ctx context.Context, opts ...grpc.CallOption) (AuthService_ConnectClient, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 }
@@ -66,7 +65,7 @@ func (c *authServiceClient) Login(ctx context.Context, in *LoginRequest, opts ..
 	return out, nil
 }
 
-func (c *authServiceClient) GetAppInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*AppInfoResponse, error) {
+func (c *authServiceClient) GetAppInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*AppInfoResponse, error) {
 	out := new(AppInfoResponse)
 	err := c.cc.Invoke(ctx, AuthService_GetAppInfo_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -75,7 +74,7 @@ func (c *authServiceClient) GetAppInfo(ctx context.Context, in *emptypb.Empty, o
 	return out, nil
 }
 
-func (c *authServiceClient) GetUserInfo(ctx context.Context, in *emptypb.Empty, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+func (c *authServiceClient) GetUserInfo(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*UserInfoResponse, error) {
 	out := new(UserInfoResponse)
 	err := c.cc.Invoke(ctx, AuthService_GetUserInfo_FullMethodName, in, out, opts...)
 	if err != nil {
@@ -130,8 +129,8 @@ func (c *authServiceClient) Logout(ctx context.Context, in *LogoutRequest, opts 
 type AuthServiceServer interface {
 	Register(context.Context, *RegisterRequest) (*RegisterResponse, error)
 	Login(context.Context, *LoginRequest) (*LoginResponse, error)
-	GetAppInfo(context.Context, *emptypb.Empty) (*AppInfoResponse, error)
-	GetUserInfo(context.Context, *emptypb.Empty) (*UserInfoResponse, error)
+	GetAppInfo(context.Context, *Empty) (*AppInfoResponse, error)
+	GetUserInfo(context.Context, *Empty) (*UserInfoResponse, error)
 	Connect(AuthService_ConnectServer) error
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	mustEmbedUnimplementedAuthServiceServer()
@@ -147,10 +146,10 @@ func (UnimplementedAuthServiceServer) Register(context.Context, *RegisterRequest
 func (UnimplementedAuthServiceServer) Login(context.Context, *LoginRequest) (*LoginResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Login not implemented")
 }
-func (UnimplementedAuthServiceServer) GetAppInfo(context.Context, *emptypb.Empty) (*AppInfoResponse, error) {
+func (UnimplementedAuthServiceServer) GetAppInfo(context.Context, *Empty) (*AppInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetAppInfo not implemented")
 }
-func (UnimplementedAuthServiceServer) GetUserInfo(context.Context, *emptypb.Empty) (*UserInfoResponse, error) {
+func (UnimplementedAuthServiceServer) GetUserInfo(context.Context, *Empty) (*UserInfoResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUserInfo not implemented")
 }
 func (UnimplementedAuthServiceServer) Connect(AuthService_ConnectServer) error {
@@ -209,7 +208,7 @@ func _AuthService_Login_Handler(srv interface{}, ctx context.Context, dec func(i
 }
 
 func _AuthService_GetAppInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -221,13 +220,13 @@ func _AuthService_GetAppInfo_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: AuthService_GetAppInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetAppInfo(ctx, req.(*emptypb.Empty))
+		return srv.(AuthServiceServer).GetAppInfo(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _AuthService_GetUserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(emptypb.Empty)
+	in := new(Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -239,7 +238,7 @@ func _AuthService_GetUserInfo_Handler(srv interface{}, ctx context.Context, dec 
 		FullMethod: AuthService_GetUserInfo_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(AuthServiceServer).GetUserInfo(ctx, req.(*emptypb.Empty))
+		return srv.(AuthServiceServer).GetUserInfo(ctx, req.(*Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }

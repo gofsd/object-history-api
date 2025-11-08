@@ -16,6 +16,17 @@ function deserialize_auth_AppInfoResponse(buffer_arg) {
   return auth_auth_pb.AppInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_auth_Empty(arg) {
+  if (!(arg instanceof auth_auth_pb.Empty)) {
+    throw new Error('Expected argument of type auth.Empty');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_auth_Empty(buffer_arg) {
+  return auth_auth_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_auth_LoginRequest(arg) {
   if (!(arg instanceof auth_auth_pb.LoginRequest)) {
     throw new Error('Expected argument of type auth.LoginRequest');
@@ -115,17 +126,6 @@ function deserialize_auth_UserInfoResponse(buffer_arg) {
   return auth_auth_pb.UserInfoResponse.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
-function serialize_google_protobuf_Empty(arg) {
-  if (!(arg instanceof google_protobuf_empty_pb.Empty)) {
-    throw new Error('Expected argument of type google.protobuf.Empty');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_google_protobuf_Empty(buffer_arg) {
-  return google_protobuf_empty_pb.Empty.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
 
 // ------------------- SERVICE -------------------
 var AuthServiceService = exports.AuthServiceService = {
@@ -155,10 +155,10 @@ var AuthServiceService = exports.AuthServiceService = {
     path: '/auth.AuthService/GetAppInfo',
     requestStream: false,
     responseStream: false,
-    requestType: google_protobuf_empty_pb.Empty,
+    requestType: auth_auth_pb.Empty,
     responseType: auth_auth_pb.AppInfoResponse,
-    requestSerialize: serialize_google_protobuf_Empty,
-    requestDeserialize: deserialize_google_protobuf_Empty,
+    requestSerialize: serialize_auth_Empty,
+    requestDeserialize: deserialize_auth_Empty,
     responseSerialize: serialize_auth_AppInfoResponse,
     responseDeserialize: deserialize_auth_AppInfoResponse,
   },
@@ -166,10 +166,10 @@ var AuthServiceService = exports.AuthServiceService = {
     path: '/auth.AuthService/GetUserInfo',
     requestStream: false,
     responseStream: false,
-    requestType: google_protobuf_empty_pb.Empty,
+    requestType: auth_auth_pb.Empty,
     responseType: auth_auth_pb.UserInfoResponse,
-    requestSerialize: serialize_google_protobuf_Empty,
-    requestDeserialize: deserialize_google_protobuf_Empty,
+    requestSerialize: serialize_auth_Empty,
+    requestDeserialize: deserialize_auth_Empty,
     responseSerialize: serialize_auth_UserInfoResponse,
     responseDeserialize: deserialize_auth_UserInfoResponse,
   },

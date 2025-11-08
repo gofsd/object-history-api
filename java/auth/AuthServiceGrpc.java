@@ -80,27 +80,27 @@ public final class AuthServiceGrpc {
     return getLoginMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+  private static volatile io.grpc.MethodDescriptor<auth.Empty,
       auth.AppInfoResponse> getGetAppInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetAppInfo",
-      requestType = com.google.protobuf.Empty.class,
+      requestType = auth.Empty.class,
       responseType = auth.AppInfoResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+  public static io.grpc.MethodDescriptor<auth.Empty,
       auth.AppInfoResponse> getGetAppInfoMethod() {
-    io.grpc.MethodDescriptor<com.google.protobuf.Empty, auth.AppInfoResponse> getGetAppInfoMethod;
+    io.grpc.MethodDescriptor<auth.Empty, auth.AppInfoResponse> getGetAppInfoMethod;
     if ((getGetAppInfoMethod = AuthServiceGrpc.getGetAppInfoMethod) == null) {
       synchronized (AuthServiceGrpc.class) {
         if ((getGetAppInfoMethod = AuthServiceGrpc.getGetAppInfoMethod) == null) {
           AuthServiceGrpc.getGetAppInfoMethod = getGetAppInfoMethod =
-              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, auth.AppInfoResponse>newBuilder()
+              io.grpc.MethodDescriptor.<auth.Empty, auth.AppInfoResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAppInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.google.protobuf.Empty.getDefaultInstance()))
+                  auth.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   auth.AppInfoResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AuthServiceMethodDescriptorSupplier("GetAppInfo"))
@@ -111,27 +111,27 @@ public final class AuthServiceGrpc {
     return getGetAppInfoMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+  private static volatile io.grpc.MethodDescriptor<auth.Empty,
       auth.UserInfoResponse> getGetUserInfoMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetUserInfo",
-      requestType = com.google.protobuf.Empty.class,
+      requestType = auth.Empty.class,
       responseType = auth.UserInfoResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.google.protobuf.Empty,
+  public static io.grpc.MethodDescriptor<auth.Empty,
       auth.UserInfoResponse> getGetUserInfoMethod() {
-    io.grpc.MethodDescriptor<com.google.protobuf.Empty, auth.UserInfoResponse> getGetUserInfoMethod;
+    io.grpc.MethodDescriptor<auth.Empty, auth.UserInfoResponse> getGetUserInfoMethod;
     if ((getGetUserInfoMethod = AuthServiceGrpc.getGetUserInfoMethod) == null) {
       synchronized (AuthServiceGrpc.class) {
         if ((getGetUserInfoMethod = AuthServiceGrpc.getGetUserInfoMethod) == null) {
           AuthServiceGrpc.getGetUserInfoMethod = getGetUserInfoMethod =
-              io.grpc.MethodDescriptor.<com.google.protobuf.Empty, auth.UserInfoResponse>newBuilder()
+              io.grpc.MethodDescriptor.<auth.Empty, auth.UserInfoResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserInfo"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.google.protobuf.Empty.getDefaultInstance()))
+                  auth.Empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   auth.UserInfoResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AuthServiceMethodDescriptorSupplier("GetUserInfo"))
@@ -286,14 +286,14 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    default void getAppInfo(com.google.protobuf.Empty request,
+    default void getAppInfo(auth.Empty request,
         io.grpc.stub.StreamObserver<auth.AppInfoResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAppInfoMethod(), responseObserver);
     }
 
     /**
      */
-    default void getUserInfo(com.google.protobuf.Empty request,
+    default void getUserInfo(auth.Empty request,
         io.grpc.stub.StreamObserver<auth.UserInfoResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserInfoMethod(), responseObserver);
     }
@@ -364,7 +364,7 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public void getAppInfo(com.google.protobuf.Empty request,
+    public void getAppInfo(auth.Empty request,
         io.grpc.stub.StreamObserver<auth.AppInfoResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetAppInfoMethod(), getCallOptions()), request, responseObserver);
@@ -372,7 +372,7 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public void getUserInfo(com.google.protobuf.Empty request,
+    public void getUserInfo(auth.Empty request,
         io.grpc.stub.StreamObserver<auth.UserInfoResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetUserInfoMethod(), getCallOptions()), request, responseObserver);
@@ -430,14 +430,14 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public auth.AppInfoResponse getAppInfo(com.google.protobuf.Empty request) {
+    public auth.AppInfoResponse getAppInfo(auth.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetAppInfoMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public auth.UserInfoResponse getUserInfo(com.google.protobuf.Empty request) {
+    public auth.UserInfoResponse getUserInfo(auth.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserInfoMethod(), getCallOptions(), request);
     }
@@ -494,14 +494,14 @@ public final class AuthServiceGrpc {
 
     /**
      */
-    public auth.AppInfoResponse getAppInfo(com.google.protobuf.Empty request) {
+    public auth.AppInfoResponse getAppInfo(auth.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetAppInfoMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public auth.UserInfoResponse getUserInfo(com.google.protobuf.Empty request) {
+    public auth.UserInfoResponse getUserInfo(auth.Empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetUserInfoMethod(), getCallOptions(), request);
     }
@@ -552,7 +552,7 @@ public final class AuthServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<auth.AppInfoResponse> getAppInfo(
-        com.google.protobuf.Empty request) {
+        auth.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetAppInfoMethod(), getCallOptions()), request);
     }
@@ -560,7 +560,7 @@ public final class AuthServiceGrpc {
     /**
      */
     public com.google.common.util.concurrent.ListenableFuture<auth.UserInfoResponse> getUserInfo(
-        com.google.protobuf.Empty request) {
+        auth.Empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetUserInfoMethod(), getCallOptions()), request);
     }
@@ -607,11 +607,11 @@ public final class AuthServiceGrpc {
               (io.grpc.stub.StreamObserver<auth.LoginResponse>) responseObserver);
           break;
         case METHODID_GET_APP_INFO:
-          serviceImpl.getAppInfo((com.google.protobuf.Empty) request,
+          serviceImpl.getAppInfo((auth.Empty) request,
               (io.grpc.stub.StreamObserver<auth.AppInfoResponse>) responseObserver);
           break;
         case METHODID_GET_USER_INFO:
-          serviceImpl.getUserInfo((com.google.protobuf.Empty) request,
+          serviceImpl.getUserInfo((auth.Empty) request,
               (io.grpc.stub.StreamObserver<auth.UserInfoResponse>) responseObserver);
           break;
         case METHODID_LOGOUT:
@@ -657,14 +657,14 @@ public final class AuthServiceGrpc {
           getGetAppInfoMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.google.protobuf.Empty,
+              auth.Empty,
               auth.AppInfoResponse>(
                 service, METHODID_GET_APP_INFO)))
         .addMethod(
           getGetUserInfoMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.google.protobuf.Empty,
+              auth.Empty,
               auth.UserInfoResponse>(
                 service, METHODID_GET_USER_INFO)))
         .addMethod(

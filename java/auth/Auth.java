@@ -86,6 +86,11 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_auth_LogoutResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_Empty_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_auth_Empty_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -112,21 +117,21 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       "Message\"6\n\016SignalResponse\022$\n\007message\030\001 \001" +
       "(\0132\023.auth.SignalMessage\"\"\n\rLogoutRequest" +
       "\022\021\n\tdevice_id\030\001 \001(\004\"!\n\016LogoutResponse\022\017\n" +
-      "\007success\030\001 \001(\010*\236\001\n\013MessageType\022\013\n\007UNKNOW" +
-      "N\020\000\022\t\n\005OFFER\020\001\022\n\n\006ANSWER\020\002\022\021\n\rICE_CANDID" +
-      "ATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004LINK\020\005\022\016\n\nNEW_DEVICE\020" +
-      "\006\022\026\n\022CONFIRM_NEW_DEVICE\020\007\022\021\n\rDELETE_DEVI" +
-      "CE\020\010\022\t\n\005ERROR\020\t2\345\002\n\013AuthService\0229\n\010Regis" +
-      "ter\022\025.auth.RegisterRequest\032\026.auth.Regist" +
-      "erResponse\0220\n\005Login\022\022.auth.LoginRequest\032" +
-      "\023.auth.LoginResponse\022;\n\nGetAppInfo\022\026.goo" +
-      "gle.protobuf.Empty\032\025.auth.AppInfoRespons" +
-      "e\022=\n\013GetUserInfo\022\026.google.protobuf.Empty" +
-      "\032\026.auth.UserInfoResponse\0228\n\007Connect\022\023.au" +
-      "th.SignalRequest\032\024.auth.SignalResponse(\001" +
-      "0\001\0223\n\006Logout\022\023.auth.LogoutRequest\032\024.auth" +
-      ".LogoutResponseB!\n\004authB\004AuthP\001Z\nauth/pr" +
-      "oto\242\002\004AUTHb\006proto3"
+      "\007success\030\001 \001(\010\"\007\n\005Empty*\236\001\n\013MessageType\022" +
+      "\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n\n\006ANSWER\020\002\022\021\n\rI" +
+      "CE_CANDIDATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004LINK\020\005\022\016\n\nNE" +
+      "W_DEVICE\020\006\022\026\n\022CONFIRM_NEW_DEVICE\020\007\022\021\n\rDE" +
+      "LETE_DEVICE\020\010\022\t\n\005ERROR\020\t2\317\002\n\013AuthService" +
+      "\0229\n\010Register\022\025.auth.RegisterRequest\032\026.au" +
+      "th.RegisterResponse\0220\n\005Login\022\022.auth.Logi" +
+      "nRequest\032\023.auth.LoginResponse\0220\n\nGetAppI" +
+      "nfo\022\013.auth.Empty\032\025.auth.AppInfoResponse\022" +
+      "2\n\013GetUserInfo\022\013.auth.Empty\032\026.auth.UserI" +
+      "nfoResponse\0228\n\007Connect\022\023.auth.SignalRequ" +
+      "est\032\024.auth.SignalResponse(\0010\001\0223\n\006Logout\022" +
+      "\023.auth.LogoutRequest\032\024.auth.LogoutRespon" +
+      "seB!\n\004authB\004AuthP\001Z\nauth/proto\242\002\004AUTHb\006p" +
+      "roto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -205,6 +210,12 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_LogoutResponse_descriptor,
         new java.lang.String[] { "Success", });
+    internal_static_auth_Empty_descriptor =
+      getDescriptor().getMessageType(12);
+    internal_static_auth_Empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_auth_Empty_descriptor,
+        new java.lang.String[] { });
     descriptor.resolveAllFeaturesImmutable();
     com.google.protobuf.EmptyProto.getDescriptor();
   }

@@ -89,12 +89,14 @@ message LogoutResponse {
   bool success = 1;
 }
 
+message Empty{}
+
 // ------------------- SERVICE -------------------
 service AuthService {
   rpc Register(RegisterRequest) returns (RegisterResponse);
   rpc Login(LoginRequest) returns (LoginResponse);
-  rpc GetAppInfo(google.protobuf.Empty) returns (AppInfoResponse);
-  rpc GetUserInfo(google.protobuf.Empty) returns (UserInfoResponse);
+  rpc GetAppInfo(Empty) returns (AppInfoResponse);
+  rpc GetUserInfo(Empty) returns (UserInfoResponse);
   rpc Connect(stream SignalRequest) returns (stream SignalResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
