@@ -52,9 +52,9 @@ public enum MessageType
    */
   DELETE_DEVICE(8),
   /**
-   * <code>ERROR = 9;</code>
+   * <code>NOT_JOINED = 9;</code>
    */
-  ERROR(9),
+  NOT_JOINED(9),
   UNRECOGNIZED(-1),
   ;
 
@@ -104,9 +104,9 @@ public enum MessageType
    */
   public static final int DELETE_DEVICE_VALUE = 8;
   /**
-   * <code>ERROR = 9;</code>
+   * <code>NOT_JOINED = 9;</code>
    */
-  public static final int ERROR_VALUE = 9;
+  public static final int NOT_JOINED_VALUE = 9;
 
 
   public final int getNumber() {
@@ -142,7 +142,7 @@ public enum MessageType
       case 6: return NEW_DEVICE;
       case 7: return CONFIRM_NEW_DEVICE;
       case 8: return DELETE_DEVICE;
-      case 9: return ERROR;
+      case 9: return NOT_JOINED;
       default: return null;
     }
   }
