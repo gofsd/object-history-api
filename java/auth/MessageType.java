@@ -44,17 +44,13 @@ public enum MessageType
    */
   NEW_DEVICE(6),
   /**
-   * <code>CONFIRM_NEW_DEVICE = 7;</code>
+   * <code>DELETE_DEVICE = 7;</code>
    */
-  CONFIRM_NEW_DEVICE(7),
+  DELETE_DEVICE(7),
   /**
-   * <code>DELETE_DEVICE = 8;</code>
+   * <code>NOT_JOINED = 8;</code>
    */
-  DELETE_DEVICE(8),
-  /**
-   * <code>NOT_JOINED = 9;</code>
-   */
-  NOT_JOINED(9),
+  NOT_JOINED(8),
   UNRECOGNIZED(-1),
   ;
 
@@ -96,17 +92,13 @@ public enum MessageType
    */
   public static final int NEW_DEVICE_VALUE = 6;
   /**
-   * <code>CONFIRM_NEW_DEVICE = 7;</code>
+   * <code>DELETE_DEVICE = 7;</code>
    */
-  public static final int CONFIRM_NEW_DEVICE_VALUE = 7;
+  public static final int DELETE_DEVICE_VALUE = 7;
   /**
-   * <code>DELETE_DEVICE = 8;</code>
+   * <code>NOT_JOINED = 8;</code>
    */
-  public static final int DELETE_DEVICE_VALUE = 8;
-  /**
-   * <code>NOT_JOINED = 9;</code>
-   */
-  public static final int NOT_JOINED_VALUE = 9;
+  public static final int NOT_JOINED_VALUE = 8;
 
 
   public final int getNumber() {
@@ -140,9 +132,8 @@ public enum MessageType
       case 4: return JOIN;
       case 5: return LINK;
       case 6: return NEW_DEVICE;
-      case 7: return CONFIRM_NEW_DEVICE;
-      case 8: return DELETE_DEVICE;
-      case 9: return NOT_JOINED;
+      case 7: return DELETE_DEVICE;
+      case 8: return NOT_JOINED;
       default: return null;
     }
   }

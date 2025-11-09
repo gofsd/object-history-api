@@ -2354,9 +2354,8 @@ proto.auth.MessageType = {
   JOIN: 4,
   LINK: 5,
   NEW_DEVICE: 6,
-  CONFIRM_NEW_DEVICE: 7,
-  DELETE_DEVICE: 8,
-  NOT_JOINED: 9
+  DELETE_DEVICE: 7,
+  NOT_JOINED: 8
 };
 
 goog.object.extend(exports, proto.auth);
