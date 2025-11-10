@@ -6,35 +6,23 @@
 package cmd;
 
 /**
- * <pre>
- * CommandType describes how the command should be handled.
- * </pre>
- *
- * Protobuf enum {@code cmd.CommandType}
+ * Protobuf enum {@code cmd.GroupType}
  */
 @com.google.protobuf.Generated
-public enum CommandType
+public enum GroupType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>COMMAND_TYPE_UNKNOWN = 0;</code>
+   * <code>PRIVATE = 0;</code>
    */
-  COMMAND_TYPE_UNKNOWN(0),
+  PRIVATE(0),
   /**
-   * <code>COMMAND_TYPE_SINGLE = 1;</code>
+   * <code>PUBLIC = 1;</code>
    */
-  COMMAND_TYPE_SINGLE(1),
+  PUBLIC(1),
   /**
-   * <code>COMMAND_TYPE_MULTIPLE = 2;</code>
+   * <code>CONTACT = 2;</code>
    */
-  COMMAND_TYPE_MULTIPLE(2),
-  /**
-   * <code>COMMAND_TYPE_SHOW = 3;</code>
-   */
-  COMMAND_TYPE_SHOW(3),
-  /**
-   * <code>COMMAND_TYPE_WAIT = 4;</code>
-   */
-  COMMAND_TYPE_WAIT(4),
+  CONTACT(2),
   UNRECOGNIZED(-1),
   ;
 
@@ -45,28 +33,20 @@ public enum CommandType
       /* minor= */ 33,
       /* patch= */ 0,
       /* suffix= */ "",
-      "CommandType");
+      "GroupType");
   }
   /**
-   * <code>COMMAND_TYPE_UNKNOWN = 0;</code>
+   * <code>PRIVATE = 0;</code>
    */
-  public static final int COMMAND_TYPE_UNKNOWN_VALUE = 0;
+  public static final int PRIVATE_VALUE = 0;
   /**
-   * <code>COMMAND_TYPE_SINGLE = 1;</code>
+   * <code>PUBLIC = 1;</code>
    */
-  public static final int COMMAND_TYPE_SINGLE_VALUE = 1;
+  public static final int PUBLIC_VALUE = 1;
   /**
-   * <code>COMMAND_TYPE_MULTIPLE = 2;</code>
+   * <code>CONTACT = 2;</code>
    */
-  public static final int COMMAND_TYPE_MULTIPLE_VALUE = 2;
-  /**
-   * <code>COMMAND_TYPE_SHOW = 3;</code>
-   */
-  public static final int COMMAND_TYPE_SHOW_VALUE = 3;
-  /**
-   * <code>COMMAND_TYPE_WAIT = 4;</code>
-   */
-  public static final int COMMAND_TYPE_WAIT_VALUE = 4;
+  public static final int CONTACT_VALUE = 2;
 
 
   public final int getNumber() {
@@ -83,7 +63,7 @@ public enum CommandType
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static CommandType valueOf(int value) {
+  public static GroupType valueOf(int value) {
     return forNumber(value);
   }
 
@@ -91,26 +71,24 @@ public enum CommandType
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static CommandType forNumber(int value) {
+  public static GroupType forNumber(int value) {
     switch (value) {
-      case 0: return COMMAND_TYPE_UNKNOWN;
-      case 1: return COMMAND_TYPE_SINGLE;
-      case 2: return COMMAND_TYPE_MULTIPLE;
-      case 3: return COMMAND_TYPE_SHOW;
-      case 4: return COMMAND_TYPE_WAIT;
+      case 0: return PRIVATE;
+      case 1: return PUBLIC;
+      case 2: return CONTACT;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<CommandType>
+  public static com.google.protobuf.Internal.EnumLiteMap<GroupType>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      CommandType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<CommandType>() {
-          public CommandType findValueByNumber(int number) {
-            return CommandType.forNumber(number);
+      GroupType> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<GroupType>() {
+          public GroupType findValueByNumber(int number) {
+            return GroupType.forNumber(number);
           }
         };
 
@@ -128,12 +106,12 @@ public enum CommandType
   }
   public static com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return cmd.Cmd.getDescriptor().getEnumTypes().get(3);
+    return cmd.Cmd.getDescriptor().getEnumTypes().get(2);
   }
 
-  private static final CommandType[] VALUES = values();
+  private static final GroupType[] VALUES = values();
 
-  public static CommandType valueOf(
+  public static GroupType valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -147,10 +125,10 @@ public enum CommandType
 
   private final int value;
 
-  private CommandType(int value) {
+  private GroupType(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:cmd.CommandType)
+  // @@protoc_insertion_point(enum_scope:cmd.GroupType)
 }
 

@@ -77,6 +77,39 @@ private static final long serialVersionUID = 0L;
     return result == null ? cmd.ExecutionStatus.UNRECOGNIZED : result;
   }
 
+  public static final int EXECUTOR_ID_FIELD_NUMBER = 3;
+  private long executorId_ = 0L;
+  /**
+   * <code>uint64 executor_id = 3;</code>
+   * @return The executorId.
+   */
+  @java.lang.Override
+  public long getExecutorId() {
+    return executorId_;
+  }
+
+  public static final int OWNER_ID_FIELD_NUMBER = 4;
+  private long ownerId_ = 0L;
+  /**
+   * <code>uint64 owner_id = 4;</code>
+   * @return The ownerId.
+   */
+  @java.lang.Override
+  public long getOwnerId() {
+    return ownerId_;
+  }
+
+  public static final int REQUEST_ID_FIELD_NUMBER = 5;
+  private long requestId_ = 0L;
+  /**
+   * <code>uint64 request_id = 5;</code>
+   * @return The requestId.
+   */
+  @java.lang.Override
+  public long getRequestId() {
+    return requestId_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -97,6 +130,15 @@ private static final long serialVersionUID = 0L;
     if (queueStatus_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       output.writeEnum(2, queueStatus_);
     }
+    if (executorId_ != 0L) {
+      output.writeUInt64(3, executorId_);
+    }
+    if (ownerId_ != 0L) {
+      output.writeUInt64(4, ownerId_);
+    }
+    if (requestId_ != 0L) {
+      output.writeUInt64(5, requestId_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -113,6 +155,18 @@ private static final long serialVersionUID = 0L;
     if (queueStatus_ != cmd.ExecutionStatus.EXECUTION_STATUS_UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, queueStatus_);
+    }
+    if (executorId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(3, executorId_);
+    }
+    if (ownerId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(4, ownerId_);
+    }
+    if (requestId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(5, requestId_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -132,6 +186,12 @@ private static final long serialVersionUID = 0L;
     if (getExecutionId()
         != other.getExecutionId()) return false;
     if (queueStatus_ != other.queueStatus_) return false;
+    if (getExecutorId()
+        != other.getExecutorId()) return false;
+    if (getOwnerId()
+        != other.getOwnerId()) return false;
+    if (getRequestId()
+        != other.getRequestId()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -148,6 +208,15 @@ private static final long serialVersionUID = 0L;
         getExecutionId());
     hash = (37 * hash) + QUEUE_STATUS_FIELD_NUMBER;
     hash = (53 * hash) + queueStatus_;
+    hash = (37 * hash) + EXECUTOR_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getExecutorId());
+    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getOwnerId());
+    hash = (37 * hash) + REQUEST_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getRequestId());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -285,6 +354,9 @@ private static final long serialVersionUID = 0L;
       bitField0_ = 0;
       executionId_ = 0L;
       queueStatus_ = 0;
+      executorId_ = 0L;
+      ownerId_ = 0L;
+      requestId_ = 0L;
       return this;
     }
 
@@ -324,6 +396,15 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.queueStatus_ = queueStatus_;
       }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.executorId_ = executorId_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.ownerId_ = ownerId_;
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.requestId_ = requestId_;
+      }
     }
 
     @java.lang.Override
@@ -343,6 +424,15 @@ private static final long serialVersionUID = 0L;
       }
       if (other.queueStatus_ != 0) {
         setQueueStatusValue(other.getQueueStatusValue());
+      }
+      if (other.getExecutorId() != 0L) {
+        setExecutorId(other.getExecutorId());
+      }
+      if (other.getOwnerId() != 0L) {
+        setOwnerId(other.getOwnerId());
+      }
+      if (other.getRequestId() != 0L) {
+        setRequestId(other.getRequestId());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -380,6 +470,21 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000002;
               break;
             } // case 16
+            case 24: {
+              executorId_ = input.readUInt64();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 24
+            case 32: {
+              ownerId_ = input.readUInt64();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
+            case 40: {
+              requestId_ = input.readUInt64();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 40
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -476,6 +581,102 @@ private static final long serialVersionUID = 0L;
     public Builder clearQueueStatus() {
       bitField0_ = (bitField0_ & ~0x00000002);
       queueStatus_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long executorId_ ;
+    /**
+     * <code>uint64 executor_id = 3;</code>
+     * @return The executorId.
+     */
+    @java.lang.Override
+    public long getExecutorId() {
+      return executorId_;
+    }
+    /**
+     * <code>uint64 executor_id = 3;</code>
+     * @param value The executorId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExecutorId(long value) {
+
+      executorId_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 executor_id = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExecutorId() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      executorId_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long ownerId_ ;
+    /**
+     * <code>uint64 owner_id = 4;</code>
+     * @return The ownerId.
+     */
+    @java.lang.Override
+    public long getOwnerId() {
+      return ownerId_;
+    }
+    /**
+     * <code>uint64 owner_id = 4;</code>
+     * @param value The ownerId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOwnerId(long value) {
+
+      ownerId_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 owner_id = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOwnerId() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      ownerId_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long requestId_ ;
+    /**
+     * <code>uint64 request_id = 5;</code>
+     * @return The requestId.
+     */
+    @java.lang.Override
+    public long getRequestId() {
+      return requestId_;
+    }
+    /**
+     * <code>uint64 request_id = 5;</code>
+     * @param value The requestId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setRequestId(long value) {
+
+      requestId_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 request_id = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearRequestId() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      requestId_ = 0L;
       onChanged();
       return this;
     }

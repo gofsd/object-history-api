@@ -34,6 +34,7 @@ private static final long serialVersionUID = 0L;
   private Group() {
     name_ = "";
     description_ = "";
+    type_ = 0;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -138,6 +139,24 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int TYPE_FIELD_NUMBER = 4;
+  private int type_ = 0;
+  /**
+   * <code>.cmd.GroupType type = 4;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  @java.lang.Override public int getTypeValue() {
+    return type_;
+  }
+  /**
+   * <code>.cmd.GroupType type = 4;</code>
+   * @return The type.
+   */
+  @java.lang.Override public cmd.GroupType getType() {
+    cmd.GroupType result = cmd.GroupType.forNumber(type_);
+    return result == null ? cmd.GroupType.UNRECOGNIZED : result;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -161,6 +180,9 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessage.writeString(output, 3, description_);
     }
+    if (type_ != cmd.GroupType.PRIVATE.getNumber()) {
+      output.writeEnum(4, type_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -179,6 +201,10 @@ private static final long serialVersionUID = 0L;
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessage.computeStringSize(3, description_);
+    }
+    if (type_ != cmd.GroupType.PRIVATE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(4, type_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -201,6 +227,7 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName())) return false;
     if (!getDescription()
         .equals(other.getDescription())) return false;
+    if (type_ != other.type_) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -219,6 +246,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + type_;
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -357,6 +386,7 @@ private static final long serialVersionUID = 0L;
       groupId_ = 0L;
       name_ = "";
       description_ = "";
+      type_ = 0;
       return this;
     }
 
@@ -399,6 +429,9 @@ private static final long serialVersionUID = 0L;
       if (((from_bitField0_ & 0x00000004) != 0)) {
         result.description_ = description_;
       }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.type_ = type_;
+      }
     }
 
     @java.lang.Override
@@ -425,6 +458,9 @@ private static final long serialVersionUID = 0L;
         description_ = other.description_;
         bitField0_ |= 0x00000004;
         onChanged();
+      }
+      if (other.type_ != 0) {
+        setTypeValue(other.getTypeValue());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -467,6 +503,11 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000004;
               break;
             } // case 26
+            case 32: {
+              type_ = input.readEnum();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -656,6 +697,57 @@ private static final long serialVersionUID = 0L;
       checkByteStringIsUtf8(value);
       description_ = value;
       bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+
+    private int type_ = 0;
+    /**
+     * <code>.cmd.GroupType type = 4;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    @java.lang.Override public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.cmd.GroupType type = 4;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeValue(int value) {
+      type_ = value;
+      bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.cmd.GroupType type = 4;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public cmd.GroupType getType() {
+      cmd.GroupType result = cmd.GroupType.forNumber(type_);
+      return result == null ? cmd.GroupType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.cmd.GroupType type = 4;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(cmd.GroupType value) {
+      if (value == null) { throw new NullPointerException(); }
+      bitField0_ |= 0x00000008;
+      type_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.cmd.GroupType type = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      bitField0_ = (bitField0_ & ~0x00000008);
+      type_ = 0;
       onChanged();
       return this;
     }

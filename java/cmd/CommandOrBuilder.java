@@ -17,84 +17,90 @@ public interface CommandOrBuilder extends
   long getId();
 
   /**
-   * <code>string name = 2;</code>
+   * <code>uint64 owner_id = 2;</code>
+   * @return The ownerId.
+   */
+  long getOwnerId();
+
+  /**
+   * <code>string name = 3;</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
-   * <code>string name = 2;</code>
+   * <code>string name = 3;</code>
    * @return The bytes for name.
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
-   * <code>string description = 3;</code>
+   * <code>string description = 4;</code>
    * @return The description.
    */
   java.lang.String getDescription();
   /**
-   * <code>string description = 3;</code>
+   * <code>string description = 4;</code>
    * @return The bytes for description.
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
 
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   java.util.List<cmd.ParameterField> 
       getFieldsList();
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   cmd.ParameterField getFields(int index);
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   int getFieldsCount();
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   java.util.List<? extends cmd.ParameterFieldOrBuilder> 
       getFieldsOrBuilderList();
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
       int index);
 
   /**
-   * <code>string device = 5;</code>
+   * <code>string device = 6;</code>
    * @return The device.
    */
   java.lang.String getDevice();
   /**
-   * <code>string device = 5;</code>
+   * <code>string device = 6;</code>
    * @return The bytes for device.
    */
   com.google.protobuf.ByteString
       getDeviceBytes();
 
   /**
-   * <code>string label = 6;</code>
+   * <code>string label = 7;</code>
    * @return The label.
    */
   java.lang.String getLabel();
   /**
-   * <code>string label = 6;</code>
+   * <code>string label = 7;</code>
    * @return The bytes for label.
    */
   com.google.protobuf.ByteString
       getLabelBytes();
 
   /**
-   * <code>.cmd.CommandType type = 7;</code>
+   * <code>.cmd.CommandType type = 8;</code>
    * @return The enum numeric value on the wire for type.
    */
   int getTypeValue();
   /**
-   * <code>.cmd.CommandType type = 7;</code>
+   * <code>.cmd.CommandType type = 8;</code>
    * @return The type.
    */
   cmd.CommandType getType();

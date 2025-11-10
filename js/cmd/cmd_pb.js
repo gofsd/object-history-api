@@ -40,6 +40,7 @@ goog.exportSymbol('proto.cmd.ExecuteResponse', null, global);
 goog.exportSymbol('proto.cmd.ExecutionStatus', null, global);
 goog.exportSymbol('proto.cmd.Group', null, global);
 goog.exportSymbol('proto.cmd.GroupRequest', null, global);
+goog.exportSymbol('proto.cmd.GroupType', null, global);
 goog.exportSymbol('proto.cmd.GroupsResponse', null, global);
 goog.exportSymbol('proto.cmd.Object', null, global);
 goog.exportSymbol('proto.cmd.ParameterField', null, global);
@@ -630,7 +631,8 @@ proto.cmd.Group.toObject = function(includeInstance, msg) {
   var f, obj = {
     groupId: jspb.Message.getFieldWithDefault(msg, 1, 0),
     name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 3, "")
+    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    type: jspb.Message.getFieldWithDefault(msg, 4, 0)
   };
 
   if (includeInstance) {
@@ -679,6 +681,10 @@ proto.cmd.Group.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setDescription(value);
       break;
+    case 4:
+      var value = /** @type {!proto.cmd.GroupType} */ (reader.readEnum());
+      msg.setType(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -726,6 +732,13 @@ proto.cmd.Group.serializeBinaryToWriter = function(message, writer) {
   if (f.length > 0) {
     writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getType();
+  if (f !== 0.0) {
+    writer.writeEnum(
+      4,
       f
     );
   }
@@ -783,6 +796,24 @@ proto.cmd.Group.prototype.getDescription = function() {
  */
 proto.cmd.Group.prototype.setDescription = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional GroupType type = 4;
+ * @return {!proto.cmd.GroupType}
+ */
+proto.cmd.Group.prototype.getType = function() {
+  return /** @type {!proto.cmd.GroupType} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {!proto.cmd.GroupType} value
+ * @return {!proto.cmd.Group} returns this
+ */
+proto.cmd.Group.prototype.setType = function(value) {
+  return jspb.Message.setProto3EnumField(this, 4, value);
 };
 
 
@@ -2046,7 +2077,7 @@ proto.cmd.ParameterField.prototype.setPlaceholder = function(value) {
  * @private {!Array<number>}
  * @const
  */
-proto.cmd.Command.repeatedFields_ = [4];
+proto.cmd.Command.repeatedFields_ = [5];
 
 
 
@@ -2080,13 +2111,14 @@ proto.cmd.Command.prototype.toObject = function(opt_includeInstance) {
 proto.cmd.Command.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    ownerId: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 4, ""),
     fieldsList: jspb.Message.toObjectList(msg.getFieldsList(),
     proto.cmd.ParameterField.toObject, includeInstance),
-    device: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    label: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    type: jspb.Message.getFieldWithDefault(msg, 7, 0)
+    device: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    label: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    type: jspb.Message.getFieldWithDefault(msg, 8, 0)
   };
 
   if (includeInstance) {
@@ -2128,27 +2160,31 @@ proto.cmd.Command.deserializeBinaryFromReader = function(msg, reader) {
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setOwnerId(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setDescription(value);
+      msg.setName(value);
       break;
     case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDescription(value);
+      break;
+    case 5:
       var value = new proto.cmd.ParameterField;
       reader.readMessage(value,proto.cmd.ParameterField.deserializeBinaryFromReader);
       msg.addFields(value);
       break;
-    case 5:
+    case 6:
       var value = /** @type {string} */ (reader.readString());
       msg.setDevice(value);
       break;
-    case 6:
+    case 7:
       var value = /** @type {string} */ (reader.readString());
       msg.setLabel(value);
       break;
-    case 7:
+    case 8:
       var value = /** @type {!proto.cmd.CommandType} */ (reader.readEnum());
       msg.setType(value);
       break;
@@ -2188,24 +2224,31 @@ proto.cmd.Command.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getOwnerId();
+  if (f !== 0) {
+    writer.writeUint64(
       2,
       f
     );
   }
-  f = message.getDescription();
+  f = message.getName();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
   f = message.getFieldsList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      4,
+      5,
       f,
       proto.cmd.ParameterField.serializeBinaryToWriter
     );
@@ -2213,21 +2256,21 @@ proto.cmd.Command.serializeBinaryToWriter = function(message, writer) {
   f = message.getDevice();
   if (f.length > 0) {
     writer.writeString(
-      5,
+      6,
       f
     );
   }
   f = message.getLabel();
   if (f.length > 0) {
     writer.writeString(
-      6,
+      7,
       f
     );
   }
   f = message.getType();
   if (f !== 0.0) {
     writer.writeEnum(
-      7,
+      8,
       f
     );
   }
@@ -2253,28 +2296,28 @@ proto.cmd.Command.prototype.setId = function(value) {
 
 
 /**
- * optional string name = 2;
+ * optional uint64 owner_id = 2;
+ * @return {number}
+ */
+proto.cmd.Command.prototype.getOwnerId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.cmd.Command} returns this
+ */
+proto.cmd.Command.prototype.setOwnerId = function(value) {
+  return jspb.Message.setProto3IntField(this, 2, value);
+};
+
+
+/**
+ * optional string name = 3;
  * @return {string}
  */
 proto.cmd.Command.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.cmd.Command} returns this
- */
-proto.cmd.Command.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
-};
-
-
-/**
- * optional string description = 3;
- * @return {string}
- */
-proto.cmd.Command.prototype.getDescription = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -2283,18 +2326,36 @@ proto.cmd.Command.prototype.getDescription = function() {
  * @param {string} value
  * @return {!proto.cmd.Command} returns this
  */
-proto.cmd.Command.prototype.setDescription = function(value) {
+proto.cmd.Command.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * repeated ParameterField fields = 4;
+ * optional string description = 4;
+ * @return {string}
+ */
+proto.cmd.Command.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cmd.Command} returns this
+ */
+proto.cmd.Command.prototype.setDescription = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * repeated ParameterField fields = 5;
  * @return {!Array<!proto.cmd.ParameterField>}
  */
 proto.cmd.Command.prototype.getFieldsList = function() {
   return /** @type{!Array<!proto.cmd.ParameterField>} */ (
-    jspb.Message.getRepeatedWrapperField(this, proto.cmd.ParameterField, 4));
+    jspb.Message.getRepeatedWrapperField(this, proto.cmd.ParameterField, 5));
 };
 
 
@@ -2303,7 +2364,7 @@ proto.cmd.Command.prototype.getFieldsList = function() {
  * @return {!proto.cmd.Command} returns this
 */
 proto.cmd.Command.prototype.setFieldsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 4, value);
+  return jspb.Message.setRepeatedWrapperField(this, 5, value);
 };
 
 
@@ -2313,7 +2374,7 @@ proto.cmd.Command.prototype.setFieldsList = function(value) {
  * @return {!proto.cmd.ParameterField}
  */
 proto.cmd.Command.prototype.addFields = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 4, opt_value, proto.cmd.ParameterField, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 5, opt_value, proto.cmd.ParameterField, opt_index);
 };
 
 
@@ -2327,28 +2388,10 @@ proto.cmd.Command.prototype.clearFieldsList = function() {
 
 
 /**
- * optional string device = 5;
+ * optional string device = 6;
  * @return {string}
  */
 proto.cmd.Command.prototype.getDevice = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
-};
-
-
-/**
- * @param {string} value
- * @return {!proto.cmd.Command} returns this
- */
-proto.cmd.Command.prototype.setDevice = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
-};
-
-
-/**
- * optional string label = 6;
- * @return {string}
- */
-proto.cmd.Command.prototype.getLabel = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
@@ -2357,17 +2400,35 @@ proto.cmd.Command.prototype.getLabel = function() {
  * @param {string} value
  * @return {!proto.cmd.Command} returns this
  */
-proto.cmd.Command.prototype.setLabel = function(value) {
+proto.cmd.Command.prototype.setDevice = function(value) {
   return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * optional CommandType type = 7;
+ * optional string label = 7;
+ * @return {string}
+ */
+proto.cmd.Command.prototype.getLabel = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.cmd.Command} returns this
+ */
+proto.cmd.Command.prototype.setLabel = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional CommandType type = 8;
  * @return {!proto.cmd.CommandType}
  */
 proto.cmd.Command.prototype.getType = function() {
-  return /** @type {!proto.cmd.CommandType} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+  return /** @type {!proto.cmd.CommandType} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
@@ -2376,7 +2437,7 @@ proto.cmd.Command.prototype.getType = function() {
  * @return {!proto.cmd.Command} returns this
  */
 proto.cmd.Command.prototype.setType = function(value) {
-  return jspb.Message.setProto3EnumField(this, 7, value);
+  return jspb.Message.setProto3EnumField(this, 8, value);
 };
 
 
@@ -3146,7 +3207,10 @@ proto.cmd.ExecuteResponse.prototype.toObject = function(opt_includeInstance) {
 proto.cmd.ExecuteResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
     executionId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    queueStatus: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    queueStatus: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    executorId: jspb.Message.getFieldWithDefault(msg, 3, 0),
+    ownerId: jspb.Message.getFieldWithDefault(msg, 4, 0),
+    requestId: jspb.Message.getFieldWithDefault(msg, 5, 0)
   };
 
   if (includeInstance) {
@@ -3191,6 +3255,18 @@ proto.cmd.ExecuteResponse.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {!proto.cmd.ExecutionStatus} */ (reader.readEnum());
       msg.setQueueStatus(value);
       break;
+    case 3:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setExecutorId(value);
+      break;
+    case 4:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setOwnerId(value);
+      break;
+    case 5:
+      var value = /** @type {number} */ (reader.readUint64());
+      msg.setRequestId(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -3234,6 +3310,27 @@ proto.cmd.ExecuteResponse.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getExecutorId();
+  if (f !== 0) {
+    writer.writeUint64(
+      3,
+      f
+    );
+  }
+  f = message.getOwnerId();
+  if (f !== 0) {
+    writer.writeUint64(
+      4,
+      f
+    );
+  }
+  f = message.getRequestId();
+  if (f !== 0) {
+    writer.writeUint64(
+      5,
+      f
+    );
+  }
 };
 
 
@@ -3270,6 +3367,60 @@ proto.cmd.ExecuteResponse.prototype.getQueueStatus = function() {
  */
 proto.cmd.ExecuteResponse.prototype.setQueueStatus = function(value) {
   return jspb.Message.setProto3EnumField(this, 2, value);
+};
+
+
+/**
+ * optional uint64 executor_id = 3;
+ * @return {number}
+ */
+proto.cmd.ExecuteResponse.prototype.getExecutorId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.cmd.ExecuteResponse} returns this
+ */
+proto.cmd.ExecuteResponse.prototype.setExecutorId = function(value) {
+  return jspb.Message.setProto3IntField(this, 3, value);
+};
+
+
+/**
+ * optional uint64 owner_id = 4;
+ * @return {number}
+ */
+proto.cmd.ExecuteResponse.prototype.getOwnerId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.cmd.ExecuteResponse} returns this
+ */
+proto.cmd.ExecuteResponse.prototype.setOwnerId = function(value) {
+  return jspb.Message.setProto3IntField(this, 4, value);
+};
+
+
+/**
+ * optional uint64 request_id = 5;
+ * @return {number}
+ */
+proto.cmd.ExecuteResponse.prototype.getRequestId = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.cmd.ExecuteResponse} returns this
+ */
+proto.cmd.ExecuteResponse.prototype.setRequestId = function(value) {
+  return jspb.Message.setProto3IntField(this, 5, value);
 };
 
 
@@ -5322,6 +5473,15 @@ proto.cmd.UserRole = {
   USER_ROLE_VIEWER: 0,
   USER_ROLE_EXECUTOR: 1,
   USER_ROLE_ADMIN: 2
+};
+
+/**
+ * @enum {number}
+ */
+proto.cmd.GroupType = {
+  PRIVATE: 0,
+  PUBLIC: 1,
+  CONTACT: 2
 };
 
 /**

@@ -39,4 +39,15 @@ public interface GroupOrBuilder extends
    */
   com.google.protobuf.ByteString
       getDescriptionBytes();
+
+  /**
+   * <code>.cmd.GroupType type = 4;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  int getTypeValue();
+  /**
+   * <code>.cmd.GroupType type = 4;</code>
+   * @return The type.
+   */
+  cmd.GroupType getType();
 }

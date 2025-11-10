@@ -31,6 +31,12 @@ enum UserRole {
   USER_ROLE_ADMIN = 2;
 }
 
+enum GroupType {
+  PRIVATE = 0;
+  PUBLIC = 1;
+  CONTACT = 2;
+}
+
 // ------------- CORE MESSAGES -------------
 
 // Group represents a group of users.
@@ -38,6 +44,7 @@ message Group {
   uint64 group_id = 1;
   string name = 2;
   string description = 3;
+  GroupType type = 4;
 }
 
 // GroupsResponse is a wrapper for a list of groups.
@@ -94,12 +101,13 @@ enum CommandType {
 // Command represents a command template.
 message Command {
   uint64 id = 1;
-  string name = 2;
-  string description = 3;
-  repeated ParameterField fields = 4;
-  string device = 5;
-  string label = 6;
-  CommandType type = 7;
+  uint64 owner_id = 2;
+  string name = 3;
+  string description = 4;
+  repeated ParameterField fields = 5;
+  string device = 6;
+  string label = 7;
+  CommandType type = 8;
 }
 
 // AddCommandRequest is used to add a new command template.
@@ -133,6 +141,9 @@ message ExecuteRequest {
 message ExecuteResponse {
   uint64 execution_id = 1;
   ExecutionStatus queue_status = 2;
+  uint64 executor_id = 3;
+  uint64 owner_id = 4;
+  uint64 request_id = 5;
 }
 
 // CancelRequest is used to cancel a command execution.

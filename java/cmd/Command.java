@@ -64,11 +64,22 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int NAME_FIELD_NUMBER = 2;
+  public static final int OWNER_ID_FIELD_NUMBER = 2;
+  private long ownerId_ = 0L;
+  /**
+   * <code>uint64 owner_id = 2;</code>
+   * @return The ownerId.
+   */
+  @java.lang.Override
+  public long getOwnerId() {
+    return ownerId_;
+  }
+
+  public static final int NAME_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
   private volatile java.lang.Object name_ = "";
   /**
-   * <code>string name = 2;</code>
+   * <code>string name = 3;</code>
    * @return The name.
    */
   @java.lang.Override
@@ -85,7 +96,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string name = 2;</code>
+   * <code>string name = 3;</code>
    * @return The bytes for name.
    */
   @java.lang.Override
@@ -103,11 +114,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int DESCRIPTION_FIELD_NUMBER = 3;
+  public static final int DESCRIPTION_FIELD_NUMBER = 4;
   @SuppressWarnings("serial")
   private volatile java.lang.Object description_ = "";
   /**
-   * <code>string description = 3;</code>
+   * <code>string description = 4;</code>
    * @return The description.
    */
   @java.lang.Override
@@ -124,7 +135,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string description = 3;</code>
+   * <code>string description = 4;</code>
    * @return The bytes for description.
    */
   @java.lang.Override
@@ -142,18 +153,18 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int FIELDS_FIELD_NUMBER = 4;
+  public static final int FIELDS_FIELD_NUMBER = 5;
   @SuppressWarnings("serial")
   private java.util.List<cmd.ParameterField> fields_;
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   @java.lang.Override
   public java.util.List<cmd.ParameterField> getFieldsList() {
     return fields_;
   }
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   @java.lang.Override
   public java.util.List<? extends cmd.ParameterFieldOrBuilder> 
@@ -161,21 +172,21 @@ private static final long serialVersionUID = 0L;
     return fields_;
   }
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   @java.lang.Override
   public int getFieldsCount() {
     return fields_.size();
   }
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   @java.lang.Override
   public cmd.ParameterField getFields(int index) {
     return fields_.get(index);
   }
   /**
-   * <code>repeated .cmd.ParameterField fields = 4;</code>
+   * <code>repeated .cmd.ParameterField fields = 5;</code>
    */
   @java.lang.Override
   public cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
@@ -183,11 +194,11 @@ private static final long serialVersionUID = 0L;
     return fields_.get(index);
   }
 
-  public static final int DEVICE_FIELD_NUMBER = 5;
+  public static final int DEVICE_FIELD_NUMBER = 6;
   @SuppressWarnings("serial")
   private volatile java.lang.Object device_ = "";
   /**
-   * <code>string device = 5;</code>
+   * <code>string device = 6;</code>
    * @return The device.
    */
   @java.lang.Override
@@ -204,7 +215,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string device = 5;</code>
+   * <code>string device = 6;</code>
    * @return The bytes for device.
    */
   @java.lang.Override
@@ -222,11 +233,11 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int LABEL_FIELD_NUMBER = 6;
+  public static final int LABEL_FIELD_NUMBER = 7;
   @SuppressWarnings("serial")
   private volatile java.lang.Object label_ = "";
   /**
-   * <code>string label = 6;</code>
+   * <code>string label = 7;</code>
    * @return The label.
    */
   @java.lang.Override
@@ -243,7 +254,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string label = 6;</code>
+   * <code>string label = 7;</code>
    * @return The bytes for label.
    */
   @java.lang.Override
@@ -261,17 +272,17 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TYPE_FIELD_NUMBER = 7;
+  public static final int TYPE_FIELD_NUMBER = 8;
   private int type_ = 0;
   /**
-   * <code>.cmd.CommandType type = 7;</code>
+   * <code>.cmd.CommandType type = 8;</code>
    * @return The enum numeric value on the wire for type.
    */
   @java.lang.Override public int getTypeValue() {
     return type_;
   }
   /**
-   * <code>.cmd.CommandType type = 7;</code>
+   * <code>.cmd.CommandType type = 8;</code>
    * @return The type.
    */
   @java.lang.Override public cmd.CommandType getType() {
@@ -296,23 +307,26 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0L) {
       output.writeUInt64(1, id_);
     }
+    if (ownerId_ != 0L) {
+      output.writeUInt64(2, ownerId_);
+    }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 2, name_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 3, name_);
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 3, description_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 4, description_);
     }
     for (int i = 0; i < fields_.size(); i++) {
-      output.writeMessage(4, fields_.get(i));
+      output.writeMessage(5, fields_.get(i));
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(device_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 5, device_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 6, device_);
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(label_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 6, label_);
+      com.google.protobuf.GeneratedMessage.writeString(output, 7, label_);
     }
     if (type_ != cmd.CommandType.COMMAND_TYPE_UNKNOWN.getNumber()) {
-      output.writeEnum(7, type_);
+      output.writeEnum(8, type_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -327,25 +341,29 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(1, id_);
     }
+    if (ownerId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(2, ownerId_);
+    }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(name_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(2, name_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, name_);
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(3, description_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(4, description_);
     }
     for (int i = 0; i < fields_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, fields_.get(i));
+        .computeMessageSize(5, fields_.get(i));
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(device_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(5, device_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(6, device_);
     }
     if (!com.google.protobuf.GeneratedMessage.isStringEmpty(label_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(6, label_);
+      size += com.google.protobuf.GeneratedMessage.computeStringSize(7, label_);
     }
     if (type_ != cmd.CommandType.COMMAND_TYPE_UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(7, type_);
+        .computeEnumSize(8, type_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -364,6 +382,8 @@ private static final long serialVersionUID = 0L;
 
     if (getId()
         != other.getId()) return false;
+    if (getOwnerId()
+        != other.getOwnerId()) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (!getDescription()
@@ -389,6 +409,9 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getId());
+    hash = (37 * hash) + OWNER_ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getOwnerId());
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
@@ -539,6 +562,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       bitField0_ = 0;
       id_ = 0L;
+      ownerId_ = 0L;
       name_ = "";
       description_ = "";
       if (fieldsBuilder_ == null) {
@@ -547,7 +571,7 @@ private static final long serialVersionUID = 0L;
         fields_ = null;
         fieldsBuilder_.clear();
       }
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000010);
       device_ = "";
       label_ = "";
       type_ = 0;
@@ -585,9 +609,9 @@ private static final long serialVersionUID = 0L;
 
     private void buildPartialRepeatedFields(cmd.Command result) {
       if (fieldsBuilder_ == null) {
-        if (((bitField0_ & 0x00000008) != 0)) {
+        if (((bitField0_ & 0x00000010) != 0)) {
           fields_ = java.util.Collections.unmodifiableList(fields_);
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.fields_ = fields_;
       } else {
@@ -601,18 +625,21 @@ private static final long serialVersionUID = 0L;
         result.id_ = id_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.name_ = name_;
+        result.ownerId_ = ownerId_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.name_ = name_;
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
         result.description_ = description_;
       }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
+      if (((from_bitField0_ & 0x00000020) != 0)) {
         result.device_ = device_;
       }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
+      if (((from_bitField0_ & 0x00000040) != 0)) {
         result.label_ = label_;
       }
-      if (((from_bitField0_ & 0x00000040) != 0)) {
+      if (((from_bitField0_ & 0x00000080) != 0)) {
         result.type_ = type_;
       }
     }
@@ -632,21 +659,24 @@ private static final long serialVersionUID = 0L;
       if (other.getId() != 0L) {
         setId(other.getId());
       }
+      if (other.getOwnerId() != 0L) {
+        setOwnerId(other.getOwnerId());
+      }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000004;
         onChanged();
       }
       if (!other.getDescription().isEmpty()) {
         description_ = other.description_;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         onChanged();
       }
       if (fieldsBuilder_ == null) {
         if (!other.fields_.isEmpty()) {
           if (fields_.isEmpty()) {
             fields_ = other.fields_;
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           } else {
             ensureFieldsIsMutable();
             fields_.addAll(other.fields_);
@@ -659,7 +689,7 @@ private static final long serialVersionUID = 0L;
             fieldsBuilder_.dispose();
             fieldsBuilder_ = null;
             fields_ = other.fields_;
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
             fieldsBuilder_ = 
               com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                  internalGetFieldsFieldBuilder() : null;
@@ -670,12 +700,12 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getDevice().isEmpty()) {
         device_ = other.device_;
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         onChanged();
       }
       if (!other.getLabel().isEmpty()) {
         label_ = other.label_;
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
       }
       if (other.type_ != 0) {
@@ -712,17 +742,22 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000001;
               break;
             } // case 8
-            case 18: {
-              name_ = input.readStringRequireUtf8();
+            case 16: {
+              ownerId_ = input.readUInt64();
               bitField0_ |= 0x00000002;
               break;
-            } // case 18
+            } // case 16
             case 26: {
-              description_ = input.readStringRequireUtf8();
+              name_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000004;
               break;
             } // case 26
             case 34: {
+              description_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 42: {
               cmd.ParameterField m =
                   input.readMessage(
                       cmd.ParameterField.parser(),
@@ -734,22 +769,22 @@ private static final long serialVersionUID = 0L;
                 fieldsBuilder_.addMessage(m);
               }
               break;
-            } // case 34
-            case 42: {
-              device_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000010;
-              break;
             } // case 42
             case 50: {
-              label_ = input.readStringRequireUtf8();
+              device_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000020;
               break;
             } // case 50
-            case 56: {
-              type_ = input.readEnum();
+            case 58: {
+              label_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000040;
               break;
-            } // case 56
+            } // case 58
+            case 64: {
+              type_ = input.readEnum();
+              bitField0_ |= 0x00000080;
+              break;
+            } // case 64
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -799,9 +834,41 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private long ownerId_ ;
+    /**
+     * <code>uint64 owner_id = 2;</code>
+     * @return The ownerId.
+     */
+    @java.lang.Override
+    public long getOwnerId() {
+      return ownerId_;
+    }
+    /**
+     * <code>uint64 owner_id = 2;</code>
+     * @param value The ownerId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOwnerId(long value) {
+
+      ownerId_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 owner_id = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOwnerId() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      ownerId_ = 0L;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object name_ = "";
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 3;</code>
      * @return The name.
      */
     public java.lang.String getName() {
@@ -817,7 +884,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 3;</code>
      * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
@@ -834,7 +901,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 3;</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
@@ -842,22 +909,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       name_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearName() {
       name_ = getDefaultInstance().getName();
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000004);
       onChanged();
       return this;
     }
     /**
-     * <code>string name = 2;</code>
+     * <code>string name = 3;</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
@@ -866,14 +933,14 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       name_ = value;
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
 
     private java.lang.Object description_ = "";
     /**
-     * <code>string description = 3;</code>
+     * <code>string description = 4;</code>
      * @return The description.
      */
     public java.lang.String getDescription() {
@@ -889,7 +956,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 3;</code>
+     * <code>string description = 4;</code>
      * @return The bytes for description.
      */
     public com.google.protobuf.ByteString
@@ -906,7 +973,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string description = 3;</code>
+     * <code>string description = 4;</code>
      * @param value The description to set.
      * @return This builder for chaining.
      */
@@ -914,22 +981,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       description_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 3;</code>
+     * <code>string description = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearDescription() {
       description_ = getDefaultInstance().getDescription();
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;
     }
     /**
-     * <code>string description = 3;</code>
+     * <code>string description = 4;</code>
      * @param value The bytes for description to set.
      * @return This builder for chaining.
      */
@@ -938,7 +1005,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       description_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
@@ -946,9 +1013,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<cmd.ParameterField> fields_ =
       java.util.Collections.emptyList();
     private void ensureFieldsIsMutable() {
-      if (!((bitField0_ & 0x00000008) != 0)) {
+      if (!((bitField0_ & 0x00000010) != 0)) {
         fields_ = new java.util.ArrayList<cmd.ParameterField>(fields_);
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
        }
     }
 
@@ -956,7 +1023,7 @@ private static final long serialVersionUID = 0L;
         cmd.ParameterField, cmd.ParameterField.Builder, cmd.ParameterFieldOrBuilder> fieldsBuilder_;
 
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public java.util.List<cmd.ParameterField> getFieldsList() {
       if (fieldsBuilder_ == null) {
@@ -966,7 +1033,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public int getFieldsCount() {
       if (fieldsBuilder_ == null) {
@@ -976,7 +1043,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public cmd.ParameterField getFields(int index) {
       if (fieldsBuilder_ == null) {
@@ -986,7 +1053,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder setFields(
         int index, cmd.ParameterField value) {
@@ -1003,7 +1070,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder setFields(
         int index, cmd.ParameterField.Builder builderForValue) {
@@ -1017,7 +1084,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder addFields(cmd.ParameterField value) {
       if (fieldsBuilder_ == null) {
@@ -1033,7 +1100,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder addFields(
         int index, cmd.ParameterField value) {
@@ -1050,7 +1117,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder addFields(
         cmd.ParameterField.Builder builderForValue) {
@@ -1064,7 +1131,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder addFields(
         int index, cmd.ParameterField.Builder builderForValue) {
@@ -1078,7 +1145,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder addAllFields(
         java.lang.Iterable<? extends cmd.ParameterField> values) {
@@ -1093,12 +1160,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder clearFields() {
       if (fieldsBuilder_ == null) {
         fields_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         onChanged();
       } else {
         fieldsBuilder_.clear();
@@ -1106,7 +1173,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public Builder removeFields(int index) {
       if (fieldsBuilder_ == null) {
@@ -1119,14 +1186,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public cmd.ParameterField.Builder getFieldsBuilder(
         int index) {
       return internalGetFieldsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public cmd.ParameterFieldOrBuilder getFieldsOrBuilder(
         int index) {
@@ -1136,7 +1203,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public java.util.List<? extends cmd.ParameterFieldOrBuilder> 
          getFieldsOrBuilderList() {
@@ -1147,14 +1214,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public cmd.ParameterField.Builder addFieldsBuilder() {
       return internalGetFieldsFieldBuilder().addBuilder(
           cmd.ParameterField.getDefaultInstance());
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public cmd.ParameterField.Builder addFieldsBuilder(
         int index) {
@@ -1162,7 +1229,7 @@ private static final long serialVersionUID = 0L;
           index, cmd.ParameterField.getDefaultInstance());
     }
     /**
-     * <code>repeated .cmd.ParameterField fields = 4;</code>
+     * <code>repeated .cmd.ParameterField fields = 5;</code>
      */
     public java.util.List<cmd.ParameterField.Builder> 
          getFieldsBuilderList() {
@@ -1175,7 +1242,7 @@ private static final long serialVersionUID = 0L;
         fieldsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
             cmd.ParameterField, cmd.ParameterField.Builder, cmd.ParameterFieldOrBuilder>(
                 fields_,
-                ((bitField0_ & 0x00000008) != 0),
+                ((bitField0_ & 0x00000010) != 0),
                 getParentForChildren(),
                 isClean());
         fields_ = null;
@@ -1185,7 +1252,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object device_ = "";
     /**
-     * <code>string device = 5;</code>
+     * <code>string device = 6;</code>
      * @return The device.
      */
     public java.lang.String getDevice() {
@@ -1201,7 +1268,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string device = 5;</code>
+     * <code>string device = 6;</code>
      * @return The bytes for device.
      */
     public com.google.protobuf.ByteString
@@ -1218,7 +1285,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string device = 5;</code>
+     * <code>string device = 6;</code>
      * @param value The device to set.
      * @return This builder for chaining.
      */
@@ -1226,22 +1293,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       device_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
     /**
-     * <code>string device = 5;</code>
+     * <code>string device = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearDevice() {
       device_ = getDefaultInstance().getDevice();
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000020);
       onChanged();
       return this;
     }
     /**
-     * <code>string device = 5;</code>
+     * <code>string device = 6;</code>
      * @param value The bytes for device to set.
      * @return This builder for chaining.
      */
@@ -1250,14 +1317,14 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       device_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
 
     private java.lang.Object label_ = "";
     /**
-     * <code>string label = 6;</code>
+     * <code>string label = 7;</code>
      * @return The label.
      */
     public java.lang.String getLabel() {
@@ -1273,7 +1340,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string label = 6;</code>
+     * <code>string label = 7;</code>
      * @return The bytes for label.
      */
     public com.google.protobuf.ByteString
@@ -1290,7 +1357,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string label = 6;</code>
+     * <code>string label = 7;</code>
      * @param value The label to set.
      * @return This builder for chaining.
      */
@@ -1298,22 +1365,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       label_ = value;
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
     /**
-     * <code>string label = 6;</code>
+     * <code>string label = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearLabel() {
       label_ = getDefaultInstance().getLabel();
-      bitField0_ = (bitField0_ & ~0x00000020);
+      bitField0_ = (bitField0_ & ~0x00000040);
       onChanged();
       return this;
     }
     /**
-     * <code>string label = 6;</code>
+     * <code>string label = 7;</code>
      * @param value The bytes for label to set.
      * @return This builder for chaining.
      */
@@ -1322,32 +1389,32 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       label_ = value;
-      bitField0_ |= 0x00000020;
+      bitField0_ |= 0x00000040;
       onChanged();
       return this;
     }
 
     private int type_ = 0;
     /**
-     * <code>.cmd.CommandType type = 7;</code>
+     * <code>.cmd.CommandType type = 8;</code>
      * @return The enum numeric value on the wire for type.
      */
     @java.lang.Override public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>.cmd.CommandType type = 7;</code>
+     * <code>.cmd.CommandType type = 8;</code>
      * @param value The enum numeric value on the wire for type to set.
      * @return This builder for chaining.
      */
     public Builder setTypeValue(int value) {
       type_ = value;
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000080;
       onChanged();
       return this;
     }
     /**
-     * <code>.cmd.CommandType type = 7;</code>
+     * <code>.cmd.CommandType type = 8;</code>
      * @return The type.
      */
     @java.lang.Override
@@ -1356,23 +1423,23 @@ private static final long serialVersionUID = 0L;
       return result == null ? cmd.CommandType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.cmd.CommandType type = 7;</code>
+     * <code>.cmd.CommandType type = 8;</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
     public Builder setType(cmd.CommandType value) {
       if (value == null) { throw new NullPointerException(); }
-      bitField0_ |= 0x00000040;
+      bitField0_ |= 0x00000080;
       type_ = value.getNumber();
       onChanged();
       return this;
     }
     /**
-     * <code>.cmd.CommandType type = 7;</code>
+     * <code>.cmd.CommandType type = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearType() {
-      bitField0_ = (bitField0_ & ~0x00000040);
+      bitField0_ = (bitField0_ & ~0x00000080);
       type_ = 0;
       onChanged();
       return this;

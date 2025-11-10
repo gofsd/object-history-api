@@ -26,4 +26,22 @@ public interface ExecuteResponseOrBuilder extends
    * @return The queueStatus.
    */
   cmd.ExecutionStatus getQueueStatus();
+
+  /**
+   * <code>uint64 executor_id = 3;</code>
+   * @return The executorId.
+   */
+  long getExecutorId();
+
+  /**
+   * <code>uint64 owner_id = 4;</code>
+   * @return The ownerId.
+   */
+  long getOwnerId();
+
+  /**
+   * <code>uint64 request_id = 5;</code>
+   * @return The requestId.
+   */
+  long getRequestId();
 }
