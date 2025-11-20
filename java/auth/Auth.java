@@ -87,6 +87,16 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_auth_LogoutResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_Envelope_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_auth_Envelope_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_auth_QRCommand_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_auth_QRCommand_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_auth_Empty_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -117,20 +127,27 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       "Message\"6\n\016SignalResponse\022$\n\007message\030\001 \001" +
       "(\0132\023.auth.SignalMessage\"\"\n\rLogoutRequest" +
       "\022\021\n\tdevice_id\030\001 \001(\004\"!\n\016LogoutResponse\022\017\n" +
-      "\007success\030\001 \001(\010\"\007\n\005Empty*\213\001\n\013MessageType\022" +
-      "\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n\n\006ANSWER\020\002\022\021\n\rI" +
-      "CE_CANDIDATE\020\003\022\010\n\004JOIN\020\004\022\010\n\004LINK\020\005\022\016\n\nNE" +
-      "W_DEVICE\020\006\022\021\n\rDELETE_DEVICE\020\007\022\016\n\nNOT_JOI" +
-      "NED\020\0102\317\002\n\013AuthService\0229\n\010Register\022\025.auth" +
-      ".RegisterRequest\032\026.auth.RegisterResponse" +
-      "\0220\n\005Login\022\022.auth.LoginRequest\032\023.auth.Log" +
-      "inResponse\0220\n\nGetAppInfo\022\013.auth.Empty\032\025." +
-      "auth.AppInfoResponse\0222\n\013GetUserInfo\022\013.au" +
-      "th.Empty\032\026.auth.UserInfoResponse\0228\n\007Conn" +
-      "ect\022\023.auth.SignalRequest\032\024.auth.SignalRe" +
-      "sponse(\0010\001\0223\n\006Logout\022\023.auth.LogoutReques" +
-      "t\032\024.auth.LogoutResponseB!\n\004authB\004AuthP\001Z" +
-      "\nauth/proto\242\002\004AUTHb\006proto3"
+      "\007success\030\001 \001(\010\"{\n\010Envelope\022\n\n\002id\030\001 \001(\r\022\'" +
+      "\n\014payload_type\030\002 \001(\0162\021.auth.PayloadType\022" +
+      "\017\n\007payload\030\003 \001(\014\022\023\n\013chunk_index\030\004 \001(\r\022\024\n" +
+      "\014total_chunks\030\005 \001(\r\"0\n\tQRCommand\022\022\n\ncomm" +
+      "and_id\030\001 \001(\004\022\017\n\007args_id\030\002 \001(\004\"\007\n\005Empty*\213" +
+      "\001\n\013MessageType\022\013\n\007UNKNOWN\020\000\022\t\n\005OFFER\020\001\022\n" +
+      "\n\006ANSWER\020\002\022\021\n\rICE_CANDIDATE\020\003\022\010\n\004JOIN\020\004\022" +
+      "\010\n\004LINK\020\005\022\016\n\nNEW_DEVICE\020\006\022\021\n\rDELETE_DEVI" +
+      "CE\020\007\022\016\n\nNOT_JOINED\020\010*O\n\013PayloadType\022\010\n\004T" +
+      "EXT\020\000\022\022\n\016SIGNAL_MESSAGE\020\001\022\016\n\nQR_COMMAND\020" +
+      "\002\022\010\n\004JPEG\020\003\022\010\n\004H265\020\0042\317\002\n\013AuthService\0229\n" +
+      "\010Register\022\025.auth.RegisterRequest\032\026.auth." +
+      "RegisterResponse\0220\n\005Login\022\022.auth.LoginRe" +
+      "quest\032\023.auth.LoginResponse\0220\n\nGetAppInfo" +
+      "\022\013.auth.Empty\032\025.auth.AppInfoResponse\0222\n\013" +
+      "GetUserInfo\022\013.auth.Empty\032\026.auth.UserInfo" +
+      "Response\0228\n\007Connect\022\023.auth.SignalRequest" +
+      "\032\024.auth.SignalResponse(\0010\001\0223\n\006Logout\022\023.a" +
+      "uth.LogoutRequest\032\024.auth.LogoutResponseB" +
+      "!\n\004authB\004AuthP\001Z\nauth/proto\242\002\004AUTHb\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -209,8 +226,20 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_LogoutResponse_descriptor,
         new java.lang.String[] { "Success", });
-    internal_static_auth_Empty_descriptor =
+    internal_static_auth_Envelope_descriptor =
       getDescriptor().getMessageType(12);
+    internal_static_auth_Envelope_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_auth_Envelope_descriptor,
+        new java.lang.String[] { "Id", "PayloadType", "Payload", "ChunkIndex", "TotalChunks", });
+    internal_static_auth_QRCommand_descriptor =
+      getDescriptor().getMessageType(13);
+    internal_static_auth_QRCommand_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_auth_QRCommand_descriptor,
+        new java.lang.String[] { "CommandId", "ArgsId", });
+    internal_static_auth_Empty_descriptor =
+      getDescriptor().getMessageType(14);
     internal_static_auth_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_auth_Empty_descriptor,

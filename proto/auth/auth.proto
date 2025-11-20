@@ -88,6 +88,27 @@ message LogoutResponse {
   bool success = 1;
 }
 
+enum PayloadType {
+  TEXT = 0;
+  SIGNAL_MESSAGE = 1;
+  QR_COMMAND = 2;
+  JPEG = 3;
+  H265 = 4;
+}
+
+message Envelope {
+  uint32 id = 1;
+  PayloadType payload_type = 2;
+  bytes payload = 3;
+  uint32 chunk_index = 4;
+  uint32 total_chunks = 5;
+}
+
+message QRCommand {
+    uint64 command_id = 1;
+    uint64 args_id  = 2;
+}
+
 message Empty{}
 
 // ------------------- SERVICE -------------------
