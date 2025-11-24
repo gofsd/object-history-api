@@ -105,8 +105,8 @@ message Envelope {
 }
 
 message QRCommand {
-    uint64 command_id = 1;
-    uint64 args_id  = 2;
+  uint64 command_id = 1; 
+  uint64 args_id  = 2;
 }
 
 message Empty{}
