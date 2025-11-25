@@ -12,9 +12,9 @@ package auth;
 public enum PayloadType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>TEXT = 0;</code>
+   * <code>UNKNOWN = 0;</code>
    */
-  TEXT(0),
+  UNKNOWN(0),
   /**
    * <code>SIGNAL_MESSAGE = 1;</code>
    */
@@ -44,9 +44,9 @@ public enum PayloadType
       "PayloadType");
   }
   /**
-   * <code>TEXT = 0;</code>
+   * <code>UNKNOWN = 0;</code>
    */
-  public static final int TEXT_VALUE = 0;
+  public static final int UNKNOWN_VALUE = 0;
   /**
    * <code>SIGNAL_MESSAGE = 1;</code>
    */
@@ -89,7 +89,7 @@ public enum PayloadType
    */
   public static PayloadType forNumber(int value) {
     switch (value) {
-      case 0: return TEXT;
+      case 0: return UNKNOWN;
       case 1: return SIGNAL_MESSAGE;
       case 2: return QR_COMMAND;
       case 3: return JPEG;

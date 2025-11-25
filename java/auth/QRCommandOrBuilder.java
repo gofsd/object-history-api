@@ -11,14 +11,14 @@ public interface QRCommandOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 command_id = 1;</code>
-   * @return The commandId.
+   * <code>uint64 command = 1;</code>
+   * @return The command.
    */
-  long getCommandId();
+  long getCommand();
 
   /**
-   * <code>uint64 args_id = 2;</code>
-   * @return The argsId.
+   * <code>uint64 argument = 2;</code>
+   * @return The argument.
    */
-  long getArgsId();
+  long getArgument();
 }

@@ -16,41 +16,37 @@ package auth;
 public enum MessageType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>UNKNOWN = 0;</code>
+   * <code>JOIN = 0;</code>
    */
-  UNKNOWN(0),
+  JOIN(0),
   /**
-   * <code>OFFER = 1;</code>
+   * <code>LINK = 1;</code>
    */
-  OFFER(1),
+  LINK(1),
   /**
-   * <code>ANSWER = 2;</code>
+   * <code>OFFER = 2;</code>
    */
-  ANSWER(2),
+  OFFER(2),
   /**
-   * <code>ICE_CANDIDATE = 3;</code>
+   * <code>ANSWER = 3;</code>
    */
-  ICE_CANDIDATE(3),
+  ANSWER(3),
   /**
-   * <code>JOIN = 4;</code>
+   * <code>ICE_CANDIDATE = 4;</code>
    */
-  JOIN(4),
+  ICE_CANDIDATE(4),
   /**
-   * <code>LINK = 5;</code>
+   * <code>NEW_DEVICE = 5;</code>
    */
-  LINK(5),
+  NEW_DEVICE(5),
   /**
-   * <code>NEW_DEVICE = 6;</code>
+   * <code>NOT_JOINED = 6;</code>
    */
-  NEW_DEVICE(6),
+  NOT_JOINED(6),
   /**
-   * <code>DELETE_DEVICE = 7;</code>
+   * <code>LIST = 7;</code>
    */
-  DELETE_DEVICE(7),
-  /**
-   * <code>NOT_JOINED = 8;</code>
-   */
-  NOT_JOINED(8),
+  LIST(7),
   UNRECOGNIZED(-1),
   ;
 
@@ -64,41 +60,37 @@ public enum MessageType
       "MessageType");
   }
   /**
-   * <code>UNKNOWN = 0;</code>
+   * <code>JOIN = 0;</code>
    */
-  public static final int UNKNOWN_VALUE = 0;
+  public static final int JOIN_VALUE = 0;
   /**
-   * <code>OFFER = 1;</code>
+   * <code>LINK = 1;</code>
    */
-  public static final int OFFER_VALUE = 1;
+  public static final int LINK_VALUE = 1;
   /**
-   * <code>ANSWER = 2;</code>
+   * <code>OFFER = 2;</code>
    */
-  public static final int ANSWER_VALUE = 2;
+  public static final int OFFER_VALUE = 2;
   /**
-   * <code>ICE_CANDIDATE = 3;</code>
+   * <code>ANSWER = 3;</code>
    */
-  public static final int ICE_CANDIDATE_VALUE = 3;
+  public static final int ANSWER_VALUE = 3;
   /**
-   * <code>JOIN = 4;</code>
+   * <code>ICE_CANDIDATE = 4;</code>
    */
-  public static final int JOIN_VALUE = 4;
+  public static final int ICE_CANDIDATE_VALUE = 4;
   /**
-   * <code>LINK = 5;</code>
+   * <code>NEW_DEVICE = 5;</code>
    */
-  public static final int LINK_VALUE = 5;
+  public static final int NEW_DEVICE_VALUE = 5;
   /**
-   * <code>NEW_DEVICE = 6;</code>
+   * <code>NOT_JOINED = 6;</code>
    */
-  public static final int NEW_DEVICE_VALUE = 6;
+  public static final int NOT_JOINED_VALUE = 6;
   /**
-   * <code>DELETE_DEVICE = 7;</code>
+   * <code>LIST = 7;</code>
    */
-  public static final int DELETE_DEVICE_VALUE = 7;
-  /**
-   * <code>NOT_JOINED = 8;</code>
-   */
-  public static final int NOT_JOINED_VALUE = 8;
+  public static final int LIST_VALUE = 7;
 
 
   public final int getNumber() {
@@ -125,15 +117,14 @@ public enum MessageType
    */
   public static MessageType forNumber(int value) {
     switch (value) {
-      case 0: return UNKNOWN;
-      case 1: return OFFER;
-      case 2: return ANSWER;
-      case 3: return ICE_CANDIDATE;
-      case 4: return JOIN;
-      case 5: return LINK;
-      case 6: return NEW_DEVICE;
-      case 7: return DELETE_DEVICE;
-      case 8: return NOT_JOINED;
+      case 0: return JOIN;
+      case 1: return LINK;
+      case 2: return OFFER;
+      case 3: return ANSWER;
+      case 4: return ICE_CANDIDATE;
+      case 5: return NEW_DEVICE;
+      case 6: return NOT_JOINED;
+      case 7: return LIST;
       default: return null;
     }
   }

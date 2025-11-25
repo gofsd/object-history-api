@@ -124,7 +124,7 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeUInt32(1, id_);
     }
-    if (payloadType_ != auth.PayloadType.TEXT.getNumber()) {
+    if (payloadType_ != auth.PayloadType.UNKNOWN.getNumber()) {
       output.writeEnum(2, payloadType_);
     }
     if (!payload_.isEmpty()) {
@@ -149,7 +149,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt32Size(1, id_);
     }
-    if (payloadType_ != auth.PayloadType.TEXT.getNumber()) {
+    if (payloadType_ != auth.PayloadType.UNKNOWN.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, payloadType_);
     }

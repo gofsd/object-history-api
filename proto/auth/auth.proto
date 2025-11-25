@@ -49,15 +49,14 @@ message UserInfoResponse {
 
 // Message types for signaling
 enum MessageType {
-    UNKNOWN = 0;
-    OFFER = 1;
-    ANSWER = 2;
-    ICE_CANDIDATE = 3;
-    JOIN = 4;
-    LINK = 5;
-    NEW_DEVICE = 6;
-    DELETE_DEVICE = 7;
-    NOT_JOINED = 8;
+  JOIN = 0;
+  LINK = 1;
+  OFFER = 2;
+  ANSWER = 3;
+  ICE_CANDIDATE = 4;
+  NEW_DEVICE = 5;
+  NOT_JOINED = 6;
+  LIST = 7;
 }
 
 // Generic signaling message
@@ -89,7 +88,7 @@ message LogoutResponse {
 }
 
 enum PayloadType {
-  TEXT = 0;
+  UNKNOWN = 0;
   SIGNAL_MESSAGE = 1;
   QR_COMMAND = 2;
   JPEG = 3;
@@ -105,8 +104,8 @@ message Envelope {
 }
 
 message QRCommand {
-  uint64 command_id = 1; 
-  uint64 args_id  = 2;
+  uint64 command = 1; 
+  uint64 argument  = 2;
 }
 
 message Empty{}

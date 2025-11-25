@@ -2593,8 +2593,8 @@ proto.auth.QRCommand.prototype.toObject = function(opt_includeInstance) {
  */
 proto.auth.QRCommand.toObject = function(includeInstance, msg) {
   var f, obj = {
-    commandId: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    argsId: jspb.Message.getFieldWithDefault(msg, 2, 0)
+    command: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    argument: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
   if (includeInstance) {
@@ -2633,11 +2633,11 @@ proto.auth.QRCommand.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {number} */ (reader.readUint64());
-      msg.setCommandId(value);
+      msg.setCommand(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readUint64());
-      msg.setArgsId(value);
+      msg.setArgument(value);
       break;
     default:
       reader.skipField();
@@ -2668,14 +2668,14 @@ proto.auth.QRCommand.prototype.serializeBinary = function() {
  */
 proto.auth.QRCommand.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getCommandId();
+  f = message.getCommand();
   if (f !== 0) {
     writer.writeUint64(
       1,
       f
     );
   }
-  f = message.getArgsId();
+  f = message.getArgument();
   if (f !== 0) {
     writer.writeUint64(
       2,
@@ -2686,10 +2686,10 @@ proto.auth.QRCommand.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint64 command_id = 1;
+ * optional uint64 command = 1;
  * @return {number}
  */
-proto.auth.QRCommand.prototype.getCommandId = function() {
+proto.auth.QRCommand.prototype.getCommand = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
@@ -2698,16 +2698,16 @@ proto.auth.QRCommand.prototype.getCommandId = function() {
  * @param {number} value
  * @return {!proto.auth.QRCommand} returns this
  */
-proto.auth.QRCommand.prototype.setCommandId = function(value) {
+proto.auth.QRCommand.prototype.setCommand = function(value) {
   return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional uint64 args_id = 2;
+ * optional uint64 argument = 2;
  * @return {number}
  */
-proto.auth.QRCommand.prototype.getArgsId = function() {
+proto.auth.QRCommand.prototype.getArgument = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
@@ -2716,7 +2716,7 @@ proto.auth.QRCommand.prototype.getArgsId = function() {
  * @param {number} value
  * @return {!proto.auth.QRCommand} returns this
  */
-proto.auth.QRCommand.prototype.setArgsId = function(value) {
+proto.auth.QRCommand.prototype.setArgument = function(value) {
   return jspb.Message.setProto3IntField(this, 2, value);
 };
 
@@ -2826,22 +2826,21 @@ proto.auth.Empty.serializeBinaryToWriter = function(message, writer) {
  * @enum {number}
  */
 proto.auth.MessageType = {
-  UNKNOWN: 0,
-  OFFER: 1,
-  ANSWER: 2,
-  ICE_CANDIDATE: 3,
-  JOIN: 4,
-  LINK: 5,
-  NEW_DEVICE: 6,
-  DELETE_DEVICE: 7,
-  NOT_JOINED: 8
+  JOIN: 0,
+  LINK: 1,
+  OFFER: 2,
+  ANSWER: 3,
+  ICE_CANDIDATE: 4,
+  NEW_DEVICE: 5,
+  NOT_JOINED: 6,
+  LIST: 7
 };
 
 /**
  * @enum {number}
  */
 proto.auth.PayloadType = {
-  TEXT: 0,
+  UNKNOWN: 0,
   SIGNAL_MESSAGE: 1,
   QR_COMMAND: 2,
   JPEG: 3,

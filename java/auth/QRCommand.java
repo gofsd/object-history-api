@@ -43,26 +43,26 @@ private static final long serialVersionUID = 0L;
             auth.QRCommand.class, auth.QRCommand.Builder.class);
   }
 
-  public static final int COMMAND_ID_FIELD_NUMBER = 1;
-  private long commandId_ = 0L;
+  public static final int COMMAND_FIELD_NUMBER = 1;
+  private long command_ = 0L;
   /**
-   * <code>uint64 command_id = 1;</code>
-   * @return The commandId.
+   * <code>uint64 command = 1;</code>
+   * @return The command.
    */
   @java.lang.Override
-  public long getCommandId() {
-    return commandId_;
+  public long getCommand() {
+    return command_;
   }
 
-  public static final int ARGS_ID_FIELD_NUMBER = 2;
-  private long argsId_ = 0L;
+  public static final int ARGUMENT_FIELD_NUMBER = 2;
+  private long argument_ = 0L;
   /**
-   * <code>uint64 args_id = 2;</code>
-   * @return The argsId.
+   * <code>uint64 argument = 2;</code>
+   * @return The argument.
    */
   @java.lang.Override
-  public long getArgsId() {
-    return argsId_;
+  public long getArgument() {
+    return argument_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -79,11 +79,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (commandId_ != 0L) {
-      output.writeUInt64(1, commandId_);
+    if (command_ != 0L) {
+      output.writeUInt64(1, command_);
     }
-    if (argsId_ != 0L) {
-      output.writeUInt64(2, argsId_);
+    if (argument_ != 0L) {
+      output.writeUInt64(2, argument_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -94,13 +94,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (commandId_ != 0L) {
+    if (command_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, commandId_);
+        .computeUInt64Size(1, command_);
     }
-    if (argsId_ != 0L) {
+    if (argument_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, argsId_);
+        .computeUInt64Size(2, argument_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -117,10 +117,10 @@ private static final long serialVersionUID = 0L;
     }
     auth.QRCommand other = (auth.QRCommand) obj;
 
-    if (getCommandId()
-        != other.getCommandId()) return false;
-    if (getArgsId()
-        != other.getArgsId()) return false;
+    if (getCommand()
+        != other.getCommand()) return false;
+    if (getArgument()
+        != other.getArgument()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -132,12 +132,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + COMMAND_ID_FIELD_NUMBER;
+    hash = (37 * hash) + COMMAND_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCommandId());
-    hash = (37 * hash) + ARGS_ID_FIELD_NUMBER;
+        getCommand());
+    hash = (37 * hash) + ARGUMENT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getArgsId());
+        getArgument());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -269,8 +269,8 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      commandId_ = 0L;
-      argsId_ = 0L;
+      command_ = 0L;
+      argument_ = 0L;
       return this;
     }
 
@@ -305,10 +305,10 @@ private static final long serialVersionUID = 0L;
     private void buildPartial0(auth.QRCommand result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.commandId_ = commandId_;
+        result.command_ = command_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.argsId_ = argsId_;
+        result.argument_ = argument_;
       }
     }
 
@@ -324,11 +324,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(auth.QRCommand other) {
       if (other == auth.QRCommand.getDefaultInstance()) return this;
-      if (other.getCommandId() != 0L) {
-        setCommandId(other.getCommandId());
+      if (other.getCommand() != 0L) {
+        setCommand(other.getCommand());
       }
-      if (other.getArgsId() != 0L) {
-        setArgsId(other.getArgsId());
+      if (other.getArgument() != 0L) {
+        setArgument(other.getArgument());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -357,12 +357,12 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 8: {
-              commandId_ = input.readUInt64();
+              command_ = input.readUInt64();
               bitField0_ |= 0x00000001;
               break;
             } // case 8
             case 16: {
-              argsId_ = input.readUInt64();
+              argument_ = input.readUInt64();
               bitField0_ |= 0x00000002;
               break;
             } // case 16
@@ -383,66 +383,66 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long commandId_ ;
+    private long command_ ;
     /**
-     * <code>uint64 command_id = 1;</code>
-     * @return The commandId.
+     * <code>uint64 command = 1;</code>
+     * @return The command.
      */
     @java.lang.Override
-    public long getCommandId() {
-      return commandId_;
+    public long getCommand() {
+      return command_;
     }
     /**
-     * <code>uint64 command_id = 1;</code>
-     * @param value The commandId to set.
+     * <code>uint64 command = 1;</code>
+     * @param value The command to set.
      * @return This builder for chaining.
      */
-    public Builder setCommandId(long value) {
+    public Builder setCommand(long value) {
 
-      commandId_ = value;
+      command_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 command_id = 1;</code>
+     * <code>uint64 command = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCommandId() {
+    public Builder clearCommand() {
       bitField0_ = (bitField0_ & ~0x00000001);
-      commandId_ = 0L;
+      command_ = 0L;
       onChanged();
       return this;
     }
 
-    private long argsId_ ;
+    private long argument_ ;
     /**
-     * <code>uint64 args_id = 2;</code>
-     * @return The argsId.
+     * <code>uint64 argument = 2;</code>
+     * @return The argument.
      */
     @java.lang.Override
-    public long getArgsId() {
-      return argsId_;
+    public long getArgument() {
+      return argument_;
     }
     /**
-     * <code>uint64 args_id = 2;</code>
-     * @param value The argsId to set.
+     * <code>uint64 argument = 2;</code>
+     * @param value The argument to set.
      * @return This builder for chaining.
      */
-    public Builder setArgsId(long value) {
+    public Builder setArgument(long value) {
 
-      argsId_ = value;
+      argument_ = value;
       bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 args_id = 2;</code>
+     * <code>uint64 argument = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearArgsId() {
+    public Builder clearArgument() {
       bitField0_ = (bitField0_ & ~0x00000002);
-      argsId_ = 0L;
+      argument_ = 0L;
       onChanged();
       return this;
     }
