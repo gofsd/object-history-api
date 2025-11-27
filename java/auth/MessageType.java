@@ -44,9 +44,9 @@ public enum MessageType
    */
   NOT_JOINED(6),
   /**
-   * <code>LIST = 7;</code>
+   * <code>USER_INFO = 7;</code>
    */
-  LIST(7),
+  USER_INFO(7),
   UNRECOGNIZED(-1),
   ;
 
@@ -88,9 +88,9 @@ public enum MessageType
    */
   public static final int NOT_JOINED_VALUE = 6;
   /**
-   * <code>LIST = 7;</code>
+   * <code>USER_INFO = 7;</code>
    */
-  public static final int LIST_VALUE = 7;
+  public static final int USER_INFO_VALUE = 7;
 
 
   public final int getNumber() {
@@ -124,7 +124,7 @@ public enum MessageType
       case 4: return ICE_CANDIDATE;
       case 5: return NEW_DEVICE;
       case 6: return NOT_JOINED;
-      case 7: return LIST;
+      case 7: return USER_INFO;
       default: return null;
     }
   }

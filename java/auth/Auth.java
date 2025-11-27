@@ -131,22 +131,22 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       "\n\014payload_type\030\002 \001(\0162\021.auth.PayloadType\022" +
       "\017\n\007payload\030\003 \001(\014\022\023\n\013chunk_index\030\004 \001(\r\022\024\n" +
       "\014total_chunks\030\005 \001(\r\".\n\tQRCommand\022\017\n\007comm" +
-      "and\030\001 \001(\004\022\020\n\010argument\030\002 \001(\004\"\007\n\005Empty*u\n\013" +
+      "and\030\001 \001(\004\022\020\n\010argument\030\002 \001(\004\"\007\n\005Empty*z\n\013" +
       "MessageType\022\010\n\004JOIN\020\000\022\010\n\004LINK\020\001\022\t\n\005OFFER" +
       "\020\002\022\n\n\006ANSWER\020\003\022\021\n\rICE_CANDIDATE\020\004\022\016\n\nNEW" +
-      "_DEVICE\020\005\022\016\n\nNOT_JOINED\020\006\022\010\n\004LIST\020\007*R\n\013P" +
-      "ayloadType\022\013\n\007UNKNOWN\020\000\022\022\n\016SIGNAL_MESSAG" +
-      "E\020\001\022\016\n\nQR_COMMAND\020\002\022\010\n\004JPEG\020\003\022\010\n\004H265\020\0042" +
-      "\317\002\n\013AuthService\0229\n\010Register\022\025.auth.Regis" +
-      "terRequest\032\026.auth.RegisterResponse\0220\n\005Lo" +
-      "gin\022\022.auth.LoginRequest\032\023.auth.LoginResp" +
-      "onse\0220\n\nGetAppInfo\022\013.auth.Empty\032\025.auth.A" +
-      "ppInfoResponse\0222\n\013GetUserInfo\022\013.auth.Emp" +
-      "ty\032\026.auth.UserInfoResponse\0228\n\007Connect\022\023." +
-      "auth.SignalRequest\032\024.auth.SignalResponse" +
-      "(\0010\001\0223\n\006Logout\022\023.auth.LogoutRequest\032\024.au" +
-      "th.LogoutResponseB!\n\004authB\004AuthP\001Z\nauth/" +
-      "proto\242\002\004AUTHb\006proto3"
+      "_DEVICE\020\005\022\016\n\nNOT_JOINED\020\006\022\r\n\tUSER_INFO\020\007" +
+      "*R\n\013PayloadType\022\013\n\007UNKNOWN\020\000\022\022\n\016SIGNAL_M" +
+      "ESSAGE\020\001\022\016\n\nQR_COMMAND\020\002\022\010\n\004JPEG\020\003\022\010\n\004H2" +
+      "65\020\0042\317\002\n\013AuthService\0229\n\010Register\022\025.auth." +
+      "RegisterRequest\032\026.auth.RegisterResponse\022" +
+      "0\n\005Login\022\022.auth.LoginRequest\032\023.auth.Logi" +
+      "nResponse\0220\n\nGetAppInfo\022\013.auth.Empty\032\025.a" +
+      "uth.AppInfoResponse\0222\n\013GetUserInfo\022\013.aut" +
+      "h.Empty\032\026.auth.UserInfoResponse\0228\n\007Conne" +
+      "ct\022\023.auth.SignalRequest\032\024.auth.SignalRes" +
+      "ponse(\0010\001\0223\n\006Logout\022\023.auth.LogoutRequest" +
+      "\032\024.auth.LogoutResponseB!\n\004authB\004AuthP\001Z\n" +
+      "auth/proto\242\002\004AUTHb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

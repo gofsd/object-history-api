@@ -2833,7 +2833,7 @@ proto.auth.MessageType = {
   ICE_CANDIDATE: 4,
   NEW_DEVICE: 5,
   NOT_JOINED: 6,
-  LIST: 7
+  USER_INFO: 7
 };
 
 /**
