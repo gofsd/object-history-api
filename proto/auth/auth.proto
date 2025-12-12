@@ -89,10 +89,12 @@ message LogoutResponse {
 
 enum PayloadType {
   UNKNOWN = 0;
-  SIGNAL_MESSAGE = 1;
-  QR_COMMAND = 2;
-  JPEG = 3;
-  H265 = 4;
+  HEALTHCHECK = 1;
+  HEALTHCHECK_ACK = 2;
+  SIGNAL_MESSAGE = 3;
+  QR_COMMAND = 4;
+  JPEG = 5;
+  H265 = 6;
 }
 
 message Envelope {
@@ -106,6 +108,15 @@ message Envelope {
 message QRCommand {
   uint64 command = 1; 
   uint64 argument  = 2;
+  uint32 crc32c = 3;
+  bytes signature = 4;
+  uint64 ts = 5;
+}
+
+message Healthcheck {
+  uint64 ts = 2;
+  uint64 sender = 3;
+  uint64 receiver = 4;
 }
 
 message Empty{}

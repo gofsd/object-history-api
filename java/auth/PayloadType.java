@@ -16,21 +16,29 @@ public enum PayloadType
    */
   UNKNOWN(0),
   /**
-   * <code>SIGNAL_MESSAGE = 1;</code>
+   * <code>HEALTHCHECK = 1;</code>
    */
-  SIGNAL_MESSAGE(1),
+  HEALTHCHECK(1),
   /**
-   * <code>QR_COMMAND = 2;</code>
+   * <code>HEALTHCHECK_ACK = 2;</code>
    */
-  QR_COMMAND(2),
+  HEALTHCHECK_ACK(2),
   /**
-   * <code>JPEG = 3;</code>
+   * <code>SIGNAL_MESSAGE = 3;</code>
    */
-  JPEG(3),
+  SIGNAL_MESSAGE(3),
   /**
-   * <code>H265 = 4;</code>
+   * <code>QR_COMMAND = 4;</code>
    */
-  H265(4),
+  QR_COMMAND(4),
+  /**
+   * <code>JPEG = 5;</code>
+   */
+  JPEG(5),
+  /**
+   * <code>H265 = 6;</code>
+   */
+  H265(6),
   UNRECOGNIZED(-1),
   ;
 
@@ -48,21 +56,29 @@ public enum PayloadType
    */
   public static final int UNKNOWN_VALUE = 0;
   /**
-   * <code>SIGNAL_MESSAGE = 1;</code>
+   * <code>HEALTHCHECK = 1;</code>
    */
-  public static final int SIGNAL_MESSAGE_VALUE = 1;
+  public static final int HEALTHCHECK_VALUE = 1;
   /**
-   * <code>QR_COMMAND = 2;</code>
+   * <code>HEALTHCHECK_ACK = 2;</code>
    */
-  public static final int QR_COMMAND_VALUE = 2;
+  public static final int HEALTHCHECK_ACK_VALUE = 2;
   /**
-   * <code>JPEG = 3;</code>
+   * <code>SIGNAL_MESSAGE = 3;</code>
    */
-  public static final int JPEG_VALUE = 3;
+  public static final int SIGNAL_MESSAGE_VALUE = 3;
   /**
-   * <code>H265 = 4;</code>
+   * <code>QR_COMMAND = 4;</code>
    */
-  public static final int H265_VALUE = 4;
+  public static final int QR_COMMAND_VALUE = 4;
+  /**
+   * <code>JPEG = 5;</code>
+   */
+  public static final int JPEG_VALUE = 5;
+  /**
+   * <code>H265 = 6;</code>
+   */
+  public static final int H265_VALUE = 6;
 
 
   public final int getNumber() {
@@ -90,10 +106,12 @@ public enum PayloadType
   public static PayloadType forNumber(int value) {
     switch (value) {
       case 0: return UNKNOWN;
-      case 1: return SIGNAL_MESSAGE;
-      case 2: return QR_COMMAND;
-      case 3: return JPEG;
-      case 4: return H265;
+      case 1: return HEALTHCHECK;
+      case 2: return HEALTHCHECK_ACK;
+      case 3: return SIGNAL_MESSAGE;
+      case 4: return QR_COMMAND;
+      case 5: return JPEG;
+      case 6: return H265;
       default: return null;
     }
   }

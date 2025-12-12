@@ -21,4 +21,22 @@ public interface QRCommandOrBuilder extends
    * @return The argument.
    */
   long getArgument();
+
+  /**
+   * <code>uint32 crc32c = 3;</code>
+   * @return The crc32c.
+   */
+  int getCrc32C();
+
+  /**
+   * <code>bytes signature = 4;</code>
+   * @return The signature.
+   */
+  com.google.protobuf.ByteString getSignature();
+
+  /**
+   * <code>uint64 ts = 5;</code>
+   * @return The ts.
+   */
+  long getTs();
 }

@@ -6,13 +6,13 @@
 package auth;
 
 /**
- * Protobuf type {@code auth.QRCommand}
+ * Protobuf type {@code auth.Healthcheck}
  */
 @com.google.protobuf.Generated
-public final class QRCommand extends
+public final class Healthcheck extends
     com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:auth.QRCommand)
-    QRCommandOrBuilder {
+    // @@protoc_insertion_point(message_implements:auth.Healthcheck)
+    HealthcheckOrBuilder {
 private static final long serialVersionUID = 0L;
   static {
     com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -21,82 +21,59 @@ private static final long serialVersionUID = 0L;
       /* minor= */ 33,
       /* patch= */ 0,
       /* suffix= */ "",
-      "QRCommand");
+      "Healthcheck");
   }
-  // Use QRCommand.newBuilder() to construct.
-  private QRCommand(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  // Use Healthcheck.newBuilder() to construct.
+  private Healthcheck(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private QRCommand() {
-    signature_ = com.google.protobuf.ByteString.EMPTY;
+  private Healthcheck() {
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return auth.Auth.internal_static_auth_QRCommand_descriptor;
+    return auth.Auth.internal_static_auth_Healthcheck_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return auth.Auth.internal_static_auth_QRCommand_fieldAccessorTable
+    return auth.Auth.internal_static_auth_Healthcheck_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            auth.QRCommand.class, auth.QRCommand.Builder.class);
+            auth.Healthcheck.class, auth.Healthcheck.Builder.class);
   }
 
-  public static final int COMMAND_FIELD_NUMBER = 1;
-  private long command_ = 0L;
-  /**
-   * <code>uint64 command = 1;</code>
-   * @return The command.
-   */
-  @java.lang.Override
-  public long getCommand() {
-    return command_;
-  }
-
-  public static final int ARGUMENT_FIELD_NUMBER = 2;
-  private long argument_ = 0L;
-  /**
-   * <code>uint64 argument = 2;</code>
-   * @return The argument.
-   */
-  @java.lang.Override
-  public long getArgument() {
-    return argument_;
-  }
-
-  public static final int CRC32C_FIELD_NUMBER = 3;
-  private int crc32C_ = 0;
-  /**
-   * <code>uint32 crc32c = 3;</code>
-   * @return The crc32c.
-   */
-  @java.lang.Override
-  public int getCrc32C() {
-    return crc32C_;
-  }
-
-  public static final int SIGNATURE_FIELD_NUMBER = 4;
-  private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
-  /**
-   * <code>bytes signature = 4;</code>
-   * @return The signature.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString getSignature() {
-    return signature_;
-  }
-
-  public static final int TS_FIELD_NUMBER = 5;
+  public static final int TS_FIELD_NUMBER = 2;
   private long ts_ = 0L;
   /**
-   * <code>uint64 ts = 5;</code>
+   * <code>uint64 ts = 2;</code>
    * @return The ts.
    */
   @java.lang.Override
   public long getTs() {
     return ts_;
+  }
+
+  public static final int SENDER_FIELD_NUMBER = 3;
+  private long sender_ = 0L;
+  /**
+   * <code>uint64 sender = 3;</code>
+   * @return The sender.
+   */
+  @java.lang.Override
+  public long getSender() {
+    return sender_;
+  }
+
+  public static final int RECEIVER_FIELD_NUMBER = 4;
+  private long receiver_ = 0L;
+  /**
+   * <code>uint64 receiver = 4;</code>
+   * @return The receiver.
+   */
+  @java.lang.Override
+  public long getReceiver() {
+    return receiver_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -113,20 +90,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (command_ != 0L) {
-      output.writeUInt64(1, command_);
-    }
-    if (argument_ != 0L) {
-      output.writeUInt64(2, argument_);
-    }
-    if (crc32C_ != 0) {
-      output.writeUInt32(3, crc32C_);
-    }
-    if (!signature_.isEmpty()) {
-      output.writeBytes(4, signature_);
-    }
     if (ts_ != 0L) {
-      output.writeUInt64(5, ts_);
+      output.writeUInt64(2, ts_);
+    }
+    if (sender_ != 0L) {
+      output.writeUInt64(3, sender_);
+    }
+    if (receiver_ != 0L) {
+      output.writeUInt64(4, receiver_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -137,25 +108,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (command_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(1, command_);
-    }
-    if (argument_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, argument_);
-    }
-    if (crc32C_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeUInt32Size(3, crc32C_);
-    }
-    if (!signature_.isEmpty()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(4, signature_);
-    }
     if (ts_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(5, ts_);
+        .computeUInt64Size(2, ts_);
+    }
+    if (sender_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(3, sender_);
+    }
+    if (receiver_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeUInt64Size(4, receiver_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -167,21 +130,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof auth.QRCommand)) {
+    if (!(obj instanceof auth.Healthcheck)) {
       return super.equals(obj);
     }
-    auth.QRCommand other = (auth.QRCommand) obj;
+    auth.Healthcheck other = (auth.Healthcheck) obj;
 
-    if (getCommand()
-        != other.getCommand()) return false;
-    if (getArgument()
-        != other.getArgument()) return false;
-    if (getCrc32C()
-        != other.getCrc32C()) return false;
-    if (!getSignature()
-        .equals(other.getSignature())) return false;
     if (getTs()
         != other.getTs()) return false;
+    if (getSender()
+        != other.getSender()) return false;
+    if (getReceiver()
+        != other.getReceiver()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -193,62 +152,58 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + COMMAND_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCommand());
-    hash = (37 * hash) + ARGUMENT_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getArgument());
-    hash = (37 * hash) + CRC32C_FIELD_NUMBER;
-    hash = (53 * hash) + getCrc32C();
-    hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
-    hash = (53 * hash) + getSignature().hashCode();
     hash = (37 * hash) + TS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTs());
+    hash = (37 * hash) + SENDER_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getSender());
+    hash = (37 * hash) + RECEIVER_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getReceiver());
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static auth.QRCommand parseFrom(byte[] data)
+  public static auth.Healthcheck parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static auth.QRCommand parseFrom(java.io.InputStream input)
+  public static auth.Healthcheck parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -256,26 +211,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static auth.QRCommand parseDelimitedFrom(java.io.InputStream input)
+  public static auth.Healthcheck parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static auth.QRCommand parseDelimitedFrom(
+  public static auth.Healthcheck parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static auth.QRCommand parseFrom(
+  public static auth.Healthcheck parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -288,7 +243,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(auth.QRCommand prototype) {
+  public static Builder newBuilder(auth.Healthcheck prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -304,26 +259,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code auth.QRCommand}
+   * Protobuf type {@code auth.Healthcheck}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:auth.QRCommand)
-      auth.QRCommandOrBuilder {
+      // @@protoc_insertion_point(builder_implements:auth.Healthcheck)
+      auth.HealthcheckOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return auth.Auth.internal_static_auth_QRCommand_descriptor;
+      return auth.Auth.internal_static_auth_Healthcheck_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return auth.Auth.internal_static_auth_QRCommand_fieldAccessorTable
+      return auth.Auth.internal_static_auth_Healthcheck_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              auth.QRCommand.class, auth.QRCommand.Builder.class);
+              auth.Healthcheck.class, auth.Healthcheck.Builder.class);
     }
 
-    // Construct using auth.QRCommand.newBuilder()
+    // Construct using auth.Healthcheck.newBuilder()
     private Builder() {
 
     }
@@ -337,28 +292,26 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      command_ = 0L;
-      argument_ = 0L;
-      crc32C_ = 0;
-      signature_ = com.google.protobuf.ByteString.EMPTY;
       ts_ = 0L;
+      sender_ = 0L;
+      receiver_ = 0L;
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return auth.Auth.internal_static_auth_QRCommand_descriptor;
+      return auth.Auth.internal_static_auth_Healthcheck_descriptor;
     }
 
     @java.lang.Override
-    public auth.QRCommand getDefaultInstanceForType() {
-      return auth.QRCommand.getDefaultInstance();
+    public auth.Healthcheck getDefaultInstanceForType() {
+      return auth.Healthcheck.getDefaultInstance();
     }
 
     @java.lang.Override
-    public auth.QRCommand build() {
-      auth.QRCommand result = buildPartial();
+    public auth.Healthcheck build() {
+      auth.Healthcheck result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -366,58 +319,46 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public auth.QRCommand buildPartial() {
-      auth.QRCommand result = new auth.QRCommand(this);
+    public auth.Healthcheck buildPartial() {
+      auth.Healthcheck result = new auth.Healthcheck(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(auth.QRCommand result) {
+    private void buildPartial0(auth.Healthcheck result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.command_ = command_;
+        result.ts_ = ts_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.argument_ = argument_;
+        result.sender_ = sender_;
       }
       if (((from_bitField0_ & 0x00000004) != 0)) {
-        result.crc32C_ = crc32C_;
-      }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.signature_ = signature_;
-      }
-      if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.ts_ = ts_;
+        result.receiver_ = receiver_;
       }
     }
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof auth.QRCommand) {
-        return mergeFrom((auth.QRCommand)other);
+      if (other instanceof auth.Healthcheck) {
+        return mergeFrom((auth.Healthcheck)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(auth.QRCommand other) {
-      if (other == auth.QRCommand.getDefaultInstance()) return this;
-      if (other.getCommand() != 0L) {
-        setCommand(other.getCommand());
-      }
-      if (other.getArgument() != 0L) {
-        setArgument(other.getArgument());
-      }
-      if (other.getCrc32C() != 0) {
-        setCrc32C(other.getCrc32C());
-      }
-      if (!other.getSignature().isEmpty()) {
-        setSignature(other.getSignature());
-      }
+    public Builder mergeFrom(auth.Healthcheck other) {
+      if (other == auth.Healthcheck.getDefaultInstance()) return this;
       if (other.getTs() != 0L) {
         setTs(other.getTs());
+      }
+      if (other.getSender() != 0L) {
+        setSender(other.getSender());
+      }
+      if (other.getReceiver() != 0L) {
+        setReceiver(other.getReceiver());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -445,31 +386,21 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 8: {
-              command_ = input.readUInt64();
-              bitField0_ |= 0x00000001;
-              break;
-            } // case 8
             case 16: {
-              argument_ = input.readUInt64();
-              bitField0_ |= 0x00000002;
+              ts_ = input.readUInt64();
+              bitField0_ |= 0x00000001;
               break;
             } // case 16
             case 24: {
-              crc32C_ = input.readUInt32();
-              bitField0_ |= 0x00000004;
+              sender_ = input.readUInt64();
+              bitField0_ |= 0x00000002;
               break;
             } // case 24
-            case 34: {
-              signature_ = input.readBytes();
-              bitField0_ |= 0x00000008;
+            case 32: {
+              receiver_ = input.readUInt64();
+              bitField0_ |= 0x00000004;
               break;
-            } // case 34
-            case 40: {
-              ts_ = input.readUInt64();
-              bitField0_ |= 0x00000010;
-              break;
-            } // case 40
+            } // case 32
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -487,137 +418,9 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long command_ ;
-    /**
-     * <code>uint64 command = 1;</code>
-     * @return The command.
-     */
-    @java.lang.Override
-    public long getCommand() {
-      return command_;
-    }
-    /**
-     * <code>uint64 command = 1;</code>
-     * @param value The command to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCommand(long value) {
-
-      command_ = value;
-      bitField0_ |= 0x00000001;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 command = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCommand() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      command_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long argument_ ;
-    /**
-     * <code>uint64 argument = 2;</code>
-     * @return The argument.
-     */
-    @java.lang.Override
-    public long getArgument() {
-      return argument_;
-    }
-    /**
-     * <code>uint64 argument = 2;</code>
-     * @param value The argument to set.
-     * @return This builder for chaining.
-     */
-    public Builder setArgument(long value) {
-
-      argument_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint64 argument = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearArgument() {
-      bitField0_ = (bitField0_ & ~0x00000002);
-      argument_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private int crc32C_ ;
-    /**
-     * <code>uint32 crc32c = 3;</code>
-     * @return The crc32c.
-     */
-    @java.lang.Override
-    public int getCrc32C() {
-      return crc32C_;
-    }
-    /**
-     * <code>uint32 crc32c = 3;</code>
-     * @param value The crc32c to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCrc32C(int value) {
-
-      crc32C_ = value;
-      bitField0_ |= 0x00000004;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>uint32 crc32c = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCrc32C() {
-      bitField0_ = (bitField0_ & ~0x00000004);
-      crc32C_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.ByteString signature_ = com.google.protobuf.ByteString.EMPTY;
-    /**
-     * <code>bytes signature = 4;</code>
-     * @return The signature.
-     */
-    @java.lang.Override
-    public com.google.protobuf.ByteString getSignature() {
-      return signature_;
-    }
-    /**
-     * <code>bytes signature = 4;</code>
-     * @param value The signature to set.
-     * @return This builder for chaining.
-     */
-    public Builder setSignature(com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      signature_ = value;
-      bitField0_ |= 0x00000008;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bytes signature = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearSignature() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      signature_ = getDefaultInstance().getSignature();
-      onChanged();
-      return this;
-    }
-
     private long ts_ ;
     /**
-     * <code>uint64 ts = 5;</code>
+     * <code>uint64 ts = 2;</code>
      * @return The ts.
      */
     @java.lang.Override
@@ -625,45 +428,109 @@ private static final long serialVersionUID = 0L;
       return ts_;
     }
     /**
-     * <code>uint64 ts = 5;</code>
+     * <code>uint64 ts = 2;</code>
      * @param value The ts to set.
      * @return This builder for chaining.
      */
     public Builder setTs(long value) {
 
       ts_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 ts = 5;</code>
+     * <code>uint64 ts = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearTs() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000001);
       ts_ = 0L;
       onChanged();
       return this;
     }
 
-    // @@protoc_insertion_point(builder_scope:auth.QRCommand)
+    private long sender_ ;
+    /**
+     * <code>uint64 sender = 3;</code>
+     * @return The sender.
+     */
+    @java.lang.Override
+    public long getSender() {
+      return sender_;
+    }
+    /**
+     * <code>uint64 sender = 3;</code>
+     * @param value The sender to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSender(long value) {
+
+      sender_ = value;
+      bitField0_ |= 0x00000002;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 sender = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSender() {
+      bitField0_ = (bitField0_ & ~0x00000002);
+      sender_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long receiver_ ;
+    /**
+     * <code>uint64 receiver = 4;</code>
+     * @return The receiver.
+     */
+    @java.lang.Override
+    public long getReceiver() {
+      return receiver_;
+    }
+    /**
+     * <code>uint64 receiver = 4;</code>
+     * @param value The receiver to set.
+     * @return This builder for chaining.
+     */
+    public Builder setReceiver(long value) {
+
+      receiver_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>uint64 receiver = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearReceiver() {
+      bitField0_ = (bitField0_ & ~0x00000004);
+      receiver_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    // @@protoc_insertion_point(builder_scope:auth.Healthcheck)
   }
 
-  // @@protoc_insertion_point(class_scope:auth.QRCommand)
-  private static final auth.QRCommand DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:auth.Healthcheck)
+  private static final auth.Healthcheck DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new auth.QRCommand();
+    DEFAULT_INSTANCE = new auth.Healthcheck();
   }
 
-  public static auth.QRCommand getDefaultInstance() {
+  public static auth.Healthcheck getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<QRCommand>
-      PARSER = new com.google.protobuf.AbstractParser<QRCommand>() {
+  private static final com.google.protobuf.Parser<Healthcheck>
+      PARSER = new com.google.protobuf.AbstractParser<Healthcheck>() {
     @java.lang.Override
-    public QRCommand parsePartialFrom(
+    public Healthcheck parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -682,17 +549,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<QRCommand> parser() {
+  public static com.google.protobuf.Parser<Healthcheck> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<QRCommand> getParserForType() {
+  public com.google.protobuf.Parser<Healthcheck> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public auth.QRCommand getDefaultInstanceForType() {
+  public auth.Healthcheck getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
