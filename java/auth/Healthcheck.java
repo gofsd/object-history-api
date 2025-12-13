@@ -43,10 +43,10 @@ private static final long serialVersionUID = 0L;
             auth.Healthcheck.class, auth.Healthcheck.Builder.class);
   }
 
-  public static final int TS_FIELD_NUMBER = 2;
+  public static final int TS_FIELD_NUMBER = 1;
   private long ts_ = 0L;
   /**
-   * <code>uint64 ts = 2;</code>
+   * <code>uint64 ts = 1;</code>
    * @return The ts.
    */
   @java.lang.Override
@@ -54,10 +54,10 @@ private static final long serialVersionUID = 0L;
     return ts_;
   }
 
-  public static final int SENDER_FIELD_NUMBER = 3;
+  public static final int SENDER_FIELD_NUMBER = 2;
   private long sender_ = 0L;
   /**
-   * <code>uint64 sender = 3;</code>
+   * <code>uint64 sender = 2;</code>
    * @return The sender.
    */
   @java.lang.Override
@@ -65,10 +65,10 @@ private static final long serialVersionUID = 0L;
     return sender_;
   }
 
-  public static final int RECEIVER_FIELD_NUMBER = 4;
+  public static final int RECEIVER_FIELD_NUMBER = 3;
   private long receiver_ = 0L;
   /**
-   * <code>uint64 receiver = 4;</code>
+   * <code>uint64 receiver = 3;</code>
    * @return The receiver.
    */
   @java.lang.Override
@@ -91,13 +91,13 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (ts_ != 0L) {
-      output.writeUInt64(2, ts_);
+      output.writeUInt64(1, ts_);
     }
     if (sender_ != 0L) {
-      output.writeUInt64(3, sender_);
+      output.writeUInt64(2, sender_);
     }
     if (receiver_ != 0L) {
-      output.writeUInt64(4, receiver_);
+      output.writeUInt64(3, receiver_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -110,15 +110,15 @@ private static final long serialVersionUID = 0L;
     size = 0;
     if (ts_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, ts_);
+        .computeUInt64Size(1, ts_);
     }
     if (sender_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(3, sender_);
+        .computeUInt64Size(2, sender_);
     }
     if (receiver_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(4, receiver_);
+        .computeUInt64Size(3, receiver_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -386,21 +386,21 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
-            case 16: {
+            case 8: {
               ts_ = input.readUInt64();
               bitField0_ |= 0x00000001;
               break;
-            } // case 16
-            case 24: {
+            } // case 8
+            case 16: {
               sender_ = input.readUInt64();
               bitField0_ |= 0x00000002;
               break;
-            } // case 24
-            case 32: {
+            } // case 16
+            case 24: {
               receiver_ = input.readUInt64();
               bitField0_ |= 0x00000004;
               break;
-            } // case 32
+            } // case 24
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -420,7 +420,7 @@ private static final long serialVersionUID = 0L;
 
     private long ts_ ;
     /**
-     * <code>uint64 ts = 2;</code>
+     * <code>uint64 ts = 1;</code>
      * @return The ts.
      */
     @java.lang.Override
@@ -428,7 +428,7 @@ private static final long serialVersionUID = 0L;
       return ts_;
     }
     /**
-     * <code>uint64 ts = 2;</code>
+     * <code>uint64 ts = 1;</code>
      * @param value The ts to set.
      * @return This builder for chaining.
      */
@@ -440,7 +440,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 ts = 2;</code>
+     * <code>uint64 ts = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearTs() {
@@ -452,7 +452,7 @@ private static final long serialVersionUID = 0L;
 
     private long sender_ ;
     /**
-     * <code>uint64 sender = 3;</code>
+     * <code>uint64 sender = 2;</code>
      * @return The sender.
      */
     @java.lang.Override
@@ -460,7 +460,7 @@ private static final long serialVersionUID = 0L;
       return sender_;
     }
     /**
-     * <code>uint64 sender = 3;</code>
+     * <code>uint64 sender = 2;</code>
      * @param value The sender to set.
      * @return This builder for chaining.
      */
@@ -472,7 +472,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 sender = 3;</code>
+     * <code>uint64 sender = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearSender() {
@@ -484,7 +484,7 @@ private static final long serialVersionUID = 0L;
 
     private long receiver_ ;
     /**
-     * <code>uint64 receiver = 4;</code>
+     * <code>uint64 receiver = 3;</code>
      * @return The receiver.
      */
     @java.lang.Override
@@ -492,7 +492,7 @@ private static final long serialVersionUID = 0L;
       return receiver_;
     }
     /**
-     * <code>uint64 receiver = 4;</code>
+     * <code>uint64 receiver = 3;</code>
      * @param value The receiver to set.
      * @return This builder for chaining.
      */
@@ -504,7 +504,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 receiver = 4;</code>
+     * <code>uint64 receiver = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearReceiver() {

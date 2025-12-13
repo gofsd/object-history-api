@@ -11,19 +11,19 @@ public interface HealthcheckOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 ts = 2;</code>
+   * <code>uint64 ts = 1;</code>
    * @return The ts.
    */
   long getTs();
 
   /**
-   * <code>uint64 sender = 3;</code>
+   * <code>uint64 sender = 2;</code>
    * @return The sender.
    */
   long getSender();
 
   /**
-   * <code>uint64 receiver = 4;</code>
+   * <code>uint64 receiver = 3;</code>
    * @return The receiver.
    */
   long getReceiver();

@@ -1180,7 +1180,8 @@ proto.auth.Device.prototype.toObject = function(opt_includeInstance) {
 proto.auth.Device.toObject = function(includeInstance, msg) {
   var f, obj = {
     id: jspb.Message.getFieldWithDefault(msg, 1, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 2, "")
+    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    contact: jspb.Message.getBooleanFieldWithDefault(msg, 3, false)
   };
 
   if (includeInstance) {
@@ -1225,6 +1226,10 @@ proto.auth.Device.deserializeBinaryFromReader = function(msg, reader) {
       var value = /** @type {string} */ (reader.readString());
       msg.setName(value);
       break;
+    case 3:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setContact(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1268,6 +1273,13 @@ proto.auth.Device.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getContact();
+  if (f) {
+    writer.writeBool(
+      3,
+      f
+    );
+  }
 };
 
 
@@ -1304,6 +1316,24 @@ proto.auth.Device.prototype.getName = function() {
  */
 proto.auth.Device.prototype.setName = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
+};
+
+
+/**
+ * optional bool contact = 3;
+ * @return {boolean}
+ */
+proto.auth.Device.prototype.getContact = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 3, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.auth.Device} returns this
+ */
+proto.auth.Device.prototype.setContact = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 3, value);
 };
 
 
@@ -2619,7 +2649,8 @@ proto.auth.QRCommand.toObject = function(includeInstance, msg) {
     argument: jspb.Message.getFieldWithDefault(msg, 2, 0),
     crc32c: jspb.Message.getFieldWithDefault(msg, 3, 0),
     signature: msg.getSignature_asB64(),
-    ts: jspb.Message.getFieldWithDefault(msg, 5, 0)
+    publicKey: msg.getPublicKey_asB64(),
+    ts: jspb.Message.getFieldWithDefault(msg, 6, 0)
   };
 
   if (includeInstance) {
@@ -2673,6 +2704,10 @@ proto.auth.QRCommand.deserializeBinaryFromReader = function(msg, reader) {
       msg.setSignature(value);
       break;
     case 5:
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
+      msg.setPublicKey(value);
+      break;
+    case 6:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setTs(value);
       break;
@@ -2733,10 +2768,17 @@ proto.auth.QRCommand.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getPublicKey_asU8();
+  if (f.length > 0) {
+    writer.writeBytes(
+      5,
+      f
+    );
+  }
   f = message.getTs();
   if (f !== 0) {
     writer.writeUint64(
-      5,
+      6,
       f
     );
   }
@@ -2840,11 +2882,53 @@ proto.auth.QRCommand.prototype.setSignature = function(value) {
 
 
 /**
- * optional uint64 ts = 5;
+ * optional bytes public_key = 5;
+ * @return {string}
+ */
+proto.auth.QRCommand.prototype.getPublicKey = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * optional bytes public_key = 5;
+ * This is a type-conversion wrapper around `getPublicKey()`
+ * @return {string}
+ */
+proto.auth.QRCommand.prototype.getPublicKey_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getPublicKey()));
+};
+
+
+/**
+ * optional bytes public_key = 5;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getPublicKey()`
+ * @return {!Uint8Array}
+ */
+proto.auth.QRCommand.prototype.getPublicKey_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getPublicKey()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
+ * @return {!proto.auth.QRCommand} returns this
+ */
+proto.auth.QRCommand.prototype.setPublicKey = function(value) {
+  return jspb.Message.setProto3BytesField(this, 5, value);
+};
+
+
+/**
+ * optional uint64 ts = 6;
  * @return {number}
  */
 proto.auth.QRCommand.prototype.getTs = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 5, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 6, 0));
 };
 
 
@@ -2853,7 +2937,7 @@ proto.auth.QRCommand.prototype.getTs = function() {
  * @return {!proto.auth.QRCommand} returns this
  */
 proto.auth.QRCommand.prototype.setTs = function(value) {
-  return jspb.Message.setProto3IntField(this, 5, value);
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
@@ -2889,9 +2973,9 @@ proto.auth.Healthcheck.prototype.toObject = function(opt_includeInstance) {
  */
 proto.auth.Healthcheck.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ts: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    sender: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    receiver: jspb.Message.getFieldWithDefault(msg, 4, 0)
+    ts: jspb.Message.getFieldWithDefault(msg, 1, 0),
+    sender: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    receiver: jspb.Message.getFieldWithDefault(msg, 3, 0)
   };
 
   if (includeInstance) {
@@ -2928,15 +3012,15 @@ proto.auth.Healthcheck.deserializeBinaryFromReader = function(msg, reader) {
     }
     var field = reader.getFieldNumber();
     switch (field) {
-    case 2:
+    case 1:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setTs(value);
       break;
-    case 3:
+    case 2:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setSender(value);
       break;
-    case 4:
+    case 3:
       var value = /** @type {number} */ (reader.readUint64());
       msg.setReceiver(value);
       break;
@@ -2972,21 +3056,21 @@ proto.auth.Healthcheck.serializeBinaryToWriter = function(message, writer) {
   f = message.getTs();
   if (f !== 0) {
     writer.writeUint64(
-      2,
+      1,
       f
     );
   }
   f = message.getSender();
   if (f !== 0) {
     writer.writeUint64(
-      3,
+      2,
       f
     );
   }
   f = message.getReceiver();
   if (f !== 0) {
     writer.writeUint64(
-      4,
+      3,
       f
     );
   }
@@ -2994,11 +3078,11 @@ proto.auth.Healthcheck.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional uint64 ts = 2;
+ * optional uint64 ts = 1;
  * @return {number}
  */
 proto.auth.Healthcheck.prototype.getTs = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 1, 0));
 };
 
 
@@ -3007,16 +3091,16 @@ proto.auth.Healthcheck.prototype.getTs = function() {
  * @return {!proto.auth.Healthcheck} returns this
  */
 proto.auth.Healthcheck.prototype.setTs = function(value) {
-  return jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
 /**
- * optional uint64 sender = 3;
+ * optional uint64 sender = 2;
  * @return {number}
  */
 proto.auth.Healthcheck.prototype.getSender = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
@@ -3025,16 +3109,16 @@ proto.auth.Healthcheck.prototype.getSender = function() {
  * @return {!proto.auth.Healthcheck} returns this
  */
 proto.auth.Healthcheck.prototype.setSender = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
 /**
- * optional uint64 receiver = 4;
+ * optional uint64 receiver = 3;
  * @return {number}
  */
 proto.auth.Healthcheck.prototype.getReceiver = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 4, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
 };
 
 
@@ -3043,7 +3127,7 @@ proto.auth.Healthcheck.prototype.getReceiver = function() {
  * @return {!proto.auth.Healthcheck} returns this
  */
 proto.auth.Healthcheck.prototype.setReceiver = function(value) {
-  return jspb.Message.setProto3IntField(this, 4, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 

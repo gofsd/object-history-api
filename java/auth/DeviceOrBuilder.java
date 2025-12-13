@@ -27,4 +27,10 @@ public interface DeviceOrBuilder extends
    */
   com.google.protobuf.ByteString
       getNameBytes();
+
+  /**
+   * <code>bool contact = 3;</code>
+   * @return The contact.
+   */
+  boolean getContact();
 }

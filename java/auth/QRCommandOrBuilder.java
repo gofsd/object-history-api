@@ -35,7 +35,13 @@ public interface QRCommandOrBuilder extends
   com.google.protobuf.ByteString getSignature();
 
   /**
-   * <code>uint64 ts = 5;</code>
+   * <code>bytes public_key = 5;</code>
+   * @return The publicKey.
+   */
+  com.google.protobuf.ByteString getPublicKey();
+
+  /**
+   * <code>uint64 ts = 6;</code>
    * @return The ts.
    */
   long getTs();

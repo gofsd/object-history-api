@@ -29,6 +29,7 @@ private static final long serialVersionUID = 0L;
   }
   private QRCommand() {
     signature_ = com.google.protobuf.ByteString.EMPTY;
+    publicKey_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -88,10 +89,21 @@ private static final long serialVersionUID = 0L;
     return signature_;
   }
 
-  public static final int TS_FIELD_NUMBER = 5;
+  public static final int PUBLIC_KEY_FIELD_NUMBER = 5;
+  private com.google.protobuf.ByteString publicKey_ = com.google.protobuf.ByteString.EMPTY;
+  /**
+   * <code>bytes public_key = 5;</code>
+   * @return The publicKey.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString getPublicKey() {
+    return publicKey_;
+  }
+
+  public static final int TS_FIELD_NUMBER = 6;
   private long ts_ = 0L;
   /**
-   * <code>uint64 ts = 5;</code>
+   * <code>uint64 ts = 6;</code>
    * @return The ts.
    */
   @java.lang.Override
@@ -125,8 +137,11 @@ private static final long serialVersionUID = 0L;
     if (!signature_.isEmpty()) {
       output.writeBytes(4, signature_);
     }
+    if (!publicKey_.isEmpty()) {
+      output.writeBytes(5, publicKey_);
+    }
     if (ts_ != 0L) {
-      output.writeUInt64(5, ts_);
+      output.writeUInt64(6, ts_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -153,9 +168,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBytesSize(4, signature_);
     }
+    if (!publicKey_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(5, publicKey_);
+    }
     if (ts_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(5, ts_);
+        .computeUInt64Size(6, ts_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -180,6 +199,8 @@ private static final long serialVersionUID = 0L;
         != other.getCrc32C()) return false;
     if (!getSignature()
         .equals(other.getSignature())) return false;
+    if (!getPublicKey()
+        .equals(other.getPublicKey())) return false;
     if (getTs()
         != other.getTs()) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
@@ -203,6 +224,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getCrc32C();
     hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
     hash = (53 * hash) + getSignature().hashCode();
+    hash = (37 * hash) + PUBLIC_KEY_FIELD_NUMBER;
+    hash = (53 * hash) + getPublicKey().hashCode();
     hash = (37 * hash) + TS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTs());
@@ -341,6 +364,7 @@ private static final long serialVersionUID = 0L;
       argument_ = 0L;
       crc32C_ = 0;
       signature_ = com.google.protobuf.ByteString.EMPTY;
+      publicKey_ = com.google.protobuf.ByteString.EMPTY;
       ts_ = 0L;
       return this;
     }
@@ -388,6 +412,9 @@ private static final long serialVersionUID = 0L;
         result.signature_ = signature_;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.publicKey_ = publicKey_;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
         result.ts_ = ts_;
       }
     }
@@ -415,6 +442,9 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getSignature().isEmpty()) {
         setSignature(other.getSignature());
+      }
+      if (!other.getPublicKey().isEmpty()) {
+        setPublicKey(other.getPublicKey());
       }
       if (other.getTs() != 0L) {
         setTs(other.getTs());
@@ -465,11 +495,16 @@ private static final long serialVersionUID = 0L;
               bitField0_ |= 0x00000008;
               break;
             } // case 34
-            case 40: {
-              ts_ = input.readUInt64();
+            case 42: {
+              publicKey_ = input.readBytes();
               bitField0_ |= 0x00000010;
               break;
-            } // case 40
+            } // case 42
+            case 48: {
+              ts_ = input.readUInt64();
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 48
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -615,9 +650,41 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private com.google.protobuf.ByteString publicKey_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes public_key = 5;</code>
+     * @return The publicKey.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getPublicKey() {
+      return publicKey_;
+    }
+    /**
+     * <code>bytes public_key = 5;</code>
+     * @param value The publicKey to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPublicKey(com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      publicKey_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bytes public_key = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPublicKey() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      publicKey_ = getDefaultInstance().getPublicKey();
+      onChanged();
+      return this;
+    }
+
     private long ts_ ;
     /**
-     * <code>uint64 ts = 5;</code>
+     * <code>uint64 ts = 6;</code>
      * @return The ts.
      */
     @java.lang.Override
@@ -625,23 +692,23 @@ private static final long serialVersionUID = 0L;
       return ts_;
     }
     /**
-     * <code>uint64 ts = 5;</code>
+     * <code>uint64 ts = 6;</code>
      * @param value The ts to set.
      * @return This builder for chaining.
      */
     public Builder setTs(long value) {
 
       ts_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000020;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 ts = 5;</code>
+     * <code>uint64 ts = 6;</code>
      * @return This builder for chaining.
      */
     public Builder clearTs() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000020);
       ts_ = 0L;
       onChanged();
       return this;

@@ -39,6 +39,7 @@ message AppInfoResponse {
 message Device {
   uint64 id = 1;
   string name = 2;
+  bool contact = 3;
 }
 
 message UserInfoResponse {
@@ -110,13 +111,14 @@ message QRCommand {
   uint64 argument  = 2;
   uint32 crc32c = 3;
   bytes signature = 4;
-  uint64 ts = 5;
+  bytes public_key = 5;
+  uint64 ts = 6;
 }
 
 message Healthcheck {
-  uint64 ts = 2;
-  uint64 sender = 3;
-  uint64 receiver = 4;
+  uint64 ts = 1;
+  uint64 sender = 2;
+  uint64 receiver = 3;
 }
 
 message Empty{}
