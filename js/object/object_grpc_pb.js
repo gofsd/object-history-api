@@ -4,6 +4,17 @@
 var grpc = require('@grpc/grpc-js');
 var object_object_pb = require('../object/object_pb.js');
 
+function serialize_object_ActionBatch(arg) {
+  if (!(arg instanceof object_object_pb.ActionBatch)) {
+    throw new Error('Expected argument of type object.ActionBatch');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_object_ActionBatch(buffer_arg) {
+  return object_object_pb.ActionBatch.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_object_CreateObjectRequest(arg) {
   if (!(arg instanceof object_object_pb.CreateObjectRequest)) {
     throw new Error('Expected argument of type object.CreateObjectRequest');
@@ -156,17 +167,6 @@ function serialize_object_Object(arg) {
 
 function deserialize_object_Object(buffer_arg) {
   return object_object_pb.Object.deserializeBinary(new Uint8Array(buffer_arg));
-}
-
-function serialize_object_ObjectActions(arg) {
-  if (!(arg instanceof object_object_pb.ObjectActions)) {
-    throw new Error('Expected argument of type object.ObjectActions');
-  }
-  return Buffer.from(arg.serializeBinary());
-}
-
-function deserialize_object_ObjectActions(buffer_arg) {
-  return object_object_pb.ObjectActions.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_object_ObjectResponse(arg) {
@@ -457,22 +457,22 @@ subscribeToUsersObjects: {
     requestStream: false,
     responseStream: true,
     requestType: object_object_pb.DiffByUsers,
-    responseType: object_object_pb.ObjectActions,
+    responseType: object_object_pb.ActionBatch,
     requestSerialize: serialize_object_DiffByUsers,
     requestDeserialize: deserialize_object_DiffByUsers,
-    responseSerialize: serialize_object_ObjectActions,
-    responseDeserialize: deserialize_object_ObjectActions,
+    responseSerialize: serialize_object_ActionBatch,
+    responseDeserialize: deserialize_object_ActionBatch,
   },
   sync: {
     path: '/object.ObjectService/Sync',
     requestStream: true,
     responseStream: true,
-    requestType: object_object_pb.ObjectActions,
-    responseType: object_object_pb.ObjectActions,
-    requestSerialize: serialize_object_ObjectActions,
-    requestDeserialize: deserialize_object_ObjectActions,
-    responseSerialize: serialize_object_ObjectActions,
-    responseDeserialize: deserialize_object_ObjectActions,
+    requestType: object_object_pb.ActionBatch,
+    responseType: object_object_pb.ActionBatch,
+    requestSerialize: serialize_object_ActionBatch,
+    requestDeserialize: deserialize_object_ActionBatch,
+    responseSerialize: serialize_object_ActionBatch,
+    responseDeserialize: deserialize_object_ActionBatch,
   },
   // Get object commands
 getObjectCommands: {

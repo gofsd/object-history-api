@@ -515,28 +515,28 @@ public final class ObjectServiceGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<obj.DiffByUsers,
-      obj.ObjectActions> getSyncWithUsersMethod;
+      obj.ActionBatch> getSyncWithUsersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SyncWithUsers",
       requestType = obj.DiffByUsers.class,
-      responseType = obj.ObjectActions.class,
+      responseType = obj.ActionBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
   public static io.grpc.MethodDescriptor<obj.DiffByUsers,
-      obj.ObjectActions> getSyncWithUsersMethod() {
-    io.grpc.MethodDescriptor<obj.DiffByUsers, obj.ObjectActions> getSyncWithUsersMethod;
+      obj.ActionBatch> getSyncWithUsersMethod() {
+    io.grpc.MethodDescriptor<obj.DiffByUsers, obj.ActionBatch> getSyncWithUsersMethod;
     if ((getSyncWithUsersMethod = ObjectServiceGrpc.getSyncWithUsersMethod) == null) {
       synchronized (ObjectServiceGrpc.class) {
         if ((getSyncWithUsersMethod = ObjectServiceGrpc.getSyncWithUsersMethod) == null) {
           ObjectServiceGrpc.getSyncWithUsersMethod = getSyncWithUsersMethod =
-              io.grpc.MethodDescriptor.<obj.DiffByUsers, obj.ObjectActions>newBuilder()
+              io.grpc.MethodDescriptor.<obj.DiffByUsers, obj.ActionBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SyncWithUsers"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   obj.DiffByUsers.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectActions.getDefaultInstance()))
+                  obj.ActionBatch.getDefaultInstance()))
               .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("SyncWithUsers"))
               .build();
         }
@@ -545,29 +545,29 @@ public final class ObjectServiceGrpc {
     return getSyncWithUsersMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<obj.ObjectActions,
-      obj.ObjectActions> getSyncMethod;
+  private static volatile io.grpc.MethodDescriptor<obj.ActionBatch,
+      obj.ActionBatch> getSyncMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Sync",
-      requestType = obj.ObjectActions.class,
-      responseType = obj.ObjectActions.class,
+      requestType = obj.ActionBatch.class,
+      responseType = obj.ActionBatch.class,
       methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
-  public static io.grpc.MethodDescriptor<obj.ObjectActions,
-      obj.ObjectActions> getSyncMethod() {
-    io.grpc.MethodDescriptor<obj.ObjectActions, obj.ObjectActions> getSyncMethod;
+  public static io.grpc.MethodDescriptor<obj.ActionBatch,
+      obj.ActionBatch> getSyncMethod() {
+    io.grpc.MethodDescriptor<obj.ActionBatch, obj.ActionBatch> getSyncMethod;
     if ((getSyncMethod = ObjectServiceGrpc.getSyncMethod) == null) {
       synchronized (ObjectServiceGrpc.class) {
         if ((getSyncMethod = ObjectServiceGrpc.getSyncMethod) == null) {
           ObjectServiceGrpc.getSyncMethod = getSyncMethod =
-              io.grpc.MethodDescriptor.<obj.ObjectActions, obj.ObjectActions>newBuilder()
+              io.grpc.MethodDescriptor.<obj.ActionBatch, obj.ActionBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Sync"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectActions.getDefaultInstance()))
+                  obj.ActionBatch.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  obj.ObjectActions.getDefaultInstance()))
+                  obj.ActionBatch.getDefaultInstance()))
               .setSchemaDescriptor(new ObjectServiceMethodDescriptorSupplier("Sync"))
               .build();
         }
@@ -803,14 +803,14 @@ public final class ObjectServiceGrpc {
     /**
      */
     default void syncWithUsers(obj.DiffByUsers request,
-        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+        io.grpc.stub.StreamObserver<obj.ActionBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSyncWithUsersMethod(), responseObserver);
     }
 
     /**
      */
-    default io.grpc.stub.StreamObserver<obj.ObjectActions> sync(
-        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+    default io.grpc.stub.StreamObserver<obj.ActionBatch> sync(
+        io.grpc.stub.StreamObserver<obj.ActionBatch> responseObserver) {
       return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getSyncMethod(), responseObserver);
     }
 
@@ -1004,15 +1004,15 @@ public final class ObjectServiceGrpc {
     /**
      */
     public void syncWithUsers(obj.DiffByUsers request,
-        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+        io.grpc.stub.StreamObserver<obj.ActionBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
           getChannel().newCall(getSyncWithUsersMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public io.grpc.stub.StreamObserver<obj.ObjectActions> sync(
-        io.grpc.stub.StreamObserver<obj.ObjectActions> responseObserver) {
+    public io.grpc.stub.StreamObserver<obj.ActionBatch> sync(
+        io.grpc.stub.StreamObserver<obj.ActionBatch> responseObserver) {
       return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getSyncMethod(), getCallOptions()), responseObserver);
     }
@@ -1182,7 +1182,7 @@ public final class ObjectServiceGrpc {
     /**
      */
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
-    public io.grpc.stub.BlockingClientCall<?, obj.ObjectActions>
+    public io.grpc.stub.BlockingClientCall<?, obj.ActionBatch>
         syncWithUsers(obj.DiffByUsers request) {
       return io.grpc.stub.ClientCalls.blockingV2ServerStreamingCall(
           getChannel(), getSyncWithUsersMethod(), getCallOptions(), request);
@@ -1191,7 +1191,7 @@ public final class ObjectServiceGrpc {
     /**
      */
     @io.grpc.ExperimentalApi("https://github.com/grpc/grpc-java/issues/10918")
-    public io.grpc.stub.BlockingClientCall<obj.ObjectActions, obj.ObjectActions>
+    public io.grpc.stub.BlockingClientCall<obj.ActionBatch, obj.ActionBatch>
         sync() {
       return io.grpc.stub.ClientCalls.blockingBidiStreamingCall(
           getChannel(), getSyncMethod(), getCallOptions());
@@ -1358,7 +1358,7 @@ public final class ObjectServiceGrpc {
 
     /**
      */
-    public java.util.Iterator<obj.ObjectActions> syncWithUsers(
+    public java.util.Iterator<obj.ActionBatch> syncWithUsers(
         obj.DiffByUsers request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
           getChannel(), getSyncWithUsersMethod(), getCallOptions(), request);
@@ -1633,7 +1633,7 @@ public final class ObjectServiceGrpc {
           break;
         case METHODID_SYNC_WITH_USERS:
           serviceImpl.syncWithUsers((obj.DiffByUsers) request,
-              (io.grpc.stub.StreamObserver<obj.ObjectActions>) responseObserver);
+              (io.grpc.stub.StreamObserver<obj.ActionBatch>) responseObserver);
           break;
         case METHODID_GET_OBJECT_COMMANDS:
           serviceImpl.getObjectCommands((obj.GetObjectRequest) request,
@@ -1651,7 +1651,7 @@ public final class ObjectServiceGrpc {
       switch (methodId) {
         case METHODID_SYNC:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.sync(
-              (io.grpc.stub.StreamObserver<obj.ObjectActions>) responseObserver);
+              (io.grpc.stub.StreamObserver<obj.ActionBatch>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -1777,14 +1777,14 @@ public final class ObjectServiceGrpc {
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
               obj.DiffByUsers,
-              obj.ObjectActions>(
+              obj.ActionBatch>(
                 service, METHODID_SYNC_WITH_USERS)))
         .addMethod(
           getSyncMethod(),
           io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
             new MethodHandlers<
-              obj.ObjectActions,
-              obj.ObjectActions>(
+              obj.ActionBatch,
+              obj.ActionBatch>(
                 service, METHODID_SYNC)))
         .addMethod(
           getGetObjectCommandsMethod(),

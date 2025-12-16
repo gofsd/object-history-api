@@ -177,15 +177,50 @@ public final class Obj extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_object_Empty_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_object_ObjectAction_descriptor;
+    internal_static_object_ActionMeta_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_object_ObjectAction_fieldAccessorTable;
+      internal_static_object_ActionMeta_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_object_ObjectActions_descriptor;
+    internal_static_object_ValuePayload_descriptor;
   static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_object_ObjectActions_fieldAccessorTable;
+      internal_static_object_ValuePayload_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_Action_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_Action_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_Action_AttributesEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_Action_AttributesEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_ActionBatchMeta_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_ActionBatchMeta_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_DictionaryEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_DictionaryEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_Dictionary_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_Dictionary_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_DictionaryUpdate_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_DictionaryUpdate_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_object_ActionBatch_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_object_ActionBatch_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_object_DiffByUser_descriptor;
   static final 
@@ -266,61 +301,84 @@ public final class Obj extends com.google.protobuf.GeneratedFile {
       "\001(\004\"9\n\026ReceiveObjectsResponse\022\037\n\007objects" +
       "\030\001 \003(\0132\016.object.Object\"7\n\024SubscriptionRe" +
       "sponse\022\037\n\007objects\030\001 \003(\0132\016.object.Object\"" +
-      "\007\n\005Empty\"l\n\014ObjectAction\022\"\n\006action\030\001 \001(\016" +
-      "2\022.object.ActionType\022\021\n\tsource_id\030\002 \001(\004\022" +
-      "\021\n\ttarget_id\030\003 \001(\004\022\022\n\nvalue_code\030\004 \001(\004\"6" +
-      "\n\rObjectActions\022%\n\007actions\030\001 \003(\0132\024.objec" +
-      "t.ObjectAction\"0\n\nDiffByUser\022\017\n\007user_id\030" +
-      "\001 \001(\004\022\021\n\taction_id\030\002 \001(\004\"0\n\013DiffByUsers\022" +
-      "!\n\005diffs\030\001 \003(\0132\022.object.DiffByUser\")\n\010Re" +
-      "lation\022\n\n\002id\030\001 \001(\004\022\021\n\ttarget_id\030\002 \001(\004*s\n" +
-      "\nObjectType\022\022\n\016UNKNOWN_OBJECT\020\000\022\010\n\004ITEM\020" +
-      "\001\022\010\n\004TYPE\020\002\022\t\n\005GROUP\020\003\022\013\n\007COMMAND\020\004\022\010\n\004U" +
-      "SER\020\005\022\r\n\tEXECUTION\020\006\022\014\n\010RELATION\020\007*\264\002\n\nA" +
-      "ctionType\022\022\n\016UNKNOWN_ACTION\020\000\022\021\n\rCREATE_" +
-      "OBJECT\020\001\022\021\n\rUPDATE_OBJECT\020\002\022\021\n\rDELETE_OB" +
-      "JECT\020\003\022\017\n\013READ_OBJECT\020\004\022\020\n\014CREATE_FIELD\020" +
-      "\n\022\020\n\014UPDATE_FIELD\020\013\022\020\n\014DELETE_FIELD\020\014\022\016\n" +
-      "\nREAD_FIELD\020\r\022\020\n\014CREATE_VALUE\020\024\022\017\n\013WRITE" +
-      "_VALUE\020\025\022\016\n\nREAD_VALUE\020\026\022\023\n\017CREATE_RELAT" +
-      "ION\020\036\022\023\n\017DELETE_RELATION\020\037\022\021\n\rREAD_RELAT" +
-      "ION\020 \022\t\n\005BEGIN\020(\022\007\n\003END\020)2\361\n\n\rObjectServ" +
-      "ice\022C\n\014CreateObject\022\033.object.CreateObjec" +
-      "tRequest\032\026.object.ObjectResponse\022=\n\tGetO" +
-      "bject\022\030.object.GetObjectRequest\032\026.object" +
-      ".ObjectResponse\022C\n\014UpdateObject\022\033.object" +
-      ".UpdateObjectRequest\032\026.object.ObjectResp" +
-      "onse\022O\n\021DeleteObjectField\022\".object.Delet" +
-      "eObjectsFieldsRequest\032\026.object.ObjectRes" +
-      "ponse\022F\n\rCreateObjects\022\034.object.CreateOb" +
-      "jectsRequest\032\027.object.ObjectsResponse\022@\n" +
-      "\nGetObjects\022\031.object.GetObjectsRequest\032\027" +
-      ".object.ObjectsResponse\022F\n\rUpdateObjects" +
-      "\022\034.object.UpdateObjectsRequest\032\027.object." +
-      "ObjectsResponse\022R\n\023CreateObjectsUnique\022\"" +
-      ".object.CreateObjectsUniqueRequest\032\027.obj" +
-      "ect.ObjectsResponse\022R\n\023UpdateObjectsUniq" +
-      "ue\022\".object.UpdateObjectsUniqueRequest\032\027" +
-      ".object.ObjectsResponse\022F\n\013ListObjects\022\032" +
-      ".object.ListObjectsRequest\032\033.object.List" +
-      "ObjectsResponse\022L\n\rExecuteAction\022\034.objec" +
-      "t.ExecuteActionRequest\032\035.object.ExecuteA" +
-      "ctionResponse\022N\n\016ExecuteActions\022\035.object" +
-      ".ExecuteActionsRequest\032\035.object.ExecuteA" +
-      "ctionResponse\022R\n\017TransferObjects\022\036.objec" +
-      "t.TransferObjectsRequest\032\037.object.Transf" +
-      "erObjectsResponse\022Q\n\016ReceiveObjects\022\037.ob" +
-      "ject.TransferObjectsResponse\032\036.object.Re" +
-      "ceiveObjectsResponse\022H\n\027SubscribeToUsers" +
-      "Objects\022\r.object.Empty\032\034.object.Subscrip" +
-      "tionResponse0\001\0224\n\021SubscribeToMyself\022\r.ob" +
-      "ject.Empty\032\016.object.Object0\001\022=\n\rSyncWith" +
-      "Users\022\023.object.DiffByUsers\032\025.object.Obje" +
-      "ctActions0\001\0228\n\004Sync\022\025.object.ObjectActio" +
-      "ns\032\025.object.ObjectActions(\0010\001\022F\n\021GetObje" +
-      "ctCommands\022\030.object.GetObjectRequest\032\027.o" +
-      "bject.ObjectsResponseB \n\003objB\003ObjP\001Z\014obj" +
-      "ect/proto\242\002\003OBJb\006proto3"
+      "\007\n\005Empty\"\037\n\nActionMeta\022\021\n\taction_id\030\001 \001(" +
+      "\r\"\254\001\n\014ValuePayload\022\021\n\ttype_hint\030\001 \001(\t\022\023\n" +
+      "\tint_value\030\002 \001(\022H\000\022\025\n\013float_value\030\003 \001(\001H" +
+      "\000\022\024\n\nbool_value\030\004 \001(\010H\000\022\026\n\014string_value\030" +
+      "\005 \001(\tH\000\022\025\n\013bytes_value\030\006 \001(\014H\000\022\020\n\006ref_id" +
+      "\030\007 \001(\rH\000B\006\n\004kind\"\202\002\n\006Action\022\"\n\006action\030\001 " +
+      "\001(\0162\022.object.ActionType\022\021\n\tsource_id\030\002 \001" +
+      "(\r\022\021\n\ttarget_id\030\003 \001(\r\022%\n\007payload\030\004 \001(\0132\024" +
+      ".object.ValuePayload\022 \n\004meta\030\005 \001(\0132\022.obj" +
+      "ect.ActionMeta\0222\n\nattributes\030\006 \003(\0132\036.obj" +
+      "ect.Action.AttributesEntry\0321\n\017Attributes" +
+      "Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\223\001" +
+      "\n\017ActionBatchMeta\022\026\n\016transaction_id\030\001 \001(" +
+      "\004\022\024\n\014timestamp_ms\030\002 \001(\004\022\026\n\016schema_versio" +
+      "n\030\003 \001(\r\022#\n\006result\030\004 \001(\0162\023.object.BatchRe" +
+      "sult\022\025\n\rbatch_version\030\005 \001(\r\"k\n\017Dictionar" +
+      "yEntry\022\n\n\002id\030\001 \001(\r\022\026\n\014string_value\030\002 \001(\t" +
+      "H\000\022\024\n\nuint_value\030\003 \001(\004H\000\022\025\n\013bytes_value\030" +
+      "\004 \001(\014H\000B\007\n\005value\"6\n\nDictionary\022(\n\007entrie" +
+      "s\030\001 \003(\0132\027.object.DictionaryEntry\"@\n\020Dict" +
+      "ionaryUpdate\022,\n\013new_entries\030\001 \003(\0132\027.obje" +
+      "ct.DictionaryEntry\"\262\001\n\013ActionBatch\022%\n\004me" +
+      "ta\030\001 \001(\0132\027.object.ActionBatchMeta\022&\n\ndic" +
+      "tionary\030\002 \001(\0132\022.object.Dictionary\0223\n\021dic" +
+      "tionary_update\030\003 \001(\0132\030.object.Dictionary" +
+      "Update\022\037\n\007actions\030\004 \003(\0132\016.object.Action\"" +
+      "0\n\nDiffByUser\022\017\n\007user_id\030\001 \001(\004\022\021\n\taction" +
+      "_id\030\002 \001(\004\"0\n\013DiffByUsers\022!\n\005diffs\030\001 \003(\0132" +
+      "\022.object.DiffByUser\")\n\010Relation\022\n\n\002id\030\001 " +
+      "\001(\004\022\021\n\ttarget_id\030\002 \001(\004*s\n\nObjectType\022\022\n\016" +
+      "UNKNOWN_OBJECT\020\000\022\010\n\004ITEM\020\001\022\010\n\004TYPE\020\002\022\t\n\005" +
+      "GROUP\020\003\022\013\n\007COMMAND\020\004\022\010\n\004USER\020\005\022\r\n\tEXECUT" +
+      "ION\020\006\022\014\n\010RELATION\020\007*\240\002\n\nActionType\022\022\n\016UN" +
+      "KNOWN_ACTION\020\000\022\021\n\rCREATE_OBJECT\020\001\022\021\n\rUPD" +
+      "ATE_OBJECT\020\002\022\021\n\rDELETE_OBJECT\020\003\022\017\n\013READ_" +
+      "OBJECT\020\004\022\020\n\014CREATE_FIELD\020\n\022\020\n\014UPDATE_FIE" +
+      "LD\020\013\022\020\n\014DELETE_FIELD\020\014\022\016\n\nREAD_FIELD\020\r\022\020" +
+      "\n\014CREATE_VALUE\020\024\022\017\n\013WRITE_VALUE\020\025\022\016\n\nREA" +
+      "D_VALUE\020\026\022\023\n\017CREATE_RELATION\020\036\022\023\n\017DELETE" +
+      "_RELATION\020\037\022\021\n\rREAD_RELATION\020 *C\n\013BatchR" +
+      "esult\022\021\n\rBATCH_UNKNOWN\020\000\022\020\n\014BATCH_COMMIT" +
+      "\020\001\022\017\n\013BATCH_ABORT\020\0022\353\n\n\rObjectService\022C\n" +
+      "\014CreateObject\022\033.object.CreateObjectReque" +
+      "st\032\026.object.ObjectResponse\022=\n\tGetObject\022" +
+      "\030.object.GetObjectRequest\032\026.object.Objec" +
+      "tResponse\022C\n\014UpdateObject\022\033.object.Updat" +
+      "eObjectRequest\032\026.object.ObjectResponse\022O" +
+      "\n\021DeleteObjectField\022\".object.DeleteObjec" +
+      "tsFieldsRequest\032\026.object.ObjectResponse\022" +
+      "F\n\rCreateObjects\022\034.object.CreateObjectsR" +
+      "equest\032\027.object.ObjectsResponse\022@\n\nGetOb" +
+      "jects\022\031.object.GetObjectsRequest\032\027.objec" +
+      "t.ObjectsResponse\022F\n\rUpdateObjects\022\034.obj" +
+      "ect.UpdateObjectsRequest\032\027.object.Object" +
+      "sResponse\022R\n\023CreateObjectsUnique\022\".objec" +
+      "t.CreateObjectsUniqueRequest\032\027.object.Ob" +
+      "jectsResponse\022R\n\023UpdateObjectsUnique\022\".o" +
+      "bject.UpdateObjectsUniqueRequest\032\027.objec" +
+      "t.ObjectsResponse\022F\n\013ListObjects\022\032.objec" +
+      "t.ListObjectsRequest\032\033.object.ListObject" +
+      "sResponse\022L\n\rExecuteAction\022\034.object.Exec" +
+      "uteActionRequest\032\035.object.ExecuteActionR" +
+      "esponse\022N\n\016ExecuteActions\022\035.object.Execu" +
+      "teActionsRequest\032\035.object.ExecuteActionR" +
+      "esponse\022R\n\017TransferObjects\022\036.object.Tran" +
+      "sferObjectsRequest\032\037.object.TransferObje" +
+      "ctsResponse\022Q\n\016ReceiveObjects\022\037.object.T" +
+      "ransferObjectsResponse\032\036.object.ReceiveO" +
+      "bjectsResponse\022H\n\027SubscribeToUsersObject" +
+      "s\022\r.object.Empty\032\034.object.SubscriptionRe" +
+      "sponse0\001\0224\n\021SubscribeToMyself\022\r.object.E" +
+      "mpty\032\016.object.Object0\001\022;\n\rSyncWithUsers\022" +
+      "\023.object.DiffByUsers\032\023.object.ActionBatc" +
+      "h0\001\0224\n\004Sync\022\023.object.ActionBatch\032\023.objec" +
+      "t.ActionBatch(\0010\001\022F\n\021GetObjectCommands\022\030" +
+      ".object.GetObjectRequest\032\027.object.Object" +
+      "sResponseB \n\003objB\003ObjP\001Z\014object/proto\242\002\003" +
+      "OBJb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -506,32 +564,74 @@ public final class Obj extends com.google.protobuf.GeneratedFile {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_object_Empty_descriptor,
         new java.lang.String[] { });
-    internal_static_object_ObjectAction_descriptor =
+    internal_static_object_ActionMeta_descriptor =
       getDescriptor().getMessageType(22);
-    internal_static_object_ObjectAction_fieldAccessorTable = new
+    internal_static_object_ActionMeta_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_object_ObjectAction_descriptor,
-        new java.lang.String[] { "Action", "SourceId", "TargetId", "ValueCode", });
-    internal_static_object_ObjectActions_descriptor =
+        internal_static_object_ActionMeta_descriptor,
+        new java.lang.String[] { "ActionId", });
+    internal_static_object_ValuePayload_descriptor =
       getDescriptor().getMessageType(23);
-    internal_static_object_ObjectActions_fieldAccessorTable = new
+    internal_static_object_ValuePayload_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_object_ObjectActions_descriptor,
-        new java.lang.String[] { "Actions", });
-    internal_static_object_DiffByUser_descriptor =
+        internal_static_object_ValuePayload_descriptor,
+        new java.lang.String[] { "TypeHint", "IntValue", "FloatValue", "BoolValue", "StringValue", "BytesValue", "RefId", "Kind", });
+    internal_static_object_Action_descriptor =
       getDescriptor().getMessageType(24);
+    internal_static_object_Action_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_Action_descriptor,
+        new java.lang.String[] { "Action", "SourceId", "TargetId", "Payload", "Meta", "Attributes", });
+    internal_static_object_Action_AttributesEntry_descriptor =
+      internal_static_object_Action_descriptor.getNestedType(0);
+    internal_static_object_Action_AttributesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_Action_AttributesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_object_ActionBatchMeta_descriptor =
+      getDescriptor().getMessageType(25);
+    internal_static_object_ActionBatchMeta_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_ActionBatchMeta_descriptor,
+        new java.lang.String[] { "TransactionId", "TimestampMs", "SchemaVersion", "Result", "BatchVersion", });
+    internal_static_object_DictionaryEntry_descriptor =
+      getDescriptor().getMessageType(26);
+    internal_static_object_DictionaryEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_DictionaryEntry_descriptor,
+        new java.lang.String[] { "Id", "StringValue", "UintValue", "BytesValue", "Value", });
+    internal_static_object_Dictionary_descriptor =
+      getDescriptor().getMessageType(27);
+    internal_static_object_Dictionary_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_Dictionary_descriptor,
+        new java.lang.String[] { "Entries", });
+    internal_static_object_DictionaryUpdate_descriptor =
+      getDescriptor().getMessageType(28);
+    internal_static_object_DictionaryUpdate_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_DictionaryUpdate_descriptor,
+        new java.lang.String[] { "NewEntries", });
+    internal_static_object_ActionBatch_descriptor =
+      getDescriptor().getMessageType(29);
+    internal_static_object_ActionBatch_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_object_ActionBatch_descriptor,
+        new java.lang.String[] { "Meta", "Dictionary", "DictionaryUpdate", "Actions", });
+    internal_static_object_DiffByUser_descriptor =
+      getDescriptor().getMessageType(30);
     internal_static_object_DiffByUser_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_object_DiffByUser_descriptor,
         new java.lang.String[] { "UserId", "ActionId", });
     internal_static_object_DiffByUsers_descriptor =
-      getDescriptor().getMessageType(25);
+      getDescriptor().getMessageType(31);
     internal_static_object_DiffByUsers_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_object_DiffByUsers_descriptor,
         new java.lang.String[] { "Diffs", });
     internal_static_object_Relation_descriptor =
-      getDescriptor().getMessageType(26);
+      getDescriptor().getMessageType(32);
     internal_static_object_Relation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_object_Relation_descriptor,

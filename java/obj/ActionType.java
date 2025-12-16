@@ -7,7 +7,9 @@ package obj;
 
 /**
  * <pre>
- * Enumerate all actions
+ * -----------------------
+ * Action types
+ * -----------------------
  * </pre>
  *
  * Protobuf enum {@code object.ActionType}
@@ -21,7 +23,7 @@ public enum ActionType
   UNKNOWN_ACTION(0),
   /**
    * <pre>
-   * Object-level actions
+   * Object-level
    * </pre>
    *
    * <code>CREATE_OBJECT = 1;</code>
@@ -41,7 +43,7 @@ public enum ActionType
   READ_OBJECT(4),
   /**
    * <pre>
-   * Field-level actions
+   * Field-level
    * </pre>
    *
    * <code>CREATE_FIELD = 10;</code>
@@ -61,7 +63,7 @@ public enum ActionType
   READ_FIELD(13),
   /**
    * <pre>
-   * Value-level actions (char-based)
+   * Value-level
    * </pre>
    *
    * <code>CREATE_VALUE = 20;</code>
@@ -77,7 +79,7 @@ public enum ActionType
   READ_VALUE(22),
   /**
    * <pre>
-   * Relation-level actions
+   * Relation-level
    * </pre>
    *
    * <code>CREATE_RELATION = 30;</code>
@@ -91,14 +93,6 @@ public enum ActionType
    * <code>READ_RELATION = 32;</code>
    */
   READ_RELATION(32),
-  /**
-   * <code>BEGIN = 40;</code>
-   */
-  BEGIN(40),
-  /**
-   * <code>END = 41;</code>
-   */
-  END(41),
   UNRECOGNIZED(-1),
   ;
 
@@ -117,7 +111,7 @@ public enum ActionType
   public static final int UNKNOWN_ACTION_VALUE = 0;
   /**
    * <pre>
-   * Object-level actions
+   * Object-level
    * </pre>
    *
    * <code>CREATE_OBJECT = 1;</code>
@@ -137,7 +131,7 @@ public enum ActionType
   public static final int READ_OBJECT_VALUE = 4;
   /**
    * <pre>
-   * Field-level actions
+   * Field-level
    * </pre>
    *
    * <code>CREATE_FIELD = 10;</code>
@@ -157,7 +151,7 @@ public enum ActionType
   public static final int READ_FIELD_VALUE = 13;
   /**
    * <pre>
-   * Value-level actions (char-based)
+   * Value-level
    * </pre>
    *
    * <code>CREATE_VALUE = 20;</code>
@@ -173,7 +167,7 @@ public enum ActionType
   public static final int READ_VALUE_VALUE = 22;
   /**
    * <pre>
-   * Relation-level actions
+   * Relation-level
    * </pre>
    *
    * <code>CREATE_RELATION = 30;</code>
@@ -187,14 +181,6 @@ public enum ActionType
    * <code>READ_RELATION = 32;</code>
    */
   public static final int READ_RELATION_VALUE = 32;
-  /**
-   * <code>BEGIN = 40;</code>
-   */
-  public static final int BEGIN_VALUE = 40;
-  /**
-   * <code>END = 41;</code>
-   */
-  public static final int END_VALUE = 41;
 
 
   public final int getNumber() {
@@ -236,8 +222,6 @@ public enum ActionType
       case 30: return CREATE_RELATION;
       case 31: return DELETE_RELATION;
       case 32: return READ_RELATION;
-      case 40: return BEGIN;
-      case 41: return END;
       default: return null;
     }
   }

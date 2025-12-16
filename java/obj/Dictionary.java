@@ -6,13 +6,13 @@
 package obj;
 
 /**
- * Protobuf type {@code object.ObjectActions}
+ * Protobuf type {@code object.Dictionary}
  */
 @com.google.protobuf.Generated
-public final class ObjectActions extends
+public final class Dictionary extends
     com.google.protobuf.GeneratedMessage implements
-    // @@protoc_insertion_point(message_implements:object.ObjectActions)
-    ObjectActionsOrBuilder {
+    // @@protoc_insertion_point(message_implements:object.Dictionary)
+    DictionaryOrBuilder {
 private static final long serialVersionUID = 0L;
   static {
     com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -21,68 +21,68 @@ private static final long serialVersionUID = 0L;
       /* minor= */ 33,
       /* patch= */ 0,
       /* suffix= */ "",
-      "ObjectActions");
+      "Dictionary");
   }
-  // Use ObjectActions.newBuilder() to construct.
-  private ObjectActions(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+  // Use Dictionary.newBuilder() to construct.
+  private Dictionary(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
     super(builder);
   }
-  private ObjectActions() {
-    actions_ = java.util.Collections.emptyList();
+  private Dictionary() {
+    entries_ = java.util.Collections.emptyList();
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return obj.Obj.internal_static_object_ObjectActions_descriptor;
+    return obj.Obj.internal_static_object_Dictionary_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return obj.Obj.internal_static_object_ObjectActions_fieldAccessorTable
+    return obj.Obj.internal_static_object_Dictionary_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            obj.ObjectActions.class, obj.ObjectActions.Builder.class);
+            obj.Dictionary.class, obj.Dictionary.Builder.class);
   }
 
-  public static final int ACTIONS_FIELD_NUMBER = 1;
+  public static final int ENTRIES_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private java.util.List<obj.ObjectAction> actions_;
+  private java.util.List<obj.DictionaryEntry> entries_;
   /**
-   * <code>repeated .object.ObjectAction actions = 1;</code>
+   * <code>repeated .object.DictionaryEntry entries = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<obj.ObjectAction> getActionsList() {
-    return actions_;
+  public java.util.List<obj.DictionaryEntry> getEntriesList() {
+    return entries_;
   }
   /**
-   * <code>repeated .object.ObjectAction actions = 1;</code>
+   * <code>repeated .object.DictionaryEntry entries = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends obj.ObjectActionOrBuilder> 
-      getActionsOrBuilderList() {
-    return actions_;
+  public java.util.List<? extends obj.DictionaryEntryOrBuilder> 
+      getEntriesOrBuilderList() {
+    return entries_;
   }
   /**
-   * <code>repeated .object.ObjectAction actions = 1;</code>
+   * <code>repeated .object.DictionaryEntry entries = 1;</code>
    */
   @java.lang.Override
-  public int getActionsCount() {
-    return actions_.size();
+  public int getEntriesCount() {
+    return entries_.size();
   }
   /**
-   * <code>repeated .object.ObjectAction actions = 1;</code>
+   * <code>repeated .object.DictionaryEntry entries = 1;</code>
    */
   @java.lang.Override
-  public obj.ObjectAction getActions(int index) {
-    return actions_.get(index);
+  public obj.DictionaryEntry getEntries(int index) {
+    return entries_.get(index);
   }
   /**
-   * <code>repeated .object.ObjectAction actions = 1;</code>
+   * <code>repeated .object.DictionaryEntry entries = 1;</code>
    */
   @java.lang.Override
-  public obj.ObjectActionOrBuilder getActionsOrBuilder(
+  public obj.DictionaryEntryOrBuilder getEntriesOrBuilder(
       int index) {
-    return actions_.get(index);
+    return entries_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -99,8 +99,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    for (int i = 0; i < actions_.size(); i++) {
-      output.writeMessage(1, actions_.get(i));
+    for (int i = 0; i < entries_.size(); i++) {
+      output.writeMessage(1, entries_.get(i));
     }
     getUnknownFields().writeTo(output);
   }
@@ -111,9 +111,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    for (int i = 0; i < actions_.size(); i++) {
+    for (int i = 0; i < entries_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, actions_.get(i));
+        .computeMessageSize(1, entries_.get(i));
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -125,13 +125,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof obj.ObjectActions)) {
+    if (!(obj instanceof obj.Dictionary)) {
       return super.equals(obj);
     }
-    obj.ObjectActions other = (obj.ObjectActions) obj;
+    obj.Dictionary other = (obj.Dictionary) obj;
 
-    if (!getActionsList()
-        .equals(other.getActionsList())) return false;
+    if (!getEntriesList()
+        .equals(other.getEntriesList())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -143,53 +143,53 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getActionsCount() > 0) {
-      hash = (37 * hash) + ACTIONS_FIELD_NUMBER;
-      hash = (53 * hash) + getActionsList().hashCode();
+    if (getEntriesCount() > 0) {
+      hash = (37 * hash) + ENTRIES_FIELD_NUMBER;
+      hash = (53 * hash) + getEntriesList().hashCode();
     }
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.ObjectActions parseFrom(byte[] data)
+  public static obj.Dictionary parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static obj.ObjectActions parseFrom(java.io.InputStream input)
+  public static obj.Dictionary parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -197,26 +197,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static obj.ObjectActions parseDelimitedFrom(java.io.InputStream input)
+  public static obj.Dictionary parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static obj.ObjectActions parseDelimitedFrom(
+  public static obj.Dictionary parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessage
         .parseWithIOException(PARSER, input);
   }
-  public static obj.ObjectActions parseFrom(
+  public static obj.Dictionary parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -229,7 +229,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(obj.ObjectActions prototype) {
+  public static Builder newBuilder(obj.Dictionary prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -245,26 +245,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code object.ObjectActions}
+   * Protobuf type {@code object.Dictionary}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:object.ObjectActions)
-      obj.ObjectActionsOrBuilder {
+      // @@protoc_insertion_point(builder_implements:object.Dictionary)
+      obj.DictionaryOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return obj.Obj.internal_static_object_ObjectActions_descriptor;
+      return obj.Obj.internal_static_object_Dictionary_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return obj.Obj.internal_static_object_ObjectActions_fieldAccessorTable
+      return obj.Obj.internal_static_object_Dictionary_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              obj.ObjectActions.class, obj.ObjectActions.Builder.class);
+              obj.Dictionary.class, obj.Dictionary.Builder.class);
     }
 
-    // Construct using obj.ObjectActions.newBuilder()
+    // Construct using obj.Dictionary.newBuilder()
     private Builder() {
 
     }
@@ -278,11 +278,11 @@ private static final long serialVersionUID = 0L;
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      if (actionsBuilder_ == null) {
-        actions_ = java.util.Collections.emptyList();
+      if (entriesBuilder_ == null) {
+        entries_ = java.util.Collections.emptyList();
       } else {
-        actions_ = null;
-        actionsBuilder_.clear();
+        entries_ = null;
+        entriesBuilder_.clear();
       }
       bitField0_ = (bitField0_ & ~0x00000001);
       return this;
@@ -291,17 +291,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return obj.Obj.internal_static_object_ObjectActions_descriptor;
+      return obj.Obj.internal_static_object_Dictionary_descriptor;
     }
 
     @java.lang.Override
-    public obj.ObjectActions getDefaultInstanceForType() {
-      return obj.ObjectActions.getDefaultInstance();
+    public obj.Dictionary getDefaultInstanceForType() {
+      return obj.Dictionary.getDefaultInstance();
     }
 
     @java.lang.Override
-    public obj.ObjectActions build() {
-      obj.ObjectActions result = buildPartial();
+    public obj.Dictionary build() {
+      obj.Dictionary result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -309,65 +309,65 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public obj.ObjectActions buildPartial() {
-      obj.ObjectActions result = new obj.ObjectActions(this);
+    public obj.Dictionary buildPartial() {
+      obj.Dictionary result = new obj.Dictionary(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(obj.ObjectActions result) {
-      if (actionsBuilder_ == null) {
+    private void buildPartialRepeatedFields(obj.Dictionary result) {
+      if (entriesBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
-          actions_ = java.util.Collections.unmodifiableList(actions_);
+          entries_ = java.util.Collections.unmodifiableList(entries_);
           bitField0_ = (bitField0_ & ~0x00000001);
         }
-        result.actions_ = actions_;
+        result.entries_ = entries_;
       } else {
-        result.actions_ = actionsBuilder_.build();
+        result.entries_ = entriesBuilder_.build();
       }
     }
 
-    private void buildPartial0(obj.ObjectActions result) {
+    private void buildPartial0(obj.Dictionary result) {
       int from_bitField0_ = bitField0_;
     }
 
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof obj.ObjectActions) {
-        return mergeFrom((obj.ObjectActions)other);
+      if (other instanceof obj.Dictionary) {
+        return mergeFrom((obj.Dictionary)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(obj.ObjectActions other) {
-      if (other == obj.ObjectActions.getDefaultInstance()) return this;
-      if (actionsBuilder_ == null) {
-        if (!other.actions_.isEmpty()) {
-          if (actions_.isEmpty()) {
-            actions_ = other.actions_;
+    public Builder mergeFrom(obj.Dictionary other) {
+      if (other == obj.Dictionary.getDefaultInstance()) return this;
+      if (entriesBuilder_ == null) {
+        if (!other.entries_.isEmpty()) {
+          if (entries_.isEmpty()) {
+            entries_ = other.entries_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureActionsIsMutable();
-            actions_.addAll(other.actions_);
+            ensureEntriesIsMutable();
+            entries_.addAll(other.entries_);
           }
           onChanged();
         }
       } else {
-        if (!other.actions_.isEmpty()) {
-          if (actionsBuilder_.isEmpty()) {
-            actionsBuilder_.dispose();
-            actionsBuilder_ = null;
-            actions_ = other.actions_;
+        if (!other.entries_.isEmpty()) {
+          if (entriesBuilder_.isEmpty()) {
+            entriesBuilder_.dispose();
+            entriesBuilder_ = null;
+            entries_ = other.entries_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            actionsBuilder_ = 
+            entriesBuilder_ = 
               com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                 internalGetActionsFieldBuilder() : null;
+                 internalGetEntriesFieldBuilder() : null;
           } else {
-            actionsBuilder_.addAllMessages(other.actions_);
+            entriesBuilder_.addAllMessages(other.entries_);
           }
         }
       }
@@ -398,15 +398,15 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              obj.ObjectAction m =
+              obj.DictionaryEntry m =
                   input.readMessage(
-                      obj.ObjectAction.parser(),
+                      obj.DictionaryEntry.parser(),
                       extensionRegistry);
-              if (actionsBuilder_ == null) {
-                ensureActionsIsMutable();
-                actions_.add(m);
+              if (entriesBuilder_ == null) {
+                ensureEntriesIsMutable();
+                entries_.add(m);
               } else {
-                actionsBuilder_.addMessage(m);
+                entriesBuilder_.addMessage(m);
               }
               break;
             } // case 10
@@ -427,263 +427,263 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<obj.ObjectAction> actions_ =
+    private java.util.List<obj.DictionaryEntry> entries_ =
       java.util.Collections.emptyList();
-    private void ensureActionsIsMutable() {
+    private void ensureEntriesIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        actions_ = new java.util.ArrayList<obj.ObjectAction>(actions_);
+        entries_ = new java.util.ArrayList<obj.DictionaryEntry>(entries_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilder<
-        obj.ObjectAction, obj.ObjectAction.Builder, obj.ObjectActionOrBuilder> actionsBuilder_;
+        obj.DictionaryEntry, obj.DictionaryEntry.Builder, obj.DictionaryEntryOrBuilder> entriesBuilder_;
 
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public java.util.List<obj.ObjectAction> getActionsList() {
-      if (actionsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(actions_);
+    public java.util.List<obj.DictionaryEntry> getEntriesList() {
+      if (entriesBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(entries_);
       } else {
-        return actionsBuilder_.getMessageList();
+        return entriesBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public int getActionsCount() {
-      if (actionsBuilder_ == null) {
-        return actions_.size();
+    public int getEntriesCount() {
+      if (entriesBuilder_ == null) {
+        return entries_.size();
       } else {
-        return actionsBuilder_.getCount();
+        return entriesBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public obj.ObjectAction getActions(int index) {
-      if (actionsBuilder_ == null) {
-        return actions_.get(index);
+    public obj.DictionaryEntry getEntries(int index) {
+      if (entriesBuilder_ == null) {
+        return entries_.get(index);
       } else {
-        return actionsBuilder_.getMessage(index);
+        return entriesBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder setActions(
-        int index, obj.ObjectAction value) {
-      if (actionsBuilder_ == null) {
+    public Builder setEntries(
+        int index, obj.DictionaryEntry value) {
+      if (entriesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureActionsIsMutable();
-        actions_.set(index, value);
+        ensureEntriesIsMutable();
+        entries_.set(index, value);
         onChanged();
       } else {
-        actionsBuilder_.setMessage(index, value);
+        entriesBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder setActions(
-        int index, obj.ObjectAction.Builder builderForValue) {
-      if (actionsBuilder_ == null) {
-        ensureActionsIsMutable();
-        actions_.set(index, builderForValue.build());
+    public Builder setEntries(
+        int index, obj.DictionaryEntry.Builder builderForValue) {
+      if (entriesBuilder_ == null) {
+        ensureEntriesIsMutable();
+        entries_.set(index, builderForValue.build());
         onChanged();
       } else {
-        actionsBuilder_.setMessage(index, builderForValue.build());
+        entriesBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder addActions(obj.ObjectAction value) {
-      if (actionsBuilder_ == null) {
+    public Builder addEntries(obj.DictionaryEntry value) {
+      if (entriesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureActionsIsMutable();
-        actions_.add(value);
+        ensureEntriesIsMutable();
+        entries_.add(value);
         onChanged();
       } else {
-        actionsBuilder_.addMessage(value);
+        entriesBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder addActions(
-        int index, obj.ObjectAction value) {
-      if (actionsBuilder_ == null) {
+    public Builder addEntries(
+        int index, obj.DictionaryEntry value) {
+      if (entriesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureActionsIsMutable();
-        actions_.add(index, value);
+        ensureEntriesIsMutable();
+        entries_.add(index, value);
         onChanged();
       } else {
-        actionsBuilder_.addMessage(index, value);
+        entriesBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder addActions(
-        obj.ObjectAction.Builder builderForValue) {
-      if (actionsBuilder_ == null) {
-        ensureActionsIsMutable();
-        actions_.add(builderForValue.build());
+    public Builder addEntries(
+        obj.DictionaryEntry.Builder builderForValue) {
+      if (entriesBuilder_ == null) {
+        ensureEntriesIsMutable();
+        entries_.add(builderForValue.build());
         onChanged();
       } else {
-        actionsBuilder_.addMessage(builderForValue.build());
+        entriesBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder addActions(
-        int index, obj.ObjectAction.Builder builderForValue) {
-      if (actionsBuilder_ == null) {
-        ensureActionsIsMutable();
-        actions_.add(index, builderForValue.build());
+    public Builder addEntries(
+        int index, obj.DictionaryEntry.Builder builderForValue) {
+      if (entriesBuilder_ == null) {
+        ensureEntriesIsMutable();
+        entries_.add(index, builderForValue.build());
         onChanged();
       } else {
-        actionsBuilder_.addMessage(index, builderForValue.build());
+        entriesBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder addAllActions(
-        java.lang.Iterable<? extends obj.ObjectAction> values) {
-      if (actionsBuilder_ == null) {
-        ensureActionsIsMutable();
+    public Builder addAllEntries(
+        java.lang.Iterable<? extends obj.DictionaryEntry> values) {
+      if (entriesBuilder_ == null) {
+        ensureEntriesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, actions_);
+            values, entries_);
         onChanged();
       } else {
-        actionsBuilder_.addAllMessages(values);
+        entriesBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder clearActions() {
-      if (actionsBuilder_ == null) {
-        actions_ = java.util.Collections.emptyList();
+    public Builder clearEntries() {
+      if (entriesBuilder_ == null) {
+        entries_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        actionsBuilder_.clear();
+        entriesBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public Builder removeActions(int index) {
-      if (actionsBuilder_ == null) {
-        ensureActionsIsMutable();
-        actions_.remove(index);
+    public Builder removeEntries(int index) {
+      if (entriesBuilder_ == null) {
+        ensureEntriesIsMutable();
+        entries_.remove(index);
         onChanged();
       } else {
-        actionsBuilder_.remove(index);
+        entriesBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public obj.ObjectAction.Builder getActionsBuilder(
+    public obj.DictionaryEntry.Builder getEntriesBuilder(
         int index) {
-      return internalGetActionsFieldBuilder().getBuilder(index);
+      return internalGetEntriesFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public obj.ObjectActionOrBuilder getActionsOrBuilder(
+    public obj.DictionaryEntryOrBuilder getEntriesOrBuilder(
         int index) {
-      if (actionsBuilder_ == null) {
-        return actions_.get(index);  } else {
-        return actionsBuilder_.getMessageOrBuilder(index);
+      if (entriesBuilder_ == null) {
+        return entries_.get(index);  } else {
+        return entriesBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public java.util.List<? extends obj.ObjectActionOrBuilder> 
-         getActionsOrBuilderList() {
-      if (actionsBuilder_ != null) {
-        return actionsBuilder_.getMessageOrBuilderList();
+    public java.util.List<? extends obj.DictionaryEntryOrBuilder> 
+         getEntriesOrBuilderList() {
+      if (entriesBuilder_ != null) {
+        return entriesBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(actions_);
+        return java.util.Collections.unmodifiableList(entries_);
       }
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public obj.ObjectAction.Builder addActionsBuilder() {
-      return internalGetActionsFieldBuilder().addBuilder(
-          obj.ObjectAction.getDefaultInstance());
+    public obj.DictionaryEntry.Builder addEntriesBuilder() {
+      return internalGetEntriesFieldBuilder().addBuilder(
+          obj.DictionaryEntry.getDefaultInstance());
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public obj.ObjectAction.Builder addActionsBuilder(
+    public obj.DictionaryEntry.Builder addEntriesBuilder(
         int index) {
-      return internalGetActionsFieldBuilder().addBuilder(
-          index, obj.ObjectAction.getDefaultInstance());
+      return internalGetEntriesFieldBuilder().addBuilder(
+          index, obj.DictionaryEntry.getDefaultInstance());
     }
     /**
-     * <code>repeated .object.ObjectAction actions = 1;</code>
+     * <code>repeated .object.DictionaryEntry entries = 1;</code>
      */
-    public java.util.List<obj.ObjectAction.Builder> 
-         getActionsBuilderList() {
-      return internalGetActionsFieldBuilder().getBuilderList();
+    public java.util.List<obj.DictionaryEntry.Builder> 
+         getEntriesBuilderList() {
+      return internalGetEntriesFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilder<
-        obj.ObjectAction, obj.ObjectAction.Builder, obj.ObjectActionOrBuilder> 
-        internalGetActionsFieldBuilder() {
-      if (actionsBuilder_ == null) {
-        actionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-            obj.ObjectAction, obj.ObjectAction.Builder, obj.ObjectActionOrBuilder>(
-                actions_,
+        obj.DictionaryEntry, obj.DictionaryEntry.Builder, obj.DictionaryEntryOrBuilder> 
+        internalGetEntriesFieldBuilder() {
+      if (entriesBuilder_ == null) {
+        entriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+            obj.DictionaryEntry, obj.DictionaryEntry.Builder, obj.DictionaryEntryOrBuilder>(
+                entries_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        actions_ = null;
+        entries_ = null;
       }
-      return actionsBuilder_;
+      return entriesBuilder_;
     }
 
-    // @@protoc_insertion_point(builder_scope:object.ObjectActions)
+    // @@protoc_insertion_point(builder_scope:object.Dictionary)
   }
 
-  // @@protoc_insertion_point(class_scope:object.ObjectActions)
-  private static final obj.ObjectActions DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:object.Dictionary)
+  private static final obj.Dictionary DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new obj.ObjectActions();
+    DEFAULT_INSTANCE = new obj.Dictionary();
   }
 
-  public static obj.ObjectActions getDefaultInstance() {
+  public static obj.Dictionary getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ObjectActions>
-      PARSER = new com.google.protobuf.AbstractParser<ObjectActions>() {
+  private static final com.google.protobuf.Parser<Dictionary>
+      PARSER = new com.google.protobuf.AbstractParser<Dictionary>() {
     @java.lang.Override
-    public ObjectActions parsePartialFrom(
+    public Dictionary parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -702,17 +702,17 @@ private static final long serialVersionUID = 0L;
     }
   };
 
-  public static com.google.protobuf.Parser<ObjectActions> parser() {
+  public static com.google.protobuf.Parser<Dictionary> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ObjectActions> getParserForType() {
+  public com.google.protobuf.Parser<Dictionary> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public obj.ObjectActions getDefaultInstanceForType() {
+  public obj.Dictionary getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

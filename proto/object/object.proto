@@ -135,44 +135,122 @@ message SubscriptionResponse {
 
 message Empty{}
 // Enumerate all actions
+
+// -----------------------
+// Action types
+// -----------------------
 enum ActionType {
-    UNKNOWN_ACTION = 0;
+  UNKNOWN_ACTION = 0;
 
-    // Object-level actions
-    CREATE_OBJECT = 1;
-    UPDATE_OBJECT = 2;
-    DELETE_OBJECT = 3;
-    READ_OBJECT = 4;
+  // Object-level
+  CREATE_OBJECT = 1;
+  UPDATE_OBJECT = 2;
+  DELETE_OBJECT = 3;
+  READ_OBJECT   = 4;
 
-    // Field-level actions
-    CREATE_FIELD = 10;
-    UPDATE_FIELD = 11;
-    DELETE_FIELD = 12;
-    READ_FIELD = 13;
+  // Field-level
+  CREATE_FIELD = 10;
+  UPDATE_FIELD = 11;
+  DELETE_FIELD = 12;
+  READ_FIELD   = 13;
 
-    // Value-level actions (char-based)
-    CREATE_VALUE = 20;
-    WRITE_VALUE = 21;
-    READ_VALUE = 22;
-    
-    // Relation-level actions
-    CREATE_RELATION = 30;
-    DELETE_RELATION = 31;
-    READ_RELATION = 32;
+  // Value-level
+  CREATE_VALUE = 20;
+  WRITE_VALUE  = 21;
+  READ_VALUE   = 22;
 
-    BEGIN = 40;
-    END = 41;
-}
-// ---- Synchronous Subscription ----
-message ObjectAction {
-    ActionType action = 1;       // field number = 1
-    uint64 source_id = 2;        // field number = 2
-    uint64 target_id = 3;        // field number = 3
-    uint64 value_code = 4;       // field number = 4
+  // Relation-level
+  CREATE_RELATION = 30;
+  DELETE_RELATION = 31;
+  READ_RELATION   = 32;
 }
 
-message ObjectActions {
-  repeated ObjectAction actions = 1;
+// -----------------------
+// Per-action metadata
+// -----------------------
+message ActionMeta {
+  uint32 action_id = 1; // unique per action, dense for varint efficiency
+  // Optional future extension: map<string,string> attributes = 2;
+}
+
+// -----------------------
+// Payload
+// -----------------------
+message ValuePayload {
+  string type_hint = 1; // optional, describes payload type for polymorphic objects
+  oneof kind {
+    sint64  int_value    = 2; // zig-zag encoded
+    double  float_value  = 3;
+    bool    bool_value   = 4;
+    string  string_value = 5;
+    bytes   bytes_value  = 6;
+    uint32  ref_id       = 7; // dictionary-mapped reference
+  }
+}
+
+// -----------------------
+// Core action
+// -----------------------
+message Action {
+  ActionType action = 1;
+  uint32 source_id = 2; // dense ID
+  uint32 target_id = 3; // dense ID
+  ValuePayload payload = 4;
+  ActionMeta meta = 5;
+
+  // Optional future extensibility
+  map<string,string> attributes = 6;
+}
+
+// -----------------------
+// Transaction / batch
+// -----------------------
+enum BatchResult {
+  BATCH_UNKNOWN = 0;
+  BATCH_COMMIT  = 1;
+  BATCH_ABORT   = 2;
+}
+
+message ActionBatchMeta {
+  uint64 transaction_id = 1; // groups all actions
+  uint64 timestamp_ms   = 2; // batch time
+  uint32 schema_version = 3; // protocol evolution
+  BatchResult result    = 4; // commit / abort
+  uint32 batch_version  = 5; // optional future extension
+}
+
+// -----------------------
+// Dictionary
+// -----------------------
+message DictionaryEntry {
+  uint32 id = 1; // unique dictionary ID
+  oneof value {
+    string string_value = 2;
+    uint64 uint_value   = 3;
+    bytes  bytes_value  = 4;
+  }
+}
+
+message Dictionary {
+  repeated DictionaryEntry entries = 1;
+}
+
+// Incremental dictionary updates for long-running sessions
+message DictionaryUpdate {
+  repeated DictionaryEntry new_entries = 1;
+}
+
+// -----------------------
+// Batch container
+// -----------------------
+message ActionBatch {
+  ActionBatchMeta meta = 1;
+
+  // Optional dictionary updates
+  Dictionary dictionary = 2;          // full dictionary (optional)
+  DictionaryUpdate dictionary_update = 3; // incremental updates (optional)
+
+  repeated Action actions = 4;
 }
 
 message DiffByUser{
@@ -217,8 +295,8 @@ service ObjectService {
   // Streaming/Subscription
   rpc SubscribeToUsersObjects(Empty) returns (stream SubscriptionResponse);
   rpc SubscribeToMyself(Empty) returns (stream Object);
-  rpc SyncWithUsers(DiffByUsers) returns (stream ObjectActions);
-  rpc Sync(stream ObjectActions) returns (stream ObjectActions);
+  rpc SyncWithUsers(DiffByUsers) returns (stream ActionBatch);
+  rpc Sync(stream ActionBatch) returns (stream ActionBatch);
 
   // Get object commands
   rpc GetObjectCommands(GetObjectRequest) returns (ObjectsResponse);

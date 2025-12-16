@@ -285,7 +285,7 @@ func (c *objectServiceClient) SyncWithUsers(ctx context.Context, in *DiffByUsers
 }
 
 type ObjectService_SyncWithUsersClient interface {
-	Recv() (*ObjectActions, error)
+	Recv() (*ActionBatch, error)
 	grpc.ClientStream
 }
 
@@ -293,8 +293,8 @@ type objectServiceSyncWithUsersClient struct {
 	grpc.ClientStream
 }
 
-func (x *objectServiceSyncWithUsersClient) Recv() (*ObjectActions, error) {
-	m := new(ObjectActions)
+func (x *objectServiceSyncWithUsersClient) Recv() (*ActionBatch, error) {
+	m := new(ActionBatch)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -311,8 +311,8 @@ func (c *objectServiceClient) Sync(ctx context.Context, opts ...grpc.CallOption)
 }
 
 type ObjectService_SyncClient interface {
-	Send(*ObjectActions) error
-	Recv() (*ObjectActions, error)
+	Send(*ActionBatch) error
+	Recv() (*ActionBatch, error)
 	grpc.ClientStream
 }
 
@@ -320,12 +320,12 @@ type objectServiceSyncClient struct {
 	grpc.ClientStream
 }
 
-func (x *objectServiceSyncClient) Send(m *ObjectActions) error {
+func (x *objectServiceSyncClient) Send(m *ActionBatch) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *objectServiceSyncClient) Recv() (*ObjectActions, error) {
-	m := new(ObjectActions)
+func (x *objectServiceSyncClient) Recv() (*ActionBatch, error) {
+	m := new(ActionBatch)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -750,7 +750,7 @@ func _ObjectService_SyncWithUsers_Handler(srv interface{}, stream grpc.ServerStr
 }
 
 type ObjectService_SyncWithUsersServer interface {
-	Send(*ObjectActions) error
+	Send(*ActionBatch) error
 	grpc.ServerStream
 }
 
@@ -758,7 +758,7 @@ type objectServiceSyncWithUsersServer struct {
 	grpc.ServerStream
 }
 
-func (x *objectServiceSyncWithUsersServer) Send(m *ObjectActions) error {
+func (x *objectServiceSyncWithUsersServer) Send(m *ActionBatch) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -767,8 +767,8 @@ func _ObjectService_Sync_Handler(srv interface{}, stream grpc.ServerStream) erro
 }
 
 type ObjectService_SyncServer interface {
-	Send(*ObjectActions) error
-	Recv() (*ObjectActions, error)
+	Send(*ActionBatch) error
+	Recv() (*ActionBatch, error)
 	grpc.ServerStream
 }
 
@@ -776,12 +776,12 @@ type objectServiceSyncServer struct {
 	grpc.ServerStream
 }
 
-func (x *objectServiceSyncServer) Send(m *ObjectActions) error {
+func (x *objectServiceSyncServer) Send(m *ActionBatch) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func (x *objectServiceSyncServer) Recv() (*ObjectActions, error) {
-	m := new(ObjectActions)
+func (x *objectServiceSyncServer) Recv() (*ActionBatch, error) {
+	m := new(ActionBatch)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
