@@ -23,76 +23,88 @@ public enum ActionType
   UNKNOWN_ACTION(0),
   /**
    * <pre>
+   * System-level
+   * </pre>
+   *
+   * <code>CONFIRM = 1;</code>
+   */
+  CONFIRM(1),
+  /**
+   * <code>HEALTHCHECK = 2;</code>
+   */
+  HEALTHCHECK(2),
+  /**
+   * <pre>
    * Object-level
    * </pre>
    *
-   * <code>CREATE_OBJECT = 1;</code>
+   * <code>CREATE_OBJECT = 101;</code>
    */
-  CREATE_OBJECT(1),
+  CREATE_OBJECT(101),
   /**
-   * <code>UPDATE_OBJECT = 2;</code>
+   * <code>UPDATE_OBJECT = 102;</code>
    */
-  UPDATE_OBJECT(2),
+  UPDATE_OBJECT(102),
   /**
-   * <code>DELETE_OBJECT = 3;</code>
+   * <code>DELETE_OBJECT = 103;</code>
    */
-  DELETE_OBJECT(3),
+  DELETE_OBJECT(103),
   /**
-   * <code>READ_OBJECT = 4;</code>
+   * <code>READ_OBJECT = 104;</code>
    */
-  READ_OBJECT(4),
+  READ_OBJECT(104),
   /**
    * <pre>
    * Field-level
    * </pre>
    *
-   * <code>CREATE_FIELD = 10;</code>
+   * <code>CREATE_FIELD = 201;</code>
    */
-  CREATE_FIELD(10),
+  CREATE_FIELD(201),
   /**
-   * <code>UPDATE_FIELD = 11;</code>
+   * <code>UPDATE_FIELD = 202;</code>
    */
-  UPDATE_FIELD(11),
+  UPDATE_FIELD(202),
   /**
-   * <code>DELETE_FIELD = 12;</code>
+   * <code>DELETE_FIELD = 203;</code>
    */
-  DELETE_FIELD(12),
+  DELETE_FIELD(203),
   /**
-   * <code>READ_FIELD = 13;</code>
+   * <code>READ_FIELD = 204;</code>
    */
-  READ_FIELD(13),
+  READ_FIELD(204),
   /**
    * <pre>
    * Value-level
    * </pre>
    *
-   * <code>CREATE_VALUE = 20;</code>
+   * <code>CREATE_VALUE = 301;</code>
    */
-  CREATE_VALUE(20),
+  CREATE_VALUE(301),
   /**
-   * <code>WRITE_VALUE = 21;</code>
+   * <code>WRITE_VALUE = 302;</code>
    */
-  WRITE_VALUE(21),
+  WRITE_VALUE(302),
   /**
-   * <code>READ_VALUE = 22;</code>
+   * <code>READ_VALUE = 303;</code>
    */
-  READ_VALUE(22),
+  READ_VALUE(303),
   /**
    * <pre>
    * Relation-level
    * </pre>
    *
-   * <code>CREATE_RELATION = 30;</code>
+   * <code>CREATE_RELATION = 401;</code>
    */
-  CREATE_RELATION(30),
+  CREATE_RELATION(401),
   /**
-   * <code>DELETE_RELATION = 31;</code>
+   * <code>DELETE_RELATION = 402;</code>
    */
-  DELETE_RELATION(31),
+  DELETE_RELATION(402),
   /**
-   * <code>READ_RELATION = 32;</code>
+   * <code>READ_RELATION = 403;</code>
    */
-  READ_RELATION(32),
+  READ_RELATION(403),
   UNRECOGNIZED(-1),
   ;
 
@@ -111,76 +123,88 @@ public enum ActionType
   public static final int UNKNOWN_ACTION_VALUE = 0;
   /**
    * <pre>
+   * System-level
+   * </pre>
+   *
+   * <code>CONFIRM = 1;</code>
+   */
+  public static final int CONFIRM_VALUE = 1;
+  /**
+   * <code>HEALTHCHECK = 2;</code>
+   */
+  public static final int HEALTHCHECK_VALUE = 2;
+  /**
+   * <pre>
    * Object-level
    * </pre>
    *
-   * <code>CREATE_OBJECT = 1;</code>
+   * <code>CREATE_OBJECT = 101;</code>
    */
-  public static final int CREATE_OBJECT_VALUE = 1;
+  public static final int CREATE_OBJECT_VALUE = 101;
   /**
-   * <code>UPDATE_OBJECT = 2;</code>
+   * <code>UPDATE_OBJECT = 102;</code>
    */
-  public static final int UPDATE_OBJECT_VALUE = 2;
+  public static final int UPDATE_OBJECT_VALUE = 102;
   /**
-   * <code>DELETE_OBJECT = 3;</code>
+   * <code>DELETE_OBJECT = 103;</code>
    */
-  public static final int DELETE_OBJECT_VALUE = 3;
+  public static final int DELETE_OBJECT_VALUE = 103;
   /**
-   * <code>READ_OBJECT = 4;</code>
+   * <code>READ_OBJECT = 104;</code>
    */
-  public static final int READ_OBJECT_VALUE = 4;
+  public static final int READ_OBJECT_VALUE = 104;
   /**
    * <pre>
    * Field-level
    * </pre>
    *
-   * <code>CREATE_FIELD = 10;</code>
+   * <code>CREATE_FIELD = 201;</code>
    */
-  public static final int CREATE_FIELD_VALUE = 10;
+  public static final int CREATE_FIELD_VALUE = 201;
   /**
-   * <code>UPDATE_FIELD = 11;</code>
+   * <code>UPDATE_FIELD = 202;</code>
    */
-  public static final int UPDATE_FIELD_VALUE = 11;
+  public static final int UPDATE_FIELD_VALUE = 202;
   /**
-   * <code>DELETE_FIELD = 12;</code>
+   * <code>DELETE_FIELD = 203;</code>
    */
-  public static final int DELETE_FIELD_VALUE = 12;
+  public static final int DELETE_FIELD_VALUE = 203;
   /**
-   * <code>READ_FIELD = 13;</code>
+   * <code>READ_FIELD = 204;</code>
    */
-  public static final int READ_FIELD_VALUE = 13;
+  public static final int READ_FIELD_VALUE = 204;
   /**
    * <pre>
    * Value-level
    * </pre>
    *
-   * <code>CREATE_VALUE = 20;</code>
+   * <code>CREATE_VALUE = 301;</code>
    */
-  public static final int CREATE_VALUE_VALUE = 20;
+  public static final int CREATE_VALUE_VALUE = 301;
   /**
-   * <code>WRITE_VALUE = 21;</code>
+   * <code>WRITE_VALUE = 302;</code>
    */
-  public static final int WRITE_VALUE_VALUE = 21;
+  public static final int WRITE_VALUE_VALUE = 302;
   /**
-   * <code>READ_VALUE = 22;</code>
+   * <code>READ_VALUE = 303;</code>
    */
-  public static final int READ_VALUE_VALUE = 22;
+  public static final int READ_VALUE_VALUE = 303;
   /**
    * <pre>
    * Relation-level
    * </pre>
    *
-   * <code>CREATE_RELATION = 30;</code>
+   * <code>CREATE_RELATION = 401;</code>
    */
-  public static final int CREATE_RELATION_VALUE = 30;
+  public static final int CREATE_RELATION_VALUE = 401;
   /**
-   * <code>DELETE_RELATION = 31;</code>
+   * <code>DELETE_RELATION = 402;</code>
    */
-  public static final int DELETE_RELATION_VALUE = 31;
+  public static final int DELETE_RELATION_VALUE = 402;
   /**
-   * <code>READ_RELATION = 32;</code>
+   * <code>READ_RELATION = 403;</code>
    */
-  public static final int READ_RELATION_VALUE = 32;
+  public static final int READ_RELATION_VALUE = 403;
 
 
   public final int getNumber() {
@@ -208,20 +232,22 @@ public enum ActionType
   public static ActionType forNumber(int value) {
     switch (value) {
       case 0: return UNKNOWN_ACTION;
-      case 1: return CREATE_OBJECT;
-      case 2: return UPDATE_OBJECT;
-      case 3: return DELETE_OBJECT;
-      case 4: return READ_OBJECT;
-      case 10: return CREATE_FIELD;
-      case 11: return UPDATE_FIELD;
-      case 12: return DELETE_FIELD;
-      case 13: return READ_FIELD;
-      case 20: return CREATE_VALUE;
-      case 21: return WRITE_VALUE;
-      case 22: return READ_VALUE;
-      case 30: return CREATE_RELATION;
-      case 31: return DELETE_RELATION;
-      case 32: return READ_RELATION;
+      case 1: return CONFIRM;
+      case 2: return HEALTHCHECK;
+      case 101: return CREATE_OBJECT;
+      case 102: return UPDATE_OBJECT;
+      case 103: return DELETE_OBJECT;
+      case 104: return READ_OBJECT;
+      case 201: return CREATE_FIELD;
+      case 202: return UPDATE_FIELD;
+      case 203: return DELETE_FIELD;
+      case 204: return READ_FIELD;
+      case 301: return CREATE_VALUE;
+      case 302: return WRITE_VALUE;
+      case 303: return READ_VALUE;
+      case 401: return CREATE_RELATION;
+      case 402: return DELETE_RELATION;
+      case 403: return READ_RELATION;
       default: return null;
     }
   }

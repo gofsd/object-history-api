@@ -1592,7 +1592,7 @@ proto.auth.SignalMessage.toObject = function(includeInstance, msg) {
     type: jspb.Message.getFieldWithDefault(msg, 1, 0),
     source: jspb.Message.getFieldWithDefault(msg, 2, 0),
     target: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    value: jspb.Message.getFieldWithDefault(msg, 4, "")
+    value: msg.getValue_asB64()
   };
 
   if (includeInstance) {
@@ -1642,7 +1642,7 @@ proto.auth.SignalMessage.deserializeBinaryFromReader = function(msg, reader) {
       msg.setTarget(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = /** @type {!Uint8Array} */ (reader.readBytes());
       msg.setValue(value);
       break;
     default:
@@ -1695,9 +1695,9 @@ proto.auth.SignalMessage.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getValue();
+  f = message.getValue_asU8();
   if (f.length > 0) {
-    writer.writeString(
+    writer.writeBytes(
       4,
       f
     );
@@ -1760,7 +1760,7 @@ proto.auth.SignalMessage.prototype.setTarget = function(value) {
 
 
 /**
- * optional string value = 4;
+ * optional bytes value = 4;
  * @return {string}
  */
 proto.auth.SignalMessage.prototype.getValue = function() {
@@ -1769,11 +1769,35 @@ proto.auth.SignalMessage.prototype.getValue = function() {
 
 
 /**
- * @param {string} value
+ * optional bytes value = 4;
+ * This is a type-conversion wrapper around `getValue()`
+ * @return {string}
+ */
+proto.auth.SignalMessage.prototype.getValue_asB64 = function() {
+  return /** @type {string} */ (jspb.Message.bytesAsB64(
+      this.getValue()));
+};
+
+
+/**
+ * optional bytes value = 4;
+ * Note that Uint8Array is not supported on all browsers.
+ * @see http://caniuse.com/Uint8Array
+ * This is a type-conversion wrapper around `getValue()`
+ * @return {!Uint8Array}
+ */
+proto.auth.SignalMessage.prototype.getValue_asU8 = function() {
+  return /** @type {!Uint8Array} */ (jspb.Message.bytesAsU8(
+      this.getValue()));
+};
+
+
+/**
+ * @param {!(string|Uint8Array)} value
  * @return {!proto.auth.SignalMessage} returns this
  */
 proto.auth.SignalMessage.prototype.setValue = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3BytesField(this, 4, value);
 };
 
 

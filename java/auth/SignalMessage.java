@@ -33,7 +33,7 @@ private static final long serialVersionUID = 0L;
   }
   private SignalMessage() {
     type_ = 0;
-    value_ = "";
+    value_ = com.google.protobuf.ByteString.EMPTY;
   }
 
   public static final com.google.protobuf.Descriptors.Descriptor
@@ -90,42 +90,14 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int VALUE_FIELD_NUMBER = 4;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object value_ = "";
+  private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
   /**
-   * <code>string value = 4;</code>
+   * <code>bytes value = 4;</code>
    * @return The value.
    */
   @java.lang.Override
-  public java.lang.String getValue() {
-    java.lang.Object ref = value_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      value_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string value = 4;</code>
-   * @return The bytes for value.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getValueBytes() {
-    java.lang.Object ref = value_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      value_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
+  public com.google.protobuf.ByteString getValue() {
+    return value_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -151,8 +123,8 @@ private static final long serialVersionUID = 0L;
     if (target_ != 0L) {
       output.writeUInt64(3, target_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(value_)) {
-      com.google.protobuf.GeneratedMessage.writeString(output, 4, value_);
+    if (!value_.isEmpty()) {
+      output.writeBytes(4, value_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -175,8 +147,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeUInt64Size(3, target_);
     }
-    if (!com.google.protobuf.GeneratedMessage.isStringEmpty(value_)) {
-      size += com.google.protobuf.GeneratedMessage.computeStringSize(4, value_);
+    if (!value_.isEmpty()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBytesSize(4, value_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -359,7 +332,7 @@ private static final long serialVersionUID = 0L;
       type_ = 0;
       source_ = 0L;
       target_ = 0L;
-      value_ = "";
+      value_ = com.google.protobuf.ByteString.EMPTY;
       return this;
     }
 
@@ -429,9 +402,7 @@ private static final long serialVersionUID = 0L;
         setTarget(other.getTarget());
       }
       if (!other.getValue().isEmpty()) {
-        value_ = other.value_;
-        bitField0_ |= 0x00000008;
-        onChanged();
+        setValue(other.getValue());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -475,7 +446,7 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 24
             case 34: {
-              value_ = input.readStringRequireUtf8();
+              value_ = input.readBytes();
               bitField0_ |= 0x00000008;
               break;
             } // case 34
@@ -611,47 +582,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object value_ = "";
+    private com.google.protobuf.ByteString value_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>string value = 4;</code>
+     * <code>bytes value = 4;</code>
      * @return The value.
      */
-    public java.lang.String getValue() {
-      java.lang.Object ref = value_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        value_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
+    @java.lang.Override
+    public com.google.protobuf.ByteString getValue() {
+      return value_;
     }
     /**
-     * <code>string value = 4;</code>
-     * @return The bytes for value.
-     */
-    public com.google.protobuf.ByteString
-        getValueBytes() {
-      java.lang.Object ref = value_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        value_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string value = 4;</code>
+     * <code>bytes value = 4;</code>
      * @param value The value to set.
      * @return This builder for chaining.
      */
-    public Builder setValue(
-        java.lang.String value) {
+    public Builder setValue(com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       value_ = value;
       bitField0_ |= 0x00000008;
@@ -659,26 +604,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string value = 4;</code>
+     * <code>bytes value = 4;</code>
      * @return This builder for chaining.
      */
     public Builder clearValue() {
-      value_ = getDefaultInstance().getValue();
       bitField0_ = (bitField0_ & ~0x00000008);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string value = 4;</code>
-     * @param value The bytes for value to set.
-     * @return This builder for chaining.
-     */
-    public Builder setValueBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      value_ = value;
-      bitField0_ |= 0x00000008;
+      value_ = getDefaultInstance().getValue();
       onChanged();
       return this;
     }

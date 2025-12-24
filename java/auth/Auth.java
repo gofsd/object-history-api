@@ -128,7 +128,7 @@ public final class Auth extends com.google.protobuf.GeneratedFile {
       "\t\022\035\n\007devices\030\003 \003(\0132\014.auth.Device\"_\n\rSign" +
       "alMessage\022\037\n\004type\030\001 \001(\0162\021.auth.MessageTy" +
       "pe\022\016\n\006source\030\002 \001(\004\022\016\n\006target\030\003 \001(\004\022\r\n\005va" +
-      "lue\030\004 \001(\t\"5\n\rSignalRequest\022$\n\007message\030\001 " +
+      "lue\030\004 \001(\014\"5\n\rSignalRequest\022$\n\007message\030\001 " +
       "\001(\0132\023.auth.SignalMessage\"6\n\016SignalRespon" +
       "se\022$\n\007message\030\001 \001(\0132\023.auth.SignalMessage" +
       "\"\"\n\rLogoutRequest\022\021\n\tdevice_id\030\001 \001(\004\"!\n\016" +

@@ -65,7 +65,7 @@ message SignalMessage {
     MessageType type = 1;
     uint64 source = 2;
     uint64 target = 3;
-    string value = 4;
+    bytes value = 4;
 }
 
 // Request wrapper for RPC

@@ -34,14 +34,8 @@ public interface SignalMessageOrBuilder extends
   long getTarget();
 
   /**
-   * <code>string value = 4;</code>
+   * <code>bytes value = 4;</code>
    * @return The value.
    */
-  java.lang.String getValue();
-  /**
-   * <code>string value = 4;</code>
-   * @return The bytes for value.
-   */
-  com.google.protobuf.ByteString
-      getValueBytes();
+  com.google.protobuf.ByteString getValue();
 }
